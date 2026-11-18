@@ -2,6 +2,9 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 8.1.0
+- Wise API (Global) qo'shildi: Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish, konvertatsiyalar o'tkazma sifatida
+
 ### 8.0.0
 - Ochiladigan bo'limlarga ega yangi Integratsiyalar sahifasi
 - Financial Transaction Services (FinTS 4.1) qo'shildi: nemis banklaridan hisoblar, qoldiqlar va tranzaksiyalarni import qilish

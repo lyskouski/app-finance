@@ -2,6 +2,9 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 8.1.0
+- Wise API (Global) toegevoegd: saldi en import van transacties van Wise-rekeningen in meerdere valuta, omwisselingen als overboekingen
+
 ### 8.0.0
 - Nieuwe pagina Integraties met uitklapbare secties
 - Financial Transaction Services (FinTS 4.1) toegevoegd: rekeningen, saldi en import van transacties van Duitse banken

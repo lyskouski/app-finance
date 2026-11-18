@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">92.7&nbsp;%</td>
-            <td class="headerCovTableEntry">205</td>
-            <td class="headerCovTableEntry">190</td>
+            <td class="headerCovTableEntry">206</td>
+            <td class="headerCovTableEntry">191</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-17 17:38:22</td>
+            <td class="headerValue">2026-11-18 19:01:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -309,141 +309,142 @@
 <span id="L247"><span class="lineNum">     247</span>              :           transactions: transactions,</span>
 <span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           1 :           account: item.appAccount!,</span></span>
 <span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           1 :           category: item.category!,</span></span>
-<span id="L250"><span class="lineNum">     250</span>              :         );</span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           1 :         await state.restate();</span></span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           1 :         final today = DateTime.now();</span></span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           6 :         settings.links[item.account.key] = item.appAccount!;</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           9 :         settings.imported[item.account.key] = DateTime(today.year, today.month, today.day);</span></span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">           2 :         await settings.save();</span></span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">           3 :         notice = AppLocale.labels.integrationImported(summary.added, summary.pending, summary.skipped);</span></span>
-<span id="L257"><span class="lineNum">     257</span>              :       });</span>
-<span id="L258"><span class="lineNum">     258</span>              : </span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">           2 :   Widget buildSettings(BuildContext context) {</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           4 :     final banks = aspsps.isNotEmpty</span></span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">           1 :         ? aspsps</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          13 :         : [if (settings.aspsp.isNotEmpty) EnableBankingAspsp(name: settings.aspsp, country: settings.country)];</span></span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">           2 :     return Column(</span></span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">           2 :       crossAxisAlignment: AppDesign.getAlignment(),</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           2 :       children: [</span></span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">           2 :         InputWrapper.text(</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           4 :           title: AppLocale.labels.enableBankingAppId,</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">           2 :           controller: applicationId,</span></span>
-<span id="L269"><span class="lineNum">     269</span>              :           isRequired: true,</span>
-<span id="L270"><span class="lineNum">     270</span>              :         ),</span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">           2 :         InputWrapper.text(</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           4 :           title: AppLocale.labels.enableBankingKey,</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           4 :           tooltip: AppLocale.labels.enableBankingKeyTooltip,</span></span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           2 :           controller: privateKey,</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">           2 :           isRequired: EnableBankingSettings.loadKey() == null,</span></span>
-<span id="L276"><span class="lineNum">     276</span>              :         ),</span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           2 :         InputWrapper.text(</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">           4 :           title: AppLocale.labels.enableBankingRedirect,</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           4 :           tooltip: AppLocale.labels.enableBankingRedirectTooltip,</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">           2 :           controller: redirectUrl,</span></span>
-<span id="L281"><span class="lineNum">     281</span>              :           isRequired: true,</span>
-<span id="L282"><span class="lineNum">     282</span>              :           inputType: TextInputType.url,</span>
-<span id="L283"><span class="lineNum">     283</span>              :         ),</span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           2 :         InputWrapper.text(</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           4 :           title: AppLocale.labels.enableBankingCountry,</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           2 :           controller: country,</span></span>
-<span id="L287"><span class="lineNum">     287</span>              :           isRequired: true,</span>
-<span id="L288"><span class="lineNum">     288</span>              :         ),</span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">           2 :         if (banks.isNotEmpty)</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">           2 :           InputWrapper.select(</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">           4 :             title: AppLocale.labels.enableBankingBank,</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          10 :             value: settings.aspsp.isEmpty ? null : settings.aspsp,</span></span>
-<span id="L293"><span class="lineNum">     293</span>              :             isRequired: true,</span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          10 :             options: &lt;ListSelectorItem&gt;[for (final bank in banks) ListSelectorItem(id: bank.name, name: bank.name)],</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaUNC">           0 :             onChange: (value) =&gt; setState(() =&gt; settings.aspsp = value ?? ''),</span></span>
-<span id="L296"><span class="lineNum">     296</span>              :           ),</span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">           2 :         Align(</span></span>
-<span id="L298"><span class="lineNum">     298</span>              :           alignment: Alignment.centerRight,</span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">           2 :           child: TextButton.icon(</span></span>
-<span id="L300"><span class="lineNum">     300</span>              :             key: const ValueKey('enablebanking_banks'),</span>
-<span id="L301"><span class="lineNum">     301</span>              :             icon: const Icon(Icons.account_balance),</span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">           4 :             onPressed: isLoading ? null : loadBanks,</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           6 :             label: Text(AppLocale.labels.enableBankingLoadBanks),</span></span>
-<span id="L304"><span class="lineNum">     304</span>              :           ),</span>
-<span id="L305"><span class="lineNum">     305</span>              :         ),</span>
-<span id="L306"><span class="lineNum">     306</span>              :       ],</span>
-<span id="L307"><span class="lineNum">     307</span>              :     );</span>
-<span id="L308"><span class="lineNum">     308</span>              :   }</span>
-<span id="L309"><span class="lineNum">     309</span>              : </span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           2 :   Widget buildAccount(BuildContext context, EnableBankingBankAccount item, AppData state) {</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           2 :     final balance = item.balance;</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">           2 :     return IntegrationAccountCard(</span></span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">           2 :       title: item.title,</span></span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">           5 :       subtitle: balance != null ? '${AppLocale.labels.balance}: ${balance.amount} ${balance.currency}' : null,</span></span>
-<span id="L315"><span class="lineNum">     315</span>              :       target: item,</span>
-<span id="L316"><span class="lineNum">     316</span>              :       state: state,</span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">           2 :       isDisabled: isLoading,</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaUNC">           0 :       onChanged: () =&gt; setState(() {}),</span></span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">           2 :       onImport: () =&gt; importTransactions(item),</span></span>
-<span id="L320"><span class="lineNum">     320</span>              :     );</span>
-<span id="L321"><span class="lineNum">     321</span>              :   }</span>
-<span id="L322"><span class="lineNum">     322</span>              : </span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">           2 :   @override</span></span>
-<span id="L324"><span class="lineNum">     324</span>              :   Widget build(BuildContext context) {</span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           2 :     final textTheme = context.textTheme;</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">           2 :     final colorScheme = context.colorScheme;</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">           4 :     return Consumer&lt;AppData&gt;(builder: (context, state, _) {</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">           2 :       return Column(</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">           2 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">           2 :         children: [</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">           8 :           Text(AppLocale.labels.enableBankingDescription, style: textTheme.bodyMedium),</span></span>
-<span id="L332"><span class="lineNum">     332</span>              :           ThemeHelper.hIndent2x,</span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">           4 :           if (session == null) buildSettings(context),</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">           2 :           if (authorizationState != null)</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">           2 :             InputWrapper.text(</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           4 :               title: AppLocale.labels.enableBankingCode,</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">           4 :               tooltip: AppLocale.labels.enableBankingCodeTooltip,</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">           2 :               controller: code,</span></span>
-<span id="L339"><span class="lineNum">     339</span>              :               isRequired: true,</span>
-<span id="L340"><span class="lineNum">     340</span>              :               inputType: TextInputType.url,</span>
-<span id="L341"><span class="lineNum">     341</span>              :             ),</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">           2 :           ThemeHelper.hIndent2x,</span></span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           3 :           if (error != null) ...[</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">           5 :             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),</span></span>
-<span id="L345"><span class="lineNum">     345</span>              :             ThemeHelper.hIndent,</span>
-<span id="L346"><span class="lineNum">     346</span>              :           ],</span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">           3 :           if (notice != null) ...[</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">           3 :             Text(notice!, style: textTheme.bodyLarge),</span></span>
-<span id="L349"><span class="lineNum">     349</span>              :             ThemeHelper.hIndent,</span>
-<span id="L350"><span class="lineNum">     350</span>              :           ],</span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">           2 :           if (isLoading)</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">           2 :           else ...[</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">           4 :             if (accounts.isNotEmpty)</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">           2 :               FullSizedButtonWidget(</span></span>
-<span id="L356"><span class="lineNum">     356</span>              :                 key: const ValueKey('enablebanking_disconnect'),</span>
-<span id="L357"><span class="lineNum">     357</span>              :                 icon: Icons.logout,</span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">           2 :                 onPressed: disconnect,</span></span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">           4 :                 title: AppLocale.labels.integrationDisconnect,</span></span>
-<span id="L360"><span class="lineNum">     360</span>              :               )</span>
-<span id="L361"><span class="lineNum">     361</span>              :             else</span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">           2 :               FullSizedButtonWidget(</span></span>
-<span id="L363"><span class="lineNum">     363</span>              :                 key: const ValueKey('enablebanking_connect'),</span>
-<span id="L364"><span class="lineNum">     364</span>              :                 icon: Icons.login,</span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">           6 :                 onPressed: authorizationState != null ? confirm : connect,</span></span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">           4 :                 title: AppLocale.labels.integrationConnect,</span></span>
-<span id="L367"><span class="lineNum">     367</span>              :               ),</span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">           2 :             if (session != null)</span></span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">           2 :               Align(</span></span>
-<span id="L370"><span class="lineNum">     370</span>              :                 alignment: Alignment.centerRight,</span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">           2 :                 child: TextButton.icon(</span></span>
-<span id="L372"><span class="lineNum">     372</span>              :                   key: const ValueKey('enablebanking_forget'),</span>
-<span id="L373"><span class="lineNum">     373</span>              :                   icon: const Icon(Icons.link_off),</span>
-<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">           2 :                   onPressed: forget,</span></span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">           6 :                   label: Text(AppLocale.labels.integrationForget),</span></span>
-<span id="L376"><span class="lineNum">     376</span>              :                 ),</span>
-<span id="L377"><span class="lineNum">     377</span>              :               ),</span>
-<span id="L378"><span class="lineNum">     378</span>              :           ],</span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">           4 :           for (final item in accounts) buildAccount(context, item, state),</span></span>
-<span id="L380"><span class="lineNum">     380</span>              :         ],</span>
-<span id="L381"><span class="lineNum">     381</span>              :       );</span>
-<span id="L382"><span class="lineNum">     382</span>              :     });</span>
-<span id="L383"><span class="lineNum">     383</span>              :   }</span>
-<span id="L384"><span class="lineNum">     384</span>              : }</span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           1 :           prediction: state.prediction,</span></span>
+<span id="L251"><span class="lineNum">     251</span>              :         );</span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           1 :         await state.restate();</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           1 :         final today = DateTime.now();</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           6 :         settings.links[item.account.key] = item.appAccount!;</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">           9 :         settings.imported[item.account.key] = DateTime(today.year, today.month, today.day);</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">           2 :         await settings.save();</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">           3 :         notice = AppLocale.labels.integrationImported(summary.added, summary.pending, summary.skipped);</span></span>
+<span id="L258"><span class="lineNum">     258</span>              :       });</span>
+<span id="L259"><span class="lineNum">     259</span>              : </span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           2 :   Widget buildSettings(BuildContext context) {</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">           4 :     final banks = aspsps.isNotEmpty</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">           1 :         ? aspsps</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">          13 :         : [if (settings.aspsp.isNotEmpty) EnableBankingAspsp(name: settings.aspsp, country: settings.country)];</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">           2 :     return Column(</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           2 :       crossAxisAlignment: AppDesign.getAlignment(),</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">           2 :       children: [</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           2 :         InputWrapper.text(</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">           4 :           title: AppLocale.labels.enableBankingAppId,</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">           2 :           controller: applicationId,</span></span>
+<span id="L270"><span class="lineNum">     270</span>              :           isRequired: true,</span>
+<span id="L271"><span class="lineNum">     271</span>              :         ),</span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           2 :         InputWrapper.text(</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           4 :           title: AppLocale.labels.enableBankingKey,</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           4 :           tooltip: AppLocale.labels.enableBankingKeyTooltip,</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">           2 :           controller: privateKey,</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">           2 :           isRequired: EnableBankingSettings.loadKey() == null,</span></span>
+<span id="L277"><span class="lineNum">     277</span>              :         ),</span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">           2 :         InputWrapper.text(</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           4 :           title: AppLocale.labels.enableBankingRedirect,</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">           4 :           tooltip: AppLocale.labels.enableBankingRedirectTooltip,</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">           2 :           controller: redirectUrl,</span></span>
+<span id="L282"><span class="lineNum">     282</span>              :           isRequired: true,</span>
+<span id="L283"><span class="lineNum">     283</span>              :           inputType: TextInputType.url,</span>
+<span id="L284"><span class="lineNum">     284</span>              :         ),</span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           2 :         InputWrapper.text(</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           4 :           title: AppLocale.labels.enableBankingCountry,</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">           2 :           controller: country,</span></span>
+<span id="L288"><span class="lineNum">     288</span>              :           isRequired: true,</span>
+<span id="L289"><span class="lineNum">     289</span>              :         ),</span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">           2 :         if (banks.isNotEmpty)</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">           2 :           InputWrapper.select(</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           4 :             title: AppLocale.labels.enableBankingBank,</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          10 :             value: settings.aspsp.isEmpty ? null : settings.aspsp,</span></span>
+<span id="L294"><span class="lineNum">     294</span>              :             isRequired: true,</span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          10 :             options: &lt;ListSelectorItem&gt;[for (final bank in banks) ListSelectorItem(id: bank.name, name: bank.name)],</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaUNC">           0 :             onChange: (value) =&gt; setState(() =&gt; settings.aspsp = value ?? ''),</span></span>
+<span id="L297"><span class="lineNum">     297</span>              :           ),</span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">           2 :         Align(</span></span>
+<span id="L299"><span class="lineNum">     299</span>              :           alignment: Alignment.centerRight,</span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">           2 :           child: TextButton.icon(</span></span>
+<span id="L301"><span class="lineNum">     301</span>              :             key: const ValueKey('enablebanking_banks'),</span>
+<span id="L302"><span class="lineNum">     302</span>              :             icon: const Icon(Icons.account_balance),</span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           4 :             onPressed: isLoading ? null : loadBanks,</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">           6 :             label: Text(AppLocale.labels.enableBankingLoadBanks),</span></span>
+<span id="L305"><span class="lineNum">     305</span>              :           ),</span>
+<span id="L306"><span class="lineNum">     306</span>              :         ),</span>
+<span id="L307"><span class="lineNum">     307</span>              :       ],</span>
+<span id="L308"><span class="lineNum">     308</span>              :     );</span>
+<span id="L309"><span class="lineNum">     309</span>              :   }</span>
+<span id="L310"><span class="lineNum">     310</span>              : </span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           2 :   Widget buildAccount(BuildContext context, EnableBankingBankAccount item, AppData state) {</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">           2 :     final balance = item.balance;</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">           2 :     return IntegrationAccountCard(</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">           2 :       title: item.title,</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">           5 :       subtitle: balance != null ? '${AppLocale.labels.balance}: ${balance.amount} ${balance.currency}' : null,</span></span>
+<span id="L316"><span class="lineNum">     316</span>              :       target: item,</span>
+<span id="L317"><span class="lineNum">     317</span>              :       state: state,</span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">           2 :       isDisabled: isLoading,</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :       onChanged: () =&gt; setState(() {}),</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">           2 :       onImport: () =&gt; importTransactions(item),</span></span>
+<span id="L321"><span class="lineNum">     321</span>              :     );</span>
+<span id="L322"><span class="lineNum">     322</span>              :   }</span>
+<span id="L323"><span class="lineNum">     323</span>              : </span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L325"><span class="lineNum">     325</span>              :   Widget build(BuildContext context) {</span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">           2 :     final textTheme = context.textTheme;</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">           2 :     final colorScheme = context.colorScheme;</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">           4 :     return Consumer&lt;AppData&gt;(builder: (context, state, _) {</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">           2 :       return Column(</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">           2 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">           2 :         children: [</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           8 :           Text(AppLocale.labels.enableBankingDescription, style: textTheme.bodyMedium),</span></span>
+<span id="L333"><span class="lineNum">     333</span>              :           ThemeHelper.hIndent2x,</span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">           4 :           if (session == null) buildSettings(context),</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">           2 :           if (authorizationState != null)</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           2 :             InputWrapper.text(</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">           4 :               title: AppLocale.labels.enableBankingCode,</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">           4 :               tooltip: AppLocale.labels.enableBankingCodeTooltip,</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">           2 :               controller: code,</span></span>
+<span id="L340"><span class="lineNum">     340</span>              :               isRequired: true,</span>
+<span id="L341"><span class="lineNum">     341</span>              :               inputType: TextInputType.url,</span>
+<span id="L342"><span class="lineNum">     342</span>              :             ),</span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           2 :           ThemeHelper.hIndent2x,</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">           3 :           if (error != null) ...[</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">           5 :             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),</span></span>
+<span id="L346"><span class="lineNum">     346</span>              :             ThemeHelper.hIndent,</span>
+<span id="L347"><span class="lineNum">     347</span>              :           ],</span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">           3 :           if (notice != null) ...[</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">           3 :             Text(notice!, style: textTheme.bodyLarge),</span></span>
+<span id="L350"><span class="lineNum">     350</span>              :             ThemeHelper.hIndent,</span>
+<span id="L351"><span class="lineNum">     351</span>              :           ],</span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">           2 :           if (isLoading)</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">           2 :           else ...[</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">           4 :             if (accounts.isNotEmpty)</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">           2 :               FullSizedButtonWidget(</span></span>
+<span id="L357"><span class="lineNum">     357</span>              :                 key: const ValueKey('enablebanking_disconnect'),</span>
+<span id="L358"><span class="lineNum">     358</span>              :                 icon: Icons.logout,</span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">           2 :                 onPressed: disconnect,</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">           4 :                 title: AppLocale.labels.integrationDisconnect,</span></span>
+<span id="L361"><span class="lineNum">     361</span>              :               )</span>
+<span id="L362"><span class="lineNum">     362</span>              :             else</span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">           2 :               FullSizedButtonWidget(</span></span>
+<span id="L364"><span class="lineNum">     364</span>              :                 key: const ValueKey('enablebanking_connect'),</span>
+<span id="L365"><span class="lineNum">     365</span>              :                 icon: Icons.login,</span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">           6 :                 onPressed: authorizationState != null ? confirm : connect,</span></span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">           4 :                 title: AppLocale.labels.integrationConnect,</span></span>
+<span id="L368"><span class="lineNum">     368</span>              :               ),</span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">           2 :             if (session != null)</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">           2 :               Align(</span></span>
+<span id="L371"><span class="lineNum">     371</span>              :                 alignment: Alignment.centerRight,</span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">           2 :                 child: TextButton.icon(</span></span>
+<span id="L373"><span class="lineNum">     373</span>              :                   key: const ValueKey('enablebanking_forget'),</span>
+<span id="L374"><span class="lineNum">     374</span>              :                   icon: const Icon(Icons.link_off),</span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">           2 :                   onPressed: forget,</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">           6 :                   label: Text(AppLocale.labels.integrationForget),</span></span>
+<span id="L377"><span class="lineNum">     377</span>              :                 ),</span>
+<span id="L378"><span class="lineNum">     378</span>              :               ),</span>
+<span id="L379"><span class="lineNum">     379</span>              :           ],</span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">           4 :           for (final item in accounts) buildAccount(context, item, state),</span></span>
+<span id="L381"><span class="lineNum">     381</span>              :         ],</span>
+<span id="L382"><span class="lineNum">     382</span>              :       );</span>
+<span id="L383"><span class="lineNum">     383</span>              :     });</span>
+<span id="L384"><span class="lineNum">     384</span>              :   }</span>
+<span id="L385"><span class="lineNum">     385</span>              : }</span>
         </pre>
               </td>
             </tr>

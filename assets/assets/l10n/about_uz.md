@@ -77,6 +77,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
   - Financial Transaction Services (FinTS 4.1): nemis banklaridan qoldiqlar va tranzaksiyalarni import qilish (PIN/TAN)
   - SimpleFIN Bridge (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish
   - Enable Banking (EU): Yevropa banklaridan qoldiqlar va tranzaksiyalarni import qilish (PSD2)
+  - Wise API (Global): Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish (shaxsiy API tokeni)
 - Excel `XLSX` fayliga eksport qiling
 - Ma'lumotlarni shifrlash
 - Mahalliylashtirish

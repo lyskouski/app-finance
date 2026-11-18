@@ -2,6 +2,9 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
+### 8.1.0
+- Dadadzieny Wise API (Global): reštki i impart aperacyj šmatvalutnych rachunkaŭ Wise, kanviertacyi jak pieravody
+
 ### 8.0.0
 - Dadadziena staronka «Intehracyi» z raskryŭnymi razdziełami
 - Dadadzieny Financial Transaction Services (FinTS 4.1): rachunki, reštki i impart aperacyj z niamieckich bankaŭ

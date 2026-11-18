@@ -77,6 +77,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
   - Financial Transaction Services (FinTS 4.1): Alman bankalarından bakiye ve işlemlerin içe aktarılması (PIN/TAN)
   - SimpleFIN Bridge (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması
   - Enable Banking (EU): Avrupa bankalarından bakiye ve işlemlerin içe aktarılması (PSD2)
+  - Wise API (Global): Wise çoklu para birimi hesaplarının bakiye ve işlemlerinin içe aktarılması (kişisel API anahtarı)
 - Excel `XLSX` dosyasına aktarın
 - Veri şifreleme
 - Yerelleştirme

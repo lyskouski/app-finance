@@ -77,6 +77,7 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
   - Financial Transaction Services (FinTS 4.1): impor saldo dan transaksi dari bank Jerman (PIN/TAN)
   - SimpleFIN Bridge (US): impor saldo dan transaksi dari bank dan penerbit kartu AS
   - Enable Banking (EU): impor saldo dan transaksi dari bank Eropa (PSD2)
+  - Wise API (Global): impor saldo dan transaksi akun multi-mata uang Wise (Token API Pribadi)
 - Ekspor ke file Excel `XLSX`
 - Enkripsi data
 - Lokalisasi

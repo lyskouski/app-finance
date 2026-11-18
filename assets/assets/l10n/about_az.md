@@ -77,6 +77,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - Financial Transaction Services (FinTS 4.1): Alman banklarından qalıqların və əməliyyatların idxalı (PIN/TAN)
   - SimpleFIN Bridge (US): ABŞ bankları və kart emitentlərindən qalıqların və əməliyyatların idxalı
   - Enable Banking (EU): Avropa banklarından qalıqların və əməliyyatların idxalı (PSD2)
+  - Wise API (Global): Wise çoxvalyutalı hesablarının qalıqlarının və əməliyyatlarının idxalı (şəxsi API tokeni)
 - Excel `XLSX` faylına ixrac edin
 - Məlumatların şifrələnməsi
 - Lokallaşdırma

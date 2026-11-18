@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">90.4&nbsp;%</td>
-            <td class="headerCovTableEntry">114</td>
-            <td class="headerCovTableEntry">103</td>
+            <td class="headerCovTableEntryHi">90.6&nbsp;%</td>
+            <td class="headerCovTableEntry">117</td>
+            <td class="headerCovTableEntry">106</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-17 17:38:22</td>
+            <td class="headerValue">2026-11-18 19:01:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -201,89 +201,94 @@
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">           3 :           add: (value, uuid) =&gt; TransactionLog.save(state.add(value, uuid)),</span></span>
 <span id="L140"><span class="lineNum">     140</span>              :         );</span>
 <span id="L141"><span class="lineNum">     141</span>              :         final summary = source != null</span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           3 :             ? importer.run(source: source, account: item.appAccount!, category: item.category!)</span></span>
-<span id="L143"><span class="lineNum">     143</span>              :             : (added: 0, skipped: 0, pending: 0);</span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">           1 :         await state.restate();</span></span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           1 :         final today = DateTime.now();</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           6 :         settings.links[item.account.id] = item.appAccount!;</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           9 :         settings.imported[item.account.id] = DateTime(today.year, today.month, today.day);</span></span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           2 :         await settings.save();</span></span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           3 :         notice = AppLocale.labels.integrationImported(summary.added, summary.pending, summary.skipped);</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">           2 :         _report(result.errors);</span></span>
-<span id="L151"><span class="lineNum">     151</span>              :       });</span>
-<span id="L152"><span class="lineNum">     152</span>              : </span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">           1 :   Widget buildAccount(BuildContext context, SimpleFinBankAccount item, AppData state) {</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">           1 :     final account = item.account;</span></span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           1 :     return IntegrationAccountCard(</span></span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           1 :       title: item.title,</span></span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           5 :       subtitle: '${AppLocale.labels.balance}: ${account.balance} ${account.currency}',</span></span>
-<span id="L158"><span class="lineNum">     158</span>              :       target: item,</span>
-<span id="L159"><span class="lineNum">     159</span>              :       state: state,</span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           1 :       isDisabled: isLoading,</span></span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaUNC">           0 :       onChanged: () =&gt; setState(() {}),</span></span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">           2 :       onImport: () =&gt; importTransactions(item),</span></span>
-<span id="L163"><span class="lineNum">     163</span>              :     );</span>
-<span id="L164"><span class="lineNum">     164</span>              :   }</span>
-<span id="L165"><span class="lineNum">     165</span>              : </span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L167"><span class="lineNum">     167</span>              :   Widget build(BuildContext context) {</span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">           1 :     final textTheme = context.textTheme;</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           1 :     final colorScheme = context.colorScheme;</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           2 :     return Consumer&lt;AppData&gt;(builder: (context, state, _) {</span></span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">           1 :       return Column(</span></span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           1 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           1 :         children: [</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           4 :           Text(AppLocale.labels.simpleFinDescription, style: textTheme.bodyMedium),</span></span>
-<span id="L175"><span class="lineNum">     175</span>              :           ThemeHelper.hIndent2x,</span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           1 :           if (access == null)</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           1 :             InputWrapper.text(</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           2 :               title: AppLocale.labels.simpleFinToken,</span></span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           2 :               tooltip: AppLocale.labels.simpleFinTokenTooltip,</span></span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           1 :               controller: token,</span></span>
-<span id="L181"><span class="lineNum">     181</span>              :               isRequired: true,</span>
-<span id="L182"><span class="lineNum">     182</span>              :             ),</span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">           1 :           ThemeHelper.hIndent2x,</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           1 :           if (error != null) ...[</span></span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaUNC">           0 :             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),</span></span>
-<span id="L186"><span class="lineNum">     186</span>              :             ThemeHelper.hIndent,</span>
-<span id="L187"><span class="lineNum">     187</span>              :           ],</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           2 :           if (notice != null) ...[</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           3 :             Text(notice!, style: textTheme.bodyLarge),</span></span>
-<span id="L190"><span class="lineNum">     190</span>              :             ThemeHelper.hIndent,</span>
-<span id="L191"><span class="lineNum">     191</span>              :           ],</span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           1 :           if (isLoading)</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaUNC">           0 :             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           1 :           else ...[</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">           2 :             accounts.isEmpty</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           1 :                 ? FullSizedButtonWidget(</span></span>
-<span id="L197"><span class="lineNum">     197</span>              :                     key: const ValueKey('simplefin_connect'),</span>
-<span id="L198"><span class="lineNum">     198</span>              :                     icon: Icons.login,</span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">           1 :                     onPressed: connect,</span></span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">           2 :                     title: AppLocale.labels.integrationConnect,</span></span>
-<span id="L201"><span class="lineNum">     201</span>              :                   )</span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">           1 :                 : FullSizedButtonWidget(</span></span>
-<span id="L203"><span class="lineNum">     203</span>              :                     key: const ValueKey('simplefin_disconnect'),</span>
-<span id="L204"><span class="lineNum">     204</span>              :                     icon: Icons.logout,</span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           1 :                     onPressed: disconnect,</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           2 :                     title: AppLocale.labels.integrationDisconnect,</span></span>
-<span id="L207"><span class="lineNum">     207</span>              :                   ),</span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           1 :             if (access != null)</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">           1 :               Align(</span></span>
-<span id="L210"><span class="lineNum">     210</span>              :                 alignment: Alignment.centerRight,</span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           1 :                 child: TextButton.icon(</span></span>
-<span id="L212"><span class="lineNum">     212</span>              :                   key: const ValueKey('simplefin_forget'),</span>
-<span id="L213"><span class="lineNum">     213</span>              :                   icon: const Icon(Icons.link_off),</span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           1 :                   onPressed: forget,</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">           3 :                   label: Text(AppLocale.labels.integrationForget),</span></span>
-<span id="L216"><span class="lineNum">     216</span>              :                 ),</span>
-<span id="L217"><span class="lineNum">     217</span>              :               ),</span>
-<span id="L218"><span class="lineNum">     218</span>              :           ],</span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">           2 :           for (final item in accounts) buildAccount(context, item, state),</span></span>
-<span id="L220"><span class="lineNum">     220</span>              :         ],</span>
-<span id="L221"><span class="lineNum">     221</span>              :       );</span>
-<span id="L222"><span class="lineNum">     222</span>              :     });</span>
-<span id="L223"><span class="lineNum">     223</span>              :   }</span>
-<span id="L224"><span class="lineNum">     224</span>              : }</span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           1 :             ? importer.run(</span></span>
+<span id="L143"><span class="lineNum">     143</span>              :                 source: source,</span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">           1 :                 account: item.appAccount!,</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           1 :                 category: item.category!,</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           1 :                 prediction: state.prediction,</span></span>
+<span id="L147"><span class="lineNum">     147</span>              :               )</span>
+<span id="L148"><span class="lineNum">     148</span>              :             : (added: 0, skipped: 0, pending: 0);</span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           1 :         await state.restate();</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">           1 :         final today = DateTime.now();</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           6 :         settings.links[item.account.id] = item.appAccount!;</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           9 :         settings.imported[item.account.id] = DateTime(today.year, today.month, today.day);</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">           2 :         await settings.save();</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">           3 :         notice = AppLocale.labels.integrationImported(summary.added, summary.pending, summary.skipped);</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           2 :         _report(result.errors);</span></span>
+<span id="L156"><span class="lineNum">     156</span>              :       });</span>
+<span id="L157"><span class="lineNum">     157</span>              : </span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           1 :   Widget buildAccount(BuildContext context, SimpleFinBankAccount item, AppData state) {</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">           1 :     final account = item.account;</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           1 :     return IntegrationAccountCard(</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           1 :       title: item.title,</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">           5 :       subtitle: '${AppLocale.labels.balance}: ${account.balance} ${account.currency}',</span></span>
+<span id="L163"><span class="lineNum">     163</span>              :       target: item,</span>
+<span id="L164"><span class="lineNum">     164</span>              :       state: state,</span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">           1 :       isDisabled: isLoading,</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaUNC">           0 :       onChanged: () =&gt; setState(() {}),</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           2 :       onImport: () =&gt; importTransactions(item),</span></span>
+<span id="L168"><span class="lineNum">     168</span>              :     );</span>
+<span id="L169"><span class="lineNum">     169</span>              :   }</span>
+<span id="L170"><span class="lineNum">     170</span>              : </span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L172"><span class="lineNum">     172</span>              :   Widget build(BuildContext context) {</span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           1 :     final textTheme = context.textTheme;</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           1 :     final colorScheme = context.colorScheme;</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">           2 :     return Consumer&lt;AppData&gt;(builder: (context, state, _) {</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           1 :       return Column(</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           1 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           1 :         children: [</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           4 :           Text(AppLocale.labels.simpleFinDescription, style: textTheme.bodyMedium),</span></span>
+<span id="L180"><span class="lineNum">     180</span>              :           ThemeHelper.hIndent2x,</span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           1 :           if (access == null)</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           1 :             InputWrapper.text(</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">           2 :               title: AppLocale.labels.simpleFinToken,</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           2 :               tooltip: AppLocale.labels.simpleFinTokenTooltip,</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">           1 :               controller: token,</span></span>
+<span id="L186"><span class="lineNum">     186</span>              :               isRequired: true,</span>
+<span id="L187"><span class="lineNum">     187</span>              :             ),</span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           1 :           ThemeHelper.hIndent2x,</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           1 :           if (error != null) ...[</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),</span></span>
+<span id="L191"><span class="lineNum">     191</span>              :             ThemeHelper.hIndent,</span>
+<span id="L192"><span class="lineNum">     192</span>              :           ],</span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">           2 :           if (notice != null) ...[</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           3 :             Text(notice!, style: textTheme.bodyLarge),</span></span>
+<span id="L195"><span class="lineNum">     195</span>              :             ThemeHelper.hIndent,</span>
+<span id="L196"><span class="lineNum">     196</span>              :           ],</span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           1 :           if (isLoading)</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaUNC">           0 :             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">           1 :           else ...[</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">           2 :             accounts.isEmpty</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">           1 :                 ? FullSizedButtonWidget(</span></span>
+<span id="L202"><span class="lineNum">     202</span>              :                     key: const ValueKey('simplefin_connect'),</span>
+<span id="L203"><span class="lineNum">     203</span>              :                     icon: Icons.login,</span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">           1 :                     onPressed: connect,</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           2 :                     title: AppLocale.labels.integrationConnect,</span></span>
+<span id="L206"><span class="lineNum">     206</span>              :                   )</span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :                 : FullSizedButtonWidget(</span></span>
+<span id="L208"><span class="lineNum">     208</span>              :                     key: const ValueKey('simplefin_disconnect'),</span>
+<span id="L209"><span class="lineNum">     209</span>              :                     icon: Icons.logout,</span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           1 :                     onPressed: disconnect,</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           2 :                     title: AppLocale.labels.integrationDisconnect,</span></span>
+<span id="L212"><span class="lineNum">     212</span>              :                   ),</span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">           1 :             if (access != null)</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           1 :               Align(</span></span>
+<span id="L215"><span class="lineNum">     215</span>              :                 alignment: Alignment.centerRight,</span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">           1 :                 child: TextButton.icon(</span></span>
+<span id="L217"><span class="lineNum">     217</span>              :                   key: const ValueKey('simplefin_forget'),</span>
+<span id="L218"><span class="lineNum">     218</span>              :                   icon: const Icon(Icons.link_off),</span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">           1 :                   onPressed: forget,</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           3 :                   label: Text(AppLocale.labels.integrationForget),</span></span>
+<span id="L221"><span class="lineNum">     221</span>              :                 ),</span>
+<span id="L222"><span class="lineNum">     222</span>              :               ),</span>
+<span id="L223"><span class="lineNum">     223</span>              :           ],</span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">           2 :           for (final item in accounts) buildAccount(context, item, state),</span></span>
+<span id="L225"><span class="lineNum">     225</span>              :         ],</span>
+<span id="L226"><span class="lineNum">     226</span>              :       );</span>
+<span id="L227"><span class="lineNum">     227</span>              :     });</span>
+<span id="L228"><span class="lineNum">     228</span>              :   }</span>
+<span id="L229"><span class="lineNum">     229</span>              : }</span>
         </pre>
               </td>
             </tr>

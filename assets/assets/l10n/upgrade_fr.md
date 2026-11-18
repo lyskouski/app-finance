@@ -2,6 +2,9 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 8.1.0
+- Ajout de Wise API (Global) : soldes et importation des opérations des comptes multidevises Wise, conversions en virements
+
 ### 8.0.0
 - Nouvelle page Intégrations avec des sections dépliables
 - Ajout de Financial Transaction Services (FinTS 4.1) : comptes, soldes et importation des opérations des banques allemandes

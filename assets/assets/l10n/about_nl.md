@@ -77,6 +77,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
   - Financial Transaction Services (FinTS 4.1): import van saldi en transacties van Duitse banken (PIN/TAN)
   - SimpleFIN Bridge (US): import van saldi en transacties van Amerikaanse banken en kaartuitgevers
   - Enable Banking (EU): import van saldi en transacties van Europese banken (PSD2)
+  - Wise API (Global): import van saldi en transacties van Wise-rekeningen in meerdere valuta (persoonlijk API-token)
 - Exporteren naar Excel `XLSX`-bestand
 - Gegevensencryptie
 - Lokalisatie

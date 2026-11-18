@@ -2,6 +2,9 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 8.1.0
+- Adăugat Wise API (Global): solduri și import de tranzacții ale conturilor multivalută Wise, conversii ca transferuri
+
 ### 8.0.0
 - Pagină nouă Integrări cu secțiuni extensibile
 - Adăugat Financial Transaction Services (FinTS 4.1): conturi, solduri și import de tranzacții de la băncile germane

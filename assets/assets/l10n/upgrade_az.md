@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 8.1.0
+- Wise API (Global) əlavə edildi: Wise çoxvalyutalı hesablarının qalıqları və əməliyyatlarının idxalı, konvertasiyalar köçürmə kimi
+
 ### 8.0.0
 - Açılan bölmələri olan yeni İnteqrasiyalar səhifəsi
 - Financial Transaction Services (FinTS 4.1) əlavə edildi: Alman banklarından hesablar, qalıqlar və əməliyyatların idxalı

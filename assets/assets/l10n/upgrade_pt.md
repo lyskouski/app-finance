@@ -2,6 +2,9 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões"._
 
+### 8.1.0
+- Adicionado o Wise API (Global): saldos e importação de movimentos de contas multimoeda Wise, conversões como transferências
+
 ### 8.0.0
 - Nova página de Integrações com secções expansíveis
 - Adicionado o Financial Transaction Services (FinTS 4.1): contas, saldos e importação de movimentos de bancos alemães

@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">84.5&nbsp;%</td>
-            <td class="headerCovTableEntry">181</td>
-            <td class="headerCovTableEntry">153</td>
+            <td class="headerCovTableEntryMed">84.6&nbsp;%</td>
+            <td class="headerCovTableEntry">182</td>
+            <td class="headerCovTableEntry">154</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-17 17:38:22</td>
+            <td class="headerValue">2026-11-18 19:01:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -295,124 +295,125 @@
 <span id="L233"><span class="lineNum">     233</span>              :           transactions: transactions,</span>
 <span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">           1 :           account: item.appAccount!,</span></span>
 <span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           1 :           category: item.category!,</span></span>
-<span id="L236"><span class="lineNum">     236</span>              :         );</span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           1 :         await state.restate();</span></span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">           1 :         final today = DateTime.now();</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">           5 :         settings.links[item.key] = item.appAccount!;</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           8 :         settings.imported[item.key] = DateTime(today.year, today.month, today.day);</span></span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">           2 :         await settings.save();</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           3 :         notice = AppLocale.labels.integrationImported(result.added, result.pending, result.skipped);</span></span>
-<span id="L243"><span class="lineNum">     243</span>              :       });</span>
-<span id="L244"><span class="lineNum">     244</span>              : </span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">           1 :   Widget buildSettings(BuildContext context) {</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           1 :     final isConnected = client != null;</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           1 :     return Column(</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           1 :       crossAxisAlignment: AppDesign.getAlignment(),</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           1 :       children: [</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsUrl,</span></span>
-<span id="L252"><span class="lineNum">     252</span>              :           tooltip: 'https://…',</span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           1 :           controller: url,</span></span>
-<span id="L254"><span class="lineNum">     254</span>              :           isRequired: true,</span>
-<span id="L255"><span class="lineNum">     255</span>              :           isDisabled: isConnected,</span>
-<span id="L256"><span class="lineNum">     256</span>              :           inputType: TextInputType.url,</span>
-<span id="L257"><span class="lineNum">     257</span>              :         ),</span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsBankCode,</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           1 :           controller: bankCode,</span></span>
-<span id="L261"><span class="lineNum">     261</span>              :           isRequired: true,</span>
-<span id="L262"><span class="lineNum">     262</span>              :           isDisabled: isConnected,</span>
-<span id="L263"><span class="lineNum">     263</span>              :           inputType: TextInputType.number,</span>
-<span id="L264"><span class="lineNum">     264</span>              :         ),</span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsUserId,</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           1 :           controller: userId,</span></span>
-<span id="L268"><span class="lineNum">     268</span>              :           isRequired: true,</span>
-<span id="L269"><span class="lineNum">     269</span>              :           isDisabled: isConnected,</span>
-<span id="L270"><span class="lineNum">     270</span>              :         ),</span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsCustomerId,</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           1 :           controller: customerId,</span></span>
-<span id="L274"><span class="lineNum">     274</span>              :           isDisabled: isConnected,</span>
-<span id="L275"><span class="lineNum">     275</span>              :         ),</span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsProductId,</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">           2 :           tooltip: AppLocale.labels.finTsProductIdTooltip,</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           1 :           controller: productId,</span></span>
-<span id="L280"><span class="lineNum">     280</span>              :           isRequired: true,</span>
-<span id="L281"><span class="lineNum">     281</span>              :           isDisabled: isConnected,</span>
-<span id="L282"><span class="lineNum">     282</span>              :         ),</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">           1 :         InputWrapper.select(</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsVersion,</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           2 :           value: settings.version,</span></span>
-<span id="L286"><span class="lineNum">     286</span>              :           isDisabled: isConnected,</span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">           1 :           options: &lt;ListSelectorItem&gt;[</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">           3 :             for (final version in FinTsSettings.namespaces.keys) ListSelectorItem(id: version, name: 'FinTS $version'),</span></span>
-<span id="L289"><span class="lineNum">     289</span>              :           ],</span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaUNC">           0 :           onChange: (value) =&gt; setState(() =&gt; settings.version = value ?? settings.version),</span></span>
-<span id="L291"><span class="lineNum">     291</span>              :         ),</span>
-<span id="L292"><span class="lineNum">     292</span>              :       ],</span>
-<span id="L293"><span class="lineNum">     293</span>              :     );</span>
-<span id="L294"><span class="lineNum">     294</span>              :   }</span>
-<span id="L295"><span class="lineNum">     295</span>              : </span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">           1 :   Widget buildAccount(BuildContext context, FinTsBankAccount item, AppData state) {</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">           2 :     final balance = item.balance?.booked;</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">           1 :     return IntegrationAccountCard(</span></span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">           1 :       title: item.title,</span></span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">           5 :       subtitle: balance != null ? '${AppLocale.labels.balance}: ${balance.value} ${balance.currency}' : null,</span></span>
-<span id="L301"><span class="lineNum">     301</span>              :       target: item,</span>
-<span id="L302"><span class="lineNum">     302</span>              :       state: state,</span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           1 :       isDisabled: isLoading,</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC">           0 :       onChanged: () =&gt; setState(() {}),</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">           2 :       onImport: () =&gt; importTransactions(item),</span></span>
-<span id="L306"><span class="lineNum">     306</span>              :     );</span>
-<span id="L307"><span class="lineNum">     307</span>              :   }</span>
-<span id="L308"><span class="lineNum">     308</span>              : </span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L310"><span class="lineNum">     310</span>              :   Widget build(BuildContext context) {</span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           1 :     final textTheme = context.textTheme;</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">           1 :     final colorScheme = context.colorScheme;</span></span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">           2 :     if (widget.isWeb) {</span></span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaUNC">           0 :       return Text(AppLocale.labels.finTsWebUnsupported, style: textTheme.bodyLarge);</span></span>
-<span id="L315"><span class="lineNum">     315</span>              :     }</span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">           2 :     return Consumer&lt;AppData&gt;(builder: (context, state, _) {</span></span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">           1 :       return Column(</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">           1 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">           1 :         children: [</span></span>
-<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">           4 :           Text(AppLocale.labels.finTsDescription, style: textTheme.bodyMedium),</span></span>
-<span id="L321"><span class="lineNum">     321</span>              :           ThemeHelper.hIndent2x,</span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">           1 :           buildSettings(context),</span></span>
-<span id="L323"><span class="lineNum">     323</span>              :           ThemeHelper.hIndent2x,</span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">           1 :           if (error != null) ...[</span></span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),</span></span>
-<span id="L326"><span class="lineNum">     326</span>              :             ThemeHelper.hIndent,</span>
-<span id="L327"><span class="lineNum">     327</span>              :           ],</span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">           2 :           if (notice != null) ...[</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">           3 :             Text(notice!, style: textTheme.bodyLarge),</span></span>
-<span id="L330"><span class="lineNum">     330</span>              :             ThemeHelper.hIndent,</span>
-<span id="L331"><span class="lineNum">     331</span>              :           ],</span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           1 :           if (isLoading)</span></span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">           1 :             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))</span></span>
-<span id="L334"><span class="lineNum">     334</span>              :           else</span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">           1 :             client == null</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           2 :                 ? FullSizedButtonWidget(</span></span>
-<span id="L337"><span class="lineNum">     337</span>              :                     key: const ValueKey('fints_connect'),</span>
-<span id="L338"><span class="lineNum">     338</span>              :                     icon: Icons.login,</span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">           1 :                     onPressed: connect,</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">           2 :                     title: AppLocale.labels.integrationConnect,</span></span>
-<span id="L341"><span class="lineNum">     341</span>              :                   )</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">           1 :                 : FullSizedButtonWidget(</span></span>
-<span id="L343"><span class="lineNum">     343</span>              :                     key: const ValueKey('fints_disconnect'),</span>
-<span id="L344"><span class="lineNum">     344</span>              :                     icon: Icons.logout,</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">           1 :                     onPressed: disconnect,</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">           2 :                     title: AppLocale.labels.integrationDisconnect,</span></span>
-<span id="L347"><span class="lineNum">     347</span>              :                   ),</span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">           2 :           for (final item in accounts) buildAccount(context, item, state),</span></span>
-<span id="L349"><span class="lineNum">     349</span>              :         ],</span>
-<span id="L350"><span class="lineNum">     350</span>              :       );</span>
-<span id="L351"><span class="lineNum">     351</span>              :     });</span>
-<span id="L352"><span class="lineNum">     352</span>              :   }</span>
-<span id="L353"><span class="lineNum">     353</span>              : }</span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">           1 :           prediction: state.prediction,</span></span>
+<span id="L237"><span class="lineNum">     237</span>              :         );</span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">           1 :         await state.restate();</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">           1 :         final today = DateTime.now();</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           5 :         settings.links[item.key] = item.appAccount!;</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">           8 :         settings.imported[item.key] = DateTime(today.year, today.month, today.day);</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           2 :         await settings.save();</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">           3 :         notice = AppLocale.labels.integrationImported(result.added, result.pending, result.skipped);</span></span>
+<span id="L244"><span class="lineNum">     244</span>              :       });</span>
+<span id="L245"><span class="lineNum">     245</span>              : </span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           1 :   Widget buildSettings(BuildContext context) {</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           1 :     final isConnected = client != null;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           1 :     return Column(</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           1 :       crossAxisAlignment: AppDesign.getAlignment(),</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           1 :       children: [</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsUrl,</span></span>
+<span id="L253"><span class="lineNum">     253</span>              :           tooltip: 'https://…',</span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           1 :           controller: url,</span></span>
+<span id="L255"><span class="lineNum">     255</span>              :           isRequired: true,</span>
+<span id="L256"><span class="lineNum">     256</span>              :           isDisabled: isConnected,</span>
+<span id="L257"><span class="lineNum">     257</span>              :           inputType: TextInputType.url,</span>
+<span id="L258"><span class="lineNum">     258</span>              :         ),</span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsBankCode,</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">           1 :           controller: bankCode,</span></span>
+<span id="L262"><span class="lineNum">     262</span>              :           isRequired: true,</span>
+<span id="L263"><span class="lineNum">     263</span>              :           isDisabled: isConnected,</span>
+<span id="L264"><span class="lineNum">     264</span>              :           inputType: TextInputType.number,</span>
+<span id="L265"><span class="lineNum">     265</span>              :         ),</span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsUserId,</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">           1 :           controller: userId,</span></span>
+<span id="L269"><span class="lineNum">     269</span>              :           isRequired: true,</span>
+<span id="L270"><span class="lineNum">     270</span>              :           isDisabled: isConnected,</span>
+<span id="L271"><span class="lineNum">     271</span>              :         ),</span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsCustomerId,</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           1 :           controller: customerId,</span></span>
+<span id="L275"><span class="lineNum">     275</span>              :           isDisabled: isConnected,</span>
+<span id="L276"><span class="lineNum">     276</span>              :         ),</span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           1 :         InputWrapper.text(</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsProductId,</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           2 :           tooltip: AppLocale.labels.finTsProductIdTooltip,</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">           1 :           controller: productId,</span></span>
+<span id="L281"><span class="lineNum">     281</span>              :           isRequired: true,</span>
+<span id="L282"><span class="lineNum">     282</span>              :           isDisabled: isConnected,</span>
+<span id="L283"><span class="lineNum">     283</span>              :         ),</span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           1 :         InputWrapper.select(</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           2 :           title: AppLocale.labels.finTsVersion,</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           2 :           value: settings.version,</span></span>
+<span id="L287"><span class="lineNum">     287</span>              :           isDisabled: isConnected,</span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">           1 :           options: &lt;ListSelectorItem&gt;[</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">           3 :             for (final version in FinTsSettings.namespaces.keys) ListSelectorItem(id: version, name: 'FinTS $version'),</span></span>
+<span id="L290"><span class="lineNum">     290</span>              :           ],</span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaUNC">           0 :           onChange: (value) =&gt; setState(() =&gt; settings.version = value ?? settings.version),</span></span>
+<span id="L292"><span class="lineNum">     292</span>              :         ),</span>
+<span id="L293"><span class="lineNum">     293</span>              :       ],</span>
+<span id="L294"><span class="lineNum">     294</span>              :     );</span>
+<span id="L295"><span class="lineNum">     295</span>              :   }</span>
+<span id="L296"><span class="lineNum">     296</span>              : </span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">           1 :   Widget buildAccount(BuildContext context, FinTsBankAccount item, AppData state) {</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">           2 :     final balance = item.balance?.booked;</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">           1 :     return IntegrationAccountCard(</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">           1 :       title: item.title,</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">           5 :       subtitle: balance != null ? '${AppLocale.labels.balance}: ${balance.value} ${balance.currency}' : null,</span></span>
+<span id="L302"><span class="lineNum">     302</span>              :       target: item,</span>
+<span id="L303"><span class="lineNum">     303</span>              :       state: state,</span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">           1 :       isDisabled: isLoading,</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC">           0 :       onChanged: () =&gt; setState(() {}),</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">           2 :       onImport: () =&gt; importTransactions(item),</span></span>
+<span id="L307"><span class="lineNum">     307</span>              :     );</span>
+<span id="L308"><span class="lineNum">     308</span>              :   }</span>
+<span id="L309"><span class="lineNum">     309</span>              : </span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L311"><span class="lineNum">     311</span>              :   Widget build(BuildContext context) {</span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">           1 :     final textTheme = context.textTheme;</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">           1 :     final colorScheme = context.colorScheme;</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">           2 :     if (widget.isWeb) {</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaUNC">           0 :       return Text(AppLocale.labels.finTsWebUnsupported, style: textTheme.bodyLarge);</span></span>
+<span id="L316"><span class="lineNum">     316</span>              :     }</span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">           2 :     return Consumer&lt;AppData&gt;(builder: (context, state, _) {</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">           1 :       return Column(</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">           1 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">           1 :         children: [</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">           4 :           Text(AppLocale.labels.finTsDescription, style: textTheme.bodyMedium),</span></span>
+<span id="L322"><span class="lineNum">     322</span>              :           ThemeHelper.hIndent2x,</span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">           1 :           buildSettings(context),</span></span>
+<span id="L324"><span class="lineNum">     324</span>              :           ThemeHelper.hIndent2x,</span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           1 :           if (error != null) ...[</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC">           0 :             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),</span></span>
+<span id="L327"><span class="lineNum">     327</span>              :             ThemeHelper.hIndent,</span>
+<span id="L328"><span class="lineNum">     328</span>              :           ],</span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">           2 :           if (notice != null) ...[</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">           3 :             Text(notice!, style: textTheme.bodyLarge),</span></span>
+<span id="L331"><span class="lineNum">     331</span>              :             ThemeHelper.hIndent,</span>
+<span id="L332"><span class="lineNum">     332</span>              :           ],</span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">           1 :           if (isLoading)</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">           1 :             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))</span></span>
+<span id="L335"><span class="lineNum">     335</span>              :           else</span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           1 :             client == null</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">           2 :                 ? FullSizedButtonWidget(</span></span>
+<span id="L338"><span class="lineNum">     338</span>              :                     key: const ValueKey('fints_connect'),</span>
+<span id="L339"><span class="lineNum">     339</span>              :                     icon: Icons.login,</span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">           1 :                     onPressed: connect,</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">           2 :                     title: AppLocale.labels.integrationConnect,</span></span>
+<span id="L342"><span class="lineNum">     342</span>              :                   )</span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           1 :                 : FullSizedButtonWidget(</span></span>
+<span id="L344"><span class="lineNum">     344</span>              :                     key: const ValueKey('fints_disconnect'),</span>
+<span id="L345"><span class="lineNum">     345</span>              :                     icon: Icons.logout,</span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">           1 :                     onPressed: disconnect,</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">           2 :                     title: AppLocale.labels.integrationDisconnect,</span></span>
+<span id="L348"><span class="lineNum">     348</span>              :                   ),</span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">           2 :           for (final item in accounts) buildAccount(context, item, state),</span></span>
+<span id="L350"><span class="lineNum">     350</span>              :         ],</span>
+<span id="L351"><span class="lineNum">     351</span>              :       );</span>
+<span id="L352"><span class="lineNum">     352</span>              :     });</span>
+<span id="L353"><span class="lineNum">     353</span>              :   }</span>
+<span id="L354"><span class="lineNum">     354</span>              : }</span>
         </pre>
               </td>
             </tr>

@@ -42,6 +42,10 @@ digraph G {
   }
   {
     rank = same; "_classes";
+    integration_wise [label="<0>INTEGRATION_WISE|<wise_importer>wise_importer|<wise_client>wise_client|<wise_settings>wise_settings",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
     storage [label="<0>STORAGE|<app_preferences>app_preferences|<transaction_log>transaction_log|<statement_parser>statement_parser|<app_data>app_data|<history_data>history_data|<file_picker>file_picker|<file_parser>file_parser",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
@@ -174,7 +178,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    integration_widgets [label="<0>INTEGRATION_WIDGETS|<fints_dialogs>fints_dialogs|<simplefin_widget>simplefin_widget|<enablebanking_widget>enablebanking_widget|<fints_widget>fints_widget|<integration_account_card>integration_account_card",fillcolor="silver:white", gradientangle=240, style="filled"];
+    integration_widgets [label="<0>INTEGRATION_WIDGETS|<fints_dialogs>fints_dialogs|<simplefin_widget>simplefin_widget|<enablebanking_widget>enablebanking_widget|<fints_widget>fints_widget|<integration_account_card>integration_account_card|<wise_widget>wise_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -322,8 +326,10 @@ digraph G {
 
   structure_currency -> structure [color="green"];
   structure_currency -> storage [color="green"];
+  integration -> math [color="green"];
   integration -> structure [color="green"];
   integration_simplefin -> herald [color="green"];
+  integration_simplefin -> math [color="green"];
   integration_simplefin -> integration [color="green"];
   integration_simplefin -> integration_simplefin [color="green"];
   integration_simplefin -> structure [color="green"];
@@ -332,15 +338,24 @@ digraph G {
   integration_enablebanking -> herald [color="green"];
   integration_enablebanking -> integration_enablebanking [color="green"];
   integration_enablebanking -> integration [color="green"];
+  integration_enablebanking -> math [color="green"];
   integration_enablebanking -> structure [color="green"];
   integration_enablebanking -> controller_deep_link [color="green"];
   integration_enablebanking -> controller [color="green"];
   integration_enablebanking -> integration_enablebanking [color="green"];
   integration_enablebanking -> storage [color="green"];
+  integration_fints -> math [color="green"];
   integration_fints -> integration [color="green"];
   integration_fints -> structure [color="green"];
   integration_fints -> controller [color="green"];
   integration_fints -> storage [color="green"];
+  integration_wise -> integration [color="green"];
+  integration_wise -> integration_wise [color="green"];
+  integration_wise -> math [color="green"];
+  integration_wise -> structure [color="green"];
+  integration_wise -> herald [color="green"];
+  integration_wise -> controller [color="green"];
+  integration_wise -> storage [color="green"];
 
   storage -> controller [color="green"];
   storage -> storage [color="green"];
@@ -382,6 +397,7 @@ digraph G {
   storage -> storage [color="green"];
   storage -> file [color="green"];
   storage -> herald [color="green"];
+  storage -> math [color="green"];
   storage -> storage [color="green"];
   storage -> structure [color="green"];
   storage -> form [color="green"];
@@ -1025,7 +1041,18 @@ digraph G {
   integration_widgets -> storage [color="#F0F0F050"];
   integration_widgets -> _configs_ [color="#F0F0F050"];
   integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
   integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_wise [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> form [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
   integration -> controller_deep_link [color="#F0F0F050"];
   integration -> herald [color="#F0F0F050"];
   integration -> _configs_ [color="#F0F0F050"];
