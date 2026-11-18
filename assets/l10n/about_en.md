@@ -116,3 +116,4 @@ That empowers users to effortlessly manage their finances while ensuring that no
 -->
 
 
+  - Notifications Parser (Android): transactions from notifications of banking and payment apps

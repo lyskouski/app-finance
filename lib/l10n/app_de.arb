@@ -411,6 +411,30 @@
         }
     },
     "noChartData": "Daten fehlen (oder sind nicht ausreichend) um angezeigt zu werden",
+    "notificationAccessSettings": "Benachrichtigungszugriff",
+    "notificationAccessSteps": "So wird der Zugriff gewährt:\n1. \"Zugriff gewähren\" drücken, um die Systemeinstellungen zu öffnen\n2. Fingrom das Lesen von Benachrichtigungen erlauben\n3. Meldet Android eine eingeschränkte Einstellung: App-Info von Fingrom → ⋮ → \"Eingeschränkte Einstellungen zulassen\" öffnen und erneut versuchen\n4. Zu Fingrom zurückkehren und die Apps auswählen, deren Benachrichtigungen gelesen werden",
+    "notificationApps": "Apps, deren Benachrichtigungen gelesen werden",
+    "notificationAuto": "Automatisch importieren",
+    "notificationAutoTooltip": "Erkannte Benachrichtigungen werden ohne Bestätigung hinzugefügt: sofort, während Fingrom läuft, sonst beim nächsten Start. Nicht erkannte warten auf eine Prüfung",
+    "notificationAutoImported": "Aus Benachrichtigungen hinzugefügt: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationCaptured": "Erfasste Benachrichtigungen: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Erfasste löschen",
+    "notificationDescription": "Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps auf diesem Gerät erstellen. Es werden nur Benachrichtigungen der ausgewählten Apps gelesen, und sie verbleiben bis zum Import auf dem Gerät. Betrag und Währung werden automatisch oder über ein eigenes Muster erkannt.",
+    "notificationGrant": "Zugriff gewähren",
+    "notificationNoApps": "Bisher wurden keine Benachrichtigungen empfangen: Apps erscheinen hier, nachdem sie eine Benachrichtigung gesendet haben",
+    "notificationPattern": "Eigenes Muster (optional)",
+    "notificationPatternTooltip": "Regulärer Ausdruck mit den benannten Gruppen amount (erforderlich), currency und title, z. B. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
+    "notificationUnparsed": "Nicht erkannt",
     "notifyHeadline": "Benachrichtigungen Parser",
     "ok": "OK",
     "orderPin": "Priorisierte Reihenfolge",

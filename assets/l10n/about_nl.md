@@ -116,3 +116,4 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 -->
 
 
+  - Meldingen Parser (Android): transacties uit meldingen van bank- en betaalapps

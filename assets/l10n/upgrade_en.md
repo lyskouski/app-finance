@@ -4,6 +4,7 @@ _The full list of updates can be viewed via the "About" navigation item on the "
 
 ### 8.1.0
 - Adding Wise API (Global): balances and import of transactions of Wise multi-currency accounts, conversions as transfers
+- Adding Notifications Parser (Android): transactions from notifications of banking and payment apps, recognized automatically or by a custom pattern
 
 ### 8.0.0
 - Introducing the Integrations page with expandable sections

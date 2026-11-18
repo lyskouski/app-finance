@@ -4,6 +4,7 @@ _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjne
 
 ### 8.1.0
 - Dodano Wise API (Global): salda i import transakcji wielowalutowych kont Wise, przewalutowania jako przelewy
+- Dodano Parser powiadomień (Android): transakcje z powiadomień aplikacji bankowych i płatniczych, rozpoznawane automatycznie lub według własnego wzorca
 
 ### 8.0.0
 - Nowa strona Integracje z rozwijanymi sekcjami

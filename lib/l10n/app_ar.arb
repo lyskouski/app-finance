@@ -411,6 +411,30 @@
         }
     },
     "noChartData": "البيانات مفقودة (أو غير كافية) ليتم عرضها",
+    "notificationAccessSettings": "الوصول إلى الإشعارات",
+    "notificationAccessSteps": "كيفية منح الوصول:\n1. اضغط على \"منح الوصول\" لفتح إعدادات النظام\n2. اسمح لـ Fingrom بقراءة الإشعارات\n3. إذا أبلغ Android عن إعداد مقيد: افتح معلومات تطبيق Fingrom ← ⋮ ← \"السماح بالإعدادات المقيدة\" ثم أعد المحاولة\n4. عد إلى Fingrom واختر التطبيقات التي ستُقرأ إشعاراتها",
+    "notificationApps": "التطبيقات التي تُقرأ إشعاراتها",
+    "notificationAuto": "استيراد تلقائي",
+    "notificationAutoTooltip": "تُضاف الإشعارات المعروفة دون تأكيد: فورًا أثناء تشغيل Fingrom، وإلا عند التشغيل التالي. تنتظر الإشعارات غير المعروفة المراجعة",
+    "notificationAutoImported": "تمت الإضافة من الإشعارات: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationCaptured": "الإشعارات الملتقطة: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "مسح الملتقطة",
+    "notificationDescription": "أنشئ معاملات من إشعارات تطبيقات البنوك والدفع على هذا الجهاز. تتم قراءة إشعارات التطبيقات المحددة فقط، وتبقى على الجهاز حتى استيرادها. يتم التعرف على المبلغ والعملة تلقائيًا أو باستخدام نمط مخصص.",
+    "notificationGrant": "منح الوصول",
+    "notificationNoApps": "لم يتم استلام أي إشعارات بعد: تظهر التطبيقات هنا بعد أن ترسل إشعارًا",
+    "notificationPattern": "نمط مخصص (اختياري)",
+    "notificationPatternTooltip": "تعبير نمطي مع المجموعات المسماة amount (مطلوبة) وcurrency وtitle، مثلًا (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
+    "notificationUnparsed": "لم يتم التعرف عليه",
     "notifyHeadline": "محلل الإخطارات",
     "ok": "موافق",
     "orderPin": "الترتيب حسب الأولوية",

@@ -116,3 +116,4 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 -->
 
 
+  - Bildirim Ayrıştırıcı (Android): bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler

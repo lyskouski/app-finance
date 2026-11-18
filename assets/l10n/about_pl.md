@@ -116,3 +116,4 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 -->
 
 
+  - Parser powiadomień (Android): transakcje z powiadomień aplikacji bankowych i płatniczych

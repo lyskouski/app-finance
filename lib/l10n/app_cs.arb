@@ -411,6 +411,30 @@
         }
     },
     "noChartData": "Chybí údaje (nebo jich není dostatek), aby se zobrazily",
+    "notificationAccessSettings": "Přístup k oznámením",
+    "notificationAccessSteps": "Jak udělit přístup:\n1. Stiskněte \"Udělit přístup\" pro otevření nastavení systému\n2. Povolte aplikaci Fingrom číst oznámení\n3. Pokud Android hlásí omezené nastavení: otevřete informace o aplikaci Fingrom → ⋮ → \"Povolit omezená nastavení\" a zkuste to znovu\n4. Vraťte se do Fingrom a vyberte aplikace, jejichž oznámení se mají číst",
+    "notificationApps": "Aplikace, jejichž oznámení se čtou",
+    "notificationAuto": "Importovat automaticky",
+    "notificationAutoTooltip": "Rozpoznaná oznámení se přidávají bez potvrzení: ihned, když Fingrom běží, jinak při příštím spuštění. Nerozpoznaná čekají na kontrolu",
+    "notificationAutoImported": "Přidáno z oznámení: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationCaptured": "Zachycená oznámení: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Vymazat zachycená",
+    "notificationDescription": "Vytvářejte transakce z oznámení bankovních a platebních aplikací v tomto zařízení. Čtou se pouze oznámení vybraných aplikací a zůstávají v zařízení až do importu. Částka a měna se rozpoznají automaticky nebo podle vlastního vzoru.",
+    "notificationGrant": "Udělit přístup",
+    "notificationNoApps": "Zatím nebyla přijata žádná oznámení: aplikace se zde zobrazí poté, co odešlou oznámení",
+    "notificationPattern": "Vlastní vzor (volitelné)",
+    "notificationPatternTooltip": "Regulární výraz s pojmenovanými skupinami amount (povinná), currency a title, např. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
+    "notificationUnparsed": "Nerozpoznáno",
     "notifyHeadline": "Parser oznámení",
     "ok": "OK",
     "orderPin": "Prioritní pořadí",

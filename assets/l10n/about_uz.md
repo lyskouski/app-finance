@@ -116,3 +116,4 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 -->
 
 
+  - Bildirishnomalarni tahlil qilish (Android): bank va to'lov ilovalari bildirishnomalaridan tranzaksiyalar

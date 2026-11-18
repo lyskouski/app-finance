@@ -117,3 +117,4 @@ zurückgelassen wird.
 -->
 
 
+  - Benachrichtigungen Parser (Android): Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps

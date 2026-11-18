@@ -116,3 +116,4 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 -->
 
 
+  - Notificaciones Parser (Android): movimientos a partir de notificaciones de aplicaciones bancarias y de pago

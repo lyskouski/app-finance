@@ -411,6 +411,30 @@
         }
     },
     "noChartData": "Data tidak ada (atau tidak cukup) untuk ditampilkan",
+    "notificationAccessSettings": "Akses Notifikasi",
+    "notificationAccessSteps": "Cara memberikan akses:\n1. Tekan \"Berikan Akses\" untuk membuka pengaturan sistem\n2. Izinkan Fingrom membaca notifikasi\n3. Jika Android melaporkan setelan terbatas: buka Info aplikasi Fingrom → ⋮ → \"Izinkan setelan terbatas\", lalu coba lagi\n4. Kembali ke Fingrom dan pilih aplikasi yang notifikasinya akan dibaca",
+    "notificationApps": "Aplikasi yang notifikasinya dibaca",
+    "notificationAuto": "Impor Otomatis",
+    "notificationAutoTooltip": "Notifikasi yang dikenali ditambahkan tanpa konfirmasi: langsung saat Fingrom berjalan, jika tidak saat dibuka berikutnya. Yang tidak dikenali menunggu ditinjau",
+    "notificationAutoImported": "Ditambahkan dari notifikasi: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationCaptured": "Notifikasi yang ditangkap: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Hapus yang ditangkap",
+    "notificationDescription": "Buat transaksi dari notifikasi aplikasi perbankan dan pembayaran di perangkat ini. Hanya notifikasi dari aplikasi yang dipilih yang dibaca, dan notifikasi tetap tersimpan di perangkat hingga diimpor. Jumlah dan mata uang dikenali secara otomatis atau dengan pola khusus.",
+    "notificationGrant": "Berikan Akses",
+    "notificationNoApps": "Belum ada notifikasi yang diterima: aplikasi muncul di sini setelah mengirim notifikasi",
+    "notificationPattern": "Pola khusus (opsional)",
+    "notificationPatternTooltip": "Ekspresi reguler dengan grup bernama amount (wajib), currency, dan title, mis. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
+    "notificationUnparsed": "Tidak dikenali",
     "notifyHeadline": "Pengurai Notifikasi",
     "ok": "OK",
     "orderPin": "Urutan prioritas",

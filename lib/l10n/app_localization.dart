@@ -84,7 +84,8 @@ import 'app_localization_zh.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -92,7 +93,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -104,7 +106,8 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -1930,6 +1933,90 @@ abstract class AppLocalizations {
   /// **'Data is missing (or not enough) to be shown'**
   String get noChartData;
 
+  /// No description provided for @notificationAccessSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Access'**
+  String get notificationAccessSettings;
+
+  /// No description provided for @notificationAccessSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'How to grant the access:\n1. Press \"Grant Access\" to open the system settings\n2. Allow Fingrom to read notifications\n3. If Android reports a restricted setting: open App info of Fingrom → ⋮ → \"Allow restricted settings\", then retry\n4. Return to Fingrom and select the apps to read notifications from'**
+  String get notificationAccessSteps;
+
+  /// No description provided for @notificationApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps to Read Notifications From'**
+  String get notificationApps;
+
+  /// No description provided for @notificationAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Automatically'**
+  String get notificationAuto;
+
+  /// No description provided for @notificationAutoTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognized notifications are added without a confirmation: right away while Fingrom is running, otherwise on its next start. Unrecognized ones wait for a review'**
+  String get notificationAutoTooltip;
+
+  /// No description provided for @notificationAutoImported.
+  ///
+  /// In en, this message translates to:
+  /// **'Added from notifications: {value}'**
+  String notificationAutoImported(Object value);
+
+  /// No description provided for @notificationCaptured.
+  ///
+  /// In en, this message translates to:
+  /// **'Captured notifications: {value}'**
+  String notificationCaptured(Object value);
+
+  /// No description provided for @notificationClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Captured'**
+  String get notificationClear;
+
+  /// No description provided for @notificationDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Create transactions from notifications of banking and payment apps on this device. Only notifications of the selected apps are read, and they stay on the device until imported. The amount and the currency are recognized automatically or by a custom pattern.'**
+  String get notificationDescription;
+
+  /// No description provided for @notificationGrant.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Access'**
+  String get notificationGrant;
+
+  /// No description provided for @notificationNoApps.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications have been received yet: apps appear here after they post a notification'**
+  String get notificationNoApps;
+
+  /// No description provided for @notificationPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Pattern (optional)'**
+  String get notificationPattern;
+
+  /// No description provided for @notificationPatternTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Regular expression with the named groups amount (required), currency and title, e.g. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)'**
+  String get notificationPatternTooltip;
+
+  /// No description provided for @notificationUnparsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Not recognized'**
+  String get notificationUnparsed;
+
   /// No description provided for @notifyHeadline.
   ///
   /// In en, this message translates to:
@@ -2711,7 +2798,8 @@ abstract class AppLocalizations {
   String get zoomState;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -2832,7 +2920,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsZh();
   }
 
-  throw FlutterError('AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+  throw FlutterError(
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
       'an issue with the localizations generation tool. Please file an issue '
       'on GitHub with a reproducible sample app and the gen-l10n configuration '
       'that was used.');

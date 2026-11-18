@@ -116,3 +116,4 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 -->
 
 
+  - Notificări Parser (Android): tranzacții din notificările aplicațiilor bancare și de plată

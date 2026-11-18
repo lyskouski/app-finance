@@ -4,6 +4,7 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 
 ### 8.1.0
 - Wise API (Global) eklendi: Wise çoklu para birimi hesaplarının bakiyeleri ve işlemlerinin içe aktarılması, dönüşümler transfer olarak
+- Bildirim Ayrıştırıcı (Android) eklendi: bankacılık ve ödeme uygulamalarının bildirimlerinden otomatik olarak veya özel bir kalıpla tanınan işlemler
 
 ### 8.0.0
 - Genişletilebilir bölümlere sahip yeni Entegrasyonlar sayfası

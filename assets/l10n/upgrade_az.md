@@ -4,6 +4,7 @@ _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasi
 
 ### 8.1.0
 - Wise API (Global) əlavə edildi: Wise çoxvalyutalı hesablarının qalıqları və əməliyyatlarının idxalı, konvertasiyalar köçürmə kimi
+- Bildirişlər Parser (Android) əlavə edildi: bank və ödəniş tətbiqlərinin bildirişlərindən avtomatik və ya fərdi şablonla tanınan əməliyyatlar
 
 ### 8.0.0
 - Açılan bölmələri olan yeni İnteqrasiyalar səhifəsi

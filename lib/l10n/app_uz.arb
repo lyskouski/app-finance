@@ -411,6 +411,30 @@
         }
     },
     "noChartData": "Koʻrsatish uchun maʼlumotlar yetishmayapti (yoki yetarli emas).",
+    "notificationAccessSettings": "Bildirishnomalarga ruxsat",
+    "notificationAccessSteps": "Ruxsatni qanday berish mumkin:\n1. Tizim sozlamalarini ochish uchun \"Ruxsat berish\" tugmasini bosing\n2. Fingrom'ga bildirishnomalarni o'qishga ruxsat bering\n3. Agar Android cheklangan sozlama haqida xabar bersa: Fingrom ilova haqida → ⋮ → \"Cheklangan sozlamalarga ruxsat berish\" ni oching va qayta urinib ko'ring\n4. Fingrom'ga qayting va bildirishnomalari o'qiladigan ilovalarni tanlang",
+    "notificationApps": "Bildirishnomalari o'qiladigan ilovalar",
+    "notificationAuto": "Avtomatik import qilish",
+    "notificationAutoTooltip": "Aniqlangan bildirishnomalar tasdiqsiz qo'shiladi: Fingrom ishlayotganda darhol, aks holda keyingi ishga tushirishda. Aniqlanmaganlari tekshiruvni kutadi",
+    "notificationAutoImported": "Bildirishnomalardan qo'shildi: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationCaptured": "Olingan bildirishnomalar: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Olinganlarni tozalash",
+    "notificationDescription": "Ushbu qurilmadagi bank va to'lov ilovalarining bildirishnomalaridan tranzaksiyalar yarating. Faqat tanlangan ilovalarning bildirishnomalari o'qiladi va import qilinguncha qurilmada saqlanadi. Summa va valyuta avtomatik ravishda yoki maxsus shablon bo'yicha aniqlanadi.",
+    "notificationGrant": "Ruxsat berish",
+    "notificationNoApps": "Hali bildirishnomalar olinmagan: ilovalar bildirishnoma yuborgandan keyin shu yerda paydo bo'ladi",
+    "notificationPattern": "Maxsus shablon (ixtiyoriy)",
+    "notificationPatternTooltip": "amount (majburiy), currency va title nomli guruhlari bo'lgan muntazam ifoda, masalan, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
+    "notificationUnparsed": "Aniqlanmadi",
     "notifyHeadline": "Bildirishnomalarni tahlil qilish",
     "ok": "xop",
     "orderPin": "Ustuvor buyurtma",

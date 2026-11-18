@@ -3,11 +3,13 @@
 
 import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/integration/notification/notification_channel.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
+import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:material_ui/material_ui.dart';
@@ -50,6 +52,13 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
           icon: Icons.currency_exchange,
           builder: (_) => const WiseWidget(),
         ),
+        if (NotificationChannel.isSupported)
+          (
+            id: 'notification',
+            title: AppLocale.labels.notifyHeadline,
+            icon: Icons.notifications_active_outlined,
+            builder: (_) => const NotificationWidget(),
+          ),
       ];
 
   Widget buildItem(BuildContext context, IntegrationItem item) {

@@ -116,3 +116,4 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 -->
 
 
+  - Bildirişlər Parser (Android): bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar

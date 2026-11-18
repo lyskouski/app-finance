@@ -116,3 +116,4 @@ zastaniecca ŭ baku.
 -->
 
 
+  - Apracoŭščyk Apaviaščeńniaŭ (Android): aperacyi z apaviaščeńniaŭ bankaŭskich i placiožnych prahram

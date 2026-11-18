@@ -9,7 +9,8 @@ class AppLocalizationsBe extends AppLocalizations {
   AppLocalizationsBe([String locale = 'be']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Аб дадатку';
@@ -102,7 +103,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get balanceDate => 'Дата аднаўленьня балансу';
 
   @override
-  String get balanceDateTooltip => 'Вылікі і прыбыткі да гэтай даты не паўплываюць на баланс';
+  String get balanceDateTooltip =>
+      'Вылікі і прыбыткі да гэтай даты не паўплываюць на баланс';
 
   @override
   String get balanceTooltip => 'Усталяваць баланс';
@@ -619,16 +621,19 @@ class AppLocalizationsBe extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete => 'Запоўніце ID праграмы, закрыты ключ, URL перанакіравання і краіну';
+  String get enableBankingIncomplete =>
+      'Запоўніце ID праграмы, закрыты ключ, URL перанакіравання і краіну';
 
   @override
   String get enableBankingKey => 'Закрыты ключ (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => 'Няправільны закрыты ключ: чакаецца PEM-блок \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid =>
+      'Няправільны закрыты ключ: чакаецца PEM-блок \"PRIVATE KEY\"';
 
   @override
-  String get enableBankingKeyNotRsa => 'Няправільны закрыты ключ: чакаецца ключ RSA';
+  String get enableBankingKeyNotRsa =>
+      'Няправільны закрыты ключ: чакаецца ключ RSA';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -638,7 +643,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get enableBankingLoadBanks => 'Загрузіць банкі';
 
   @override
-  String get enableBankingNoAuthPage => 'Enable Banking не вярнуў старонку аўтарызацыі';
+  String get enableBankingNoAuthPage =>
+      'Enable Banking не вярнуў старонку аўтарызацыі';
 
   @override
   String get enableBankingNoCode => 'У адрасе не знойдзены код аўтарызацыі';
@@ -647,10 +653,12 @@ class AppLocalizationsBe extends AppLocalizations {
   String get enableBankingRedirect => 'URL перанакіравання';
 
   @override
-  String get enableBankingRedirectTooltip => 'Зарэгістраваны для праграмы; пасля аўтарызацыі банк вяртае на яго';
+  String get enableBankingRedirectTooltip =>
+      'Зарэгістраваны для праграмы; пасля аўтарызацыі банк вяртае на яго';
 
   @override
-  String get enableBankingStateMismatch => 'Адрас належыць да іншай аўтарызацыі, падлучыцеся зноў';
+  String get enableBankingStateMismatch =>
+      'Адрас належыць да іншай аўтарызацыі, падлучыцеся зноў';
 
   @override
   String get encryptionMode => 'Шыфраваньне дадьзеных';
@@ -664,7 +672,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get errorExpired => 'Тэрмін дьзеяньня карты скончыўся';
 
   @override
-  String get errorNegative => 'Ня можа быць адмоўным! Калі ласка, выпраўце памылку';
+  String get errorNegative =>
+      'Ня можа быць адмоўным! Калі ласка, выпраўце памылку';
 
   @override
   String get example => 'Прыклад';
@@ -699,7 +708,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get finTsBankCode => 'Код банка (BLZ)';
 
   @override
-  String get finTsCustomerId => 'ID кліента (калі адрозніваецца ад ID карыстальніка)';
+  String get finTsCustomerId =>
+      'ID кліента (калі адрозніваецца ад ID карыстальніка)';
 
   @override
   String get finTsDescription =>
@@ -709,7 +719,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete => 'Запоўніце URL сервера, код банка, ID карыстальніка і рэгістрацыйны нумар прадукту';
+  String get finTsIncomplete =>
+      'Запоўніце URL сервера, код банка, ID карыстальніка і рэгістрацыйны нумар прадукту';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -725,13 +736,15 @@ class AppLocalizationsBe extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint => 'Выкарыстоўваецца толькі ў гэтым сеансе і ніколі не захоўваецца';
+  String get finTsPinHint =>
+      'Выкарыстоўваецца толькі ў гэтым сеансе і ніколі не захоўваецца';
 
   @override
   String get finTsProductId => 'Рэгістрацыйны нумар прадукту';
 
   @override
-  String get finTsProductIdTooltip => 'Выдаецца Deutsche Kreditwirtschaft распрацоўшчыку праграмы';
+  String get finTsProductIdTooltip =>
+      'Выдаецца Deutsche Kreditwirtschaft распрацоўшчыку праграмы';
 
   @override
   String get finTsTan => 'TAN';
@@ -827,7 +840,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get incomeTooltip => 'Усталюйце звесткі аб даходах';
 
   @override
-  String get integrationAccessDenied => 'Доступ адкліканы або ўліковыя даныя няправільныя';
+  String get integrationAccessDenied =>
+      'Доступ адкліканы або ўліковыя даныя няправільныя';
 
   @override
   String get integrationConnect => 'Падлучыцца';
@@ -836,7 +850,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get integrationDateFrom => 'Імпартаваць аперацыі з';
 
   @override
-  String get integrationDefaultBudgetCategory => 'Катэгорыя бюджэту па змаўчанні';
+  String get integrationDefaultBudgetCategory =>
+      'Катэгорыя бюджэту па змаўчанні';
 
   @override
   String get integrationDisconnect => 'Адлучыцца';
@@ -853,7 +868,8 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired => 'Дазволены толькі абароненыя адрасы (HTTPS)';
+  String get integrationHttpsRequired =>
+      'Дазволены толькі абароненыя адрасы (HTTPS)';
 
   @override
   String get integrationImport => 'Імпартаваць аперацыі';
@@ -875,7 +891,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get integrationPaymentRequired => 'Сэрвіс патрабуе аплаты доступу';
 
   @override
-  String get integrationSelectTarget => 'Абярыце рахунак і катэгорыю бюджэту для імпарту';
+  String get integrationSelectTarget =>
+      'Абярыце рахунак і катэгорыю бюджэту для імпарту';
 
   @override
   String integrationServiceError(Object value) {
@@ -947,7 +964,59 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Адсутнічаюць (або недастаткова) дадьзеныя для паказу';
+  String get noChartData =>
+      'Адсутнічаюць (або недастаткова) дадьзеныя для паказу';
+
+  @override
+  String get notificationAccessSettings => 'Доступ да апавяшчэньняў';
+
+  @override
+  String get notificationAccessSteps =>
+      'Як даць доступ:\n1. Націсьніце \"Даць доступ\", каб адкрыць сыстэмныя налады\n2. Дазвольце Fingrom чытаць апавяшчэньні\n3. Калі Android паведамляе пра абмежаваную наладу: адкрыйце зьвесткі пра праграму Fingrom → ⋮ → \"Дазволіць абмежаваныя налады\" і паўтарыце\n4. Вярніцеся ў Fingrom і выберыце праграмы для чытаньня апавяшчэньняў';
+
+  @override
+  String get notificationApps => 'Праграмы для чытаньня апавяшчэньняў';
+
+  @override
+  String get notificationAuto => 'Імпартаваць аўтаматычна';
+
+  @override
+  String get notificationAutoTooltip =>
+      'Распазнаныя апавяшчэньні дадаюцца без пацьверджаньня: адразу, калі Fingrom працуе, інакш пры наступным запуску. Нераспазнаныя чакаюць праверкі';
+
+  @override
+  String notificationAutoImported(Object value) {
+    return 'Дададзена з апавяшчэньняў: $value';
+  }
+
+  @override
+  String notificationCaptured(Object value) {
+    return 'Атрымана апавяшчэньняў: $value';
+  }
+
+  @override
+  String get notificationClear => 'Ачысьціць атрыманыя';
+
+  @override
+  String get notificationDescription =>
+      'Стварэньне аперацый з апавяшчэньняў банкаўскіх і плацёжных праграм на гэтай прыладзе. Чытаюцца толькі апавяшчэньні выбраных праграм, і яны захоўваюцца на прыладзе да імпарту. Сума і валюта распазнаюцца аўтаматычна або па ўласным шаблоне.';
+
+  @override
+  String get notificationGrant => 'Даць доступ';
+
+  @override
+  String get notificationNoApps =>
+      'Апавяшчэньняў яшчэ не было: праграмы зьявяцца тут пасьля таго, як дашлюць апавяшчэньне';
+
+  @override
+  String get notificationPattern => 'Уласны шаблон (неабавязкова)';
+
+  @override
+  String get notificationPatternTooltip =>
+      'Рэгулярны выраз з найменнымі групамі amount (абавязкова), currency і title, напрыклад, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
+
+  @override
+  String get notificationUnparsed => 'Не распазнана';
 
   @override
   String get notifyHeadline => 'Апрацоўшчык апавяшчэньняў';
@@ -1090,10 +1159,12 @@ class AppLocalizationsBe extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
-  String get secureBioNotMatch => 'Памылка аўтэнтыфікацыі! Паспрабуйце яшчэ раз';
+  String get secureBioNotMatch =>
+      'Памылка аўтэнтыфікацыі! Паспрабуйце яшчэ раз';
 
   @override
-  String get secureBioPromptReason => 'Калі ласка, прайдзіце аўтэнтыфікацыю, каб працягнуць';
+  String get secureBioPromptReason =>
+      'Калі ласка, прайдзіце аўтэнтыфікацыю, каб працягнуць';
 
   @override
   String get secureBioPromptTitle => 'Біяметрычная аўтэнтыфікацыя';
@@ -1102,7 +1173,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get secureOtpCode => 'Аднаразовы пароль';
 
   @override
-  String get secureOtpCodeInvalid => 'Няправільны! Калі ласка, вазьміце новы код і ўвядзіце яго.';
+  String get secureOtpCodeInvalid =>
+      'Няправільны! Калі ласка, вазьміце новы код і ўвядзіце яго.';
 
   @override
   String get secureOtpDeactivated => 'Абарона паролем адключана';
@@ -1139,13 +1211,15 @@ class AppLocalizationsBe extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge вярнуў адрас доступу без уліковых даных';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge вярнуў адрас доступу без уліковых даных';
 
   @override
   String get simpleFinToken => 'Токен наладкі SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed => 'Токен наладкі не існуе або ўжо быў выкарыстаны';
+  String get simpleFinTokenClaimed =>
+      'Токен наладкі не існуе або ўжо быў выкарыстаны';
 
   @override
   String get simpleFinTokenInvalid => 'Няправільны токен наладкі SimpleFIN';
@@ -1321,7 +1395,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get validTillDate => 'Дьзейнічае да';
 
   @override
-  String get webDav => 'Вэб-размеркаванае стварэньне і кіраваньне версіямі (WebDav)';
+  String get webDav =>
+      'Вэб-размеркаванае стварэньне і кіраваньне версіямі (WebDav)';
 
   @override
   String get wiseDescription =>
@@ -1360,7 +1435,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   AppLocalizationsBeEu() : super('be_EU');
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Ab Dadatku';
@@ -1453,7 +1529,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get balanceDate => 'Data Adnaŭlieńnia Balansu';
 
   @override
-  String get balanceDateTooltip => 'Vyliki i Prybytki da hetaj daty nie paŭplyvajuć na balans';
+  String get balanceDateTooltip =>
+      'Vyliki i Prybytki da hetaj daty nie paŭplyvajuć na balans';
 
   @override
   String get balanceTooltip => 'Ustaliavać Balans';
@@ -1970,16 +2047,19 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete => 'Zapoŭnicie ID prahramy, zakryty kluč, URL pieranakiravannia i krainu';
+  String get enableBankingIncomplete =>
+      'Zapoŭnicie ID prahramy, zakryty kluč, URL pieranakiravannia i krainu';
 
   @override
   String get enableBankingKey => 'Zakryty kluč (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => 'Niapraviĺny zakryty kluč: čakajecca PEM-błok \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid =>
+      'Niapraviĺny zakryty kluč: čakajecca PEM-błok \"PRIVATE KEY\"';
 
   @override
-  String get enableBankingKeyNotRsa => 'Niapraviĺny zakryty kluč: čakajecca kluč RSA';
+  String get enableBankingKeyNotRsa =>
+      'Niapraviĺny zakryty kluč: čakajecca kluč RSA';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -1989,7 +2069,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get enableBankingLoadBanks => 'Zahruzić banki';
 
   @override
-  String get enableBankingNoAuthPage => 'Enable Banking nie viarnuŭ staronku aŭtaryzacyi';
+  String get enableBankingNoAuthPage =>
+      'Enable Banking nie viarnuŭ staronku aŭtaryzacyi';
 
   @override
   String get enableBankingNoCode => 'U adrasie nie znojdzieny kod aŭtaryzacyi';
@@ -1998,10 +2079,12 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get enableBankingRedirect => 'URL pieranakiravannia';
 
   @override
-  String get enableBankingRedirectTooltip => 'Zarehistravany dlia prahramy; paslia aŭtaryzacyi bank viartaje na jaho';
+  String get enableBankingRedirectTooltip =>
+      'Zarehistravany dlia prahramy; paslia aŭtaryzacyi bank viartaje na jaho';
 
   @override
-  String get enableBankingStateMismatch => 'Adras naliežyć da inšaj aŭtaryzacyi, padłučycieśsia znoŭ';
+  String get enableBankingStateMismatch =>
+      'Adras naliežyć da inšaj aŭtaryzacyi, padłučycieśsia znoŭ';
 
   @override
   String get encryptionMode => 'Šyfravańnie Dad́zienych';
@@ -2015,7 +2098,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get errorExpired => 'Termin d́ziejańnia Karty skončyŭsia';
 
   @override
-  String get errorNegative => 'Nia moža być admoŭnym! Kali laska, vypraŭcie pamylku';
+  String get errorNegative =>
+      'Nia moža być admoŭnym! Kali laska, vypraŭcie pamylku';
 
   @override
   String get example => 'Pryklad';
@@ -2050,7 +2134,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get finTsBankCode => 'Kod banka (BLZ)';
 
   @override
-  String get finTsCustomerId => 'ID klijenta (kali adroznivajecca ad ID karystaĺnika)';
+  String get finTsCustomerId =>
+      'ID klijenta (kali adroznivajecca ad ID karystaĺnika)';
 
   @override
   String get finTsDescription =>
@@ -2060,7 +2145,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete => 'Zapoŭnicie URL sierviera, kod banka, ID karystaĺnika i rehistracyjny numar praduktu';
+  String get finTsIncomplete =>
+      'Zapoŭnicie URL sierviera, kod banka, ID karystaĺnika i rehistracyjny numar praduktu';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -2076,13 +2162,15 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint => 'Vykarystoŭvajecca toĺki ŭ hetym sieansie i nikoli nie zachoŭvajecca';
+  String get finTsPinHint =>
+      'Vykarystoŭvajecca toĺki ŭ hetym sieansie i nikoli nie zachoŭvajecca';
 
   @override
   String get finTsProductId => 'Rehistracyjny numar praduktu';
 
   @override
-  String get finTsProductIdTooltip => 'Vydajecca Deutsche Kreditwirtschaft raspracoŭščyku prahramy';
+  String get finTsProductIdTooltip =>
+      'Vydajecca Deutsche Kreditwirtschaft raspracoŭščyku prahramy';
 
   @override
   String get finTsTan => 'TAN';
@@ -2178,7 +2266,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get incomeTooltip => 'Ustaliujcie Zviestki ab Dachodach';
 
   @override
-  String get integrationAccessDenied => 'Dostup adklikany abo ŭlikovyja danyja niapraviĺnyja';
+  String get integrationAccessDenied =>
+      'Dostup adklikany abo ŭlikovyja danyja niapraviĺnyja';
 
   @override
   String get integrationConnect => 'Padłučycca';
@@ -2187,7 +2276,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get integrationDateFrom => 'Impartavać aperacyi z';
 
   @override
-  String get integrationDefaultBudgetCategory => 'Katehoryja biudžetu pa zmaŭčanni';
+  String get integrationDefaultBudgetCategory =>
+      'Katehoryja biudžetu pa zmaŭčanni';
 
   @override
   String get integrationDisconnect => 'Adłučycca';
@@ -2204,7 +2294,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   }
 
   @override
-  String get integrationHttpsRequired => 'Dazvolieny toĺki abaronienyja adrasy (HTTPS)';
+  String get integrationHttpsRequired =>
+      'Dazvolieny toĺki abaronienyja adrasy (HTTPS)';
 
   @override
   String get integrationImport => 'Impartavać aperacyi';
@@ -2226,7 +2317,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get integrationPaymentRequired => 'Servis patrabuje apłaty dostupu';
 
   @override
-  String get integrationSelectTarget => 'Abiarycie rachunak i katehoryju biudžetu dla impartu';
+  String get integrationSelectTarget =>
+      'Abiarycie rachunak i katehoryju biudžetu dla impartu';
 
   @override
   String integrationServiceError(Object value) {
@@ -2298,7 +2390,59 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   }
 
   @override
-  String get noChartData => 'Adsutničajuć (abo niedastatkova) dad́zienyja dlia pakazu';
+  String get noChartData =>
+      'Adsutničajuć (abo niedastatkova) dad́zienyja dlia pakazu';
+
+  @override
+  String get notificationAccessSettings => 'Dostup da apaviaščeńniaŭ';
+
+  @override
+  String get notificationAccessSteps =>
+      'Jak dać dostup:\n1. Nacišnicie \"Dać dostup\", kab adkryć systemnyja nalady\n2. Dazvoĺcie Fingrom čytać apaviaščeńni\n3. Kali Android paviedamliaje pra abmiežavanuju naladu: adkryjcie źviestki pra prahramu Fingrom → ⋮ → \"Dazvolić abmiežavanyja nalady\" i paŭtarycie\n4. Viarniciesia ŭ Fingrom i vybierycie prahramy dlia čytańnia apaviaščeńniaŭ';
+
+  @override
+  String get notificationApps => 'Prahramy dlia čytańnia apaviaščeńniaŭ';
+
+  @override
+  String get notificationAuto => 'Impartavać aŭtamatyčna';
+
+  @override
+  String get notificationAutoTooltip =>
+      'Raspaznanyja apaviaščeńni dadajucca biez paćvierdžańnia: adrazu, kali Fingrom pracuje, inakš pry nastupnym zapusku. Nieraspaznanyja čakajuć pravierki';
+
+  @override
+  String notificationAutoImported(Object value) {
+    return 'Dadadziena z apaviaščeńniaŭ: $value';
+  }
+
+  @override
+  String notificationCaptured(Object value) {
+    return 'Atrymana apaviaščeńniaŭ: $value';
+  }
+
+  @override
+  String get notificationClear => 'Ačyścić atrymanyja';
+
+  @override
+  String get notificationDescription =>
+      'Stvareńnie aperacyj z apaviaščeńniaŭ bankaŭskich i placiožnych prahram na hetaj pryladzie. Čytajucca toĺki apaviaščeńni vybranych prahram, i jany zachoŭvajucca na pryladzie da impartu. Suma i valiuta raspaznajucca aŭtamatyčna abo pa ŭlasnym šablonie.';
+
+  @override
+  String get notificationGrant => 'Dać dostup';
+
+  @override
+  String get notificationNoApps =>
+      'Apaviaščeńniaŭ jašče nie było: prahramy źjaviacca tut paślia taho, jak dašliuć apaviaščeńnie';
+
+  @override
+  String get notificationPattern => 'Ŭlasny šablon (nieabaviazkova)';
+
+  @override
+  String get notificationPatternTooltip =>
+      'Rehuliarny vyraz z najmiennymi hrupami amount (abaviazkova), currency i title, napryklad, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
+
+  @override
+  String get notificationUnparsed => 'Nie raspaznana';
 
   @override
   String get notifyHeadline => 'Apracoŭščyk Apaviaščeńniaŭ';
@@ -2441,10 +2585,12 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get searchTooltip => 'Pošuk';
 
   @override
-  String get secureBioNotMatch => 'Pamylka aŭtentyfikacyi! Pasprabujcie jašče raz';
+  String get secureBioNotMatch =>
+      'Pamylka aŭtentyfikacyi! Pasprabujcie jašče raz';
 
   @override
-  String get secureBioPromptReason => 'Kali laska, prajdzicie aŭtentyfikacyju, kab praciahnuć';
+  String get secureBioPromptReason =>
+      'Kali laska, prajdzicie aŭtentyfikacyju, kab praciahnuć';
 
   @override
   String get secureBioPromptTitle => 'Bijamietryčnaja aŭtentyfikacyja';
@@ -2453,7 +2599,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get secureOtpCode => 'Adnarazovy paroĺ';
 
   @override
-  String get secureOtpCodeInvalid => 'Niapraviĺny! Kali laska, vaźmicie novy kod i ŭviadzicie jaho';
+  String get secureOtpCodeInvalid =>
+      'Niapraviĺny! Kali laska, vaźmicie novy kod i ŭviadzicie jaho';
 
   @override
   String get secureOtpDeactivated => 'Abarona paroliem adkliučana';
@@ -2490,13 +2637,15 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge viarnuŭ adras dostupu biez ulikovych danych';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge viarnuŭ adras dostupu biez ulikovych danych';
 
   @override
   String get simpleFinToken => 'Tokien naładki SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed => 'Tokien naładki nie isnuje abo ŭžo byŭ vykarystany';
+  String get simpleFinTokenClaimed =>
+      'Tokien naładki nie isnuje abo ŭžo byŭ vykarystany';
 
   @override
   String get simpleFinTokenInvalid => 'Niapraviĺny tokien naładki SimpleFIN';
@@ -2672,7 +2821,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get validTillDate => 'D́ziejničaje da';
 
   @override
-  String get webDav => 'Veb-razmierkavanaje Stvareńnie i Kiravańnie Viersijami (WebDav)';
+  String get webDav =>
+      'Veb-razmierkavanaje Stvareńnie i Kiravańnie Viersijami (WebDav)';
 
   @override
   String get wiseDescription =>

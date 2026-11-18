@@ -78,6 +78,7 @@
   - SimpleFIN Bridge (US)：從美國銀行與發卡機構匯入餘額與交易
   - Enable Banking (EU)：從歐洲銀行匯入餘額與交易（PSD2）
   - Wise API (Global)：匯入 Wise 多幣別帳戶的餘額與交易（個人 API 權杖）
+  - 通知解析器 (Android)：根據銀行與支付應用程式的通知建立交易
 - 匯出到 Excel「XLSX」文件
 - 資料加密
 - 本地化

@@ -26,6 +26,7 @@ class IntegrationAccountCard extends StatelessWidget {
   final bool isDisabled;
   final VoidCallback onChanged;
   final VoidCallback onImport;
+  final List<Widget> children;
 
   const IntegrationAccountCard({
     super.key,
@@ -36,6 +37,7 @@ class IntegrationAccountCard extends StatelessWidget {
     required this.onImport,
     this.subtitle,
     this.isDisabled = false,
+    this.children = const [],
   });
 
   @override
@@ -85,6 +87,7 @@ class IntegrationAccountCard extends StatelessWidget {
                   onChanged();
                 },
               ),
+              ...children,
               ThemeHelper.hIndent,
               FullSizedButtonWidget(
                 icon: Icons.download,

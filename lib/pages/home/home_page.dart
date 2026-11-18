@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/payments_controller.dart';
+import 'package:app_finance/_classes/integration/notification/notification_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -190,7 +191,15 @@ class HomePageState extends AbstractPageState<HomePage> {
       if (appState.isLoading) {
         return const InitTab();
       }
-      WidgetsBinding.instance.addPostFrameCallback((_) => PaymentsController(appState));
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        PaymentsController(appState);
+        final messenger = ScaffoldMessenger.of(context);
+        final notifications = NotificationController.instance;
+        notifications.onImported = (added) => messenger.showSnackBar(
+              SnackBar(content: Text(AppLocale.labels.notificationAutoImported(added))),
+            );
+        notifications.attach(appState);
+      });
       return super.build(context);
     });
   }

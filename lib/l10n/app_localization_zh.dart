@@ -9,7 +9,8 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '关于';
@@ -630,7 +631,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get enableBankingKeyNotRsa => '私钥无效：需要 RSA 密钥';
 
   @override
-  String get enableBankingKeyTooltip => '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
+  String get enableBankingKeyTooltip =>
+      '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
 
   @override
   String get enableBankingLoadBanks => '加载银行';
@@ -700,7 +702,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get finTsCustomerId => '客户 ID（如与用户 ID 不同）';
 
   @override
-  String get finTsDescription => '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
+  String get finTsDescription =>
+      '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -946,6 +949,56 @@ class AppLocalizationsZh extends AppLocalizations {
   String get noChartData => '数据缺失（或不足），无法显示';
 
   @override
+  String get notificationAccessSettings => '通知访问权限';
+
+  @override
+  String get notificationAccessSteps =>
+      '如何授予访问权限：\n1. 点击\"授予访问权限\"打开系统设置\n2. 允许 Fingrom 读取通知\n3. 如果 Android 提示受限设置：打开 Fingrom 的应用信息 → ⋮ →\"允许受限设置\"，然后重试\n4. 返回 Fingrom 并选择要读取通知的应用';
+
+  @override
+  String get notificationApps => '读取通知的应用';
+
+  @override
+  String get notificationAuto => '自动导入';
+
+  @override
+  String get notificationAutoTooltip =>
+      '识别出的通知无需确认即被添加：Fingrom 运行时立即添加，否则在下次启动时添加。未识别的通知等待审核';
+
+  @override
+  String notificationAutoImported(Object value) {
+    return '已从通知添加：$value';
+  }
+
+  @override
+  String notificationCaptured(Object value) {
+    return '已捕获的通知：$value';
+  }
+
+  @override
+  String get notificationClear => '清除已捕获';
+
+  @override
+  String get notificationDescription =>
+      '根据本设备上银行和支付应用的通知创建交易。仅读取所选应用的通知，且在导入前通知保留在设备上。金额和货币会自动识别，或通过自定义模式识别。';
+
+  @override
+  String get notificationGrant => '授予访问权限';
+
+  @override
+  String get notificationNoApps => '尚未收到任何通知：应用发送通知后会显示在这里';
+
+  @override
+  String get notificationPattern => '自定义模式（可选）';
+
+  @override
+  String get notificationPatternTooltip =>
+      '包含命名分组 amount（必填）、currency 和 title 的正则表达式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
+
+  @override
+  String get notificationUnparsed => '无法识别';
+
+  @override
   String get notifyHeadline => '通知解析器';
 
   @override
@@ -1128,7 +1181,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsSaved => '设置已保存！';
 
   @override
-  String get simpleFinDescription => '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
+  String get simpleFinDescription =>
+      '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
@@ -1146,7 +1200,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get simpleFinTokenInvalid => 'SimpleFIN 设置令牌无效';
 
   @override
-  String get simpleFinTokenTooltip => '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次';
+  String get simpleFinTokenTooltip =>
+      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次';
 
   @override
   String get skipFromTotals => '不计入总数';
@@ -1194,7 +1249,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get splitTooltip => '声明每月限额';
 
   @override
-  String get subscription => '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
+  String get subscription =>
+      '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
 
   @override
   String get subscriptionCoffee => '购买咖啡';
@@ -1317,7 +1373,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get webDav => '网络分布式创作和版本管理（WebDav）';
 
   @override
-  String get wiseDescription => '使用个人 API 令牌导入 Wise 多币种账户的余额和交易。已关联余额之间的换汇将作为转账导入。访问为只读：不会进行任何付款。';
+  String get wiseDescription =>
+      '使用个人 API 令牌导入 Wise 多币种账户的余额和交易。已关联余额之间的换汇将作为转账导入。访问为只读：不会进行任何付款。';
 
   @override
   String get wiseHeadline => 'Wise API (Global)';
@@ -1350,7 +1407,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   AppLocalizationsZhTw() : super('zh_TW');
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '關於我們';
@@ -1971,7 +2029,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get enableBankingKeyNotRsa => '私密金鑰無效：需要 RSA 金鑰';
 
   @override
-  String get enableBankingKeyTooltip => '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
+  String get enableBankingKeyTooltip =>
+      '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
 
   @override
   String get enableBankingLoadBanks => '載入銀行';
@@ -2041,7 +2100,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get finTsCustomerId => '客戶 ID（若與使用者 ID 不同）';
 
   @override
-  String get finTsDescription => '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
+  String get finTsDescription =>
+      '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -2287,6 +2347,56 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get noChartData => '資料遺失（或不足），無法顯示';
 
   @override
+  String get notificationAccessSettings => '通知存取權';
+
+  @override
+  String get notificationAccessSteps =>
+      '如何授予存取權：\n1. 點選「授予存取權」以開啟系統設定\n2. 允許 Fingrom 讀取通知\n3. 若 Android 顯示受限設定：開啟 Fingrom 的應用程式資訊 → ⋮ →「允許受限設定」，然後重試\n4. 返回 Fingrom 並選擇要讀取通知的應用程式';
+
+  @override
+  String get notificationApps => '讀取通知的應用程式';
+
+  @override
+  String get notificationAuto => '自動匯入';
+
+  @override
+  String get notificationAutoTooltip =>
+      '辨識出的通知無需確認即會新增：Fingrom 執行時立即新增，否則於下次啟動時新增。未辨識的通知等待審核';
+
+  @override
+  String notificationAutoImported(Object value) {
+    return '已從通知新增：$value';
+  }
+
+  @override
+  String notificationCaptured(Object value) {
+    return '已擷取的通知：$value';
+  }
+
+  @override
+  String get notificationClear => '清除已擷取';
+
+  @override
+  String get notificationDescription =>
+      '根據本裝置上銀行與支付應用程式的通知建立交易。僅讀取所選應用程式的通知，且在匯入前通知會保留在裝置上。金額與貨幣會自動辨識，或透過自訂模式辨識。';
+
+  @override
+  String get notificationGrant => '授予存取權';
+
+  @override
+  String get notificationNoApps => '尚未收到任何通知：應用程式傳送通知後會顯示在這裡';
+
+  @override
+  String get notificationPattern => '自訂模式（選填）';
+
+  @override
+  String get notificationPatternTooltip =>
+      '包含具名群組 amount（必填）、currency 與 title 的正規表示式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
+
+  @override
+  String get notificationUnparsed => '無法辨識';
+
+  @override
   String get notifyHeadline => '通知解析器';
 
   @override
@@ -2469,7 +2579,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get settingsSaved => '設定已儲存！';
 
   @override
-  String get simpleFinDescription => '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
+  String get simpleFinDescription =>
+      '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
@@ -2487,7 +2598,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get simpleFinTokenInvalid => 'SimpleFIN 設定權杖無效';
 
   @override
-  String get simpleFinTokenTooltip => '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次';
+  String get simpleFinTokenTooltip =>
+      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次';
 
   @override
   String get skipFromTotals => '總計不包括';
@@ -2535,7 +2647,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get splitTooltip => '宣告每月限制';
 
   @override
-  String get subscription => '作為一個開放原始碼專案，訂閱不會解鎖任何額外功能。然而，這將會成為對應用程式持續演進與改進的投資，並維持其可用性。';
+  String get subscription =>
+      '作為一個開放原始碼專案，訂閱不會解鎖任何額外功能。然而，這將會成為對應用程式持續演進與改進的投資，並維持其可用性。';
 
   @override
   String get subscriptionCoffee => '購買咖啡';
@@ -2658,7 +2771,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get webDav => '網路分散式撰寫與版本控制 (WebDav)';
 
   @override
-  String get wiseDescription => '使用個人 API 權杖匯入 Wise 多幣別帳戶的餘額與交易。已連結餘額之間的換匯將以轉帳匯入。存取為唯讀：不會進行任何付款。';
+  String get wiseDescription =>
+      '使用個人 API 權杖匯入 Wise 多幣別帳戶的餘額與交易。已連結餘額之間的換匯將以轉帳匯入。存取為唯讀：不會進行任何付款。';
 
   @override
   String get wiseHeadline => 'Wise API (Global)';

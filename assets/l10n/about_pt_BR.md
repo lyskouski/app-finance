@@ -116,3 +116,4 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
 -->
 
 
+  - Analisador de notificações (Android): transações a partir de notificações de aplicativos bancários e de pagamento

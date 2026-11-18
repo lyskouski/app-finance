@@ -411,6 +411,30 @@
         }
     },
     "noChartData": "Faltam dados (ou não são suficientes) para serem mostrados",
+    "notificationAccessSettings": "Acesso às notificações",
+    "notificationAccessSteps": "Como conceder o acesso:\n1. Prima \"Conceder acesso\" para abrir as definições do sistema\n2. Permita que o Fingrom leia as notificações\n3. Se o Android indicar uma definição restrita: abra as informações da aplicação Fingrom → ⋮ → \"Permitir definições restritas\" e tente novamente\n4. Volte ao Fingrom e selecione as aplicações cujas notificações devem ser lidas",
+    "notificationApps": "Aplicações cujas notificações são lidas",
+    "notificationAuto": "Importar automaticamente",
+    "notificationAutoTooltip": "As notificações reconhecidas são adicionadas sem confirmação: de imediato enquanto o Fingrom está em execução, caso contrário no próximo arranque. As não reconhecidas aguardam revisão",
+    "notificationAutoImported": "Adicionados a partir de notificações: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationCaptured": "Notificações capturadas: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Limpar capturadas",
+    "notificationDescription": "Crie movimentos a partir das notificações de aplicações bancárias e de pagamento neste dispositivo. Apenas as notificações das aplicações selecionadas são lidas e permanecem no dispositivo até serem importadas. O montante e a moeda são reconhecidos automaticamente ou por um padrão personalizado.",
+    "notificationGrant": "Conceder acesso",
+    "notificationNoApps": "Ainda não foram recebidas notificações: as aplicações aparecem aqui depois de publicarem uma notificação",
+    "notificationPattern": "Padrão personalizado (opcional)",
+    "notificationPatternTooltip": "Expressão regular com os grupos nomeados amount (obrigatório), currency e title, p. ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
+    "notificationUnparsed": "Não reconhecido",
     "notifyHeadline": "Analisador de notificações",
     "ok": "OK",
     "orderPin": "Ordem prioritária",

@@ -411,6 +411,30 @@
         }
     },
     "noChartData": "Gegevens ontbreken (of zijn niet voldoende) om te worden getoond",
+    "notificationAccessSettings": "Toegang tot meldingen",
+    "notificationAccessSteps": "Zo verleen je toegang:\n1. Druk op \"Toegang verlenen\" om de systeeminstellingen te openen\n2. Sta Fingrom toe meldingen te lezen\n3. Als Android een beperkte instelling meldt: open App-info van Fingrom → ⋮ → \"Beperkte instellingen toestaan\" en probeer het opnieuw\n4. Ga terug naar Fingrom en selecteer de apps waarvan meldingen worden gelezen",
+    "notificationApps": "Apps waarvan meldingen worden gelezen",
+    "notificationAuto": "Automatisch importeren",
+    "notificationAutoTooltip": "Herkende meldingen worden zonder bevestiging toegevoegd: direct terwijl Fingrom actief is, anders bij de volgende start. Niet-herkende wachten op controle",
+    "notificationAutoImported": "Toegevoegd uit meldingen: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationCaptured": "Vastgelegde meldingen: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Vastgelegde wissen",
+    "notificationDescription": "Maak transacties aan uit meldingen van bank- en betaalapps op dit apparaat. Alleen meldingen van de geselecteerde apps worden gelezen, en ze blijven op het apparaat tot ze zijn geïmporteerd. Het bedrag en de valuta worden automatisch of met een eigen patroon herkend.",
+    "notificationGrant": "Toegang verlenen",
+    "notificationNoApps": "Nog geen meldingen ontvangen: apps verschijnen hier nadat ze een melding hebben verstuurd",
+    "notificationPattern": "Eigen patroon (optioneel)",
+    "notificationPatternTooltip": "Reguliere expressie met de benoemde groepen amount (verplicht), currency en title, bijv. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
+    "notificationUnparsed": "Niet herkend",
     "notifyHeadline": "Meldingen Parser",
     "ok": "OK",
     "orderPin": "Geprioriteerde volgorde",

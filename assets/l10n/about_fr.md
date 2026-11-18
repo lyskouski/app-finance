@@ -116,3 +116,4 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
 -->
 
 
+  - Analyseur de notifications (Android) : opérations à partir des notifications des applications bancaires et de paiement

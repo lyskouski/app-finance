@@ -116,3 +116,4 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
 -->
 
 
+  - Parser delle notifiche (Android): movimenti dalle notifiche delle app bancarie e di pagamento

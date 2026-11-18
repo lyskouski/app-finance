@@ -4,6 +4,7 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 
 ### 8.1.0
 - Dadadzieny Wise API (Global): reštki i impart aperacyj šmatvalutnych rachunkaŭ Wise, kanviertacyi jak pieravody
+- Dadadzieny Apracoŭščyk Apaviaščeńniaŭ (Android): aperacyi z apaviaščeńniaŭ bankaŭskich i placiožnych prahram, raspaznanyja aŭtamatyčna abo pa ŭlasnym šablonie
 
 ### 8.0.0
 - Dadadziena staronka «Intehracyi» z raskryŭnymi razdziełami

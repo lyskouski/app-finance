@@ -116,3 +116,4 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
 -->
 
 
+  - Parser oznámení (Android): transakce z oznámení bankovních a platebních aplikací
