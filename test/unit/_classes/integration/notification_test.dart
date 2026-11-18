@@ -89,6 +89,37 @@ void main() {
       expect(NotificationParser.parse('', 'Spent \$4.00')!.currency, 'USD');
     });
 
+    test('takes symbols from the currency list', () {
+      expect(NotificationParser.parse('', 'Betalt 250,00 kr hos ICA')!.currency, 'SEK');
+      expect(NotificationParser.parse('', 'Fizetés 4 500 Ft')!.currency, 'HUF');
+      expect(NotificationParser.parse('', 'Compra R\$ 50,00')!.currency, 'BRL');
+      expect(NotificationParser.parse('', 'Paid US\$ 7.00')!.currency, 'USD');
+    });
+
+    test('resolves an ambiguous symbol by the account, the default and the pinned currencies', () {
+      final initial = CurrencyDefaults.defaultCurrency;
+      addTearDown(() => CurrencyDefaults.defaultCurrency = initial);
+      CurrencyDefaults.defaultCurrency = CurrencyProvider.find('NOK');
+      expect(NotificationParser.parse('', 'Betalt 250 kr')!.currency, 'NOK');
+      expect(NotificationParser.parse('', 'Betalt 250 kr', fallback: CurrencyProvider.find('DKK'))!.currency, 'DKK');
+      CurrencyDefaults.defaultCurrency = CurrencyProvider.find('EUR');
+      expect(NotificationParser.parse('', 'Betalt 250 kr')!.currency, 'SEK');
+    });
+
+    test('ignores symbols that are letters or words', () {
+      expect(NotificationParser.symbols.keys, isNot(contains('L')));
+      expect(NotificationParser.symbols.keys, isNot(contains('sum')));
+      expect(NotificationParser.parse('', 'Filled 40 L at the station'), isNull);
+      expect(NotificationParser.parse('', 'The sum 100 is due'), isNull);
+    });
+
+    test('prefers a code or a sign over a symbol of letters', () {
+      final result = NotificationParser.parse('', 'Le 12/11, paiement de 25,00 EUR chez Carrefour');
+      expect((result!.amount, result.currency, result.title), (-25.0, 'EUR', 'Carrefour'));
+      // A symbol of letters is still used when there is nothing else
+      expect(NotificationParser.parse('', 'Le 50 paid')!.currency, 'SLE');
+    });
+
     test('applies a custom pattern with named groups', () {
       const pattern = r'Debit (?<amount>[\d.,]+) (?<currency>[A-Z]+) / (?<title>[^/]+)';
       final result = NotificationParser.parse('Bank', 'Debit 1.234,00 CHF / Migros Zürich / ref 77', pattern: pattern);

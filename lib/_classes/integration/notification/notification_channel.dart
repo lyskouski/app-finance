@@ -40,7 +40,6 @@ class NotificationChannel {
 
   Future<void> openSettings() => channel.invokeMethod<void>('openSettings');
 
-  // Applications that have posted notifications: package => label
   Future<Map<String, String>> getApps() async {
     final result = await channel.invokeMapMethod<String, dynamic>('getApps') ?? {};
     return result.map((key, value) => MapEntry(key, value.toString()));
@@ -51,6 +50,13 @@ class NotificationChannel {
 
   Future<void> setPackages(Iterable<String> packages) =>
       channel.invokeMethod<void>('setPackages', {'packages': packages.toList()});
+
+  Future<void> setAutoPackages(Iterable<String> packages) =>
+      channel.invokeMethod<void>('setAutoPackages', {'packages': packages.toList()});
+
+  Future<bool> isBusy() async => await channel.invokeMethod<bool>('isBusy') ?? false;
+
+  Future<void> done(int added) => channel.invokeMethod<void>('done', {'added': added});
 
   Future<List<NotificationRecord>> getNotifications() async {
     final result = await channel.invokeListMethod<Map<dynamic, dynamic>>('getNotifications') ?? const [];

@@ -756,10 +756,14 @@ void main() {
       {'id': 'n1', 'package': 'com.bank', 'title': 'Bank', 'text': 'Paid 12.50 EUR at Bakery', 'time': 1794787200000},
       {'id': 'n2', 'package': 'com.bank', 'title': 'Bank', 'text': 'Your code is 4455', 'time': 1794787300000},
     ];
+    var autoPackages = <String>[];
     final messenger = tester.binding.defaultBinaryMessenger;
     messenger.setMockMethodCallHandler(NotificationChannel.channel, (call) async {
       final args = call.arguments as Map?;
       switch (call.method) {
+        case 'setAutoPackages':
+          autoPackages = List<String>.from(args!['packages']);
+          return null;
         case 'isGranted':
           return true;
         case 'getApps':
@@ -806,6 +810,8 @@ void main() {
     // Already captured notifications are imported right away, an unrecognized one is kept
     final link = NotificationSettings.load().apps['com.bank']!;
     expect((link.auto, link.account, link.category), (true, account.uuid, budget.uuid));
+    // The background instance is started by the Android service only for these applications
+    expect(autoPackages, ['com.bank']);
     expect(find.text('Added from notifications: 1'), findsOneWidget);
     expect(state.getList(AppDataType.bills, false).length, bills + 1);
     expect(notifications.map((e) => e['id']), ['n2']);
@@ -830,6 +836,87 @@ void main() {
 
     // Repeated runs do not duplicate transactions
     await controller.run();
+    expect(state.getList(AppDataType.bills, false).length, bills + 2);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Notifications Parser imports in the background instance', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{
+      AppPreferences.prefNotification: '{"apps":{"com.bank":{"account":"acc","category":"cat","auto":true}}}',
+    };
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    state.add(
+      AccountAppData(title: 'Card', type: AppAccountType.account.toString(), details: 0.0, hidden: false),
+      'acc',
+    );
+    state.add(BudgetAppData(title: 'Food', hidden: false), 'cat');
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    var isBusy = false;
+    var notifications = [
+      {'id': 'n1', 'package': 'com.bank', 'title': 'Bank', 'text': 'Paid 12.50 EUR at Bakery', 'time': 1794787200000},
+    ];
+    final done = <int>[];
+    final messenger = tester.binding.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(NotificationChannel.channel, (call) async {
+      final args = call.arguments as Map?;
+      switch (call.method) {
+        case 'isBusy':
+          return isBusy;
+        case 'isGranted':
+          return true;
+        case 'getNotifications':
+          return notifications;
+        case 'removeNotifications':
+          final ids = List<String>.from(args!['ids']);
+          notifications = notifications.where((e) => !ids.contains(e['id'])).toList();
+          return null;
+        case 'done':
+          done.add(args!['added'] as int);
+          return null;
+      }
+      return null;
+    });
+    addTearDown(() {
+      NotificationController.instance = null;
+      messenger.setMockMethodCallHandler(NotificationChannel.channel, null);
+      NotificationChannel.channel.setMethodCallHandler(null);
+    });
+
+    // The application waits while the background instance is importing
+    isBusy = true;
+    final application = NotificationController();
+    NotificationController.instance = application;
+    application.attach(state);
+    await application.run();
+    expect(notifications, hasLength(1));
+    expect(state.getList(AppDataType.bills, false).length, bills);
+    application.detach();
+
+    // The background instance imports all captured notifications and reports the result
+    final background = NotificationController();
+    NotificationController.instance = background;
+    await tester.runAsync(() => background.attachBackground(state));
+    expect(done, [1]);
+    expect(notifications, isEmpty);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+
+    // A notification captured during the background import is imported by the same instance
+    notifications = [
+      {'id': 'n2', 'package': 'com.bank', 'title': 'Bank', 'text': 'Paid 4 EUR at Kiosk', 'time': 1794787400000},
+      {'id': 'n3', 'package': 'com.other', 'title': 'Chat', 'text': 'Paid 9 EUR at Bar', 'time': 1794787500000},
+    ];
+    await tester.runAsync(() => messenger.handlePlatformMessage(
+          NotificationChannel.channel.name,
+          NotificationChannel.channel.codec.encodeMethodCall(const MethodCall('onCaptured')),
+          (_) {},
+        ));
+    expect(done, [1, 2]);
+    // Only applications with an automatic import are processed
+    expect(notifications.map((e) => e['id']), ['n3']);
     expect(state.getList(AppDataType.bills, false).length, bills + 2);
     await tester.pump(const Duration(seconds: 10));
   });

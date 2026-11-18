@@ -24,9 +24,10 @@ class AppSync extends ChangeNotifier {
   final Map<Type, Function> _cb = {};
   final Map<Type, Function> _cbBin = {};
 
-  AppSync() : super() {
+  // Offline instance (for the background import) is not connected to peers
+  AppSync({bool isOnline = true}) : super() {
     final id = getUuid();
-    if (id != null && id.isNotEmpty) {
+    if (isOnline && id != null && id.isNotEmpty) {
       enable(id);
       connect();
     }

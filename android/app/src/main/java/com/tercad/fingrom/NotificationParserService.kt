@@ -5,13 +5,28 @@ import android.content.pm.PackageManager
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 
-/**
- * Captures notifications of the applications selected by the user (banks, payment services, messengers with
- * bank SMS) to be parsed into transactions by the Flutter side.
- */
 class NotificationParserService : NotificationListenerService() {
+    override fun onListenerConnected() {
+        super.onListenerConnected()
+        val scope = NotificationStore.getPackages(this)
+        if (scope.isEmpty()) {
+            return
+        }
+        try {
+            activeNotifications?.filter { scope.contains(it.packageName) }?.forEach { capture(it) }
+        } catch (e: SecurityException) {
+            // The access has been revoked meanwhile
+        }
+    }
+
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
-        if (sbn == null || sbn.packageName == packageName) {
+        if (sbn != null) {
+            capture(sbn)
+        }
+    }
+
+    private fun capture(sbn: StatusBarNotification) {
+        if (sbn.packageName == packageName) {
             return
         }
         val notification = sbn.notification ?: return
@@ -32,7 +47,7 @@ class NotificationParserService : NotificationListenerService() {
         }
         val time = if (notification.`when` > 0) notification.`when` else sbn.postTime
         if (NotificationStore.addItem(this, sbn.packageName, title.trim(), text.trim(), time)) {
-            MainActivity.onNotificationCaptured()
+            NotificationHeadless.onCaptured(this, sbn.packageName)
         }
     }
 

@@ -10,8 +10,6 @@ import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-// Imports recognized notifications of the applications with an enabled automatic mode:
-// on start, on return to the application, and right after a notification is captured
 class NotificationController with WidgetsBindingObserver {
   static NotificationController? _instance;
 
@@ -25,6 +23,7 @@ class NotificationController with WidgetsBindingObserver {
   final revision = ValueNotifier<int>(0);
   void Function(int added)? onImported;
   AppData? _state;
+  bool _isBackground = false;
   Future<void>? _running;
   bool _isRepeated = false;
 
@@ -40,13 +39,32 @@ class NotificationController with WidgetsBindingObserver {
     _state = state;
     if (isFirst) {
       WidgetsBinding.instance.addObserver(this);
-      NotificationChannel.channel.setMethodCallHandler((call) async {
-        if (call.method == 'onCaptured') {
-          await run();
-        }
-      });
+      NotificationChannel.channel.setMethodCallHandler(_handle);
+      syncAutoPackages();
       run();
     }
+  }
+
+  Future<void> attachBackground(AppData state) async {
+    _isBackground = true;
+    _state = state;
+    var added = 0;
+    var generation = 0;
+    onImported = (value) => added += value;
+    Future<void> drain() async {
+      final current = ++generation;
+      await run();
+      if (current == generation) {
+        await channel.done(added);
+      }
+    }
+
+    NotificationChannel.channel.setMethodCallHandler((call) async {
+      if (call.method == 'onCaptured') {
+        await drain();
+      }
+    });
+    await drain();
   }
 
   void detach() {
@@ -58,6 +76,32 @@ class NotificationController with WidgetsBindingObserver {
     _state = null;
   }
 
+  Future<void> _handle(MethodCall call) async {
+    switch (call.method) {
+      case 'onCaptured':
+        await run();
+      case 'onReload':
+        final added = (call.arguments as Map?)?['added'] as int? ?? 0;
+        if (added > 0) {
+          await _state?.flush();
+          revision.value++;
+          onImported?.call(added);
+        }
+        await run();
+    }
+  }
+
+  Future<void> syncAutoPackages() async {
+    try {
+      final apps = NotificationSettings.load().apps.entries.where((e) => e.value.auto && e.value.isLinked);
+      await channel.setAutoPackages(apps.map((e) => e.key));
+    } on PlatformException {
+      // Not critical: the background import would be skipped
+    } on MissingPluginException {
+      // Not supported
+    }
+  }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
@@ -65,7 +109,6 @@ class NotificationController with WidgetsBindingObserver {
     }
   }
 
-  // Calls during an import are merged into a single repetition
   Future<void> run() {
     if (_running != null) {
       _isRepeated = true;
@@ -83,6 +126,9 @@ class NotificationController with WidgetsBindingObserver {
         return;
       }
       try {
+        if (!_isBackground && await channel.isBusy()) {
+          return;
+        }
         if (!await channel.isGranted()) {
           return;
         }

@@ -131,6 +131,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     }
     settings.apps[package] = item.toLink();
     await settings.save();
+    await controller.syncAutoPackages();
   }
 
   Future<void> toggleAuto(NotificationSource item, bool value) async {

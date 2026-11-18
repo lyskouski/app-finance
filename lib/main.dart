@@ -16,6 +16,7 @@ import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_start_of_week.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
+import 'package:app_finance/_classes/integration/notification/notification_background.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/navigation/app_page_route.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
@@ -73,6 +74,10 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+// Background import of notifications on Android, started by the service `NotificationHeadless`
+@pragma('vm:entry-point')
+Future<void> notificationMain() => NotificationBackground.run();
 
 void main() async {
   final FirebaseOptions? platform;
