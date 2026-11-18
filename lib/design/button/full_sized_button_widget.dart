@@ -18,6 +18,7 @@ class FullSizedButtonWidget extends StatelessWidget {
   final IconData icon;
   final BoxConstraints? constraints;
   final FocusController? controller;
+  final bool isDisabled;
   late final String heroTag;
 
   FullSizedButtonWidget({
@@ -27,6 +28,7 @@ class FullSizedButtonWidget extends StatelessWidget {
     required this.icon,
     this.constraints,
     this.controller,
+    this.isDisabled = false,
   }) : heroTag = 'fz_button_${UniqueKey()}';
 
   @override
@@ -52,7 +54,7 @@ class FullSizedButtonWidget extends StatelessWidget {
               button: true,
               child: FloatingActionButton(
                 heroTag: heroTag,
-                onPressed: onPressed,
+                onPressed: isDisabled ? null : onPressed,
                 hoverColor: colorScheme.primary,
                 focusColor: colorScheme.primary.withValues(alpha: 0.8),
                 tooltip: title,

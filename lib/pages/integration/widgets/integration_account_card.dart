@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -85,13 +86,11 @@ class IntegrationAccountCard extends StatelessWidget {
                 },
               ),
               ThemeHelper.hIndent,
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton.icon(
-                  icon: const Icon(Icons.download),
-                  onPressed: isDisabled ? null : onImport,
-                  label: Text(AppLocale.labels.integrationImport),
-                ),
+              FullSizedButtonWidget(
+                icon: Icons.download,
+                onPressed: onImport,
+                title: AppLocale.labels.integrationImport,
+                isDisabled: isDisabled,
               ),
             ],
           ),
