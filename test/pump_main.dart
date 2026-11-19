@@ -137,10 +137,20 @@ class PumpMain {
     return appData;
   }
 
-  static void cleanUpData() {
+  static void cleanUpData({Duration age = const Duration(hours: 1)}) {
     final dir = io.Directory(path);
-    if (dir.existsSync()) {
-      dir.deleteSync(recursive: true);
+    if (!dir.existsSync()) {
+      return;
+    }
+    final boundary = DateTime.now().subtract(age);
+    for (final entity in dir.listSync()) {
+      try {
+        if (entity.statSync().modified.isBefore(boundary)) {
+          entity.deleteSync(recursive: true);
+        }
+      } on io.FileSystemException {
+        // Removed meanwhile by another test file
+      }
     }
   }
 

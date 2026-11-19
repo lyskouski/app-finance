@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Göstərilmək üçün məlumat çatışmır (və ya kifayət deyil).",
+    "notificationAccessSettings": "Bildirişlərə giriş",
+    "notificationAccessSteps": "Girişi necə vermək olar:\n1. Sistem ayarlarını açmaq üçün \"Giriş ver\" düyməsini basın\n2. Fingrom-a bildirişləri oxumağa icazə verin\n3. Android məhdudlaşdırılmış ayar barədə bildirərsə: Fingrom tətbiq məlumatı → ⋮ → \"Məhdud ayarlara icazə ver\" seçin və yenidən cəhd edin\n4. Fingrom-a qayıdın və bildirişləri oxunacaq tətbiqləri seçin",
+    "notificationAccounts": "Hesab açar sözləri",
+    "notificationAccountsTooltip": "Bildirişdə hesabı müəyyən edən sözlər (kartın son rəqəmləri, pul kisəsinin adı): söz yazın və əlavə etmək üçün Enter düyməsini basın. Əks halda tətbiqin defolt hesabı istifadə olunur",
+    "notificationApps": "Bildirişləri oxunan tətbiqlər",
+    "notificationAutoImported": "Bildirişlərdən əlavə edildi: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "Tanınan bildirişlər təsdiqsiz əlavə olunur: Fingrom işləyərkən dərhal, əks halda növbəti açılışda. Tanınmayanlar yoxlamanı gözləyir",
+    "notificationBalance": "Balans açar sözləri",
+    "notificationBalanceTooltip": "Nəzərə alınmayacaq məbləğdən (balans, limit) əvvəl gələn sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın",
+    "notificationCaptured": "Tutulan bildirişlər: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Tutulanları təmizlə",
+    "notificationCurrencyTooltip": "Valyutasız məbləğlər (məs. Debit 20.00) bu valyutada götürülür",
+    "notificationDefaultAccount": "Defolt hesab",
+    "notificationDescription": "Bu cihazdakı bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar yaradın. Yalnız seçilmiş tətbiqlərin bildirişləri oxunur və idxal olunana qədər cihazda qalır. Məbləğ və valyuta avtomatik tanınır.",
+    "notificationGrant": "Giriş ver",
+    "notificationIncome": "Gəlir açar sözləri",
+    "notificationIncomeTooltip": "Bildirişi gəlir kimi qeyd edən sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın",
+    "notificationNoApps": "Hələ bildiriş alınmayıb: tətbiqlər bildiriş göndərdikdən sonra burada görünür",
+    "notificationUnparsed": "Tanınmadı",
     "notifyHeadline": "Bildirişlər Parser",
     "ok": "tamam",
     "orderPin": "Prioritet sifariş",

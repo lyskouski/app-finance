@@ -25,7 +25,10 @@ class IntegrationAccountCard extends StatelessWidget {
   final AppData state;
   final bool isDisabled;
   final VoidCallback onChanged;
-  final VoidCallback onImport;
+  // Without it transactions are imported automatically: the period and the button are hidden
+  final VoidCallback? onImport;
+  final List<Widget> children;
+  final String? accountTitle;
 
   const IntegrationAccountCard({
     super.key,
@@ -33,9 +36,11 @@ class IntegrationAccountCard extends StatelessWidget {
     required this.target,
     required this.state,
     required this.onChanged,
-    required this.onImport,
+    this.onImport,
     this.subtitle,
     this.isDisabled = false,
+    this.children = const [],
+    this.accountTitle,
   });
 
   @override
@@ -54,7 +59,7 @@ class IntegrationAccountCard extends StatelessWidget {
               ThemeHelper.hIndent,
               InputWrapper(
                 type: NamedInputType.accountSelector,
-                title: AppLocale.labels.account,
+                title: accountTitle ?? AppLocale.labels.account,
                 isRequired: true,
                 value: target.appAccount != null ? state.getByUuid(target.appAccount!) : null,
                 onChange: (value) {
@@ -76,22 +81,26 @@ class IntegrationAccountCard extends StatelessWidget {
                 state: state,
                 width: constraints.maxWidth,
               ),
-              InputWrapper(
-                type: NamedInputType.dateSelector,
-                title: AppLocale.labels.integrationDateFrom,
-                value: target.from,
-                onChange: (value) {
-                  target.from = value ?? target.from;
-                  onChanged();
-                },
-              ),
-              ThemeHelper.hIndent,
-              FullSizedButtonWidget(
-                icon: Icons.download,
-                onPressed: onImport,
-                title: AppLocale.labels.integrationImport,
-                isDisabled: isDisabled,
-              ),
+              if (onImport != null)
+                InputWrapper(
+                  type: NamedInputType.dateSelector,
+                  title: AppLocale.labels.integrationDateFrom,
+                  value: target.from,
+                  onChange: (value) {
+                    target.from = value ?? target.from;
+                    onChanged();
+                  },
+                ),
+              ...children,
+              if (onImport != null) ...[
+                ThemeHelper.hIndent,
+                FullSizedButtonWidget(
+                  icon: Icons.download,
+                  onPressed: onImport!,
+                  title: AppLocale.labels.integrationImport,
+                  isDisabled: isDisabled,
+                ),
+              ],
             ],
           ),
         ),

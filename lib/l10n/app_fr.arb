@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Données manquantes (ou insuffisantes) pour être affichées",
+    "notificationAccessSettings": "Accès aux notifications",
+    "notificationAccessSteps": "Comment accorder l'accès :\n1. Appuyez sur \"Accorder l'accès\" pour ouvrir les paramètres du système\n2. Autorisez Fingrom à lire les notifications\n3. Si Android signale un paramètre restreint : ouvrez les infos de l'application Fingrom → ⋮ → \"Autoriser les paramètres restreints\", puis réessayez\n4. Revenez dans Fingrom et sélectionnez les applications dont les notifications doivent être lues",
+    "notificationAccounts": "Mots-clés des comptes",
+    "notificationAccountsTooltip": "Mots identifiant le compte dans une notification (derniers chiffres de la carte, nom du portefeuille) : saisissez un mot et appuyez sur Entrée pour l'ajouter. Sinon, le compte par défaut de l'application est utilisé",
+    "notificationApps": "Applications dont les notifications sont lues",
+    "notificationAutoImported": "Ajoutées depuis les notifications : {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "Les notifications reconnues sont ajoutées sans confirmation : immédiatement si Fingrom est ouvert, sinon au prochain démarrage. Les non reconnues attendent une vérification",
+    "notificationBalance": "Mots-clés de solde",
+    "notificationBalanceTooltip": "Mots précédant un montant à ignorer (solde, plafond) : saisissez un mot et appuyez sur Entrée pour l'ajouter",
+    "notificationCaptured": "Notifications capturées : {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Effacer les capturées",
+    "notificationCurrencyTooltip": "Les montants sans devise (par ex. Débit 20,00) sont pris dans cette devise",
+    "notificationDefaultAccount": "Compte par défaut",
+    "notificationDescription": "Créez des opérations à partir des notifications des applications bancaires et de paiement de cet appareil. Seules les notifications des applications sélectionnées sont lues, et elles restent sur l'appareil jusqu'à leur importation. Le montant et la devise sont reconnus automatiquement.",
+    "notificationGrant": "Accorder l'accès",
+    "notificationIncome": "Mots-clés de revenu",
+    "notificationIncomeTooltip": "Mots indiquant qu'une notification est un revenu : saisissez un mot et appuyez sur Entrée pour l'ajouter",
+    "notificationNoApps": "Aucune notification reçue pour l'instant : les applications apparaissent ici après avoir publié une notification",
+    "notificationUnparsed": "Non reconnu",
     "notifyHeadline": "Analyseur de notifications",
     "ok": "OK",
     "orderPin": "Ordre de priorité",

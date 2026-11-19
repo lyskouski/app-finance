@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Adsutničajuć (abo niedastatkova) dad́zienyja dlia pakazu",
+    "notificationAccessSettings": "Dostup da apaviaščeńniaŭ",
+    "notificationAccessSteps": "Jak dać dostup:\n1. Nacišnicie \"Dać dostup\", kab adkryć systemnyja nalady\n2. Dazvoĺcie Fingrom čytać apaviaščeńni\n3. Kali Android paviedamliaje pra abmiežavanuju naladu: adkryjcie źviestki pra prahramu Fingrom → ⋮ → \"Dazvolić abmiežavanyja nalady\" i paŭtarycie\n4. Viarniciesia ŭ Fingrom i vybierycie prahramy dlia čytańnia apaviaščeńniaŭ",
+    "notificationAccounts": "Klučavyja słovy rachunkaŭ",
+    "notificationAccountsTooltip": "Słovy, pa jakich u apaviaščenni paznajecca rachunak (apošnija ličby kartki, nazva kašalka): uviadzicie słova i naciśnicie Enter, kab dadać jaho. Inakš vykarystoŭvajecca rachunak pa zmaŭčanni dla prahramy",
+    "notificationApps": "Prahramy dlia čytańnia apaviaščeńniaŭ",
+    "notificationAutoImported": "Dadadziena z apaviaščeńniaŭ: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "Raspaznanyja apaviaščeńni dadajucca biez paćvierdžańnia: adrazu, kali Fingrom pracuje, inakš pry nastupnym zapusku. Nieraspaznanyja čakajuć pravierki",
+    "notificationBalance": "Klučavyja słovy balansu",
+    "notificationBalanceTooltip": "Słovy pierad sumaj, jakuju treba ihnaravać (balans, limit): uviadzicie słova i naciśnicie Enter, kab dadać jaho",
+    "notificationCaptured": "Atrymana apaviaščeńniaŭ: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Ačyścić atrymanyja",
+    "notificationCurrencyTooltip": "Sumy biez valiuty (napryklad, Spisana 20.00) uličvajucca ŭ hetaj valiucie",
+    "notificationDefaultAccount": "Rachunak pa zmaŭčanni",
+    "notificationDescription": "Stvareńnie aperacyj z apaviaščeńniaŭ bankaŭskich i placiožnych prahram na hetaj pryladzie. Čytajucca toĺki apaviaščeńni vybranych prahram, i jany zachoŭvajucca na pryladzie da impartu. Suma i valiuta raspaznajucca aŭtamatyčna.",
+    "notificationGrant": "Dać dostup",
+    "notificationIncome": "Klučavyja słovy dachodu",
+    "notificationIncomeTooltip": "Słovy, jakija paznačajuć apaviaščennie jak dachod: uviadzicie słova i naciśnicie Enter, kab dadać jaho",
+    "notificationNoApps": "Apaviaščeńniaŭ jašče nie było: prahramy źjaviacca tut paślia taho, jak dašliuć apaviaščeńnie",
+    "notificationUnparsed": "Nie raspaznana",
     "notifyHeadline": "Apracoŭščyk Apaviaščeńniaŭ",
     "ok": "OK",
     "orderPin": "Pryjarytyzm Paradku",

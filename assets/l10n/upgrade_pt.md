@@ -4,6 +4,8 @@ _A lista completa de actualizações pode ser consultada através do item de nav
 
 ### 8.1.0
 - Adicionado o Wise API (Global): saldos e importação de movimentos de contas multimoeda Wise, conversões como transferências
+- Adicionado o Analisador de notificações (Android): movimentos a partir de notificações de aplicações bancárias e de pagamento, reconhecidos automaticamente ou por um padrão personalizado
+- Previsão da categoria de orçamento para faturas importadas sem categoria no ficheiro
 
 ### 8.0.0
 - Nova página de Integrações com secções expansíveis

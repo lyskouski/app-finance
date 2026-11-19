@@ -4,6 +4,8 @@ _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tom
 
 ### 8.1.0
 - Menambahkan Wise API (Global): saldo dan impor transaksi akun multi-mata uang Wise, konversi sebagai transfer
+- Menambahkan Pengurai Notifikasi (Android): transaksi dari notifikasi aplikasi perbankan dan pembayaran, dikenali secara otomatis atau dengan pola khusus
+- Prediksi Kategori Anggaran untuk Tagihan yang diimpor tanpa kategori di file
 
 ### 8.0.0
 - Halaman Integrasi baru dengan bagian yang dapat dibuka

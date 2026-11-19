@@ -9,7 +9,8 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '정보';
@@ -605,7 +606,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingCode => '인증 후 열린 페이지 주소';
 
   @override
-  String get enableBankingCodeTooltip => '은행에서 접근을 승인한 후 브라우저의 주소를 복사하여 여기에 붙여넣으세요';
+  String get enableBankingCodeTooltip =>
+      '은행에서 접근을 승인한 후 브라우저의 주소를 복사하여 여기에 붙여넣으세요';
 
   @override
   String get enableBankingCountry => '국가 (ISO 코드, 예: DE)';
@@ -624,7 +626,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingKey => '개인 키 (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => '잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다';
+  String get enableBankingKeyInvalid =>
+      '잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다';
 
   @override
   String get enableBankingKeyNotRsa => '잘못된 개인 키: RSA 키가 필요합니다';
@@ -646,7 +649,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingRedirect => '리디렉션 URL';
 
   @override
-  String get enableBankingRedirectTooltip => '애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다';
+  String get enableBankingRedirectTooltip =>
+      '애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다';
 
   @override
   String get enableBankingStateMismatch => '이 주소는 다른 인증에 속합니다. 다시 연결하세요';
@@ -701,7 +705,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finTsCustomerId => '고객 ID (사용자 ID와 다른 경우)';
 
   @override
-  String get finTsDescription => 'FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+  String get finTsDescription =>
+      'FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -753,7 +758,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finTsVersion => '프로토콜 버전';
 
   @override
-  String get finTsWebUnsupported => '은행 서버는 브라우저에서의 접근을 허용하지 않습니다. 데스크톱 또는 모바일 앱을 사용하세요.';
+  String get finTsWebUnsupported =>
+      '은행 서버는 브라우저에서의 접근을 허용하지 않습니다. 데스크톱 또는 모바일 앱을 사용하세요.';
 
   @override
   String get flowTypeInvoice => '인보이스';
@@ -947,6 +953,74 @@ class AppLocalizationsKo extends AppLocalizations {
   String get noChartData => '표시할 데이터가 누락되었거나 충분하지 않습니다.';
 
   @override
+  String get notificationAccessSettings => '알림 접근';
+
+  @override
+  String get notificationAccessSteps =>
+      '접근 권한을 부여하는 방법:\n1. \"접근 허용\"을 눌러 시스템 설정을 엽니다\n2. Fingrom이 알림을 읽도록 허용합니다\n3. Android에서 제한된 설정이라고 표시되면: Fingrom 앱 정보 → ⋮ → \"제한된 설정 허용\"을 연 후 다시 시도합니다\n4. Fingrom으로 돌아와 알림을 읽을 앱을 선택합니다';
+
+  @override
+  String get notificationAccounts => '계좌 키워드';
+
+  @override
+  String get notificationAccountsTooltip =>
+      '알림에서 계좌를 식별하는 단어(카드 끝자리, 지갑 이름): 단어를 입력하고 Enter 키를 눌러 추가하세요. 일치하지 않으면 앱의 기본 계좌가 사용됩니다';
+
+  @override
+  String get notificationApps => '알림을 읽을 앱';
+
+  @override
+  String notificationAutoImported(Object value) {
+    return '알림에서 추가됨: $value';
+  }
+
+  @override
+  String get notificationAutoTooltip =>
+      '인식된 알림은 확인 없이 추가됩니다: Fingrom 실행 중에는 즉시, 그렇지 않으면 다음 실행 시. 인식되지 않은 알림은 검토를 기다립니다';
+
+  @override
+  String get notificationBalance => '잔액 키워드';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '무시할 금액(잔액, 한도) 앞에 오는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
+
+  @override
+  String notificationCaptured(Object value) {
+    return '수집된 알림: $value';
+  }
+
+  @override
+  String get notificationClear => '수집된 알림 지우기';
+
+  @override
+  String get notificationCurrencyTooltip =>
+      '통화가 없는 금액(예: 출금 20.00)은 이 통화로 처리됩니다';
+
+  @override
+  String get notificationDefaultAccount => '기본 계좌';
+
+  @override
+  String get notificationDescription =>
+      '이 기기의 은행 및 결제 앱 알림에서 거래를 생성합니다. 선택한 앱의 알림만 읽으며, 가져올 때까지 기기에 보관됩니다. 금액과 통화는 자동으로 인식됩니다.';
+
+  @override
+  String get notificationGrant => '접근 허용';
+
+  @override
+  String get notificationIncome => '수입 키워드';
+
+  @override
+  String get notificationIncomeTooltip =>
+      '알림을 수입으로 표시하는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
+
+  @override
+  String get notificationNoApps => '아직 받은 알림이 없습니다: 앱이 알림을 보내면 여기에 표시됩니다';
+
+  @override
+  String get notificationUnparsed => '인식되지 않음';
+
+  @override
   String get notifyHeadline => '알림 파서';
 
   @override
@@ -1136,7 +1210,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';
 
   @override
   String get simpleFinToken => 'SimpleFIN 설정 토큰';
@@ -1148,7 +1223,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get simpleFinTokenInvalid => '잘못된 SimpleFIN 설정 토큰';
 
   @override
-  String get simpleFinTokenTooltip => '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';
+  String get simpleFinTokenTooltip =>
+      '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';
 
   @override
   String get skipFromTotals => '합계에서 제외';
@@ -1333,7 +1409,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get wiseProfile => '프로필';
 
   @override
-  String get wiseScaRequired => 'Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요';
+  String get wiseScaRequired =>
+      'Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요';
 
   @override
   String get wiseToken => '개인 API 토큰';
@@ -1343,7 +1420,8 @@ class AppLocalizationsKo extends AppLocalizations {
       '개인 API 토큰 받는 방법:\n1. 브라우저에서 wise.com에 로그인합니다(모바일 앱에서는 토큰을 만들 수 없음)\n2. 설정 → 연동 및 도구 → API 토큰을 엽니다\n3. \"새 토큰 추가\"를 선택하고 이름(예: Fingrom)을 지정한 뒤 \"읽기 전용\" 권한을 선택합니다\n4. 2단계 인증으로 확인하고 토큰을 복사합니다\n5. 아래에 붙여 넣고 \"연결\"을 누릅니다';
 
   @override
-  String get wiseTokenTooltip => 'Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다';
+  String get wiseTokenTooltip =>
+      'Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다';
 
   @override
   String get zoomState => '줌인/줌아웃';

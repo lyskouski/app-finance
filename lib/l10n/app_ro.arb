@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Datele lipsesc (sau nu sunt suficiente) pentru a fi afișate",
+    "notificationAccessSettings": "Acces la notificări",
+    "notificationAccessSteps": "Cum se acordă accesul:\n1. Apăsați \"Acordă acces\" pentru a deschide setările sistemului\n2. Permiteți aplicației Fingrom să citească notificările\n3. Dacă Android semnalează o setare restricționată: deschideți Informații aplicație Fingrom → ⋮ → \"Permite setările restricționate\" și reîncercați\n4. Reveniți în Fingrom și selectați aplicațiile ale căror notificări vor fi citite",
+    "notificationAccounts": "Cuvinte cheie pentru conturi",
+    "notificationAccountsTooltip": "Cuvinte care identifică contul într-o notificare (ultimele cifre ale cardului, numele portofelului): tastați un cuvânt și apăsați Enter pentru a-l adăuga. Altfel se folosește contul implicit al aplicației",
+    "notificationApps": "Aplicații ale căror notificări sunt citite",
+    "notificationAutoImported": "Adăugate din notificări: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "Notificările recunoscute sunt adăugate fără confirmare: imediat cât timp Fingrom rulează, altfel la următoarea pornire. Cele nerecunoscute așteaptă verificarea",
+    "notificationBalance": "Cuvinte cheie pentru sold",
+    "notificationBalanceTooltip": "Cuvinte care preced o sumă de ignorat (sold, limită): tastați un cuvânt și apăsați Enter pentru a-l adăuga",
+    "notificationCaptured": "Notificări capturate: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Șterge capturate",
+    "notificationCurrencyTooltip": "Sumele fără monedă (de ex. Debit 20,00) sunt luate în această monedă",
+    "notificationDefaultAccount": "Cont implicit",
+    "notificationDescription": "Creați tranzacții din notificările aplicațiilor bancare și de plată de pe acest dispozitiv. Sunt citite doar notificările aplicațiilor selectate, care rămân pe dispozitiv până la import. Suma și moneda sunt recunoscute automat.",
+    "notificationGrant": "Acordă acces",
+    "notificationIncome": "Cuvinte cheie pentru venit",
+    "notificationIncomeTooltip": "Cuvinte care marchează o notificare ca venit: tastați un cuvânt și apăsați Enter pentru a-l adăuga",
+    "notificationNoApps": "Nu s-au primit încă notificări: aplicațiile apar aici după ce trimit o notificare",
+    "notificationUnparsed": "Nerecunoscut",
     "notifyHeadline": "Notificări Parser",
     "ok": "OK",
     "orderPin": "Ordine prioritizată",

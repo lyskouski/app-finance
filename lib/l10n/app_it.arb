@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Mancano (o non sono sufficienti) dati da mostrare",
+    "notificationAccessSettings": "Accesso alle notifiche",
+    "notificationAccessSteps": "Come concedere l'accesso:\n1. Premi \"Concedi accesso\" per aprire le impostazioni di sistema\n2. Consenti a Fingrom di leggere le notifiche\n3. Se Android segnala un'impostazione con restrizioni: apri le info dell'app Fingrom → ⋮ → \"Consenti impostazioni con restrizioni\" e riprova\n4. Torna a Fingrom e seleziona le app di cui leggere le notifiche",
+    "notificationAccounts": "Parole chiave dei conti",
+    "notificationAccountsTooltip": "Parole che riconoscono il conto in una notifica (ultime cifre della carta, nome del portafoglio): digita una parola e premi Invio per aggiungerla. Altrimenti viene usato il conto predefinito dell'app",
+    "notificationApps": "App di cui leggere le notifiche",
+    "notificationAutoImported": "Aggiunti dalle notifiche: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "Le notifiche riconosciute vengono aggiunte senza conferma: subito mentre Fingrom è in esecuzione, altrimenti al prossimo avvio. Quelle non riconosciute attendono una revisione",
+    "notificationBalance": "Parole chiave di saldo",
+    "notificationBalanceTooltip": "Parole che precedono un importo da ignorare (saldo, limite): digita una parola e premi Invio per aggiungerla",
+    "notificationCaptured": "Notifiche acquisite: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Cancella acquisite",
+    "notificationCurrencyTooltip": "Gli importi senza valuta (ad es. Addebito 20,00) sono presi in questa valuta",
+    "notificationDefaultAccount": "Conto predefinito",
+    "notificationDescription": "Crea movimenti dalle notifiche delle app bancarie e di pagamento su questo dispositivo. Vengono lette solo le notifiche delle app selezionate, che restano sul dispositivo fino all'importazione. Importo e valuta vengono riconosciuti automaticamente.",
+    "notificationGrant": "Concedi accesso",
+    "notificationIncome": "Parole chiave di entrata",
+    "notificationIncomeTooltip": "Parole che contrassegnano una notifica come entrata: digita una parola e premi Invio per aggiungerla",
+    "notificationNoApps": "Nessuna notifica ricevuta finora: le app compaiono qui dopo aver inviato una notifica",
+    "notificationUnparsed": "Non riconosciuto",
     "notifyHeadline": "Parser delle notifiche",
     "ok": "OK",
     "orderPin": "Ordine prioritario",

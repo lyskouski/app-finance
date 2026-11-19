@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Data tidak ada (atau tidak cukup) untuk ditampilkan",
+    "notificationAccessSettings": "Akses Notifikasi",
+    "notificationAccessSteps": "Cara memberikan akses:\n1. Tekan \"Berikan Akses\" untuk membuka pengaturan sistem\n2. Izinkan Fingrom membaca notifikasi\n3. Jika Android melaporkan setelan terbatas: buka Info aplikasi Fingrom → ⋮ → \"Izinkan setelan terbatas\", lalu coba lagi\n4. Kembali ke Fingrom dan pilih aplikasi yang notifikasinya akan dibaca",
+    "notificationAccounts": "Kata kunci akun",
+    "notificationAccountsTooltip": "Kata yang mengenali akun dalam notifikasi (digit terakhir kartu, nama dompet): ketik kata dan tekan Enter untuk menambahkannya. Jika tidak, akun bawaan aplikasi yang digunakan",
+    "notificationApps": "Aplikasi yang notifikasinya dibaca",
+    "notificationAutoImported": "Ditambahkan dari notifikasi: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "Notifikasi yang dikenali ditambahkan tanpa konfirmasi: langsung saat Fingrom berjalan, jika tidak saat dibuka berikutnya. Yang tidak dikenali menunggu ditinjau",
+    "notificationBalance": "Kata kunci saldo",
+    "notificationBalanceTooltip": "Kata sebelum jumlah yang diabaikan (saldo, limit): ketik kata dan tekan Enter untuk menambahkannya",
+    "notificationCaptured": "Notifikasi yang ditangkap: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Hapus yang ditangkap",
+    "notificationCurrencyTooltip": "Jumlah tanpa mata uang (mis. Debit 20.00) diambil dalam mata uang ini",
+    "notificationDefaultAccount": "Akun bawaan",
+    "notificationDescription": "Buat transaksi dari notifikasi aplikasi perbankan dan pembayaran di perangkat ini. Hanya notifikasi dari aplikasi yang dipilih yang dibaca, dan notifikasi tetap tersimpan di perangkat hingga diimpor. Jumlah dan mata uang dikenali secara otomatis.",
+    "notificationGrant": "Berikan Akses",
+    "notificationIncome": "Kata kunci pemasukan",
+    "notificationIncomeTooltip": "Kata yang menandai notifikasi sebagai pemasukan: ketik kata dan tekan Enter untuk menambahkannya",
+    "notificationNoApps": "Belum ada notifikasi yang diterima: aplikasi muncul di sini setelah mengirim notifikasi",
+    "notificationUnparsed": "Tidak dikenali",
     "notifyHeadline": "Pengurai Notifikasi",
     "ok": "OK",
     "orderPin": "Urutan prioritas",

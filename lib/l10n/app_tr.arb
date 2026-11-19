@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Gösterilecek veri eksik (veya yeterli değil)",
+    "notificationAccessSettings": "Bildirim erişimi",
+    "notificationAccessSteps": "Erişim nasıl verilir:\n1. Sistem ayarlarını açmak için \"Erişim ver\"e basın\n2. Fingrom'un bildirimleri okumasına izin verin\n3. Android kısıtlanmış bir ayar bildirirse: Fingrom uygulama bilgisi → ⋮ → \"Kısıtlanmış ayarlara izin ver\" seçeneğini açın ve tekrar deneyin\n4. Fingrom'a dönün ve bildirimleri okunacak uygulamaları seçin",
+    "notificationAccounts": "Hesap anahtar kelimeleri",
+    "notificationAccountsTooltip": "Bildirimde hesabı tanıyan kelimeler (kartın son haneleri, cüzdan adı): bir kelime yazın ve eklemek için Enter tuşuna basın. Aksi halde uygulamanın varsayılan hesabı kullanılır",
+    "notificationApps": "Bildirimleri okunan uygulamalar",
+    "notificationAutoImported": "Bildirimlerden eklendi: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "Tanınan bildirimler onay olmadan eklenir: Fingrom çalışırken hemen, aksi halde bir sonraki açılışta. Tanınmayanlar incelemeyi bekler",
+    "notificationBalance": "Bakiye anahtar kelimeleri",
+    "notificationBalanceTooltip": "Yok sayılacak bir tutardan (bakiye, limit) önce gelen kelimeler: bir kelime yazın ve eklemek için Enter tuşuna basın",
+    "notificationCaptured": "Yakalanan bildirimler: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Yakalananları temizle",
+    "notificationCurrencyTooltip": "Para birimi olmayan tutarlar (ör. Borç 20,00) bu para biriminde alınır",
+    "notificationDefaultAccount": "Varsayılan hesap",
+    "notificationDescription": "Bu cihazdaki bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler oluşturun. Yalnızca seçilen uygulamaların bildirimleri okunur ve içe aktarılana kadar cihazda kalır. Tutar ve para birimi otomatik olarak tanınır.",
+    "notificationGrant": "Erişim ver",
+    "notificationIncome": "Gelir anahtar kelimeleri",
+    "notificationIncomeTooltip": "Bildirimi gelir olarak işaretleyen kelimeler: bir kelime yazın ve eklemek için Enter tuşuna basın",
+    "notificationNoApps": "Henüz bildirim alınmadı: uygulamalar bir bildirim gönderdikten sonra burada görünür",
+    "notificationUnparsed": "Tanınmadı",
     "notifyHeadline": "Bildirim Ayrıştırıcı",
     "ok": "TAMAM.",
     "orderPin": "Önceliklendirilmiş sıra",

@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "数据缺失（或不足），无法显示",
+    "notificationAccessSettings": "通知访问权限",
+    "notificationAccessSteps": "如何授予访问权限：\n1. 点击\"授予访问权限\"打开系统设置\n2. 允许 Fingrom 读取通知\n3. 如果 Android 提示受限设置：打开 Fingrom 的应用信息 → ⋮ →\"允许受限设置\"，然后重试\n4. 返回 Fingrom 并选择要读取通知的应用",
+    "notificationAccounts": "账户关键词",
+    "notificationAccountsTooltip": "用于在通知中识别账户的词语（卡号末几位、钱包名称）：输入词语后按 Enter 添加。否则使用该应用的默认账户",
+    "notificationApps": "读取通知的应用",
+    "notificationAutoImported": "已从通知添加：{value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "识别出的通知无需确认即被添加：Fingrom 运行时立即添加，否则在下次启动时添加。未识别的通知等待审核",
+    "notificationBalance": "余额关键词",
+    "notificationBalanceTooltip": "出现在需要忽略的金额（余额、额度）之前的词语：输入词语后按 Enter 添加",
+    "notificationCaptured": "已捕获的通知：{value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "清除已捕获",
+    "notificationCurrencyTooltip": "没有货币的金额（例如：扣款 20.00）按此货币计入",
+    "notificationDefaultAccount": "默认账户",
+    "notificationDescription": "根据本设备上银行和支付应用的通知创建交易。仅读取所选应用的通知，且在导入前通知保留在设备上。金额和货币会自动识别。",
+    "notificationGrant": "授予访问权限",
+    "notificationIncome": "收入关键词",
+    "notificationIncomeTooltip": "用于将通知标记为收入的词语：输入词语后按 Enter 添加",
+    "notificationNoApps": "尚未收到任何通知：应用发送通知后会显示在这里",
+    "notificationUnparsed": "无法识别",
     "notifyHeadline": "通知解析器",
     "ok": "确定",
     "orderPin": "优先顺序",

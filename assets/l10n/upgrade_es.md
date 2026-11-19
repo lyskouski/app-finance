@@ -4,6 +4,8 @@ _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" 
 
 ### 8.1.0
 - Se añade Wise API (Global): saldos e importación de movimientos de cuentas multidivisa de Wise, conversiones como transferencias
+- Se añade Notificaciones Parser (Android): movimientos a partir de notificaciones de aplicaciones bancarias y de pago, reconocidos automáticamente o mediante un patrón personalizado
+- Predicción de la categoría de presupuesto para recibos importados sin categoría en el archivo
 
 ### 8.0.0
 - Nueva página de Integraciones con secciones desplegables

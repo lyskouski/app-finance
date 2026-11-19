@@ -6,6 +6,10 @@ import 'dart:convert';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_settings.dart';
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
+import 'package:app_finance/_classes/integration/notification/notification_channel.dart';
+import 'package:app_finance/_classes/integration/notification/notification_controller.dart';
+import 'package:app_finance/_classes/integration/notification/notification_parser.dart';
+import 'package:app_finance/_classes/integration/notification/notification_settings.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
 import 'package:app_finance/_classes/integration/wise/wise_client.dart';
@@ -21,9 +25,11 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
+import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:fints/fints.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:material_ui/material_ui.dart';
@@ -138,6 +144,7 @@ void main() {
     expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
     expect(find.text('Enable Banking (EU)'), findsOneWidget);
     expect(find.text('Wise API (Global)'), findsOneWidget);
+    expect(find.text('Notifications Parser'), findsOneWidget);
     // Protocols are separated from the APIs of single institutions
     final divider = tester.getTopLeft(find.byKey(const ValueKey('integration_divider'))).dy;
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_enablebanking'))).dy, lessThan(divider));
@@ -614,6 +621,323 @@ void main() {
     await tester.pumpAndSettle();
     expect(requests.last.method, 'DELETE');
     expect(EnableBankingSettings.loadSession(), isNull);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Notifications Parser reads notifications of selected apps and imports them',
+      (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Card',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    state.add(BudgetAppData(title: 'Food', hidden: false));
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    var isGranted = false;
+    var packages = <String>[];
+    var notifications = [
+      {'id': 'n1', 'package': 'com.bank', 'title': 'Bank', 'text': 'Paid 12.50 EUR at Bakery', 'time': 1794787200000},
+      {'id': 'n2', 'package': 'com.bank', 'title': 'Bank', 'text': 'Your code is 4455', 'time': 1794787300000},
+    ];
+    final calls = <String>[];
+    tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(NotificationChannel.channel, (call) async {
+      calls.add(call.method);
+      final args = call.arguments as Map?;
+      switch (call.method) {
+        case 'isGranted':
+          return isGranted;
+        case 'getApps':
+          return {'com.bank': 'My Bank', 'com.chat': 'Chat'};
+        case 'getPackages':
+          return packages;
+        case 'setPackages':
+          packages = List<String>.from(args!['packages']);
+          return null;
+        case 'getNotifications':
+          return notifications.where((e) => packages.contains(e['package'])).toList();
+        case 'removeNotifications':
+          final ids = List<String>.from(args!['ids']);
+          notifications = notifications.where((e) => !ids.contains(e['id'])).toList();
+          return null;
+      }
+      return null;
+    });
+    addTearDown(
+        () => tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(NotificationChannel.channel, null));
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => const Scaffold(body: SingleChildScrollView(child: NotificationWidget())),
+    ));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const ValueKey('notification_steps')), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('notification_grant')));
+    await tester.tap(find.byKey(const ValueKey('notification_grant')));
+    await pumpFrames(tester);
+    expect(calls, contains('openSettings'));
+
+    // The access is granted in the system settings
+    isGranted = true;
+    for (final state in [
+      AppLifecycleState.inactive,
+      AppLifecycleState.hidden,
+      AppLifecycleState.paused,
+      AppLifecycleState.hidden,
+      AppLifecycleState.inactive,
+      AppLifecycleState.resumed,
+    ]) {
+      tester.binding.handleAppLifecycleStateChanged(state);
+    }
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const ValueKey('notification_steps')), findsNothing);
+    expect(find.text('My Bank'), findsOneWidget);
+    expect(find.text('Chat'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('notification_app_com.bank')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(packages, ['com.bank']);
+    expect(find.text('Captured notifications: 2'), findsOneWidget);
+    expect(find.textContaining('-12.5 EUR — Bakery'), findsOneWidget);
+    expect(find.text('Not recognized'), findsOneWidget);
+
+    // Parsing options are shared by all apps and shown before them
+    final income = find.byKey(const ValueKey('notification_income'));
+    expect(tester.getTopLeft(income).dy, lessThan(tester.getTopLeft(find.text('My Bank').first).dy));
+    await tester.enterText(find.descendant(of: income, matching: find.byType(TextField)), 'Paid');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await pumpFrames(tester);
+    expect(find.textContaining('12.5 EUR — Bakery'), findsOneWidget);
+    expect(find.textContaining('-12.5 EUR — Bakery'), findsNothing);
+    expect(NotificationSettings.load().income, contains('paid'));
+    await tester.tap(find.descendant(of: find.byKey(const ValueKey('tag_paid')), matching: find.byIcon(Icons.close)));
+    await pumpFrames(tester);
+    expect(find.textContaining('-12.5 EUR — Bakery'), findsOneWidget);
+    expect(NotificationSettings.load().income, NotificationParser.incomeKeywords);
+
+    // The account is recognized by its keywords, otherwise the default one is taken
+    expect(find.textContaining('Default Account', findRichText: true), findsWidgets);
+    expect(find.byKey(const ValueKey('notification_currency_com.bank')), findsOneWidget);
+    final cardKeywords = find.byKey(ValueKey('notification_account_${account.uuid}'));
+    await tester.ensureVisible(cardKeywords);
+    await tester.enterText(find.descendant(of: cardKeywords, matching: find.byType(TextField)), 'Bakery');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await pumpFrames(tester);
+    expect(find.textContaining('-12.5 EUR — Bakery → Card'), findsOneWidget);
+    expect(NotificationSettings.load().accounts[account.uuid], ['bakery']);
+
+    // Neither the period nor the manual import: recognized notifications are imported automatically
+    expect(find.text('Import Transactions'), findsNothing);
+    expect(state.getList(AppDataType.bills, false).length, bills);
+
+    await tester.ensureVisible(find.text('Clear Captured'));
+    await tester.tap(find.text('Clear Captured'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(notifications, isEmpty);
+    expect(find.text('Captured notifications: 0'), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Notifications Parser imports recognized notifications automatically', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Card',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Food', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    var notifications = [
+      {'id': 'n1', 'package': 'com.bank', 'title': 'Bank', 'text': 'Paid 12.50 EUR at Bakery', 'time': 1794787200000},
+      {'id': 'n2', 'package': 'com.bank', 'title': 'Bank', 'text': 'Your code is 4455', 'time': 1794787300000},
+    ];
+    var autoPackages = <String>[];
+    final messenger = tester.binding.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(NotificationChannel.channel, (call) async {
+      final args = call.arguments as Map?;
+      switch (call.method) {
+        case 'setAutoPackages':
+          autoPackages = List<String>.from(args!['packages']);
+          return null;
+        case 'isGranted':
+          return true;
+        case 'getApps':
+          return {'com.bank': 'My Bank'};
+        case 'getPackages':
+          return ['com.bank'];
+        case 'getNotifications':
+          return notifications;
+        case 'removeNotifications':
+          final ids = List<String>.from(args!['ids']);
+          notifications = notifications.where((e) => !ids.contains(e['id'])).toList();
+          return null;
+      }
+      return null;
+    });
+    final controller = NotificationController();
+    NotificationController.instance = controller;
+    addTearDown(() {
+      controller.detach();
+      NotificationController.instance = null;
+      messenger.setMockMethodCallHandler(NotificationChannel.channel, null);
+    });
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => const Scaffold(body: SingleChildScrollView(child: NotificationWidget())),
+    ));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    // Nothing is imported until the app is linked to an account and a category
+    expect(state.getList(AppDataType.bills, false).length, bills);
+    expect(autoPackages, isEmpty);
+    expect(find.byKey(const ValueKey('notification_auto_com.bank')), findsNothing);
+
+    final widgetState = tester.state<NotificationWidgetState>(find.byType(NotificationWidget));
+    widgetState.sources['com.bank']!
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await widgetState.persist('com.bank');
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    // Already captured notifications are imported right away, an unrecognized one is kept
+    final link = NotificationSettings.load().apps['com.bank']!;
+    expect((link.account, link.category), (account.uuid, budget.uuid));
+    // The background instance is started by the Android service only for these applications
+    expect(autoPackages, ['com.bank']);
+    expect(find.text('Added from notifications: 1'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    expect(notifications.map((e) => e['id']), ['n2']);
+    expect(find.text('Captured notifications: 1'), findsOneWidget);
+
+    // A notification captured while the application is running
+    notifications = [
+      ...notifications,
+      {'id': 'n3', 'package': 'com.bank', 'title': 'Bank', 'text': 'Paid 4 EUR at Kiosk', 'time': 1794787400000},
+    ];
+    await messenger.handlePlatformMessage(
+      NotificationChannel.channel.name,
+      NotificationChannel.channel.codec.encodeMethodCall(const MethodCall('onCaptured')),
+      (_) {},
+    );
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(state.getList(AppDataType.bills, false).length, bills + 2);
+    expect(state.getList(AppDataType.bills, false).whereType<BillAppData>().map((e) => e.title), contains('Kiosk'));
+    expect(notifications.map((e) => e['id']), ['n2']);
+
+    // Repeated runs do not duplicate transactions
+    await controller.run();
+    expect(state.getList(AppDataType.bills, false).length, bills + 2);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Notifications Parser imports in the background instance', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{
+      AppPreferences.prefNotification: '{"apps":{"com.bank":{"account":"acc","category":"cat"}}}',
+    };
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    state.add(
+      AccountAppData(title: 'Card', type: AppAccountType.account.toString(), details: 0.0, hidden: false),
+      'acc',
+    );
+    state.add(BudgetAppData(title: 'Food', hidden: false), 'cat');
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    var isBusy = false;
+    var notifications = [
+      {'id': 'n1', 'package': 'com.bank', 'title': 'Bank', 'text': 'Paid 12.50 EUR at Bakery', 'time': 1794787200000},
+    ];
+    final done = <int>[];
+    final messenger = tester.binding.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(NotificationChannel.channel, (call) async {
+      final args = call.arguments as Map?;
+      switch (call.method) {
+        case 'isBusy':
+          return isBusy;
+        case 'isGranted':
+          return true;
+        case 'getNotifications':
+          return notifications;
+        case 'removeNotifications':
+          final ids = List<String>.from(args!['ids']);
+          notifications = notifications.where((e) => !ids.contains(e['id'])).toList();
+          return null;
+        case 'done':
+          done.add(args!['added'] as int);
+          return null;
+      }
+      return null;
+    });
+    addTearDown(() {
+      NotificationController.instance = null;
+      messenger.setMockMethodCallHandler(NotificationChannel.channel, null);
+      NotificationChannel.channel.setMethodCallHandler(null);
+    });
+
+    // The application waits while the background instance is importing
+    isBusy = true;
+    final application = NotificationController();
+    NotificationController.instance = application;
+    application.attach(state);
+    await application.run();
+    expect(notifications, hasLength(1));
+    expect(state.getList(AppDataType.bills, false).length, bills);
+    application.detach();
+
+    // The background instance imports all captured notifications and reports the result
+    final background = NotificationController();
+    NotificationController.instance = background;
+    await tester.runAsync(() => background.attachBackground(state));
+    expect(done, [1]);
+    expect(notifications, isEmpty);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+
+    // A notification captured during the background import is imported by the same instance
+    notifications = [
+      {'id': 'n2', 'package': 'com.bank', 'title': 'Bank', 'text': 'Paid 4 EUR at Kiosk', 'time': 1794787400000},
+      {'id': 'n3', 'package': 'com.other', 'title': 'Chat', 'text': 'Paid 9 EUR at Bar', 'time': 1794787500000},
+    ];
+    await tester.runAsync(() => messenger.handlePlatformMessage(
+          NotificationChannel.channel.name,
+          NotificationChannel.channel.codec.encodeMethodCall(const MethodCall('onCaptured')),
+          (_) {},
+        ));
+    expect(done, [1, 2]);
+    // Only applications linked to an account are processed
+    expect(notifications.map((e) => e['id']), ['n3']);
+    expect(state.getList(AppDataType.bills, false).length, bills + 2);
     await tester.pump(const Duration(seconds: 10));
   });
 }

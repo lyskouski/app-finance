@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Os dados estão faltando (ou não são suficientes) para serem exibidos",
+    "notificationAccessSettings": "Acesso às notificações",
+    "notificationAccessSteps": "Como conceder o acesso:\n1. Toque em \"Conceder acesso\" para abrir as configurações do sistema\n2. Permita que o Fingrom leia as notificações\n3. Se o Android informar uma configuração restrita: abra as informações do app Fingrom → ⋮ → \"Permitir configurações restritas\" e tente novamente\n4. Volte ao Fingrom e selecione os aplicativos cujas notificações serão lidas",
+    "notificationAccounts": "Palavras-chave de contas",
+    "notificationAccountsTooltip": "Palavras que identificam a conta em uma notificação (últimos dígitos do cartão, nome da carteira): digite uma palavra e pressione Enter para adicioná-la. Caso contrário, é usada a conta padrão do aplicativo",
+    "notificationApps": "Aplicativos cujas notificações são lidas",
+    "notificationAutoImported": "Adicionadas a partir de notificações: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "As notificações reconhecidas são adicionadas sem confirmação: imediatamente enquanto o Fingrom está em execução, caso contrário na próxima abertura. As não reconhecidas aguardam revisão",
+    "notificationBalance": "Palavras-chave de saldo",
+    "notificationBalanceTooltip": "Palavras antes de um valor a ignorar (saldo, limite): digite uma palavra e pressione Enter para adicioná-la",
+    "notificationCaptured": "Notificações capturadas: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Limpar capturadas",
+    "notificationCurrencyTooltip": "Os valores sem moeda (por exemplo, Débito 20,00) são considerados nesta moeda",
+    "notificationDefaultAccount": "Conta padrão",
+    "notificationDescription": "Crie transações a partir de notificações de aplicativos bancários e de pagamento neste dispositivo. Apenas as notificações dos aplicativos selecionados são lidas e ficam no dispositivo até serem importadas. O valor e a moeda são reconhecidos automaticamente.",
+    "notificationGrant": "Conceder acesso",
+    "notificationIncome": "Palavras-chave de receita",
+    "notificationIncomeTooltip": "Palavras que marcam uma notificação como receita: digite uma palavra e pressione Enter para adicioná-la",
+    "notificationNoApps": "Nenhuma notificação recebida ainda: os aplicativos aparecem aqui depois de enviarem uma notificação",
+    "notificationUnparsed": "Não reconhecido",
     "notifyHeadline": "Analisador de notificações",
     "ok": "OK",
     "orderPin": "Ordem priorizada",

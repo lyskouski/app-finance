@@ -78,6 +78,7 @@ zastaniecca ŭ baku.
   - SimpleFIN Bridge (US): impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA
   - Enable Banking (EU): impart reštkaŭ i aperacyj jeŭrapiejskich bankaŭ (PSD2)
   - Wise API (Global): impart reštkaŭ i aperacyj šmatvalutnych rachunkaŭ Wise (persanaĺny API-tokien)
+  - Apracoŭščyk Apaviaščeńniaŭ (Android): aperacyi z apaviaščeńniaŭ bankaŭskich i placiožnych prahram
 - Ekspart u fajl Excel `XLSX`
 - Šyfravańnie dadzienych
 - Lakalizacyja
@@ -114,5 +115,3 @@ zastaniecca ŭ baku.
 | Redahavać vybrany eliemient         | `Ctrl` + `E`                   |
 | Vydalić vybrany eliemient           | `Ctrl` + `D`                   |
 -->
-
-

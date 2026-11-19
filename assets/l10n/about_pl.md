@@ -78,6 +78,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
   - SimpleFIN Bridge (US): import sald i transakcji z amerykańskich banków i od wydawców kart
   - Enable Banking (EU): import sald i transakcji z europejskich banków (PSD2)
   - Wise API (Global): import sald i transakcji wielowalutowych kont Wise (osobisty token API)
+  - Parser powiadomień (Android): transakcje z powiadomień aplikacji bankowych i płatniczych
 - Eksport do pliku Excel `XLSX`
 - Szyfrowanie danych
 - Lokalizacja
@@ -114,5 +115,3 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 | Edytuj wybrany element              | `Ctrl` + `E`                   |
 | Usuń zaznaczony element             | `Ctrl` + `D`                   |
 -->
-
-

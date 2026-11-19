@@ -9,7 +9,6 @@ import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:app_finance/pages/automation/widgets/payments_tab.dart';
 import 'package:app_finance/pages/automation/widgets/sync_tab.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
-//import 'package:app_finance/pages/automation/widgets/notification_tab.dart';
 import 'package:material_ui/material_ui.dart';
 
 class AutomationPage extends StatefulWidget {
@@ -50,13 +49,10 @@ class AutomationPageState extends AbstractPageState<AutomationPage> with TickerP
             tabs: [
               Tab(icon: const Icon(Icons.free_cancellation_rounded), text: AppLocale.labels.paymentsHeadline),
               Tab(icon: const Icon(Icons.sync), text: AppLocale.labels.syncHeadline),
-              // if (Platform.isAndroid)
-              // Tab(icon: const Icon(Icons.message), text: AppLocale.labels.notifyHeadline),
             ],
             children: [
               PaymentsTab(callback: update, state: state),
               SyncTab(callback: update),
-              //if (Platform.isAndroid) NotificationTab(),
             ],
           ),
         ),

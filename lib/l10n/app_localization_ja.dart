@@ -9,7 +9,8 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'ご注文について';
@@ -605,7 +606,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get enableBankingCode => '認可後に開いたページのアドレス';
 
   @override
-  String get enableBankingCodeTooltip => '銀行でアクセスを承認した後、ブラウザーのアドレスをコピーしてここに貼り付けてください';
+  String get enableBankingCodeTooltip =>
+      '銀行でアクセスを承認した後、ブラウザーのアドレスをコピーしてここに貼り付けてください';
 
   @override
   String get enableBankingCountry => '国（ISOコード、例: DE）';
@@ -701,7 +703,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finTsCustomerId => '顧客ID（ユーザーIDと異なる場合）';
 
   @override
-  String get finTsDescription => 'FinTS 4.1（PIN/TAN）対応の銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+  String get finTsDescription =>
+      'FinTS 4.1（PIN/TAN）対応の銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -729,7 +732,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finTsProductId => '製品登録番号';
 
   @override
-  String get finTsProductIdTooltip => 'Deutsche Kreditwirtschaft がアプリの開発元に発行します';
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft がアプリの開発元に発行します';
 
   @override
   String get finTsTan => 'TAN';
@@ -753,7 +757,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finTsVersion => 'プロトコルバージョン';
 
   @override
-  String get finTsWebUnsupported => '銀行のサーバーはブラウザーからのアクセスを許可していません。デスクトップ版またはモバイル版アプリを使用してください。';
+  String get finTsWebUnsupported =>
+      '銀行のサーバーはブラウザーからのアクセスを許可していません。デスクトップ版またはモバイル版アプリを使用してください。';
 
   @override
   String get flowTypeInvoice => '請求書';
@@ -947,6 +952,72 @@ class AppLocalizationsJa extends AppLocalizations {
   String get noChartData => '表示するデータがない（または十分でない）。';
 
   @override
+  String get notificationAccessSettings => '通知へのアクセス';
+
+  @override
+  String get notificationAccessSteps =>
+      'アクセスを許可する方法：\n1.「アクセスを許可」を押してシステム設定を開きます\n2. Fingrom に通知の読み取りを許可します\n3. Android が制限付き設定と表示した場合：Fingrom のアプリ情報 → ⋮ →「制限付き設定を許可」を開き、再試行します\n4. Fingrom に戻り、通知を読み取るアプリを選択します';
+
+  @override
+  String get notificationAccounts => '口座キーワード';
+
+  @override
+  String get notificationAccountsTooltip =>
+      '通知内で口座を識別する語句（カード番号の末尾、ウォレット名）：語句を入力し、Enterキーで追加します。該当しない場合はアプリの既定の口座が使われます';
+
+  @override
+  String get notificationApps => '通知を読み取るアプリ';
+
+  @override
+  String notificationAutoImported(Object value) {
+    return '通知から追加：$value';
+  }
+
+  @override
+  String get notificationAutoTooltip =>
+      '認識された通知は確認なしで追加されます：Fingrom の実行中は即時、それ以外は次回起動時。認識されない通知は確認待ちになります';
+
+  @override
+  String get notificationBalance => '残高キーワード';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '無視する金額（残高、限度額）の前に置かれる語句：語句を入力し、Enterキーで追加します';
+
+  @override
+  String notificationCaptured(Object value) {
+    return '取得した通知：$value';
+  }
+
+  @override
+  String get notificationClear => '取得済みを消去';
+
+  @override
+  String get notificationCurrencyTooltip => '通貨のない金額（例：引落 20.00）はこの通貨として扱われます';
+
+  @override
+  String get notificationDefaultAccount => '既定の口座';
+
+  @override
+  String get notificationDescription =>
+      'この端末の銀行・決済アプリの通知から取引を作成します。選択したアプリの通知のみが読み取られ、インポートされるまで端末に保存されます。金額と通貨は自動で認識されます。';
+
+  @override
+  String get notificationGrant => 'アクセスを許可';
+
+  @override
+  String get notificationIncome => '収入キーワード';
+
+  @override
+  String get notificationIncomeTooltip => '通知を収入として判定する語句：語句を入力し、Enterキーで追加します';
+
+  @override
+  String get notificationNoApps => 'まだ通知を受信していません：アプリは通知を送信した後にここに表示されます';
+
+  @override
+  String get notificationUnparsed => '認識できません';
+
+  @override
   String get notifyHeadline => '通知パーサー';
 
   @override
@@ -1129,13 +1200,15 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settingsSaved => '設定が保存されました！';
 
   @override
-  String get simpleFinDescription => 'SimpleFIN Bridge を通じて米国の銀行やカード発行会社から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+  String get simpleFinDescription =>
+      'SimpleFIN Bridge を通じて米国の銀行やカード発行会社から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge が認証情報のないアクセスアドレスを返しました';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge が認証情報のないアクセスアドレスを返しました';
 
   @override
   String get simpleFinToken => 'SimpleFIN セットアップトークン';
@@ -1147,7 +1220,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get simpleFinTokenInvalid => '無効な SimpleFIN セットアップトークン';
 
   @override
-  String get simpleFinTokenTooltip => 'このアプリ用に SimpleFIN Bridge（例: bridge.simplefin.org）で作成します。使用できるのは1回のみです';
+  String get simpleFinTokenTooltip =>
+      'このアプリ用に SimpleFIN Bridge（例: bridge.simplefin.org）で作成します。使用できるのは1回のみです';
 
   @override
   String get skipFromTotals => '合計から除外する';
@@ -1332,7 +1406,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get wiseProfile => 'プロフィール';
 
   @override
-  String get wiseScaRequired => 'Wise で強力な顧客認証が必要です。Wise アプリでこの残高の明細を開いてから再試行してください';
+  String get wiseScaRequired =>
+      'Wise で強力な顧客認証が必要です。Wise アプリでこの残高の明細を開いてから再試行してください';
 
   @override
   String get wiseToken => '個人用 API トークン';
@@ -1342,7 +1417,8 @@ class AppLocalizationsJa extends AppLocalizations {
       '個人用 API トークンの取得方法:\n1. ブラウザで wise.com にログインします（モバイルアプリではトークンを作成できません）\n2. 設定 → 連携とツール → API トークン を開きます\n3. 「新しいトークンを追加」を選び、名前（例: Fingrom）を付けて「読み取り専用」アクセスを選択します\n4. 2 段階認証で確認し、トークンをコピーします\n5. 下に貼り付けて「接続」を押します';
 
   @override
-  String get wiseTokenTooltip => 'Wise の 設定 → API トークン で作成します（可能であれば読み取り専用）。暗号化して保存されます';
+  String get wiseTokenTooltip =>
+      'Wise の 設定 → API トークン で作成します（可能であれば読み取り専用）。暗号化して保存されます';
 
   @override
   String get zoomState => 'ズームイン/ズームアウト';

@@ -9,7 +9,8 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'نبذة عن الشركة';
@@ -102,7 +103,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get balanceDate => 'تحديث تاريخ الرصيد';
 
   @override
-  String get balanceDateTooltip => 'لن تؤثر النتائج والإيرادات قبل هذا التاريخ على الرصيد';
+  String get balanceDateTooltip =>
+      'لن تؤثر النتائج والإيرادات قبل هذا التاريخ على الرصيد';
 
   @override
   String get balanceTooltip => 'تعيين الرصيد';
@@ -605,7 +607,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get enableBankingCode => 'عنوان الصفحة المفتوحة بعد التفويض';
 
   @override
-  String get enableBankingCodeTooltip => 'أكّد الوصول في البنك، ثم انسخ العنوان من المتصفح والصقه هنا';
+  String get enableBankingCodeTooltip =>
+      'أكّد الوصول في البنك، ثم انسخ العنوان من المتصفح والصقه هنا';
 
   @override
   String get enableBankingCountry => 'الدولة (رمز ISO، مثل DE)';
@@ -618,13 +621,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete => 'املأ معرّف التطبيق والمفتاح الخاص وعنوان URL لإعادة التوجيه والدولة';
+  String get enableBankingIncomplete =>
+      'املأ معرّف التطبيق والمفتاح الخاص وعنوان URL لإعادة التوجيه والدولة';
 
   @override
   String get enableBankingKey => 'المفتاح الخاص (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => 'مفتاح خاص غير صالح: يُتوقع كتلة PEM \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid =>
+      'مفتاح خاص غير صالح: يُتوقع كتلة PEM \"PRIVATE KEY\"';
 
   @override
   String get enableBankingKeyNotRsa => 'مفتاح خاص غير صالح: يُتوقع مفتاح RSA';
@@ -646,10 +651,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get enableBankingRedirect => 'عنوان URL لإعادة التوجيه';
 
   @override
-  String get enableBankingRedirectTooltip => 'مسجّل للتطبيق؛ يعود إليه البنك بعد التفويض';
+  String get enableBankingRedirectTooltip =>
+      'مسجّل للتطبيق؛ يعود إليه البنك بعد التفويض';
 
   @override
-  String get enableBankingStateMismatch => 'العنوان يخص تفويضًا آخر، اتصل مجددًا';
+  String get enableBankingStateMismatch =>
+      'العنوان يخص تفويضًا آخر، اتصل مجددًا';
 
   @override
   String get encryptionMode => 'تشفير البيانات';
@@ -698,7 +705,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get finTsBankCode => 'رمز البنك (BLZ)';
 
   @override
-  String get finTsCustomerId => 'معرّف العميل (إذا كان مختلفًا عن معرّف المستخدم)';
+  String get finTsCustomerId =>
+      'معرّف العميل (إذا كان مختلفًا عن معرّف المستخدم)';
 
   @override
   String get finTsDescription =>
@@ -708,7 +716,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete => 'املأ عنوان URL للخادم ورمز البنك ومعرّف المستخدم ورقم تسجيل المنتج';
+  String get finTsIncomplete =>
+      'املأ عنوان URL للخادم ورمز البنك ومعرّف المستخدم ورقم تسجيل المنتج';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -730,7 +739,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get finTsProductId => 'رقم تسجيل المنتج';
 
   @override
-  String get finTsProductIdTooltip => 'يصدر عن Deutsche Kreditwirtschaft لمطوّر التطبيق';
+  String get finTsProductIdTooltip =>
+      'يصدر عن Deutsche Kreditwirtschaft لمطوّر التطبيق';
 
   @override
   String get finTsTan => 'TAN';
@@ -826,7 +836,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get incomeTooltip => 'تعيين تفاصيل الدخل';
 
   @override
-  String get integrationAccessDenied => 'تم إلغاء الوصول أو أن بيانات الاعتماد غير صحيحة';
+  String get integrationAccessDenied =>
+      'تم إلغاء الوصول أو أن بيانات الاعتماد غير صحيحة';
 
   @override
   String get integrationConnect => 'اتصال';
@@ -874,7 +885,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get integrationPaymentRequired => 'تتطلب الخدمة دفعًا مقابل الوصول';
 
   @override
-  String get integrationSelectTarget => 'اختر الحساب وفئة الميزانية للاستيراد إليهما';
+  String get integrationSelectTarget =>
+      'اختر الحساب وفئة الميزانية للاستيراد إليهما';
 
   @override
   String integrationServiceError(Object value) {
@@ -947,6 +959,75 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noChartData => 'البيانات مفقودة (أو غير كافية) ليتم عرضها';
+
+  @override
+  String get notificationAccessSettings => 'الوصول إلى الإشعارات';
+
+  @override
+  String get notificationAccessSteps =>
+      'كيفية منح الوصول:\n1. اضغط على \"منح الوصول\" لفتح إعدادات النظام\n2. اسمح لـ Fingrom بقراءة الإشعارات\n3. إذا أبلغ Android عن إعداد مقيد: افتح معلومات تطبيق Fingrom ← ⋮ ← \"السماح بالإعدادات المقيدة\" ثم أعد المحاولة\n4. عد إلى Fingrom واختر التطبيقات التي ستُقرأ إشعاراتها';
+
+  @override
+  String get notificationAccounts => 'كلمات مفتاحية للحسابات';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'كلمات تحدد الحساب في الإشعار (آخر أرقام البطاقة، اسم المحفظة): اكتب كلمة واضغط Enter لإضافتها. بخلاف ذلك يُستخدم الحساب الافتراضي للتطبيق';
+
+  @override
+  String get notificationApps => 'التطبيقات التي تُقرأ إشعاراتها';
+
+  @override
+  String notificationAutoImported(Object value) {
+    return 'تمت الإضافة من الإشعارات: $value';
+  }
+
+  @override
+  String get notificationAutoTooltip =>
+      'تُضاف الإشعارات المعروفة دون تأكيد: فورًا أثناء تشغيل Fingrom، وإلا عند التشغيل التالي. تنتظر الإشعارات غير المعروفة المراجعة';
+
+  @override
+  String get notificationBalance => 'كلمات مفتاحية للرصيد';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'كلمات تسبق مبلغًا يجب تجاهله (الرصيد، الحد): اكتب كلمة واضغط Enter لإضافتها';
+
+  @override
+  String notificationCaptured(Object value) {
+    return 'الإشعارات الملتقطة: $value';
+  }
+
+  @override
+  String get notificationClear => 'مسح الملتقطة';
+
+  @override
+  String get notificationCurrencyTooltip =>
+      'تُحتسب المبالغ بدون عملة (مثلًا: خصم 20.00) بهذه العملة';
+
+  @override
+  String get notificationDefaultAccount => 'الحساب الافتراضي';
+
+  @override
+  String get notificationDescription =>
+      'أنشئ معاملات من إشعارات تطبيقات البنوك والدفع على هذا الجهاز. تتم قراءة إشعارات التطبيقات المحددة فقط، وتبقى على الجهاز حتى استيرادها. يتم التعرف على المبلغ والعملة تلقائيًا.';
+
+  @override
+  String get notificationGrant => 'منح الوصول';
+
+  @override
+  String get notificationIncome => 'كلمات مفتاحية للدخل';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'كلمات تحدد الإشعار كدخل: اكتب كلمة واضغط Enter لإضافتها';
+
+  @override
+  String get notificationNoApps =>
+      'لم يتم استلام أي إشعارات بعد: تظهر التطبيقات هنا بعد أن ترسل إشعارًا';
+
+  @override
+  String get notificationUnparsed => 'لم يتم التعرف عليه';
 
   @override
   String get notifyHeadline => 'محلل الإخطارات';
@@ -1101,7 +1182,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secureOtpCode => 'رمز كلمة المرور لمرة واحدة';
 
   @override
-  String get secureOtpCodeInvalid => 'غير صالح! يرجى الحصول على رمز جديد وإدخاله';
+  String get secureOtpCodeInvalid =>
+      'غير صالح! يرجى الحصول على رمز جديد وإدخاله';
 
   @override
   String get secureOtpDeactivated => 'حماية كلمة المرور معطلة';
@@ -1138,13 +1220,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'أرجع SimpleFIN Bridge عنوان وصول بدون بيانات اعتماد';
+  String get simpleFinNoCredentials =>
+      'أرجع SimpleFIN Bridge عنوان وصول بدون بيانات اعتماد';
 
   @override
   String get simpleFinToken => 'رمز إعداد SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed => 'رمز الإعداد غير موجود أو تم استخدامه بالفعل';
+  String get simpleFinTokenClaimed =>
+      'رمز الإعداد غير موجود أو تم استخدامه بالفعل';
 
   @override
   String get simpleFinTokenInvalid => 'رمز إعداد SimpleFIN غير صالح';
@@ -1336,7 +1420,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wiseProfile => 'الملف الشخصي';
 
   @override
-  String get wiseScaRequired => 'تتطلب Wise مصادقة قوية للعميل: افتح كشف هذا الرصيد في تطبيق Wise ثم أعد المحاولة';
+  String get wiseScaRequired =>
+      'تتطلب Wise مصادقة قوية للعميل: افتح كشف هذا الرصيد في تطبيق Wise ثم أعد المحاولة';
 
   @override
   String get wiseToken => 'رمز API الشخصي';
@@ -1346,7 +1431,8 @@ class AppLocalizationsAr extends AppLocalizations {
       'كيفية الحصول على رمز API الشخصي:\n1. سجّل الدخول إلى wise.com من المتصفح (لا يمكن إنشاء الرموز في تطبيق الجوال)\n2. افتح الإعدادات ← عمليات التكامل والأدوات ← رموز API\n3. اختر «إضافة رمز جديد»، وسمِّه (مثل Fingrom)، واختر صلاحية «للقراءة فقط»\n4. أكّد بالتحقق بخطوتين وانسخ الرمز\n5. الصقه أدناه واضغط «اتصال»';
 
   @override
-  String get wiseTokenTooltip => 'يُنشأ في Wise من الإعدادات ← رموز API (للقراءة فقط إن توفر)؛ ويُخزَّن مشفرًا';
+  String get wiseTokenTooltip =>
+      'يُنشأ في Wise من الإعدادات ← رموز API (للقراءة فقط إن توفر)؛ ويُخزَّن مشفرًا';
 
   @override
   String get zoomState => 'تكبير/تصغير';

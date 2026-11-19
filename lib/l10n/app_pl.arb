@@ -411,6 +411,35 @@
         }
     },
     "noChartData": "Brakuje danych (lub jest ich za mało) do wyświetlenia",
+    "notificationAccessSettings": "Dostęp do powiadomień",
+    "notificationAccessSteps": "Jak przyznać dostęp:\n1. Naciśnij \"Przyznaj dostęp\", aby otworzyć ustawienia systemowe\n2. Zezwól Fingrom na odczyt powiadomień\n3. Jeśli Android zgłasza ustawienie ograniczone: otwórz informacje o aplikacji Fingrom → ⋮ → \"Zezwól na ustawienia ograniczone\" i spróbuj ponownie\n4. Wróć do Fingrom i wybierz aplikacje, z których mają być odczytywane powiadomienia",
+    "notificationAccounts": "Słowa kluczowe kont",
+    "notificationAccountsTooltip": "Słowa rozpoznające konto w powiadomieniu (ostatnie cyfry karty, nazwa portfela): wpisz słowo i naciśnij Enter, aby je dodać. W przeciwnym razie używane jest domyślne konto aplikacji",
+    "notificationApps": "Aplikacje do odczytu powiadomień",
+    "notificationAutoImported": "Dodano z powiadomień: {value}",
+    "@notificationAutoImported": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationAutoTooltip": "Rozpoznane powiadomienia są dodawane bez potwierdzenia: od razu, gdy Fingrom działa, w przeciwnym razie przy następnym uruchomieniu. Nierozpoznane czekają na sprawdzenie",
+    "notificationBalance": "Słowa kluczowe salda",
+    "notificationBalanceTooltip": "Słowa poprzedzające kwotę do pominięcia (saldo, limit): wpisz słowo i naciśnij Enter, aby je dodać",
+    "notificationCaptured": "Odebrane powiadomienia: {value}",
+    "@notificationCaptured": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "notificationClear": "Wyczyść odebrane",
+    "notificationCurrencyTooltip": "Kwoty bez waluty (np. Obciążenie 20,00) są przyjmowane w tej walucie",
+    "notificationDefaultAccount": "Konto domyślne",
+    "notificationDescription": "Tworzenie transakcji z powiadomień aplikacji bankowych i płatniczych na tym urządzeniu. Odczytywane są tylko powiadomienia wybranych aplikacji i pozostają one na urządzeniu do czasu importu. Kwota i waluta są rozpoznawane automatycznie.",
+    "notificationGrant": "Przyznaj dostęp",
+    "notificationIncome": "Słowa kluczowe przychodu",
+    "notificationIncomeTooltip": "Słowa oznaczające powiadomienie jako przychód: wpisz słowo i naciśnij Enter, aby je dodać",
+    "notificationNoApps": "Nie otrzymano jeszcze powiadomień: aplikacje pojawią się tutaj po wysłaniu powiadomienia",
+    "notificationUnparsed": "Nie rozpoznano",
     "notifyHeadline": "Parser powiadomień",
     "ok": "OK",
     "orderPin": "Kolejność priorytetowa",
