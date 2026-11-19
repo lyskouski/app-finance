@@ -976,6 +976,13 @@ class AppLocalizationsNl extends AppLocalizations {
       'Zo verleen je toegang:\n1. Druk op \"Toegang verlenen\" om de systeeminstellingen te openen\n2. Sta Fingrom toe meldingen te lezen\n3. Als Android een beperkte instelling meldt: open App-info van Fingrom → ⋮ → \"Beperkte instellingen toestaan\" en probeer het opnieuw\n4. Ga terug naar Fingrom en selecteer de apps waarvan meldingen worden gelezen';
 
   @override
+  String get notificationAccounts => 'Trefwoorden voor rekeningen';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Woorden waaraan de rekening in een melding wordt herkend (laatste cijfers van een kaart, naam van een wallet): typ een woord en druk op Enter om het toe te voegen. Anders wordt de standaardrekening van de app gebruikt';
+
+  @override
   String get notificationApps => 'Apps waarvan meldingen worden gelezen';
 
   @override
@@ -1004,6 +1011,9 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get notificationClear => 'Vastgelegde wissen';
+
+  @override
+  String get notificationDefaultAccount => 'Standaardrekening';
 
   @override
   String get notificationDescription =>

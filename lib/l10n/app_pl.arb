@@ -413,6 +413,8 @@
     "noChartData": "Brakuje danych (lub jest ich za mało) do wyświetlenia",
     "notificationAccessSettings": "Dostęp do powiadomień",
     "notificationAccessSteps": "Jak przyznać dostęp:\n1. Naciśnij \"Przyznaj dostęp\", aby otworzyć ustawienia systemowe\n2. Zezwól Fingrom na odczyt powiadomień\n3. Jeśli Android zgłasza ustawienie ograniczone: otwórz informacje o aplikacji Fingrom → ⋮ → \"Zezwól na ustawienia ograniczone\" i spróbuj ponownie\n4. Wróć do Fingrom i wybierz aplikacje, z których mają być odczytywane powiadomienia",
+    "notificationAccounts": "Słowa kluczowe kont",
+    "notificationAccountsTooltip": "Słowa rozpoznające konto w powiadomieniu (ostatnie cyfry karty, nazwa portfela): wpisz słowo i naciśnij Enter, aby je dodać. W przeciwnym razie używane jest domyślne konto aplikacji",
     "notificationApps": "Aplikacje do odczytu powiadomień",
     "notificationAuto": "Importuj automatycznie",
     "notificationAutoImported": "Dodano z powiadomień: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Wyczyść odebrane",
+    "notificationDefaultAccount": "Konto domyślne",
     "notificationDescription": "Tworzenie transakcji z powiadomień aplikacji bankowych i płatniczych na tym urządzeniu. Odczytywane są tylko powiadomienia wybranych aplikacji i pozostają one na urządzeniu do czasu importu. Kwota i waluta są rozpoznawane automatycznie lub według własnego wzorca.",
     "notificationGrant": "Przyznaj dostęp",
     "notificationIncome": "Słowa kluczowe przychodu",

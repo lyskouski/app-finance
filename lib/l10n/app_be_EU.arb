@@ -413,6 +413,8 @@
     "noChartData": "Adsutničajuć (abo niedastatkova) dad́zienyja dlia pakazu",
     "notificationAccessSettings": "Dostup da apaviaščeńniaŭ",
     "notificationAccessSteps": "Jak dać dostup:\n1. Nacišnicie \"Dać dostup\", kab adkryć systemnyja nalady\n2. Dazvoĺcie Fingrom čytać apaviaščeńni\n3. Kali Android paviedamliaje pra abmiežavanuju naladu: adkryjcie źviestki pra prahramu Fingrom → ⋮ → \"Dazvolić abmiežavanyja nalady\" i paŭtarycie\n4. Viarniciesia ŭ Fingrom i vybierycie prahramy dlia čytańnia apaviaščeńniaŭ",
+    "notificationAccounts": "Klučavyja słovy rachunkaŭ",
+    "notificationAccountsTooltip": "Słovy, pa jakich u apaviaščenni paznajecca rachunak (apošnija ličby kartki, nazva kašalka): uviadzicie słova i naciśnicie Enter, kab dadać jaho. Inakš vykarystoŭvajecca rachunak pa zmaŭčanni dla prahramy",
     "notificationApps": "Prahramy dlia čytańnia apaviaščeńniaŭ",
     "notificationAuto": "Impartavać aŭtamatyčna",
     "notificationAutoImported": "Dadadziena z apaviaščeńniaŭ: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Ačyścić atrymanyja",
+    "notificationDefaultAccount": "Rachunak pa zmaŭčanni",
     "notificationDescription": "Stvareńnie aperacyj z apaviaščeńniaŭ bankaŭskich i placiožnych prahram na hetaj pryladzie. Čytajucca toĺki apaviaščeńni vybranych prahram, i jany zachoŭvajucca na pryladzie da impartu. Suma i valiuta raspaznajucca aŭtamatyčna abo pa ŭlasnym šablonie.",
     "notificationGrant": "Dać dostup",
     "notificationIncome": "Klučavyja słovy dachodu",

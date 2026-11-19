@@ -730,6 +730,16 @@ void main() {
     expect(find.textContaining('-12.5 EUR — Bakery'), findsOneWidget);
     expect(NotificationSettings.load().income, NotificationParser.incomeKeywords);
 
+    // The account is recognized by its keywords, otherwise the default one is taken
+    expect(find.textContaining('Default Account', findRichText: true), findsWidgets);
+    final cardKeywords = find.byKey(ValueKey('notification_account_${account.uuid}'));
+    await tester.ensureVisible(cardKeywords);
+    await tester.enterText(find.descendant(of: cardKeywords, matching: find.byType(TextField)), 'Bakery');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await pumpFrames(tester);
+    expect(find.textContaining('-12.5 EUR — Bakery → Card'), findsOneWidget);
+    expect(NotificationSettings.load().accounts[account.uuid], ['bakery']);
+
     final widgetState = tester.state<NotificationWidgetState>(find.byType(NotificationWidget));
     widgetState.sources['com.bank']!
       ..appAccount = account.uuid

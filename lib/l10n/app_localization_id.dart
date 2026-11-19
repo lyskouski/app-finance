@@ -976,6 +976,13 @@ class AppLocalizationsId extends AppLocalizations {
       'Cara memberikan akses:\n1. Tekan \"Berikan Akses\" untuk membuka pengaturan sistem\n2. Izinkan Fingrom membaca notifikasi\n3. Jika Android melaporkan setelan terbatas: buka Info aplikasi Fingrom → ⋮ → \"Izinkan setelan terbatas\", lalu coba lagi\n4. Kembali ke Fingrom dan pilih aplikasi yang notifikasinya akan dibaca';
 
   @override
+  String get notificationAccounts => 'Kata kunci akun';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Kata yang mengenali akun dalam notifikasi (digit terakhir kartu, nama dompet): ketik kata dan tekan Enter untuk menambahkannya. Jika tidak, akun bawaan aplikasi yang digunakan';
+
+  @override
   String get notificationApps => 'Aplikasi yang notifikasinya dibaca';
 
   @override
@@ -1004,6 +1011,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get notificationClear => 'Hapus yang ditangkap';
+
+  @override
+  String get notificationDefaultAccount => 'Akun bawaan';
 
   @override
   String get notificationDescription =>

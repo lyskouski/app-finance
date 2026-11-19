@@ -974,6 +974,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'How to grant the access:\n1. Press \"Grant Access\" to open the system settings\n2. Allow Fingrom to read notifications\n3. If Android reports a restricted setting: open App info of Fingrom → ⋮ → \"Allow restricted settings\", then retry\n4. Return to Fingrom and select the apps to read notifications from';
 
   @override
+  String get notificationAccounts => 'Account Keywords';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Words recognizing the account in a notification (last digits of a card, name of a wallet): type a word and press Enter to add it. Otherwise the default account of the app is used';
+
+  @override
   String get notificationApps => 'Apps to Read Notifications From';
 
   @override
@@ -1002,6 +1009,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notificationClear => 'Clear Captured';
+
+  @override
+  String get notificationDefaultAccount => 'Default Account';
 
   @override
   String get notificationDescription =>

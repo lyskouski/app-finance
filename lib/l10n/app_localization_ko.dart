@@ -960,6 +960,13 @@ class AppLocalizationsKo extends AppLocalizations {
       '접근 권한을 부여하는 방법:\n1. \"접근 허용\"을 눌러 시스템 설정을 엽니다\n2. Fingrom이 알림을 읽도록 허용합니다\n3. Android에서 제한된 설정이라고 표시되면: Fingrom 앱 정보 → ⋮ → \"제한된 설정 허용\"을 연 후 다시 시도합니다\n4. Fingrom으로 돌아와 알림을 읽을 앱을 선택합니다';
 
   @override
+  String get notificationAccounts => '계좌 키워드';
+
+  @override
+  String get notificationAccountsTooltip =>
+      '알림에서 계좌를 식별하는 단어(카드 끝자리, 지갑 이름): 단어를 입력하고 Enter 키를 눌러 추가하세요. 일치하지 않으면 앱의 기본 계좌가 사용됩니다';
+
+  @override
   String get notificationApps => '알림을 읽을 앱';
 
   @override
@@ -988,6 +995,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get notificationClear => '수집된 알림 지우기';
+
+  @override
+  String get notificationDefaultAccount => '기본 계좌';
 
   @override
   String get notificationDescription =>

@@ -981,6 +981,13 @@ class AppLocalizationsUz extends AppLocalizations {
       'Ruxsatni qanday berish mumkin:\n1. Tizim sozlamalarini ochish uchun \"Ruxsat berish\" tugmasini bosing\n2. Fingrom\'ga bildirishnomalarni o\'qishga ruxsat bering\n3. Agar Android cheklangan sozlama haqida xabar bersa: Fingrom ilova haqida → ⋮ → \"Cheklangan sozlamalarga ruxsat berish\" ni oching va qayta urinib ko\'ring\n4. Fingrom\'ga qayting va bildirishnomalari o\'qiladigan ilovalarni tanlang';
 
   @override
+  String get notificationAccounts => 'Hisob kalit so\'zlari';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Bildirishnomada hisobni aniqlaydigan so\'zlar (kartaning oxirgi raqamlari, hamyon nomi): so\'z kiriting va qo\'shish uchun Enter tugmasini bosing. Aks holda ilovaning standart hisobi ishlatiladi';
+
+  @override
   String get notificationApps => 'Bildirishnomalari o\'qiladigan ilovalar';
 
   @override
@@ -1009,6 +1016,9 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get notificationClear => 'Olinganlarni tozalash';
+
+  @override
+  String get notificationDefaultAccount => 'Standart hisob';
 
   @override
   String get notificationDescription =>

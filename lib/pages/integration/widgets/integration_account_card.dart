@@ -27,6 +27,7 @@ class IntegrationAccountCard extends StatelessWidget {
   final VoidCallback onChanged;
   final VoidCallback onImport;
   final List<Widget> children;
+  final String? accountTitle;
 
   const IntegrationAccountCard({
     super.key,
@@ -38,6 +39,7 @@ class IntegrationAccountCard extends StatelessWidget {
     this.subtitle,
     this.isDisabled = false,
     this.children = const [],
+    this.accountTitle,
   });
 
   @override
@@ -56,7 +58,7 @@ class IntegrationAccountCard extends StatelessWidget {
               ThemeHelper.hIndent,
               InputWrapper(
                 type: NamedInputType.accountSelector,
-                title: AppLocale.labels.account,
+                title: accountTitle ?? AppLocale.labels.account,
                 isRequired: true,
                 value: target.appAccount != null ? state.getByUuid(target.appAccount!) : null,
                 onChange: (value) {

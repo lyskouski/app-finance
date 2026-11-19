@@ -413,6 +413,8 @@
     "noChartData": "Koʻrsatish uchun maʼlumotlar yetishmayapti (yoki yetarli emas).",
     "notificationAccessSettings": "Bildirishnomalarga ruxsat",
     "notificationAccessSteps": "Ruxsatni qanday berish mumkin:\n1. Tizim sozlamalarini ochish uchun \"Ruxsat berish\" tugmasini bosing\n2. Fingrom'ga bildirishnomalarni o'qishga ruxsat bering\n3. Agar Android cheklangan sozlama haqida xabar bersa: Fingrom ilova haqida → ⋮ → \"Cheklangan sozlamalarga ruxsat berish\" ni oching va qayta urinib ko'ring\n4. Fingrom'ga qayting va bildirishnomalari o'qiladigan ilovalarni tanlang",
+    "notificationAccounts": "Hisob kalit so'zlari",
+    "notificationAccountsTooltip": "Bildirishnomada hisobni aniqlaydigan so'zlar (kartaning oxirgi raqamlari, hamyon nomi): so'z kiriting va qo'shish uchun Enter tugmasini bosing. Aks holda ilovaning standart hisobi ishlatiladi",
     "notificationApps": "Bildirishnomalari o'qiladigan ilovalar",
     "notificationAuto": "Avtomatik import qilish",
     "notificationAutoImported": "Bildirishnomalardan qo'shildi: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Olinganlarni tozalash",
+    "notificationDefaultAccount": "Standart hisob",
     "notificationDescription": "Ushbu qurilmadagi bank va to'lov ilovalarining bildirishnomalaridan tranzaksiyalar yarating. Faqat tanlangan ilovalarning bildirishnomalari o'qiladi va import qilinguncha qurilmada saqlanadi. Summa va valyuta avtomatik ravishda yoki maxsus shablon bo'yicha aniqlanadi.",
     "notificationGrant": "Ruxsat berish",
     "notificationIncome": "Daromad kalit so'zlari",

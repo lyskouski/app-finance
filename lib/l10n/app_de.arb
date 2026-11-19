@@ -413,6 +413,8 @@
     "noChartData": "Daten fehlen (oder sind nicht ausreichend) um angezeigt zu werden",
     "notificationAccessSettings": "Benachrichtigungszugriff",
     "notificationAccessSteps": "So wird der Zugriff gewährt:\n1. \"Zugriff gewähren\" drücken, um die Systemeinstellungen zu öffnen\n2. Fingrom das Lesen von Benachrichtigungen erlauben\n3. Meldet Android eine eingeschränkte Einstellung: App-Info von Fingrom → ⋮ → \"Eingeschränkte Einstellungen zulassen\" öffnen und erneut versuchen\n4. Zu Fingrom zurückkehren und die Apps auswählen, deren Benachrichtigungen gelesen werden",
+    "notificationAccounts": "Konto-Schlüsselwörter",
+    "notificationAccountsTooltip": "Wörter, an denen das Konto in einer Benachrichtigung erkannt wird (letzte Kartenziffern, Name der Wallet): Wort eingeben und mit Enter hinzufügen. Sonst wird das Standardkonto der App verwendet",
     "notificationApps": "Apps, deren Benachrichtigungen gelesen werden",
     "notificationAuto": "Automatisch importieren",
     "notificationAutoImported": "Aus Benachrichtigungen hinzugefügt: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Erfasste löschen",
+    "notificationDefaultAccount": "Standardkonto",
     "notificationDescription": "Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps auf diesem Gerät erstellen. Es werden nur Benachrichtigungen der ausgewählten Apps gelesen, und sie verbleiben bis zum Import auf dem Gerät. Betrag und Währung werden automatisch oder über ein eigenes Muster erkannt.",
     "notificationGrant": "Zugriff gewähren",
     "notificationIncome": "Einnahme-Schlüsselwörter",

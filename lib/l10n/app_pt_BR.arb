@@ -413,6 +413,8 @@
     "noChartData": "Os dados estão faltando (ou não são suficientes) para serem exibidos",
     "notificationAccessSettings": "Acesso às notificações",
     "notificationAccessSteps": "Como conceder o acesso:\n1. Toque em \"Conceder acesso\" para abrir as configurações do sistema\n2. Permita que o Fingrom leia as notificações\n3. Se o Android informar uma configuração restrita: abra as informações do app Fingrom → ⋮ → \"Permitir configurações restritas\" e tente novamente\n4. Volte ao Fingrom e selecione os aplicativos cujas notificações serão lidas",
+    "notificationAccounts": "Palavras-chave de contas",
+    "notificationAccountsTooltip": "Palavras que identificam a conta em uma notificação (últimos dígitos do cartão, nome da carteira): digite uma palavra e pressione Enter para adicioná-la. Caso contrário, é usada a conta padrão do aplicativo",
     "notificationApps": "Aplicativos cujas notificações são lidas",
     "notificationAuto": "Importar automaticamente",
     "notificationAutoImported": "Adicionadas a partir de notificações: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Limpar capturadas",
+    "notificationDefaultAccount": "Conta padrão",
     "notificationDescription": "Crie transações a partir de notificações de aplicativos bancários e de pagamento neste dispositivo. Apenas as notificações dos aplicativos selecionados são lidas e ficam no dispositivo até serem importadas. O valor e a moeda são reconhecidos automaticamente ou por um padrão personalizado.",
     "notificationGrant": "Conceder acesso",
     "notificationIncome": "Palavras-chave de receita",

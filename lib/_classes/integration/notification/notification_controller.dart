@@ -146,6 +146,7 @@ class NotificationController with WidgetsBindingObserver {
             from: DateTime.fromMillisecondsSinceEpoch(0),
             income: settings.income,
             balance: settings.balance,
+            accounts: settings.accounts,
           );
           added += summary.added;
         }
@@ -170,6 +171,7 @@ class NotificationController with WidgetsBindingObserver {
     required DateTime from,
     List<String> income = NotificationParser.incomeKeywords,
     List<String> balance = NotificationParser.balanceKeywords,
+    Map<String, List<String>> accounts = const {},
   }) async {
     final account = state.getByUuid(link.account!);
     final importer = NotificationImporter(
@@ -185,6 +187,8 @@ class NotificationController with WidgetsBindingObserver {
       pattern: link.pattern,
       income: income,
       balance: balance,
+      accounts: accounts,
+      currencyOf: (uuid) => switch (state.getByUuid(uuid)) { AccountAppData item => item.currency, _ => null },
       prediction: state.prediction,
     );
     if (summary.added > 0) {

@@ -976,6 +976,13 @@ class AppLocalizationsKa extends AppLocalizations {
       'როგორ მივცეთ წვდომა:\n1. დააჭირეთ \"წვდომის მიცემა\"-ს სისტემის პარამეტრების გასახსნელად\n2. მიეცით Fingrom-ს შეტყობინებების წაკითხვის უფლება\n3. თუ Android შეზღუდულ პარამეტრზე მიუთითებს: გახსენით Fingrom-ის აპის ინფორმაცია → ⋮ → \"შეზღუდული პარამეტრების დაშვება\" და სცადეთ ხელახლა\n4. დაბრუნდით Fingrom-ში და აირჩიეთ აპები, რომელთა შეტყობინებებიც წაიკითხება';
 
   @override
+  String get notificationAccounts => 'ანგარიშების საკვანძო სიტყვები';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'სიტყვები, რომლებითაც შეტყობინებაში ანგარიში ამოიცნობა (ბარათის ბოლო ციფრები, საფულის სახელი): შეიყვანეთ სიტყვა და დასამატებლად დააჭირეთ Enter-ს. სხვა შემთხვევაში გამოიყენება აპის ნაგულისხმევი ანგარიში';
+
+  @override
   String get notificationApps => 'აპები, რომელთა შეტყობინებებიც იკითხება';
 
   @override
@@ -1004,6 +1011,9 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String get notificationClear => 'მიღებულის გასუფთავება';
+
+  @override
+  String get notificationDefaultAccount => 'ნაგულისხმევი ანგარიში';
 
   @override
   String get notificationDescription =>

@@ -152,6 +152,26 @@ void main() {
       expect(result!.amount, 40.0);
     });
 
+    test('recognizes the account by its keywords', () {
+      const accounts = {
+        'card': ['4421', 'visa'],
+        'wallet': ['revolut'],
+        'empty': <String>[],
+      };
+      expect(NotificationParser.toAccount('Revolut: Paid 5 EUR', accounts), 'wallet');
+      expect(NotificationParser.toAccount('Card *4421 charged, see Revolut', accounts), 'card');
+      expect(NotificationParser.toAccount('VISA payment', accounts), 'card');
+      expect(NotificationParser.toAccount('Paid 5 EUR', accounts), isNull);
+      expect(NotificationParser.toAccount('Paid 5 EUR', {}), isNull);
+      // The longer keyword wins at the same position
+      expect(
+          NotificationParser.toAccount('visa gold', {
+            'a': ['visa'],
+            'b': ['visa gold']
+          }),
+          'b');
+    });
+
     test('applies user balance keywords', () {
       const text = 'Paid 10 EUR at Shop. Remaining 500 EUR';
       expect(NotificationParser.parse('', 'Remaining 500 EUR')!.amount, -500.0);
@@ -205,6 +225,25 @@ void main() {
       expect(added.single.currency?.code, 'SEK');
     });
 
+    test('assigns notifications to the recognized account', () {
+      final added = <InterfaceAppData>[];
+      final importer = NotificationImporter(exists: (_) => false, add: (item, _) => added.add(item));
+      importer.run(
+        records: [record('Card *4421: Debit 20.00'), record('Debit 7.00', id: 'b')],
+        account: 'default',
+        category: 'cat',
+        from: DateTime(2026),
+        currency: CurrencyProvider.find('SEK'),
+        pattern: r'Debit (?<amount>[\d.]+)',
+        accounts: {
+          'card': ['4421'],
+        },
+        currencyOf: (uuid) => uuid == 'card' ? CurrencyProvider.find('NOK') : null,
+      );
+      expect(added.map((e) => (e as BillAppData).account), ['card', 'default']);
+      expect(added.map((e) => e.currency?.code), ['NOK', 'SEK']);
+    });
+
     test('passes user keywords to the parser', () {
       final added = <InterfaceAppData>[];
       final importer = NotificationImporter(exists: (_) => false, add: (item, _) => added.add(item));
@@ -252,11 +291,18 @@ void main() {
 
       settings
         ..income = ['payout']
-        ..balance = [];
+        ..balance = []
+        ..accounts = {
+          'acc': ['4421'],
+          'other': [],
+        };
       await settings.save();
       final restored = NotificationSettings.load();
       expect(restored.income, ['payout']);
       expect(restored.balance, isEmpty);
+      expect(restored.accounts, {
+        'acc': ['4421'],
+      });
     });
 
     test('recovers from a broken state', () async {

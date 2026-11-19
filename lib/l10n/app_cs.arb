@@ -413,6 +413,8 @@
     "noChartData": "Chybí údaje (nebo jich není dostatek), aby se zobrazily",
     "notificationAccessSettings": "Přístup k oznámením",
     "notificationAccessSteps": "Jak udělit přístup:\n1. Stiskněte \"Udělit přístup\" pro otevření nastavení systému\n2. Povolte aplikaci Fingrom číst oznámení\n3. Pokud Android hlásí omezené nastavení: otevřete informace o aplikaci Fingrom → ⋮ → \"Povolit omezená nastavení\" a zkuste to znovu\n4. Vraťte se do Fingrom a vyberte aplikace, jejichž oznámení se mají číst",
+    "notificationAccounts": "Klíčová slova účtů",
+    "notificationAccountsTooltip": "Slova, podle kterých se v oznámení pozná účet (poslední číslice karty, název peněženky): napište slovo a stiskněte Enter pro přidání. Jinak se použije výchozí účet aplikace",
     "notificationApps": "Aplikace, jejichž oznámení se čtou",
     "notificationAuto": "Importovat automaticky",
     "notificationAutoImported": "Přidáno z oznámení: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Vymazat zachycená",
+    "notificationDefaultAccount": "Výchozí účet",
     "notificationDescription": "Vytvářejte transakce z oznámení bankovních a platebních aplikací v tomto zařízení. Čtou se pouze oznámení vybraných aplikací a zůstávají v zařízení až do importu. Částka a měna se rozpoznají automaticky nebo podle vlastního vzoru.",
     "notificationGrant": "Udělit přístup",
     "notificationIncome": "Klíčová slova příjmu",

@@ -214,6 +214,25 @@ class NotificationParser {
     return balance.any(value.contains);
   }
 
+  // Account (key) mentioned the earliest in the text by one of its keywords, the longer keyword wins a tie
+  static String? toAccount(String text, Map<String, List<String>> accounts) {
+    final value = text.toLowerCase();
+    String? result;
+    var position = value.length;
+    var length = 0;
+    accounts.forEach((account, keywords) {
+      for (final keyword in keywords) {
+        final index = keyword.isEmpty ? -1 : value.indexOf(keyword.toLowerCase());
+        if (index >= 0 && (index < position || (index == position && keyword.length > length))) {
+          result = account;
+          position = index;
+          length = keyword.length;
+        }
+      }
+    });
+    return result;
+  }
+
   static String toLine(String value) {
     final line = value.replaceAll(RegExp(r'\s+'), ' ').trim();
     return line.length > 100 ? '${line.substring(0, 99)}…' : line;

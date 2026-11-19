@@ -978,6 +978,13 @@ class AppLocalizationsIt extends AppLocalizations {
       'Come concedere l\'accesso:\n1. Premi \"Concedi accesso\" per aprire le impostazioni di sistema\n2. Consenti a Fingrom di leggere le notifiche\n3. Se Android segnala un\'impostazione con restrizioni: apri le info dell\'app Fingrom → ⋮ → \"Consenti impostazioni con restrizioni\" e riprova\n4. Torna a Fingrom e seleziona le app di cui leggere le notifiche';
 
   @override
+  String get notificationAccounts => 'Parole chiave dei conti';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Parole che riconoscono il conto in una notifica (ultime cifre della carta, nome del portafoglio): digita una parola e premi Invio per aggiungerla. Altrimenti viene usato il conto predefinito dell\'app';
+
+  @override
   String get notificationApps => 'App di cui leggere le notifiche';
 
   @override
@@ -1006,6 +1013,9 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get notificationClear => 'Cancella acquisite';
+
+  @override
+  String get notificationDefaultAccount => 'Conto predefinito';
 
   @override
   String get notificationDescription =>

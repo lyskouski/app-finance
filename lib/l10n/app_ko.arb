@@ -413,6 +413,8 @@
     "noChartData": "표시할 데이터가 누락되었거나 충분하지 않습니다.",
     "notificationAccessSettings": "알림 접근",
     "notificationAccessSteps": "접근 권한을 부여하는 방법:\n1. \"접근 허용\"을 눌러 시스템 설정을 엽니다\n2. Fingrom이 알림을 읽도록 허용합니다\n3. Android에서 제한된 설정이라고 표시되면: Fingrom 앱 정보 → ⋮ → \"제한된 설정 허용\"을 연 후 다시 시도합니다\n4. Fingrom으로 돌아와 알림을 읽을 앱을 선택합니다",
+    "notificationAccounts": "계좌 키워드",
+    "notificationAccountsTooltip": "알림에서 계좌를 식별하는 단어(카드 끝자리, 지갑 이름): 단어를 입력하고 Enter 키를 눌러 추가하세요. 일치하지 않으면 앱의 기본 계좌가 사용됩니다",
     "notificationApps": "알림을 읽을 앱",
     "notificationAuto": "자동으로 가져오기",
     "notificationAutoImported": "알림에서 추가됨: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "수집된 알림 지우기",
+    "notificationDefaultAccount": "기본 계좌",
     "notificationDescription": "이 기기의 은행 및 결제 앱 알림에서 거래를 생성합니다. 선택한 앱의 알림만 읽으며, 가져올 때까지 기기에 보관됩니다. 금액과 통화는 자동으로 또는 사용자 지정 패턴으로 인식됩니다.",
     "notificationGrant": "접근 허용",
     "notificationIncome": "수입 키워드",

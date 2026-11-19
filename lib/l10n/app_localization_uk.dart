@@ -974,6 +974,13 @@ class AppLocalizationsUk extends AppLocalizations {
       'Як надати доступ:\n1. Натисніть \"Надати доступ\", щоб відкрити системні налаштування\n2. Дозвольте Fingrom читати сповіщення\n3. Якщо Android повідомляє про обмежене налаштування: відкрийте відомості про застосунок Fingrom → ⋮ → \"Дозволити обмежені налаштування\" і повторіть\n4. Поверніться до Fingrom і виберіть застосунки для читання сповіщень';
 
   @override
+  String get notificationAccounts => 'Ключові слова рахунків';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Слова, за якими у сповіщенні розпізнається рахунок (останні цифри картки, назва гаманця): введіть слово й натисніть Enter, щоб додати його. Інакше використовується рахунок за замовчуванням для застосунку';
+
+  @override
   String get notificationApps => 'Застосунки для читання сповіщень';
 
   @override
@@ -1002,6 +1009,9 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get notificationClear => 'Очистити отримані';
+
+  @override
+  String get notificationDefaultAccount => 'Рахунок за замовчуванням';
 
   @override
   String get notificationDescription =>

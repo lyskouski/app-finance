@@ -981,6 +981,13 @@ class AppLocalizationsDe extends AppLocalizations {
       'So wird der Zugriff gewährt:\n1. \"Zugriff gewähren\" drücken, um die Systemeinstellungen zu öffnen\n2. Fingrom das Lesen von Benachrichtigungen erlauben\n3. Meldet Android eine eingeschränkte Einstellung: App-Info von Fingrom → ⋮ → \"Eingeschränkte Einstellungen zulassen\" öffnen und erneut versuchen\n4. Zu Fingrom zurückkehren und die Apps auswählen, deren Benachrichtigungen gelesen werden';
 
   @override
+  String get notificationAccounts => 'Konto-Schlüsselwörter';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Wörter, an denen das Konto in einer Benachrichtigung erkannt wird (letzte Kartenziffern, Name der Wallet): Wort eingeben und mit Enter hinzufügen. Sonst wird das Standardkonto der App verwendet';
+
+  @override
   String get notificationApps =>
       'Apps, deren Benachrichtigungen gelesen werden';
 
@@ -1010,6 +1017,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get notificationClear => 'Erfasste löschen';
+
+  @override
+  String get notificationDefaultAccount => 'Standardkonto';
 
   @override
   String get notificationDescription =>

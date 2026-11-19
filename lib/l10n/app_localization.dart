@@ -1945,6 +1945,18 @@ abstract class AppLocalizations {
   /// **'How to grant the access:\n1. Press \"Grant Access\" to open the system settings\n2. Allow Fingrom to read notifications\n3. If Android reports a restricted setting: open App info of Fingrom → ⋮ → \"Allow restricted settings\", then retry\n4. Return to Fingrom and select the apps to read notifications from'**
   String get notificationAccessSteps;
 
+  /// No description provided for @notificationAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Keywords'**
+  String get notificationAccounts;
+
+  /// No description provided for @notificationAccountsTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Words recognizing the account in a notification (last digits of a card, name of a wallet): type a word and press Enter to add it. Otherwise the default account of the app is used'**
+  String get notificationAccountsTooltip;
+
   /// No description provided for @notificationApps.
   ///
   /// In en, this message translates to:
@@ -1992,6 +2004,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Clear Captured'**
   String get notificationClear;
+
+  /// No description provided for @notificationDefaultAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Default Account'**
+  String get notificationDefaultAccount;
 
   /// No description provided for @notificationDescription.
   ///

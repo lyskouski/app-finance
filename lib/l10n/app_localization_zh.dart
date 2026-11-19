@@ -956,6 +956,13 @@ class AppLocalizationsZh extends AppLocalizations {
       '如何授予访问权限：\n1. 点击\"授予访问权限\"打开系统设置\n2. 允许 Fingrom 读取通知\n3. 如果 Android 提示受限设置：打开 Fingrom 的应用信息 → ⋮ →\"允许受限设置\"，然后重试\n4. 返回 Fingrom 并选择要读取通知的应用';
 
   @override
+  String get notificationAccounts => '账户关键词';
+
+  @override
+  String get notificationAccountsTooltip =>
+      '用于在通知中识别账户的词语（卡号末几位、钱包名称）：输入词语后按 Enter 添加。否则使用该应用的默认账户';
+
+  @override
   String get notificationApps => '读取通知的应用';
 
   @override
@@ -984,6 +991,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notificationClear => '清除已捕获';
+
+  @override
+  String get notificationDefaultAccount => '默认账户';
 
   @override
   String get notificationDescription =>
@@ -2367,6 +2377,13 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
       '如何授予存取權：\n1. 點選「授予存取權」以開啟系統設定\n2. 允許 Fingrom 讀取通知\n3. 若 Android 顯示受限設定：開啟 Fingrom 的應用程式資訊 → ⋮ →「允許受限設定」，然後重試\n4. 返回 Fingrom 並選擇要讀取通知的應用程式';
 
   @override
+  String get notificationAccounts => '帳戶關鍵字';
+
+  @override
+  String get notificationAccountsTooltip =>
+      '用於在通知中識別帳戶的詞語（卡號末幾碼、錢包名稱）：輸入詞語後按 Enter 新增。否則使用該應用程式的預設帳戶';
+
+  @override
   String get notificationApps => '讀取通知的應用程式';
 
   @override
@@ -2395,6 +2412,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get notificationClear => '清除已擷取';
+
+  @override
+  String get notificationDefaultAccount => '預設帳戶';
 
   @override
   String get notificationDescription =>

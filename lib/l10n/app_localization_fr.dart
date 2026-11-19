@@ -981,6 +981,13 @@ class AppLocalizationsFr extends AppLocalizations {
       'Comment accorder l\'accès :\n1. Appuyez sur \"Accorder l\'accès\" pour ouvrir les paramètres du système\n2. Autorisez Fingrom à lire les notifications\n3. Si Android signale un paramètre restreint : ouvrez les infos de l\'application Fingrom → ⋮ → \"Autoriser les paramètres restreints\", puis réessayez\n4. Revenez dans Fingrom et sélectionnez les applications dont les notifications doivent être lues';
 
   @override
+  String get notificationAccounts => 'Mots-clés des comptes';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Mots identifiant le compte dans une notification (derniers chiffres de la carte, nom du portefeuille) : saisissez un mot et appuyez sur Entrée pour l\'ajouter. Sinon, le compte par défaut de l\'application est utilisé';
+
+  @override
   String get notificationApps =>
       'Applications dont les notifications sont lues';
 
@@ -1010,6 +1017,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get notificationClear => 'Effacer les capturées';
+
+  @override
+  String get notificationDefaultAccount => 'Compte par défaut';
 
   @override
   String get notificationDescription =>

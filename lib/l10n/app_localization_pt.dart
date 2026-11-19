@@ -978,6 +978,13 @@ class AppLocalizationsPt extends AppLocalizations {
       'Como conceder o acesso:\n1. Prima \"Conceder acesso\" para abrir as definições do sistema\n2. Permita que o Fingrom leia as notificações\n3. Se o Android indicar uma definição restrita: abra as informações da aplicação Fingrom → ⋮ → \"Permitir definições restritas\" e tente novamente\n4. Volte ao Fingrom e selecione as aplicações cujas notificações devem ser lidas';
 
   @override
+  String get notificationAccounts => 'Palavras-chave de contas';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Palavras que identificam a conta numa notificação (últimos dígitos do cartão, nome da carteira): escreva uma palavra e prima Enter para a adicionar. Caso contrário, é usada a conta predefinida da aplicação';
+
+  @override
   String get notificationApps => 'Aplicações cujas notificações são lidas';
 
   @override
@@ -1006,6 +1013,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get notificationClear => 'Limpar capturadas';
+
+  @override
+  String get notificationDefaultAccount => 'Conta predefinida';
 
   @override
   String get notificationDescription =>
@@ -2424,6 +2434,13 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
       'Como conceder o acesso:\n1. Toque em \"Conceder acesso\" para abrir as configurações do sistema\n2. Permita que o Fingrom leia as notificações\n3. Se o Android informar uma configuração restrita: abra as informações do app Fingrom → ⋮ → \"Permitir configurações restritas\" e tente novamente\n4. Volte ao Fingrom e selecione os aplicativos cujas notificações serão lidas';
 
   @override
+  String get notificationAccounts => 'Palavras-chave de contas';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Palavras que identificam a conta em uma notificação (últimos dígitos do cartão, nome da carteira): digite uma palavra e pressione Enter para adicioná-la. Caso contrário, é usada a conta padrão do aplicativo';
+
+  @override
   String get notificationApps => 'Aplicativos cujas notificações são lidas';
 
   @override
@@ -2452,6 +2469,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get notificationClear => 'Limpar capturadas';
+
+  @override
+  String get notificationDefaultAccount => 'Conta padrão';
 
   @override
   String get notificationDescription =>

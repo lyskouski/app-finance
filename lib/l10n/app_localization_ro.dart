@@ -978,6 +978,13 @@ class AppLocalizationsRo extends AppLocalizations {
       'Cum se acordă accesul:\n1. Apăsați \"Acordă acces\" pentru a deschide setările sistemului\n2. Permiteți aplicației Fingrom să citească notificările\n3. Dacă Android semnalează o setare restricționată: deschideți Informații aplicație Fingrom → ⋮ → \"Permite setările restricționate\" și reîncercați\n4. Reveniți în Fingrom și selectați aplicațiile ale căror notificări vor fi citite';
 
   @override
+  String get notificationAccounts => 'Cuvinte cheie pentru conturi';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Cuvinte care identifică contul într-o notificare (ultimele cifre ale cardului, numele portofelului): tastați un cuvânt și apăsați Enter pentru a-l adăuga. Altfel se folosește contul implicit al aplicației';
+
+  @override
   String get notificationApps => 'Aplicații ale căror notificări sunt citite';
 
   @override
@@ -1006,6 +1013,9 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get notificationClear => 'Șterge capturate';
+
+  @override
+  String get notificationDefaultAccount => 'Cont implicit';
 
   @override
   String get notificationDescription =>

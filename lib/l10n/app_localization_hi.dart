@@ -972,6 +972,13 @@ class AppLocalizationsHi extends AppLocalizations {
       'एक्सेस कैसे दें:\n1. सिस्टम सेटिंग्स खोलने के लिए \"एक्सेस दें\" दबाएँ\n2. Fingrom को सूचनाएँ पढ़ने की अनुमति दें\n3. यदि Android प्रतिबंधित सेटिंग बताता है: Fingrom की ऐप जानकारी → ⋮ → \"प्रतिबंधित सेटिंग्स की अनुमति दें\" खोलें और फिर से प्रयास करें\n4. Fingrom पर लौटें और वे ऐप्स चुनें जिनकी सूचनाएँ पढ़ी जाएँगी';
 
   @override
+  String get notificationAccounts => 'खाता कीवर्ड';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'सूचना में खाते की पहचान करने वाले शब्द (कार्ड के अंतिम अंक, वॉलेट का नाम): शब्द लिखें और जोड़ने के लिए Enter दबाएँ। अन्यथा ऐप का डिफ़ॉल्ट खाता उपयोग होता है';
+
+  @override
   String get notificationApps => 'ऐप्स जिनकी सूचनाएँ पढ़ी जाती हैं';
 
   @override
@@ -1000,6 +1007,9 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get notificationClear => 'प्राप्त सूचनाएँ साफ़ करें';
+
+  @override
+  String get notificationDefaultAccount => 'डिफ़ॉल्ट खाता';
 
   @override
   String get notificationDescription =>

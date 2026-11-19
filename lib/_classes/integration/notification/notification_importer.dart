@@ -33,6 +33,9 @@ class NotificationImporter {
     String? pattern,
     List<String> income = NotificationParser.incomeKeywords,
     List<String> balance = NotificationParser.balanceKeywords,
+    // Keywords of accounts to be recognized instead of the default one, with their currencies
+    Map<String, List<String>> accounts = const {},
+    Currency? Function(String account)? currencyOf,
     BudgetPrediction? prediction,
   }) {
     var added = 0;
@@ -49,11 +52,13 @@ class NotificationImporter {
         processed.add(record.id);
         continue;
       }
+      final target = NotificationParser.toAccount([record.title, record.text].join('\n'), accounts) ?? account;
+      final fallback = target != account && currencyOf != null ? currencyOf(target) : currency;
       final parsed = NotificationParser.parse(
         record.title,
         record.text,
         pattern: pattern,
-        fallback: currency,
+        fallback: fallback,
         income: income,
         balance: balance,
       );
@@ -64,10 +69,10 @@ class NotificationImporter {
       add(
         IntegrationRecord.toAppData(
           amount: parsed.amount,
-          currency: parsed.currency ?? currency?.code,
+          currency: parsed.currency ?? fallback?.code,
           date: record.time,
           title: parsed.title,
-          account: account,
+          account: target,
           category: category,
           prediction: prediction,
         ),

@@ -413,6 +413,8 @@
     "noChartData": "Mancano (o non sono sufficienti) dati da mostrare",
     "notificationAccessSettings": "Accesso alle notifiche",
     "notificationAccessSteps": "Come concedere l'accesso:\n1. Premi \"Concedi accesso\" per aprire le impostazioni di sistema\n2. Consenti a Fingrom di leggere le notifiche\n3. Se Android segnala un'impostazione con restrizioni: apri le info dell'app Fingrom → ⋮ → \"Consenti impostazioni con restrizioni\" e riprova\n4. Torna a Fingrom e seleziona le app di cui leggere le notifiche",
+    "notificationAccounts": "Parole chiave dei conti",
+    "notificationAccountsTooltip": "Parole che riconoscono il conto in una notifica (ultime cifre della carta, nome del portafoglio): digita una parola e premi Invio per aggiungerla. Altrimenti viene usato il conto predefinito dell'app",
     "notificationApps": "App di cui leggere le notifiche",
     "notificationAuto": "Importa automaticamente",
     "notificationAutoImported": "Aggiunti dalle notifiche: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Cancella acquisite",
+    "notificationDefaultAccount": "Conto predefinito",
     "notificationDescription": "Crea movimenti dalle notifiche delle app bancarie e di pagamento su questo dispositivo. Vengono lette solo le notifiche delle app selezionate, che restano sul dispositivo fino all'importazione. Importo e valuta vengono riconosciuti automaticamente o tramite un modello personalizzato.",
     "notificationGrant": "Concedi accesso",
     "notificationIncome": "Parole chiave di entrata",

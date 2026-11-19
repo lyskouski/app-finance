@@ -971,6 +971,13 @@ class AppLocalizationsPl extends AppLocalizations {
       'Jak przyznać dostęp:\n1. Naciśnij \"Przyznaj dostęp\", aby otworzyć ustawienia systemowe\n2. Zezwól Fingrom na odczyt powiadomień\n3. Jeśli Android zgłasza ustawienie ograniczone: otwórz informacje o aplikacji Fingrom → ⋮ → \"Zezwól na ustawienia ograniczone\" i spróbuj ponownie\n4. Wróć do Fingrom i wybierz aplikacje, z których mają być odczytywane powiadomienia';
 
   @override
+  String get notificationAccounts => 'Słowa kluczowe kont';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Słowa rozpoznające konto w powiadomieniu (ostatnie cyfry karty, nazwa portfela): wpisz słowo i naciśnij Enter, aby je dodać. W przeciwnym razie używane jest domyślne konto aplikacji';
+
+  @override
   String get notificationApps => 'Aplikacje do odczytu powiadomień';
 
   @override
@@ -999,6 +1006,9 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get notificationClear => 'Wyczyść odebrane';
+
+  @override
+  String get notificationDefaultAccount => 'Konto domyślne';
 
   @override
   String get notificationDescription =>

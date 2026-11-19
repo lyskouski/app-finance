@@ -968,6 +968,13 @@ class AppLocalizationsAr extends AppLocalizations {
       'كيفية منح الوصول:\n1. اضغط على \"منح الوصول\" لفتح إعدادات النظام\n2. اسمح لـ Fingrom بقراءة الإشعارات\n3. إذا أبلغ Android عن إعداد مقيد: افتح معلومات تطبيق Fingrom ← ⋮ ← \"السماح بالإعدادات المقيدة\" ثم أعد المحاولة\n4. عد إلى Fingrom واختر التطبيقات التي ستُقرأ إشعاراتها';
 
   @override
+  String get notificationAccounts => 'كلمات مفتاحية للحسابات';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'كلمات تحدد الحساب في الإشعار (آخر أرقام البطاقة، اسم المحفظة): اكتب كلمة واضغط Enter لإضافتها. بخلاف ذلك يُستخدم الحساب الافتراضي للتطبيق';
+
+  @override
   String get notificationApps => 'التطبيقات التي تُقرأ إشعاراتها';
 
   @override
@@ -996,6 +1003,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notificationClear => 'مسح الملتقطة';
+
+  @override
+  String get notificationDefaultAccount => 'الحساب الافتراضي';
 
   @override
   String get notificationDescription =>

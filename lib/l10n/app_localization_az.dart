@@ -977,6 +977,13 @@ class AppLocalizationsAz extends AppLocalizations {
       'Girişi necə vermək olar:\n1. Sistem ayarlarını açmaq üçün \"Giriş ver\" düyməsini basın\n2. Fingrom-a bildirişləri oxumağa icazə verin\n3. Android məhdudlaşdırılmış ayar barədə bildirərsə: Fingrom tətbiq məlumatı → ⋮ → \"Məhdud ayarlara icazə ver\" seçin və yenidən cəhd edin\n4. Fingrom-a qayıdın və bildirişləri oxunacaq tətbiqləri seçin';
 
   @override
+  String get notificationAccounts => 'Hesab açar sözləri';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Bildirişdə hesabı müəyyən edən sözlər (kartın son rəqəmləri, pul kisəsinin adı): söz yazın və əlavə etmək üçün Enter düyməsini basın. Əks halda tətbiqin defolt hesabı istifadə olunur';
+
+  @override
   String get notificationApps => 'Bildirişləri oxunan tətbiqlər';
 
   @override
@@ -1005,6 +1012,9 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get notificationClear => 'Tutulanları təmizlə';
+
+  @override
+  String get notificationDefaultAccount => 'Defolt hesab';
 
   @override
   String get notificationDescription =>

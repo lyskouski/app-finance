@@ -413,6 +413,8 @@
     "noChartData": "Data tidak ada (atau tidak cukup) untuk ditampilkan",
     "notificationAccessSettings": "Akses Notifikasi",
     "notificationAccessSteps": "Cara memberikan akses:\n1. Tekan \"Berikan Akses\" untuk membuka pengaturan sistem\n2. Izinkan Fingrom membaca notifikasi\n3. Jika Android melaporkan setelan terbatas: buka Info aplikasi Fingrom → ⋮ → \"Izinkan setelan terbatas\", lalu coba lagi\n4. Kembali ke Fingrom dan pilih aplikasi yang notifikasinya akan dibaca",
+    "notificationAccounts": "Kata kunci akun",
+    "notificationAccountsTooltip": "Kata yang mengenali akun dalam notifikasi (digit terakhir kartu, nama dompet): ketik kata dan tekan Enter untuk menambahkannya. Jika tidak, akun bawaan aplikasi yang digunakan",
     "notificationApps": "Aplikasi yang notifikasinya dibaca",
     "notificationAuto": "Impor Otomatis",
     "notificationAutoImported": "Ditambahkan dari notifikasi: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Hapus yang ditangkap",
+    "notificationDefaultAccount": "Akun bawaan",
     "notificationDescription": "Buat transaksi dari notifikasi aplikasi perbankan dan pembayaran di perangkat ini. Hanya notifikasi dari aplikasi yang dipilih yang dibaca, dan notifikasi tetap tersimpan di perangkat hingga diimpor. Jumlah dan mata uang dikenali secara otomatis atau dengan pola khusus.",
     "notificationGrant": "Berikan Akses",
     "notificationIncome": "Kata kunci pemasukan",

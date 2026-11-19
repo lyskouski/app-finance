@@ -413,6 +413,8 @@
     "noChartData": "Gegevens ontbreken (of zijn niet voldoende) om te worden getoond",
     "notificationAccessSettings": "Toegang tot meldingen",
     "notificationAccessSteps": "Zo verleen je toegang:\n1. Druk op \"Toegang verlenen\" om de systeeminstellingen te openen\n2. Sta Fingrom toe meldingen te lezen\n3. Als Android een beperkte instelling meldt: open App-info van Fingrom → ⋮ → \"Beperkte instellingen toestaan\" en probeer het opnieuw\n4. Ga terug naar Fingrom en selecteer de apps waarvan meldingen worden gelezen",
+    "notificationAccounts": "Trefwoorden voor rekeningen",
+    "notificationAccountsTooltip": "Woorden waaraan de rekening in een melding wordt herkend (laatste cijfers van een kaart, naam van een wallet): typ een woord en druk op Enter om het toe te voegen. Anders wordt de standaardrekening van de app gebruikt",
     "notificationApps": "Apps waarvan meldingen worden gelezen",
     "notificationAuto": "Automatisch importeren",
     "notificationAutoImported": "Toegevoegd uit meldingen: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Vastgelegde wissen",
+    "notificationDefaultAccount": "Standaardrekening",
     "notificationDescription": "Maak transacties aan uit meldingen van bank- en betaalapps op dit apparaat. Alleen meldingen van de geselecteerde apps worden gelezen, en ze blijven op het apparaat tot ze zijn geïmporteerd. Het bedrag en de valuta worden automatisch of met een eigen patroon herkend.",
     "notificationGrant": "Toegang verlenen",
     "notificationIncome": "Trefwoorden voor inkomsten",

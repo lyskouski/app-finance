@@ -972,6 +972,13 @@ class AppLocalizationsCs extends AppLocalizations {
       'Jak udělit přístup:\n1. Stiskněte \"Udělit přístup\" pro otevření nastavení systému\n2. Povolte aplikaci Fingrom číst oznámení\n3. Pokud Android hlásí omezené nastavení: otevřete informace o aplikaci Fingrom → ⋮ → \"Povolit omezená nastavení\" a zkuste to znovu\n4. Vraťte se do Fingrom a vyberte aplikace, jejichž oznámení se mají číst';
 
   @override
+  String get notificationAccounts => 'Klíčová slova účtů';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Slova, podle kterých se v oznámení pozná účet (poslední číslice karty, název peněženky): napište slovo a stiskněte Enter pro přidání. Jinak se použije výchozí účet aplikace';
+
+  @override
   String get notificationApps => 'Aplikace, jejichž oznámení se čtou';
 
   @override
@@ -1000,6 +1007,9 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get notificationClear => 'Vymazat zachycená';
+
+  @override
+  String get notificationDefaultAccount => 'Výchozí účet';
 
   @override
   String get notificationDescription =>

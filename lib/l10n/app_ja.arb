@@ -413,6 +413,8 @@
     "noChartData": "表示するデータがない（または十分でない）。",
     "notificationAccessSettings": "通知へのアクセス",
     "notificationAccessSteps": "アクセスを許可する方法：\n1.「アクセスを許可」を押してシステム設定を開きます\n2. Fingrom に通知の読み取りを許可します\n3. Android が制限付き設定と表示した場合：Fingrom のアプリ情報 → ⋮ →「制限付き設定を許可」を開き、再試行します\n4. Fingrom に戻り、通知を読み取るアプリを選択します",
+    "notificationAccounts": "口座キーワード",
+    "notificationAccountsTooltip": "通知内で口座を識別する語句（カード番号の末尾、ウォレット名）：語句を入力し、Enterキーで追加します。該当しない場合はアプリの既定の口座が使われます",
     "notificationApps": "通知を読み取るアプリ",
     "notificationAuto": "自動でインポート",
     "notificationAutoImported": "通知から追加：{value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "取得済みを消去",
+    "notificationDefaultAccount": "既定の口座",
     "notificationDescription": "この端末の銀行・決済アプリの通知から取引を作成します。選択したアプリの通知のみが読み取られ、インポートされるまで端末に保存されます。金額と通貨は自動で、またはカスタムパターンで認識されます。",
     "notificationGrant": "アクセスを許可",
     "notificationIncome": "収入キーワード",

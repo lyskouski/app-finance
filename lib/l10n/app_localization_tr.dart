@@ -974,6 +974,13 @@ class AppLocalizationsTr extends AppLocalizations {
       'Erişim nasıl verilir:\n1. Sistem ayarlarını açmak için \"Erişim ver\"e basın\n2. Fingrom\'un bildirimleri okumasına izin verin\n3. Android kısıtlanmış bir ayar bildirirse: Fingrom uygulama bilgisi → ⋮ → \"Kısıtlanmış ayarlara izin ver\" seçeneğini açın ve tekrar deneyin\n4. Fingrom\'a dönün ve bildirimleri okunacak uygulamaları seçin';
 
   @override
+  String get notificationAccounts => 'Hesap anahtar kelimeleri';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Bildirimde hesabı tanıyan kelimeler (kartın son haneleri, cüzdan adı): bir kelime yazın ve eklemek için Enter tuşuna basın. Aksi halde uygulamanın varsayılan hesabı kullanılır';
+
+  @override
   String get notificationApps => 'Bildirimleri okunan uygulamalar';
 
   @override
@@ -1002,6 +1009,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get notificationClear => 'Yakalananları temizle';
+
+  @override
+  String get notificationDefaultAccount => 'Varsayılan hesap';
 
   @override
   String get notificationDescription =>

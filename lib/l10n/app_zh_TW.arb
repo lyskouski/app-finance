@@ -413,6 +413,8 @@
     "noChartData": "資料遺失（或不足），無法顯示",
     "notificationAccessSettings": "通知存取權",
     "notificationAccessSteps": "如何授予存取權：\n1. 點選「授予存取權」以開啟系統設定\n2. 允許 Fingrom 讀取通知\n3. 若 Android 顯示受限設定：開啟 Fingrom 的應用程式資訊 → ⋮ →「允許受限設定」，然後重試\n4. 返回 Fingrom 並選擇要讀取通知的應用程式",
+    "notificationAccounts": "帳戶關鍵字",
+    "notificationAccountsTooltip": "用於在通知中識別帳戶的詞語（卡號末幾碼、錢包名稱）：輸入詞語後按 Enter 新增。否則使用該應用程式的預設帳戶",
     "notificationApps": "讀取通知的應用程式",
     "notificationAuto": "自動匯入",
     "notificationAutoImported": "已從通知新增：{value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "清除已擷取",
+    "notificationDefaultAccount": "預設帳戶",
     "notificationDescription": "根據本裝置上銀行與支付應用程式的通知建立交易。僅讀取所選應用程式的通知，且在匯入前通知會保留在裝置上。金額與貨幣會自動辨識，或透過自訂模式辨識。",
     "notificationGrant": "授予存取權",
     "notificationIncome": "收入關鍵字",

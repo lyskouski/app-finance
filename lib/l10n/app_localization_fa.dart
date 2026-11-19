@@ -970,6 +970,13 @@ class AppLocalizationsFa extends AppLocalizations {
       'نحوه اعطای دسترسی:\n1. برای باز کردن تنظیمات سیستم \"اعطای دسترسی\" را بزنید\n2. به Fingrom اجازه خواندن اعلان‌ها را بدهید\n3. اگر Android تنظیم محدودشده گزارش داد: اطلاعات برنامه Fingrom → ⋮ → \"اجازه دادن به تنظیمات محدودشده\" را باز کنید و دوباره تلاش کنید\n4. به Fingrom برگردید و برنامه‌هایی را که اعلان‌هایشان خوانده می‌شود انتخاب کنید';
 
   @override
+  String get notificationAccounts => 'کلیدواژه‌های حساب';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'واژه‌هایی که حساب را در اعلان مشخص می‌کنند (ارقام آخر کارت، نام کیف پول): واژه‌ای بنویسید و برای افزودن Enter را بزنید. در غیر این صورت حساب پیش‌فرض برنامه استفاده می‌شود';
+
+  @override
   String get notificationApps => 'برنامه‌هایی که اعلان‌هایشان خوانده می‌شود';
 
   @override
@@ -998,6 +1005,9 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get notificationClear => 'پاک کردن دریافت‌شده‌ها';
+
+  @override
+  String get notificationDefaultAccount => 'حساب پیش‌فرض';
 
   @override
   String get notificationDescription =>

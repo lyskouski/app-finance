@@ -413,6 +413,8 @@
     "noChartData": "Data is missing (or not enough) to be shown",
     "notificationAccessSettings": "Notification Access",
     "notificationAccessSteps": "How to grant the access:\n1. Press \"Grant Access\" to open the system settings\n2. Allow Fingrom to read notifications\n3. If Android reports a restricted setting: open App info of Fingrom → ⋮ → \"Allow restricted settings\", then retry\n4. Return to Fingrom and select the apps to read notifications from",
+    "notificationAccounts": "Account Keywords",
+    "notificationAccountsTooltip": "Words recognizing the account in a notification (last digits of a card, name of a wallet): type a word and press Enter to add it. Otherwise the default account of the app is used",
     "notificationApps": "Apps to Read Notifications From",
     "notificationAuto": "Import Automatically",
     "notificationAutoImported": "Added from notifications: {value}",
@@ -431,6 +433,7 @@
         }
     },
     "notificationClear": "Clear Captured",
+    "notificationDefaultAccount": "Default Account",
     "notificationDescription": "Create transactions from notifications of banking and payment apps on this device. Only notifications of the selected apps are read, and they stay on the device until imported. The amount and the currency are recognized automatically or by a custom pattern.",
     "notificationGrant": "Grant Access",
     "notificationIncome": "Income Keywords",

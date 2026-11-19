@@ -975,6 +975,13 @@ class AppLocalizationsBe extends AppLocalizations {
       'Як даць доступ:\n1. Націсьніце \"Даць доступ\", каб адкрыць сыстэмныя налады\n2. Дазвольце Fingrom чытаць апавяшчэньні\n3. Калі Android паведамляе пра абмежаваную наладу: адкрыйце зьвесткі пра праграму Fingrom → ⋮ → \"Дазволіць абмежаваныя налады\" і паўтарыце\n4. Вярніцеся ў Fingrom і выберыце праграмы для чытаньня апавяшчэньняў';
 
   @override
+  String get notificationAccounts => 'Ключавыя словы рахункаў';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Словы, па якіх у апавяшчэнні пазнаецца рахунак (апошнія лічбы карткі, назва кашалька): увядзіце слова і націсніце Enter, каб дадаць яго. Інакш выкарыстоўваецца рахунак па змаўчанні для праграмы';
+
+  @override
   String get notificationApps => 'Праграмы для чытаньня апавяшчэньняў';
 
   @override
@@ -1003,6 +1010,9 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get notificationClear => 'Ачысьціць атрыманыя';
+
+  @override
+  String get notificationDefaultAccount => 'Рахунак па змаўчанні';
 
   @override
   String get notificationDescription =>
@@ -2415,6 +2425,13 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
       'Jak dać dostup:\n1. Nacišnicie \"Dać dostup\", kab adkryć systemnyja nalady\n2. Dazvoĺcie Fingrom čytać apaviaščeńni\n3. Kali Android paviedamliaje pra abmiežavanuju naladu: adkryjcie źviestki pra prahramu Fingrom → ⋮ → \"Dazvolić abmiežavanyja nalady\" i paŭtarycie\n4. Viarniciesia ŭ Fingrom i vybierycie prahramy dlia čytańnia apaviaščeńniaŭ';
 
   @override
+  String get notificationAccounts => 'Klučavyja słovy rachunkaŭ';
+
+  @override
+  String get notificationAccountsTooltip =>
+      'Słovy, pa jakich u apaviaščenni paznajecca rachunak (apošnija ličby kartki, nazva kašalka): uviadzicie słova i naciśnicie Enter, kab dadać jaho. Inakš vykarystoŭvajecca rachunak pa zmaŭčanni dla prahramy';
+
+  @override
   String get notificationApps => 'Prahramy dlia čytańnia apaviaščeńniaŭ';
 
   @override
@@ -2443,6 +2460,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get notificationClear => 'Ačyścić atrymanyja';
+
+  @override
+  String get notificationDefaultAccount => 'Rachunak pa zmaŭčanni';
 
   @override
   String get notificationDescription =>

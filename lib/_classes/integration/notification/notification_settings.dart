@@ -38,9 +38,16 @@ class NotificationSettings {
   // Keywords to detect income and to skip balance amounts (for all apps), the built-in ones by default
   List<String> income;
   List<String> balance;
+  // Keywords to recognize the account (uuid) of a transaction, otherwise the default one of the app is taken
+  Map<String, List<String>> accounts;
 
-  NotificationSettings({Map<String, NotificationApp>? apps, List<String>? income, List<String>? balance})
-      : apps = apps ?? {},
+  NotificationSettings({
+    Map<String, NotificationApp>? apps,
+    List<String>? income,
+    List<String>? balance,
+    Map<String, List<String>>? accounts,
+  })  : apps = apps ?? {},
+        accounts = accounts ?? {},
         income = income ?? [...NotificationParser.incomeKeywords],
         balance = balance ?? [...NotificationParser.balanceKeywords];
 
@@ -50,6 +57,10 @@ class NotificationSettings {
         'apps': apps.map((key, value) => MapEntry(key, value.toJson())),
         'income': income,
         'balance': balance,
+        'accounts': {
+          for (final entry in accounts.entries)
+            if (entry.value.isNotEmpty) entry.key: entry.value,
+        },
       };
 
   static List<String>? _toKeywords(dynamic value) =>
@@ -61,6 +72,8 @@ class NotificationSettings {
         ),
         income: _toKeywords(json['income']),
         balance: _toKeywords(json['balance']),
+        accounts: (json['accounts'] as Map<String, dynamic>? ?? {})
+            .map((key, value) => MapEntry(key, _toKeywords(value) ?? <String>[])),
       );
 
   static NotificationSettings load() {

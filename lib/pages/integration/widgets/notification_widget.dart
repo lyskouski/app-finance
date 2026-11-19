@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/integration/notification/notification_parse
 import 'package:app_finance/_classes/integration/notification/notification_settings.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
@@ -69,6 +70,8 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
   // Parsing options shared by all apps
   late final ValueNotifier<List<String>> income;
   late final ValueNotifier<List<String>> balance;
+  // Keywords recognizing the account of a transaction instead of the default one
+  final Map<String, ValueNotifier<List<String>>> accounts = {};
   bool isGranted = false;
   bool isLoading = false;
   Map<String, String> apps = {};
@@ -102,6 +105,9 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     }
     income.dispose();
     balance.dispose();
+    for (final item in accounts.values) {
+      item.dispose();
+    }
     super.dispose();
   }
 
@@ -159,10 +165,18 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     await controller.syncAutoPackages();
   }
 
+  ValueNotifier<List<String>> accountKeywords(String uuid) => accounts.putIfAbsent(
+        uuid,
+        () => ValueNotifier([...?settings.accounts[uuid]])..addListener(persistKeywords),
+      );
+
+  Listenable get keywords => Listenable.merge([income, balance, ...accounts.values]);
+
   Future<void> persistKeywords() async {
     settings
       ..income = [...income.value]
       ..balance = [...balance.value];
+    accounts.forEach((uuid, item) => settings.accounts[uuid] = [...item.value]);
     await settings.save();
   }
 
@@ -223,13 +237,14 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           from: item.from,
           income: income.value,
           balance: balance.value,
+          accounts: settings.accounts,
         );
         records = await channel.getNotifications();
         await persist(item.package);
         notice = AppLocale.labels.integrationImported(summary.added, summary.pending, summary.skipped);
       });
 
-  Widget buildPreview(BuildContext context, NotificationSource item, List<NotificationRecord> scope) {
+  Widget buildPreview(BuildContext context, NotificationSource item, List<NotificationRecord> scope, AppData state) {
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
     return Column(
@@ -238,6 +253,9 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
         for (final record in scope.reversed.take(3))
           Builder(builder: (context) {
             final parsed = item.parse(record, income: income.value, balance: balance.value);
+            final uuid =
+                NotificationParser.toAccount('${record.title}\n${record.text}', settings.accounts) ?? item.appAccount;
+            final account = uuid != null ? state.getByUuid(uuid) : null;
             return ListTile(
               dense: true,
               contentPadding: EdgeInsets.zero,
@@ -248,6 +266,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
               title: Text(
                 parsed != null
                     ? '${parsed.amount} ${parsed.currency ?? ''} — ${parsed.title}'
+                        '${account is AccountAppData ? ' → ${account.title}' : ''}'
                     : AppLocale.labels.notificationUnparsed,
                 style: textTheme.bodyMedium,
               ),
@@ -270,6 +289,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
       key: ValueKey('notification_${item.package}'),
       title: item.label,
       subtitle: AppLocale.labels.notificationCaptured(scope.length),
+      accountTitle: AppLocale.labels.notificationDefaultAccount,
       target: item,
       state: state,
       isDisabled: isLoading || scope.isEmpty,
@@ -293,8 +313,8 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           controller: item.pattern,
         ),
         ListenableBuilder(
-          listenable: Listenable.merge([item.pattern, income, balance]),
-          builder: (context, _) => buildPreview(context, item, scope),
+          listenable: Listenable.merge([item.pattern, keywords]),
+          builder: (context, _) => buildPreview(context, item, scope, state),
         ),
         if (scope.isNotEmpty)
           Align(
@@ -341,6 +361,16 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
             defaults: NotificationParser.balanceKeywords,
             normalize: _normalize,
           ),
+          Text(AppLocale.labels.notificationAccounts, style: textTheme.titleMedium),
+          Text(AppLocale.labels.notificationAccountsTooltip, style: textTheme.bodySmall),
+          ThemeHelper.hIndent,
+          for (final account in state.getList(AppDataType.accounts).whereType<AccountAppData>())
+            TagsInput(
+              key: ValueKey('notification_account_${account.uuid}'),
+              title: account.title,
+              controller: accountKeywords(account.uuid!),
+              normalize: _normalize,
+            ),
           if (error != null) ...[
             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),
             ThemeHelper.hIndent,

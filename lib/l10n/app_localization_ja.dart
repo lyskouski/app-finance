@@ -959,6 +959,13 @@ class AppLocalizationsJa extends AppLocalizations {
       'アクセスを許可する方法：\n1.「アクセスを許可」を押してシステム設定を開きます\n2. Fingrom に通知の読み取りを許可します\n3. Android が制限付き設定と表示した場合：Fingrom のアプリ情報 → ⋮ →「制限付き設定を許可」を開き、再試行します\n4. Fingrom に戻り、通知を読み取るアプリを選択します';
 
   @override
+  String get notificationAccounts => '口座キーワード';
+
+  @override
+  String get notificationAccountsTooltip =>
+      '通知内で口座を識別する語句（カード番号の末尾、ウォレット名）：語句を入力し、Enterキーで追加します。該当しない場合はアプリの既定の口座が使われます';
+
+  @override
   String get notificationApps => '通知を読み取るアプリ';
 
   @override
@@ -987,6 +994,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notificationClear => '取得済みを消去';
+
+  @override
+  String get notificationDefaultAccount => '既定の口座';
 
   @override
   String get notificationDescription =>
