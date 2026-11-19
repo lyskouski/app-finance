@@ -416,7 +416,6 @@
     "notificationAccounts": "Palavras-chave de contas",
     "notificationAccountsTooltip": "Palavras que identificam a conta numa notificação (últimos dígitos do cartão, nome da carteira): escreva uma palavra e prima Enter para a adicionar. Caso contrário, é usada a conta predefinida da aplicação",
     "notificationApps": "Aplicações cujas notificações são lidas",
-    "notificationAuto": "Importar automaticamente",
     "notificationAutoImported": "Adicionados a partir de notificações: {value}",
     "@notificationAutoImported": {
         "value": {

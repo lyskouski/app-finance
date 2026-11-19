@@ -95,7 +95,7 @@ class NotificationController with WidgetsBindingObserver {
 
   Future<void> syncAutoPackages() async {
     try {
-      final apps = NotificationSettings.load().apps.entries.where((e) => e.value.auto && e.value.isLinked);
+      final apps = NotificationSettings.load().apps.entries.where((e) => e.value.isLinked);
       await channel.setAutoPackages(apps.map((e) => e.key));
     } on PlatformException {
       // Not critical: the background import would be skipped
@@ -124,7 +124,7 @@ class NotificationController with WidgetsBindingObserver {
       _isRepeated = false;
       final state = _state;
       final settings = NotificationSettings.load();
-      final apps = settings.apps.entries.where((e) => e.value.auto && e.value.isLinked).toList();
+      final apps = settings.apps.entries.where((e) => e.value.isLinked).toList();
       if (state == null || apps.isEmpty) {
         return;
       }

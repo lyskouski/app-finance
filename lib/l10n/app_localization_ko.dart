@@ -970,9 +970,6 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationApps => '알림을 읽을 앱';
 
   @override
-  String get notificationAuto => '자동으로 가져오기';
-
-  @override
   String notificationAutoImported(Object value) {
     return '알림에서 추가됨: $value';
   }

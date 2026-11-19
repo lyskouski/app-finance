@@ -416,7 +416,6 @@
     "notificationAccounts": "Trefwoorden voor rekeningen",
     "notificationAccountsTooltip": "Woorden waaraan de rekening in een melding wordt herkend (laatste cijfers van een kaart, naam van een wallet): typ een woord en druk op Enter om het toe te voegen. Anders wordt de standaardrekening van de app gebruikt",
     "notificationApps": "Apps waarvan meldingen worden gelezen",
-    "notificationAuto": "Automatisch importeren",
     "notificationAutoImported": "Toegevoegd uit meldingen: {value}",
     "@notificationAutoImported": {
         "value": {

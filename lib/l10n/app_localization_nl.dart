@@ -986,9 +986,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notificationApps => 'Apps waarvan meldingen worden gelezen';
 
   @override
-  String get notificationAuto => 'Automatisch importeren';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Toegevoegd uit meldingen: $value';
   }

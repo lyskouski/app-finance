@@ -988,9 +988,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notificationApps => 'Aplicações cujas notificações são lidas';
 
   @override
-  String get notificationAuto => 'Importar automaticamente';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Adicionados a partir de notificações: $value';
   }
@@ -2439,9 +2436,6 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get notificationApps => 'Aplicativos cujas notificações são lidas';
-
-  @override
-  String get notificationAuto => 'Importar automaticamente';
 
   @override
   String notificationAutoImported(Object value) {

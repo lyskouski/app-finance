@@ -416,7 +416,6 @@
     "notificationAccounts": "खाता कीवर्ड",
     "notificationAccountsTooltip": "सूचना में खाते की पहचान करने वाले शब्द (कार्ड के अंतिम अंक, वॉलेट का नाम): शब्द लिखें और जोड़ने के लिए Enter दबाएँ। अन्यथा ऐप का डिफ़ॉल्ट खाता उपयोग होता है",
     "notificationApps": "ऐप्स जिनकी सूचनाएँ पढ़ी जाती हैं",
-    "notificationAuto": "स्वचालित रूप से आयात करें",
     "notificationAutoImported": "सूचनाओं से जोड़े गए: {value}",
     "@notificationAutoImported": {
         "value": {

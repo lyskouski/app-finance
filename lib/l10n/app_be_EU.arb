@@ -416,7 +416,6 @@
     "notificationAccounts": "Klučavyja słovy rachunkaŭ",
     "notificationAccountsTooltip": "Słovy, pa jakich u apaviaščenni paznajecca rachunak (apošnija ličby kartki, nazva kašalka): uviadzicie słova i naciśnicie Enter, kab dadać jaho. Inakš vykarystoŭvajecca rachunak pa zmaŭčanni dla prahramy",
     "notificationApps": "Prahramy dlia čytańnia apaviaščeńniaŭ",
-    "notificationAuto": "Impartavać aŭtamatyčna",
     "notificationAutoImported": "Dadadziena z apaviaščeńniaŭ: {value}",
     "@notificationAutoImported": {
         "value": {

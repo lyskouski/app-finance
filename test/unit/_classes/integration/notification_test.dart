@@ -284,12 +284,9 @@ void main() {
 
       final restored = NotificationSettings.load().get('com.bank');
       expect((restored.account, restored.category, restored.currency), ('acc', 'cat', 'CHF'));
-      expect(restored.auto, isFalse);
 
-      settings.get('com.bank').auto = true;
-      await settings.save();
-      expect(NotificationSettings.load().get('com.bank').auto, isTrue);
-      expect(NotificationSettings.load().get('com.bank').isLinked, isTrue);
+      expect(restored.isLinked, isTrue);
+      expect(NotificationSettings.load().get('com.other').isLinked, isFalse);
     });
 
     test('keeps keywords shared by all applications', () async {

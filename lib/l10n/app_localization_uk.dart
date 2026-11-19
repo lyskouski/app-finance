@@ -984,9 +984,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get notificationApps => 'Застосунки для читання сповіщень';
 
   @override
-  String get notificationAuto => 'Імпортувати автоматично';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Додано зі сповіщень: $value';
   }

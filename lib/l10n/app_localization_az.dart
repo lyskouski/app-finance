@@ -987,9 +987,6 @@ class AppLocalizationsAz extends AppLocalizations {
   String get notificationApps => 'Bildirişləri oxunan tətbiqlər';
 
   @override
-  String get notificationAuto => 'Avtomatik idxal et';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Bildirişlərdən əlavə edildi: $value';
   }

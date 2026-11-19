@@ -984,9 +984,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notificationApps => 'Bildirimleri okunan uygulamalar';
 
   @override
-  String get notificationAuto => 'Otomatik içe aktar';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Bildirimlerden eklendi: $value';
   }

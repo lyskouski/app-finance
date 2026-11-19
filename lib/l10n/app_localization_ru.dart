@@ -985,9 +985,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notificationApps => 'Приложения для чтения уведомлений';
 
   @override
-  String get notificationAuto => 'Импортировать автоматически';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Добавлено из уведомлений: $value';
   }

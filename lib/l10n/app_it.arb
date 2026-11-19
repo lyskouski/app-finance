@@ -416,7 +416,6 @@
     "notificationAccounts": "Parole chiave dei conti",
     "notificationAccountsTooltip": "Parole che riconoscono il conto in una notifica (ultime cifre della carta, nome del portafoglio): digita una parola e premi Invio per aggiungerla. Altrimenti viene usato il conto predefinito dell'app",
     "notificationApps": "App di cui leggere le notifiche",
-    "notificationAuto": "Importa automaticamente",
     "notificationAutoImported": "Aggiunti dalle notifiche: {value}",
     "@notificationAutoImported": {
         "value": {

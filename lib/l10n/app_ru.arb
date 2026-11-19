@@ -416,7 +416,6 @@
     "notificationAccounts": "Ключевые слова счетов",
     "notificationAccountsTooltip": "Слова, по которым в уведомлении распознаётся счёт (последние цифры карты, название кошелька): введите слово и нажмите Enter, чтобы добавить его. Иначе используется счёт по умолчанию для приложения",
     "notificationApps": "Приложения для чтения уведомлений",
-    "notificationAuto": "Импортировать автоматически",
     "notificationAutoImported": "Добавлено из уведомлений: {value}",
     "@notificationAutoImported": {
         "value": {

@@ -416,7 +416,6 @@
     "notificationAccounts": "Słowa kluczowe kont",
     "notificationAccountsTooltip": "Słowa rozpoznające konto w powiadomieniu (ostatnie cyfry karty, nazwa portfela): wpisz słowo i naciśnij Enter, aby je dodać. W przeciwnym razie używane jest domyślne konto aplikacji",
     "notificationApps": "Aplikacje do odczytu powiadomień",
-    "notificationAuto": "Importuj automatycznie",
     "notificationAutoImported": "Dodano z powiadomień: {value}",
     "@notificationAutoImported": {
         "value": {

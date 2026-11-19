@@ -416,7 +416,6 @@
     "notificationAccounts": "Hisob kalit so'zlari",
     "notificationAccountsTooltip": "Bildirishnomada hisobni aniqlaydigan so'zlar (kartaning oxirgi raqamlari, hamyon nomi): so'z kiriting va qo'shish uchun Enter tugmasini bosing. Aks holda ilovaning standart hisobi ishlatiladi",
     "notificationApps": "Bildirishnomalari o'qiladigan ilovalar",
-    "notificationAuto": "Avtomatik import qilish",
     "notificationAutoImported": "Bildirishnomalardan qo'shildi: {value}",
     "@notificationAutoImported": {
         "value": {

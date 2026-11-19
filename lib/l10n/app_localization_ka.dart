@@ -986,9 +986,6 @@ class AppLocalizationsKa extends AppLocalizations {
   String get notificationApps => 'აპები, რომელთა შეტყობინებებიც იკითხება';
 
   @override
-  String get notificationAuto => 'ავტომატური იმპორტი';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'დაემატა შეტყობინებებიდან: $value';
   }

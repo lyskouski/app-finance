@@ -416,7 +416,6 @@
     "notificationAccounts": "Account Keywords",
     "notificationAccountsTooltip": "Words recognizing the account in a notification (last digits of a card, name of a wallet): type a word and press Enter to add it. Otherwise the default account of the app is used",
     "notificationApps": "Apps to Read Notifications From",
-    "notificationAuto": "Import Automatically",
     "notificationAutoImported": "Added from notifications: {value}",
     "@notificationAutoImported": {
         "value": {

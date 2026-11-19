@@ -416,7 +416,6 @@
     "notificationAccounts": "帳戶關鍵字",
     "notificationAccountsTooltip": "用於在通知中識別帳戶的詞語（卡號末幾碼、錢包名稱）：輸入詞語後按 Enter 新增。否則使用該應用程式的預設帳戶",
     "notificationApps": "讀取通知的應用程式",
-    "notificationAuto": "自動匯入",
     "notificationAutoImported": "已從通知新增：{value}",
     "@notificationAutoImported": {
         "value": {

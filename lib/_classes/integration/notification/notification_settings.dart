@@ -11,10 +11,8 @@ class NotificationApp {
   String? category;
   // Currency (code) of amounts without one, and the preferred one for ambiguous symbols ($, kr)
   String? currency;
-  // Recognized notifications are imported without a confirmation
-  bool auto;
 
-  NotificationApp({this.account, this.category, this.currency, this.auto = false});
+  NotificationApp({this.account, this.category, this.currency});
 
   bool get isLinked => account != null && category != null;
 
@@ -22,14 +20,12 @@ class NotificationApp {
         if (account != null) 'account': account,
         if (category != null) 'category': category,
         if (currency != null) 'currency': currency,
-        if (auto) 'auto': true,
       };
 
   factory NotificationApp.fromJson(Map<String, dynamic> json) => NotificationApp(
         account: json['account']?.toString(),
         category: json['category']?.toString(),
         currency: json['currency']?.toString(),
-        auto: json['auto'] == true,
       );
 }
 

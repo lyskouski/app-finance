@@ -416,7 +416,6 @@
     "notificationAccounts": "Mots-clés des comptes",
     "notificationAccountsTooltip": "Mots identifiant le compte dans une notification (derniers chiffres de la carte, nom du portefeuille) : saisissez un mot et appuyez sur Entrée pour l'ajouter. Sinon, le compte par défaut de l'application est utilisé",
     "notificationApps": "Applications dont les notifications sont lues",
-    "notificationAuto": "Importer automatiquement",
     "notificationAutoImported": "Ajoutées depuis les notifications : {value}",
     "@notificationAutoImported": {
         "value": {

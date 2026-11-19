@@ -416,7 +416,6 @@
     "notificationAccounts": "Kata kunci akun",
     "notificationAccountsTooltip": "Kata yang mengenali akun dalam notifikasi (digit terakhir kartu, nama dompet): ketik kata dan tekan Enter untuk menambahkannya. Jika tidak, akun bawaan aplikasi yang digunakan",
     "notificationApps": "Aplikasi yang notifikasinya dibaca",
-    "notificationAuto": "Impor Otomatis",
     "notificationAutoImported": "Ditambahkan dari notifikasi: {value}",
     "@notificationAutoImported": {
         "value": {

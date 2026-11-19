@@ -416,7 +416,6 @@
     "notificationAccounts": "Cuvinte cheie pentru conturi",
     "notificationAccountsTooltip": "Cuvinte care identifică contul într-o notificare (ultimele cifre ale cardului, numele portofelului): tastați un cuvânt și apăsați Enter pentru a-l adăuga. Altfel se folosește contul implicit al aplicației",
     "notificationApps": "Aplicații ale căror notificări sunt citite",
-    "notificationAuto": "Importă automat",
     "notificationAutoImported": "Adăugate din notificări: {value}",
     "@notificationAutoImported": {
         "value": {

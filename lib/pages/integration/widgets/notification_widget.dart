@@ -26,7 +26,6 @@ class NotificationSource extends IntegrationTarget {
   final String package;
   final String label;
   Currency? currency;
-  bool auto;
 
   NotificationSource(
     this.package,
@@ -35,14 +34,12 @@ class NotificationSource extends IntegrationTarget {
     super.category,
     required super.from,
     this.currency,
-    this.auto = false,
   });
 
   NotificationApp toLink() => NotificationApp(
         account: appAccount,
         category: category,
         currency: currency?.code,
-        auto: auto,
       );
 }
 
@@ -69,7 +66,6 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
   List<NotificationRecord> records = [];
   final Map<String, NotificationSource> sources = {};
   String? error;
-  String? notice;
 
   NotificationChannel get channel => widget.channel;
 
@@ -138,7 +134,6 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           category: link.category ?? AppPreferences.get(AppPreferences.prefBudget),
           from: DateTime.now().subtract(const Duration(days: 30)),
           currency: link.currency != null ? CurrencyProvider.find(link.currency!) : null,
-          auto: link.auto,
         );
       });
 
@@ -150,6 +145,16 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     settings.apps[package] = item.toLink();
     await settings.save();
     await controller.syncAutoPackages();
+    await importLinked();
+  }
+
+  // Recognized notifications of linked apps are imported right away, the rest wait for adjusted settings
+  Future<void> importLinked() async {
+    if (!mounted || !settings.apps.values.any((e) => e.isLinked)) {
+      return;
+    }
+    controller.attach(Provider.of<AppData>(context, listen: false));
+    await controller.run();
   }
 
   ValueNotifier<List<String>> accountKeywords(String uuid) => accounts.putIfAbsent(
@@ -165,23 +170,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
       ..balance = [...balance.value];
     accounts.forEach((uuid, item) => settings.accounts[uuid] = [...item.value]);
     await settings.save();
-  }
-
-  Future<void> toggleAuto(NotificationSource item, bool value) async {
-    if (value && (item.appAccount == null || item.category == null)) {
-      setState(() => error = AppLocale.labels.integrationSelectTarget);
-      return;
-    }
-    setState(() {
-      item.auto = value;
-      error = null;
-    });
-    await persist(item.package);
-    if (value && mounted) {
-      // Already captured notifications are imported right away
-      controller.attach(Provider.of<AppData>(context, listen: false));
-      await controller.run();
-    }
+    await importLinked();
   }
 
   Future<void> refresh() => _run(() async {
@@ -207,28 +196,6 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
   Future<void> clear(NotificationSource item) => _run(() async {
         await channel.removeNotifications(records.where((e) => e.package == item.package).map((e) => e.id));
         records = await channel.getNotifications();
-        notice = null;
-      });
-
-  Future<void> importTransactions(NotificationSource item) => _run(() async {
-        if (item.appAccount == null || item.category == null) {
-          error = AppLocale.labels.integrationSelectTarget;
-          return;
-        }
-        final summary = await NotificationController.importApp(
-          Provider.of<AppData>(context, listen: false),
-          channel,
-          package: item.package,
-          link: item.toLink(),
-          records: records,
-          from: item.from,
-          income: income.value,
-          balance: balance.value,
-          accounts: settings.accounts,
-        );
-        records = await channel.getNotifications();
-        await persist(item.package);
-        notice = AppLocale.labels.integrationImported(summary.added, summary.pending, summary.skipped);
       });
 
   Widget buildPreview(BuildContext context, NotificationSource item, List<NotificationRecord> scope, AppData state) {
@@ -290,12 +257,10 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
       accountTitle: AppLocale.labels.notificationDefaultAccount,
       target: item,
       state: state,
-      isDisabled: isLoading || scope.isEmpty,
       onChanged: () {
         setState(() {});
         persist(item.package);
       },
-      onImport: () => importTransactions(item),
       children: [
         InputWrapper.currency(
           key: ValueKey('notification_currency_${item.package}'),
@@ -307,14 +272,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
             persist(item.package);
           },
         ),
-        SwitchListTile(
-          key: ValueKey('notification_auto_${item.package}'),
-          contentPadding: EdgeInsets.zero,
-          title: Text(AppLocale.labels.notificationAuto),
-          subtitle: Text(AppLocale.labels.notificationAutoTooltip, style: context.textTheme.bodySmall),
-          value: item.auto,
-          onChanged: isLoading ? null : (value) => toggleAuto(item, value),
-        ),
+        Text(AppLocale.labels.notificationAutoTooltip, style: context.textTheme.bodySmall),
         ListenableBuilder(
           listenable: keywords,
           builder: (context, _) => buildPreview(context, item, scope, state),
@@ -376,10 +334,6 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
             ),
           if (error != null) ...[
             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),
-            ThemeHelper.hIndent,
-          ],
-          if (notice != null) ...[
-            Text(notice!, style: textTheme.bodyLarge),
             ThemeHelper.hIndent,
           ],
           if (isLoading && apps.isEmpty)

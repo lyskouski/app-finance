@@ -416,7 +416,6 @@
     "notificationAccounts": "账户关键词",
     "notificationAccountsTooltip": "用于在通知中识别账户的词语（卡号末几位、钱包名称）：输入词语后按 Enter 添加。否则使用该应用的默认账户",
     "notificationApps": "读取通知的应用",
-    "notificationAuto": "自动导入",
     "notificationAutoImported": "已从通知添加：{value}",
     "@notificationAutoImported": {
         "value": {

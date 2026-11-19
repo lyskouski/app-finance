@@ -416,7 +416,6 @@
     "notificationAccounts": "کلیدواژه‌های حساب",
     "notificationAccountsTooltip": "واژه‌هایی که حساب را در اعلان مشخص می‌کنند (ارقام آخر کارت، نام کیف پول): واژه‌ای بنویسید و برای افزودن Enter را بزنید. در غیر این صورت حساب پیش‌فرض برنامه استفاده می‌شود",
     "notificationApps": "برنامه‌هایی که اعلان‌هایشان خوانده می‌شود",
-    "notificationAuto": "وارد کردن خودکار",
     "notificationAutoImported": "افزوده‌شده از اعلان‌ها: {value}",
     "@notificationAutoImported": {
         "value": {

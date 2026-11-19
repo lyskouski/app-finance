@@ -416,7 +416,6 @@
     "notificationAccounts": "Klíčová slova účtů",
     "notificationAccountsTooltip": "Slova, podle kterých se v oznámení pozná účet (poslední číslice karty, název peněženky): napište slovo a stiskněte Enter pro přidání. Jinak se použije výchozí účet aplikace",
     "notificationApps": "Aplikace, jejichž oznámení se čtou",
-    "notificationAuto": "Importovat automaticky",
     "notificationAutoImported": "Přidáno z oznámení: {value}",
     "@notificationAutoImported": {
         "value": {

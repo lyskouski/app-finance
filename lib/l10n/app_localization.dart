@@ -1963,12 +1963,6 @@ abstract class AppLocalizations {
   /// **'Apps to Read Notifications From'**
   String get notificationApps;
 
-  /// No description provided for @notificationAuto.
-  ///
-  /// In en, this message translates to:
-  /// **'Import Automatically'**
-  String get notificationAuto;
-
   /// No description provided for @notificationAutoImported.
   ///
   /// In en, this message translates to:

@@ -416,7 +416,6 @@
     "notificationAccounts": "계좌 키워드",
     "notificationAccountsTooltip": "알림에서 계좌를 식별하는 단어(카드 끝자리, 지갑 이름): 단어를 입력하고 Enter 키를 눌러 추가하세요. 일치하지 않으면 앱의 기본 계좌가 사용됩니다",
     "notificationApps": "알림을 읽을 앱",
-    "notificationAuto": "자동으로 가져오기",
     "notificationAutoImported": "알림에서 추가됨: {value}",
     "@notificationAutoImported": {
         "value": {

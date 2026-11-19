@@ -982,9 +982,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get notificationApps => 'Aplikace, jejichž oznámení se čtou';
 
   @override
-  String get notificationAuto => 'Importovat automaticky';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Přidáno z oznámení: $value';
   }

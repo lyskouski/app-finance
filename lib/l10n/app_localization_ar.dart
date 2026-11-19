@@ -978,9 +978,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notificationApps => 'التطبيقات التي تُقرأ إشعاراتها';
 
   @override
-  String get notificationAuto => 'استيراد تلقائي';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'تمت الإضافة من الإشعارات: $value';
   }

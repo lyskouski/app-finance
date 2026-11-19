@@ -966,9 +966,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationApps => '读取通知的应用';
 
   @override
-  String get notificationAuto => '自动导入';
-
-  @override
   String notificationAutoImported(Object value) {
     return '已从通知添加：$value';
   }
@@ -2381,9 +2378,6 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get notificationApps => '讀取通知的應用程式';
-
-  @override
-  String get notificationAuto => '自動匯入';
 
   @override
   String notificationAutoImported(Object value) {

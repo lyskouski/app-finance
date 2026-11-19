@@ -416,7 +416,6 @@
     "notificationAccounts": "Ключавыя словы рахункаў",
     "notificationAccountsTooltip": "Словы, па якіх у апавяшчэнні пазнаецца рахунак (апошнія лічбы карткі, назва кашалька): увядзіце слова і націсніце Enter, каб дадаць яго. Інакш выкарыстоўваецца рахунак па змаўчанні для праграмы",
     "notificationApps": "Праграмы для чытаньня апавяшчэньняў",
-    "notificationAuto": "Імпартаваць аўтаматычна",
     "notificationAutoImported": "Дададзена з апавяшчэньняў: {value}",
     "@notificationAutoImported": {
         "value": {

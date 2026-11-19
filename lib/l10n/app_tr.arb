@@ -416,7 +416,6 @@
     "notificationAccounts": "Hesap anahtar kelimeleri",
     "notificationAccountsTooltip": "Bildirimde hesabı tanıyan kelimeler (kartın son haneleri, cüzdan adı): bir kelime yazın ve eklemek için Enter tuşuna basın. Aksi halde uygulamanın varsayılan hesabı kullanılır",
     "notificationApps": "Bildirimleri okunan uygulamalar",
-    "notificationAuto": "Otomatik içe aktar",
     "notificationAutoImported": "Bildirimlerden eklendi: {value}",
     "@notificationAutoImported": {
         "value": {

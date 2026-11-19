@@ -991,9 +991,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get notificationApps => 'Bildirishnomalari o\'qiladigan ilovalar';
 
   @override
-  String get notificationAuto => 'Avtomatik import qilish';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Bildirishnomalardan qo\'shildi: $value';
   }

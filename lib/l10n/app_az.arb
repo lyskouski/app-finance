@@ -416,7 +416,6 @@
     "notificationAccounts": "Hesab açar sözləri",
     "notificationAccountsTooltip": "Bildirişdə hesabı müəyyən edən sözlər (kartın son rəqəmləri, pul kisəsinin adı): söz yazın və əlavə etmək üçün Enter düyməsini basın. Əks halda tətbiqin defolt hesabı istifadə olunur",
     "notificationApps": "Bildirişləri oxunan tətbiqlər",
-    "notificationAuto": "Avtomatik idxal et",
     "notificationAutoImported": "Bildirişlərdən əlavə edildi: {value}",
     "@notificationAutoImported": {
         "value": {

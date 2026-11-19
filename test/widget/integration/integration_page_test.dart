@@ -641,7 +641,7 @@ void main() {
       details: 0.0,
       hidden: false,
     )) as AccountAppData;
-    final budget = state.add(BudgetAppData(title: 'Food', hidden: false)) as BudgetAppData;
+    state.add(BudgetAppData(title: 'Food', hidden: false));
     final bills = state.getList(AppDataType.bills, false).length;
 
     var isGranted = false;
@@ -741,23 +741,9 @@ void main() {
     expect(find.textContaining('-12.5 EUR — Bakery → Card'), findsOneWidget);
     expect(NotificationSettings.load().accounts[account.uuid], ['bakery']);
 
-    final widgetState = tester.state<NotificationWidgetState>(find.byType(NotificationWidget));
-    widgetState.sources['com.bank']!
-      ..appAccount = account.uuid
-      ..category = budget.uuid
-      ..from = DateTime(2020);
-    await tester.ensureVisible(find.text('Import Transactions'));
-    await tester.tap(find.text('Import Transactions'));
-    await pumpFrames(tester);
-    await tester.pumpAndSettle();
-
-    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 1'), findsOneWidget);
-    final bill = state.getList(AppDataType.bills, false).whereType<BillAppData>().last;
-    expect(state.getList(AppDataType.bills, false).length, bills + 1);
-    expect((bill.title, bill.details, bill.currency?.code), ('Bakery', 12.5, 'EUR'));
-    expect(notifications.map((e) => e['id']), ['n2']);
-    expect(find.text('Captured notifications: 1'), findsOneWidget);
-    expect(NotificationSettings.load().apps['com.bank']?.account, account.uuid);
+    // Neither the period nor the manual import: recognized notifications are imported automatically
+    expect(find.text('Import Transactions'), findsNothing);
+    expect(state.getList(AppDataType.bills, false).length, bills);
 
     await tester.ensureVisible(find.text('Clear Captured'));
     await tester.tap(find.text('Clear Captured'));
@@ -828,23 +814,22 @@ void main() {
     await pumpFrames(tester);
     await tester.pumpAndSettle();
 
-    // A link to the account is required
-    await tester.ensureVisible(find.byKey(const ValueKey('notification_auto_com.bank')));
-    await tester.tap(find.byKey(const ValueKey('notification_auto_com.bank')));
-    await pumpFrames(tester);
-    expect(find.text('Select the account and the budget category to import into'), findsOneWidget);
-    expect(NotificationSettings.load().apps['com.bank']?.auto ?? false, isFalse);
+    // Nothing is imported until the app is linked to an account and a category
+    expect(state.getList(AppDataType.bills, false).length, bills);
+    expect(autoPackages, isEmpty);
+    expect(find.byKey(const ValueKey('notification_auto_com.bank')), findsNothing);
 
-    tester.state<NotificationWidgetState>(find.byType(NotificationWidget)).sources['com.bank']!
+    final widgetState = tester.state<NotificationWidgetState>(find.byType(NotificationWidget));
+    widgetState.sources['com.bank']!
       ..appAccount = account.uuid
       ..category = budget.uuid;
-    await tester.tap(find.byKey(const ValueKey('notification_auto_com.bank')));
+    await widgetState.persist('com.bank');
     await pumpFrames(tester);
     await tester.pumpAndSettle();
 
     // Already captured notifications are imported right away, an unrecognized one is kept
     final link = NotificationSettings.load().apps['com.bank']!;
-    expect((link.auto, link.account, link.category), (true, account.uuid, budget.uuid));
+    expect((link.account, link.category), (account.uuid, budget.uuid));
     // The background instance is started by the Android service only for these applications
     expect(autoPackages, ['com.bank']);
     expect(find.text('Added from notifications: 1'), findsOneWidget);
@@ -878,7 +863,7 @@ void main() {
   testWidgets('Notifications Parser imports in the background instance', (WidgetTester tester) async {
     await PumpMain.init(tester);
     final memory = <String, String>{
-      AppPreferences.prefNotification: '{"apps":{"com.bank":{"account":"acc","category":"cat","auto":true}}}',
+      AppPreferences.prefNotification: '{"apps":{"com.bank":{"account":"acc","category":"cat"}}}',
     };
     final pref = AppPreferences.pref as WrapperMockSharedPreferences;
     pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
@@ -950,7 +935,7 @@ void main() {
           (_) {},
         ));
     expect(done, [1, 2]);
-    // Only applications with an automatic import are processed
+    // Only applications linked to an account are processed
     expect(notifications.map((e) => e['id']), ['n3']);
     expect(state.getList(AppDataType.bills, false).length, bills + 2);
     await tester.pump(const Duration(seconds: 10));

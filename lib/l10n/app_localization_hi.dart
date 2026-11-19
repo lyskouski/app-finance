@@ -982,9 +982,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notificationApps => 'ऐप्स जिनकी सूचनाएँ पढ़ी जाती हैं';
 
   @override
-  String get notificationAuto => 'स्वचालित रूप से आयात करें';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'सूचनाओं से जोड़े गए: $value';
   }

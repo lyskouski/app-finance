@@ -984,9 +984,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationApps => 'Apps to Read Notifications From';
 
   @override
-  String get notificationAuto => 'Import Automatically';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Added from notifications: $value';
   }

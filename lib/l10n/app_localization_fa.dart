@@ -980,9 +980,6 @@ class AppLocalizationsFa extends AppLocalizations {
   String get notificationApps => 'برنامه‌هایی که اعلان‌هایشان خوانده می‌شود';
 
   @override
-  String get notificationAuto => 'وارد کردن خودکار';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'افزوده‌شده از اعلان‌ها: $value';
   }

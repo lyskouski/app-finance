@@ -969,9 +969,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notificationApps => '通知を読み取るアプリ';
 
   @override
-  String get notificationAuto => '自動でインポート';
-
-  @override
   String notificationAutoImported(Object value) {
     return '通知から追加：$value';
   }

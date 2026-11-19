@@ -985,9 +985,6 @@ class AppLocalizationsBe extends AppLocalizations {
   String get notificationApps => 'Праграмы для чытаньня апавяшчэньняў';
 
   @override
-  String get notificationAuto => 'Імпартаваць аўтаматычна';
-
-  @override
   String notificationAutoImported(Object value) {
     return 'Дададзена з апавяшчэньняў: $value';
   }
@@ -2430,9 +2427,6 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get notificationApps => 'Prahramy dlia čytańnia apaviaščeńniaŭ';
-
-  @override
-  String get notificationAuto => 'Impartavać aŭtamatyčna';
 
   @override
   String notificationAutoImported(Object value) {

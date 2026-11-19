@@ -416,7 +416,6 @@
     "notificationAccounts": "Ключові слова рахунків",
     "notificationAccountsTooltip": "Слова, за якими у сповіщенні розпізнається рахунок (останні цифри картки, назва гаманця): введіть слово й натисніть Enter, щоб додати його. Інакше використовується рахунок за замовчуванням для застосунку",
     "notificationApps": "Застосунки для читання сповіщень",
-    "notificationAuto": "Імпортувати автоматично",
     "notificationAutoImported": "Додано зі сповіщень: {value}",
     "@notificationAutoImported": {
         "value": {
