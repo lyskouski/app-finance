@@ -1957,17 +1957,29 @@ abstract class AppLocalizations {
   /// **'Import Automatically'**
   String get notificationAuto;
 
+  /// No description provided for @notificationAutoImported.
+  ///
+  /// In en, this message translates to:
+  /// **'Added from notifications: {value}'**
+  String notificationAutoImported(Object value);
+
   /// No description provided for @notificationAutoTooltip.
   ///
   /// In en, this message translates to:
   /// **'Recognized notifications are added without a confirmation: right away while Fingrom is running, otherwise on its next start. Unrecognized ones wait for a review'**
   String get notificationAutoTooltip;
 
-  /// No description provided for @notificationAutoImported.
+  /// No description provided for @notificationBalance.
   ///
   /// In en, this message translates to:
-  /// **'Added from notifications: {value}'**
-  String notificationAutoImported(Object value);
+  /// **'Balance Keywords'**
+  String get notificationBalance;
+
+  /// No description provided for @notificationBalanceTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Words preceding an amount that should be ignored (balance, limit): type a word and press Enter to add it'**
+  String get notificationBalanceTooltip;
 
   /// No description provided for @notificationCaptured.
   ///
@@ -1993,6 +2005,18 @@ abstract class AppLocalizations {
   /// **'Grant Access'**
   String get notificationGrant;
 
+  /// No description provided for @notificationIncome.
+  ///
+  /// In en, this message translates to:
+  /// **'Income Keywords'**
+  String get notificationIncome;
+
+  /// No description provided for @notificationIncomeTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Words marking a notification as income: type a word and press Enter to add it'**
+  String get notificationIncomeTooltip;
+
   /// No description provided for @notificationNoApps.
   ///
   /// In en, this message translates to:
@@ -2010,30 +2034,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Regular expression with the named groups amount (required), currency and title, e.g. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)'**
   String get notificationPatternTooltip;
-
-  /// No description provided for @notificationIncome.
-  ///
-  /// In en, this message translates to:
-  /// **'Income Keywords (optional)'**
-  String get notificationIncome;
-
-  /// No description provided for @notificationIncomeTooltip.
-  ///
-  /// In en, this message translates to:
-  /// **'Comma-separated words marking a notification as income, in addition to the built-in ones, e.g. payout, dividend'**
-  String get notificationIncomeTooltip;
-
-  /// No description provided for @notificationBalance.
-  ///
-  /// In en, this message translates to:
-  /// **'Balance Keywords (optional)'**
-  String get notificationBalance;
-
-  /// No description provided for @notificationBalanceTooltip.
-  ///
-  /// In en, this message translates to:
-  /// **'Comma-separated words preceding an amount that should be ignored (balance, limit), in addition to the built-in ones, e.g. remaining, credit line'**
-  String get notificationBalanceTooltip;
 
   /// No description provided for @notificationUnparsed.
   ///

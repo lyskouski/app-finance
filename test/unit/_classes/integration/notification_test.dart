@@ -138,14 +138,16 @@ void main() {
       expect(NotificationParser.parse('', 'Paid 5 EUR', pattern: '(?<amount>'), isNull);
     });
 
-    test('splits user keywords', () {
-      expect(NotificationParser.toKeywords(' Payout, Dividend\n,  ,Bonus '), ['payout', 'dividend', 'bonus']);
-      expect(NotificationParser.toKeywords(null), isEmpty);
+    test('normalizes user keywords', () {
+      expect(NotificationParser.toKeywords([' Payout', 'Dividend', '  ', 'payout']), ['payout', 'dividend']);
+      expect(NotificationParser.toKeywords([]), isEmpty);
     });
 
     test('applies user income keywords', () {
       expect(NotificationParser.parse('', 'Payout 40 EUR')!.amount, -40.0);
       expect(NotificationParser.parse('', 'Payout 40 EUR', income: ['payout'])!.amount, 40.0);
+      // User keywords replace the default ones
+      expect(NotificationParser.parse('', 'Refund 40 EUR', income: ['payout'])!.amount, -40.0);
       final result = NotificationParser.parse('', 'Payout: 40.00', pattern: r'Payout: ([\d.]+)', income: ['payout']);
       expect(result!.amount, 40.0);
     });
@@ -155,6 +157,7 @@ void main() {
       expect(NotificationParser.parse('', 'Remaining 500 EUR')!.amount, -500.0);
       expect(NotificationParser.parse('', 'Remaining 500 EUR', balance: ['remaining']), isNull);
       expect(NotificationParser.parse('', text, balance: ['remaining'])!.amount, -10.0);
+      expect(NotificationParser.parse('', 'Balance 500 EUR', balance: [])!.amount, -500.0);
     });
   });
 
@@ -210,8 +213,8 @@ void main() {
         account: 'acc',
         category: 'cat',
         from: DateTime(2026),
-        income: 'payout',
-        balance: 'remaining',
+        income: ['payout'],
+        balance: ['remaining'],
       );
       expect((summary.added, summary.pending), (1, 1));
       expect(added.single, isA<InvoiceAppData>());
@@ -229,20 +232,31 @@ void main() {
       settings.get('com.bank')
         ..account = 'acc'
         ..category = 'cat'
-        ..pattern = '(?<amount>\\d+)'
-        ..income = 'payout'
-        ..balance = 'remaining';
+        ..pattern = '(?<amount>\\d+)';
       await settings.save();
 
       final restored = NotificationSettings.load().get('com.bank');
       expect((restored.account, restored.category, restored.pattern), ('acc', 'cat', '(?<amount>\\d+)'));
-      expect((restored.income, restored.balance), ('payout', 'remaining'));
       expect(restored.auto, isFalse);
 
       settings.get('com.bank').auto = true;
       await settings.save();
       expect(NotificationSettings.load().get('com.bank').auto, isTrue);
       expect(NotificationSettings.load().get('com.bank').isLinked, isTrue);
+    });
+
+    test('keeps keywords shared by all applications', () async {
+      final settings = NotificationSettings.load();
+      expect(settings.income, NotificationParser.incomeKeywords);
+      expect(settings.balance, NotificationParser.balanceKeywords);
+
+      settings
+        ..income = ['payout']
+        ..balance = [];
+      await settings.save();
+      final restored = NotificationSettings.load();
+      expect(restored.income, ['payout']);
+      expect(restored.balance, isEmpty);
     });
 
     test('recovers from a broken state', () async {

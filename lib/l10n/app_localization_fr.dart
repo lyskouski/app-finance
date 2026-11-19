@@ -988,13 +988,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notificationAuto => 'Importer automatiquement';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Ajoutées depuis les notifications : $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Les notifications reconnues sont ajoutées sans confirmation : immédiatement si Fingrom est ouvert, sinon au prochain démarrage. Les non reconnues attendent une vérification';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Ajoutées depuis les notifications : $value';
-  }
+  String get notificationBalance => 'Mots-clés de solde';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Mots précédant un montant à ignorer (solde, plafond) : saisissez un mot et appuyez sur Entrée pour l\'ajouter';
 
   @override
   String notificationCaptured(Object value) {
@@ -1012,6 +1019,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notificationGrant => 'Accorder l\'accès';
 
   @override
+  String get notificationIncome => 'Mots-clés de revenu';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Mots indiquant qu\'une notification est un revenu : saisissez un mot et appuyez sur Entrée pour l\'ajouter';
+
+  @override
   String get notificationNoApps =>
       'Aucune notification reçue pour l\'instant : les applications apparaissent ici après avoir publié une notification';
 
@@ -1021,20 +1035,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Expression régulière avec les groupes nommés amount (obligatoire), currency et title, p. ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Mots-clés de revenu (facultatif)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Mots séparés par des virgules indiquant qu\'une notification est un revenu, en plus de ceux intégrés, par ex. versement, dividende';
-
-  @override
-  String get notificationBalance => 'Mots-clés de solde (facultatif)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Mots séparés par des virgules précédant un montant à ignorer (solde, plafond), en plus de ceux intégrés, par ex. restant, ligne de crédit';
 
   @override
   String get notificationUnparsed => 'Non reconnu';

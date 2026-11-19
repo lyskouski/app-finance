@@ -981,13 +981,20 @@ class AppLocalizationsBe extends AppLocalizations {
   String get notificationAuto => 'Імпартаваць аўтаматычна';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Дададзена з апавяшчэньняў: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Распазнаныя апавяшчэньні дадаюцца без пацьверджаньня: адразу, калі Fingrom працуе, інакш пры наступным запуску. Нераспазнаныя чакаюць праверкі';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Дададзена з апавяшчэньняў: $value';
-  }
+  String get notificationBalance => 'Ключавыя словы балансу';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Словы перад сумай, якую трэба ігнараваць (баланс, ліміт): увядзіце слова і націсніце Enter, каб дадаць яго';
 
   @override
   String notificationCaptured(Object value) {
@@ -1005,6 +1012,13 @@ class AppLocalizationsBe extends AppLocalizations {
   String get notificationGrant => 'Даць доступ';
 
   @override
+  String get notificationIncome => 'Ключавыя словы даходу';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Словы, якія пазначаюць апавяшчэнне як даход: увядзіце слова і націсніце Enter, каб дадаць яго';
+
+  @override
   String get notificationNoApps =>
       'Апавяшчэньняў яшчэ не было: праграмы зьявяцца тут пасьля таго, як дашлюць апавяшчэньне';
 
@@ -1014,20 +1028,6 @@ class AppLocalizationsBe extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Рэгулярны выраз з найменнымі групамі amount (абавязкова), currency і title, напрыклад, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Ключавыя словы даходу (неабавязкова)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Словы праз коску, якія пазначаюць апавяшчэнне як даход, у дадатак да ўбудаваных, напрыклад, выплата, дывідэнды';
-
-  @override
-  String get notificationBalance => 'Ключавыя словы балансу (неабавязкова)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Словы праз коску перад сумай, якую трэба ігнараваць (баланс, ліміт), у дадатак да ўбудаваных, напрыклад, рэшта, крэдытная лінія';
 
   @override
   String get notificationUnparsed => 'Не распазнана';
@@ -2421,13 +2421,20 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get notificationAuto => 'Impartavać aŭtamatyčna';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Dadadziena z apaviaščeńniaŭ: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Raspaznanyja apaviaščeńni dadajucca biez paćvierdžańnia: adrazu, kali Fingrom pracuje, inakš pry nastupnym zapusku. Nieraspaznanyja čakajuć pravierki';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Dadadziena z apaviaščeńniaŭ: $value';
-  }
+  String get notificationBalance => 'Klučavyja słovy balansu';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Słovy pierad sumaj, jakuju treba ihnaravać (balans, limit): uviadzicie słova i naciśnicie Enter, kab dadać jaho';
 
   @override
   String notificationCaptured(Object value) {
@@ -2445,6 +2452,13 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get notificationGrant => 'Dać dostup';
 
   @override
+  String get notificationIncome => 'Klučavyja słovy dachodu';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Słovy, jakija paznačajuć apaviaščennie jak dachod: uviadzicie słova i naciśnicie Enter, kab dadać jaho';
+
+  @override
   String get notificationNoApps =>
       'Apaviaščeńniaŭ jašče nie było: prahramy źjaviacca tut paślia taho, jak dašliuć apaviaščeńnie';
 
@@ -2454,20 +2468,6 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   @override
   String get notificationPatternTooltip =>
       'Rehuliarny vyraz z najmiennymi hrupami amount (abaviazkova), currency i title, napryklad, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Klučavyja słovy dachodu (nieabaviazkova)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Słovy praz kosku, jakija paznačajuć apaviaščennie jak dachod, u dadatak da ŭbudavanych, napryklad, vypłata, dyvidendy';
-
-  @override
-  String get notificationBalance => 'Klučavyja słovy balansu (nieabaviazkova)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Słovy praz kosku pierad sumaj, jakuju treba ihnaravać (balans, limit), u dadatak da ŭbudavanych, napryklad, rešta, kredytnaja linija';
 
   @override
   String get notificationUnparsed => 'Nie raspaznana';

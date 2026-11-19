@@ -978,13 +978,20 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notificationAuto => 'स्वचालित रूप से आयात करें';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'सूचनाओं से जोड़े गए: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'पहचानी गई सूचनाएँ बिना पुष्टि के जोड़ी जाती हैं: Fingrom चलते समय तुरंत, अन्यथा अगली बार खोलने पर। न पहचानी गई सूचनाएँ समीक्षा की प्रतीक्षा करती हैं';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'सूचनाओं से जोड़े गए: $value';
-  }
+  String get notificationBalance => 'शेष राशि कीवर्ड';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'अनदेखी की जाने वाली राशि (शेष, सीमा) से पहले आने वाले शब्द: शब्द लिखें और जोड़ने के लिए Enter दबाएँ';
 
   @override
   String notificationCaptured(Object value) {
@@ -1002,6 +1009,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notificationGrant => 'एक्सेस दें';
 
   @override
+  String get notificationIncome => 'आय कीवर्ड';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'सूचना को आय के रूप में चिह्नित करने वाले शब्द: शब्द लिखें और जोड़ने के लिए Enter दबाएँ';
+
+  @override
   String get notificationNoApps =>
       'अभी तक कोई सूचना प्राप्त नहीं हुई: ऐप्स सूचना भेजने के बाद यहाँ दिखाई देंगे';
 
@@ -1011,20 +1025,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'नामित समूहों amount (आवश्यक), currency और title वाला रेगुलर एक्सप्रेशन, उदा. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'आय कीवर्ड (वैकल्पिक)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'अल्पविराम से अलग किए गए शब्द जो सूचना को आय के रूप में चिह्नित करते हैं, अंतर्निहित शब्दों के अतिरिक्त, जैसे भुगतान प्राप्त, लाभांश';
-
-  @override
-  String get notificationBalance => 'शेष राशि कीवर्ड (वैकल्पिक)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'अल्पविराम से अलग किए गए शब्द जो अनदेखी की जाने वाली राशि (शेष, सीमा) से पहले आते हैं, अंतर्निहित शब्दों के अतिरिक्त, जैसे बकाया, क्रेडिट लाइन';
 
   @override
   String get notificationUnparsed => 'पहचाना नहीं गया';

@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "辨識出的通知無需確認即會新增：Fingrom 執行時立即新增，否則於下次啟動時新增。未辨識的通知等待審核",
-    "notificationBalance": "餘額關鍵字（選填）",
-    "notificationBalanceTooltip": "以逗號分隔的詞語，出現在需要忽略的金額（餘額、額度）之前，作為內建詞語的補充，例如：剩餘, 信用額度",
+    "notificationBalance": "餘額關鍵字",
+    "notificationBalanceTooltip": "出現在需要忽略的金額（餘額、額度）之前的詞語：輸入詞語後按 Enter 新增",
     "notificationCaptured": "已擷取的通知：{value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "清除已擷取",
     "notificationDescription": "根據本裝置上銀行與支付應用程式的通知建立交易。僅讀取所選應用程式的通知，且在匯入前通知會保留在裝置上。金額與貨幣會自動辨識，或透過自訂模式辨識。",
     "notificationGrant": "授予存取權",
-    "notificationIncome": "收入關鍵字（選填）",
-    "notificationIncomeTooltip": "以逗號分隔的詞語，用於將通知標記為收入，作為內建詞語的補充，例如：派息, 回饋",
+    "notificationIncome": "收入關鍵字",
+    "notificationIncomeTooltip": "用於將通知標記為收入的詞語：輸入詞語後按 Enter 新增",
     "notificationNoApps": "尚未收到任何通知：應用程式傳送通知後會顯示在這裡",
     "notificationPattern": "自訂模式（選填）",
     "notificationPatternTooltip": "包含具名群組 amount（必填）、currency 與 title 的正規表示式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

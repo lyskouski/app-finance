@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Les notifications reconnues sont ajoutées sans confirmation : immédiatement si Fingrom est ouvert, sinon au prochain démarrage. Les non reconnues attendent une vérification",
-    "notificationBalance": "Mots-clés de solde (facultatif)",
-    "notificationBalanceTooltip": "Mots séparés par des virgules précédant un montant à ignorer (solde, plafond), en plus de ceux intégrés, par ex. restant, ligne de crédit",
+    "notificationBalance": "Mots-clés de solde",
+    "notificationBalanceTooltip": "Mots précédant un montant à ignorer (solde, plafond) : saisissez un mot et appuyez sur Entrée pour l'ajouter",
     "notificationCaptured": "Notifications capturées : {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Effacer les capturées",
     "notificationDescription": "Créez des opérations à partir des notifications des applications bancaires et de paiement de cet appareil. Seules les notifications des applications sélectionnées sont lues, et elles restent sur l'appareil jusqu'à leur importation. Le montant et la devise sont reconnus automatiquement ou par un modèle personnalisé.",
     "notificationGrant": "Accorder l'accès",
-    "notificationIncome": "Mots-clés de revenu (facultatif)",
-    "notificationIncomeTooltip": "Mots séparés par des virgules indiquant qu'une notification est un revenu, en plus de ceux intégrés, par ex. versement, dividende",
+    "notificationIncome": "Mots-clés de revenu",
+    "notificationIncomeTooltip": "Mots indiquant qu'une notification est un revenu : saisissez un mot et appuyez sur Entrée pour l'ajouter",
     "notificationNoApps": "Aucune notification reçue pour l'instant : les applications apparaissent ici après avoir publié une notification",
     "notificationPattern": "Modèle personnalisé (facultatif)",
     "notificationPatternTooltip": "Expression régulière avec les groupes nommés amount (obligatoire), currency et title, p. ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

@@ -43,6 +43,7 @@ class NotificationParser {
   static bool _isWeak(String symbol) =>
       RegExp(r"^[A-Za-z.' ]+$").hasMatch(symbol) && !RegExp(r'^[A-Z]{3}$').hasMatch(symbol);
 
+  // Defaults of user-defined keywords: words preceding an amount to be skipped
   static const balanceKeywords = [
     'balance',
     'bal.',
@@ -84,6 +85,7 @@ class NotificationParser {
     'sisa',
   ];
 
+  // Defaults of user-defined keywords: words marking a notification as income
   static const incomeKeywords = [
     'received',
     'credited',
@@ -199,17 +201,18 @@ class NotificationParser {
     return preferred.firstWhere((code) => code != null && codes.contains(code), orElse: () => codes.first);
   }
 
-  // User-defined keywords (comma or new line separated) extend the default ones
-  static List<String> toKeywords(String? value) =>
-      (value ?? '').split(RegExp(r'[,\n]')).map((e) => e.trim().toLowerCase()).where((e) => e.isNotEmpty).toList();
+  static List<String> toKeywords(Iterable<String> value) =>
+      value.map((e) => e.trim().toLowerCase()).where((e) => e.isNotEmpty).toSet().toList();
 
-  static bool isIncome(String text, {List<String> income = const []}) {
+  static bool isIncome(String text, {List<String> income = incomeKeywords}) {
     final value = text.toLowerCase();
-    return incomeKeywords.any(value.contains) || income.any(value.contains);
+    return income.any(value.contains);
   }
 
-  static bool isBalance(String text, {List<String> balance = const []}) =>
-      balanceKeywords.any(text.contains) || balance.any(text.contains);
+  static bool isBalance(String text, {List<String> balance = balanceKeywords}) {
+    final value = text.toLowerCase();
+    return balance.any(value.contains);
+  }
 
   static String toLine(String value) {
     final line = value.replaceAll(RegExp(r'\s+'), ' ').trim();
@@ -232,8 +235,8 @@ class NotificationParser {
     String text, {
     String? pattern,
     Currency? fallback,
-    List<String> income = const [],
-    List<String> balance = const [],
+    List<String> income = incomeKeywords,
+    List<String> balance = balanceKeywords,
   }) {
     final content = [title, text].where((e) => e.isNotEmpty).join('\n');
     if (pattern != null && pattern.trim().isNotEmpty) {
@@ -267,7 +270,7 @@ class NotificationParser {
     String text,
     String pattern, {
     Currency? fallback,
-    List<String> income = const [],
+    List<String> income = incomeKeywords,
   }) {
     final RegExpMatch? match;
     try {

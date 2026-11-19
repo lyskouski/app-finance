@@ -981,13 +981,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notificationAuto => 'Импортировать автоматически';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Добавлено из уведомлений: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Распознанные уведомления добавляются без подтверждения: сразу, если Fingrom запущен, иначе при следующем запуске. Нераспознанные ждут проверки';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Добавлено из уведомлений: $value';
-  }
+  String get notificationBalance => 'Ключевые слова баланса';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Слова перед суммой, которую нужно игнорировать (баланс, лимит): введите слово и нажмите Enter, чтобы добавить его';
 
   @override
   String notificationCaptured(Object value) {
@@ -1005,6 +1012,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notificationGrant => 'Предоставить доступ';
 
   @override
+  String get notificationIncome => 'Ключевые слова дохода';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Слова, отмечающие уведомление как доход: введите слово и нажмите Enter, чтобы добавить его';
+
+  @override
   String get notificationNoApps =>
       'Уведомлений ещё не было: приложения появятся здесь после того, как пришлют уведомление';
 
@@ -1014,20 +1028,6 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Регулярное выражение с именованными группами amount (обязательно), currency и title, например, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Ключевые слова дохода (необязательно)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Слова через запятую, отмечающие уведомление как доход, в дополнение к встроенным, например, выплата, дивиденды';
-
-  @override
-  String get notificationBalance => 'Ключевые слова баланса (необязательно)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Слова через запятую перед суммой, которую нужно игнорировать (баланс, лимит), в дополнение к встроенным, например, остаток, кредитная линия';
 
   @override
   String get notificationUnparsed => 'Не распознано';

@@ -976,13 +976,20 @@ class AppLocalizationsFa extends AppLocalizations {
   String get notificationAuto => 'وارد کردن خودکار';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'افزوده‌شده از اعلان‌ها: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'اعلان‌های شناسایی‌شده بدون تأیید افزوده می‌شوند: هنگام اجرای Fingrom بلافاصله، در غیر این صورت در اجرای بعدی. موارد شناسایی‌نشده منتظر بررسی می‌مانند';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'افزوده‌شده از اعلان‌ها: $value';
-  }
+  String get notificationBalance => 'کلیدواژه‌های موجودی';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'واژه‌هایی پیش از مبلغی که باید نادیده گرفته شود (موجودی، سقف): واژه‌ای بنویسید و برای افزودن Enter را بزنید';
 
   @override
   String notificationCaptured(Object value) {
@@ -1000,6 +1007,13 @@ class AppLocalizationsFa extends AppLocalizations {
   String get notificationGrant => 'اعطای دسترسی';
 
   @override
+  String get notificationIncome => 'کلیدواژه‌های درآمد';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'واژه‌هایی که اعلان را به عنوان درآمد مشخص می‌کنند: واژه‌ای بنویسید و برای افزودن Enter را بزنید';
+
+  @override
   String get notificationNoApps =>
       'هنوز اعلانی دریافت نشده است: برنامه‌ها پس از ارسال اعلان در اینجا نمایش داده می‌شوند';
 
@@ -1009,20 +1023,6 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'عبارت باقاعده با گروه‌های نام‌دار amount (الزامی)، currency و title، برای مثال (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'کلیدواژه‌های درآمد (اختیاری)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'واژه‌های جداشده با کاما که اعلان را به عنوان درآمد مشخص می‌کنند، علاوه بر موارد داخلی، مثلاً پرداخت، سود سهام';
-
-  @override
-  String get notificationBalance => 'کلیدواژه‌های موجودی (اختیاری)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'واژه‌های جداشده با کاما پیش از مبلغی که باید نادیده گرفته شود (موجودی، سقف)، علاوه بر موارد داخلی، مثلاً باقیمانده، خط اعتباری';
 
   @override
   String get notificationUnparsed => 'شناسایی نشد';

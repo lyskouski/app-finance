@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "تُضاف الإشعارات المعروفة دون تأكيد: فورًا أثناء تشغيل Fingrom، وإلا عند التشغيل التالي. تنتظر الإشعارات غير المعروفة المراجعة",
-    "notificationBalance": "كلمات مفتاحية للرصيد (اختياري)",
-    "notificationBalanceTooltip": "كلمات مفصولة بفواصل تسبق مبلغًا يجب تجاهله (الرصيد، الحد)، بالإضافة إلى الكلمات المضمنة، مثلًا المتبقي، خط ائتمان",
+    "notificationBalance": "كلمات مفتاحية للرصيد",
+    "notificationBalanceTooltip": "كلمات تسبق مبلغًا يجب تجاهله (الرصيد، الحد): اكتب كلمة واضغط Enter لإضافتها",
     "notificationCaptured": "الإشعارات الملتقطة: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "مسح الملتقطة",
     "notificationDescription": "أنشئ معاملات من إشعارات تطبيقات البنوك والدفع على هذا الجهاز. تتم قراءة إشعارات التطبيقات المحددة فقط، وتبقى على الجهاز حتى استيرادها. يتم التعرف على المبلغ والعملة تلقائيًا أو باستخدام نمط مخصص.",
     "notificationGrant": "منح الوصول",
-    "notificationIncome": "كلمات مفتاحية للدخل (اختياري)",
-    "notificationIncomeTooltip": "كلمات مفصولة بفواصل تحدد الإشعار كدخل، بالإضافة إلى الكلمات المضمنة، مثلًا دفعة، أرباح",
+    "notificationIncome": "كلمات مفتاحية للدخل",
+    "notificationIncomeTooltip": "كلمات تحدد الإشعار كدخل: اكتب كلمة واضغط Enter لإضافتها",
     "notificationNoApps": "لم يتم استلام أي إشعارات بعد: تظهر التطبيقات هنا بعد أن ترسل إشعارًا",
     "notificationPattern": "نمط مخصص (اختياري)",
     "notificationPatternTooltip": "تعبير نمطي مع المجموعات المسماة amount (مطلوبة) وcurrency وtitle، مثلًا (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

@@ -982,13 +982,20 @@ class AppLocalizationsId extends AppLocalizations {
   String get notificationAuto => 'Impor Otomatis';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Ditambahkan dari notifikasi: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Notifikasi yang dikenali ditambahkan tanpa konfirmasi: langsung saat Fingrom berjalan, jika tidak saat dibuka berikutnya. Yang tidak dikenali menunggu ditinjau';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Ditambahkan dari notifikasi: $value';
-  }
+  String get notificationBalance => 'Kata kunci saldo';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Kata sebelum jumlah yang diabaikan (saldo, limit): ketik kata dan tekan Enter untuk menambahkannya';
 
   @override
   String notificationCaptured(Object value) {
@@ -1006,6 +1013,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get notificationGrant => 'Berikan Akses';
 
   @override
+  String get notificationIncome => 'Kata kunci pemasukan';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Kata yang menandai notifikasi sebagai pemasukan: ketik kata dan tekan Enter untuk menambahkannya';
+
+  @override
   String get notificationNoApps =>
       'Belum ada notifikasi yang diterima: aplikasi muncul di sini setelah mengirim notifikasi';
 
@@ -1015,20 +1029,6 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Ekspresi reguler dengan grup bernama amount (wajib), currency, dan title, mis. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Kata kunci pemasukan (opsional)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Kata yang dipisahkan koma untuk menandai notifikasi sebagai pemasukan, selain yang bawaan, mis. pembayaran, dividen';
-
-  @override
-  String get notificationBalance => 'Kata kunci saldo (opsional)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Kata yang dipisahkan koma sebelum jumlah yang diabaikan (saldo, limit), selain yang bawaan, mis. tersisa, batas kredit';
 
   @override
   String get notificationUnparsed => 'Tidak dikenali';

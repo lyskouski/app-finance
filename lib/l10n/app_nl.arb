@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Herkende meldingen worden zonder bevestiging toegevoegd: direct terwijl Fingrom actief is, anders bij de volgende start. Niet-herkende wachten op controle",
-    "notificationBalance": "Trefwoorden voor saldo (optioneel)",
-    "notificationBalanceTooltip": "Door komma's gescheiden woorden vóór een bedrag dat genegeerd moet worden (saldo, limiet), naast de ingebouwde, bijv. resterend, kredietlijn",
+    "notificationBalance": "Trefwoorden voor saldo",
+    "notificationBalanceTooltip": "Woorden vóór een bedrag dat genegeerd moet worden (saldo, limiet): typ een woord en druk op Enter om het toe te voegen",
     "notificationCaptured": "Vastgelegde meldingen: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Vastgelegde wissen",
     "notificationDescription": "Maak transacties aan uit meldingen van bank- en betaalapps op dit apparaat. Alleen meldingen van de geselecteerde apps worden gelezen, en ze blijven op het apparaat tot ze zijn geïmporteerd. Het bedrag en de valuta worden automatisch of met een eigen patroon herkend.",
     "notificationGrant": "Toegang verlenen",
-    "notificationIncome": "Trefwoorden voor inkomsten (optioneel)",
-    "notificationIncomeTooltip": "Door komma's gescheiden woorden die een melding als inkomsten markeren, naast de ingebouwde, bijv. uitbetaling, dividend",
+    "notificationIncome": "Trefwoorden voor inkomsten",
+    "notificationIncomeTooltip": "Woorden die een melding als inkomsten markeren: typ een woord en druk op Enter om het toe te voegen",
     "notificationNoApps": "Nog geen meldingen ontvangen: apps verschijnen hier nadat ze een melding hebben verstuurd",
     "notificationPattern": "Eigen patroon (optioneel)",
     "notificationPatternTooltip": "Reguliere expressie met de benoemde groepen amount (verplicht), currency en title, bijv. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

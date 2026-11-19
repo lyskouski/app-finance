@@ -5,6 +5,7 @@ _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” 
 ### 8.1.0
 - Wise API (Global) qo'shildi: Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish, konvertatsiyalar o'tkazma sifatida
 - Bildirishnomalarni tahlil qilish (Android) qo'shildi: bank va to'lov ilovalari bildirishnomalaridan avtomatik yoki maxsus shablon bo'yicha aniqlangan tranzaksiyalar
+- Faylda toifasi bo'lmagan import qilingan hisoblar uchun byudjet toifasini bashorat qilish
 
 ### 8.0.0
 - Ochiladigan bo'limlarga ega yangi Integratsiyalar sahifasi

@@ -5,6 +5,7 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 ### 8.1.0
 - Adăugat Wise API (Global): solduri și import de tranzacții ale conturilor multivalută Wise, conversii ca transferuri
 - Adăugat Notificări Parser (Android): tranzacții din notificările aplicațiilor bancare și de plată, recunoscute automat sau printr-un model personalizat
+- Predicția categoriei de buget pentru facturile importate fără categorie în fișier
 
 ### 8.0.0
 - Pagină nouă Integrări cu secțiuni extensibile

@@ -982,13 +982,20 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notificationAuto => 'Automatisch importeren';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Toegevoegd uit meldingen: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Herkende meldingen worden zonder bevestiging toegevoegd: direct terwijl Fingrom actief is, anders bij de volgende start. Niet-herkende wachten op controle';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Toegevoegd uit meldingen: $value';
-  }
+  String get notificationBalance => 'Trefwoorden voor saldo';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Woorden vóór een bedrag dat genegeerd moet worden (saldo, limiet): typ een woord en druk op Enter om het toe te voegen';
 
   @override
   String notificationCaptured(Object value) {
@@ -1006,6 +1013,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notificationGrant => 'Toegang verlenen';
 
   @override
+  String get notificationIncome => 'Trefwoorden voor inkomsten';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Woorden die een melding als inkomsten markeren: typ een woord en druk op Enter om het toe te voegen';
+
+  @override
   String get notificationNoApps =>
       'Nog geen meldingen ontvangen: apps verschijnen hier nadat ze een melding hebben verstuurd';
 
@@ -1015,20 +1029,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Reguliere expressie met de benoemde groepen amount (verplicht), currency en title, bijv. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Trefwoorden voor inkomsten (optioneel)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Door komma\'s gescheiden woorden die een melding als inkomsten markeren, naast de ingebouwde, bijv. uitbetaling, dividend';
-
-  @override
-  String get notificationBalance => 'Trefwoorden voor saldo (optioneel)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Door komma\'s gescheiden woorden vóór een bedrag dat genegeerd moet worden (saldo, limiet), naast de ingebouwde, bijv. resterend, kredietlijn';
 
   @override
   String get notificationUnparsed => 'Niet herkend';

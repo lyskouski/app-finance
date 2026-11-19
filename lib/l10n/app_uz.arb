@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Aniqlangan bildirishnomalar tasdiqsiz qo'shiladi: Fingrom ishlayotganda darhol, aks holda keyingi ishga tushirishda. Aniqlanmaganlari tekshiruvni kutadi",
-    "notificationBalance": "Balans kalit so'zlari (ixtiyoriy)",
-    "notificationBalanceTooltip": "E'tiborga olinmaydigan summa (balans, limit) oldidan keladigan vergul bilan ajratilgan so'zlar, o'rnatilganlarga qo'shimcha, masalan, qolgan, kredit liniyasi",
+    "notificationBalance": "Balans kalit so'zlari",
+    "notificationBalanceTooltip": "E'tiborga olinmaydigan summa (balans, limit) oldidan keladigan so'zlar: so'z kiriting va qo'shish uchun Enter tugmasini bosing",
     "notificationCaptured": "Olingan bildirishnomalar: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Olinganlarni tozalash",
     "notificationDescription": "Ushbu qurilmadagi bank va to'lov ilovalarining bildirishnomalaridan tranzaksiyalar yarating. Faqat tanlangan ilovalarning bildirishnomalari o'qiladi va import qilinguncha qurilmada saqlanadi. Summa va valyuta avtomatik ravishda yoki maxsus shablon bo'yicha aniqlanadi.",
     "notificationGrant": "Ruxsat berish",
-    "notificationIncome": "Daromad kalit so'zlari (ixtiyoriy)",
-    "notificationIncomeTooltip": "Bildirishnomani daromad sifatida belgilovchi vergul bilan ajratilgan so'zlar, o'rnatilganlarga qo'shimcha, masalan, to'lov, dividend",
+    "notificationIncome": "Daromad kalit so'zlari",
+    "notificationIncomeTooltip": "Bildirishnomani daromad sifatida belgilovchi so'zlar: so'z kiriting va qo'shish uchun Enter tugmasini bosing",
     "notificationNoApps": "Hali bildirishnomalar olinmagan: ilovalar bildirishnoma yuborgandan keyin shu yerda paydo bo'ladi",
     "notificationPattern": "Maxsus shablon (ixtiyoriy)",
     "notificationPatternTooltip": "amount (majburiy), currency va title nomli guruhlari bo'lgan muntazam ifoda, masalan, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

@@ -3,19 +3,17 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/_classes/integration/notification/notification_parser.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 
 class NotificationApp {
   String? account;
   String? category;
   String? pattern;
-  // Additional keywords (comma separated) to detect income and to skip balance amounts
-  String? income;
-  String? balance;
   // Recognized notifications are imported without a confirmation
   bool auto;
 
-  NotificationApp({this.account, this.category, this.pattern, this.income, this.balance, this.auto = false});
+  NotificationApp({this.account, this.category, this.pattern, this.auto = false});
 
   bool get isLinked => account != null && category != null;
 
@@ -23,8 +21,6 @@ class NotificationApp {
         if (account != null) 'account': account,
         if (category != null) 'category': category,
         if (pattern != null && pattern!.isNotEmpty) 'pattern': pattern,
-        if (income != null && income!.isNotEmpty) 'income': income,
-        if (balance != null && balance!.isNotEmpty) 'balance': balance,
         if (auto) 'auto': true,
       };
 
@@ -32,8 +28,6 @@ class NotificationApp {
         account: json['account']?.toString(),
         category: json['category']?.toString(),
         pattern: json['pattern']?.toString(),
-        income: json['income']?.toString(),
-        balance: json['balance']?.toString(),
         auto: json['auto'] == true,
       );
 }
@@ -41,19 +35,32 @@ class NotificationApp {
 class NotificationSettings {
   // Package name of the application => its link to the account
   final Map<String, NotificationApp> apps;
+  // Keywords to detect income and to skip balance amounts (for all apps), the built-in ones by default
+  List<String> income;
+  List<String> balance;
 
-  NotificationSettings({Map<String, NotificationApp>? apps}) : apps = apps ?? {};
+  NotificationSettings({Map<String, NotificationApp>? apps, List<String>? income, List<String>? balance})
+      : apps = apps ?? {},
+        income = income ?? [...NotificationParser.incomeKeywords],
+        balance = balance ?? [...NotificationParser.balanceKeywords];
 
   NotificationApp get(String package) => apps.putIfAbsent(package, NotificationApp.new);
 
   Map<String, dynamic> toJson() => {
         'apps': apps.map((key, value) => MapEntry(key, value.toJson())),
+        'income': income,
+        'balance': balance,
       };
+
+  static List<String>? _toKeywords(dynamic value) =>
+      value is List ? NotificationParser.toKeywords(value.map((e) => e.toString())) : null;
 
   factory NotificationSettings.fromJson(Map<String, dynamic> json) => NotificationSettings(
         apps: (json['apps'] as Map<String, dynamic>? ?? {}).map(
           (key, value) => MapEntry(key, NotificationApp.fromJson(value as Map<String, dynamic>)),
         ),
+        income: _toKeywords(json['income']),
+        balance: _toKeywords(json['balance']),
       );
 
   static NotificationSettings load() {

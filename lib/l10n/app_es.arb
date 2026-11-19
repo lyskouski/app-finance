@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Las notificaciones reconocidas se añaden sin confirmación: al instante mientras Fingrom está abierto, si no, en el siguiente inicio. Las no reconocidas esperan revisión",
-    "notificationBalance": "Palabras clave de saldo (opcional)",
-    "notificationBalanceTooltip": "Palabras separadas por comas que preceden a un importe a ignorar (saldo, límite), además de las integradas, p. ej. restante, línea de crédito",
+    "notificationBalance": "Palabras clave de saldo",
+    "notificationBalanceTooltip": "Palabras que preceden a un importe a ignorar (saldo, límite): escriba una palabra y pulse Enter para añadirla",
     "notificationCaptured": "Notificaciones capturadas: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Borrar capturadas",
     "notificationDescription": "Crea movimientos a partir de las notificaciones de las aplicaciones bancarias y de pago de este dispositivo. Solo se leen las notificaciones de las aplicaciones seleccionadas, que permanecen en el dispositivo hasta su importación. El importe y la moneda se reconocen automáticamente o mediante un patrón personalizado.",
     "notificationGrant": "Conceder acceso",
-    "notificationIncome": "Palabras clave de ingreso (opcional)",
-    "notificationIncomeTooltip": "Palabras separadas por comas que marcan una notificación como ingreso, además de las integradas, p. ej. pago, dividendo",
+    "notificationIncome": "Palabras clave de ingreso",
+    "notificationIncomeTooltip": "Palabras que marcan una notificación como ingreso: escriba una palabra y pulse Enter para añadirla",
     "notificationNoApps": "Aún no se han recibido notificaciones: las aplicaciones aparecen aquí después de publicar una notificación",
     "notificationPattern": "Patrón personalizado (opcional)",
     "notificationPatternTooltip": "Expresión regular con los grupos con nombre amount (obligatorio), currency y title, p. ej. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

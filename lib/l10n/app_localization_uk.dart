@@ -980,13 +980,20 @@ class AppLocalizationsUk extends AppLocalizations {
   String get notificationAuto => 'Імпортувати автоматично';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Додано зі сповіщень: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Розпізнані сповіщення додаються без підтвердження: одразу, коли Fingrom працює, інакше під час наступного запуску. Нерозпізнані чекають на перевірку';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Додано зі сповіщень: $value';
-  }
+  String get notificationBalance => 'Ключові слова балансу';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Слова перед сумою, яку слід ігнорувати (баланс, ліміт): введіть слово й натисніть Enter, щоб додати його';
 
   @override
   String notificationCaptured(Object value) {
@@ -1004,6 +1011,13 @@ class AppLocalizationsUk extends AppLocalizations {
   String get notificationGrant => 'Надати доступ';
 
   @override
+  String get notificationIncome => 'Ключові слова доходу';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Слова, що позначають сповіщення як дохід: введіть слово й натисніть Enter, щоб додати його';
+
+  @override
   String get notificationNoApps =>
       'Сповіщень ще не було: застосунки з\'являться тут після того, як надішлють сповіщення';
 
@@ -1013,20 +1027,6 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Регулярний вираз з іменованими групами amount (обов\'язково), currency і title, наприклад, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Ключові слова доходу (необов\'язково)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Слова через кому, що позначають сповіщення як дохід, на додаток до вбудованих, наприклад, виплата, дивіденди';
-
-  @override
-  String get notificationBalance => 'Ключові слова балансу (необов\'язково)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Слова через кому перед сумою, яку слід ігнорувати (баланс, ліміт), на додаток до вбудованих, наприклад, залишок, кредитна лінія';
 
   @override
   String get notificationUnparsed => 'Не розпізнано';

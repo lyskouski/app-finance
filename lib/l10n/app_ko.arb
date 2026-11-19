@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "인식된 알림은 확인 없이 추가됩니다: Fingrom 실행 중에는 즉시, 그렇지 않으면 다음 실행 시. 인식되지 않은 알림은 검토를 기다립니다",
-    "notificationBalance": "잔액 키워드 (선택 사항)",
-    "notificationBalanceTooltip": "무시할 금액(잔액, 한도) 앞에 오는 쉼표로 구분된 단어 (기본 제공 단어에 추가), 예: 남은 금액, 신용 한도",
+    "notificationBalance": "잔액 키워드",
+    "notificationBalanceTooltip": "무시할 금액(잔액, 한도) 앞에 오는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요",
     "notificationCaptured": "수집된 알림: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "수집된 알림 지우기",
     "notificationDescription": "이 기기의 은행 및 결제 앱 알림에서 거래를 생성합니다. 선택한 앱의 알림만 읽으며, 가져올 때까지 기기에 보관됩니다. 금액과 통화는 자동으로 또는 사용자 지정 패턴으로 인식됩니다.",
     "notificationGrant": "접근 허용",
-    "notificationIncome": "수입 키워드 (선택 사항)",
-    "notificationIncomeTooltip": "알림을 수입으로 표시하는 쉼표로 구분된 단어 (기본 제공 단어에 추가), 예: 지급, 배당금",
+    "notificationIncome": "수입 키워드",
+    "notificationIncomeTooltip": "알림을 수입으로 표시하는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요",
     "notificationNoApps": "아직 받은 알림이 없습니다: 앱이 알림을 보내면 여기에 표시됩니다",
     "notificationPattern": "사용자 지정 패턴(선택 사항)",
     "notificationPatternTooltip": "이름 있는 그룹 amount(필수), currency, title이 포함된 정규식, 예: (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

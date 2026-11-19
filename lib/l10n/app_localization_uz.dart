@@ -987,13 +987,20 @@ class AppLocalizationsUz extends AppLocalizations {
   String get notificationAuto => 'Avtomatik import qilish';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Bildirishnomalardan qo\'shildi: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Aniqlangan bildirishnomalar tasdiqsiz qo\'shiladi: Fingrom ishlayotganda darhol, aks holda keyingi ishga tushirishda. Aniqlanmaganlari tekshiruvni kutadi';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Bildirishnomalardan qo\'shildi: $value';
-  }
+  String get notificationBalance => 'Balans kalit so\'zlari';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'E\'tiborga olinmaydigan summa (balans, limit) oldidan keladigan so\'zlar: so\'z kiriting va qo\'shish uchun Enter tugmasini bosing';
 
   @override
   String notificationCaptured(Object value) {
@@ -1011,6 +1018,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get notificationGrant => 'Ruxsat berish';
 
   @override
+  String get notificationIncome => 'Daromad kalit so\'zlari';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Bildirishnomani daromad sifatida belgilovchi so\'zlar: so\'z kiriting va qo\'shish uchun Enter tugmasini bosing';
+
+  @override
   String get notificationNoApps =>
       'Hali bildirishnomalar olinmagan: ilovalar bildirishnoma yuborgandan keyin shu yerda paydo bo\'ladi';
 
@@ -1020,20 +1034,6 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'amount (majburiy), currency va title nomli guruhlari bo\'lgan muntazam ifoda, masalan, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Daromad kalit so\'zlari (ixtiyoriy)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Bildirishnomani daromad sifatida belgilovchi vergul bilan ajratilgan so\'zlar, o\'rnatilganlarga qo\'shimcha, masalan, to\'lov, dividend';
-
-  @override
-  String get notificationBalance => 'Balans kalit so\'zlari (ixtiyoriy)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'E\'tiborga olinmaydigan summa (balans, limit) oldidan keladigan vergul bilan ajratilgan so\'zlar, o\'rnatilganlarga qo\'shimcha, masalan, qolgan, kredit liniyasi';
 
   @override
   String get notificationUnparsed => 'Aniqlanmadi';

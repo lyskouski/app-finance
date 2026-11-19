@@ -962,13 +962,20 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationAuto => '自动导入';
 
   @override
+  String notificationAutoImported(Object value) {
+    return '已从通知添加：$value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       '识别出的通知无需确认即被添加：Fingrom 运行时立即添加，否则在下次启动时添加。未识别的通知等待审核';
 
   @override
-  String notificationAutoImported(Object value) {
-    return '已从通知添加：$value';
-  }
+  String get notificationBalance => '余额关键词';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '出现在需要忽略的金额（余额、额度）之前的词语：输入词语后按 Enter 添加';
 
   @override
   String notificationCaptured(Object value) {
@@ -986,6 +993,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationGrant => '授予访问权限';
 
   @override
+  String get notificationIncome => '收入关键词';
+
+  @override
+  String get notificationIncomeTooltip => '用于将通知标记为收入的词语：输入词语后按 Enter 添加';
+
+  @override
   String get notificationNoApps => '尚未收到任何通知：应用发送通知后会显示在这里';
 
   @override
@@ -994,20 +1007,6 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       '包含命名分组 amount（必填）、currency 和 title 的正则表达式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => '收入关键词（可选）';
-
-  @override
-  String get notificationIncomeTooltip =>
-      '以逗号分隔的词语，用于将通知标记为收入，作为内置词语的补充，例如：派息, 返现';
-
-  @override
-  String get notificationBalance => '余额关键词（可选）';
-
-  @override
-  String get notificationBalanceTooltip =>
-      '以逗号分隔的词语，出现在需要忽略的金额（余额、额度）之前，作为内置词语的补充，例如：剩余, 信用额度';
 
   @override
   String get notificationUnparsed => '无法识别';
@@ -2374,13 +2373,20 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get notificationAuto => '自動匯入';
 
   @override
+  String notificationAutoImported(Object value) {
+    return '已從通知新增：$value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       '辨識出的通知無需確認即會新增：Fingrom 執行時立即新增，否則於下次啟動時新增。未辨識的通知等待審核';
 
   @override
-  String notificationAutoImported(Object value) {
-    return '已從通知新增：$value';
-  }
+  String get notificationBalance => '餘額關鍵字';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '出現在需要忽略的金額（餘額、額度）之前的詞語：輸入詞語後按 Enter 新增';
 
   @override
   String notificationCaptured(Object value) {
@@ -2398,6 +2404,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get notificationGrant => '授予存取權';
 
   @override
+  String get notificationIncome => '收入關鍵字';
+
+  @override
+  String get notificationIncomeTooltip => '用於將通知標記為收入的詞語：輸入詞語後按 Enter 新增';
+
+  @override
   String get notificationNoApps => '尚未收到任何通知：應用程式傳送通知後會顯示在這裡';
 
   @override
@@ -2406,20 +2418,6 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   @override
   String get notificationPatternTooltip =>
       '包含具名群組 amount（必填）、currency 與 title 的正規表示式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => '收入關鍵字（選填）';
-
-  @override
-  String get notificationIncomeTooltip =>
-      '以逗號分隔的詞語，用於將通知標記為收入，作為內建詞語的補充，例如：派息, 回饋';
-
-  @override
-  String get notificationBalance => '餘額關鍵字（選填）';
-
-  @override
-  String get notificationBalanceTooltip =>
-      '以逗號分隔的詞語，出現在需要忽略的金額（餘額、額度）之前，作為內建詞語的補充，例如：剩餘, 信用額度';
 
   @override
   String get notificationUnparsed => '無法辨識';

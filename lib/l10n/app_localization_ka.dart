@@ -982,13 +982,20 @@ class AppLocalizationsKa extends AppLocalizations {
   String get notificationAuto => 'ავტომატური იმპორტი';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'დაემატა შეტყობინებებიდან: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'ამოცნობილი შეტყობინებები დასტურის გარეშე ემატება: მაშინვე, როცა Fingrom გაშვებულია, სხვა შემთხვევაში შემდეგი გაშვებისას. ამოუცნობი ელოდება გადამოწმებას';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'დაემატა შეტყობინებებიდან: $value';
-  }
+  String get notificationBalance => 'ბალანსის საკვანძო სიტყვები';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'სიტყვები იგნორირებული თანხის (ბალანსი, ლიმიტი) წინ: შეიყვანეთ სიტყვა და დასამატებლად დააჭირეთ Enter-ს';
 
   @override
   String notificationCaptured(Object value) {
@@ -1006,6 +1013,13 @@ class AppLocalizationsKa extends AppLocalizations {
   String get notificationGrant => 'წვდომის მიცემა';
 
   @override
+  String get notificationIncome => 'შემოსავლის საკვანძო სიტყვები';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'სიტყვები, რომლებიც შეტყობინებას შემოსავლად აღნიშნავს: შეიყვანეთ სიტყვა და დასამატებლად დააჭირეთ Enter-ს';
+
+  @override
   String get notificationNoApps =>
       'შეტყობინებები ჯერ არ მიღებულა: აპები აქ გამოჩნდება შეტყობინების გამოგზავნის შემდეგ';
 
@@ -1015,22 +1029,6 @@ class AppLocalizationsKa extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'რეგულარული გამოსახულება სახელდებული ჯგუფებით amount (სავალდებულო), currency და title, მაგ. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome =>
-      'შემოსავლის საკვანძო სიტყვები (არასავალდებულო)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'მძიმით გამოყოფილი სიტყვები, რომლებიც შეტყობინებას შემოსავლად აღნიშნავს, ჩაშენებულთან ერთად, მაგ. გადახდა, დივიდენდი';
-
-  @override
-  String get notificationBalance =>
-      'ბალანსის საკვანძო სიტყვები (არასავალდებულო)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'მძიმით გამოყოფილი სიტყვები იგნორირებული თანხის (ბალანსი, ლიმიტი) წინ, ჩაშენებულთან ერთად, მაგ. დარჩენილი, საკრედიტო ხაზი';
 
   @override
   String get notificationUnparsed => 'ვერ ამოიცნო';

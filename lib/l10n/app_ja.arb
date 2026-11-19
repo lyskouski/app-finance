@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "認識された通知は確認なしで追加されます：Fingrom の実行中は即時、それ以外は次回起動時。認識されない通知は確認待ちになります",
-    "notificationBalance": "残高キーワード（任意）",
-    "notificationBalanceTooltip": "無視する金額（残高、限度額）の前に置かれるカンマ区切りの語句（組み込みのものに追加）、例：残り, 利用可能額",
+    "notificationBalance": "残高キーワード",
+    "notificationBalanceTooltip": "無視する金額（残高、限度額）の前に置かれる語句：語句を入力し、Enterキーで追加します",
     "notificationCaptured": "取得した通知：{value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "取得済みを消去",
     "notificationDescription": "この端末の銀行・決済アプリの通知から取引を作成します。選択したアプリの通知のみが読み取られ、インポートされるまで端末に保存されます。金額と通貨は自動で、またはカスタムパターンで認識されます。",
     "notificationGrant": "アクセスを許可",
-    "notificationIncome": "収入キーワード（任意）",
-    "notificationIncomeTooltip": "通知を収入として判定するカンマ区切りの語句（組み込みのものに追加）、例：配当, 振込",
+    "notificationIncome": "収入キーワード",
+    "notificationIncomeTooltip": "通知を収入として判定する語句：語句を入力し、Enterキーで追加します",
     "notificationNoApps": "まだ通知を受信していません：アプリは通知を送信した後にここに表示されます",
     "notificationPattern": "カスタムパターン（任意）",
     "notificationPatternTooltip": "名前付きグループ amount（必須）、currency、title を含む正規表現。例： (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

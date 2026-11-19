@@ -966,13 +966,20 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationAuto => '자동으로 가져오기';
 
   @override
+  String notificationAutoImported(Object value) {
+    return '알림에서 추가됨: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       '인식된 알림은 확인 없이 추가됩니다: Fingrom 실행 중에는 즉시, 그렇지 않으면 다음 실행 시. 인식되지 않은 알림은 검토를 기다립니다';
 
   @override
-  String notificationAutoImported(Object value) {
-    return '알림에서 추가됨: $value';
-  }
+  String get notificationBalance => '잔액 키워드';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '무시할 금액(잔액, 한도) 앞에 오는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
 
   @override
   String notificationCaptured(Object value) {
@@ -990,6 +997,13 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationGrant => '접근 허용';
 
   @override
+  String get notificationIncome => '수입 키워드';
+
+  @override
+  String get notificationIncomeTooltip =>
+      '알림을 수입으로 표시하는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
+
+  @override
   String get notificationNoApps => '아직 받은 알림이 없습니다: 앱이 알림을 보내면 여기에 표시됩니다';
 
   @override
@@ -998,20 +1012,6 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       '이름 있는 그룹 amount(필수), currency, title이 포함된 정규식, 예: (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => '수입 키워드 (선택 사항)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      '알림을 수입으로 표시하는 쉼표로 구분된 단어 (기본 제공 단어에 추가), 예: 지급, 배당금';
-
-  @override
-  String get notificationBalance => '잔액 키워드 (선택 사항)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      '무시할 금액(잔액, 한도) 앞에 오는 쉼표로 구분된 단어 (기본 제공 단어에 추가), 예: 남은 금액, 신용 한도';
 
   @override
   String get notificationUnparsed => '인식되지 않음';

@@ -984,13 +984,20 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notificationAuto => 'Importar automaticamente';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Adicionados a partir de notificações: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'As notificações reconhecidas são adicionadas sem confirmação: de imediato enquanto o Fingrom está em execução, caso contrário no próximo arranque. As não reconhecidas aguardam revisão';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Adicionados a partir de notificações: $value';
-  }
+  String get notificationBalance => 'Palavras-chave de saldo';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Palavras antes de um valor a ignorar (saldo, limite): escreva uma palavra e prima Enter para a adicionar';
 
   @override
   String notificationCaptured(Object value) {
@@ -1008,6 +1015,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notificationGrant => 'Conceder acesso';
 
   @override
+  String get notificationIncome => 'Palavras-chave de receita';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Palavras que marcam uma notificação como receita: escreva uma palavra e prima Enter para a adicionar';
+
+  @override
   String get notificationNoApps =>
       'Ainda não foram recebidas notificações: as aplicações aparecem aqui depois de publicarem uma notificação';
 
@@ -1017,20 +1031,6 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Expressão regular com os grupos nomeados amount (obrigatório), currency e title, p. ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Palavras-chave de receita (opcional)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Palavras separadas por vírgulas que marcam uma notificação como receita, além das incorporadas, por exemplo, pagamento, dividendo';
-
-  @override
-  String get notificationBalance => 'Palavras-chave de saldo (opcional)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Palavras separadas por vírgulas antes de um valor a ignorar (saldo, limite), além das incorporadas, por exemplo, restante, linha de crédito';
 
   @override
   String get notificationUnparsed => 'Não reconhecido';
@@ -2430,13 +2430,20 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get notificationAuto => 'Importar automaticamente';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Adicionadas a partir de notificações: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'As notificações reconhecidas são adicionadas sem confirmação: imediatamente enquanto o Fingrom está em execução, caso contrário na próxima abertura. As não reconhecidas aguardam revisão';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Adicionadas a partir de notificações: $value';
-  }
+  String get notificationBalance => 'Palavras-chave de saldo';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Palavras antes de um valor a ignorar (saldo, limite): digite uma palavra e pressione Enter para adicioná-la';
 
   @override
   String notificationCaptured(Object value) {
@@ -2454,6 +2461,13 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get notificationGrant => 'Conceder acesso';
 
   @override
+  String get notificationIncome => 'Palavras-chave de receita';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Palavras que marcam uma notificação como receita: digite uma palavra e pressione Enter para adicioná-la';
+
+  @override
   String get notificationNoApps =>
       'Nenhuma notificação recebida ainda: os aplicativos aparecem aqui depois de enviarem uma notificação';
 
@@ -2463,20 +2477,6 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get notificationPatternTooltip =>
       'Expressão regular com os grupos nomeados amount (obrigatório), currency e title, por exemplo, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Palavras-chave de receita (opcional)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Palavras separadas por vírgulas que marcam uma notificação como receita, além das embutidas, por exemplo, pagamento, dividendo';
-
-  @override
-  String get notificationBalance => 'Palavras-chave de saldo (opcional)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Palavras separadas por vírgulas antes de um valor a ignorar (saldo, limite), além das embutidas, por exemplo, restante, linha de crédito';
 
   @override
   String get notificationUnparsed => 'Não reconhecido';

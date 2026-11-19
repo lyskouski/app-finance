@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Tanınan bildirimler onay olmadan eklenir: Fingrom çalışırken hemen, aksi halde bir sonraki açılışta. Tanınmayanlar incelemeyi bekler",
-    "notificationBalance": "Bakiye anahtar kelimeleri (isteğe bağlı)",
-    "notificationBalanceTooltip": "Yok sayılacak bir tutardan (bakiye, limit) önce gelen virgülle ayrılmış kelimeler, yerleşik olanlara ek olarak, ör. kalan, kredi limiti",
+    "notificationBalance": "Bakiye anahtar kelimeleri",
+    "notificationBalanceTooltip": "Yok sayılacak bir tutardan (bakiye, limit) önce gelen kelimeler: bir kelime yazın ve eklemek için Enter tuşuna basın",
     "notificationCaptured": "Yakalanan bildirimler: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Yakalananları temizle",
     "notificationDescription": "Bu cihazdaki bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler oluşturun. Yalnızca seçilen uygulamaların bildirimleri okunur ve içe aktarılana kadar cihazda kalır. Tutar ve para birimi otomatik olarak veya özel bir kalıpla tanınır.",
     "notificationGrant": "Erişim ver",
-    "notificationIncome": "Gelir anahtar kelimeleri (isteğe bağlı)",
-    "notificationIncomeTooltip": "Bildirimi gelir olarak işaretleyen virgülle ayrılmış kelimeler, yerleşik olanlara ek olarak, ör. ödeme, temettü",
+    "notificationIncome": "Gelir anahtar kelimeleri",
+    "notificationIncomeTooltip": "Bildirimi gelir olarak işaretleyen kelimeler: bir kelime yazın ve eklemek için Enter tuşuna basın",
     "notificationNoApps": "Henüz bildirim alınmadı: uygulamalar bir bildirim gönderdikten sonra burada görünür",
     "notificationPattern": "Özel kalıp (isteğe bağlı)",
     "notificationPatternTooltip": "amount (zorunlu), currency ve title adlandırılmış gruplarını içeren düzenli ifade, örn. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

@@ -977,13 +977,20 @@ class AppLocalizationsPl extends AppLocalizations {
   String get notificationAuto => 'Importuj automatycznie';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Dodano z powiadomień: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Rozpoznane powiadomienia są dodawane bez potwierdzenia: od razu, gdy Fingrom działa, w przeciwnym razie przy następnym uruchomieniu. Nierozpoznane czekają na sprawdzenie';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Dodano z powiadomień: $value';
-  }
+  String get notificationBalance => 'Słowa kluczowe salda';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Słowa poprzedzające kwotę do pominięcia (saldo, limit): wpisz słowo i naciśnij Enter, aby je dodać';
 
   @override
   String notificationCaptured(Object value) {
@@ -1001,6 +1008,13 @@ class AppLocalizationsPl extends AppLocalizations {
   String get notificationGrant => 'Przyznaj dostęp';
 
   @override
+  String get notificationIncome => 'Słowa kluczowe przychodu';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Słowa oznaczające powiadomienie jako przychód: wpisz słowo i naciśnij Enter, aby je dodać';
+
+  @override
   String get notificationNoApps =>
       'Nie otrzymano jeszcze powiadomień: aplikacje pojawią się tutaj po wysłaniu powiadomienia';
 
@@ -1010,20 +1024,6 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Wyrażenie regularne z nazwanymi grupami amount (wymagana), currency i title, np. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Słowa kluczowe przychodu (opcjonalnie)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Słowa oddzielone przecinkami oznaczające powiadomienie jako przychód, oprócz wbudowanych, np. wypłata, dywidenda';
-
-  @override
-  String get notificationBalance => 'Słowa kluczowe salda (opcjonalnie)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Słowa oddzielone przecinkami poprzedzające kwotę do pominięcia (saldo, limit), oprócz wbudowanych, np. pozostało, linia kredytowa';
 
   @override
   String get notificationUnparsed => 'Nie rozpoznano';

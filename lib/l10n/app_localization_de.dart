@@ -988,13 +988,20 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notificationAuto => 'Automatisch importieren';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Aus Benachrichtigungen hinzugefügt: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Erkannte Benachrichtigungen werden ohne Bestätigung hinzugefügt: sofort, während Fingrom läuft, sonst beim nächsten Start. Nicht erkannte warten auf eine Prüfung';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Aus Benachrichtigungen hinzugefügt: $value';
-  }
+  String get notificationBalance => 'Kontostand-Schlüsselwörter';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Wörter vor einem zu ignorierenden Betrag (Kontostand, Limit): Wort eingeben und mit Enter hinzufügen';
 
   @override
   String notificationCaptured(Object value) {
@@ -1012,6 +1019,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notificationGrant => 'Zugriff gewähren';
 
   @override
+  String get notificationIncome => 'Einnahme-Schlüsselwörter';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Wörter, die eine Benachrichtigung als Einnahme kennzeichnen: Wort eingeben und mit Enter hinzufügen';
+
+  @override
   String get notificationNoApps =>
       'Bisher wurden keine Benachrichtigungen empfangen: Apps erscheinen hier, nachdem sie eine Benachrichtigung gesendet haben';
 
@@ -1021,20 +1035,6 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Regulärer Ausdruck mit den benannten Gruppen amount (erforderlich), currency und title, z. B. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Einnahme-Schlüsselwörter (optional)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Durch Kommas getrennte Wörter, die eine Benachrichtigung als Einnahme kennzeichnen, zusätzlich zu den integrierten, z. B. Auszahlung, Dividende';
-
-  @override
-  String get notificationBalance => 'Kontostand-Schlüsselwörter (optional)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Durch Kommas getrennte Wörter vor einem zu ignorierenden Betrag (Kontostand, Limit), zusätzlich zu den integrierten, z. B. Restbetrag, Kreditrahmen';
 
   @override
   String get notificationUnparsed => 'Nicht erkannt';

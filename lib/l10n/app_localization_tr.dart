@@ -980,13 +980,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notificationAuto => 'Otomatik içe aktar';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Bildirimlerden eklendi: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Tanınan bildirimler onay olmadan eklenir: Fingrom çalışırken hemen, aksi halde bir sonraki açılışta. Tanınmayanlar incelemeyi bekler';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Bildirimlerden eklendi: $value';
-  }
+  String get notificationBalance => 'Bakiye anahtar kelimeleri';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Yok sayılacak bir tutardan (bakiye, limit) önce gelen kelimeler: bir kelime yazın ve eklemek için Enter tuşuna basın';
 
   @override
   String notificationCaptured(Object value) {
@@ -1004,6 +1011,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notificationGrant => 'Erişim ver';
 
   @override
+  String get notificationIncome => 'Gelir anahtar kelimeleri';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Bildirimi gelir olarak işaretleyen kelimeler: bir kelime yazın ve eklemek için Enter tuşuna basın';
+
+  @override
   String get notificationNoApps =>
       'Henüz bildirim alınmadı: uygulamalar bir bildirim gönderdikten sonra burada görünür';
 
@@ -1013,20 +1027,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'amount (zorunlu), currency ve title adlandırılmış gruplarını içeren düzenli ifade, örn. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Gelir anahtar kelimeleri (isteğe bağlı)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Bildirimi gelir olarak işaretleyen virgülle ayrılmış kelimeler, yerleşik olanlara ek olarak, ör. ödeme, temettü';
-
-  @override
-  String get notificationBalance => 'Bakiye anahtar kelimeleri (isteğe bağlı)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Yok sayılacak bir tutardan (bakiye, limit) önce gelen virgülle ayrılmış kelimeler, yerleşik olanlara ek olarak, ör. kalan, kredi limiti';
 
   @override
   String get notificationUnparsed => 'Tanınmadı';

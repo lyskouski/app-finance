@@ -965,13 +965,20 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notificationAuto => '自動でインポート';
 
   @override
+  String notificationAutoImported(Object value) {
+    return '通知から追加：$value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       '認識された通知は確認なしで追加されます：Fingrom の実行中は即時、それ以外は次回起動時。認識されない通知は確認待ちになります';
 
   @override
-  String notificationAutoImported(Object value) {
-    return '通知から追加：$value';
-  }
+  String get notificationBalance => '残高キーワード';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '無視する金額（残高、限度額）の前に置かれる語句：語句を入力し、Enterキーで追加します';
 
   @override
   String notificationCaptured(Object value) {
@@ -989,6 +996,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notificationGrant => 'アクセスを許可';
 
   @override
+  String get notificationIncome => '収入キーワード';
+
+  @override
+  String get notificationIncomeTooltip => '通知を収入として判定する語句：語句を入力し、Enterキーで追加します';
+
+  @override
   String get notificationNoApps => 'まだ通知を受信していません：アプリは通知を送信した後にここに表示されます';
 
   @override
@@ -997,20 +1010,6 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       '名前付きグループ amount（必須）、currency、title を含む正規表現。例： (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => '収入キーワード（任意）';
-
-  @override
-  String get notificationIncomeTooltip =>
-      '通知を収入として判定するカンマ区切りの語句（組み込みのものに追加）、例：配当, 振込';
-
-  @override
-  String get notificationBalance => '残高キーワード（任意）';
-
-  @override
-  String get notificationBalanceTooltip =>
-      '無視する金額（残高、限度額）の前に置かれるカンマ区切りの語句（組み込みのものに追加）、例：残り, 利用可能額';
 
   @override
   String get notificationUnparsed => '認識できません';

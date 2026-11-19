@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Rozpoznane powiadomienia są dodawane bez potwierdzenia: od razu, gdy Fingrom działa, w przeciwnym razie przy następnym uruchomieniu. Nierozpoznane czekają na sprawdzenie",
-    "notificationBalance": "Słowa kluczowe salda (opcjonalnie)",
-    "notificationBalanceTooltip": "Słowa oddzielone przecinkami poprzedzające kwotę do pominięcia (saldo, limit), oprócz wbudowanych, np. pozostało, linia kredytowa",
+    "notificationBalance": "Słowa kluczowe salda",
+    "notificationBalanceTooltip": "Słowa poprzedzające kwotę do pominięcia (saldo, limit): wpisz słowo i naciśnij Enter, aby je dodać",
     "notificationCaptured": "Odebrane powiadomienia: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Wyczyść odebrane",
     "notificationDescription": "Tworzenie transakcji z powiadomień aplikacji bankowych i płatniczych na tym urządzeniu. Odczytywane są tylko powiadomienia wybranych aplikacji i pozostają one na urządzeniu do czasu importu. Kwota i waluta są rozpoznawane automatycznie lub według własnego wzorca.",
     "notificationGrant": "Przyznaj dostęp",
-    "notificationIncome": "Słowa kluczowe przychodu (opcjonalnie)",
-    "notificationIncomeTooltip": "Słowa oddzielone przecinkami oznaczające powiadomienie jako przychód, oprócz wbudowanych, np. wypłata, dywidenda",
+    "notificationIncome": "Słowa kluczowe przychodu",
+    "notificationIncomeTooltip": "Słowa oznaczające powiadomienie jako przychód: wpisz słowo i naciśnij Enter, aby je dodać",
     "notificationNoApps": "Nie otrzymano jeszcze powiadomień: aplikacje pojawią się tutaj po wysłaniu powiadomienia",
     "notificationPattern": "Własny wzorzec (opcjonalnie)",
     "notificationPatternTooltip": "Wyrażenie regularne z nazwanymi grupami amount (wymagana), currency i title, np. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

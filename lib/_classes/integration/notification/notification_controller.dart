@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/integration/notification/notification_channel.dart';
 import 'package:app_finance/_classes/integration/notification/notification_importer.dart';
+import 'package:app_finance/_classes/integration/notification/notification_parser.dart';
 import 'package:app_finance/_classes/integration/notification/notification_settings.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
@@ -121,7 +122,8 @@ class NotificationController with WidgetsBindingObserver {
     do {
       _isRepeated = false;
       final state = _state;
-      final apps = NotificationSettings.load().apps.entries.where((e) => e.value.auto && e.value.isLinked).toList();
+      final settings = NotificationSettings.load();
+      final apps = settings.apps.entries.where((e) => e.value.auto && e.value.isLinked).toList();
       if (state == null || apps.isEmpty) {
         return;
       }
@@ -142,6 +144,8 @@ class NotificationController with WidgetsBindingObserver {
             link: app.value,
             records: records,
             from: DateTime.fromMillisecondsSinceEpoch(0),
+            income: settings.income,
+            balance: settings.balance,
           );
           added += summary.added;
         }
@@ -164,6 +168,8 @@ class NotificationController with WidgetsBindingObserver {
     required NotificationApp link,
     required List<NotificationRecord> records,
     required DateTime from,
+    List<String> income = NotificationParser.incomeKeywords,
+    List<String> balance = NotificationParser.balanceKeywords,
   }) async {
     final account = state.getByUuid(link.account!);
     final importer = NotificationImporter(
@@ -177,8 +183,8 @@ class NotificationController with WidgetsBindingObserver {
       from: from,
       currency: account is AccountAppData ? account.currency : null,
       pattern: link.pattern,
-      income: link.income,
-      balance: link.balance,
+      income: income,
+      balance: balance,
       prediction: state.prediction,
     );
     if (summary.added > 0) {

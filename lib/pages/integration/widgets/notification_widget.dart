@@ -12,6 +12,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
+import 'package:app_finance/design/form/tags_input.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/integration/widgets/integration_account_card.dart';
@@ -23,8 +24,6 @@ class NotificationSource extends IntegrationTarget {
   final String package;
   final String label;
   final TextEditingController pattern;
-  final TextEditingController income;
-  final TextEditingController balance;
   bool auto;
 
   NotificationSource(
@@ -34,36 +33,25 @@ class NotificationSource extends IntegrationTarget {
     super.category,
     required super.from,
     String? pattern,
-    String? income,
-    String? balance,
     this.auto = false,
-  })  : pattern = TextEditingController(text: pattern),
-        income = TextEditingController(text: income),
-        balance = TextEditingController(text: balance);
+  }) : pattern = TextEditingController(text: pattern);
 
-  Listenable get inputs => Listenable.merge([pattern, income, balance]);
-
-  NotificationParsed? parse(NotificationRecord record) => NotificationParser.parse(
-        record.title,
-        record.text,
-        pattern: pattern.text,
-        income: NotificationParser.toKeywords(income.text),
-        balance: NotificationParser.toKeywords(balance.text),
-      );
+  NotificationParsed? parse(
+    NotificationRecord record, {
+    List<String> income = NotificationParser.incomeKeywords,
+    List<String> balance = NotificationParser.balanceKeywords,
+  }) =>
+      NotificationParser.parse(record.title, record.text, pattern: pattern.text, income: income, balance: balance);
 
   NotificationApp toLink() => NotificationApp(
         account: appAccount,
         category: category,
         pattern: pattern.text.trim(),
-        income: income.text.trim(),
-        balance: balance.text.trim(),
         auto: auto,
       );
 
   void dispose() {
     pattern.dispose();
-    income.dispose();
-    balance.dispose();
   }
 }
 
@@ -78,6 +66,9 @@ class NotificationWidget extends StatefulWidget {
 
 class NotificationWidgetState extends State<NotificationWidget> with WidgetsBindingObserver {
   late final NotificationSettings settings;
+  // Parsing options shared by all apps
+  late final ValueNotifier<List<String>> income;
+  late final ValueNotifier<List<String>> balance;
   bool isGranted = false;
   bool isLoading = false;
   Map<String, String> apps = {};
@@ -95,6 +86,8 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
   void initState() {
     super.initState();
     settings = NotificationSettings.load();
+    income = ValueNotifier([...settings.income])..addListener(persistKeywords);
+    balance = ValueNotifier([...settings.balance])..addListener(persistKeywords);
     WidgetsBinding.instance.addObserver(this);
     controller.revision.addListener(refresh);
     refresh();
@@ -107,6 +100,8 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     for (final source in sources.values) {
       source.dispose();
     }
+    income.dispose();
+    balance.dispose();
     super.dispose();
   }
 
@@ -150,10 +145,8 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           category: link.category ?? AppPreferences.get(AppPreferences.prefBudget),
           from: DateTime.now().subtract(const Duration(days: 30)),
           pattern: link.pattern,
-          income: link.income,
-          balance: link.balance,
           auto: link.auto,
-        )..inputs.addListener(() => persist(package));
+        )..pattern.addListener(() => persist(package));
       });
 
   Future<void> persist(String package) async {
@@ -164,6 +157,13 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     settings.apps[package] = item.toLink();
     await settings.save();
     await controller.syncAutoPackages();
+  }
+
+  Future<void> persistKeywords() async {
+    settings
+      ..income = [...income.value]
+      ..balance = [...balance.value];
+    await settings.save();
   }
 
   Future<void> toggleAuto(NotificationSource item, bool value) async {
@@ -221,6 +221,8 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           link: item.toLink(),
           records: records,
           from: item.from,
+          income: income.value,
+          balance: balance.value,
         );
         records = await channel.getNotifications();
         await persist(item.package);
@@ -235,7 +237,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
       children: [
         for (final record in scope.reversed.take(3))
           Builder(builder: (context) {
-            final parsed = item.parse(record);
+            final parsed = item.parse(record, income: income.value, balance: balance.value);
             return ListTile(
               dense: true,
               contentPadding: EdgeInsets.zero,
@@ -258,6 +260,9 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
       ],
     );
   }
+
+  // Keywords are matched case-insensitively
+  static String _normalize(String value) => value.trim().toLowerCase();
 
   Widget buildSource(BuildContext context, NotificationSource item, AppData state) {
     final scope = records.where((e) => e.package == item.package).toList();
@@ -287,18 +292,8 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           tooltip: AppLocale.labels.notificationPatternTooltip,
           controller: item.pattern,
         ),
-        InputWrapper.text(
-          title: AppLocale.labels.notificationIncome,
-          tooltip: AppLocale.labels.notificationIncomeTooltip,
-          controller: item.income,
-        ),
-        InputWrapper.text(
-          title: AppLocale.labels.notificationBalance,
-          tooltip: AppLocale.labels.notificationBalanceTooltip,
-          controller: item.balance,
-        ),
         ListenableBuilder(
-          listenable: item.inputs,
+          listenable: Listenable.merge([item.pattern, income, balance]),
           builder: (context, _) => buildPreview(context, item, scope),
         ),
         if (scope.isNotEmpty)
@@ -330,6 +325,22 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
         children: [
           Text(AppLocale.labels.notificationDescription, style: textTheme.bodyMedium),
           ThemeHelper.hIndent2x,
+          TagsInput(
+            key: const ValueKey('notification_income'),
+            title: AppLocale.labels.notificationIncome,
+            tooltip: AppLocale.labels.notificationIncomeTooltip,
+            controller: income,
+            defaults: NotificationParser.incomeKeywords,
+            normalize: _normalize,
+          ),
+          TagsInput(
+            key: const ValueKey('notification_balance'),
+            title: AppLocale.labels.notificationBalance,
+            tooltip: AppLocale.labels.notificationBalanceTooltip,
+            controller: balance,
+            defaults: NotificationParser.balanceKeywords,
+            normalize: _normalize,
+          ),
           if (error != null) ...[
             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),
             ThemeHelper.hIndent,

@@ -78,6 +78,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
   - SimpleFIN Bridge (US): importación de saldos y movimientos de bancos y emisores de tarjetas de EE. UU.
   - Enable Banking (EU): importación de saldos y movimientos de bancos europeos (PSD2)
   - Wise API (Global): importación de saldos y movimientos de cuentas multidivisa de Wise (token de API personal)
+  - Notificaciones Parser (Android): movimientos a partir de notificaciones de aplicaciones bancarias y de pago
 - Exportación a archivo Excel `XLSX`
 - Encriptación de datos
 - Localización
@@ -114,6 +115,3 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 | Editar elemento seleccionado        | `Ctrl` + `E`                   |
 | Eliminar elemento seleccionado      | `Ctrl` + `D`                   |
 -->
-
-
-  - Notificaciones Parser (Android): movimientos a partir de notificaciones de aplicaciones bancarias y de pago

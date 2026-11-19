@@ -986,13 +986,20 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notificationAuto => 'Importar automáticamente';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Añadidos desde notificaciones: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Las notificaciones reconocidas se añaden sin confirmación: al instante mientras Fingrom está abierto, si no, en el siguiente inicio. Las no reconocidas esperan revisión';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Añadidos desde notificaciones: $value';
-  }
+  String get notificationBalance => 'Palabras clave de saldo';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Palabras que preceden a un importe a ignorar (saldo, límite): escriba una palabra y pulse Enter para añadirla';
 
   @override
   String notificationCaptured(Object value) {
@@ -1010,6 +1017,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notificationGrant => 'Conceder acceso';
 
   @override
+  String get notificationIncome => 'Palabras clave de ingreso';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Palabras que marcan una notificación como ingreso: escriba una palabra y pulse Enter para añadirla';
+
+  @override
   String get notificationNoApps =>
       'Aún no se han recibido notificaciones: las aplicaciones aparecen aquí después de publicar una notificación';
 
@@ -1019,20 +1033,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Expresión regular con los grupos con nombre amount (obligatorio), currency y title, p. ej. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Palabras clave de ingreso (opcional)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Palabras separadas por comas que marcan una notificación como ingreso, además de las integradas, p. ej. pago, dividendo';
-
-  @override
-  String get notificationBalance => 'Palabras clave de saldo (opcional)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Palabras separadas por comas que preceden a un importe a ignorar (saldo, límite), además de las integradas, p. ej. restante, línea de crédito';
 
   @override
   String get notificationUnparsed => 'No reconocido';

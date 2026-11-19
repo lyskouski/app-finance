@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Recognized notifications are added without a confirmation: right away while Fingrom is running, otherwise on its next start. Unrecognized ones wait for a review",
-    "notificationBalance": "Balance Keywords (optional)",
-    "notificationBalanceTooltip": "Comma-separated words preceding an amount that should be ignored (balance, limit), in addition to the built-in ones, e.g. remaining, credit line",
+    "notificationBalance": "Balance Keywords",
+    "notificationBalanceTooltip": "Words preceding an amount that should be ignored (balance, limit): type a word and press Enter to add it",
     "notificationCaptured": "Captured notifications: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Clear Captured",
     "notificationDescription": "Create transactions from notifications of banking and payment apps on this device. Only notifications of the selected apps are read, and they stay on the device until imported. The amount and the currency are recognized automatically or by a custom pattern.",
     "notificationGrant": "Grant Access",
-    "notificationIncome": "Income Keywords (optional)",
-    "notificationIncomeTooltip": "Comma-separated words marking a notification as income, in addition to the built-in ones, e.g. payout, dividend",
+    "notificationIncome": "Income Keywords",
+    "notificationIncomeTooltip": "Words marking a notification as income: type a word and press Enter to add it",
     "notificationNoApps": "No notifications have been received yet: apps appear here after they post a notification",
     "notificationPattern": "Custom Pattern (optional)",
     "notificationPatternTooltip": "Regular expression with the named groups amount (required), currency and title, e.g. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

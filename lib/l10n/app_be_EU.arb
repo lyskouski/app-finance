@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Raspaznanyja apaviaščeńni dadajucca biez paćvierdžańnia: adrazu, kali Fingrom pracuje, inakš pry nastupnym zapusku. Nieraspaznanyja čakajuć pravierki",
-    "notificationBalance": "Klučavyja słovy balansu (nieabaviazkova)",
-    "notificationBalanceTooltip": "Słovy praz kosku pierad sumaj, jakuju treba ihnaravać (balans, limit), u dadatak da ŭbudavanych, napryklad, rešta, kredytnaja linija",
+    "notificationBalance": "Klučavyja słovy balansu",
+    "notificationBalanceTooltip": "Słovy pierad sumaj, jakuju treba ihnaravać (balans, limit): uviadzicie słova i naciśnicie Enter, kab dadać jaho",
     "notificationCaptured": "Atrymana apaviaščeńniaŭ: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Ačyścić atrymanyja",
     "notificationDescription": "Stvareńnie aperacyj z apaviaščeńniaŭ bankaŭskich i placiožnych prahram na hetaj pryladzie. Čytajucca toĺki apaviaščeńni vybranych prahram, i jany zachoŭvajucca na pryladzie da impartu. Suma i valiuta raspaznajucca aŭtamatyčna abo pa ŭlasnym šablonie.",
     "notificationGrant": "Dać dostup",
-    "notificationIncome": "Klučavyja słovy dachodu (nieabaviazkova)",
-    "notificationIncomeTooltip": "Słovy praz kosku, jakija paznačajuć apaviaščennie jak dachod, u dadatak da ŭbudavanych, napryklad, vypłata, dyvidendy",
+    "notificationIncome": "Klučavyja słovy dachodu",
+    "notificationIncomeTooltip": "Słovy, jakija paznačajuć apaviaščennie jak dachod: uviadzicie słova i naciśnicie Enter, kab dadać jaho",
     "notificationNoApps": "Apaviaščeńniaŭ jašče nie było: prahramy źjaviacca tut paślia taho, jak dašliuć apaviaščeńnie",
     "notificationPattern": "Ŭlasny šablon (nieabaviazkova)",
     "notificationPatternTooltip": "Rehuliarny vyraz z najmiennymi hrupami amount (abaviazkova), currency i title, napryklad, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

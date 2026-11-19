@@ -5,6 +5,7 @@ _De volledige lijst met updates kan worden bekeken via het navigatie-item “Ove
 ### 8.1.0
 - Wise API (Global) toegevoegd: saldi en import van transacties van Wise-rekeningen in meerdere valuta, omwisselingen als overboekingen
 - Meldingen Parser (Android) toegevoegd: transacties uit meldingen van bank- en betaalapps, automatisch of met een eigen patroon herkend
+- Voorspellen van de budgetcategorie voor geïmporteerde rekeningen zonder categorie in het bestand
 
 ### 8.0.0
 - Nieuwe pagina Integraties met uitklapbare secties

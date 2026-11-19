@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "Notifikasi yang dikenali ditambahkan tanpa konfirmasi: langsung saat Fingrom berjalan, jika tidak saat dibuka berikutnya. Yang tidak dikenali menunggu ditinjau",
-    "notificationBalance": "Kata kunci saldo (opsional)",
-    "notificationBalanceTooltip": "Kata yang dipisahkan koma sebelum jumlah yang diabaikan (saldo, limit), selain yang bawaan, mis. tersisa, batas kredit",
+    "notificationBalance": "Kata kunci saldo",
+    "notificationBalanceTooltip": "Kata sebelum jumlah yang diabaikan (saldo, limit): ketik kata dan tekan Enter untuk menambahkannya",
     "notificationCaptured": "Notifikasi yang ditangkap: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Hapus yang ditangkap",
     "notificationDescription": "Buat transaksi dari notifikasi aplikasi perbankan dan pembayaran di perangkat ini. Hanya notifikasi dari aplikasi yang dipilih yang dibaca, dan notifikasi tetap tersimpan di perangkat hingga diimpor. Jumlah dan mata uang dikenali secara otomatis atau dengan pola khusus.",
     "notificationGrant": "Berikan Akses",
-    "notificationIncome": "Kata kunci pemasukan (opsional)",
-    "notificationIncomeTooltip": "Kata yang dipisahkan koma untuk menandai notifikasi sebagai pemasukan, selain yang bawaan, mis. pembayaran, dividen",
+    "notificationIncome": "Kata kunci pemasukan",
+    "notificationIncomeTooltip": "Kata yang menandai notifikasi sebagai pemasukan: ketik kata dan tekan Enter untuk menambahkannya",
     "notificationNoApps": "Belum ada notifikasi yang diterima: aplikasi muncul di sini setelah mengirim notifikasi",
     "notificationPattern": "Pola khusus (opsional)",
     "notificationPatternTooltip": "Ekspresi reguler dengan grup bernama amount (wajib), currency, dan title, mis. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

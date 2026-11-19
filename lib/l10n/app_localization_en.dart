@@ -980,13 +980,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationAuto => 'Import Automatically';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Added from notifications: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Recognized notifications are added without a confirmation: right away while Fingrom is running, otherwise on its next start. Unrecognized ones wait for a review';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Added from notifications: $value';
-  }
+  String get notificationBalance => 'Balance Keywords';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Words preceding an amount that should be ignored (balance, limit): type a word and press Enter to add it';
 
   @override
   String notificationCaptured(Object value) {
@@ -1004,6 +1011,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationGrant => 'Grant Access';
 
   @override
+  String get notificationIncome => 'Income Keywords';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Words marking a notification as income: type a word and press Enter to add it';
+
+  @override
   String get notificationNoApps =>
       'No notifications have been received yet: apps appear here after they post a notification';
 
@@ -1013,20 +1027,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Regular expression with the named groups amount (required), currency and title, e.g. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Income Keywords (optional)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Comma-separated words marking a notification as income, in addition to the built-in ones, e.g. payout, dividend';
-
-  @override
-  String get notificationBalance => 'Balance Keywords (optional)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Comma-separated words preceding an amount that should be ignored (balance, limit), in addition to the built-in ones, e.g. remaining, credit line';
 
   @override
   String get notificationUnparsed => 'Not recognized';

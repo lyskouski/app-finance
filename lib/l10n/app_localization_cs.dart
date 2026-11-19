@@ -978,13 +978,20 @@ class AppLocalizationsCs extends AppLocalizations {
   String get notificationAuto => 'Importovat automaticky';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Přidáno z oznámení: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Rozpoznaná oznámení se přidávají bez potvrzení: ihned, když Fingrom běží, jinak při příštím spuštění. Nerozpoznaná čekají na kontrolu';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Přidáno z oznámení: $value';
-  }
+  String get notificationBalance => 'Klíčová slova zůstatku';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Slova před částkou, která se má ignorovat (zůstatek, limit): napište slovo a stiskněte Enter pro přidání';
 
   @override
   String notificationCaptured(Object value) {
@@ -1002,6 +1009,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get notificationGrant => 'Udělit přístup';
 
   @override
+  String get notificationIncome => 'Klíčová slova příjmu';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Slova, která označují oznámení jako příjem: napište slovo a stiskněte Enter pro přidání';
+
+  @override
   String get notificationNoApps =>
       'Zatím nebyla přijata žádná oznámení: aplikace se zde zobrazí poté, co odešlou oznámení';
 
@@ -1011,20 +1025,6 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Regulární výraz s pojmenovanými skupinami amount (povinná), currency a title, např. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Klíčová slova příjmu (volitelné)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Slova oddělená čárkami, která označují oznámení jako příjem, navíc k vestavěným, např. výplata, dividenda';
-
-  @override
-  String get notificationBalance => 'Klíčová slova zůstatku (volitelné)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Slova oddělená čárkami před částkou, která se má ignorovat (zůstatek, limit), navíc k vestavěným, např. zbývá, úvěrový rámec';
 
   @override
   String get notificationUnparsed => 'Nerozpoznáno';

@@ -422,8 +422,8 @@
         }
     },
     "notificationAutoTooltip": "As notificações reconhecidas são adicionadas sem confirmação: imediatamente enquanto o Fingrom está em execução, caso contrário na próxima abertura. As não reconhecidas aguardam revisão",
-    "notificationBalance": "Palavras-chave de saldo (opcional)",
-    "notificationBalanceTooltip": "Palavras separadas por vírgulas antes de um valor a ignorar (saldo, limite), além das embutidas, por exemplo, restante, linha de crédito",
+    "notificationBalance": "Palavras-chave de saldo",
+    "notificationBalanceTooltip": "Palavras antes de um valor a ignorar (saldo, limite): digite uma palavra e pressione Enter para adicioná-la",
     "notificationCaptured": "Notificações capturadas: {value}",
     "@notificationCaptured": {
         "value": {
@@ -433,8 +433,8 @@
     "notificationClear": "Limpar capturadas",
     "notificationDescription": "Crie transações a partir de notificações de aplicativos bancários e de pagamento neste dispositivo. Apenas as notificações dos aplicativos selecionados são lidas e ficam no dispositivo até serem importadas. O valor e a moeda são reconhecidos automaticamente ou por um padrão personalizado.",
     "notificationGrant": "Conceder acesso",
-    "notificationIncome": "Palavras-chave de receita (opcional)",
-    "notificationIncomeTooltip": "Palavras separadas por vírgulas que marcam uma notificação como receita, além das embutidas, por exemplo, pagamento, dividendo",
+    "notificationIncome": "Palavras-chave de receita",
+    "notificationIncomeTooltip": "Palavras que marcam uma notificação como receita: digite uma palavra e pressione Enter para adicioná-la",
     "notificationNoApps": "Nenhuma notificação recebida ainda: os aplicativos aparecem aqui depois de enviarem uma notificação",
     "notificationPattern": "Padrão personalizado (opcional)",
     "notificationPatternTooltip": "Expressão regular com os grupos nomeados amount (obrigatório), currency e title, por exemplo, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",

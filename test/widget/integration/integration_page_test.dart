@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/integration/enablebanking/enablebanking_set
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
 import 'package:app_finance/_classes/integration/notification/notification_channel.dart';
 import 'package:app_finance/_classes/integration/notification/notification_controller.dart';
+import 'package:app_finance/_classes/integration/notification/notification_parser.dart';
 import 'package:app_finance/_classes/integration/notification/notification_settings.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
@@ -682,14 +683,23 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byKey(const ValueKey('notification_steps')), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('notification_grant')));
     await tester.tap(find.byKey(const ValueKey('notification_grant')));
     await pumpFrames(tester);
     expect(calls, contains('openSettings'));
 
     // The access is granted in the system settings
     isGranted = true;
-    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
-    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    for (final state in [
+      AppLifecycleState.inactive,
+      AppLifecycleState.hidden,
+      AppLifecycleState.paused,
+      AppLifecycleState.hidden,
+      AppLifecycleState.inactive,
+      AppLifecycleState.resumed,
+    ]) {
+      tester.binding.handleAppLifecycleStateChanged(state);
+    }
     await pumpFrames(tester);
     await tester.pumpAndSettle();
 
@@ -705,6 +715,20 @@ void main() {
     expect(find.text('Captured notifications: 2'), findsOneWidget);
     expect(find.textContaining('-12.5 EUR — Bakery'), findsOneWidget);
     expect(find.text('Not recognized'), findsOneWidget);
+
+    // Parsing options are shared by all apps and shown before them
+    final income = find.byKey(const ValueKey('notification_income'));
+    expect(tester.getTopLeft(income).dy, lessThan(tester.getTopLeft(find.text('My Bank').first).dy));
+    await tester.enterText(find.descendant(of: income, matching: find.byType(TextField)), 'Paid');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await pumpFrames(tester);
+    expect(find.textContaining('12.5 EUR — Bakery'), findsOneWidget);
+    expect(find.textContaining('-12.5 EUR — Bakery'), findsNothing);
+    expect(NotificationSettings.load().income, contains('paid'));
+    await tester.tap(find.descendant(of: find.byKey(const ValueKey('tag_paid')), matching: find.byIcon(Icons.close)));
+    await pumpFrames(tester);
+    expect(find.textContaining('-12.5 EUR — Bakery'), findsOneWidget);
+    expect(NotificationSettings.load().income, NotificationParser.incomeKeywords);
 
     final widgetState = tester.state<NotificationWidgetState>(find.byType(NotificationWidget));
     widgetState.sources['com.bank']!

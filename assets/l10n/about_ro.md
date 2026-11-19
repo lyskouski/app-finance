@@ -78,6 +78,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
   - SimpleFIN Bridge (US): import de solduri și tranzacții de la băncile și emitenții de carduri din SUA
   - Enable Banking (EU): import de solduri și tranzacții de la băncile europene (PSD2)
   - Wise API (Global): import de solduri și tranzacții ale conturilor multivalută Wise (token API personal)
+  - Notificări Parser (Android): tranzacții din notificările aplicațiilor bancare și de plată
 - Export către fișiere Excel `XLSX`.
 - Criptarea datelor
 - Localizare
@@ -114,6 +115,3 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 | Editează elementul selectat             | `Ctrl` + `E`                   |
 | Șterge elementul selectat               | `Ctrl` + `D`                   |
 -->
-
-
-  - Notificări Parser (Android): tranzacții din notificările aplicațiilor bancare și de plată

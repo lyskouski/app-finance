@@ -984,13 +984,20 @@ class AppLocalizationsRo extends AppLocalizations {
   String get notificationAuto => 'Importă automat';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Adăugate din notificări: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Notificările recunoscute sunt adăugate fără confirmare: imediat cât timp Fingrom rulează, altfel la următoarea pornire. Cele nerecunoscute așteaptă verificarea';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Adăugate din notificări: $value';
-  }
+  String get notificationBalance => 'Cuvinte cheie pentru sold';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Cuvinte care preced o sumă de ignorat (sold, limită): tastați un cuvânt și apăsați Enter pentru a-l adăuga';
 
   @override
   String notificationCaptured(Object value) {
@@ -1008,6 +1015,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get notificationGrant => 'Acordă acces';
 
   @override
+  String get notificationIncome => 'Cuvinte cheie pentru venit';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Cuvinte care marchează o notificare ca venit: tastați un cuvânt și apăsați Enter pentru a-l adăuga';
+
+  @override
   String get notificationNoApps =>
       'Nu s-au primit încă notificări: aplicațiile apar aici după ce trimit o notificare';
 
@@ -1017,20 +1031,6 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'Expresie regulată cu grupurile denumite amount (obligatoriu), currency și title, de ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Cuvinte cheie pentru venit (opțional)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Cuvinte separate prin virgulă care marchează o notificare ca venit, pe lângă cele integrate, de ex. plată, dividend';
-
-  @override
-  String get notificationBalance => 'Cuvinte cheie pentru sold (opțional)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Cuvinte separate prin virgulă care preced o sumă de ignorat (sold, limită), pe lângă cele integrate, de ex. rămas, linie de credit';
 
   @override
   String get notificationUnparsed => 'Nerecunoscut';

@@ -983,13 +983,20 @@ class AppLocalizationsAz extends AppLocalizations {
   String get notificationAuto => 'Avtomatik idxal et';
 
   @override
+  String notificationAutoImported(Object value) {
+    return 'Bildirişlərdən əlavə edildi: $value';
+  }
+
+  @override
   String get notificationAutoTooltip =>
       'Tanınan bildirişlər təsdiqsiz əlavə olunur: Fingrom işləyərkən dərhal, əks halda növbəti açılışda. Tanınmayanlar yoxlamanı gözləyir';
 
   @override
-  String notificationAutoImported(Object value) {
-    return 'Bildirişlərdən əlavə edildi: $value';
-  }
+  String get notificationBalance => 'Balans açar sözləri';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Nəzərə alınmayacaq məbləğdən (balans, limit) əvvəl gələn sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın';
 
   @override
   String notificationCaptured(Object value) {
@@ -1007,6 +1014,13 @@ class AppLocalizationsAz extends AppLocalizations {
   String get notificationGrant => 'Giriş ver';
 
   @override
+  String get notificationIncome => 'Gəlir açar sözləri';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Bildirişi gəlir kimi qeyd edən sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın';
+
+  @override
   String get notificationNoApps =>
       'Hələ bildiriş alınmayıb: tətbiqlər bildiriş göndərdikdən sonra burada görünür';
 
@@ -1016,20 +1030,6 @@ class AppLocalizationsAz extends AppLocalizations {
   @override
   String get notificationPatternTooltip =>
       'amount (məcburi), currency və title adlı qrupları olan müntəzəm ifadə, məsələn, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
-
-  @override
-  String get notificationIncome => 'Gəlir açar sözləri (istəyə bağlı)';
-
-  @override
-  String get notificationIncomeTooltip =>
-      'Bildirişi gəlir kimi qeyd edən vergüllə ayrılmış sözlər, daxili olanlara əlavə olaraq, məsələn, ödəniş, dividend';
-
-  @override
-  String get notificationBalance => 'Balans açar sözləri (istəyə bağlı)';
-
-  @override
-  String get notificationBalanceTooltip =>
-      'Nəzərə alınmayacaq məbləğdən (balans, limit) əvvəl gələn vergüllə ayrılmış sözlər, daxili olanlara əlavə olaraq, məsələn, qalan, kredit xətti';
 
   @override
   String get notificationUnparsed => 'Tanınmadı';
