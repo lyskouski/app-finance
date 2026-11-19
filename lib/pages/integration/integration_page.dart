@@ -52,13 +52,6 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
           icon: Icons.currency_exchange,
           builder: (_) => const WiseWidget(),
         ),
-        if (NotificationChannel.isSupported)
-          (
-            id: 'notification',
-            title: AppLocale.labels.notifyHeadline,
-            icon: Icons.notifications_active_outlined,
-            builder: (_) => const NotificationWidget(),
-          ),
       ];
 
   Widget buildItem(BuildContext context, IntegrationItem item) {
@@ -95,6 +88,15 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
       children: [
         for (final item in getProtocols()) buildItem(context, item),
         Divider(key: const ValueKey('integration_divider'), height: indent * 4),
+        if (NotificationChannel.isSupported) ...[
+          buildItem(context, (
+            id: 'notification',
+            title: AppLocale.labels.notifyHeadline,
+            icon: Icons.notifications_active_outlined,
+            builder: (_) => const NotificationWidget(),
+          )),
+          Divider(key: const ValueKey('integration_divider_end'), height: indent * 4),
+        ],
         for (final item in getServices()) buildItem(context, item),
       ],
     );
