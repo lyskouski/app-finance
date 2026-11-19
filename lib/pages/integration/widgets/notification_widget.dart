@@ -323,7 +323,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
             normalize: _normalize,
           ),
           Text(AppLocale.labels.notificationAccounts, style: textTheme.titleMedium),
-          Text(AppLocale.labels.notificationAccountsTooltip, style: textTheme.bodySmall),
+          Text(AppLocale.labels.notificationAccountsTooltip, style: textTheme.bodyMedium),
           ThemeHelper.hIndent,
           for (final account in state.getList(AppDataType.accounts).whereType<AccountAppData>())
             TagsInput(

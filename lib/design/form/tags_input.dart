@@ -118,7 +118,7 @@ class TagsInputState extends State<TagsInput> {
                 ),
             ],
           ),
-          if (widget.tooltip != null) Text(widget.tooltip!, style: context.textTheme.bodySmall),
+          if (widget.tooltip != null) Text(widget.tooltip!, style: context.textTheme.bodyMedium),
           ThemeHelper.hIndent05,
           GestureDetector(
             behavior: HitTestBehavior.opaque,
