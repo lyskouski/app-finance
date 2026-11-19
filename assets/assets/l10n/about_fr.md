@@ -78,6 +78,7 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
   - SimpleFIN Bridge (US) : importation des soldes et des opérations des banques et émetteurs de cartes américains
   - Enable Banking (EU) : importation des soldes et des opérations des banques européennes (DSP2)
   - Wise API (Global) : importation des soldes et des opérations des comptes multidevises Wise (jeton d'API personnel)
+  - Analyseur de notifications (Android) : opérations à partir des notifications des applications bancaires et de paiement
 - Export vers un fichier Excel `XLSX`
 - Cryptage des données
 - Localisation des données
@@ -114,5 +115,3 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
 | Modifier l'élément sélectionné           | `Ctrl` + `E`                   |
 | Supprimer l'élément sélectionné          | `Ctrl` + `D`                   |
 -->
-
-

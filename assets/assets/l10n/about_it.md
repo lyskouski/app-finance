@@ -78,6 +78,7 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
   - SimpleFIN Bridge (US): importazione di saldi e movimenti di banche ed emittenti di carte statunitensi
   - Enable Banking (EU): importazione di saldi e movimenti delle banche europee (PSD2)
   - Wise API (Global): importazione di saldi e movimenti dei conti multivaluta Wise (token API personale)
+  - Parser delle notifiche (Android): movimenti dalle notifiche delle app bancarie e di pagamento
 - Esportazione in file Excel `XLSX`
 - Cifratura dei dati
 - Localizzazione
@@ -114,5 +115,3 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
 | Modifica elemento selezionato            | `Ctrl` + `E`                   |
 | Elimina elemento selezionato             | `Ctrl` + `D`                   |
 -->
-
-

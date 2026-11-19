@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">454</td>
+            <td class="headerCovTableEntry">475</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-18 19:01:10</td>
+            <td class="headerValue">2026-11-19 19:28:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -1013,410 +1013,477 @@
 <span id="L951"><span class="lineNum">     951</span>              :   String get noChartData =&gt; 'Datele lipsesc (sau nu sunt suficiente) pentru a fi afișate';</span>
 <span id="L952"><span class="lineNum">     952</span>              : </span>
 <span id="L953"><span class="lineNum">     953</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L954"><span class="lineNum">     954</span>              :   String get notifyHeadline =&gt; 'Notificări Parser';</span>
+<span id="L954"><span class="lineNum">     954</span>              :   String get notificationAccessSettings =&gt; 'Acces la notificări';</span>
 <span id="L955"><span class="lineNum">     955</span>              : </span>
 <span id="L956"><span class="lineNum">     956</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L957"><span class="lineNum">     957</span>              :   String get ok =&gt; 'OK';</span>
-<span id="L958"><span class="lineNum">     958</span>              : </span>
-<span id="L959"><span class="lineNum">     959</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L960"><span class="lineNum">     960</span>              :   String get orderPin =&gt; 'Ordine prioritizată';</span>
-<span id="L961"><span class="lineNum">     961</span>              : </span>
-<span id="L962"><span class="lineNum">     962</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L963"><span class="lineNum">     963</span>              :   String get orderUnpin =&gt; 'Ordine generalizată';</span>
-<span id="L964"><span class="lineNum">     964</span>              : </span>
-<span id="L965"><span class="lineNum">     965</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L966"><span class="lineNum">     966</span>              :   String get outputFile =&gt; 'Destinație pentru fișier';</span>
-<span id="L967"><span class="lineNum">     967</span>              : </span>
-<span id="L968"><span class="lineNum">     968</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L969"><span class="lineNum">     969</span>              :   String get parseFile =&gt; 'Parsează fișierul';</span>
-<span id="L970"><span class="lineNum">     970</span>              : </span>
-<span id="L971"><span class="lineNum">     971</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L972"><span class="lineNum">     972</span>              :   String get password =&gt; 'Parolă';</span>
-<span id="L973"><span class="lineNum">     973</span>              : </span>
-<span id="L974"><span class="lineNum">     974</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L975"><span class="lineNum">     975</span>              :   String get path =&gt; 'Numele fișierului (în care se salvează sau din care se încarcă)';</span>
-<span id="L976"><span class="lineNum">     976</span>              : </span>
-<span id="L977"><span class="lineNum">     977</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L978"><span class="lineNum">     978</span>              :   String get paymentType =&gt; 'Interval de plată';</span>
-<span id="L979"><span class="lineNum">     979</span>              : </span>
-<span id="L980"><span class="lineNum">     980</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L981"><span class="lineNum">     981</span>              :   String get paymentsHeadline =&gt; 'Plăți recurente';</span>
-<span id="L982"><span class="lineNum">     982</span>              : </span>
-<span id="L983"><span class="lineNum">     983</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L984"><span class="lineNum">     984</span>              :   String get pearDisabled =&gt; '-- dezactivat --';</span>
+<span id="L957"><span class="lineNum">     957</span>              :   String get notificationAccessSteps =&gt;</span>
+<span id="L958"><span class="lineNum">     958</span>              :       'Cum se acordă accesul:\n1. Apăsați \&quot;Acordă acces\&quot; pentru a deschide setările sistemului\n2. Permiteți aplicației Fingrom să citească notificările\n3. Dacă Android semnalează o setare restricționată: deschideți Informații aplicație Fingrom → ⋮ → \&quot;Permite setările restricționate\&quot; și reîncercați\n4. Reveniți în Fingrom și selectați aplicațiile ale căror notificări vor fi citite';</span>
+<span id="L959"><span class="lineNum">     959</span>              : </span>
+<span id="L960"><span class="lineNum">     960</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L961"><span class="lineNum">     961</span>              :   String get notificationAccounts =&gt; 'Cuvinte cheie pentru conturi';</span>
+<span id="L962"><span class="lineNum">     962</span>              : </span>
+<span id="L963"><span class="lineNum">     963</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L964"><span class="lineNum">     964</span>              :   String get notificationAccountsTooltip =&gt;</span>
+<span id="L965"><span class="lineNum">     965</span>              :       'Cuvinte care identifică contul într-o notificare (ultimele cifre ale cardului, numele portofelului): tastați un cuvânt și apăsați Enter pentru a-l adăuga. Altfel se folosește contul implicit al aplicației';</span>
+<span id="L966"><span class="lineNum">     966</span>              : </span>
+<span id="L967"><span class="lineNum">     967</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L968"><span class="lineNum">     968</span>              :   String get notificationApps =&gt; 'Aplicații ale căror notificări sunt citite';</span>
+<span id="L969"><span class="lineNum">     969</span>              : </span>
+<span id="L970"><span class="lineNum">     970</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L971"><span class="lineNum">     971</span>              :   String notificationAutoImported(Object value) {</span>
+<span id="L972"><span class="lineNum">     972</span> <span class="tlaUNC">           0 :     return 'Adăugate din notificări: $value';</span></span>
+<span id="L973"><span class="lineNum">     973</span>              :   }</span>
+<span id="L974"><span class="lineNum">     974</span>              : </span>
+<span id="L975"><span class="lineNum">     975</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L976"><span class="lineNum">     976</span>              :   String get notificationAutoTooltip =&gt;</span>
+<span id="L977"><span class="lineNum">     977</span>              :       'Notificările recunoscute sunt adăugate fără confirmare: imediat cât timp Fingrom rulează, altfel la următoarea pornire. Cele nerecunoscute așteaptă verificarea';</span>
+<span id="L978"><span class="lineNum">     978</span>              : </span>
+<span id="L979"><span class="lineNum">     979</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L980"><span class="lineNum">     980</span>              :   String get notificationBalance =&gt; 'Cuvinte cheie pentru sold';</span>
+<span id="L981"><span class="lineNum">     981</span>              : </span>
+<span id="L982"><span class="lineNum">     982</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L983"><span class="lineNum">     983</span>              :   String get notificationBalanceTooltip =&gt;</span>
+<span id="L984"><span class="lineNum">     984</span>              :       'Cuvinte care preced o sumă de ignorat (sold, limită): tastați un cuvânt și apăsați Enter pentru a-l adăuga';</span>
 <span id="L985"><span class="lineNum">     985</span>              : </span>
 <span id="L986"><span class="lineNum">     986</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L987"><span class="lineNum">     987</span>              :   String get pearLoading =&gt; 'În curs...';</span>
-<span id="L988"><span class="lineNum">     988</span>              : </span>
-<span id="L989"><span class="lineNum">     989</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L990"><span class="lineNum">     990</span>              :   String get peerAccept =&gt; 'acceptați';</span>
-<span id="L991"><span class="lineNum">     991</span>              : </span>
-<span id="L992"><span class="lineNum">     992</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L993"><span class="lineNum">     993</span>              :   String get peerAction =&gt; 'Acțiune';</span>
-<span id="L994"><span class="lineNum">     994</span>              : </span>
-<span id="L995"><span class="lineNum">     995</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L996"><span class="lineNum">     996</span>              :   String get peerClosed =&gt; 'Terminat';</span>
-<span id="L997"><span class="lineNum">     997</span>              : </span>
-<span id="L998"><span class="lineNum">     998</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L999"><span class="lineNum">     999</span>              :   String get peerConnect =&gt; 'Conectarea dispozitivului';</span>
-<span id="L1000"><span class="lineNum">    1000</span>              : </span>
-<span id="L1001"><span class="lineNum">    1001</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1002"><span class="lineNum">    1002</span>              :   String get peerConnectBtn =&gt; 'conectare';</span>
+<span id="L987"><span class="lineNum">     987</span>              :   String notificationCaptured(Object value) {</span>
+<span id="L988"><span class="lineNum">     988</span> <span class="tlaUNC">           0 :     return 'Notificări capturate: $value';</span></span>
+<span id="L989"><span class="lineNum">     989</span>              :   }</span>
+<span id="L990"><span class="lineNum">     990</span>              : </span>
+<span id="L991"><span class="lineNum">     991</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L992"><span class="lineNum">     992</span>              :   String get notificationClear =&gt; 'Șterge capturate';</span>
+<span id="L993"><span class="lineNum">     993</span>              : </span>
+<span id="L994"><span class="lineNum">     994</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L995"><span class="lineNum">     995</span>              :   String get notificationCurrencyTooltip =&gt; 'Sumele fără monedă (de ex. Debit 20,00) sunt luate în această monedă';</span>
+<span id="L996"><span class="lineNum">     996</span>              : </span>
+<span id="L997"><span class="lineNum">     997</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L998"><span class="lineNum">     998</span>              :   String get notificationDefaultAccount =&gt; 'Cont implicit';</span>
+<span id="L999"><span class="lineNum">     999</span>              : </span>
+<span id="L1000"><span class="lineNum">    1000</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1001"><span class="lineNum">    1001</span>              :   String get notificationDescription =&gt;</span>
+<span id="L1002"><span class="lineNum">    1002</span>              :       'Creați tranzacții din notificările aplicațiilor bancare și de plată de pe acest dispozitiv. Sunt citite doar notificările aplicațiilor selectate, care rămân pe dispozitiv până la import. Suma și moneda sunt recunoscute automat.';</span>
 <span id="L1003"><span class="lineNum">    1003</span>              : </span>
 <span id="L1004"><span class="lineNum">    1004</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1005"><span class="lineNum">    1005</span>              :   String get peerDelete =&gt; 'șterge';</span>
+<span id="L1005"><span class="lineNum">    1005</span>              :   String get notificationGrant =&gt; 'Acordă acces';</span>
 <span id="L1006"><span class="lineNum">    1006</span>              : </span>
 <span id="L1007"><span class="lineNum">    1007</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1008"><span class="lineNum">    1008</span>              :   String get peerDevice =&gt; 'Dispozitive conectate';</span>
+<span id="L1008"><span class="lineNum">    1008</span>              :   String get notificationIncome =&gt; 'Cuvinte cheie pentru venit';</span>
 <span id="L1009"><span class="lineNum">    1009</span>              : </span>
 <span id="L1010"><span class="lineNum">    1010</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1011"><span class="lineNum">    1011</span>              :   String get peerId =&gt; 'Identificatorul dispozitivului dvs. pentru conectare';</span>
-<span id="L1012"><span class="lineNum">    1012</span>              : </span>
-<span id="L1013"><span class="lineNum">    1013</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1014"><span class="lineNum">    1014</span>              :   String get peerOffline =&gt; 'offline';</span>
-<span id="L1015"><span class="lineNum">    1015</span>              : </span>
-<span id="L1016"><span class="lineNum">    1016</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1017"><span class="lineNum">    1017</span>              :   String get peerOnline =&gt; 'conectat';</span>
-<span id="L1018"><span class="lineNum">    1018</span>              : </span>
-<span id="L1019"><span class="lineNum">    1019</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1020"><span class="lineNum">    1020</span>              :   String get peerOtherId =&gt; 'Identificatorul dispozitivului pentru conexiune';</span>
-<span id="L1021"><span class="lineNum">    1021</span>              : </span>
-<span id="L1022"><span class="lineNum">    1022</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1023"><span class="lineNum">    1023</span>              :   String get peerPending =&gt; 'în așteptare';</span>
-<span id="L1024"><span class="lineNum">    1024</span>              : </span>
-<span id="L1025"><span class="lineNum">    1025</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1026"><span class="lineNum">    1026</span>              :   String get peerPing =&gt; 'ping';</span>
-<span id="L1027"><span class="lineNum">    1027</span>              : </span>
-<span id="L1028"><span class="lineNum">    1028</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1029"><span class="lineNum">    1029</span>              :   String get peerSent =&gt; 'Datele sunt transferate către dispozitivele conectate';</span>
-<span id="L1030"><span class="lineNum">    1030</span>              : </span>
-<span id="L1031"><span class="lineNum">    1031</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1032"><span class="lineNum">    1032</span>              :   String get peerStatus =&gt; 'Stare';</span>
-<span id="L1033"><span class="lineNum">    1033</span>              : </span>
-<span id="L1034"><span class="lineNum">    1034</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1035"><span class="lineNum">    1035</span>              :   String get peerSync =&gt; 'Transfer de date';</span>
-<span id="L1036"><span class="lineNum">    1036</span>              : </span>
-<span id="L1037"><span class="lineNum">    1037</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1038"><span class="lineNum">    1038</span>              :   String pickFile(Object value) {</span>
-<span id="L1039"><span class="lineNum">    1039</span> <span class="tlaUNC">           0 :     return 'Preluare .$value-file';</span></span>
-<span id="L1040"><span class="lineNum">    1040</span>              :   }</span>
-<span id="L1041"><span class="lineNum">    1041</span>              : </span>
-<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1043"><span class="lineNum">    1043</span>              :   String pongStatus(Object uuid) {</span>
-<span id="L1044"><span class="lineNum">    1044</span> <span class="tlaUNC">           0 :     return 'Cerere preluată de la $uuid';</span></span>
-<span id="L1045"><span class="lineNum">    1045</span>              :   }</span>
+<span id="L1011"><span class="lineNum">    1011</span>              :   String get notificationIncomeTooltip =&gt;</span>
+<span id="L1012"><span class="lineNum">    1012</span>              :       'Cuvinte care marchează o notificare ca venit: tastați un cuvânt și apăsați Enter pentru a-l adăuga';</span>
+<span id="L1013"><span class="lineNum">    1013</span>              : </span>
+<span id="L1014"><span class="lineNum">    1014</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1015"><span class="lineNum">    1015</span>              :   String get notificationNoApps =&gt; 'Nu s-au primit încă notificări: aplicațiile apar aici după ce trimit o notificare';</span>
+<span id="L1016"><span class="lineNum">    1016</span>              : </span>
+<span id="L1017"><span class="lineNum">    1017</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1018"><span class="lineNum">    1018</span>              :   String get notificationUnparsed =&gt; 'Nerecunoscut';</span>
+<span id="L1019"><span class="lineNum">    1019</span>              : </span>
+<span id="L1020"><span class="lineNum">    1020</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1021"><span class="lineNum">    1021</span>              :   String get notifyHeadline =&gt; 'Notificări Parser';</span>
+<span id="L1022"><span class="lineNum">    1022</span>              : </span>
+<span id="L1023"><span class="lineNum">    1023</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1024"><span class="lineNum">    1024</span>              :   String get ok =&gt; 'OK';</span>
+<span id="L1025"><span class="lineNum">    1025</span>              : </span>
+<span id="L1026"><span class="lineNum">    1026</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1027"><span class="lineNum">    1027</span>              :   String get orderPin =&gt; 'Ordine prioritizată';</span>
+<span id="L1028"><span class="lineNum">    1028</span>              : </span>
+<span id="L1029"><span class="lineNum">    1029</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1030"><span class="lineNum">    1030</span>              :   String get orderUnpin =&gt; 'Ordine generalizată';</span>
+<span id="L1031"><span class="lineNum">    1031</span>              : </span>
+<span id="L1032"><span class="lineNum">    1032</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1033"><span class="lineNum">    1033</span>              :   String get outputFile =&gt; 'Destinație pentru fișier';</span>
+<span id="L1034"><span class="lineNum">    1034</span>              : </span>
+<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1036"><span class="lineNum">    1036</span>              :   String get parseFile =&gt; 'Parsează fișierul';</span>
+<span id="L1037"><span class="lineNum">    1037</span>              : </span>
+<span id="L1038"><span class="lineNum">    1038</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1039"><span class="lineNum">    1039</span>              :   String get password =&gt; 'Parolă';</span>
+<span id="L1040"><span class="lineNum">    1040</span>              : </span>
+<span id="L1041"><span class="lineNum">    1041</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1042"><span class="lineNum">    1042</span>              :   String get path =&gt; 'Numele fișierului (în care se salvează sau din care se încarcă)';</span>
+<span id="L1043"><span class="lineNum">    1043</span>              : </span>
+<span id="L1044"><span class="lineNum">    1044</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1045"><span class="lineNum">    1045</span>              :   String get paymentType =&gt; 'Interval de plată';</span>
 <span id="L1046"><span class="lineNum">    1046</span>              : </span>
 <span id="L1047"><span class="lineNum">    1047</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1048"><span class="lineNum">    1048</span>              :   String get processIsFinished =&gt; 'Terminat!';</span>
+<span id="L1048"><span class="lineNum">    1048</span>              :   String get paymentsHeadline =&gt; 'Plăți recurente';</span>
 <span id="L1049"><span class="lineNum">    1049</span>              : </span>
 <span id="L1050"><span class="lineNum">    1050</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1051"><span class="lineNum">    1051</span>              :   String progress(Object value) {</span>
-<span id="L1052"><span class="lineNum">    1052</span> <span class="tlaUNC">           0 :     return 'Progres: $value%';</span></span>
-<span id="L1053"><span class="lineNum">    1053</span>              :   }</span>
-<span id="L1054"><span class="lineNum">    1054</span>              : </span>
-<span id="L1055"><span class="lineNum">    1055</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1056"><span class="lineNum">    1056</span>              :   String get raiseData =&gt; 'Adăugare sumă';</span>
-<span id="L1057"><span class="lineNum">    1057</span>              : </span>
-<span id="L1058"><span class="lineNum">    1058</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1059"><span class="lineNum">    1059</span>              :   String get recoveryHeadline =&gt; 'Recuperare';</span>
-<span id="L1060"><span class="lineNum">    1060</span>              : </span>
-<span id="L1061"><span class="lineNum">    1061</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1062"><span class="lineNum">    1062</span>              :   String get recoveryTooltip =&gt; 'Recuperare din';</span>
-<span id="L1063"><span class="lineNum">    1063</span>              : </span>
-<span id="L1064"><span class="lineNum">    1064</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1065"><span class="lineNum">    1065</span>              :   String get releases =&gt; 'Eliberări';</span>
-<span id="L1066"><span class="lineNum">    1066</span>              : </span>
-<span id="L1067"><span class="lineNum">    1067</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1068"><span class="lineNum">    1068</span>              :   String get reset =&gt; 'resetare';</span>
-<span id="L1069"><span class="lineNum">    1069</span>              : </span>
-<span id="L1070"><span class="lineNum">    1070</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1071"><span class="lineNum">    1071</span>              :   String get returnBack =&gt; 'Revenire înapoi';</span>
-<span id="L1072"><span class="lineNum">    1072</span>              : </span>
-<span id="L1073"><span class="lineNum">    1073</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1074"><span class="lineNum">    1074</span>              :   String get roadmap =&gt; 'Foaie de parcurs';</span>
-<span id="L1075"><span class="lineNum">    1075</span>              : </span>
-<span id="L1076"><span class="lineNum">    1076</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1077"><span class="lineNum">    1077</span>              :   String get saveNotification =&gt; 'Modificări salvate!';</span>
-<span id="L1078"><span class="lineNum">    1078</span>              : </span>
-<span id="L1079"><span class="lineNum">    1079</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1080"><span class="lineNum">    1080</span>              :   String get saveSettingsTooltip =&gt; 'Salvare';</span>
-<span id="L1081"><span class="lineNum">    1081</span>              : </span>
-<span id="L1082"><span class="lineNum">    1082</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1083"><span class="lineNum">    1083</span>              :   String get saveTooltip =&gt; 'Salvare către';</span>
-<span id="L1084"><span class="lineNum">    1084</span>              : </span>
-<span id="L1085"><span class="lineNum">    1085</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1086"><span class="lineNum">    1086</span>              :   String search(Object value) {</span>
-<span id="L1087"><span class="lineNum">    1087</span> <span class="tlaUNC">           0 :     return 'Afișare după modelul \'$value\'';</span></span>
-<span id="L1088"><span class="lineNum">    1088</span>              :   }</span>
-<span id="L1089"><span class="lineNum">    1089</span>              : </span>
-<span id="L1090"><span class="lineNum">    1090</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1091"><span class="lineNum">    1091</span>              :   String get searchTooltip =&gt; 'Căutare';</span>
-<span id="L1092"><span class="lineNum">    1092</span>              : </span>
-<span id="L1093"><span class="lineNum">    1093</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1094"><span class="lineNum">    1094</span>              :   String get secureBioNotMatch =&gt; 'Autentificare eșuată! Vă rugăm să încercați din nou';</span>
-<span id="L1095"><span class="lineNum">    1095</span>              : </span>
-<span id="L1096"><span class="lineNum">    1096</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1097"><span class="lineNum">    1097</span>              :   String get secureBioPromptReason =&gt; 'Vă rugăm să vă autentificați pentru a continua';</span>
-<span id="L1098"><span class="lineNum">    1098</span>              : </span>
-<span id="L1099"><span class="lineNum">    1099</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1100"><span class="lineNum">    1100</span>              :   String get secureBioPromptTitle =&gt; 'Autentificare biometrică';</span>
-<span id="L1101"><span class="lineNum">    1101</span>              : </span>
-<span id="L1102"><span class="lineNum">    1102</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1103"><span class="lineNum">    1103</span>              :   String get secureOtpCode =&gt; 'Cod parolă unică';</span>
-<span id="L1104"><span class="lineNum">    1104</span>              : </span>
-<span id="L1105"><span class="lineNum">    1105</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1106"><span class="lineNum">    1106</span>              :   String get secureOtpCodeInvalid =&gt; 'Cod invalid! Vă rugăm să generați un cod nou și să-l introduceți';</span>
-<span id="L1107"><span class="lineNum">    1107</span>              : </span>
-<span id="L1108"><span class="lineNum">    1108</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1109"><span class="lineNum">    1109</span>              :   String get secureOtpDeactivated =&gt; 'Protecția cu parolă este dezactivată';</span>
-<span id="L1110"><span class="lineNum">    1110</span>              : </span>
-<span id="L1111"><span class="lineNum">    1111</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1112"><span class="lineNum">    1112</span>              :   String get securePassword =&gt; 'Parolă (Frază de recuperare)';</span>
+<span id="L1051"><span class="lineNum">    1051</span>              :   String get pearDisabled =&gt; '-- dezactivat --';</span>
+<span id="L1052"><span class="lineNum">    1052</span>              : </span>
+<span id="L1053"><span class="lineNum">    1053</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1054"><span class="lineNum">    1054</span>              :   String get pearLoading =&gt; 'În curs...';</span>
+<span id="L1055"><span class="lineNum">    1055</span>              : </span>
+<span id="L1056"><span class="lineNum">    1056</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1057"><span class="lineNum">    1057</span>              :   String get peerAccept =&gt; 'acceptați';</span>
+<span id="L1058"><span class="lineNum">    1058</span>              : </span>
+<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1060"><span class="lineNum">    1060</span>              :   String get peerAction =&gt; 'Acțiune';</span>
+<span id="L1061"><span class="lineNum">    1061</span>              : </span>
+<span id="L1062"><span class="lineNum">    1062</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1063"><span class="lineNum">    1063</span>              :   String get peerClosed =&gt; 'Terminat';</span>
+<span id="L1064"><span class="lineNum">    1064</span>              : </span>
+<span id="L1065"><span class="lineNum">    1065</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1066"><span class="lineNum">    1066</span>              :   String get peerConnect =&gt; 'Conectarea dispozitivului';</span>
+<span id="L1067"><span class="lineNum">    1067</span>              : </span>
+<span id="L1068"><span class="lineNum">    1068</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1069"><span class="lineNum">    1069</span>              :   String get peerConnectBtn =&gt; 'conectare';</span>
+<span id="L1070"><span class="lineNum">    1070</span>              : </span>
+<span id="L1071"><span class="lineNum">    1071</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1072"><span class="lineNum">    1072</span>              :   String get peerDelete =&gt; 'șterge';</span>
+<span id="L1073"><span class="lineNum">    1073</span>              : </span>
+<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1075"><span class="lineNum">    1075</span>              :   String get peerDevice =&gt; 'Dispozitive conectate';</span>
+<span id="L1076"><span class="lineNum">    1076</span>              : </span>
+<span id="L1077"><span class="lineNum">    1077</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1078"><span class="lineNum">    1078</span>              :   String get peerId =&gt; 'Identificatorul dispozitivului dvs. pentru conectare';</span>
+<span id="L1079"><span class="lineNum">    1079</span>              : </span>
+<span id="L1080"><span class="lineNum">    1080</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1081"><span class="lineNum">    1081</span>              :   String get peerOffline =&gt; 'offline';</span>
+<span id="L1082"><span class="lineNum">    1082</span>              : </span>
+<span id="L1083"><span class="lineNum">    1083</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1084"><span class="lineNum">    1084</span>              :   String get peerOnline =&gt; 'conectat';</span>
+<span id="L1085"><span class="lineNum">    1085</span>              : </span>
+<span id="L1086"><span class="lineNum">    1086</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1087"><span class="lineNum">    1087</span>              :   String get peerOtherId =&gt; 'Identificatorul dispozitivului pentru conexiune';</span>
+<span id="L1088"><span class="lineNum">    1088</span>              : </span>
+<span id="L1089"><span class="lineNum">    1089</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1090"><span class="lineNum">    1090</span>              :   String get peerPending =&gt; 'în așteptare';</span>
+<span id="L1091"><span class="lineNum">    1091</span>              : </span>
+<span id="L1092"><span class="lineNum">    1092</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1093"><span class="lineNum">    1093</span>              :   String get peerPing =&gt; 'ping';</span>
+<span id="L1094"><span class="lineNum">    1094</span>              : </span>
+<span id="L1095"><span class="lineNum">    1095</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1096"><span class="lineNum">    1096</span>              :   String get peerSent =&gt; 'Datele sunt transferate către dispozitivele conectate';</span>
+<span id="L1097"><span class="lineNum">    1097</span>              : </span>
+<span id="L1098"><span class="lineNum">    1098</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1099"><span class="lineNum">    1099</span>              :   String get peerStatus =&gt; 'Stare';</span>
+<span id="L1100"><span class="lineNum">    1100</span>              : </span>
+<span id="L1101"><span class="lineNum">    1101</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1102"><span class="lineNum">    1102</span>              :   String get peerSync =&gt; 'Transfer de date';</span>
+<span id="L1103"><span class="lineNum">    1103</span>              : </span>
+<span id="L1104"><span class="lineNum">    1104</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1105"><span class="lineNum">    1105</span>              :   String pickFile(Object value) {</span>
+<span id="L1106"><span class="lineNum">    1106</span> <span class="tlaUNC">           0 :     return 'Preluare .$value-file';</span></span>
+<span id="L1107"><span class="lineNum">    1107</span>              :   }</span>
+<span id="L1108"><span class="lineNum">    1108</span>              : </span>
+<span id="L1109"><span class="lineNum">    1109</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1110"><span class="lineNum">    1110</span>              :   String pongStatus(Object uuid) {</span>
+<span id="L1111"><span class="lineNum">    1111</span> <span class="tlaUNC">           0 :     return 'Cerere preluată de la $uuid';</span></span>
+<span id="L1112"><span class="lineNum">    1112</span>              :   }</span>
 <span id="L1113"><span class="lineNum">    1113</span>              : </span>
 <span id="L1114"><span class="lineNum">    1114</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1115"><span class="lineNum">    1115</span>              :   String get securePasswordEmpty =&gt; 'Parola nu poate fi goală!';</span>
+<span id="L1115"><span class="lineNum">    1115</span>              :   String get processIsFinished =&gt; 'Terminat!';</span>
 <span id="L1116"><span class="lineNum">    1116</span>              : </span>
 <span id="L1117"><span class="lineNum">    1117</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1118"><span class="lineNum">    1118</span>              :   String get securePasswordNotMatch =&gt; 'Parolele nu se potrivesc!';</span>
-<span id="L1119"><span class="lineNum">    1119</span>              : </span>
-<span id="L1120"><span class="lineNum">    1120</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1121"><span class="lineNum">    1121</span>              :   String get securePasswordRepeat =&gt; 'Repetă parola';</span>
-<span id="L1122"><span class="lineNum">    1122</span>              : </span>
-<span id="L1123"><span class="lineNum">    1123</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1124"><span class="lineNum">    1124</span>              :   String get securityHeadline =&gt; 'Securitate';</span>
-<span id="L1125"><span class="lineNum">    1125</span>              : </span>
-<span id="L1126"><span class="lineNum">    1126</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1127"><span class="lineNum">    1127</span>              :   String get settingsBaseHeadline =&gt; 'Principii de bază';</span>
-<span id="L1128"><span class="lineNum">    1128</span>              : </span>
-<span id="L1129"><span class="lineNum">    1129</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1130"><span class="lineNum">    1130</span>              :   String get settingsHeadline =&gt; 'Setări';</span>
-<span id="L1131"><span class="lineNum">    1131</span>              : </span>
-<span id="L1132"><span class="lineNum">    1132</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1133"><span class="lineNum">    1133</span>              :   String get settingsSaved =&gt; 'Setări salvate!';</span>
-<span id="L1134"><span class="lineNum">    1134</span>              : </span>
-<span id="L1135"><span class="lineNum">    1135</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1136"><span class="lineNum">    1136</span>              :   String get simpleFinDescription =&gt;</span>
-<span id="L1137"><span class="lineNum">    1137</span>              :       'Importă solduri și tranzacții de la băncile și emitenții de carduri din SUA printr-un SimpleFIN Bridge. Acces doar în citire: nu se efectuează plăți.';</span>
-<span id="L1138"><span class="lineNum">    1138</span>              : </span>
-<span id="L1139"><span class="lineNum">    1139</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1140"><span class="lineNum">    1140</span>              :   String get simpleFinHeadline =&gt; 'SimpleFIN Bridge (US)';</span>
-<span id="L1141"><span class="lineNum">    1141</span>              : </span>
-<span id="L1142"><span class="lineNum">    1142</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1143"><span class="lineNum">    1143</span>              :   String get simpleFinNoCredentials =&gt; 'SimpleFIN Bridge a returnat o adresă de acces fără date de autentificare';</span>
-<span id="L1144"><span class="lineNum">    1144</span>              : </span>
-<span id="L1145"><span class="lineNum">    1145</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1146"><span class="lineNum">    1146</span>              :   String get simpleFinToken =&gt; 'Token de configurare SimpleFIN';</span>
-<span id="L1147"><span class="lineNum">    1147</span>              : </span>
-<span id="L1148"><span class="lineNum">    1148</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1149"><span class="lineNum">    1149</span>              :   String get simpleFinTokenClaimed =&gt; 'Tokenul de configurare nu există sau a fost deja folosit';</span>
-<span id="L1150"><span class="lineNum">    1150</span>              : </span>
-<span id="L1151"><span class="lineNum">    1151</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1152"><span class="lineNum">    1152</span>              :   String get simpleFinTokenInvalid =&gt; 'Token de configurare SimpleFIN nevalid';</span>
-<span id="L1153"><span class="lineNum">    1153</span>              : </span>
-<span id="L1154"><span class="lineNum">    1154</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1155"><span class="lineNum">    1155</span>              :   String get simpleFinTokenTooltip =&gt;</span>
-<span id="L1156"><span class="lineNum">    1156</span>              :       'Creat în SimpleFIN Bridge (de ex. bridge.simplefin.org) pentru această aplicație; poate fi folosit o singură dată';</span>
-<span id="L1157"><span class="lineNum">    1157</span>              : </span>
-<span id="L1158"><span class="lineNum">    1158</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1159"><span class="lineNum">    1159</span>              :   String get skipFromTotals =&gt; 'Excludere din totaluri';</span>
-<span id="L1160"><span class="lineNum">    1160</span>              : </span>
-<span id="L1161"><span class="lineNum">    1161</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1162"><span class="lineNum">    1162</span>              :   String get skipTooltip =&gt; 'Sari peste pas(e)';</span>
-<span id="L1163"><span class="lineNum">    1163</span>              : </span>
-<span id="L1164"><span class="lineNum">    1164</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1165"><span class="lineNum">    1165</span>              :   String get sortTooltip =&gt; 'Sortați elementele';</span>
-<span id="L1166"><span class="lineNum">    1166</span>              : </span>
-<span id="L1167"><span class="lineNum">    1167</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1168"><span class="lineNum">    1168</span>              :   String get sortingAmountAsc =&gt; 'Suma crescătoare';</span>
-<span id="L1169"><span class="lineNum">    1169</span>              : </span>
-<span id="L1170"><span class="lineNum">    1170</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1171"><span class="lineNum">    1171</span>              :   String get sortingAmountDesc =&gt; 'Suma descrescătoare';</span>
-<span id="L1172"><span class="lineNum">    1172</span>              : </span>
-<span id="L1173"><span class="lineNum">    1173</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1174"><span class="lineNum">    1174</span>              :   String get sortingCreatedAtAsc =&gt; 'Creat la crescător';</span>
-<span id="L1175"><span class="lineNum">    1175</span>              : </span>
-<span id="L1176"><span class="lineNum">    1176</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1177"><span class="lineNum">    1177</span>              :   String get sortingCreatedAtDesc =&gt; 'Creat la descrescător';</span>
-<span id="L1178"><span class="lineNum">    1178</span>              : </span>
-<span id="L1179"><span class="lineNum">    1179</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1180"><span class="lineNum">    1180</span>              :   String get sortingTitleAsc =&gt; 'Titlu crescător';</span>
-<span id="L1181"><span class="lineNum">    1181</span>              : </span>
-<span id="L1182"><span class="lineNum">    1182</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1183"><span class="lineNum">    1183</span>              :   String get sortingTitleDesc =&gt; 'Titlu descrescător';</span>
-<span id="L1184"><span class="lineNum">    1184</span>              : </span>
-<span id="L1185"><span class="lineNum">    1185</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1186"><span class="lineNum">    1186</span>              :   String get sortingUpdatedAtAsc =&gt; 'Actualizat la crescător';</span>
-<span id="L1187"><span class="lineNum">    1187</span>              : </span>
-<span id="L1188"><span class="lineNum">    1188</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1189"><span class="lineNum">    1189</span>              :   String get sortingUpdatedAtDesc =&gt; 'Actualizat la descrescător';</span>
-<span id="L1190"><span class="lineNum">    1190</span>              : </span>
-<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1192"><span class="lineNum">    1192</span>              :   String get spent =&gt; 'cheltuite';</span>
-<span id="L1193"><span class="lineNum">    1193</span>              : </span>
-<span id="L1194"><span class="lineNum">    1194</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1195"><span class="lineNum">    1195</span>              :   String get splitCancelTooltip =&gt; 'Anulare împărțire pe lună';</span>
-<span id="L1196"><span class="lineNum">    1196</span>              : </span>
-<span id="L1197"><span class="lineNum">    1197</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1198"><span class="lineNum">    1198</span>              :   String get splitHeadline =&gt; 'Împarte factura';</span>
-<span id="L1199"><span class="lineNum">    1199</span>              : </span>
-<span id="L1200"><span class="lineNum">    1200</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1201"><span class="lineNum">    1201</span>              :   String get splitTooltip =&gt; 'Declararea limitelor pe lună';</span>
-<span id="L1202"><span class="lineNum">    1202</span>              : </span>
-<span id="L1203"><span class="lineNum">    1203</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1204"><span class="lineNum">    1204</span>              :   String get subscription =&gt;</span>
-<span id="L1205"><span class="lineNum">    1205</span>              :       'Fiind un proiect open-source, abonarea nu va debloca nicio funcție suplimentară. Cu toate acestea, ar servi ca o investiție în evoluția și îmbunătățirea continuă a aplicației și pentru a păstra disponibilitatea acesteia.';</span>
-<span id="L1206"><span class="lineNum">    1206</span>              : </span>
-<span id="L1207"><span class="lineNum">    1207</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1208"><span class="lineNum">    1208</span>              :   String get subscriptionCoffee =&gt; 'Cumpărați o cafea';</span>
-<span id="L1209"><span class="lineNum">    1209</span>              : </span>
-<span id="L1210"><span class="lineNum">    1210</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1211"><span class="lineNum">    1211</span>              :   String get subscriptionDinner =&gt; 'Cumpărați o cină';</span>
-<span id="L1212"><span class="lineNum">    1212</span>              : </span>
-<span id="L1213"><span class="lineNum">    1213</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1214"><span class="lineNum">    1214</span>              :   String get subscriptionDonorbox =&gt; 'Abonați-vă prin Donorbox';</span>
-<span id="L1215"><span class="lineNum">    1215</span>              : </span>
-<span id="L1216"><span class="lineNum">    1216</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1217"><span class="lineNum">    1217</span>              :   String get subscriptionGithub =&gt; 'Abonați-vă prin GitHub';</span>
-<span id="L1218"><span class="lineNum">    1218</span>              : </span>
-<span id="L1219"><span class="lineNum">    1219</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1220"><span class="lineNum">    1220</span>              :   String get subscriptionHeadline =&gt; 'Sponsorizare';</span>
-<span id="L1221"><span class="lineNum">    1221</span>              : </span>
-<span id="L1222"><span class="lineNum">    1222</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1223"><span class="lineNum">    1223</span>              :   String get subscriptionInactive =&gt; 'Serviciul de cumpărare indisponibil';</span>
+<span id="L1118"><span class="lineNum">    1118</span>              :   String progress(Object value) {</span>
+<span id="L1119"><span class="lineNum">    1119</span> <span class="tlaUNC">           0 :     return 'Progres: $value%';</span></span>
+<span id="L1120"><span class="lineNum">    1120</span>              :   }</span>
+<span id="L1121"><span class="lineNum">    1121</span>              : </span>
+<span id="L1122"><span class="lineNum">    1122</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1123"><span class="lineNum">    1123</span>              :   String get raiseData =&gt; 'Adăugare sumă';</span>
+<span id="L1124"><span class="lineNum">    1124</span>              : </span>
+<span id="L1125"><span class="lineNum">    1125</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1126"><span class="lineNum">    1126</span>              :   String get recoveryHeadline =&gt; 'Recuperare';</span>
+<span id="L1127"><span class="lineNum">    1127</span>              : </span>
+<span id="L1128"><span class="lineNum">    1128</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1129"><span class="lineNum">    1129</span>              :   String get recoveryTooltip =&gt; 'Recuperare din';</span>
+<span id="L1130"><span class="lineNum">    1130</span>              : </span>
+<span id="L1131"><span class="lineNum">    1131</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1132"><span class="lineNum">    1132</span>              :   String get releases =&gt; 'Eliberări';</span>
+<span id="L1133"><span class="lineNum">    1133</span>              : </span>
+<span id="L1134"><span class="lineNum">    1134</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1135"><span class="lineNum">    1135</span>              :   String get reset =&gt; 'resetare';</span>
+<span id="L1136"><span class="lineNum">    1136</span>              : </span>
+<span id="L1137"><span class="lineNum">    1137</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1138"><span class="lineNum">    1138</span>              :   String get returnBack =&gt; 'Revenire înapoi';</span>
+<span id="L1139"><span class="lineNum">    1139</span>              : </span>
+<span id="L1140"><span class="lineNum">    1140</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1141"><span class="lineNum">    1141</span>              :   String get roadmap =&gt; 'Foaie de parcurs';</span>
+<span id="L1142"><span class="lineNum">    1142</span>              : </span>
+<span id="L1143"><span class="lineNum">    1143</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1144"><span class="lineNum">    1144</span>              :   String get saveNotification =&gt; 'Modificări salvate!';</span>
+<span id="L1145"><span class="lineNum">    1145</span>              : </span>
+<span id="L1146"><span class="lineNum">    1146</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1147"><span class="lineNum">    1147</span>              :   String get saveSettingsTooltip =&gt; 'Salvare';</span>
+<span id="L1148"><span class="lineNum">    1148</span>              : </span>
+<span id="L1149"><span class="lineNum">    1149</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1150"><span class="lineNum">    1150</span>              :   String get saveTooltip =&gt; 'Salvare către';</span>
+<span id="L1151"><span class="lineNum">    1151</span>              : </span>
+<span id="L1152"><span class="lineNum">    1152</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1153"><span class="lineNum">    1153</span>              :   String search(Object value) {</span>
+<span id="L1154"><span class="lineNum">    1154</span> <span class="tlaUNC">           0 :     return 'Afișare după modelul \'$value\'';</span></span>
+<span id="L1155"><span class="lineNum">    1155</span>              :   }</span>
+<span id="L1156"><span class="lineNum">    1156</span>              : </span>
+<span id="L1157"><span class="lineNum">    1157</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1158"><span class="lineNum">    1158</span>              :   String get searchTooltip =&gt; 'Căutare';</span>
+<span id="L1159"><span class="lineNum">    1159</span>              : </span>
+<span id="L1160"><span class="lineNum">    1160</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1161"><span class="lineNum">    1161</span>              :   String get secureBioNotMatch =&gt; 'Autentificare eșuată! Vă rugăm să încercați din nou';</span>
+<span id="L1162"><span class="lineNum">    1162</span>              : </span>
+<span id="L1163"><span class="lineNum">    1163</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1164"><span class="lineNum">    1164</span>              :   String get secureBioPromptReason =&gt; 'Vă rugăm să vă autentificați pentru a continua';</span>
+<span id="L1165"><span class="lineNum">    1165</span>              : </span>
+<span id="L1166"><span class="lineNum">    1166</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1167"><span class="lineNum">    1167</span>              :   String get secureBioPromptTitle =&gt; 'Autentificare biometrică';</span>
+<span id="L1168"><span class="lineNum">    1168</span>              : </span>
+<span id="L1169"><span class="lineNum">    1169</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1170"><span class="lineNum">    1170</span>              :   String get secureOtpCode =&gt; 'Cod parolă unică';</span>
+<span id="L1171"><span class="lineNum">    1171</span>              : </span>
+<span id="L1172"><span class="lineNum">    1172</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1173"><span class="lineNum">    1173</span>              :   String get secureOtpCodeInvalid =&gt; 'Cod invalid! Vă rugăm să generați un cod nou și să-l introduceți';</span>
+<span id="L1174"><span class="lineNum">    1174</span>              : </span>
+<span id="L1175"><span class="lineNum">    1175</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1176"><span class="lineNum">    1176</span>              :   String get secureOtpDeactivated =&gt; 'Protecția cu parolă este dezactivată';</span>
+<span id="L1177"><span class="lineNum">    1177</span>              : </span>
+<span id="L1178"><span class="lineNum">    1178</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1179"><span class="lineNum">    1179</span>              :   String get securePassword =&gt; 'Parolă (Frază de recuperare)';</span>
+<span id="L1180"><span class="lineNum">    1180</span>              : </span>
+<span id="L1181"><span class="lineNum">    1181</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1182"><span class="lineNum">    1182</span>              :   String get securePasswordEmpty =&gt; 'Parola nu poate fi goală!';</span>
+<span id="L1183"><span class="lineNum">    1183</span>              : </span>
+<span id="L1184"><span class="lineNum">    1184</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1185"><span class="lineNum">    1185</span>              :   String get securePasswordNotMatch =&gt; 'Parolele nu se potrivesc!';</span>
+<span id="L1186"><span class="lineNum">    1186</span>              : </span>
+<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1188"><span class="lineNum">    1188</span>              :   String get securePasswordRepeat =&gt; 'Repetă parola';</span>
+<span id="L1189"><span class="lineNum">    1189</span>              : </span>
+<span id="L1190"><span class="lineNum">    1190</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1191"><span class="lineNum">    1191</span>              :   String get securityHeadline =&gt; 'Securitate';</span>
+<span id="L1192"><span class="lineNum">    1192</span>              : </span>
+<span id="L1193"><span class="lineNum">    1193</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1194"><span class="lineNum">    1194</span>              :   String get settingsBaseHeadline =&gt; 'Principii de bază';</span>
+<span id="L1195"><span class="lineNum">    1195</span>              : </span>
+<span id="L1196"><span class="lineNum">    1196</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1197"><span class="lineNum">    1197</span>              :   String get settingsHeadline =&gt; 'Setări';</span>
+<span id="L1198"><span class="lineNum">    1198</span>              : </span>
+<span id="L1199"><span class="lineNum">    1199</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1200"><span class="lineNum">    1200</span>              :   String get settingsSaved =&gt; 'Setări salvate!';</span>
+<span id="L1201"><span class="lineNum">    1201</span>              : </span>
+<span id="L1202"><span class="lineNum">    1202</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1203"><span class="lineNum">    1203</span>              :   String get simpleFinDescription =&gt;</span>
+<span id="L1204"><span class="lineNum">    1204</span>              :       'Importă solduri și tranzacții de la băncile și emitenții de carduri din SUA printr-un SimpleFIN Bridge. Acces doar în citire: nu se efectuează plăți.';</span>
+<span id="L1205"><span class="lineNum">    1205</span>              : </span>
+<span id="L1206"><span class="lineNum">    1206</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1207"><span class="lineNum">    1207</span>              :   String get simpleFinHeadline =&gt; 'SimpleFIN Bridge (US)';</span>
+<span id="L1208"><span class="lineNum">    1208</span>              : </span>
+<span id="L1209"><span class="lineNum">    1209</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1210"><span class="lineNum">    1210</span>              :   String get simpleFinNoCredentials =&gt; 'SimpleFIN Bridge a returnat o adresă de acces fără date de autentificare';</span>
+<span id="L1211"><span class="lineNum">    1211</span>              : </span>
+<span id="L1212"><span class="lineNum">    1212</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1213"><span class="lineNum">    1213</span>              :   String get simpleFinToken =&gt; 'Token de configurare SimpleFIN';</span>
+<span id="L1214"><span class="lineNum">    1214</span>              : </span>
+<span id="L1215"><span class="lineNum">    1215</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1216"><span class="lineNum">    1216</span>              :   String get simpleFinTokenClaimed =&gt; 'Tokenul de configurare nu există sau a fost deja folosit';</span>
+<span id="L1217"><span class="lineNum">    1217</span>              : </span>
+<span id="L1218"><span class="lineNum">    1218</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1219"><span class="lineNum">    1219</span>              :   String get simpleFinTokenInvalid =&gt; 'Token de configurare SimpleFIN nevalid';</span>
+<span id="L1220"><span class="lineNum">    1220</span>              : </span>
+<span id="L1221"><span class="lineNum">    1221</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1222"><span class="lineNum">    1222</span>              :   String get simpleFinTokenTooltip =&gt;</span>
+<span id="L1223"><span class="lineNum">    1223</span>              :       'Creat în SimpleFIN Bridge (de ex. bridge.simplefin.org) pentru această aplicație; poate fi folosit o singură dată';</span>
 <span id="L1224"><span class="lineNum">    1224</span>              : </span>
 <span id="L1225"><span class="lineNum">    1225</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1226"><span class="lineNum">    1226</span>              :   String get subscriptionPatreon =&gt; 'Abonare prin Patreon';</span>
+<span id="L1226"><span class="lineNum">    1226</span>              :   String get skipFromTotals =&gt; 'Excludere din totaluri';</span>
 <span id="L1227"><span class="lineNum">    1227</span>              : </span>
 <span id="L1228"><span class="lineNum">    1228</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1229"><span class="lineNum">    1229</span>              :   String get subscriptionPaypal =&gt; 'Cumpărați o cafea (PayPal)';</span>
+<span id="L1229"><span class="lineNum">    1229</span>              :   String get skipTooltip =&gt; 'Sari peste pas(e)';</span>
 <span id="L1230"><span class="lineNum">    1230</span>              : </span>
 <span id="L1231"><span class="lineNum">    1231</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1232"><span class="lineNum">    1232</span>              :   String get subscriptionTiny =&gt; 'Dați o monedă norocoasă';</span>
+<span id="L1232"><span class="lineNum">    1232</span>              :   String get sortTooltip =&gt; 'Sortați elementele';</span>
 <span id="L1233"><span class="lineNum">    1233</span>              : </span>
 <span id="L1234"><span class="lineNum">    1234</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1235"><span class="lineNum">    1235</span>              :   String get subscriptionTooltip =&gt; 'Susțineți (sponsorizare)';</span>
+<span id="L1235"><span class="lineNum">    1235</span>              :   String get sortingAmountAsc =&gt; 'Suma crescătoare';</span>
 <span id="L1236"><span class="lineNum">    1236</span>              : </span>
 <span id="L1237"><span class="lineNum">    1237</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1238"><span class="lineNum">    1238</span>              :   String get success =&gt; 'Reușită';</span>
+<span id="L1238"><span class="lineNum">    1238</span>              :   String get sortingAmountDesc =&gt; 'Suma descrescătoare';</span>
 <span id="L1239"><span class="lineNum">    1239</span>              : </span>
 <span id="L1240"><span class="lineNum">    1240</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1241"><span class="lineNum">    1241</span>              :   String get summary =&gt; 'Rezumat';</span>
+<span id="L1241"><span class="lineNum">    1241</span>              :   String get sortingCreatedAtAsc =&gt; 'Creat la crescător';</span>
 <span id="L1242"><span class="lineNum">    1242</span>              : </span>
 <span id="L1243"><span class="lineNum">    1243</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1244"><span class="lineNum">    1244</span>              :   String get symbol =&gt; 'Simbol';</span>
+<span id="L1244"><span class="lineNum">    1244</span>              :   String get sortingCreatedAtDesc =&gt; 'Creat la descrescător';</span>
 <span id="L1245"><span class="lineNum">    1245</span>              : </span>
 <span id="L1246"><span class="lineNum">    1246</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1247"><span class="lineNum">    1247</span>              :   String get syncHeadline =&gt; 'Dispozitive de sincronizare';</span>
+<span id="L1247"><span class="lineNum">    1247</span>              :   String get sortingTitleAsc =&gt; 'Titlu crescător';</span>
 <span id="L1248"><span class="lineNum">    1248</span>              : </span>
 <span id="L1249"><span class="lineNum">    1249</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1250"><span class="lineNum">    1250</span>              :   String get systemMode =&gt; 'System';</span>
+<span id="L1250"><span class="lineNum">    1250</span>              :   String get sortingTitleDesc =&gt; 'Titlu descrescător';</span>
 <span id="L1251"><span class="lineNum">    1251</span>              : </span>
 <span id="L1252"><span class="lineNum">    1252</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1253"><span class="lineNum">    1253</span>              :   String get tapToOpen =&gt; 'Atingeți pentru a deschide';</span>
+<span id="L1253"><span class="lineNum">    1253</span>              :   String get sortingUpdatedAtAsc =&gt; 'Actualizat la crescător';</span>
 <span id="L1254"><span class="lineNum">    1254</span>              : </span>
 <span id="L1255"><span class="lineNum">    1255</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1256"><span class="lineNum">    1256</span>              :   String get targetAmount =&gt; 'Suma țintă';</span>
+<span id="L1256"><span class="lineNum">    1256</span>              :   String get sortingUpdatedAtDesc =&gt; 'Actualizat la descrescător';</span>
 <span id="L1257"><span class="lineNum">    1257</span>              : </span>
 <span id="L1258"><span class="lineNum">    1258</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1259"><span class="lineNum">    1259</span>              :   String get termPrivacy =&gt; 'Politica de confidențialitate';</span>
+<span id="L1259"><span class="lineNum">    1259</span>              :   String get spent =&gt; 'cheltuite';</span>
 <span id="L1260"><span class="lineNum">    1260</span>              : </span>
 <span id="L1261"><span class="lineNum">    1261</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1262"><span class="lineNum">    1262</span>              :   String get termUse =&gt; 'Termeni de utilizare';</span>
+<span id="L1262"><span class="lineNum">    1262</span>              :   String get splitCancelTooltip =&gt; 'Anulare împărțire pe lună';</span>
 <span id="L1263"><span class="lineNum">    1263</span>              : </span>
 <span id="L1264"><span class="lineNum">    1264</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1265"><span class="lineNum">    1265</span>              :   String get title =&gt; 'Titlu';</span>
+<span id="L1265"><span class="lineNum">    1265</span>              :   String get splitHeadline =&gt; 'Împarte factura';</span>
 <span id="L1266"><span class="lineNum">    1266</span>              : </span>
 <span id="L1267"><span class="lineNum">    1267</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1268"><span class="lineNum">    1268</span>              :   String get titleAccountTooltip =&gt; 'Introduceți identificatorul contului';</span>
+<span id="L1268"><span class="lineNum">    1268</span>              :   String get splitTooltip =&gt; 'Declararea limitelor pe lună';</span>
 <span id="L1269"><span class="lineNum">    1269</span>              : </span>
 <span id="L1270"><span class="lineNum">    1270</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1271"><span class="lineNum">    1271</span>              :   String get titleBudgetTooltip =&gt; 'Introduceți numele categoriei bugetare';</span>
-<span id="L1272"><span class="lineNum">    1272</span>              : </span>
-<span id="L1273"><span class="lineNum">    1273</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1274"><span class="lineNum">    1274</span>              :   String get titleGoal =&gt; 'Obiectiv';</span>
-<span id="L1275"><span class="lineNum">    1275</span>              : </span>
-<span id="L1276"><span class="lineNum">    1276</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1277"><span class="lineNum">    1277</span>              :   String get titleGoalTooltip =&gt; 'Definiți descrierea obiectivului';</span>
-<span id="L1278"><span class="lineNum">    1278</span>              : </span>
-<span id="L1279"><span class="lineNum">    1279</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1280"><span class="lineNum">    1280</span>              :   String get to =&gt; 'la';</span>
-<span id="L1281"><span class="lineNum">    1281</span>              : </span>
-<span id="L1282"><span class="lineNum">    1282</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1283"><span class="lineNum">    1283</span>              :   String get total =&gt; 'total';</span>
-<span id="L1284"><span class="lineNum">    1284</span>              : </span>
-<span id="L1285"><span class="lineNum">    1285</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1286"><span class="lineNum">    1286</span>              :   String get transactionFile =&gt; 'Fișierul jurnal al tranzacțiilor Fingrom (.log)';</span>
-<span id="L1287"><span class="lineNum">    1287</span>              : </span>
-<span id="L1288"><span class="lineNum">    1288</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1289"><span class="lineNum">    1289</span>              :   String get transferHeadline =&gt; 'Transfer';</span>
-<span id="L1290"><span class="lineNum">    1290</span>              : </span>
-<span id="L1291"><span class="lineNum">    1291</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1292"><span class="lineNum">    1292</span>              :   String get transferTooltip =&gt; 'Setați detaliile transferului';</span>
-<span id="L1293"><span class="lineNum">    1293</span>              : </span>
-<span id="L1294"><span class="lineNum">    1294</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1295"><span class="lineNum">    1295</span>              :   String get transfersHeadline =&gt; 'Transferuri';</span>
-<span id="L1296"><span class="lineNum">    1296</span>              : </span>
-<span id="L1297"><span class="lineNum">    1297</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1298"><span class="lineNum">    1298</span>              :   String get typeButton =&gt; 'Buton';</span>
-<span id="L1299"><span class="lineNum">    1299</span>              : </span>
-<span id="L1300"><span class="lineNum">    1300</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1301"><span class="lineNum">    1301</span>              :   String get updateAccountTooltip =&gt; 'Actualizare cont';</span>
-<span id="L1302"><span class="lineNum">    1302</span>              : </span>
-<span id="L1303"><span class="lineNum">    1303</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1304"><span class="lineNum">    1304</span>              :   String get updateBillTooltip =&gt; 'Actualizare factură';</span>
-<span id="L1305"><span class="lineNum">    1305</span>              : </span>
-<span id="L1306"><span class="lineNum">    1306</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1307"><span class="lineNum">    1307</span>              :   String get updateBudgetTooltip =&gt; 'Actualizare categorie buget';</span>
-<span id="L1308"><span class="lineNum">    1308</span>              : </span>
-<span id="L1309"><span class="lineNum">    1309</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1310"><span class="lineNum">    1310</span>              :   String get updateGoalTooltip =&gt; 'Actualizare obiectiv';</span>
-<span id="L1311"><span class="lineNum">    1311</span>              : </span>
-<span id="L1312"><span class="lineNum">    1312</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1313"><span class="lineNum">    1313</span>              :   String get updatePaymentTooltip =&gt; 'Actualizare plată';</span>
-<span id="L1314"><span class="lineNum">    1314</span>              : </span>
-<span id="L1315"><span class="lineNum">    1315</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1316"><span class="lineNum">    1316</span>              :   String get username =&gt; 'Nume utilizator (cont)';</span>
-<span id="L1317"><span class="lineNum">    1317</span>              : </span>
-<span id="L1318"><span class="lineNum">    1318</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1319"><span class="lineNum">    1319</span>              :   String get uuid =&gt; 'Identificator unic al tranzacției';</span>
-<span id="L1320"><span class="lineNum">    1320</span>              : </span>
-<span id="L1321"><span class="lineNum">    1321</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1322"><span class="lineNum">    1322</span>              :   String get validTillDate =&gt; 'Factură valabilă';</span>
-<span id="L1323"><span class="lineNum">    1323</span>              : </span>
-<span id="L1324"><span class="lineNum">    1324</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1325"><span class="lineNum">    1325</span>              :   String get webDav =&gt; 'Autorizare și versiune distribuite pe web (WebDav)';</span>
-<span id="L1326"><span class="lineNum">    1326</span>              : </span>
-<span id="L1327"><span class="lineNum">    1327</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1328"><span class="lineNum">    1328</span>              :   String get wiseDescription =&gt;</span>
-<span id="L1329"><span class="lineNum">    1329</span>              :       'Importă soldurile și tranzacțiile conturilor multivalută Wise cu un token API personal. Conversiile dintre soldurile asociate sunt importate ca transferuri. Accesul este doar pentru citire: nu se efectuează plăți.';</span>
+<span id="L1271"><span class="lineNum">    1271</span>              :   String get subscription =&gt;</span>
+<span id="L1272"><span class="lineNum">    1272</span>              :       'Fiind un proiect open-source, abonarea nu va debloca nicio funcție suplimentară. Cu toate acestea, ar servi ca o investiție în evoluția și îmbunătățirea continuă a aplicației și pentru a păstra disponibilitatea acesteia.';</span>
+<span id="L1273"><span class="lineNum">    1273</span>              : </span>
+<span id="L1274"><span class="lineNum">    1274</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1275"><span class="lineNum">    1275</span>              :   String get subscriptionCoffee =&gt; 'Cumpărați o cafea';</span>
+<span id="L1276"><span class="lineNum">    1276</span>              : </span>
+<span id="L1277"><span class="lineNum">    1277</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1278"><span class="lineNum">    1278</span>              :   String get subscriptionDinner =&gt; 'Cumpărați o cină';</span>
+<span id="L1279"><span class="lineNum">    1279</span>              : </span>
+<span id="L1280"><span class="lineNum">    1280</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1281"><span class="lineNum">    1281</span>              :   String get subscriptionDonorbox =&gt; 'Abonați-vă prin Donorbox';</span>
+<span id="L1282"><span class="lineNum">    1282</span>              : </span>
+<span id="L1283"><span class="lineNum">    1283</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1284"><span class="lineNum">    1284</span>              :   String get subscriptionGithub =&gt; 'Abonați-vă prin GitHub';</span>
+<span id="L1285"><span class="lineNum">    1285</span>              : </span>
+<span id="L1286"><span class="lineNum">    1286</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1287"><span class="lineNum">    1287</span>              :   String get subscriptionHeadline =&gt; 'Sponsorizare';</span>
+<span id="L1288"><span class="lineNum">    1288</span>              : </span>
+<span id="L1289"><span class="lineNum">    1289</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1290"><span class="lineNum">    1290</span>              :   String get subscriptionInactive =&gt; 'Serviciul de cumpărare indisponibil';</span>
+<span id="L1291"><span class="lineNum">    1291</span>              : </span>
+<span id="L1292"><span class="lineNum">    1292</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1293"><span class="lineNum">    1293</span>              :   String get subscriptionPatreon =&gt; 'Abonare prin Patreon';</span>
+<span id="L1294"><span class="lineNum">    1294</span>              : </span>
+<span id="L1295"><span class="lineNum">    1295</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1296"><span class="lineNum">    1296</span>              :   String get subscriptionPaypal =&gt; 'Cumpărați o cafea (PayPal)';</span>
+<span id="L1297"><span class="lineNum">    1297</span>              : </span>
+<span id="L1298"><span class="lineNum">    1298</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1299"><span class="lineNum">    1299</span>              :   String get subscriptionTiny =&gt; 'Dați o monedă norocoasă';</span>
+<span id="L1300"><span class="lineNum">    1300</span>              : </span>
+<span id="L1301"><span class="lineNum">    1301</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1302"><span class="lineNum">    1302</span>              :   String get subscriptionTooltip =&gt; 'Susțineți (sponsorizare)';</span>
+<span id="L1303"><span class="lineNum">    1303</span>              : </span>
+<span id="L1304"><span class="lineNum">    1304</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1305"><span class="lineNum">    1305</span>              :   String get success =&gt; 'Reușită';</span>
+<span id="L1306"><span class="lineNum">    1306</span>              : </span>
+<span id="L1307"><span class="lineNum">    1307</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1308"><span class="lineNum">    1308</span>              :   String get summary =&gt; 'Rezumat';</span>
+<span id="L1309"><span class="lineNum">    1309</span>              : </span>
+<span id="L1310"><span class="lineNum">    1310</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1311"><span class="lineNum">    1311</span>              :   String get symbol =&gt; 'Simbol';</span>
+<span id="L1312"><span class="lineNum">    1312</span>              : </span>
+<span id="L1313"><span class="lineNum">    1313</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1314"><span class="lineNum">    1314</span>              :   String get syncHeadline =&gt; 'Dispozitive de sincronizare';</span>
+<span id="L1315"><span class="lineNum">    1315</span>              : </span>
+<span id="L1316"><span class="lineNum">    1316</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1317"><span class="lineNum">    1317</span>              :   String get systemMode =&gt; 'System';</span>
+<span id="L1318"><span class="lineNum">    1318</span>              : </span>
+<span id="L1319"><span class="lineNum">    1319</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1320"><span class="lineNum">    1320</span>              :   String get tapToOpen =&gt; 'Atingeți pentru a deschide';</span>
+<span id="L1321"><span class="lineNum">    1321</span>              : </span>
+<span id="L1322"><span class="lineNum">    1322</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1323"><span class="lineNum">    1323</span>              :   String get targetAmount =&gt; 'Suma țintă';</span>
+<span id="L1324"><span class="lineNum">    1324</span>              : </span>
+<span id="L1325"><span class="lineNum">    1325</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1326"><span class="lineNum">    1326</span>              :   String get termPrivacy =&gt; 'Politica de confidențialitate';</span>
+<span id="L1327"><span class="lineNum">    1327</span>              : </span>
+<span id="L1328"><span class="lineNum">    1328</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1329"><span class="lineNum">    1329</span>              :   String get termUse =&gt; 'Termeni de utilizare';</span>
 <span id="L1330"><span class="lineNum">    1330</span>              : </span>
 <span id="L1331"><span class="lineNum">    1331</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1332"><span class="lineNum">    1332</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
+<span id="L1332"><span class="lineNum">    1332</span>              :   String get title =&gt; 'Titlu';</span>
 <span id="L1333"><span class="lineNum">    1333</span>              : </span>
 <span id="L1334"><span class="lineNum">    1334</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1335"><span class="lineNum">    1335</span>              :   String get wiseNoProfiles =&gt; 'Nu există profiluri Wise disponibile pentru token';</span>
+<span id="L1335"><span class="lineNum">    1335</span>              :   String get titleAccountTooltip =&gt; 'Introduceți identificatorul contului';</span>
 <span id="L1336"><span class="lineNum">    1336</span>              : </span>
 <span id="L1337"><span class="lineNum">    1337</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1338"><span class="lineNum">    1338</span>              :   String get wiseProfile =&gt; 'Profil';</span>
+<span id="L1338"><span class="lineNum">    1338</span>              :   String get titleBudgetTooltip =&gt; 'Introduceți numele categoriei bugetare';</span>
 <span id="L1339"><span class="lineNum">    1339</span>              : </span>
 <span id="L1340"><span class="lineNum">    1340</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1341"><span class="lineNum">    1341</span>              :   String get wiseScaRequired =&gt;</span>
-<span id="L1342"><span class="lineNum">    1342</span>              :       'Wise solicită autentificarea strictă a clientului: deschideți extrasul acestui sold în aplicația Wise, apoi reîncercați';</span>
-<span id="L1343"><span class="lineNum">    1343</span>              : </span>
-<span id="L1344"><span class="lineNum">    1344</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1345"><span class="lineNum">    1345</span>              :   String get wiseToken =&gt; 'Token API personal';</span>
-<span id="L1346"><span class="lineNum">    1346</span>              : </span>
-<span id="L1347"><span class="lineNum">    1347</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1348"><span class="lineNum">    1348</span>              :   String get wiseTokenSteps =&gt;</span>
-<span id="L1349"><span class="lineNum">    1349</span>              :       'Cum obțineți un token API personal:\n1. Conectați-vă la wise.com într-un browser (tokenurile nu pot fi create în aplicația mobilă)\n2. Deschideți Setări → Integrări și instrumente → Tokenuri API\n3. Alegeți „Adăugați un token nou”, denumiți-l (de ex. Fingrom) și selectați accesul „Doar citire”\n4. Confirmați cu verificarea în doi pași și copiați tokenul\n5. Lipiți-l mai jos și apăsați „Conectare”';</span>
-<span id="L1350"><span class="lineNum">    1350</span>              : </span>
-<span id="L1351"><span class="lineNum">    1351</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1352"><span class="lineNum">    1352</span>              :   String get wiseTokenTooltip =&gt;</span>
-<span id="L1353"><span class="lineNum">    1353</span>              :       'Creat în Wise în Setări → Tokenuri API (doar citire, dacă este disponibil); stocat criptat';</span>
+<span id="L1341"><span class="lineNum">    1341</span>              :   String get titleGoal =&gt; 'Obiectiv';</span>
+<span id="L1342"><span class="lineNum">    1342</span>              : </span>
+<span id="L1343"><span class="lineNum">    1343</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1344"><span class="lineNum">    1344</span>              :   String get titleGoalTooltip =&gt; 'Definiți descrierea obiectivului';</span>
+<span id="L1345"><span class="lineNum">    1345</span>              : </span>
+<span id="L1346"><span class="lineNum">    1346</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1347"><span class="lineNum">    1347</span>              :   String get to =&gt; 'la';</span>
+<span id="L1348"><span class="lineNum">    1348</span>              : </span>
+<span id="L1349"><span class="lineNum">    1349</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1350"><span class="lineNum">    1350</span>              :   String get total =&gt; 'total';</span>
+<span id="L1351"><span class="lineNum">    1351</span>              : </span>
+<span id="L1352"><span class="lineNum">    1352</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1353"><span class="lineNum">    1353</span>              :   String get transactionFile =&gt; 'Fișierul jurnal al tranzacțiilor Fingrom (.log)';</span>
 <span id="L1354"><span class="lineNum">    1354</span>              : </span>
 <span id="L1355"><span class="lineNum">    1355</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1356"><span class="lineNum">    1356</span>              :   String get zoomState =&gt; 'Măriți / Micșorați';</span>
-<span id="L1357"><span class="lineNum">    1357</span>              : }</span>
+<span id="L1356"><span class="lineNum">    1356</span>              :   String get transferHeadline =&gt; 'Transfer';</span>
+<span id="L1357"><span class="lineNum">    1357</span>              : </span>
+<span id="L1358"><span class="lineNum">    1358</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1359"><span class="lineNum">    1359</span>              :   String get transferTooltip =&gt; 'Setați detaliile transferului';</span>
+<span id="L1360"><span class="lineNum">    1360</span>              : </span>
+<span id="L1361"><span class="lineNum">    1361</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1362"><span class="lineNum">    1362</span>              :   String get transfersHeadline =&gt; 'Transferuri';</span>
+<span id="L1363"><span class="lineNum">    1363</span>              : </span>
+<span id="L1364"><span class="lineNum">    1364</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1365"><span class="lineNum">    1365</span>              :   String get typeButton =&gt; 'Buton';</span>
+<span id="L1366"><span class="lineNum">    1366</span>              : </span>
+<span id="L1367"><span class="lineNum">    1367</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1368"><span class="lineNum">    1368</span>              :   String get updateAccountTooltip =&gt; 'Actualizare cont';</span>
+<span id="L1369"><span class="lineNum">    1369</span>              : </span>
+<span id="L1370"><span class="lineNum">    1370</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1371"><span class="lineNum">    1371</span>              :   String get updateBillTooltip =&gt; 'Actualizare factură';</span>
+<span id="L1372"><span class="lineNum">    1372</span>              : </span>
+<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1374"><span class="lineNum">    1374</span>              :   String get updateBudgetTooltip =&gt; 'Actualizare categorie buget';</span>
+<span id="L1375"><span class="lineNum">    1375</span>              : </span>
+<span id="L1376"><span class="lineNum">    1376</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1377"><span class="lineNum">    1377</span>              :   String get updateGoalTooltip =&gt; 'Actualizare obiectiv';</span>
+<span id="L1378"><span class="lineNum">    1378</span>              : </span>
+<span id="L1379"><span class="lineNum">    1379</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1380"><span class="lineNum">    1380</span>              :   String get updatePaymentTooltip =&gt; 'Actualizare plată';</span>
+<span id="L1381"><span class="lineNum">    1381</span>              : </span>
+<span id="L1382"><span class="lineNum">    1382</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1383"><span class="lineNum">    1383</span>              :   String get username =&gt; 'Nume utilizator (cont)';</span>
+<span id="L1384"><span class="lineNum">    1384</span>              : </span>
+<span id="L1385"><span class="lineNum">    1385</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1386"><span class="lineNum">    1386</span>              :   String get uuid =&gt; 'Identificator unic al tranzacției';</span>
+<span id="L1387"><span class="lineNum">    1387</span>              : </span>
+<span id="L1388"><span class="lineNum">    1388</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1389"><span class="lineNum">    1389</span>              :   String get validTillDate =&gt; 'Factură valabilă';</span>
+<span id="L1390"><span class="lineNum">    1390</span>              : </span>
+<span id="L1391"><span class="lineNum">    1391</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1392"><span class="lineNum">    1392</span>              :   String get webDav =&gt; 'Autorizare și versiune distribuite pe web (WebDav)';</span>
+<span id="L1393"><span class="lineNum">    1393</span>              : </span>
+<span id="L1394"><span class="lineNum">    1394</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1395"><span class="lineNum">    1395</span>              :   String get wiseDescription =&gt;</span>
+<span id="L1396"><span class="lineNum">    1396</span>              :       'Importă soldurile și tranzacțiile conturilor multivalută Wise cu un token API personal. Conversiile dintre soldurile asociate sunt importate ca transferuri. Accesul este doar pentru citire: nu se efectuează plăți.';</span>
+<span id="L1397"><span class="lineNum">    1397</span>              : </span>
+<span id="L1398"><span class="lineNum">    1398</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1399"><span class="lineNum">    1399</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
+<span id="L1400"><span class="lineNum">    1400</span>              : </span>
+<span id="L1401"><span class="lineNum">    1401</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1402"><span class="lineNum">    1402</span>              :   String get wiseNoProfiles =&gt; 'Nu există profiluri Wise disponibile pentru token';</span>
+<span id="L1403"><span class="lineNum">    1403</span>              : </span>
+<span id="L1404"><span class="lineNum">    1404</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1405"><span class="lineNum">    1405</span>              :   String get wiseProfile =&gt; 'Profil';</span>
+<span id="L1406"><span class="lineNum">    1406</span>              : </span>
+<span id="L1407"><span class="lineNum">    1407</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1408"><span class="lineNum">    1408</span>              :   String get wiseScaRequired =&gt;</span>
+<span id="L1409"><span class="lineNum">    1409</span>              :       'Wise solicită autentificarea strictă a clientului: deschideți extrasul acestui sold în aplicația Wise, apoi reîncercați';</span>
+<span id="L1410"><span class="lineNum">    1410</span>              : </span>
+<span id="L1411"><span class="lineNum">    1411</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1412"><span class="lineNum">    1412</span>              :   String get wiseToken =&gt; 'Token API personal';</span>
+<span id="L1413"><span class="lineNum">    1413</span>              : </span>
+<span id="L1414"><span class="lineNum">    1414</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1415"><span class="lineNum">    1415</span>              :   String get wiseTokenSteps =&gt;</span>
+<span id="L1416"><span class="lineNum">    1416</span>              :       'Cum obțineți un token API personal:\n1. Conectați-vă la wise.com într-un browser (tokenurile nu pot fi create în aplicația mobilă)\n2. Deschideți Setări → Integrări și instrumente → Tokenuri API\n3. Alegeți „Adăugați un token nou”, denumiți-l (de ex. Fingrom) și selectați accesul „Doar citire”\n4. Confirmați cu verificarea în doi pași și copiați tokenul\n5. Lipiți-l mai jos și apăsați „Conectare”';</span>
+<span id="L1417"><span class="lineNum">    1417</span>              : </span>
+<span id="L1418"><span class="lineNum">    1418</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1419"><span class="lineNum">    1419</span>              :   String get wiseTokenTooltip =&gt;</span>
+<span id="L1420"><span class="lineNum">    1420</span>              :       'Creat în Wise în Setări → Tokenuri API (doar citire, dacă este disponibil); stocat criptat';</span>
+<span id="L1421"><span class="lineNum">    1421</span>              : </span>
+<span id="L1422"><span class="lineNum">    1422</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1423"><span class="lineNum">    1423</span>              :   String get zoomState =&gt; 'Măriți / Micșorați';</span>
+<span id="L1424"><span class="lineNum">    1424</span>              : }</span>
         </pre>
               </td>
             </tr>

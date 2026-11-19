@@ -4,6 +4,8 @@ _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „
 
 ### 8.1.0
 - Přidáno Wise API (Global): zůstatky a import transakcí víceměnových účtů Wise, převody měn jako převody
+- Přidán Parser oznámení (Android): transakce z oznámení bankovních a platebních aplikací, rozpoznané automaticky nebo podle vlastního vzoru
+- Předpověď rozpočtové kategorie pro importované účty bez kategorie v souboru
 
 ### 8.0.0
 - Nová stránka Integrace s rozbalovacími sekcemi

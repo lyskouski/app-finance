@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-18 19:04:45</td>
+            <td class="headerValue">2026-11-19 19:30:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -99,24 +99,25 @@
 <span id="L37"><span class="lineNum">      37</span>              :   static const String prefEnableBankingSession = 'enablebankingSession';</span>
 <span id="L38"><span class="lineNum">      38</span>              :   static const String prefWise = 'wise';</span>
 <span id="L39"><span class="lineNum">      39</span>              :   static const String prefWiseToken = 'wiseToken';</span>
-<span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span>              :   static const String isActive = 'true';</span>
-<span id="L42"><span class="lineNum">      42</span>              :   static const String isInactive = 'false';</span>
-<span id="L43"><span class="lineNum">      43</span>              : </span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           1 :   static late SharedPreferences pref;</span></span>
-<span id="L45"><span class="lineNum">      45</span>              : </span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           1 :   static Future&lt;void&gt; set(String key, String value) async {</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           2 :     await pref.setString(key, value);</span></span>
-<span id="L48"><span class="lineNum">      48</span>              :   }</span>
-<span id="L49"><span class="lineNum">      49</span>              : </span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :   static Future&lt;void&gt; clear(String key) async {</span></span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC">           0 :     await pref.remove(key);</span></span>
-<span id="L52"><span class="lineNum">      52</span>              :   }</span>
-<span id="L53"><span class="lineNum">      53</span>              : </span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           1 :   static String? get(String key) {</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           2 :     return pref.getString(key);</span></span>
-<span id="L56"><span class="lineNum">      56</span>              :   }</span>
-<span id="L57"><span class="lineNum">      57</span>              : }</span>
+<span id="L40"><span class="lineNum">      40</span>              :   static const String prefNotification = 'notificationParser';</span>
+<span id="L41"><span class="lineNum">      41</span>              : </span>
+<span id="L42"><span class="lineNum">      42</span>              :   static const String isActive = 'true';</span>
+<span id="L43"><span class="lineNum">      43</span>              :   static const String isInactive = 'false';</span>
+<span id="L44"><span class="lineNum">      44</span>              : </span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           1 :   static late SharedPreferences pref;</span></span>
+<span id="L46"><span class="lineNum">      46</span>              : </span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           1 :   static Future&lt;void&gt; set(String key, String value) async {</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           2 :     await pref.setString(key, value);</span></span>
+<span id="L49"><span class="lineNum">      49</span>              :   }</span>
+<span id="L50"><span class="lineNum">      50</span>              : </span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC">           0 :   static Future&lt;void&gt; clear(String key) async {</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaUNC">           0 :     await pref.remove(key);</span></span>
+<span id="L53"><span class="lineNum">      53</span>              :   }</span>
+<span id="L54"><span class="lineNum">      54</span>              : </span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           1 :   static String? get(String key) {</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           2 :     return pref.getString(key);</span></span>
+<span id="L57"><span class="lineNum">      57</span>              :   }</span>
+<span id="L58"><span class="lineNum">      58</span>              : }</span>
         </pre>
               </td>
             </tr>

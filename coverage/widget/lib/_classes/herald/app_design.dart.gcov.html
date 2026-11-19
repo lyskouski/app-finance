@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-18 19:01:10</td>
+            <td class="headerValue">2026-11-19 19:28:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -69,22 +69,22 @@
 <span id="L7"><span class="lineNum">       7</span>              : import 'package:material_ui/material_ui.dart';</span>
 <span id="L8"><span class="lineNum">       8</span>              : </span>
 <span id="L9"><span class="lineNum">       9</span>              : class AppDesign extends ValueNotifier&lt;AppDesignType&gt; {</span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">          24 :   static AppDesignType _state = find(AppPreferences.get(AppPreferences.prefDesign)) ?? AppDesignType.global;</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">          28 :   static AppDesignType _state = find(AppPreferences.get(AppPreferences.prefDesign)) ?? AppDesignType.global;</span></span>
 <span id="L11"><span class="lineNum">      11</span>              : </span>
 <span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           3 :   AppDesign() : super(get());</span></span>
 <span id="L13"><span class="lineNum">      13</span>              : </span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">          12 :   static AppDesignType get() =&gt; _state;</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">          14 :   static AppDesignType get() =&gt; _state;</span></span>
 <span id="L15"><span class="lineNum">      15</span>              : </span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">          36 :   static AppDesignType? find(String? name) =&gt; AppDesignType.values.where((e) =&gt; e.name == name).firstOrNull;</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">          42 :   static AppDesignType? find(String? name) =&gt; AppDesignType.values.where((e) =&gt; e.name == name).firstOrNull;</span></span>
 <span id="L17"><span class="lineNum">      17</span>              : </span>
 <span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">          18 :   static String fromLocale(Locale? value) =&gt; languageDesign(value?.languageCode);</span></span>
 <span id="L19"><span class="lineNum">      19</span>              : </span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          18 :   static bool isRightToLeft() =&gt; get() == AppDesignType.rtlGeneral;</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          21 :   static bool isRightToLeft() =&gt; get() == AppDesignType.rtlGeneral;</span></span>
 <span id="L21"><span class="lineNum">      21</span>              : </span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           6 :   static getAlignment&lt;T extends Enum&gt;() =&gt; switch (T) {</span></span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">          12 :         const (MainAxisAlignment) =&gt; isRightToLeft() ? MainAxisAlignment.end : MainAxisAlignment.start,</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          12 :         const (TextDirection) =&gt; isRightToLeft() ? TextDirection.rtl : TextDirection.ltr,</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           6 :         _ =&gt; isRightToLeft() ? CrossAxisAlignment.end : CrossAxisAlignment.start,</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           7 :   static getAlignment&lt;T extends Enum&gt;() =&gt; switch (T) {</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">          13 :         const (MainAxisAlignment) =&gt; isRightToLeft() ? MainAxisAlignment.end : MainAxisAlignment.start,</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          14 :         const (TextDirection) =&gt; isRightToLeft() ? TextDirection.rtl : TextDirection.ltr,</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           7 :         _ =&gt; isRightToLeft() ? CrossAxisAlignment.end : CrossAxisAlignment.start,</span></span>
 <span id="L26"><span class="lineNum">      26</span>              :       };</span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
 <span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :   static getInverseAlignment&lt;T extends Enum&gt;() =&gt; switch (T) {</span></span>

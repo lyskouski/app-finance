@@ -78,6 +78,7 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
   - SimpleFIN Bridge (US): impor saldo dan transaksi dari bank dan penerbit kartu AS
   - Enable Banking (EU): impor saldo dan transaksi dari bank Eropa (PSD2)
   - Wise API (Global): impor saldo dan transaksi akun multi-mata uang Wise (Token API Pribadi)
+  - Pengurai Notifikasi (Android): transaksi dari notifikasi aplikasi perbankan dan pembayaran
 - Ekspor ke file Excel `XLSX`
 - Enkripsi data
 - Lokalisasi

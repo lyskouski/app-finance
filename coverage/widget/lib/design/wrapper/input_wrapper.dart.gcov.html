@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">70.5&nbsp;%</td>
+            <td class="headerCovTableEntryLo">74.7&nbsp;%</td>
             <td class="headerCovTableEntry">95</td>
-            <td class="headerCovTableEntry">67</td>
+            <td class="headerCovTableEntry">71</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-18 19:01:10</td>
+            <td class="headerValue">2026-11-19 19:28:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -114,7 +114,7 @@
 <span id="L52"><span class="lineNum">      52</span>              :   final double? width;</span>
 <span id="L53"><span class="lineNum">      53</span>              :   final TextInputType? inputType;</span>
 <span id="L54"><span class="lineNum">      54</span>              : </span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          24 :   Key getKey() =&gt; ValueKey(key?.hashCode ?? '$title $tooltip');</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          25 :   Key getKey() =&gt; ValueKey(key?.hashCode ?? '$title $tooltip');</span></span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
 <span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           4 :   ({bool min, String? hint, Color? hintColor}) getHintState(BuildContext context) {</span></span>
 <span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           4 :     final screenState = ScreenHelper.state();</span></span>
@@ -223,7 +223,7 @@
 <span id="L161"><span class="lineNum">     161</span>              :     this.inputType,</span>
 <span id="L162"><span class="lineNum">     162</span>              :   });</span>
 <span id="L163"><span class="lineNum">     163</span>              : </span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           2 :   const InputWrapper.currency({</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           3 :   const InputWrapper.currency({</span></span>
 <span id="L165"><span class="lineNum">     165</span>              :     super.key,</span>
 <span id="L166"><span class="lineNum">     166</span>              :     this.type = NamedInputType.currencySelector,</span>
 <span id="L167"><span class="lineNum">     167</span>              :     required this.value,</span>
@@ -280,12 +280,12 @@
 <span id="L218"><span class="lineNum">     218</span>              :         withLabel: min,</span>
 <span id="L219"><span class="lineNum">     219</span>              :       );</span>
 <span id="L220"><span class="lineNum">     220</span>              : </span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaUNC">           0 :   Widget buildCurrencySelector({required bool min, required String? hint}) =&gt; BaseCurrencySelector(</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaUNC">           0 :         key: getKey(),</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaUNC">           0 :         value: value != null ? BaseListSelectorItem(value) : null,</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           2 :   Widget buildCurrencySelector({required bool min, required String? hint}) =&gt; BaseCurrencySelector(</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">           1 :         key: getKey(),</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           1 :         value: value != null ? BaseListSelectorItem(value) : null,</span></span>
 <span id="L224"><span class="lineNum">     224</span> <span class="tlaUNC">           0 :         setState: (v) =&gt; onChange?.call((v as BaseListSelectorItem?)?.item),</span></span>
 <span id="L225"><span class="lineNum">     225</span>              :         withLabel: min,</span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaUNC">           0 :         tooltip: tooltip,</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">           1 :         tooltip: tooltip,</span></span>
 <span id="L227"><span class="lineNum">     227</span>              :         hintText: hint,</span>
 <span id="L228"><span class="lineNum">     228</span>              :       );</span>
 <span id="L229"><span class="lineNum">     229</span>              : </span>
@@ -341,7 +341,7 @@
 <span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           6 :       NamedInputType.listSelector =&gt; buildListSelector(min: min, hint: hint, hintColor: hintColor),</span></span>
 <span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">           4 :       NamedInputType.iconSelector =&gt; buildIconSelector(min: min, hint: hint),</span></span>
 <span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">           4 :       NamedInputType.colorSelector =&gt; buildColorSelector(min: min),</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">           4 :       NamedInputType.currencySelector =&gt; buildCurrencySelector(min: min, hint: hint),</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">           5 :       NamedInputType.currencySelector =&gt; buildCurrencySelector(min: min, hint: hint),</span></span>
 <span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">           6 :       NamedInputType.currencyShort =&gt; buildCurrencyShortSelector(min: min, hint: hint),</span></span>
 <span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           4 :       NamedInputType.ymSelector =&gt; buildMonthYearSelector(min: min),</span></span>
 <span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           6 :       NamedInputType.dateSelector =&gt; buildDateSelector(min: min),</span></span>

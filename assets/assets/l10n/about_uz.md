@@ -78,6 +78,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
   - SimpleFIN Bridge (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish
   - Enable Banking (EU): Yevropa banklaridan qoldiqlar va tranzaksiyalarni import qilish (PSD2)
   - Wise API (Global): Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish (shaxsiy API tokeni)
+  - Bildirishnomalarni tahlil qilish (Android): bank va to'lov ilovalari bildirishnomalaridan tranzaksiyalar
 - Excel `XLSX` fayliga eksport qiling
 - Ma'lumotlarni shifrlash
 - Mahalliylashtirish
@@ -114,5 +115,3 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 | Tanlangan elementni tahrirlash       | `Ctrl` + `E`                            |
 | Tanlangan elementni o'chirish        | `Ctrl` + `D`                            |
 -->
-
-
