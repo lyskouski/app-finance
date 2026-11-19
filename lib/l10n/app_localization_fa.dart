@@ -1007,11 +1007,15 @@ class AppLocalizationsFa extends AppLocalizations {
   String get notificationClear => 'پاک کردن دریافت‌شده‌ها';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'مبالغ بدون ارز (مثلاً برداشت 20.00) با این ارز ثبت می‌شوند';
+
+  @override
   String get notificationDefaultAccount => 'حساب پیش‌فرض';
 
   @override
   String get notificationDescription =>
-      'از اعلان‌های برنامه‌های بانکی و پرداخت در این دستگاه تراکنش بسازید. فقط اعلان‌های برنامه‌های انتخاب‌شده خوانده می‌شوند و تا زمان وارد کردن روی دستگاه می‌مانند. مبلغ و ارز به‌طور خودکار یا با یک الگوی سفارشی شناسایی می‌شوند.';
+      'از اعلان‌های برنامه‌های بانکی و پرداخت در این دستگاه تراکنش بسازید. فقط اعلان‌های برنامه‌های انتخاب‌شده خوانده می‌شوند و تا زمان وارد کردن روی دستگاه می‌مانند. مبلغ و ارز به‌طور خودکار شناسایی می‌شوند.';
 
   @override
   String get notificationGrant => 'اعطای دسترسی';
@@ -1026,13 +1030,6 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'هنوز اعلانی دریافت نشده است: برنامه‌ها پس از ارسال اعلان در اینجا نمایش داده می‌شوند';
-
-  @override
-  String get notificationPattern => 'الگوی سفارشی (اختیاری)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'عبارت باقاعده با گروه‌های نام‌دار amount (الزامی)، currency و title، برای مثال (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'شناسایی نشد';

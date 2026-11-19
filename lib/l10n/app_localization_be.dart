@@ -1012,11 +1012,15 @@ class AppLocalizationsBe extends AppLocalizations {
   String get notificationClear => 'Ачысьціць атрыманыя';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Сумы без валюты (напрыклад, Спісана 20.00) улічваюцца ў гэтай валюце';
+
+  @override
   String get notificationDefaultAccount => 'Рахунак па змаўчанні';
 
   @override
   String get notificationDescription =>
-      'Стварэньне аперацый з апавяшчэньняў банкаўскіх і плацёжных праграм на гэтай прыладзе. Чытаюцца толькі апавяшчэньні выбраных праграм, і яны захоўваюцца на прыладзе да імпарту. Сума і валюта распазнаюцца аўтаматычна або па ўласным шаблоне.';
+      'Стварэньне аперацый з апавяшчэньняў банкаўскіх і плацёжных праграм на гэтай прыладзе. Чытаюцца толькі апавяшчэньні выбраных праграм, і яны захоўваюцца на прыладзе да імпарту. Сума і валюта распазнаюцца аўтаматычна.';
 
   @override
   String get notificationGrant => 'Даць доступ';
@@ -1031,13 +1035,6 @@ class AppLocalizationsBe extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Апавяшчэньняў яшчэ не было: праграмы зьявяцца тут пасьля таго, як дашлюць апавяшчэньне';
-
-  @override
-  String get notificationPattern => 'Уласны шаблон (неабавязкова)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Рэгулярны выраз з найменнымі групамі amount (абавязкова), currency і title, напрыклад, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Не распазнана';
@@ -2462,11 +2459,15 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get notificationClear => 'Ačyścić atrymanyja';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Sumy biez valiuty (napryklad, Spisana 20.00) uličvajucca ŭ hetaj valiucie';
+
+  @override
   String get notificationDefaultAccount => 'Rachunak pa zmaŭčanni';
 
   @override
   String get notificationDescription =>
-      'Stvareńnie aperacyj z apaviaščeńniaŭ bankaŭskich i placiožnych prahram na hetaj pryladzie. Čytajucca toĺki apaviaščeńni vybranych prahram, i jany zachoŭvajucca na pryladzie da impartu. Suma i valiuta raspaznajucca aŭtamatyčna abo pa ŭlasnym šablonie.';
+      'Stvareńnie aperacyj z apaviaščeńniaŭ bankaŭskich i placiožnych prahram na hetaj pryladzie. Čytajucca toĺki apaviaščeńni vybranych prahram, i jany zachoŭvajucca na pryladzie da impartu. Suma i valiuta raspaznajucca aŭtamatyčna.';
 
   @override
   String get notificationGrant => 'Dać dostup';
@@ -2481,13 +2482,6 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   @override
   String get notificationNoApps =>
       'Apaviaščeńniaŭ jašče nie było: prahramy źjaviacca tut paślia taho, jak dašliuć apaviaščeńnie';
-
-  @override
-  String get notificationPattern => 'Ŭlasny šablon (nieabaviazkova)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Rehuliarny vyraz z najmiennymi hrupami amount (abaviazkova), currency i title, napryklad, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Nie raspaznana';

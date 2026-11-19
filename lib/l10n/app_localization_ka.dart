@@ -1013,11 +1013,15 @@ class AppLocalizationsKa extends AppLocalizations {
   String get notificationClear => 'მიღებულის გასუფთავება';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'ვალუტის გარეშე თანხები (მაგ. ჩამოჭრა 20.00) ამ ვალუტით აღირიცხება';
+
+  @override
   String get notificationDefaultAccount => 'ნაგულისხმევი ანგარიში';
 
   @override
   String get notificationDescription =>
-      'შექმენით ტრანზაქციები ამ მოწყობილობაზე საბანკო და გადახდის აპების შეტყობინებებიდან. იკითხება მხოლოდ არჩეული აპების შეტყობინებები და ისინი იმპორტამდე მოწყობილობაზე რჩება. თანხა და ვალუტა ამოიცნობა ავტომატურად ან საკუთარი შაბლონით.';
+      'შექმენით ტრანზაქციები ამ მოწყობილობაზე საბანკო და გადახდის აპების შეტყობინებებიდან. იკითხება მხოლოდ არჩეული აპების შეტყობინებები და ისინი იმპორტამდე მოწყობილობაზე რჩება. თანხა და ვალუტა ამოიცნობა ავტომატურად.';
 
   @override
   String get notificationGrant => 'წვდომის მიცემა';
@@ -1032,13 +1036,6 @@ class AppLocalizationsKa extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'შეტყობინებები ჯერ არ მიღებულა: აპები აქ გამოჩნდება შეტყობინების გამოგზავნის შემდეგ';
-
-  @override
-  String get notificationPattern => 'საკუთარი შაბლონი (არასავალდებულო)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'რეგულარული გამოსახულება სახელდებული ჯგუფებით amount (სავალდებულო), currency და title, მაგ. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'ვერ ამოიცნო';

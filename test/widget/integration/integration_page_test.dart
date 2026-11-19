@@ -732,6 +732,7 @@ void main() {
 
     // The account is recognized by its keywords, otherwise the default one is taken
     expect(find.textContaining('Default Account', findRichText: true), findsWidgets);
+    expect(find.byKey(const ValueKey('notification_currency_com.bank')), findsOneWidget);
     final cardKeywords = find.byKey(ValueKey('notification_account_${account.uuid}'));
     await tester.ensureVisible(cardKeywords);
     await tester.enterText(find.descendant(of: cardKeywords, matching: find.byType(TextField)), 'Bakery');

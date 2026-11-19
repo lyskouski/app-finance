@@ -23,14 +23,16 @@ class NotificationImporter {
       );
 
   // Processed (imported or already present) notifications are returned to be removed from the buffer,
-  // not recognized ones are kept as pending to be adjusted by a custom pattern
+  // not recognized ones are kept as pending to be adjusted by keywords
   NotificationImportResult run({
     required List<NotificationRecord> records,
     required String account,
     required String category,
     required DateTime from,
+    // Currency of the default account
     Currency? currency,
-    String? pattern,
+    // Default currency of the app: amounts without a currency are taken in it
+    Currency? appCurrency,
     List<String> income = NotificationParser.incomeKeywords,
     List<String> balance = NotificationParser.balanceKeywords,
     // Keywords of accounts to be recognized instead of the default one, with their currencies
@@ -53,12 +55,13 @@ class NotificationImporter {
         continue;
       }
       final target = NotificationParser.toAccount([record.title, record.text].join('\n'), accounts) ?? account;
-      final fallback = target != account && currencyOf != null ? currencyOf(target) : currency;
+      // A recognized account defines the currency the most precisely, then the app, then the default account
+      final fallback = (target != account ? currencyOf?.call(target) : null) ?? appCurrency ?? currency;
       final parsed = NotificationParser.parse(
         record.title,
         record.text,
-        pattern: pattern,
         fallback: fallback,
+        isBare: appCurrency != null,
         income: income,
         balance: balance,
       );

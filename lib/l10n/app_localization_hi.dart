@@ -1009,11 +1009,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notificationClear => 'प्राप्त सूचनाएँ साफ़ करें';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'बिना मुद्रा वाली राशियाँ (जैसे डेबिट 20.00) इस मुद्रा में ली जाती हैं';
+
+  @override
   String get notificationDefaultAccount => 'डिफ़ॉल्ट खाता';
 
   @override
   String get notificationDescription =>
-      'इस डिवाइस पर बैंकिंग और भुगतान ऐप्स की सूचनाओं से लेनदेन बनाएँ। केवल चुने गए ऐप्स की सूचनाएँ पढ़ी जाती हैं, और वे आयात होने तक डिवाइस पर ही रहती हैं। राशि और मुद्रा स्वचालित रूप से या कस्टम पैटर्न से पहचानी जाती हैं।';
+      'इस डिवाइस पर बैंकिंग और भुगतान ऐप्स की सूचनाओं से लेनदेन बनाएँ। केवल चुने गए ऐप्स की सूचनाएँ पढ़ी जाती हैं, और वे आयात होने तक डिवाइस पर ही रहती हैं। राशि और मुद्रा स्वचालित रूप से पहचानी जाती हैं।';
 
   @override
   String get notificationGrant => 'एक्सेस दें';
@@ -1028,13 +1032,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'अभी तक कोई सूचना प्राप्त नहीं हुई: ऐप्स सूचना भेजने के बाद यहाँ दिखाई देंगे';
-
-  @override
-  String get notificationPattern => 'कस्टम पैटर्न (वैकल्पिक)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'नामित समूहों amount (आवश्यक), currency और title वाला रेगुलर एक्सप्रेशन, उदा. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'पहचाना नहीं गया';

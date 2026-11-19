@@ -997,11 +997,15 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationClear => '수집된 알림 지우기';
 
   @override
+  String get notificationCurrencyTooltip =>
+      '통화가 없는 금액(예: 출금 20.00)은 이 통화로 처리됩니다';
+
+  @override
   String get notificationDefaultAccount => '기본 계좌';
 
   @override
   String get notificationDescription =>
-      '이 기기의 은행 및 결제 앱 알림에서 거래를 생성합니다. 선택한 앱의 알림만 읽으며, 가져올 때까지 기기에 보관됩니다. 금액과 통화는 자동으로 또는 사용자 지정 패턴으로 인식됩니다.';
+      '이 기기의 은행 및 결제 앱 알림에서 거래를 생성합니다. 선택한 앱의 알림만 읽으며, 가져올 때까지 기기에 보관됩니다. 금액과 통화는 자동으로 인식됩니다.';
 
   @override
   String get notificationGrant => '접근 허용';
@@ -1015,13 +1019,6 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get notificationNoApps => '아직 받은 알림이 없습니다: 앱이 알림을 보내면 여기에 표시됩니다';
-
-  @override
-  String get notificationPattern => '사용자 지정 패턴(선택 사항)';
-
-  @override
-  String get notificationPatternTooltip =>
-      '이름 있는 그룹 amount(필수), currency, title이 포함된 정규식, 예: (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => '인식되지 않음';

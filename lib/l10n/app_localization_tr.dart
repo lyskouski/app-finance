@@ -1011,11 +1011,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notificationClear => 'Yakalananları temizle';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Para birimi olmayan tutarlar (ör. Borç 20,00) bu para biriminde alınır';
+
+  @override
   String get notificationDefaultAccount => 'Varsayılan hesap';
 
   @override
   String get notificationDescription =>
-      'Bu cihazdaki bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler oluşturun. Yalnızca seçilen uygulamaların bildirimleri okunur ve içe aktarılana kadar cihazda kalır. Tutar ve para birimi otomatik olarak veya özel bir kalıpla tanınır.';
+      'Bu cihazdaki bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler oluşturun. Yalnızca seçilen uygulamaların bildirimleri okunur ve içe aktarılana kadar cihazda kalır. Tutar ve para birimi otomatik olarak tanınır.';
 
   @override
   String get notificationGrant => 'Erişim ver';
@@ -1030,13 +1034,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Henüz bildirim alınmadı: uygulamalar bir bildirim gönderdikten sonra burada görünür';
-
-  @override
-  String get notificationPattern => 'Özel kalıp (isteğe bağlı)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'amount (zorunlu), currency ve title adlandırılmış gruplarını içeren düzenli ifade, örn. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Tanınmadı';

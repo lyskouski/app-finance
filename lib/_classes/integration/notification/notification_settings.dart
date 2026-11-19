@@ -9,25 +9,26 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 class NotificationApp {
   String? account;
   String? category;
-  String? pattern;
+  // Currency (code) of amounts without one, and the preferred one for ambiguous symbols ($, kr)
+  String? currency;
   // Recognized notifications are imported without a confirmation
   bool auto;
 
-  NotificationApp({this.account, this.category, this.pattern, this.auto = false});
+  NotificationApp({this.account, this.category, this.currency, this.auto = false});
 
   bool get isLinked => account != null && category != null;
 
   Map<String, dynamic> toJson() => {
         if (account != null) 'account': account,
         if (category != null) 'category': category,
-        if (pattern != null && pattern!.isNotEmpty) 'pattern': pattern,
+        if (currency != null) 'currency': currency,
         if (auto) 'auto': true,
       };
 
   factory NotificationApp.fromJson(Map<String, dynamic> json) => NotificationApp(
         account: json['account']?.toString(),
         category: json['category']?.toString(),
-        pattern: json['pattern']?.toString(),
+        currency: json['currency']?.toString(),
         auto: json['auto'] == true,
       );
 }

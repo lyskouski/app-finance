@@ -1005,11 +1005,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notificationClear => 'مسح الملتقطة';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'تُحتسب المبالغ بدون عملة (مثلًا: خصم 20.00) بهذه العملة';
+
+  @override
   String get notificationDefaultAccount => 'الحساب الافتراضي';
 
   @override
   String get notificationDescription =>
-      'أنشئ معاملات من إشعارات تطبيقات البنوك والدفع على هذا الجهاز. تتم قراءة إشعارات التطبيقات المحددة فقط، وتبقى على الجهاز حتى استيرادها. يتم التعرف على المبلغ والعملة تلقائيًا أو باستخدام نمط مخصص.';
+      'أنشئ معاملات من إشعارات تطبيقات البنوك والدفع على هذا الجهاز. تتم قراءة إشعارات التطبيقات المحددة فقط، وتبقى على الجهاز حتى استيرادها. يتم التعرف على المبلغ والعملة تلقائيًا.';
 
   @override
   String get notificationGrant => 'منح الوصول';
@@ -1024,13 +1028,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'لم يتم استلام أي إشعارات بعد: تظهر التطبيقات هنا بعد أن ترسل إشعارًا';
-
-  @override
-  String get notificationPattern => 'نمط مخصص (اختياري)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'تعبير نمطي مع المجموعات المسماة amount (مطلوبة) وcurrency وtitle، مثلًا (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'لم يتم التعرف عليه';

@@ -120,22 +120,24 @@ void main() {
       expect(NotificationParser.parse('', 'Le 50 paid')!.currency, 'SLE');
     });
 
-    test('applies a custom pattern with named groups', () {
-      const pattern = r'Debit (?<amount>[\d.,]+) (?<currency>[A-Z]+) / (?<title>[^/]+)';
-      final result = NotificationParser.parse('Bank', 'Debit 1.234,00 CHF / Migros Zürich / ref 77', pattern: pattern);
-      expect(result!.amount, -1234.0);
-      expect(result.currency, 'CHF');
-      expect(result.title, 'Migros Zürich');
+    test('takes amounts without a currency in the default one', () {
+      final sek = CurrencyProvider.find('SEK');
+      expect(NotificationParser.parse('', 'Debit 20.00'), isNull);
+      expect(NotificationParser.parse('', 'Debit 20.00', fallback: sek), isNull);
+      final result = NotificationParser.parse('Bank', 'Debit 1.234,50 at Migros', fallback: sek, isBare: true);
+      expect((result!.amount, result.currency, result.title), (-1234.5, 'SEK', 'Migros'));
+      expect(NotificationParser.parse('', 'Received +30,00', fallback: sek, isBare: true)!.amount, 30.0);
+      // A currency of the notification is preferred
+      expect(NotificationParser.parse('', 'Card 12.00, paid 5.00 EUR', fallback: sek, isBare: true)!.currency, 'EUR');
     });
 
-    test('takes the first group of a custom pattern without names', () {
-      final result = NotificationParser.parse('', 'Received: 30.00', pattern: r'Received: ([\d.]+)');
-      expect(result!.amount, 30.0);
-      expect(result.currency, isNull);
-    });
-
-    test('rejects an invalid custom pattern', () {
-      expect(NotificationParser.parse('', 'Paid 5 EUR', pattern: '(?<amount>'), isNull);
+    test('skips numbers without a fraction and balances as amounts without a currency', () {
+      final sek = CurrencyProvider.find('SEK');
+      for (final text in ['Your code is 4455', 'Courier arrives in 15 min', 'Card *4421 blocked', 'On 19.11.2026']) {
+        expect(NotificationParser.parse('', text, fallback: sek, isBare: true), isNull, reason: text);
+      }
+      final result = NotificationParser.parse('', 'Balance 500.00, debit 7.50', fallback: sek, isBare: true);
+      expect(result!.amount, -7.5);
     });
 
     test('normalizes user keywords', () {
@@ -148,8 +150,6 @@ void main() {
       expect(NotificationParser.parse('', 'Payout 40 EUR', income: ['payout'])!.amount, 40.0);
       // User keywords replace the default ones
       expect(NotificationParser.parse('', 'Refund 40 EUR', income: ['payout'])!.amount, -40.0);
-      final result = NotificationParser.parse('', 'Payout: 40.00', pattern: r'Payout: ([\d.]+)', income: ['payout']);
-      expect(result!.amount, 40.0);
     });
 
     test('recognizes the account by its keywords', () {
@@ -211,18 +211,26 @@ void main() {
       expect(second.processed, ['a', 'b']);
     });
 
-    test('uses the currency of the account when the notification has none', () {
+    test('takes amounts without a currency in the default currency of the app', () {
       final added = <InterfaceAppData>[];
       final importer = NotificationImporter(exists: (_) => false, add: (item, _) => added.add(item));
-      importer.run(
+      final skipped = importer.run(
         records: [record('Debit 20.00')],
         account: 'acc',
         category: 'cat',
         from: DateTime(2026),
         currency: CurrencyProvider.find('SEK'),
-        pattern: r'Debit (?<amount>[\d.]+)',
       );
-      expect(added.single.currency?.code, 'SEK');
+      expect((skipped.added, skipped.pending), (0, 1));
+      importer.run(
+        records: [record('Debit 20.00'), record('Paid 5 \$', id: 'b')],
+        account: 'acc',
+        category: 'cat',
+        from: DateTime(2026),
+        currency: CurrencyProvider.find('SEK'),
+        appCurrency: CurrencyProvider.find('CAD'),
+      );
+      expect(added.map((e) => e.currency?.code), ['CAD', 'CAD']);
     });
 
     test('assigns notifications to the recognized account', () {
@@ -233,8 +241,8 @@ void main() {
         account: 'default',
         category: 'cat',
         from: DateTime(2026),
-        currency: CurrencyProvider.find('SEK'),
-        pattern: r'Debit (?<amount>[\d.]+)',
+        currency: CurrencyProvider.find('DKK'),
+        appCurrency: CurrencyProvider.find('SEK'),
         accounts: {
           'card': ['4421'],
         },
@@ -271,11 +279,11 @@ void main() {
       settings.get('com.bank')
         ..account = 'acc'
         ..category = 'cat'
-        ..pattern = '(?<amount>\\d+)';
+        ..currency = 'CHF';
       await settings.save();
 
       final restored = NotificationSettings.load().get('com.bank');
-      expect((restored.account, restored.category, restored.pattern), ('acc', 'cat', '(?<amount>\\d+)'));
+      expect((restored.account, restored.category, restored.currency), ('acc', 'cat', 'CHF'));
       expect(restored.auto, isFalse);
 
       settings.get('com.bank').auto = true;

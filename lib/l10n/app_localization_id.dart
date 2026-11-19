@@ -1013,11 +1013,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get notificationClear => 'Hapus yang ditangkap';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Jumlah tanpa mata uang (mis. Debit 20.00) diambil dalam mata uang ini';
+
+  @override
   String get notificationDefaultAccount => 'Akun bawaan';
 
   @override
   String get notificationDescription =>
-      'Buat transaksi dari notifikasi aplikasi perbankan dan pembayaran di perangkat ini. Hanya notifikasi dari aplikasi yang dipilih yang dibaca, dan notifikasi tetap tersimpan di perangkat hingga diimpor. Jumlah dan mata uang dikenali secara otomatis atau dengan pola khusus.';
+      'Buat transaksi dari notifikasi aplikasi perbankan dan pembayaran di perangkat ini. Hanya notifikasi dari aplikasi yang dipilih yang dibaca, dan notifikasi tetap tersimpan di perangkat hingga diimpor. Jumlah dan mata uang dikenali secara otomatis.';
 
   @override
   String get notificationGrant => 'Berikan Akses';
@@ -1032,13 +1036,6 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Belum ada notifikasi yang diterima: aplikasi muncul di sini setelah mengirim notifikasi';
-
-  @override
-  String get notificationPattern => 'Pola khusus (opsional)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Ekspresi reguler dengan grup bernama amount (wajib), currency, dan title, mis. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Tidak dikenali';

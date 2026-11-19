@@ -1011,11 +1011,15 @@ class AppLocalizationsUk extends AppLocalizations {
   String get notificationClear => 'Очистити отримані';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Суми без валюти (наприклад, Списано 20.00) враховуються в цій валюті';
+
+  @override
   String get notificationDefaultAccount => 'Рахунок за замовчуванням';
 
   @override
   String get notificationDescription =>
-      'Створення операцій зі сповіщень банківських і платіжних застосунків на цьому пристрої. Читаються лише сповіщення вибраних застосунків, і вони зберігаються на пристрої до імпорту. Сума та валюта розпізнаються автоматично або за власним шаблоном.';
+      'Створення операцій зі сповіщень банківських і платіжних застосунків на цьому пристрої. Читаються лише сповіщення вибраних застосунків, і вони зберігаються на пристрої до імпорту. Сума та валюта розпізнаються автоматично.';
 
   @override
   String get notificationGrant => 'Надати доступ';
@@ -1030,13 +1034,6 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Сповіщень ще не було: застосунки з\'являться тут після того, як надішлють сповіщення';
-
-  @override
-  String get notificationPattern => 'Власний шаблон (необов\'язково)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Регулярний вираз з іменованими групами amount (обов\'язково), currency і title, наприклад, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Не розпізнано';

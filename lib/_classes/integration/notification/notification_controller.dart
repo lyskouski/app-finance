@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter/widgets.dart';
 
 class NotificationController with WidgetsBindingObserver {
@@ -184,7 +185,7 @@ class NotificationController with WidgetsBindingObserver {
       category: link.category!,
       from: from,
       currency: account is AccountAppData ? account.currency : null,
-      pattern: link.pattern,
+      appCurrency: link.currency != null ? CurrencyProvider.find(link.currency!) : null,
       income: income,
       balance: balance,
       accounts: accounts,

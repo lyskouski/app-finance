@@ -1018,11 +1018,15 @@ class AppLocalizationsUz extends AppLocalizations {
   String get notificationClear => 'Olinganlarni tozalash';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Valyutasiz summalar (masalan, Yechildi 20.00) shu valyutada olinadi';
+
+  @override
   String get notificationDefaultAccount => 'Standart hisob';
 
   @override
   String get notificationDescription =>
-      'Ushbu qurilmadagi bank va to\'lov ilovalarining bildirishnomalaridan tranzaksiyalar yarating. Faqat tanlangan ilovalarning bildirishnomalari o\'qiladi va import qilinguncha qurilmada saqlanadi. Summa va valyuta avtomatik ravishda yoki maxsus shablon bo\'yicha aniqlanadi.';
+      'Ushbu qurilmadagi bank va to\'lov ilovalarining bildirishnomalaridan tranzaksiyalar yarating. Faqat tanlangan ilovalarning bildirishnomalari o\'qiladi va import qilinguncha qurilmada saqlanadi. Summa va valyuta avtomatik ravishda aniqlanadi.';
 
   @override
   String get notificationGrant => 'Ruxsat berish';
@@ -1037,13 +1041,6 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Hali bildirishnomalar olinmagan: ilovalar bildirishnoma yuborgandan keyin shu yerda paydo bo\'ladi';
-
-  @override
-  String get notificationPattern => 'Maxsus shablon (ixtiyoriy)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'amount (majburiy), currency va title nomli guruhlari bo\'lgan muntazam ifoda, masalan, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Aniqlanmadi';

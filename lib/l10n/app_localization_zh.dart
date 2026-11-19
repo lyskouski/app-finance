@@ -993,11 +993,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationClear => '清除已捕获';
 
   @override
+  String get notificationCurrencyTooltip => '没有货币的金额（例如：扣款 20.00）按此货币计入';
+
+  @override
   String get notificationDefaultAccount => '默认账户';
 
   @override
   String get notificationDescription =>
-      '根据本设备上银行和支付应用的通知创建交易。仅读取所选应用的通知，且在导入前通知保留在设备上。金额和货币会自动识别，或通过自定义模式识别。';
+      '根据本设备上银行和支付应用的通知创建交易。仅读取所选应用的通知，且在导入前通知保留在设备上。金额和货币会自动识别。';
 
   @override
   String get notificationGrant => '授予访问权限';
@@ -1010,13 +1013,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notificationNoApps => '尚未收到任何通知：应用发送通知后会显示在这里';
-
-  @override
-  String get notificationPattern => '自定义模式（可选）';
-
-  @override
-  String get notificationPatternTooltip =>
-      '包含命名分组 amount（必填）、currency 和 title 的正则表达式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => '无法识别';
@@ -2414,11 +2410,14 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get notificationClear => '清除已擷取';
 
   @override
+  String get notificationCurrencyTooltip => '沒有貨幣的金額（例如：扣款 20.00）以此貨幣計入';
+
+  @override
   String get notificationDefaultAccount => '預設帳戶';
 
   @override
   String get notificationDescription =>
-      '根據本裝置上銀行與支付應用程式的通知建立交易。僅讀取所選應用程式的通知，且在匯入前通知會保留在裝置上。金額與貨幣會自動辨識，或透過自訂模式辨識。';
+      '根據本裝置上銀行與支付應用程式的通知建立交易。僅讀取所選應用程式的通知，且在匯入前通知會保留在裝置上。金額與貨幣會自動辨識。';
 
   @override
   String get notificationGrant => '授予存取權';
@@ -2431,13 +2430,6 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get notificationNoApps => '尚未收到任何通知：應用程式傳送通知後會顯示在這裡';
-
-  @override
-  String get notificationPattern => '自訂模式（選填）';
-
-  @override
-  String get notificationPatternTooltip =>
-      '包含具名群組 amount（必填）、currency 與 title 的正規表示式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => '無法辨識';

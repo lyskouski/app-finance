@@ -249,18 +249,22 @@ class NotificationParser {
         _ => -1,
       };
 
+  // Amount without a currency: only with a fraction, to skip codes, counters and card numbers
+  static final _bare = RegExp(
+    r"(?<![\w.,])(?<s>[+\-−–])?\s?(?<n>\d{1,3}(?:[   '.,]\d{3})+[.,]\d{2}|\d+[.,]\d{2})(?![\w]|[.,]\d)",
+  );
+
+  // The currency of a notification is preferred to be the fallback one,
+  // amounts without a currency are taken in the fallback one when `isBare` is set
   static NotificationParsed? parse(
     String title,
     String text, {
-    String? pattern,
     Currency? fallback,
+    bool isBare = false,
     List<String> income = incomeKeywords,
     List<String> balance = balanceKeywords,
   }) {
     final content = [title, text].where((e) => e.isNotEmpty).join('\n');
-    if (pattern != null && pattern.trim().isNotEmpty) {
-      return parseByPattern(content, text, pattern, fallback: fallback, income: income);
-    }
     var from = 0;
     NotificationParsed? weak;
     for (final match in _money.allMatches(content)) {
@@ -281,37 +285,30 @@ class NotificationParser {
       }
       weak ??= result;
     }
-    return weak;
+    if (weak != null || !isBare || fallback == null) {
+      return weak;
+    }
+    return _parseBare(content, text, fallback, income: income, balance: balance);
   }
 
-  static NotificationParsed? parseByPattern(
+  static NotificationParsed? _parseBare(
     String content,
     String text,
-    String pattern, {
-    Currency? fallback,
-    List<String> income = incomeKeywords,
+    Currency currency, {
+    required List<String> income,
+    required List<String> balance,
   }) {
-    final RegExpMatch? match;
-    try {
-      match = RegExp(pattern, caseSensitive: false, multiLine: true, unicode: true).firstMatch(content);
-    } on FormatException {
-      return null;
+    var from = 0;
+    for (final match in _bare.allMatches(content)) {
+      final before = content.substring(from, match.start).toLowerCase();
+      from = match.end;
+      final amount = toAmount(match.namedGroup('n')!);
+      if (amount == null || amount == 0 || isBalance(before, balance: balance)) {
+        continue;
+      }
+      final sign = _sign(match.namedGroup('s')) ?? (isIncome(content, income: income) ? 1 : -1);
+      return (amount: sign * amount, currency: currency.code, title: getTitle(content, text));
     }
-    if (match == null) {
-      return null;
-    }
-    String? group(String name) => match!.groupNames.contains(name) ? match.namedGroup(name)?.trim() : null;
-    final raw = group('amount') ?? (match.groupCount > 0 ? match.group(1) : match.group(0)) ?? '';
-    final sign = RegExp(r'^\s*([+\-−–])').firstMatch(raw)?.group(1);
-    final amount = toAmount(raw.replaceAll(RegExp(r'[^\d.,\s  ' "'" r']'), '').trim());
-    if (amount == null || amount == 0) {
-      return null;
-    }
-    final title = group('title');
-    return (
-      amount: (_sign(sign) ?? (isIncome(content, income: income) ? 1 : -1)) * amount,
-      currency: toCurrency(group('currency'), fallback: fallback),
-      title: title != null && title.isNotEmpty ? toLine(title) : getTitle(content, text),
-    );
+    return null;
   }
 }

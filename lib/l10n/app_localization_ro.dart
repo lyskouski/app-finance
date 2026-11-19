@@ -1015,11 +1015,15 @@ class AppLocalizationsRo extends AppLocalizations {
   String get notificationClear => 'Șterge capturate';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Sumele fără monedă (de ex. Debit 20,00) sunt luate în această monedă';
+
+  @override
   String get notificationDefaultAccount => 'Cont implicit';
 
   @override
   String get notificationDescription =>
-      'Creați tranzacții din notificările aplicațiilor bancare și de plată de pe acest dispozitiv. Sunt citite doar notificările aplicațiilor selectate, care rămân pe dispozitiv până la import. Suma și moneda sunt recunoscute automat sau printr-un model personalizat.';
+      'Creați tranzacții din notificările aplicațiilor bancare și de plată de pe acest dispozitiv. Sunt citite doar notificările aplicațiilor selectate, care rămân pe dispozitiv până la import. Suma și moneda sunt recunoscute automat.';
 
   @override
   String get notificationGrant => 'Acordă acces';
@@ -1034,13 +1038,6 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Nu s-au primit încă notificări: aplicațiile apar aici după ce trimit o notificare';
-
-  @override
-  String get notificationPattern => 'Model personalizat (opțional)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Expresie regulată cu grupurile denumite amount (obligatoriu), currency și title, de ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Nerecunoscut';

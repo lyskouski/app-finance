@@ -1019,11 +1019,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notificationClear => 'Effacer les capturées';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Les montants sans devise (par ex. Débit 20,00) sont pris dans cette devise';
+
+  @override
   String get notificationDefaultAccount => 'Compte par défaut';
 
   @override
   String get notificationDescription =>
-      'Créez des opérations à partir des notifications des applications bancaires et de paiement de cet appareil. Seules les notifications des applications sélectionnées sont lues, et elles restent sur l\'appareil jusqu\'à leur importation. Le montant et la devise sont reconnus automatiquement ou par un modèle personnalisé.';
+      'Créez des opérations à partir des notifications des applications bancaires et de paiement de cet appareil. Seules les notifications des applications sélectionnées sont lues, et elles restent sur l\'appareil jusqu\'à leur importation. Le montant et la devise sont reconnus automatiquement.';
 
   @override
   String get notificationGrant => 'Accorder l\'accès';
@@ -1038,13 +1042,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Aucune notification reçue pour l\'instant : les applications apparaissent ici après avoir publié une notification';
-
-  @override
-  String get notificationPattern => 'Modèle personnalisé (facultatif)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Expression régulière avec les groupes nommés amount (obligatoire), currency et title, p. ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Non reconnu';

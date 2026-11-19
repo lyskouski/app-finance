@@ -1013,11 +1013,15 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notificationClear => 'Vastgelegde wissen';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Bedragen zonder valuta (bijv. Afschrijving 20,00) worden in deze valuta genomen';
+
+  @override
   String get notificationDefaultAccount => 'Standaardrekening';
 
   @override
   String get notificationDescription =>
-      'Maak transacties aan uit meldingen van bank- en betaalapps op dit apparaat. Alleen meldingen van de geselecteerde apps worden gelezen, en ze blijven op het apparaat tot ze zijn geïmporteerd. Het bedrag en de valuta worden automatisch of met een eigen patroon herkend.';
+      'Maak transacties aan uit meldingen van bank- en betaalapps op dit apparaat. Alleen meldingen van de geselecteerde apps worden gelezen, en ze blijven op het apparaat tot ze zijn geïmporteerd. Het bedrag en de valuta worden automatisch herkend.';
 
   @override
   String get notificationGrant => 'Toegang verlenen';
@@ -1032,13 +1036,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Nog geen meldingen ontvangen: apps verschijnen hier nadat ze een melding hebben verstuurd';
-
-  @override
-  String get notificationPattern => 'Eigen patroon (optioneel)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Reguliere expressie met de benoemde groepen amount (verplicht), currency en title, bijv. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Niet herkend';

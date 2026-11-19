@@ -1015,11 +1015,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notificationClear => 'Limpar capturadas';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Os montantes sem moeda (por exemplo, Débito 20,00) são considerados nesta moeda';
+
+  @override
   String get notificationDefaultAccount => 'Conta predefinida';
 
   @override
   String get notificationDescription =>
-      'Crie movimentos a partir das notificações de aplicações bancárias e de pagamento neste dispositivo. Apenas as notificações das aplicações selecionadas são lidas e permanecem no dispositivo até serem importadas. O montante e a moeda são reconhecidos automaticamente ou por um padrão personalizado.';
+      'Crie movimentos a partir das notificações de aplicações bancárias e de pagamento neste dispositivo. Apenas as notificações das aplicações selecionadas são lidas e permanecem no dispositivo até serem importadas. O montante e a moeda são reconhecidos automaticamente.';
 
   @override
   String get notificationGrant => 'Conceder acesso';
@@ -1034,13 +1038,6 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Ainda não foram recebidas notificações: as aplicações aparecem aqui depois de publicarem uma notificação';
-
-  @override
-  String get notificationPattern => 'Padrão personalizado (opcional)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Expressão regular com os grupos nomeados amount (obrigatório), currency e title, p. ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Não reconhecido';
@@ -2471,11 +2468,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get notificationClear => 'Limpar capturadas';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Os valores sem moeda (por exemplo, Débito 20,00) são considerados nesta moeda';
+
+  @override
   String get notificationDefaultAccount => 'Conta padrão';
 
   @override
   String get notificationDescription =>
-      'Crie transações a partir de notificações de aplicativos bancários e de pagamento neste dispositivo. Apenas as notificações dos aplicativos selecionados são lidas e ficam no dispositivo até serem importadas. O valor e a moeda são reconhecidos automaticamente ou por um padrão personalizado.';
+      'Crie transações a partir de notificações de aplicativos bancários e de pagamento neste dispositivo. Apenas as notificações dos aplicativos selecionados são lidas e ficam no dispositivo até serem importadas. O valor e a moeda são reconhecidos automaticamente.';
 
   @override
   String get notificationGrant => 'Conceder acesso';
@@ -2490,13 +2491,6 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get notificationNoApps =>
       'Nenhuma notificação recebida ainda: os aplicativos aparecem aqui depois de enviarem uma notificação';
-
-  @override
-  String get notificationPattern => 'Padrão personalizado (opcional)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Expressão regular com os grupos nomeados amount (obrigatório), currency e title, por exemplo, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Não reconhecido';

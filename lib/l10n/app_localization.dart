@@ -2005,6 +2005,12 @@ abstract class AppLocalizations {
   /// **'Clear Captured'**
   String get notificationClear;
 
+  /// No description provided for @notificationCurrencyTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Amounts without a currency (e.g. Debit 20.00) are taken in this currency'**
+  String get notificationCurrencyTooltip;
+
   /// No description provided for @notificationDefaultAccount.
   ///
   /// In en, this message translates to:
@@ -2014,7 +2020,7 @@ abstract class AppLocalizations {
   /// No description provided for @notificationDescription.
   ///
   /// In en, this message translates to:
-  /// **'Create transactions from notifications of banking and payment apps on this device. Only notifications of the selected apps are read, and they stay on the device until imported. The amount and the currency are recognized automatically or by a custom pattern.'**
+  /// **'Create transactions from notifications of banking and payment apps on this device. Only notifications of the selected apps are read, and they stay on the device until imported. The amount and the currency are recognized automatically.'**
   String get notificationDescription;
 
   /// No description provided for @notificationGrant.
@@ -2040,18 +2046,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No notifications have been received yet: apps appear here after they post a notification'**
   String get notificationNoApps;
-
-  /// No description provided for @notificationPattern.
-  ///
-  /// In en, this message translates to:
-  /// **'Custom Pattern (optional)'**
-  String get notificationPattern;
-
-  /// No description provided for @notificationPatternTooltip.
-  ///
-  /// In en, this message translates to:
-  /// **'Regular expression with the named groups amount (required), currency and title, e.g. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)'**
-  String get notificationPatternTooltip;
 
   /// No description provided for @notificationUnparsed.
   ///

@@ -1019,11 +1019,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notificationClear => 'Erfasste löschen';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Beträge ohne Währung (z. B. Belastung 20,00) werden in dieser Währung erfasst';
+
+  @override
   String get notificationDefaultAccount => 'Standardkonto';
 
   @override
   String get notificationDescription =>
-      'Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps auf diesem Gerät erstellen. Es werden nur Benachrichtigungen der ausgewählten Apps gelesen, und sie verbleiben bis zum Import auf dem Gerät. Betrag und Währung werden automatisch oder über ein eigenes Muster erkannt.';
+      'Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps auf diesem Gerät erstellen. Es werden nur Benachrichtigungen der ausgewählten Apps gelesen, und sie verbleiben bis zum Import auf dem Gerät. Betrag und Währung werden automatisch erkannt.';
 
   @override
   String get notificationGrant => 'Zugriff gewähren';
@@ -1038,13 +1042,6 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Bisher wurden keine Benachrichtigungen empfangen: Apps erscheinen hier, nachdem sie eine Benachrichtigung gesendet haben';
-
-  @override
-  String get notificationPattern => 'Eigenes Muster (optional)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Regulärer Ausdruck mit den benannten Gruppen amount (erforderlich), currency und title, z. B. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Nicht erkannt';

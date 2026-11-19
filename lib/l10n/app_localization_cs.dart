@@ -1009,11 +1009,15 @@ class AppLocalizationsCs extends AppLocalizations {
   String get notificationClear => 'Vymazat zachycená';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Částky bez měny (např. Debit 20.00) se berou v této měně';
+
+  @override
   String get notificationDefaultAccount => 'Výchozí účet';
 
   @override
   String get notificationDescription =>
-      'Vytvářejte transakce z oznámení bankovních a platebních aplikací v tomto zařízení. Čtou se pouze oznámení vybraných aplikací a zůstávají v zařízení až do importu. Částka a měna se rozpoznají automaticky nebo podle vlastního vzoru.';
+      'Vytvářejte transakce z oznámení bankovních a platebních aplikací v tomto zařízení. Čtou se pouze oznámení vybraných aplikací a zůstávají v zařízení až do importu. Částka a měna se rozpoznají automaticky.';
 
   @override
   String get notificationGrant => 'Udělit přístup';
@@ -1028,13 +1032,6 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Zatím nebyla přijata žádná oznámení: aplikace se zde zobrazí poté, co odešlou oznámení';
-
-  @override
-  String get notificationPattern => 'Vlastní vzor (volitelné)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Regulární výraz s pojmenovanými skupinami amount (povinná), currency a title, např. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Nerozpoznáno';

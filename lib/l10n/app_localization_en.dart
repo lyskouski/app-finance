@@ -1011,11 +1011,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationClear => 'Clear Captured';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Amounts without a currency (e.g. Debit 20.00) are taken in this currency';
+
+  @override
   String get notificationDefaultAccount => 'Default Account';
 
   @override
   String get notificationDescription =>
-      'Create transactions from notifications of banking and payment apps on this device. Only notifications of the selected apps are read, and they stay on the device until imported. The amount and the currency are recognized automatically or by a custom pattern.';
+      'Create transactions from notifications of banking and payment apps on this device. Only notifications of the selected apps are read, and they stay on the device until imported. The amount and the currency are recognized automatically.';
 
   @override
   String get notificationGrant => 'Grant Access';
@@ -1030,13 +1034,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'No notifications have been received yet: apps appear here after they post a notification';
-
-  @override
-  String get notificationPattern => 'Custom Pattern (optional)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Regular expression with the named groups amount (required), currency and title, e.g. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Not recognized';

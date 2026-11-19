@@ -1014,11 +1014,15 @@ class AppLocalizationsAz extends AppLocalizations {
   String get notificationClear => 'Tutulanları təmizlə';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Valyutasız məbləğlər (məs. Debit 20.00) bu valyutada götürülür';
+
+  @override
   String get notificationDefaultAccount => 'Defolt hesab';
 
   @override
   String get notificationDescription =>
-      'Bu cihazdakı bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar yaradın. Yalnız seçilmiş tətbiqlərin bildirişləri oxunur və idxal olunana qədər cihazda qalır. Məbləğ və valyuta avtomatik və ya fərdi şablonla tanınır.';
+      'Bu cihazdakı bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar yaradın. Yalnız seçilmiş tətbiqlərin bildirişləri oxunur və idxal olunana qədər cihazda qalır. Məbləğ və valyuta avtomatik tanınır.';
 
   @override
   String get notificationGrant => 'Giriş ver';
@@ -1033,13 +1037,6 @@ class AppLocalizationsAz extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Hələ bildiriş alınmayıb: tətbiqlər bildiriş göndərdikdən sonra burada görünür';
-
-  @override
-  String get notificationPattern => 'Fərdi şablon (istəyə bağlı)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'amount (məcburi), currency və title adlı qrupları olan müntəzəm ifadə, məsələn, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Tanınmadı';

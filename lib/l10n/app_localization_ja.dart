@@ -996,11 +996,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notificationClear => '取得済みを消去';
 
   @override
+  String get notificationCurrencyTooltip => '通貨のない金額（例：引落 20.00）はこの通貨として扱われます';
+
+  @override
   String get notificationDefaultAccount => '既定の口座';
 
   @override
   String get notificationDescription =>
-      'この端末の銀行・決済アプリの通知から取引を作成します。選択したアプリの通知のみが読み取られ、インポートされるまで端末に保存されます。金額と通貨は自動で、またはカスタムパターンで認識されます。';
+      'この端末の銀行・決済アプリの通知から取引を作成します。選択したアプリの通知のみが読み取られ、インポートされるまで端末に保存されます。金額と通貨は自動で認識されます。';
 
   @override
   String get notificationGrant => 'アクセスを許可';
@@ -1013,13 +1016,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notificationNoApps => 'まだ通知を受信していません：アプリは通知を送信した後にここに表示されます';
-
-  @override
-  String get notificationPattern => 'カスタムパターン（任意）';
-
-  @override
-  String get notificationPatternTooltip =>
-      '名前付きグループ amount（必須）、currency、title を含む正規表現。例： (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => '認識できません';

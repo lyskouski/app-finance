@@ -1008,11 +1008,15 @@ class AppLocalizationsPl extends AppLocalizations {
   String get notificationClear => 'Wyczyść odebrane';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Kwoty bez waluty (np. Obciążenie 20,00) są przyjmowane w tej walucie';
+
+  @override
   String get notificationDefaultAccount => 'Konto domyślne';
 
   @override
   String get notificationDescription =>
-      'Tworzenie transakcji z powiadomień aplikacji bankowych i płatniczych na tym urządzeniu. Odczytywane są tylko powiadomienia wybranych aplikacji i pozostają one na urządzeniu do czasu importu. Kwota i waluta są rozpoznawane automatycznie lub według własnego wzorca.';
+      'Tworzenie transakcji z powiadomień aplikacji bankowych i płatniczych na tym urządzeniu. Odczytywane są tylko powiadomienia wybranych aplikacji i pozostają one na urządzeniu do czasu importu. Kwota i waluta są rozpoznawane automatycznie.';
 
   @override
   String get notificationGrant => 'Przyznaj dostęp';
@@ -1027,13 +1031,6 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Nie otrzymano jeszcze powiadomień: aplikacje pojawią się tutaj po wysłaniu powiadomienia';
-
-  @override
-  String get notificationPattern => 'Własny wzorzec (opcjonalnie)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Wyrażenie regularne z nazwanymi grupami amount (wymagana), currency i title, np. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Nie rozpoznano';

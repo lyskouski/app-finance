@@ -18,13 +18,14 @@ import 'package:app_finance/design/generic/loading_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/integration/widgets/integration_account_card.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 class NotificationSource extends IntegrationTarget {
   final String package;
   final String label;
-  final TextEditingController pattern;
+  Currency? currency;
   bool auto;
 
   NotificationSource(
@@ -33,27 +34,16 @@ class NotificationSource extends IntegrationTarget {
     super.appAccount,
     super.category,
     required super.from,
-    String? pattern,
+    this.currency,
     this.auto = false,
-  }) : pattern = TextEditingController(text: pattern);
-
-  NotificationParsed? parse(
-    NotificationRecord record, {
-    List<String> income = NotificationParser.incomeKeywords,
-    List<String> balance = NotificationParser.balanceKeywords,
-  }) =>
-      NotificationParser.parse(record.title, record.text, pattern: pattern.text, income: income, balance: balance);
+  });
 
   NotificationApp toLink() => NotificationApp(
         account: appAccount,
         category: category,
-        pattern: pattern.text.trim(),
+        currency: currency?.code,
         auto: auto,
       );
-
-  void dispose() {
-    pattern.dispose();
-  }
 }
 
 class NotificationWidget extends StatefulWidget {
@@ -100,9 +90,6 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     controller.revision.removeListener(refresh);
-    for (final source in sources.values) {
-      source.dispose();
-    }
     income.dispose();
     balance.dispose();
     for (final item in accounts.values) {
@@ -150,9 +137,9 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           appAccount: link.account,
           category: link.category ?? AppPreferences.get(AppPreferences.prefBudget),
           from: DateTime.now().subtract(const Duration(days: 30)),
-          pattern: link.pattern,
+          currency: link.currency != null ? CurrencyProvider.find(link.currency!) : null,
           auto: link.auto,
-        )..pattern.addListener(() => persist(package));
+        );
       });
 
   Future<void> persist(String package) async {
@@ -252,10 +239,21 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
       children: [
         for (final record in scope.reversed.take(3))
           Builder(builder: (context) {
-            final parsed = item.parse(record, income: income.value, balance: balance.value);
-            final uuid =
-                NotificationParser.toAccount('${record.title}\n${record.text}', settings.accounts) ?? item.appAccount;
+            // The same order of currencies as by the import: recognized account, app, default account
+            final recognized = NotificationParser.toAccount('${record.title}\n${record.text}', settings.accounts);
+            final uuid = recognized ?? item.appAccount;
             final account = uuid != null ? state.getByUuid(uuid) : null;
+            final defaultAccount = item.appAccount != null ? state.getByUuid(item.appAccount!) : null;
+            final parsed = NotificationParser.parse(
+              record.title,
+              record.text,
+              fallback: (recognized != null && account is AccountAppData ? account.currency : null) ??
+                  item.currency ??
+                  (defaultAccount is AccountAppData ? defaultAccount.currency : null),
+              isBare: item.currency != null,
+              income: income.value,
+              balance: balance.value,
+            );
             return ListTile(
               dense: true,
               contentPadding: EdgeInsets.zero,
@@ -299,6 +297,16 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
       },
       onImport: () => importTransactions(item),
       children: [
+        InputWrapper.currency(
+          key: ValueKey('notification_currency_${item.package}'),
+          title: AppLocale.labels.currencyDefault,
+          tooltip: AppLocale.labels.notificationCurrencyTooltip,
+          value: item.currency,
+          onChange: (value) {
+            setState(() => item.currency = value);
+            persist(item.package);
+          },
+        ),
         SwitchListTile(
           key: ValueKey('notification_auto_${item.package}'),
           contentPadding: EdgeInsets.zero,
@@ -307,13 +315,8 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           value: item.auto,
           onChanged: isLoading ? null : (value) => toggleAuto(item, value),
         ),
-        InputWrapper.text(
-          title: AppLocale.labels.notificationPattern,
-          tooltip: AppLocale.labels.notificationPatternTooltip,
-          controller: item.pattern,
-        ),
         ListenableBuilder(
-          listenable: Listenable.merge([item.pattern, keywords]),
+          listenable: keywords,
           builder: (context, _) => buildPreview(context, item, scope, state),
         ),
         if (scope.isNotEmpty)

@@ -1017,11 +1017,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notificationClear => 'Borrar capturadas';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Los importes sin moneda (p. ej. Cargo 20,00) se toman en esta moneda';
+
+  @override
   String get notificationDefaultAccount => 'Cuenta predeterminada';
 
   @override
   String get notificationDescription =>
-      'Crea movimientos a partir de las notificaciones de las aplicaciones bancarias y de pago de este dispositivo. Solo se leen las notificaciones de las aplicaciones seleccionadas, que permanecen en el dispositivo hasta su importación. El importe y la moneda se reconocen automáticamente o mediante un patrón personalizado.';
+      'Crea movimientos a partir de las notificaciones de las aplicaciones bancarias y de pago de este dispositivo. Solo se leen las notificaciones de las aplicaciones seleccionadas, que permanecen en el dispositivo hasta su importación. El importe y la moneda se reconocen automáticamente.';
 
   @override
   String get notificationGrant => 'Conceder acceso';
@@ -1036,13 +1040,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Aún no se han recibido notificaciones: las aplicaciones aparecen aquí después de publicar una notificación';
-
-  @override
-  String get notificationPattern => 'Patrón personalizado (opcional)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Expresión regular con los grupos con nombre amount (obligatorio), currency y title, p. ej. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'No reconocido';

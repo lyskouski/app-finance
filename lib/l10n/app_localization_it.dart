@@ -1015,11 +1015,15 @@ class AppLocalizationsIt extends AppLocalizations {
   String get notificationClear => 'Cancella acquisite';
 
   @override
+  String get notificationCurrencyTooltip =>
+      'Gli importi senza valuta (ad es. Addebito 20,00) sono presi in questa valuta';
+
+  @override
   String get notificationDefaultAccount => 'Conto predefinito';
 
   @override
   String get notificationDescription =>
-      'Crea movimenti dalle notifiche delle app bancarie e di pagamento su questo dispositivo. Vengono lette solo le notifiche delle app selezionate, che restano sul dispositivo fino all\'importazione. Importo e valuta vengono riconosciuti automaticamente o tramite un modello personalizzato.';
+      'Crea movimenti dalle notifiche delle app bancarie e di pagamento su questo dispositivo. Vengono lette solo le notifiche delle app selezionate, che restano sul dispositivo fino all\'importazione. Importo e valuta vengono riconosciuti automaticamente.';
 
   @override
   String get notificationGrant => 'Concedi accesso';
@@ -1034,13 +1038,6 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get notificationNoApps =>
       'Nessuna notifica ricevuta finora: le app compaiono qui dopo aver inviato una notifica';
-
-  @override
-  String get notificationPattern => 'Modello personalizzato (facoltativo)';
-
-  @override
-  String get notificationPatternTooltip =>
-      'Espressione regolare con i gruppi denominati amount (obbligatorio), currency e title, ad es. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
   String get notificationUnparsed => 'Non riconosciuto';
