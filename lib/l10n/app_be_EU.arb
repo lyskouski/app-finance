@@ -403,6 +403,28 @@
     "milestones": "Viechi",
     "minute": "Minuta",
     "missingContent": "Fajl nia moža być apracavany (aĺbo admienieny)",
+    "monobankCreateAccount": "Stvaryć rachunak",
+    "monobankDescription": "Impart reštak i aperacyj kartak i słoikaŭ monobank z dapamohaj piersanaĺnaha tokiena. monobank dazvalaje adzin zapyt u chvilinu: impart za doŭhi pieryjad zajmaje niekaĺki chvilin. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "monobankHeadline": "monobank Personal API (Ukraina)",
+    "monobankJar": "Słoik",
+    "monobankProgress": "Zapyt vypisak: {done} z {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank dazvalaje adzin zapyt u chvilinu: nastupny praz {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Piersanaĺny tokien",
+    "monobankTokenSteps": "Jak atrymać piersanaĺny tokien:\n1. Adkryjcie api.monobank.ua ŭ braŭzery\n2. Adskanirujcie QR-kod u dadatku monobank i pacvierdzicie dostup\n3. Skapirujcie tokien sa staronki\n4. Ustaŭcie jaho nižej i naciśnicie «Padłučycca»\n5. Pryviažycie kožnuju kartku ci słoik da rachunku (abo stvarycie jaho) i impartujcie",
+    "monobankTokenTooltip": "Vydajecca na api.monobank.ua paślia skanavannia QR-koda ŭ dadatku monobank; zachoŭvajecca ŭ zašyfravanym vyhladzie",
     "navigationTooltip": "Adkryć haloŭnaje mieniu",
     "netProfit": "Prybytak: {value}",
     "@netProfit": {

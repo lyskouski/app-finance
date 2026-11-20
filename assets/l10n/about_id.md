@@ -79,6 +79,7 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
   - Enable Banking (EU): impor saldo dan transaksi dari bank Eropa (PSD2)
   - Wise API (Global): impor saldo dan transaksi akun multi-mata uang Wise (Token API Pribadi)
   - PrivatBank Autoclient (Ukraina): impor saldo dan transaksi rekening bisnis dari Privat24 for Business (token Autoclient)
+  - monobank Personal API (Ukraina): impor saldo dan transaksi kartu dan celengan monobank (token pribadi)
   - Pengurai Notifikasi (Android): transaksi dari notifikasi aplikasi perbankan dan pembayaran
 - Ekspor ke file Excel `XLSX`
 - Enkripsi data

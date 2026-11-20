@@ -403,6 +403,28 @@
     "milestones": "Marosimlar",
     "minute": "Daqiqa",
     "missingContent": "Faylni qayta ishlash mumkin emas (yoki bekor qilinadi)",
+    "monobankCreateAccount": "Hisob yaratish",
+    "monobankDescription": "Shaxsiy token yordamida monobank kartalari va jamg‘arma bankalarining qoldiqlari va operatsiyalarini import qilish. monobank daqiqasiga bitta so‘rovga ruxsat beradi: uzoq davrni import qilish bir necha daqiqa davom etadi. Faqat o‘qish uchun ruxsat: to‘lovlar amalga oshirilmaydi.",
+    "monobankHeadline": "monobank Personal API (Ukraina)",
+    "monobankJar": "Jamg‘arma banka",
+    "monobankProgress": "Ko‘chirmalar so‘ralmoqda: {done} / {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank daqiqasiga bitta so‘rovga ruxsat beradi: keyingisi {value} s dan keyin",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Shaxsiy token",
+    "monobankTokenSteps": "Shaxsiy tokenni qanday olish mumkin:\n1. Brauzerda api.monobank.ua ni oching\n2. QR kodni monobank ilovasi bilan skanerlang va ruxsatni tasdiqlang\n3. Tokenni sahifadan nusxalang\n4. Uni pastga joylashtiring va \"Ulanish\" tugmasini bosing\n5. Har bir karta yoki jamg‘arma bankani hisobga bog‘lang (yoki hisob yarating) va import qiling",
+    "monobankTokenTooltip": "monobank ilovasida QR kod skanerlangandan so‘ng api.monobank.ua da beriladi; shifrlangan holda saqlanadi",
     "navigationTooltip": "Asosiy menyuni oching",
     "netProfit": "Foyda: {value}",
     "@netProfit": {

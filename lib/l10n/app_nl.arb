@@ -403,6 +403,28 @@
     "milestones": "Mijlpalen",
     "minute": "Minuut",
     "missingContent": "Bestand kan niet worden verwerkt (geannuleerd)",
+    "monobankCreateAccount": "Rekening aanmaken",
+    "monobankDescription": "Import van saldi en transacties van monobank-kaarten en spaarpotten met een persoonlijk token. monobank staat één verzoek per minuut toe: het importeren van een lange periode duurt enkele minuten. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.",
+    "monobankHeadline": "monobank Personal API (Oekraïne)",
+    "monobankJar": "Spaarpot",
+    "monobankProgress": "Afschriften opvragen: {done} van {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank staat één verzoek per minuut toe: het volgende over {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Persoonlijk token",
+    "monobankTokenSteps": "Zo krijgt u een persoonlijk token:\n1. Open api.monobank.ua in een browser\n2. Scan de QR-code met de monobank-app en bevestig de toegang\n3. Kopieer het token van de pagina\n4. Plak het hieronder en druk op \"Verbinden\"\n5. Koppel elke kaart of spaarpot aan een rekening (of maak er een aan) en importeer",
+    "monobankTokenTooltip": "Uitgegeven op api.monobank.ua na het scannen van de QR-code in de monobank-app; versleuteld opgeslagen",
     "navigationTooltip": "Hoofdmenu openen",
     "netProfit": "Winst: {value}",
     "@netProfit": {

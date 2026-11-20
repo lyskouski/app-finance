@@ -403,6 +403,28 @@
     "milestones": "ეტაპები",
     "minute": "წუთი",
     "missingContent": "ფაილის დამუშავება შეუძლებელია (ან გაუქმდა)",
+    "monobankCreateAccount": "ანგარიშის შექმნა",
+    "monobankDescription": "monobank-ის ბარათებისა და ყულაბების ნაშთებისა და ოპერაციების იმპორტი პერსონალური ტოკენით. monobank წუთში ერთ მოთხოვნას უშვებს: ხანგრძლივი პერიოდის იმპორტს რამდენიმე წუთი სჭირდება. მხოლოდ წაკითხვის წვდომა: გადახდები არ სრულდება.",
+    "monobankHeadline": "monobank Personal API (უკრაინა)",
+    "monobankJar": "ყულაბა",
+    "monobankProgress": "ამონაწერების მოთხოვნა: {done} / {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank წუთში ერთ მოთხოვნას უშვებს: შემდეგი {value} წამში",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "პერსონალური ტოკენი",
+    "monobankTokenSteps": "როგორ მივიღოთ პერსონალური ტოკენი:\n1. გახსენით api.monobank.ua ბრაუზერში\n2. დაასკანერეთ QR კოდი monobank-ის აპლიკაციით და დაადასტურეთ წვდომა\n3. დააკოპირეთ ტოკენი გვერდიდან\n4. ჩასვით ქვემოთ და დააჭირეთ „დაკავშირება“\n5. მიაბით თითოეული ბარათი ან ყულაბა ანგარიშს (ან შექმენით) და მოახდინეთ იმპორტი",
+    "monobankTokenTooltip": "გაიცემა api.monobank.ua-ზე monobank-ის აპლიკაციაში QR კოდის დასკანერების შემდეგ; ინახება დაშიფრული სახით",
     "navigationTooltip": "მთავარი მენიუს გახსნა",
     "netProfit": "მოგება: {value}",
     "@netProfit": {

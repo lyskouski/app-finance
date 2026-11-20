@@ -79,6 +79,7 @@ zastaniecca ŭ baku.
   - Enable Banking (EU): impart reštkaŭ i aperacyj jeŭrapiejskich bankaŭ (PSD2)
   - Wise API (Global): impart reštkaŭ i aperacyj šmatvalutnych rachunkaŭ Wise (persanaĺny API-tokien)
   - PryvatBank Aŭtaklijent (Ukraina): impart reštak i aperacyj biznes-rachunkaŭ Privat24 dla biznesu (tokien Aŭtaklijenta)
+  - monobank Personal API (Ukraina): impart reštak i aperacyj kartak i słoikaŭ monobank (piersanaĺny tokien)
   - Apracoŭščyk Apaviaščeńniaŭ (Android): aperacyi z apaviaščeńniaŭ bankaŭskich i placiožnych prahram
 - Ekspart u fajl Excel `XLSX`
 - Šyfravańnie dadzienych

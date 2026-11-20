@@ -9,8 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'About';
@@ -103,8 +102,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get balanceDate => 'Balance Date Update';
 
   @override
-  String get balanceDateTooltip =>
-      'Outcomes and Incomes before this date won\'t affect the balance';
+  String get balanceDateTooltip => 'Outcomes and Incomes before this date won\'t affect the balance';
 
   @override
   String get balanceTooltip => 'Set Balance';
@@ -604,8 +602,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enableBankingBank => 'Bank';
 
   @override
-  String get enableBankingCode =>
-      'Address of the Page Opened after the Authorization';
+  String get enableBankingCode => 'Address of the Page Opened after the Authorization';
 
   @override
   String get enableBankingCodeTooltip =>
@@ -622,19 +619,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete =>
-      'Fill in the application ID, private key, redirect URL, and country';
+  String get enableBankingIncomplete => 'Fill in the application ID, private key, redirect URL, and country';
 
   @override
   String get enableBankingKey => 'Private Key (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      'Invalid private key: a PEM block \"PRIVATE KEY\" is expected';
+  String get enableBankingKeyInvalid => 'Invalid private key: a PEM block \"PRIVATE KEY\" is expected';
 
   @override
-  String get enableBankingKeyNotRsa =>
-      'Invalid private key: an RSA key is expected';
+  String get enableBankingKeyNotRsa => 'Invalid private key: an RSA key is expected';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -644,12 +638,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enableBankingLoadBanks => 'Load Banks';
 
   @override
-  String get enableBankingNoAuthPage =>
-      'Enable Banking returned no authorization page';
+  String get enableBankingNoAuthPage => 'Enable Banking returned no authorization page';
 
   @override
-  String get enableBankingNoCode =>
-      'No authorization code found in the address';
+  String get enableBankingNoCode => 'No authorization code found in the address';
 
   @override
   String get enableBankingRedirect => 'Redirect URL';
@@ -659,8 +651,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Registered for the application; the bank returns to it after the authorization';
 
   @override
-  String get enableBankingStateMismatch =>
-      'The address belongs to another authorization, connect again';
+  String get enableBankingStateMismatch => 'The address belongs to another authorization, connect again';
 
   @override
   String get encryptionMode => 'Data Encryption';
@@ -719,8 +710,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete =>
-      'Fill in the server URL, bank code, user ID and product registration ID';
+  String get finTsIncomplete => 'Fill in the server URL, bank code, user ID and product registration ID';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -742,8 +732,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get finTsProductId => 'Product Registration ID';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Issued by the Deutsche Kreditwirtschaft to the application\'s vendor';
+  String get finTsProductIdTooltip => 'Issued by the Deutsche Kreditwirtschaft to the application\'s vendor';
 
   @override
   String get finTsTan => 'TAN';
@@ -839,8 +828,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get incomeTooltip => 'Set Income Details';
 
   @override
-  String get integrationAccessDenied =>
-      'Access has been revoked or the credentials are incorrect';
+  String get integrationAccessDenied => 'Access has been revoked or the credentials are incorrect';
 
   @override
   String get integrationConnect => 'Connect';
@@ -866,8 +854,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired =>
-      'Only secure (HTTPS) addresses are allowed';
+  String get integrationHttpsRequired => 'Only secure (HTTPS) addresses are allowed';
 
   @override
   String get integrationImport => 'Import Transactions';
@@ -886,12 +873,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get integrationNoAccounts => 'The bank has provided no accounts';
 
   @override
-  String get integrationPaymentRequired =>
-      'The service requires a payment for the access';
+  String get integrationPaymentRequired => 'The service requires a payment for the access';
 
   @override
-  String get integrationSelectTarget =>
-      'Select the account and the budget category to import into';
+  String get integrationSelectTarget => 'Select the account and the budget category to import into';
 
   @override
   String integrationServiceError(Object value) {
@@ -899,8 +884,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get integrationUnexpectedResponse =>
-      'Unexpected response of the service';
+  String get integrationUnexpectedResponse => 'Unexpected response of the service';
 
   @override
   String get invoiceHeadline => 'Invoices';
@@ -956,6 +940,40 @@ class AppLocalizationsEn extends AppLocalizations {
   String get missingContent => 'File cannot be processed (either canceled)';
 
   @override
+  String get monobankCreateAccount => 'Create Account';
+
+  @override
+  String get monobankDescription =>
+      'Import balances and transactions of Monobank cards and jars with a personal token. Monobank allows one request per minute: importing a long period takes several minutes. Access is read-only: no payments are made.';
+
+  @override
+  String get monobankHeadline => 'Monobank Personal API (Ukraine)';
+
+  @override
+  String get monobankJar => 'Jar';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return 'Requesting statements: $done of $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'Monobank allows one request per minute: the next one in $value s';
+  }
+
+  @override
+  String get monobankToken => 'Personal Token';
+
+  @override
+  String get monobankTokenSteps =>
+      'How to get a personal token:\n1. Open api.monobank.ua in a browser\n2. Scan the QR code with the Monobank app and confirm the access\n3. Copy the token from the page\n4. Paste it below and press \"Connect\"\n5. Link each card or jar to an account (or create one) and import';
+
+  @override
+  String get monobankTokenTooltip =>
+      'Issued at api.monobank.ua after scanning the QR code in the Monobank app; stored encrypted';
+
+  @override
   String get navigationTooltip => 'Open main menu';
 
   @override
@@ -1008,8 +1026,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationClear => 'Clear Captured';
 
   @override
-  String get notificationCurrencyTooltip =>
-      'Amounts without a currency (e.g. Debit 20.00) are taken in this currency';
+  String get notificationCurrencyTooltip => 'Amounts without a currency (e.g. Debit 20.00) are taken in this currency';
 
   @override
   String get notificationDefaultAccount => 'Default Account';
@@ -1143,12 +1160,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privatBankIban => 'Account IBAN';
 
   @override
-  String get privatBankIbanInvalid =>
-      'Enter a Ukrainian IBAN: UA followed by 27 digits';
+  String get privatBankIbanInvalid => 'Enter a Ukrainian IBAN: UA followed by 27 digits';
 
   @override
-  String get privatBankIbanTooltip =>
-      'The API provides no list of accounts: add IBANs of the accounts one by one';
+  String get privatBankIbanTooltip => 'The API provides no list of accounts: add IBANs of the accounts one by one';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1228,8 +1243,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get secureOtpCode => 'One-time Password Code';
 
   @override
-  String get secureOtpCodeInvalid =>
-      'Invalid! Please, take fresh code and enter it';
+  String get secureOtpCodeInvalid => 'Invalid! Please, take fresh code and enter it';
 
   @override
   String get secureOtpDeactivated => 'Password Protection is deactivated';
@@ -1266,15 +1280,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'The SimpleFIN Bridge returned an access address without credentials';
+  String get simpleFinNoCredentials => 'The SimpleFIN Bridge returned an access address without credentials';
 
   @override
   String get simpleFinToken => 'SimpleFIN Setup Token';
 
   @override
-  String get simpleFinTokenClaimed =>
-      'The Setup Token does not exist or has already been used';
+  String get simpleFinTokenClaimed => 'The Setup Token does not exist or has already been used';
 
   @override
   String get simpleFinTokenInvalid => 'Invalid SimpleFIN Setup Token';
@@ -1477,8 +1489,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'How to get a Personal API Token:\n1. Sign in at wise.com in a browser (tokens cannot be created in the mobile app)\n2. Open Settings → Integrations and tools → API tokens\n3. Choose \"Add new token\", name it (e.g. Fingrom), and select \"Read only\" access\n4. Confirm with two-step verification and copy the token\n5. Paste it below and press \"Connect\"';
 
   @override
-  String get wiseTokenTooltip =>
-      'Created in Wise under Settings → API tokens (read-only if offered); stored encrypted';
+  String get wiseTokenTooltip => 'Created in Wise under Settings → API tokens (read-only if offered); stored encrypted';
 
   @override
   String get zoomState => 'Zoom In / Zoom Out';

@@ -403,6 +403,28 @@
     "milestones": "Etape",
     "minute": "Minut",
     "missingContent": "Fișierul nu poate fi procesat (fie anulat)",
+    "monobankCreateAccount": "Creează cont",
+    "monobankDescription": "Import de solduri și tranzacții ale cardurilor și pușculițelor monobank cu un token personal. monobank permite o cerere pe minut: importul unei perioade lungi durează câteva minute. Acces doar pentru citire: nu se efectuează plăți.",
+    "monobankHeadline": "monobank Personal API (Ucraina)",
+    "monobankJar": "Pușculiță",
+    "monobankProgress": "Se solicită extrasele: {done} din {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank permite o cerere pe minut: următoarea în {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Token personal",
+    "monobankTokenSteps": "Cum obțineți un token personal:\n1. Deschideți api.monobank.ua într-un browser\n2. Scanați codul QR cu aplicația monobank și confirmați accesul\n3. Copiați tokenul de pe pagină\n4. Lipiți-l mai jos și apăsați „Conectare”\n5. Asociați fiecare card sau pușculiță cu un cont (sau creați unul) și importați",
+    "monobankTokenTooltip": "Emis pe api.monobank.ua după scanarea codului QR în aplicația monobank; stocat criptat",
     "navigationTooltip": "Deschideți meniul principal",
     "netProfit": "Profit: {value}",
     "@netProfit": {

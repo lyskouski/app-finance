@@ -39,6 +39,8 @@ class AppPreferences {
   static const String prefWiseToken = 'wiseToken';
   static const String prefPrivatBank = 'privatbank';
   static const String prefPrivatBankToken = 'privatbankToken';
+  static const String prefMonobank = 'monobank';
+  static const String prefMonobankToken = 'monobankToken';
   static const String prefNotification = 'notificationParser';
 
   static const String isActive = 'true';

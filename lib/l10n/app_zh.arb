@@ -403,6 +403,28 @@
     "milestones": "里程碑",
     "minute": "分钟",
     "missingContent": "文件无法处理（或取消）",
+    "monobankCreateAccount": "创建账户",
+    "monobankDescription": "使用个人令牌导入 monobank 银行卡和储蓄罐的余额与交易。monobank 每分钟只允许一次请求：导入较长时间段需要几分钟。只读访问：不会进行任何支付。",
+    "monobankHeadline": "monobank Personal API（乌克兰）",
+    "monobankJar": "储蓄罐",
+    "monobankProgress": "正在获取对账单：{done} / {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank 每分钟只允许一次请求：{value} 秒后发送下一次",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "个人令牌",
+    "monobankTokenSteps": "如何获取个人令牌：\n1. 在浏览器中打开 api.monobank.ua\n2. 使用 monobank 应用扫描二维码并确认访问\n3. 从页面复制令牌\n4. 粘贴到下方并点击“连接”\n5. 将每张卡或储蓄罐关联到账户（或新建账户）并导入",
+    "monobankTokenTooltip": "在 monobank 应用中扫描二维码后于 api.monobank.ua 签发；加密存储",
     "navigationTooltip": "打开主菜单",
     "netProfit": "利润：{value}",
     "@netProfit": {

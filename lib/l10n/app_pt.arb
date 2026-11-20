@@ -403,6 +403,28 @@
     "milestones": "Marcos",
     "minute": "Minuto",
     "missingContent": "O ficheiro não pode ser processado (ou cancelado)",
+    "monobankCreateAccount": "Criar conta",
+    "monobankDescription": "Importação de saldos e movimentos de cartões e mealheiros monobank com um token pessoal. O monobank permite um pedido por minuto: importar um período longo demora vários minutos. Acesso só de leitura: não são efetuados pagamentos.",
+    "monobankHeadline": "monobank Personal API (Ucrânia)",
+    "monobankJar": "Mealheiro",
+    "monobankProgress": "A pedir extratos: {done} de {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "O monobank permite um pedido por minuto: o próximo dentro de {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Token pessoal",
+    "monobankTokenSteps": "Como obter um token pessoal:\n1. Abra api.monobank.ua num navegador\n2. Leia o código QR com a aplicação monobank e confirme o acesso\n3. Copie o token da página\n4. Cole-o abaixo e prima «Ligar»\n5. Associe cada cartão ou mealheiro a uma conta (ou crie uma) e importe",
+    "monobankTokenTooltip": "Emitido em api.monobank.ua após ler o código QR na aplicação monobank; guardado encriptado",
     "navigationTooltip": "Abrir o menu principal",
     "netProfit": "Lucro: {value}",
     "@netProfit": {

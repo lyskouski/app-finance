@@ -84,8 +84,7 @@ import 'app_localization_zh.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -93,8 +92,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -106,8 +104,7 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -1915,6 +1912,60 @@ abstract class AppLocalizations {
   /// **'File cannot be processed (either canceled)'**
   String get missingContent;
 
+  /// No description provided for @monobankCreateAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get monobankCreateAccount;
+
+  /// No description provided for @monobankDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of Monobank cards and jars with a personal token. Monobank allows one request per minute: importing a long period takes several minutes. Access is read-only: no payments are made.'**
+  String get monobankDescription;
+
+  /// No description provided for @monobankHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Monobank Personal API (Ukraine)'**
+  String get monobankHeadline;
+
+  /// No description provided for @monobankJar.
+  ///
+  /// In en, this message translates to:
+  /// **'Jar'**
+  String get monobankJar;
+
+  /// No description provided for @monobankProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Requesting statements: {done} of {total}'**
+  String monobankProgress(Object done, Object total);
+
+  /// No description provided for @monobankRateLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Monobank allows one request per minute: the next one in {value} s'**
+  String monobankRateLimit(Object value);
+
+  /// No description provided for @monobankToken.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Token'**
+  String get monobankToken;
+
+  /// No description provided for @monobankTokenSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'How to get a personal token:\n1. Open api.monobank.ua in a browser\n2. Scan the QR code with the Monobank app and confirm the access\n3. Copy the token from the page\n4. Paste it below and press \"Connect\"\n5. Link each card or jar to an account (or create one) and import'**
+  String get monobankTokenSteps;
+
+  /// No description provided for @monobankTokenTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued at api.monobank.ua after scanning the QR code in the Monobank app; stored encrypted'**
+  String get monobankTokenTooltip;
+
   /// No description provided for @navigationTooltip.
   ///
   /// In en, this message translates to:
@@ -2894,8 +2945,7 @@ abstract class AppLocalizations {
   String get zoomState;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -3016,8 +3066,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsZh();
   }
 
-  throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+  throw FlutterError('AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
       'an issue with the localizations generation tool. Please file an issue '
       'on GitHub with a reproducible sample app and the gen-l10n configuration '
       'that was used.');

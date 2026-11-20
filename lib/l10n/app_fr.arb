@@ -403,6 +403,28 @@
     "milestones": "Jalons",
     "minute": "Minute",
     "missingContent": "Le fichier ne peut pas être traité (soit annulé)",
+    "monobankCreateAccount": "Créer un compte",
+    "monobankDescription": "Import des soldes et des opérations des cartes et des tirelires monobank avec un jeton personnel. monobank autorise une requête par minute : l’import d’une longue période prend plusieurs minutes. Accès en lecture seule : aucun paiement n’est effectué.",
+    "monobankHeadline": "monobank Personal API (Ukraine)",
+    "monobankJar": "Tirelire",
+    "monobankProgress": "Demande des relevés : {done} sur {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank autorise une requête par minute : la prochaine dans {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Jeton personnel",
+    "monobankTokenSteps": "Comment obtenir un jeton personnel :\n1. Ouvrez api.monobank.ua dans un navigateur\n2. Scannez le code QR avec l’application monobank et confirmez l’accès\n3. Copiez le jeton depuis la page\n4. Collez-le ci-dessous et appuyez sur « Se connecter »\n5. Associez chaque carte ou tirelire à un compte (ou créez-en un) et importez",
+    "monobankTokenTooltip": "Délivré sur api.monobank.ua après le scan du code QR dans l’application monobank ; stocké chiffré",
     "navigationTooltip": "Ouvrir le menu principal",
     "netProfit": "Profit : {value}",
     "@netProfit": {

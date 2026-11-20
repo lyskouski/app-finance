@@ -9,8 +9,7 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Acerca de';
@@ -103,8 +102,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get balanceDate => 'Fecha de actualización del saldo';
 
   @override
-  String get balanceDateTooltip =>
-      'Los resultados e ingresos anteriores a esta fecha no afectarán al saldo';
+  String get balanceDateTooltip => 'Los resultados e ingresos anteriores a esta fecha no afectarán al saldo';
 
   @override
   String get balanceTooltip => 'Establecer Saldo';
@@ -323,8 +321,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get confirmHeader => 'Confirmar Acción';
 
   @override
-  String get confirmTooltip =>
-      '¿Está seguro? Esta acción no se puede deshacer.';
+  String get confirmTooltip => '¿Está seguro? Esta acción no se puede deshacer.';
 
   @override
   String get contributors => 'Colaboradores';
@@ -605,8 +602,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get enableBankingBank => 'Banco';
 
   @override
-  String get enableBankingCode =>
-      'Dirección de la página abierta tras la autorización';
+  String get enableBankingCode => 'Dirección de la página abierta tras la autorización';
 
   @override
   String get enableBankingCodeTooltip =>
@@ -630,12 +626,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get enableBankingKey => 'Clave privada (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      'Clave privada no válida: se espera un bloque PEM \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid => 'Clave privada no válida: se espera un bloque PEM \"PRIVATE KEY\"';
 
   @override
-  String get enableBankingKeyNotRsa =>
-      'Clave privada no válida: se espera una clave RSA';
+  String get enableBankingKeyNotRsa => 'Clave privada no válida: se espera una clave RSA';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -645,12 +639,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get enableBankingLoadBanks => 'Cargar bancos';
 
   @override
-  String get enableBankingNoAuthPage =>
-      'Enable Banking no devolvió ninguna página de autorización';
+  String get enableBankingNoAuthPage => 'Enable Banking no devolvió ninguna página de autorización';
 
   @override
-  String get enableBankingNoCode =>
-      'No se encontró ningún código de autorización en la dirección';
+  String get enableBankingNoCode => 'No se encontró ningún código de autorización en la dirección';
 
   @override
   String get enableBankingRedirect => 'URL de redirección';
@@ -660,8 +652,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Registrada para la aplicación; el banco vuelve a ella tras la autorización';
 
   @override
-  String get enableBankingStateMismatch =>
-      'La dirección pertenece a otra autorización, vuelve a conectar';
+  String get enableBankingStateMismatch => 'La dirección pertenece a otra autorización, vuelve a conectar';
 
   @override
   String get encryptionMode => 'Codificación de datos';
@@ -675,8 +666,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get errorExpired => 'Tarjeta caducada';
 
   @override
-  String get errorNegative =>
-      '¡No puede ser negativa! Por favor, corrija el error';
+  String get errorNegative => '¡No puede ser negativa! Por favor, corrija el error';
 
   @override
   String get example => 'Ejemplo';
@@ -711,8 +701,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get finTsBankCode => 'Código bancario (BLZ)';
 
   @override
-  String get finTsCustomerId =>
-      'ID de cliente (si es distinto del ID de usuario)';
+  String get finTsCustomerId => 'ID de cliente (si es distinto del ID de usuario)';
 
   @override
   String get finTsDescription =>
@@ -745,8 +734,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get finTsProductId => 'Número de registro del producto';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Asignado por la Deutsche Kreditwirtschaft al fabricante de la aplicación';
+  String get finTsProductIdTooltip => 'Asignado por la Deutsche Kreditwirtschaft al fabricante de la aplicación';
 
   @override
   String get finTsTan => 'TAN';
@@ -842,8 +830,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get incomeTooltip => 'Establecer detalles de ingresos';
 
   @override
-  String get integrationAccessDenied =>
-      'El acceso se ha revocado o las credenciales son incorrectas';
+  String get integrationAccessDenied => 'El acceso se ha revocado o las credenciales son incorrectas';
 
   @override
   String get integrationConnect => 'Conectar';
@@ -852,8 +839,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get integrationDateFrom => 'Importar movimientos desde';
 
   @override
-  String get integrationDefaultBudgetCategory =>
-      'Categoría de presupuesto predeterminada';
+  String get integrationDefaultBudgetCategory => 'Categoría de presupuesto predeterminada';
 
   @override
   String get integrationDisconnect => 'Desconectar';
@@ -870,8 +856,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired =>
-      'Solo se permiten direcciones seguras (HTTPS)';
+  String get integrationHttpsRequired => 'Solo se permiten direcciones seguras (HTTPS)';
 
   @override
   String get integrationImport => 'Importar movimientos';
@@ -887,16 +872,13 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get integrationNoAccounts =>
-      'El banco no ha proporcionado ninguna cuenta';
+  String get integrationNoAccounts => 'El banco no ha proporcionado ninguna cuenta';
 
   @override
-  String get integrationPaymentRequired =>
-      'El servicio requiere un pago para el acceso';
+  String get integrationPaymentRequired => 'El servicio requiere un pago para el acceso';
 
   @override
-  String get integrationSelectTarget =>
-      'Selecciona la cuenta y la categoría de presupuesto para la importación';
+  String get integrationSelectTarget => 'Selecciona la cuenta y la categoría de presupuesto para la importación';
 
   @override
   String integrationServiceError(Object value) {
@@ -904,8 +886,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get integrationUnexpectedResponse =>
-      'Respuesta inesperada del servicio';
+  String get integrationUnexpectedResponse => 'Respuesta inesperada del servicio';
 
   @override
   String get invoiceHeadline => 'Invoices';
@@ -961,6 +942,40 @@ class AppLocalizationsEs extends AppLocalizations {
   String get missingContent => 'No se puede procesar el archivo (o se cancela)';
 
   @override
+  String get monobankCreateAccount => 'Crear cuenta';
+
+  @override
+  String get monobankDescription =>
+      'Importación de saldos y movimientos de tarjetas y huchas de monobank con un token personal. monobank permite una solicitud por minuto: importar un período largo tarda varios minutos. Acceso de solo lectura: no se realizan pagos.';
+
+  @override
+  String get monobankHeadline => 'monobank Personal API (Ucrania)';
+
+  @override
+  String get monobankJar => 'Hucha';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return 'Solicitando extractos: $done de $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'monobank permite una solicitud por minuto: la siguiente en $value s';
+  }
+
+  @override
+  String get monobankToken => 'Token personal';
+
+  @override
+  String get monobankTokenSteps =>
+      'Cómo obtener un token personal:\n1. Abra api.monobank.ua en un navegador\n2. Escanee el código QR con la aplicación monobank y confirme el acceso\n3. Copie el token de la página\n4. Péguelo abajo y pulse «Conectar»\n5. Vincule cada tarjeta o hucha a una cuenta (o cree una) e importe';
+
+  @override
+  String get monobankTokenTooltip =>
+      'Se emite en api.monobank.ua tras escanear el código QR en la aplicación monobank; se guarda cifrado';
+
+  @override
   String get navigationTooltip => 'Abrir menú principal';
 
   @override
@@ -969,8 +984,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get noChartData =>
-      'Faltan datos (o no son suficientes) para mostrarlos';
+  String get noChartData => 'Faltan datos (o no son suficientes) para mostrarlos';
 
   @override
   String get notificationAccessSettings => 'Acceso a notificaciones';
@@ -1014,8 +1028,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notificationClear => 'Borrar capturadas';
 
   @override
-  String get notificationCurrencyTooltip =>
-      'Los importes sin moneda (p. ej. Cargo 20,00) se toman en esta moneda';
+  String get notificationCurrencyTooltip => 'Los importes sin moneda (p. ej. Cargo 20,00) se toman en esta moneda';
 
   @override
   String get notificationDefaultAccount => 'Cuenta predeterminada';
@@ -1117,8 +1130,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get peerPing => 'ping';
 
   @override
-  String get peerSent =>
-      'Los datos se transfieren a los Dispositivos conectados';
+  String get peerSent => 'Los datos se transfieren a los Dispositivos conectados';
 
   @override
   String get peerStatus => 'Status';
@@ -1150,8 +1162,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get privatBankIban => 'IBAN de la cuenta';
 
   @override
-  String get privatBankIbanInvalid =>
-      'Introduzca un IBAN ucraniano: UA seguido de 27 dígitos';
+  String get privatBankIbanInvalid => 'Introduzca un IBAN ucraniano: UA seguido de 27 dígitos';
 
   @override
   String get privatBankIbanTooltip =>
@@ -1235,12 +1246,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get secureOtpCode => 'Código de contraseña de un solo uso';
 
   @override
-  String get secureOtpCodeInvalid =>
-      '¡No es válido! Por favor, obtenga un nuevo código e introdúzcalo.';
+  String get secureOtpCodeInvalid => '¡No es válido! Por favor, obtenga un nuevo código e introdúzcalo.';
 
   @override
-  String get secureOtpDeactivated =>
-      'La protección con contraseña está desactivada';
+  String get secureOtpDeactivated => 'La protección con contraseña está desactivada';
 
   @override
   String get securePassword => 'Contraseña (Frase de recuperación)';
@@ -1274,19 +1283,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'El SimpleFIN Bridge devolvió una dirección de acceso sin credenciales';
+  String get simpleFinNoCredentials => 'El SimpleFIN Bridge devolvió una dirección de acceso sin credenciales';
 
   @override
   String get simpleFinToken => 'Token de configuración de SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed =>
-      'El token de configuración no existe o ya se ha utilizado';
+  String get simpleFinTokenClaimed => 'El token de configuración no existe o ya se ha utilizado';
 
   @override
-  String get simpleFinTokenInvalid =>
-      'Token de configuración de SimpleFIN no válido';
+  String get simpleFinTokenInvalid => 'Token de configuración de SimpleFIN no válido';
 
   @override
   String get simpleFinTokenTooltip =>
@@ -1420,8 +1426,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get total => 'total';
 
   @override
-  String get transactionFile =>
-      'Archivo de registro de transacciones Fingrom (.log)';
+  String get transactionFile => 'Archivo de registro de transacciones Fingrom (.log)';
 
   @override
   String get transferHeadline => 'Transferencia';
@@ -1460,8 +1465,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get validTillDate => 'Fecha de validez';
 
   @override
-  String get webDav =>
-      'Autoría y control de versiones distribuido por la Web (WebDav)';
+  String get webDav => 'Autoría y control de versiones distribuido por la Web (WebDav)';
 
   @override
   String get wiseDescription =>
@@ -1471,8 +1475,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get wiseHeadline => 'Wise API (Global)';
 
   @override
-  String get wiseNoProfiles =>
-      'No hay perfiles de Wise disponibles para el token';
+  String get wiseNoProfiles => 'No hay perfiles de Wise disponibles para el token';
 
   @override
   String get wiseProfile => 'Perfil';

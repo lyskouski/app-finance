@@ -403,6 +403,28 @@
     "milestones": "मील के पत्थर",
     "minute": "मिनट",
     "missingContent": "फ़ाइल संसाधित नहीं की जा सकती (या तो रद्द की गई)",
+    "monobankCreateAccount": "खाता बनाएँ",
+    "monobankDescription": "व्यक्तिगत टोकन के साथ monobank कार्डों और जार (बचत गुल्लक) के शेष और लेन-देन का आयात। monobank प्रति मिनट एक अनुरोध की अनुमति देता है: लंबी अवधि के आयात में कई मिनट लगते हैं। केवल पढ़ने की पहुँच: कोई भुगतान नहीं किया जाता।",
+    "monobankHeadline": "monobank Personal API (यूक्रेन)",
+    "monobankJar": "जार",
+    "monobankProgress": "विवरण का अनुरोध: {total} में से {done}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank प्रति मिनट एक अनुरोध की अनुमति देता है: अगला {value} सेकंड में",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "व्यक्तिगत टोकन",
+    "monobankTokenSteps": "व्यक्तिगत टोकन कैसे प्राप्त करें:\n1. ब्राउज़र में api.monobank.ua खोलें\n2. monobank ऐप से QR कोड स्कैन करें और पहुँच की पुष्टि करें\n3. पृष्ठ से टोकन कॉपी करें\n4. इसे नीचे चिपकाएँ और \"कनेक्ट करें\" दबाएँ\n5. प्रत्येक कार्ड या जार को किसी खाते से जोड़ें (या नया बनाएँ) और आयात करें",
+    "monobankTokenTooltip": "monobank ऐप में QR कोड स्कैन करने के बाद api.monobank.ua पर जारी किया जाता है; एन्क्रिप्टेड रूप में संग्रहीत",
     "navigationTooltip": "मुख्य मेनू खोलें",
     "netProfit": "लाभ: {value}",
     "@netProfit": {

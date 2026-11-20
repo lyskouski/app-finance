@@ -403,6 +403,28 @@
     "milestones": "نقاط عطفی",
     "minute": "دقیقه",
     "missingContent": "فایل قابل پردازش نیست (یا لغو می شود)",
+    "monobankCreateAccount": "ایجاد حساب",
+    "monobankDescription": "وارد کردن موجودی‌ها و تراکنش‌های کارت‌ها و قلک‌های monobank با یک توکن شخصی. monobank در هر دقیقه یک درخواست را مجاز می‌داند: وارد کردن یک دوره طولانی چند دقیقه طول می‌کشد. دسترسی فقط خواندنی: هیچ پرداختی انجام نمی‌شود.",
+    "monobankHeadline": "monobank Personal API (اوکراین)",
+    "monobankJar": "قلک",
+    "monobankProgress": "درخواست صورت‌حساب‌ها: {done} از {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank در هر دقیقه یک درخواست را مجاز می‌داند: درخواست بعدی پس از {value} ثانیه",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "توکن شخصی",
+    "monobankTokenSteps": "نحوه دریافت توکن شخصی:\n1. api.monobank.ua را در مرورگر باز کنید\n2. کد QR را با برنامه monobank اسکن کرده و دسترسی را تأیید کنید\n3. توکن را از صفحه کپی کنید\n4. آن را در زیر جای‌گذاری کرده و «اتصال» را بزنید\n5. هر کارت یا قلک را به یک حساب پیوند دهید (یا یکی ایجاد کنید) و وارد کنید",
+    "monobankTokenTooltip": "پس از اسکن کد QR در برنامه monobank در api.monobank.ua صادر می‌شود؛ به صورت رمزگذاری‌شده ذخیره می‌شود",
     "navigationTooltip": "منوی اصلی را باز کنید",
     "netProfit": "سود: {value}",
     "@netProfit": {
