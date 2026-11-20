@@ -4,6 +4,7 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 
 ### 8.1.0
 - Adăugat Wise API (Global): solduri și import de tranzacții ale conturilor multivalută Wise, conversii ca transferuri
+- Adăugat PrivatBank Autoclient (Ucraina): solduri și importul tranzacțiilor conturilor de afaceri după IBAN
 - Adăugat Notificări Parser (Android): tranzacții din notificările aplicațiilor bancare și de plată, recunoscute automat sau printr-un model personalizat
 - Predicția categoriei de buget pentru facturile importate fără categorie în fișier
 

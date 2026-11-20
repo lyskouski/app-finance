@@ -1132,6 +1132,46 @@ class AppLocalizationsKa extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'ანგარიშის დამატება';
+
+  @override
+  String get privatBankDescription =>
+      'Privat24 for Business-ის ბიზნეს ანგარიშების (ინდმეწარმეებისა და კომპანიების) ნაშთებისა და ტრანზაქციების იმპორტი Autoclient ტოკენით. პირად ანგარიშებს API არ უჭერს მხარს. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (უკრაინა)';
+
+  @override
+  String get privatBankIban => 'ანგარიშის IBAN';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'შეიყვანეთ უკრაინული IBAN: UA და 27 ციფრი';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API არ იძლევა ანგარიშების სიას: დაამატეთ ანგარიშების IBAN-ები სათითაოდ';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank ამზადებს ამონაწერებს (ფაზა $value): სცადეთ ხელახლა რამდენიმე წუთში';
+  }
+
+  @override
+  String get privatBankRemove => 'ანგარიშის წაშლა';
+
+  @override
+  String get privatBankToken => 'Autoclient ტოკენი';
+
+  @override
+  String get privatBankTokenSteps =>
+      'როგორ მივიღოთ Autoclient ტოკენი:\n1. შედით Privat24 for Business-ში\n2. გახსენით ინტეგრაცია (Autoclient)\n3. გააქტიურეთ და დააკოპირეთ ტოკენი\n4. ჩასვით ქვემოთ და დააჭირეთ „დაკავშირებას“\n5. დაამატეთ იმპორტირებადი ანგარიშების IBAN-ები';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'გაიცემა Privat24 for Business-ში, განყოფილებაში ინტეგრაცია (Autoclient); ინახება დაშიფრული სახით';
+
+  @override
   String get processIsFinished => 'დასრულებულია!';
 
   @override

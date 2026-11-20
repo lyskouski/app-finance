@@ -1128,6 +1128,45 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Přidat účet';
+
+  @override
+  String get privatBankDescription =>
+      'Import zůstatků a transakcí podnikatelských účtů (OSVČ a firem) z Privat24 for Business pomocí tokenu Autoclient. Osobní účty API nepodporuje. Přístup je pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (Ukrajina)';
+
+  @override
+  String get privatBankIban => 'IBAN účtu';
+
+  @override
+  String get privatBankIbanInvalid => 'Zadejte ukrajinský IBAN: UA a 27 číslic';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API neposkytuje seznam účtů: přidejte IBAN účtů jeden po druhém';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank připravuje výpisy (fáze $value): zkuste to znovu za několik minut';
+  }
+
+  @override
+  String get privatBankRemove => 'Odebrat účet';
+
+  @override
+  String get privatBankToken => 'Token Autoclient';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Jak získat token Autoclient:\n1. Přihlaste se do Privat24 for Business\n2. Otevřete Integrace (Autoclient)\n3. Aktivujte ji a zkopírujte token\n4. Vložte jej níže a stiskněte „Připojit“\n5. Přidejte IBAN účtů k importu';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Vydává se v Privat24 for Business v sekci Integrace (Autoclient); uloženo šifrovaně';
+
+  @override
   String get processIsFinished => 'Dokončeno!';
 
   @override

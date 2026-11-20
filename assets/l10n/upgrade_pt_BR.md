@@ -4,6 +4,7 @@ _A lista completa de atualizações pode ser visualizada no item de navegação 
 
 ### 8.1.0
 - Adicionado o Wise API (Global): saldos e importação de transações de contas multimoeda Wise, conversões como transferências
+- Adicionado PrivatBank Autoclient (Ucrânia): saldos e importação de transações de contas empresariais por IBAN
 - Adicionado o Analisador de notificações (Android): transações a partir de notificações de aplicativos bancários e de pagamento, reconhecidas automaticamente ou por um padrão personalizado
 - Previsão da categoria de orçamento para contas importadas sem categoria no arquivo
 

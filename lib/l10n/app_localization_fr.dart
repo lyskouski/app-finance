@@ -1138,6 +1138,46 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Ajouter un compte';
+
+  @override
+  String get privatBankDescription =>
+      'Importer les soldes et les transactions des comptes professionnels (entrepreneurs individuels et sociétés) de Privat24 for Business avec un jeton Autoclient. Les comptes personnels ne sont pas pris en charge par l\'API. L\'accès est en lecture seule : aucun paiement n\'est effectué.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (Ukraine)';
+
+  @override
+  String get privatBankIban => 'IBAN du compte';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'Saisissez un IBAN ukrainien : UA suivi de 27 chiffres';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'L\'API ne fournit pas de liste de comptes : ajoutez les IBAN des comptes un par un';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank prépare les relevés (phase $value) : réessayez dans quelques minutes';
+  }
+
+  @override
+  String get privatBankRemove => 'Supprimer le compte';
+
+  @override
+  String get privatBankToken => 'Jeton Autoclient';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Comment obtenir un jeton Autoclient :\n1. Connectez-vous à Privat24 for Business\n2. Ouvrez Intégration (Autoclient)\n3. Activez-la et copiez le jeton\n4. Collez-le ci-dessous et appuyez sur « Se connecter »\n5. Ajoutez les IBAN des comptes à importer';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Délivré dans Privat24 for Business sous Intégration (Autoclient) ; stocké chiffré';
+
+  @override
   String get processIsFinished => 'Terminé !';
 
   @override

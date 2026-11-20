@@ -1126,6 +1126,46 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'افزودن حساب';
+
+  @override
+  String get privatBankDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های حساب‌های تجاری (مشاغل انفرادی و شرکت‌ها) در Privat24 for Business با توکن Autoclient. حساب‌های شخصی توسط API پشتیبانی نمی‌شوند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (اوکراین)';
+
+  @override
+  String get privatBankIban => 'IBAN حساب';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'یک IBAN اوکراینی وارد کنید: UA و سپس ۲۷ رقم';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API فهرستی از حساب‌ها ارائه نمی‌دهد: IBAN حساب‌ها را یکی‌یکی اضافه کنید';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank در حال آماده‌سازی صورت‌حساب‌ها است (مرحله $value): چند دقیقه دیگر دوباره تلاش کنید';
+  }
+
+  @override
+  String get privatBankRemove => 'حذف حساب';
+
+  @override
+  String get privatBankToken => 'توکن Autoclient';
+
+  @override
+  String get privatBankTokenSteps =>
+      'نحوه دریافت توکن Autoclient:\n1. وارد Privat24 for Business شوید\n2. بخش یکپارچه‌سازی (Autoclient) را باز کنید\n3. آن را فعال کرده و توکن را کپی کنید\n4. آن را در زیر جای‌گذاری کرده و «اتصال» را بزنید\n5. IBAN حساب‌های مورد نظر برای وارد کردن را اضافه کنید';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'در Privat24 for Business در بخش یکپارچه‌سازی (Autoclient) صادر می‌شود؛ به صورت رمزگذاری‌شده ذخیره می‌شود';
+
+  @override
   String get processIsFinished => 'تمام شده!';
 
   @override

@@ -1130,6 +1130,45 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Додати рахунок';
+
+  @override
+  String get privatBankDescription =>
+      'Імпорт залишків і операцій бізнес-рахунків (ФОП і компаній) Приват24 для бізнесу за допомогою токена Автоклієнта. Особисті рахунки API не підтримує. Доступ лише для читання: платежі не виконуються.';
+
+  @override
+  String get privatBankHeadline => 'ПриватБанк Автоклієнт (Україна)';
+
+  @override
+  String get privatBankIban => 'IBAN рахунку';
+
+  @override
+  String get privatBankIbanInvalid => 'Введіть український IBAN: UA і 27 цифр';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API не надає списку рахунків: додайте IBAN рахунків по одному';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'ПриватБанк готує виписки (фаза $value): повторіть спробу за кілька хвилин';
+  }
+
+  @override
+  String get privatBankRemove => 'Видалити рахунок';
+
+  @override
+  String get privatBankToken => 'Токен Автоклієнта';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Як отримати токен Автоклієнта:\n1. Увійдіть у Приват24 для бізнесу\n2. Відкрийте «Інтеграція (Автоклієнт)»\n3. Активуйте її та скопіюйте токен\n4. Вставте його нижче й натисніть «Підключитися»\n5. Додайте IBAN рахунків для імпорту';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Видається у Приват24 для бізнесу в розділі «Інтеграція (Автоклієнт)»; зберігається в зашифрованому вигляді';
+
+  @override
   String get processIsFinished => 'Закінчено!';
 
   @override

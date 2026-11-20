@@ -10,6 +10,8 @@ import 'package:app_finance/_classes/integration/notification/notification_chann
 import 'package:app_finance/_classes/integration/notification/notification_controller.dart';
 import 'package:app_finance/_classes/integration/notification/notification_parser.dart';
 import 'package:app_finance/_classes/integration/notification/notification_settings.dart';
+import 'package:app_finance/_classes/integration/privatbank/privatbank_client.dart';
+import 'package:app_finance/_classes/integration/privatbank/privatbank_settings.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
 import 'package:app_finance/_classes/integration/wise/wise_client.dart';
@@ -26,6 +28,7 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
+import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:fints/fints.dart';
@@ -144,11 +147,13 @@ void main() {
     expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
     expect(find.text('Enable Banking (EU)'), findsOneWidget);
     expect(find.text('Wise API (Global)'), findsOneWidget);
+    expect(find.text('PrivatBank Autoclient (Ukraine)'), findsOneWidget);
     expect(find.text('Notifications Parser'), findsOneWidget);
     // Protocols are separated from the APIs of single institutions
     final divider = tester.getTopLeft(find.byKey(const ValueKey('integration_divider'))).dy;
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_enablebanking'))).dy, lessThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_wise'))).dy, greaterThan(divider));
+    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_privatbank'))).dy, greaterThan(divider));
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsNothing);
     expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsNothing);
 
@@ -355,6 +360,112 @@ void main() {
     await tester.pumpAndSettle();
     expect(SimpleFinSettings.loadAccess(), isNull);
     expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('PrivatBank connects with an Autoclient token and imports transactions by IBAN',
+      (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'UAH' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'FOP UAH',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Office', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+    const iban = 'UA213052990000026007233566001';
+
+    final requests = <http.Request>[];
+    final client = PrivatBankClient(
+      client: MockClient((request) async {
+        requests.add(request);
+        final body = switch (request.url.path) {
+          '/api/statements/settings' => {
+              'status': 'SUCCESS',
+              'settings': {'phase': 'WRK'},
+            },
+          '/api/statements/balance' => {
+              'status': 'SUCCESS',
+              'exist_next_page': false,
+              'balances': [
+                {'acc': iban, 'currency': 'UAH', 'balanceOut': '1520.25', 'nameACC': 'FOP'},
+              ],
+            },
+          '/api/statements/transactions' => {
+              'status': 'SUCCESS',
+              'exist_next_page': false,
+              'transactions': [
+                {
+                  'ID': 'T-1',
+                  'AUT_CNTR_NAM': 'Hosting',
+                  'CCY': 'UAH',
+                  'FL_REAL': 'r',
+                  'PR_PR': 'r',
+                  'SUM': '250.00',
+                  'TRANTYPE': 'D',
+                  'DATE_TIME_DAT_OD_TIM_P': '02.11.2026 10:15:00',
+                },
+              ],
+            },
+          _ => throw StateError('Unexpected ${request.url}'),
+        };
+        return http.Response(jsonEncode(body), 200);
+      }),
+    );
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(body: SingleChildScrollView(child: PrivatBankWidget(client: client))),
+    ));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField).first, 'autoclient-token');
+    await tester.ensureVisible(find.byKey(const ValueKey('privatbank_connect')));
+    await tester.tap(find.byKey(const ValueKey('privatbank_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(requests.first.headers['token'], 'autoclient-token');
+    expect(PrivatBankSettings.loadToken(), 'autoclient-token');
+
+    await tester.enterText(find.byType(TextField).last, 'UA21 3052 9900 0002 6007 2335 6600 1');
+    await tester.ensureVisible(find.byKey(const ValueKey('privatbank_add')));
+    await tester.tap(find.byKey(const ValueKey('privatbank_add')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(PrivatBankSettings.load().accounts, [iban]);
+    expect(find.textContaining('1520.25 UAH'), findsOneWidget);
+
+    final widgetState = tester.state<PrivatBankWidgetState>(find.byType(PrivatBankWidget));
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 0'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    expect(state.getList(AppDataType.bills, false).whereType<BillAppData>().last.title, 'Hosting');
+    expect(PrivatBankSettings.load().links, {iban: account.uuid});
+
+    await tester.ensureVisible(find.byKey(const ValueKey('privatbank_forget')));
+    await tester.tap(find.byKey(const ValueKey('privatbank_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(PrivatBankSettings.loadToken(), isNull);
+    expect(find.byKey(const ValueKey('privatbank_steps')), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

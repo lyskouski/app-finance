@@ -1133,6 +1133,46 @@ class AppLocalizationsAz extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Hesab əlavə et';
+
+  @override
+  String get privatBankDescription =>
+      'Privat24 for Business biznes hesablarının (fərdi sahibkarlar və şirkətlər) qalıqlarını və əməliyyatlarını Autoclient tokeni ilə idxal edin. Şəxsi hesablar API tərəfindən dəstəklənmir. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (Ukrayna)';
+
+  @override
+  String get privatBankIban => 'Hesabın IBAN-ı';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'Ukrayna IBAN-ı daxil edin: UA və ardınca 27 rəqəm';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API hesabların siyahısını vermir: hesabların IBAN-larını bir-bir əlavə edin';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank çıxarışları hazırlayır (mərhələ $value): bir neçə dəqiqədən sonra yenidən cəhd edin';
+  }
+
+  @override
+  String get privatBankRemove => 'Hesabı sil';
+
+  @override
+  String get privatBankToken => 'Autoclient tokeni';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Autoclient tokenini necə əldə etmək olar:\n1. Privat24 for Business-ə daxil olun\n2. İnteqrasiya (Autoclient) bölməsini açın\n3. Onu aktivləşdirin və tokeni kopyalayın\n4. Aşağıya yapışdırın və \"Qoşul\" düyməsini basın\n5. İdxal ediləcək hesabların IBAN-larını əlavə edin';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Privat24 for Business-də İnteqrasiya (Autoclient) bölməsində verilir; şifrələnmiş şəkildə saxlanılır';
+
+  @override
   String get processIsFinished => 'Bitdi!';
 
   @override

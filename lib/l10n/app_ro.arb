@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Adaugă cont",
+    "privatBankDescription": "Importă soldurile și tranzacțiile conturilor de afaceri (PFA și companii) din Privat24 for Business cu un token Autoclient. Conturile personale nu sunt acceptate de API. Accesul este doar pentru citire: nu se efectuează plăți.",
+    "privatBankHeadline": "PrivatBank Autoclient (Ucraina)",
+    "privatBankIban": "IBAN-ul contului",
+    "privatBankIbanInvalid": "Introduceți un IBAN ucrainean: UA urmat de 27 de cifre",
+    "privatBankIbanTooltip": "API-ul nu oferă o listă de conturi: adăugați IBAN-urile conturilor unul câte unul",
+    "privatBankNotReady": "PrivatBank pregătește extrasele (faza {value}): reîncercați peste câteva minute",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Elimină contul",
+    "privatBankToken": "Token Autoclient",
+    "privatBankTokenSteps": "Cum obțineți un token Autoclient:\n1. Autentificați-vă în Privat24 for Business\n2. Deschideți Integrare (Autoclient)\n3. Activați-o și copiați tokenul\n4. Lipiți-l mai jos și apăsați „Conectare”\n5. Adăugați IBAN-urile conturilor de importat",
+    "privatBankTokenTooltip": "Emis în Privat24 for Business la Integrare (Autoclient); stocat criptat",
     "processIsFinished": "Terminat!",
     "progress": "Progres: {value}%",
     "@progress": {

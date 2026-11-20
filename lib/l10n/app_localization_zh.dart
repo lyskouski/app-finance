@@ -1109,6 +1109,44 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => '添加账户';
+
+  @override
+  String get privatBankDescription =>
+      '使用 Autoclient 令牌导入 Privat24 for Business 企业账户（个体经营者和公司）的余额和交易。API 不支持个人账户。仅限只读访问：不会进行任何付款。';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient（乌克兰）';
+
+  @override
+  String get privatBankIban => '账户 IBAN';
+
+  @override
+  String get privatBankIbanInvalid => '请输入乌克兰 IBAN：UA 后跟 27 位数字';
+
+  @override
+  String get privatBankIbanTooltip => 'API 不提供账户列表：请逐个添加账户的 IBAN';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank 正在准备对账单（阶段 $value）：请几分钟后重试';
+  }
+
+  @override
+  String get privatBankRemove => '删除账户';
+
+  @override
+  String get privatBankToken => 'Autoclient 令牌';
+
+  @override
+  String get privatBankTokenSteps =>
+      '如何获取 Autoclient 令牌：\n1. 登录 Privat24 for Business\n2. 打开“集成（Autoclient）”\n3. 启用并复制令牌\n4. 将其粘贴到下方并点击“连接”\n5. 添加要导入的账户 IBAN';
+
+  @override
+  String get privatBankTokenTooltip =>
+      '在 Privat24 for Business 的“集成（Autoclient）”中签发；加密存储';
+
+  @override
   String get processIsFinished => '已完成！';
 
   @override
@@ -2521,6 +2559,44 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String pongStatus(Object uuid) {
     return '已接收來自 $uuid 的請求';
   }
+
+  @override
+  String get privatBankAdd => '新增帳戶';
+
+  @override
+  String get privatBankDescription =>
+      '使用 Autoclient 權杖匯入 Privat24 for Business 企業帳戶（個體經營者和公司）的餘額和交易。API 不支援個人帳戶。僅限唯讀存取：不會進行任何付款。';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient（烏克蘭）';
+
+  @override
+  String get privatBankIban => '帳戶 IBAN';
+
+  @override
+  String get privatBankIbanInvalid => '請輸入烏克蘭 IBAN：UA 後接 27 位數字';
+
+  @override
+  String get privatBankIbanTooltip => 'API 不提供帳戶清單：請逐一新增帳戶的 IBAN';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank 正在準備對帳單（階段 $value）：請幾分鐘後重試';
+  }
+
+  @override
+  String get privatBankRemove => '刪除帳戶';
+
+  @override
+  String get privatBankToken => 'Autoclient 權杖';
+
+  @override
+  String get privatBankTokenSteps =>
+      '如何取得 Autoclient 權杖：\n1. 登入 Privat24 for Business\n2. 開啟「整合（Autoclient）」\n3. 啟用並複製權杖\n4. 將其貼到下方並點擊「連線」\n5. 新增要匯入的帳戶 IBAN';
+
+  @override
+  String get privatBankTokenTooltip =>
+      '在 Privat24 for Business 的「整合（Autoclient）」中核發；加密儲存';
 
   @override
   String get processIsFinished => '完成！';

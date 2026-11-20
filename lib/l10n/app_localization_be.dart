@@ -1131,6 +1131,45 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Дадаць рахунак';
+
+  @override
+  String get privatBankDescription =>
+      'Імпарт рэштак і аперацый бізнес-рахункаў (ФАП і кампаній) Приват24 для бізнесу з дапамогай токена Аўтакліента. Асабістыя рахункі API не падтрымлівае. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get privatBankHeadline => 'ПрыватБанк Аўтакліент (Украіна)';
+
+  @override
+  String get privatBankIban => 'IBAN рахунку';
+
+  @override
+  String get privatBankIbanInvalid => 'Увядзіце ўкраінскі IBAN: UA і 27 лічбаў';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API не дае спісу рахункаў: дадайце IBAN рахункаў па адным';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'ПрыватБанк рыхтуе выпіскі (фаза $value): паўтарыце спробу праз некалькі хвілін';
+  }
+
+  @override
+  String get privatBankRemove => 'Выдаліць рахунак';
+
+  @override
+  String get privatBankToken => 'Токен Аўтакліента';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Як атрымаць токен Аўтакліента:\n1. Увайдзіце ў Приват24 для бізнесу\n2. Адкрыйце «Інтеграція (Автоклієнт)»\n3. Актывуйце яе і скапіруйце токен\n4. Устаўце яго ніжэй і націсніце «Падключыцца»\n5. Дадайце IBAN рахункаў для імпарту';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Выдаецца ў Приват24 для бізнесу ў раздзеле «Інтеграція (Автоклієнт)»; захоўваецца ў зашыфраваным выглядзе';
+
+  @override
   String get processIsFinished => 'Скончана!';
 
   @override
@@ -2573,6 +2612,46 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String pongStatus(Object uuid) {
     return 'Pryniaty zapyt z $uuid';
   }
+
+  @override
+  String get privatBankAdd => 'Dadać rachunak';
+
+  @override
+  String get privatBankDescription =>
+      'Impart reštak i aperacyj biznes-rachunkaŭ (FAP i kampanij) Privat24 dla biznesu z dapamohaj tokiena Aŭtaklijenta. Asabistyja rachunki API nie padtrymlivaje. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get privatBankHeadline => 'PryvatBank Aŭtaklijent (Ukraina)';
+
+  @override
+  String get privatBankIban => 'IBAN rachunku';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'Uviadzicie ŭkrainski IBAN: UA i 27 ličbaŭ';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API nie daje spisu rachunkaŭ: dadajcie IBAN rachunkaŭ pa adnym';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PryvatBank rychtuje vypiski (faza $value): paŭtarycie sprobu praz niekaĺki chvilin';
+  }
+
+  @override
+  String get privatBankRemove => 'Vydalić rachunak';
+
+  @override
+  String get privatBankToken => 'Tokien Aŭtaklijenta';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Jak atrymać tokien Aŭtaklijenta:\n1. Uvajdzicie ŭ Privat24 dla biznesu\n2. Adkryjcie «Integration (Autoclient)»\n3. Aktyvujcie jaje i skapirujcie tokien\n4. Ustaŭcie jaho nižej i naciśnicie «Padłučycca»\n5. Dadajcie IBAN rachunkaŭ dla impartu';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Vydajecca ŭ Privat24 dla biznesu ŭ raździele «Integration (Autoclient)»; zachoŭvajecca ŭ zašyfravanym vyhladzie';
 
   @override
   String get processIsFinished => 'Skončana!';

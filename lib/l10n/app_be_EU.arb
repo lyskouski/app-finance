@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Dadać rachunak",
+    "privatBankDescription": "Impart reštak i aperacyj biznes-rachunkaŭ (FAP i kampanij) Privat24 dla biznesu z dapamohaj tokiena Aŭtaklijenta. Asabistyja rachunki API nie padtrymlivaje. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "privatBankHeadline": "PryvatBank Aŭtaklijent (Ukraina)",
+    "privatBankIban": "IBAN rachunku",
+    "privatBankIbanInvalid": "Uviadzicie ŭkrainski IBAN: UA i 27 ličbaŭ",
+    "privatBankIbanTooltip": "API nie daje spisu rachunkaŭ: dadajcie IBAN rachunkaŭ pa adnym",
+    "privatBankNotReady": "PryvatBank rychtuje vypiski (faza {value}): paŭtarycie sprobu praz niekaĺki chvilin",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Vydalić rachunak",
+    "privatBankToken": "Tokien Aŭtaklijenta",
+    "privatBankTokenSteps": "Jak atrymać tokien Aŭtaklijenta:\n1. Uvajdzicie ŭ Privat24 dla biznesu\n2. Adkryjcie «Integration (Autoclient)»\n3. Aktyvujcie jaje i skapirujcie tokien\n4. Ustaŭcie jaho nižej i naciśnicie «Padłučycca»\n5. Dadajcie IBAN rachunkaŭ dla impartu",
+    "privatBankTokenTooltip": "Vydajecca ŭ Privat24 dla biznesu ŭ raździele «Integration (Autoclient)»; zachoŭvajecca ŭ zašyfravanym vyhladzie",
     "processIsFinished": "Skončana!",
     "progress": "Prahres: {value}%",
     "@progress": {

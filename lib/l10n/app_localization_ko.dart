@@ -1115,6 +1115,45 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => '계좌 추가';
+
+  @override
+  String get privatBankDescription =>
+      'Autoclient 토큰으로 Privat24 for Business의 사업자 계좌(개인사업자 및 법인)의 잔액과 거래 내역을 가져옵니다. 개인 계좌는 API에서 지원되지 않습니다. 읽기 전용 접근으로 결제는 이루어지지 않습니다.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (우크라이나)';
+
+  @override
+  String get privatBankIban => '계좌 IBAN';
+
+  @override
+  String get privatBankIbanInvalid => '우크라이나 IBAN을 입력하세요: UA 다음에 27자리 숫자';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API는 계좌 목록을 제공하지 않습니다: 계좌의 IBAN을 하나씩 추가하세요';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank에서 거래 내역서를 준비 중입니다(단계 $value): 몇 분 후에 다시 시도하세요';
+  }
+
+  @override
+  String get privatBankRemove => '계좌 삭제';
+
+  @override
+  String get privatBankToken => 'Autoclient 토큰';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Autoclient 토큰을 받는 방법:\n1. Privat24 for Business에 로그인합니다\n2. 연동(Autoclient)을 엽니다\n3. 활성화하고 토큰을 복사합니다\n4. 아래에 붙여넣고 \"연결\"을 누릅니다\n5. 가져올 계좌의 IBAN을 추가합니다';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Privat24 for Business의 연동(Autoclient)에서 발급되며, 암호화되어 저장됩니다';
+
+  @override
   String get processIsFinished => '완료!';
 
   @override

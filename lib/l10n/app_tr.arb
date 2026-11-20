@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Hesap ekle",
+    "privatBankDescription": "Privat24 for Business'taki ticari hesapların (şahıs işletmeleri ve şirketler) bakiyelerini ve işlemlerini bir Autoclient belirteciyle içe aktarın. Kişisel hesaplar API tarafından desteklenmez. Erişim salt okunurdur: ödeme yapılmaz.",
+    "privatBankHeadline": "PrivatBank Autoclient (Ukrayna)",
+    "privatBankIban": "Hesap IBAN",
+    "privatBankIbanInvalid": "Bir Ukrayna IBAN girin: UA ve ardından 27 rakam",
+    "privatBankIbanTooltip": "API hesap listesi sağlamaz: hesapların IBAN'larını tek tek ekleyin",
+    "privatBankNotReady": "PrivatBank hesap özetlerini hazırlıyor (aşama {value}): birkaç dakika sonra tekrar deneyin",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Hesabı kaldır",
+    "privatBankToken": "Autoclient belirteci",
+    "privatBankTokenSteps": "Autoclient belirteci nasıl alınır:\n1. Privat24 for Business'a giriş yapın\n2. Entegrasyon (Autoclient) bölümünü açın\n3. Etkinleştirin ve belirteci kopyalayın\n4. Aşağıya yapıştırın ve \"Bağlan\"a basın\n5. İçe aktarılacak hesapların IBAN'larını ekleyin",
+    "privatBankTokenTooltip": "Privat24 for Business içinde Entegrasyon (Autoclient) altında verilir; şifreli olarak saklanır",
     "processIsFinished": "Bitti!",
     "progress": "İlerleme: {value}%",
     "@progress": {

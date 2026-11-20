@@ -4,6 +4,7 @@ _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf
 
 ### 8.1.0
 - Wise API (Global) hinzugefügt: Salden und Import von Umsätzen von Wise-Mehrwährungskonten, Umrechnungen als Überweisungen
+- PrivatBank Autoclient (Ukraine) hinzugefügt: Salden und Import von Umsätzen von Geschäftskonten per IBAN
 - Benachrichtigungen Parser (Android) hinzugefügt: Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps, automatisch oder über ein eigenes Muster erkannt
 - Vorhersage der Budgetkategorie für importierte Rechnungen ohne Kategorie in der Datei
 
