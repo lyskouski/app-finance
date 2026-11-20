@@ -460,6 +460,8 @@
     "notificationGrant": "アクセスを許可",
     "notificationIncome": "収入キーワード",
     "notificationIncomeTooltip": "通知を収入として判定する語句：語句を入力し、Enterキーで追加します",
+    "notificationMerchant": "加盟店ラベル",
+    "notificationMerchantTooltip": "コロンと加盟店名が続く語（場所: 店舗）：語を入力し Enter キーで追加します",
     "notificationNoApps": "まだ通知を受信していません：アプリは通知を送信した後にここに表示されます",
     "notificationUnparsed": "認識できません",
     "notifyHeadline": "通知パーサー",

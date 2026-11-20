@@ -460,6 +460,8 @@
     "notificationGrant": "授予存取權",
     "notificationIncome": "收入關鍵字",
     "notificationIncomeTooltip": "用於將通知標記為收入的詞語：輸入詞語後按 Enter 新增",
+    "notificationMerchant": "商家標籤",
+    "notificationMerchantTooltip": "後接冒號與商家名稱的詞語（地點：商店）：輸入詞語後按 Enter 新增",
     "notificationNoApps": "尚未收到任何通知：應用程式傳送通知後會顯示在這裡",
     "notificationUnparsed": "無法辨識",
     "notifyHeadline": "通知解析器",

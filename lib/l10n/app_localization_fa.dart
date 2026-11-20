@@ -9,7 +9,8 @@ class AppLocalizationsFa extends AppLocalizations {
   AppLocalizationsFa([String locale = 'fa']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'در باره';
@@ -102,7 +103,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get balanceDate => 'به روز رسانی تاریخ موجودی';
 
   @override
-  String get balanceDateTooltip => 'نتایج و درآمدهای قبل از این تاریخ بر روی مانده تأثیری نخواهد داشت';
+  String get balanceDateTooltip =>
+      'نتایج و درآمدهای قبل از این تاریخ بر روی مانده تأثیری نخواهد داشت';
 
   @override
   String get balanceTooltip => 'تعادل را تنظیم کنید';
@@ -619,16 +621,19 @@ class AppLocalizationsFa extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete => 'شناسه برنامه، کلید خصوصی، نشانی URL بازگشت و کشور را وارد کنید';
+  String get enableBankingIncomplete =>
+      'شناسه برنامه، کلید خصوصی، نشانی URL بازگشت و کشور را وارد کنید';
 
   @override
   String get enableBankingKey => 'کلید خصوصی (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => 'کلید خصوصی نامعتبر: بلوک PEM «PRIVATE KEY» مورد انتظار است';
+  String get enableBankingKeyInvalid =>
+      'کلید خصوصی نامعتبر: بلوک PEM «PRIVATE KEY» مورد انتظار است';
 
   @override
-  String get enableBankingKeyNotRsa => 'کلید خصوصی نامعتبر: کلید RSA مورد انتظار است';
+  String get enableBankingKeyNotRsa =>
+      'کلید خصوصی نامعتبر: کلید RSA مورد انتظار است';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -638,7 +643,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get enableBankingLoadBanks => 'بارگیری بانک‌ها';
 
   @override
-  String get enableBankingNoAuthPage => 'Enable Banking صفحه مجوزدهی را برنگرداند';
+  String get enableBankingNoAuthPage =>
+      'Enable Banking صفحه مجوزدهی را برنگرداند';
 
   @override
   String get enableBankingNoCode => 'کد مجوزدهی در نشانی یافت نشد';
@@ -647,10 +653,12 @@ class AppLocalizationsFa extends AppLocalizations {
   String get enableBankingRedirect => 'نشانی URL بازگشت';
 
   @override
-  String get enableBankingRedirectTooltip => 'برای برنامه ثبت شده است؛ بانک پس از مجوزدهی به آن بازمی‌گردد';
+  String get enableBankingRedirectTooltip =>
+      'برای برنامه ثبت شده است؛ بانک پس از مجوزدهی به آن بازمی‌گردد';
 
   @override
-  String get enableBankingStateMismatch => 'این نشانی متعلق به مجوزدهی دیگری است، دوباره متصل شوید';
+  String get enableBankingStateMismatch =>
+      'این نشانی متعلق به مجوزدهی دیگری است، دوباره متصل شوید';
 
   @override
   String get encryptionMode => 'رمزگذاری داده ها';
@@ -709,7 +717,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete => 'نشانی URL سرور، کد بانک، شناسه کاربر و شماره ثبت محصول را وارد کنید';
+  String get finTsIncomplete =>
+      'نشانی URL سرور، کد بانک، شناسه کاربر و شماره ثبت محصول را وارد کنید';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -725,13 +734,15 @@ class AppLocalizationsFa extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint => 'فقط برای این نشست استفاده می‌شود و هرگز ذخیره نمی‌شود';
+  String get finTsPinHint =>
+      'فقط برای این نشست استفاده می‌شود و هرگز ذخیره نمی‌شود';
 
   @override
   String get finTsProductId => 'شماره ثبت محصول';
 
   @override
-  String get finTsProductIdTooltip => 'توسط Deutsche Kreditwirtschaft به سازنده برنامه اعطا می‌شود';
+  String get finTsProductIdTooltip =>
+      'توسط Deutsche Kreditwirtschaft به سازنده برنامه اعطا می‌شود';
 
   @override
   String get finTsTan => 'TAN';
@@ -827,7 +838,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get incomeTooltip => 'تنظیم جزئیات درآمد';
 
   @override
-  String get integrationAccessDenied => 'دسترسی لغو شده یا اطلاعات ورود نادرست است';
+  String get integrationAccessDenied =>
+      'دسترسی لغو شده یا اطلاعات ورود نادرست است';
 
   @override
   String get integrationConnect => 'اتصال';
@@ -875,7 +887,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get integrationPaymentRequired => 'سرویس برای دسترسی پرداخت می‌خواهد';
 
   @override
-  String get integrationSelectTarget => 'حساب و دسته بودجه را برای وارد کردن انتخاب کنید';
+  String get integrationSelectTarget =>
+      'حساب و دسته بودجه را برای وارد کردن انتخاب کنید';
 
   @override
   String integrationServiceError(Object value) {
@@ -1025,7 +1038,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get notificationClear => 'پاک کردن دریافت‌شده‌ها';
 
   @override
-  String get notificationCurrencyTooltip => 'مبالغ بدون ارز (مثلاً برداشت 20.00) با این ارز ثبت می‌شوند';
+  String get notificationCurrencyTooltip =>
+      'مبالغ بدون ارز (مثلاً برداشت 20.00) با این ارز ثبت می‌شوند';
 
   @override
   String get notificationDefaultAccount => 'حساب پیش‌فرض';
@@ -1043,6 +1057,13 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get notificationIncomeTooltip =>
       'واژه‌هایی که اعلان را به عنوان درآمد مشخص می‌کنند: واژه‌ای بنویسید و برای افزودن Enter را بزنید';
+
+  @override
+  String get notificationMerchant => 'برچسب‌های فروشنده';
+
+  @override
+  String get notificationMerchantTooltip =>
+      'واژه‌هایی که پس از آن‌ها دونقطه و نام فروشنده می‌آید (مکان: فروشگاه): واژه‌ای بنویسید و برای افزودن Enter را بزنید';
 
   @override
   String get notificationNoApps =>
@@ -1159,10 +1180,12 @@ class AppLocalizationsFa extends AppLocalizations {
   String get privatBankIban => 'IBAN حساب';
 
   @override
-  String get privatBankIbanInvalid => 'یک IBAN اوکراینی وارد کنید: UA و سپس ۲۷ رقم';
+  String get privatBankIbanInvalid =>
+      'یک IBAN اوکراینی وارد کنید: UA و سپس ۲۷ رقم';
 
   @override
-  String get privatBankIbanTooltip => 'API فهرستی از حساب‌ها ارائه نمی‌دهد: IBAN حساب‌ها را یکی‌یکی اضافه کنید';
+  String get privatBankIbanTooltip =>
+      'API فهرستی از حساب‌ها ارائه نمی‌دهد: IBAN حساب‌ها را یکی‌یکی اضافه کنید';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1230,7 +1253,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get searchTooltip => 'جستجو';
 
   @override
-  String get secureBioNotMatch => 'احراز هویت ناموفق بود! لطفاً دوباره تلاش کنید';
+  String get secureBioNotMatch =>
+      'احراز هویت ناموفق بود! لطفاً دوباره تلاش کنید';
 
   @override
   String get secureBioPromptReason => 'لطفاً برای ادامه احراز هویت کنید';
@@ -1242,7 +1266,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get secureOtpCode => 'کد رمز عبور یکباره';
 
   @override
-  String get secureOtpCodeInvalid => 'کد نامعتبر! لطفاً کد جدیدی بگیرید و وارد کنید';
+  String get secureOtpCodeInvalid =>
+      'کد نامعتبر! لطفاً کد جدیدی بگیرید و وارد کنید';
 
   @override
   String get secureOtpDeactivated => 'حفاظت با رمز عبور غیرفعال است';
@@ -1279,13 +1304,15 @@ class AppLocalizationsFa extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge نشانی دسترسی بدون اطلاعات ورود برگرداند';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge نشانی دسترسی بدون اطلاعات ورود برگرداند';
 
   @override
   String get simpleFinToken => 'توکن راه‌اندازی SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed => 'توکن راه‌اندازی وجود ندارد یا قبلاً استفاده شده است';
+  String get simpleFinTokenClaimed =>
+      'توکن راه‌اندازی وجود ندارد یا قبلاً استفاده شده است';
 
   @override
   String get simpleFinTokenInvalid => 'توکن راه‌اندازی SimpleFIN نامعتبر است';

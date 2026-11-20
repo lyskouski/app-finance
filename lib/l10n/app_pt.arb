@@ -460,6 +460,8 @@
     "notificationGrant": "Conceder acesso",
     "notificationIncome": "Palavras-chave de receita",
     "notificationIncomeTooltip": "Palavras que marcam uma notificação como receita: escreva uma palavra e prima Enter para a adicionar",
+    "notificationMerchant": "Etiquetas do comerciante",
+    "notificationMerchantTooltip": "Palavras seguidas de dois pontos e de um comerciante (Local: Loja): escreva uma palavra e prima Enter para a adicionar",
     "notificationNoApps": "Ainda não foram recebidas notificações: as aplicações aparecem aqui depois de publicarem uma notificação",
     "notificationUnparsed": "Não reconhecido",
     "notifyHeadline": "Analisador de notificações",

@@ -460,6 +460,8 @@
     "notificationGrant": "Berikan Akses",
     "notificationIncome": "Kata kunci pemasukan",
     "notificationIncomeTooltip": "Kata yang menandai notifikasi sebagai pemasukan: ketik kata dan tekan Enter untuk menambahkannya",
+    "notificationMerchant": "Label pedagang",
+    "notificationMerchantTooltip": "Kata yang diikuti titik dua dan nama pedagang (Lokasi: Toko): ketik kata dan tekan Enter untuk menambahkannya",
     "notificationNoApps": "Belum ada notifikasi yang diterima: aplikasi muncul di sini setelah mengirim notifikasi",
     "notificationUnparsed": "Tidak dikenali",
     "notifyHeadline": "Pengurai Notifikasi",

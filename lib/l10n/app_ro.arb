@@ -460,6 +460,8 @@
     "notificationGrant": "Acordă acces",
     "notificationIncome": "Cuvinte cheie pentru venit",
     "notificationIncomeTooltip": "Cuvinte care marchează o notificare ca venit: tastați un cuvânt și apăsați Enter pentru a-l adăuga",
+    "notificationMerchant": "Etichete comerciant",
+    "notificationMerchantTooltip": "Cuvinte urmate de două puncte și un comerciant (Locație: Magazin): tastați un cuvânt și apăsați Enter pentru a-l adăuga",
     "notificationNoApps": "Nu s-au primit încă notificări: aplicațiile apar aici după ce trimit o notificare",
     "notificationUnparsed": "Nerecunoscut",
     "notifyHeadline": "Notificări Parser",

@@ -460,6 +460,8 @@
     "notificationGrant": "Zugriff gewähren",
     "notificationIncome": "Einnahme-Schlüsselwörter",
     "notificationIncomeTooltip": "Wörter, die eine Benachrichtigung als Einnahme kennzeichnen: Wort eingeben und mit Enter hinzufügen",
+    "notificationMerchant": "Händler-Bezeichnungen",
+    "notificationMerchantTooltip": "Wörter, auf die ein Doppelpunkt und ein Händler folgen (Ort: Geschäft): Wort eingeben und mit Enter hinzufügen",
     "notificationNoApps": "Bisher wurden keine Benachrichtigungen empfangen: Apps erscheinen hier, nachdem sie eine Benachrichtigung gesendet haben",
     "notificationUnparsed": "Nicht erkannt",
     "notifyHeadline": "Benachrichtigungen Parser",

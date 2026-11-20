@@ -147,6 +147,7 @@ class NotificationController with WidgetsBindingObserver {
             from: DateTime.fromMillisecondsSinceEpoch(0),
             income: settings.income,
             balance: settings.balance,
+            merchant: settings.merchant,
             accounts: settings.accounts,
           );
           added += summary.added;
@@ -172,6 +173,7 @@ class NotificationController with WidgetsBindingObserver {
     required DateTime from,
     List<String> income = NotificationParser.incomeKeywords,
     List<String> balance = NotificationParser.balanceKeywords,
+    List<String> merchant = NotificationParser.merchantLabels,
     Map<String, List<String>> accounts = const {},
   }) async {
     final account = state.getByUuid(link.account!);
@@ -188,6 +190,7 @@ class NotificationController with WidgetsBindingObserver {
       appCurrency: link.currency != null ? CurrencyProvider.find(link.currency!) : null,
       income: income,
       balance: balance,
+      merchant: merchant,
       accounts: accounts,
       currencyOf: (uuid) => switch (state.getByUuid(uuid)) { AccountAppData item => item.currency, _ => null },
       prediction: state.prediction,

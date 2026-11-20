@@ -460,6 +460,8 @@
     "notificationGrant": "Accorder l'accès",
     "notificationIncome": "Mots-clés de revenu",
     "notificationIncomeTooltip": "Mots indiquant qu'une notification est un revenu : saisissez un mot et appuyez sur Entrée pour l'ajouter",
+    "notificationMerchant": "Libellés du commerçant",
+    "notificationMerchantTooltip": "Mots suivis de deux-points et d'un commerçant (Lieu : Magasin) : saisissez un mot et appuyez sur Entrée pour l'ajouter",
     "notificationNoApps": "Aucune notification reçue pour l'instant : les applications apparaissent ici après avoir publié une notification",
     "notificationUnparsed": "Non reconnu",
     "notifyHeadline": "Analyseur de notifications",

@@ -32,9 +32,10 @@ class NotificationApp {
 class NotificationSettings {
   // Package name of the application => its link to the account
   final Map<String, NotificationApp> apps;
-  // Keywords to detect income and to skip balance amounts (for all apps), the built-in ones by default
+  // Keywords to detect income, to skip balance amounts and to find a merchant (for all apps), the built-in ones by default
   List<String> income;
   List<String> balance;
+  List<String> merchant;
   // Keywords to recognize the account (uuid) of a transaction, otherwise the default one of the app is taken
   Map<String, List<String>> accounts;
 
@@ -42,11 +43,13 @@ class NotificationSettings {
     Map<String, NotificationApp>? apps,
     List<String>? income,
     List<String>? balance,
+    List<String>? merchant,
     Map<String, List<String>>? accounts,
   })  : apps = apps ?? {},
         accounts = accounts ?? {},
         income = income ?? [...NotificationParser.incomeKeywords],
-        balance = balance ?? [...NotificationParser.balanceKeywords];
+        balance = balance ?? [...NotificationParser.balanceKeywords],
+        merchant = merchant ?? [...NotificationParser.merchantLabels];
 
   NotificationApp get(String package) => apps.putIfAbsent(package, NotificationApp.new);
 
@@ -54,6 +57,7 @@ class NotificationSettings {
         'apps': apps.map((key, value) => MapEntry(key, value.toJson())),
         'income': income,
         'balance': balance,
+        'merchant': merchant,
         'accounts': {
           for (final entry in accounts.entries)
             if (entry.value.isNotEmpty) entry.key: entry.value,
@@ -69,6 +73,7 @@ class NotificationSettings {
         ),
         income: _toKeywords(json['income']),
         balance: _toKeywords(json['balance']),
+        merchant: _toKeywords(json['merchant']),
         accounts: (json['accounts'] as Map<String, dynamic>? ?? {})
             .map((key, value) => MapEntry(key, _toKeywords(value) ?? <String>[])),
       );

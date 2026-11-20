@@ -460,6 +460,8 @@
     "notificationGrant": "授予访问权限",
     "notificationIncome": "收入关键词",
     "notificationIncomeTooltip": "用于将通知标记为收入的词语：输入词语后按 Enter 添加",
+    "notificationMerchant": "商户标签",
+    "notificationMerchantTooltip": "后接冒号和商户名称的词语（地点：商店）：输入词语后按 Enter 添加",
     "notificationNoApps": "尚未收到任何通知：应用发送通知后会显示在这里",
     "notificationUnparsed": "无法识别",
     "notifyHeadline": "通知解析器",

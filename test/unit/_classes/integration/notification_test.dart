@@ -68,6 +68,16 @@ void main() {
       expect(NotificationParser.parse('', 'Покупка 5 BYN в Евроопт, карта *1234')!.title, 'Евроопт');
     });
 
+    test('extracts the merchant from a labelled field', () {
+      const iko = 'Kwota: 59,99 PLN. \nKonto: 12..9458 \nLokalizacja: BLIK ZBLIŻENIOWY: ROSSMANN 42 \n'
+          'Stan konta po transakc…';
+      final result = NotificationParser.parse('IKO', iko);
+      expect((result!.amount, result.currency, result.title), (-59.99, 'PLN', 'BLIK ZBLIŻENIOWY: ROSSMANN 42'));
+      expect(NotificationParser.parse('', 'Card payment 9.99 EUR\nMerchant: Starbucks')!.title, 'Starbucks');
+      expect(NotificationParser.parse('', 'Списание 5 BYN; Место: Евроопт')!.title, 'Евроопт');
+      expect(NotificationParser.parse('', 'Report: 5 EUR spent')!.title, 'Report: 5 EUR spent');
+    });
+
     test('uses the text as a title without a merchant', () {
       expect(NotificationParser.parse('Bank', 'Card payment 9.99 EUR')!.title, 'Card payment 9.99 EUR');
     });
@@ -179,6 +189,17 @@ void main() {
       expect(NotificationParser.parse('', text, balance: ['remaining'])!.amount, -10.0);
       expect(NotificationParser.parse('', 'Balance 500 EUR', balance: [])!.amount, -500.0);
     });
+
+    test('applies user merchant labels', () {
+      const text = 'Paid 10 EUR\nTerminal: Bakery\nLokalizacja: Kiosk';
+      expect(NotificationParser.parse('', text)!.title, 'Kiosk');
+      expect(NotificationParser.parse('', text, merchant: ['terminal'])!.title, 'Bakery');
+      // User labels replace the default ones, the merchant after a preposition is still recognized
+      expect(NotificationParser.parse('', text, merchant: ['payee'])!.title,
+          'Paid 10 EUR Terminal: Bakery Lokalizacja: Kiosk');
+      expect(NotificationParser.parse('', 'Merchant: Cafe, paid 4 EUR at Bar', merchant: [])!.title, 'Bar');
+      expect(NotificationParser.parse('', 'Payee (card): Cafe; 4 EUR', merchant: ['payee (card)'])!.title, 'Cafe');
+    });
   });
 
   group('NotificationImporter', () {
@@ -262,9 +283,18 @@ void main() {
         from: DateTime(2026),
         income: ['payout'],
         balance: ['remaining'],
+        merchant: ['payer'],
       );
       expect((summary.added, summary.pending), (1, 1));
       expect(added.single, isA<InvoiceAppData>());
+      importer.run(
+        records: [record('Paid 5 EUR\nPayer: Office', id: 'c')],
+        account: 'acc',
+        category: 'cat',
+        from: DateTime(2026),
+        merchant: ['payer'],
+      );
+      expect((added.last as BillAppData).title, 'Office');
     });
   });
 
@@ -293,10 +323,12 @@ void main() {
       final settings = NotificationSettings.load();
       expect(settings.income, NotificationParser.incomeKeywords);
       expect(settings.balance, NotificationParser.balanceKeywords);
+      expect(settings.merchant, NotificationParser.merchantLabels);
 
       settings
         ..income = ['payout']
         ..balance = []
+        ..merchant = ['shop']
         ..accounts = {
           'acc': ['4421'],
           'other': [],
@@ -305,6 +337,7 @@ void main() {
       final restored = NotificationSettings.load();
       expect(restored.income, ['payout']);
       expect(restored.balance, isEmpty);
+      expect(restored.merchant, ['shop']);
       expect(restored.accounts, {
         'acc': ['4421'],
       });
