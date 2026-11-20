@@ -403,6 +403,28 @@
     "milestones": "里程碑",
     "minute": "分鐘",
     "missingContent": "檔案無法處理 (或取消)",
+    "monobankCreateAccount": "建立帳戶",
+    "monobankDescription": "使用個人權杖匯入 monobank 金融卡與存錢筒的餘額及交易。monobank 每分鐘只允許一次請求：匯入較長期間需要數分鐘。唯讀存取：不會進行任何付款。",
+    "monobankHeadline": "monobank Personal API（烏克蘭）",
+    "monobankJar": "存錢筒",
+    "monobankProgress": "正在取得對帳單：{done} / {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank 每分鐘只允許一次請求：{value} 秒後傳送下一次",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "個人權杖",
+    "monobankTokenSteps": "如何取得個人權杖：\n1. 在瀏覽器中開啟 api.monobank.ua\n2. 使用 monobank 應用程式掃描 QR 碼並確認存取\n3. 從頁面複製權杖\n4. 貼到下方並點選「連線」\n5. 將每張卡或存錢筒連結到帳戶（或新建帳戶）並匯入",
+    "monobankTokenTooltip": "在 monobank 應用程式中掃描 QR 碼後於 api.monobank.ua 核發；加密儲存",
     "navigationTooltip": "開啟主功能表",
     "netProfit": "利潤：{value}",
     "@netProfit": {

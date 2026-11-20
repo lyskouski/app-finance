@@ -403,6 +403,28 @@
     "milestones": "Kilometre Taşları",
     "minute": "Dakika",
     "missingContent": "Dosya işlenemiyor (ya iptal edildi)",
+    "monobankCreateAccount": "Hesap oluştur",
+    "monobankDescription": "Kişisel token ile monobank kartlarının ve kumbaralarının bakiyelerini ve işlemlerini içe aktarma. monobank dakikada bir isteğe izin verir: uzun bir dönemin içe aktarılması birkaç dakika sürer. Salt okunur erişim: ödeme yapılmaz.",
+    "monobankHeadline": "monobank Personal API (Ukrayna)",
+    "monobankJar": "Kumbara",
+    "monobankProgress": "Ekstreler isteniyor: {done} / {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank dakikada bir isteğe izin verir: sonraki {value} sn sonra",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Kişisel token",
+    "monobankTokenSteps": "Kişisel token nasıl alınır:\n1. Bir tarayıcıda api.monobank.ua adresini açın\n2. QR kodunu monobank uygulamasıyla tarayın ve erişimi onaylayın\n3. Sayfadaki tokenı kopyalayın\n4. Aşağıya yapıştırın ve \"Bağlan\"a basın\n5. Her kartı veya kumbarayı bir hesaba bağlayın (ya da hesap oluşturun) ve içe aktarın",
+    "monobankTokenTooltip": "monobank uygulamasında QR kodu tarandıktan sonra api.monobank.ua üzerinde verilir; şifrelenmiş olarak saklanır",
     "navigationTooltip": "Ana menüyü açın",
     "netProfit": "Kâr: {value}",
     "@netProfit": {

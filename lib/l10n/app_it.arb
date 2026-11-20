@@ -403,6 +403,28 @@
     "milestones": "Pietre miliari",
     "minute": "Minuto",
     "missingContent": "Il file non può essere elaborato (o annullato)",
+    "monobankCreateAccount": "Crea conto",
+    "monobankDescription": "Importazione di saldi e movimenti di carte e salvadanai monobank con un token personale. monobank consente una richiesta al minuto: importare un periodo lungo richiede alcuni minuti. Accesso in sola lettura: non vengono eseguiti pagamenti.",
+    "monobankHeadline": "monobank Personal API (Ucraina)",
+    "monobankJar": "Salvadanaio",
+    "monobankProgress": "Richiesta degli estratti: {done} di {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank consente una richiesta al minuto: la prossima tra {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Token personale",
+    "monobankTokenSteps": "Come ottenere un token personale:\n1. Apri api.monobank.ua in un browser\n2. Scansiona il codice QR con l’app monobank e conferma l’accesso\n3. Copia il token dalla pagina\n4. Incollalo qui sotto e premi «Connetti»\n5. Collega ogni carta o salvadanaio a un conto (o creane uno) e importa",
+    "monobankTokenTooltip": "Rilasciato su api.monobank.ua dopo la scansione del codice QR nell’app monobank; conservato cifrato",
     "navigationTooltip": "Aprire il menu principale",
     "netProfit": "Profitto: {value}",
     "@netProfit": {

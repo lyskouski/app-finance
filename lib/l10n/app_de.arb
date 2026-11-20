@@ -403,6 +403,28 @@
     "milestones": "Meilensteine",
     "minute": "Minute",
     "missingContent": "Datei kann nicht verarbeitet werden (entweder abgebrochen)",
+    "monobankCreateAccount": "Konto erstellen",
+    "monobankDescription": "Import von Salden und Umsätzen der Karten und Sparbüchsen („Banky“) von monobank mit einem persönlichen Token. monobank erlaubt eine Anfrage pro Minute: Der Import eines langen Zeitraums dauert einige Minuten. Nur Lesezugriff: Es werden keine Zahlungen ausgeführt.",
+    "monobankHeadline": "monobank Personal API (Ukraine)",
+    "monobankJar": "Sparbüchse",
+    "monobankProgress": "Kontoauszüge werden abgerufen: {done} von {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank erlaubt eine Anfrage pro Minute: die nächste in {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Persönliches Token",
+    "monobankTokenSteps": "So erhalten Sie ein persönliches Token:\n1. Öffnen Sie api.monobank.ua im Browser\n2. Scannen Sie den QR-Code mit der monobank-App und bestätigen Sie den Zugriff\n3. Kopieren Sie das Token von der Seite\n4. Fügen Sie es unten ein und drücken Sie „Verbinden“\n5. Verknüpfen Sie jede Karte oder Sparbüchse mit einem Konto (oder erstellen Sie eines) und importieren Sie",
+    "monobankTokenTooltip": "Wird auf api.monobank.ua nach dem Scannen des QR-Codes in der monobank-App ausgestellt; verschlüsselt gespeichert",
     "navigationTooltip": "Hauptmenü öffnen",
     "netProfit": "Gewinn: {value}",
     "@netProfit": {

@@ -9,8 +9,7 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Про додаток';
@@ -103,8 +102,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get balanceDate => 'Дата оновлення балансу';
 
   @override
-  String get balanceDateTooltip =>
-      'Відрахування та прибутки до цієї дати не вплинуть на баланс';
+  String get balanceDateTooltip => 'Відрахування та прибутки до цієї дати не вплинуть на баланс';
 
   @override
   String get balanceTooltip => 'Встановити баланс';
@@ -621,19 +619,16 @@ class AppLocalizationsUk extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete =>
-      'Заповніть ID застосунку, закритий ключ, URL перенаправлення та країну';
+  String get enableBankingIncomplete => 'Заповніть ID застосунку, закритий ключ, URL перенаправлення та країну';
 
   @override
   String get enableBankingKey => 'Закритий ключ (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      'Неправильний закритий ключ: очікується PEM-блок \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid => 'Неправильний закритий ключ: очікується PEM-блок \"PRIVATE KEY\"';
 
   @override
-  String get enableBankingKeyNotRsa =>
-      'Неправильний закритий ключ: очікується ключ RSA';
+  String get enableBankingKeyNotRsa => 'Неправильний закритий ключ: очікується ключ RSA';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -643,8 +638,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get enableBankingLoadBanks => 'Завантажити банки';
 
   @override
-  String get enableBankingNoAuthPage =>
-      'Enable Banking не повернув сторінку авторизації';
+  String get enableBankingNoAuthPage => 'Enable Banking не повернув сторінку авторизації';
 
   @override
   String get enableBankingNoCode => 'В адресі не знайдено код авторизації';
@@ -653,12 +647,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get enableBankingRedirect => 'URL перенаправлення';
 
   @override
-  String get enableBankingRedirectTooltip =>
-      'Зареєстрований для застосунку; після авторизації банк повертає на нього';
+  String get enableBankingRedirectTooltip => 'Зареєстрований для застосунку; після авторизації банк повертає на нього';
 
   @override
-  String get enableBankingStateMismatch =>
-      'Адреса належить до іншої авторизації, підключіться знову';
+  String get enableBankingStateMismatch => 'Адреса належить до іншої авторизації, підключіться знову';
 
   @override
   String get encryptionMode => 'Шифрування даних';
@@ -672,8 +664,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get errorExpired => 'Термін дії картки закінчився';
 
   @override
-  String get errorNegative =>
-      'Не може бути негативним! Будь ласка, виправте помилку';
+  String get errorNegative => 'Не може бути негативним! Будь ласка, виправте помилку';
 
   @override
   String get example => 'Приклад';
@@ -708,8 +699,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get finTsBankCode => 'Код банку (BLZ)';
 
   @override
-  String get finTsCustomerId =>
-      'ID клієнта (якщо відрізняється від ID користувача)';
+  String get finTsCustomerId => 'ID клієнта (якщо відрізняється від ID користувача)';
 
   @override
   String get finTsDescription =>
@@ -719,8 +709,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete =>
-      'Заповніть URL сервера, код банку, ID користувача та реєстраційний номер продукту';
+  String get finTsIncomplete => 'Заповніть URL сервера, код банку, ID користувача та реєстраційний номер продукту';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -736,15 +725,13 @@ class AppLocalizationsUk extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint =>
-      'Використовується лише в цьому сеансі й ніколи не зберігається';
+  String get finTsPinHint => 'Використовується лише в цьому сеансі й ніколи не зберігається';
 
   @override
   String get finTsProductId => 'Реєстраційний номер продукту';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Видається Deutsche Kreditwirtschaft розробнику застосунку';
+  String get finTsProductIdTooltip => 'Видається Deutsche Kreditwirtschaft розробнику застосунку';
 
   @override
   String get finTsTan => 'TAN';
@@ -840,8 +827,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get incomeTooltip => 'Встановіть відомості про дохід';
 
   @override
-  String get integrationAccessDenied =>
-      'Доступ відкликано або облікові дані неправильні';
+  String get integrationAccessDenied => 'Доступ відкликано або облікові дані неправильні';
 
   @override
   String get integrationConnect => 'Підключитися';
@@ -850,8 +836,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get integrationDateFrom => 'Імпортувати операції з';
 
   @override
-  String get integrationDefaultBudgetCategory =>
-      'Категорія бюджету за замовчуванням';
+  String get integrationDefaultBudgetCategory => 'Категорія бюджету за замовчуванням';
 
   @override
   String get integrationDisconnect => 'Відключитися';
@@ -868,8 +853,7 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired =>
-      'Дозволені лише захищені адреси (HTTPS)';
+  String get integrationHttpsRequired => 'Дозволені лише захищені адреси (HTTPS)';
 
   @override
   String get integrationImport => 'Імпортувати операції';
@@ -891,8 +875,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get integrationPaymentRequired => 'Сервіс вимагає оплати доступу';
 
   @override
-  String get integrationSelectTarget =>
-      'Оберіть рахунок і категорію бюджету для імпорту';
+  String get integrationSelectTarget => 'Оберіть рахунок і категорію бюджету для імпорту';
 
   @override
   String integrationServiceError(Object value) {
@@ -956,6 +939,40 @@ class AppLocalizationsUk extends AppLocalizations {
   String get missingContent => 'Файл не може бути оброблений (або скасуваний)';
 
   @override
+  String get monobankCreateAccount => 'Створити рахунок';
+
+  @override
+  String get monobankDescription =>
+      'Імпорт залишків і операцій карток і банок monobank за допомогою персонального токена. monobank дозволяє один запит на хвилину: імпорт за довгий період триває кілька хвилин. Доступ лише для читання: платежі не виконуються.';
+
+  @override
+  String get monobankHeadline => 'monobank Personal API (Україна)';
+
+  @override
+  String get monobankJar => 'Банка';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return 'Запит виписок: $done з $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'monobank дозволяє один запит на хвилину: наступний через $value с';
+  }
+
+  @override
+  String get monobankToken => 'Персональний токен';
+
+  @override
+  String get monobankTokenSteps =>
+      'Як отримати персональний токен:\n1. Відкрийте api.monobank.ua у браузері\n2. Відскануйте QR-код у застосунку monobank і підтвердьте доступ\n3. Скопіюйте токен зі сторінки\n4. Вставте його нижче й натисніть «Підключитися»\n5. Прив’яжіть кожну картку чи банку до рахунку (або створіть його) та імпортуйте';
+
+  @override
+  String get monobankTokenTooltip =>
+      'Видається на api.monobank.ua після сканування QR-коду в застосунку monobank; зберігається в зашифрованому вигляді';
+
+  @override
   String get navigationTooltip => 'Відкрити головне меню';
 
   @override
@@ -1008,8 +1025,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get notificationClear => 'Очистити отримані';
 
   @override
-  String get notificationCurrencyTooltip =>
-      'Суми без валюти (наприклад, Списано 20.00) враховуються в цій валюті';
+  String get notificationCurrencyTooltip => 'Суми без валюти (наприклад, Списано 20.00) враховуються в цій валюті';
 
   @override
   String get notificationDefaultAccount => 'Рахунок за замовчуванням';
@@ -1146,8 +1162,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get privatBankIbanInvalid => 'Введіть український IBAN: UA і 27 цифр';
 
   @override
-  String get privatBankIbanTooltip =>
-      'API не надає списку рахунків: додайте IBAN рахунків по одному';
+  String get privatBankIbanTooltip => 'API не надає списку рахунків: додайте IBAN рахунків по одному';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1215,12 +1230,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
-  String get secureBioNotMatch =>
-      'Аутентифікація не вдалася! Будь ласка, спробуйте ще раз';
+  String get secureBioNotMatch => 'Аутентифікація не вдалася! Будь ласка, спробуйте ще раз';
 
   @override
-  String get secureBioPromptReason =>
-      'Будь ласка, пройдіть аутентифікацію, щоб продовжити';
+  String get secureBioPromptReason => 'Будь ласка, пройдіть аутентифікацію, щоб продовжити';
 
   @override
   String get secureBioPromptTitle => 'Біометрична аутентифікація';
@@ -1229,8 +1242,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get secureOtpCode => 'Код одноразового пароля';
 
   @override
-  String get secureOtpCodeInvalid =>
-      'Неправильно! Будь ласка, візьміть новий код і введіть його';
+  String get secureOtpCodeInvalid => 'Неправильно! Будь ласка, візьміть новий код і введіть його';
 
   @override
   String get secureOtpDeactivated => 'Захист паролем вимкнено';
@@ -1267,19 +1279,16 @@ class AppLocalizationsUk extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'SimpleFIN Bridge повернув адресу доступу без облікових даних';
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge повернув адресу доступу без облікових даних';
 
   @override
   String get simpleFinToken => 'Токен налаштування SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed =>
-      'Токен налаштування не існує або вже був використаний';
+  String get simpleFinTokenClaimed => 'Токен налаштування не існує або вже був використаний';
 
   @override
-  String get simpleFinTokenInvalid =>
-      'Неправильний токен налаштування SimpleFIN';
+  String get simpleFinTokenInvalid => 'Неправильний токен налаштування SimpleFIN';
 
   @override
   String get simpleFinTokenTooltip =>
@@ -1452,8 +1461,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get validTillDate => 'Дійсний до';
 
   @override
-  String get webDav =>
-      'Веб-розподілене створення і кирування версіями (WebDav)';
+  String get webDav => 'Веб-розподілене створення і кирування версіями (WebDav)';
 
   @override
   String get wiseDescription =>

@@ -403,6 +403,28 @@
     "milestones": "Вехі",
     "minute": "Мінута",
     "missingContent": "Файл ня можа быць апрацаваны (альбо адменены)",
+    "monobankCreateAccount": "Стварыць рахунак",
+    "monobankDescription": "Імпарт рэштак і аперацый картак і слоікаў monobank з дапамогай персанальнага токена. monobank дазваляе адзін запыт у хвіліну: імпарт за доўгі перыяд займае некалькі хвілін. Доступ толькі для чытання: плацяжы не выконваюцца.",
+    "monobankHeadline": "monobank Personal API (Украіна)",
+    "monobankJar": "Слоік",
+    "monobankProgress": "Запыт выпісак: {done} з {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank дазваляе адзін запыт у хвіліну: наступны праз {value} с",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Персанальны токен",
+    "monobankTokenSteps": "Як атрымаць персанальны токен:\n1. Адкрыйце api.monobank.ua у браўзеры\n2. Адсканіруйце QR-код у дадатку monobank і пацвердзіце доступ\n3. Скапіруйце токен са старонкі\n4. Устаўце яго ніжэй і націсніце «Падлучыцца»\n5. Прывяжыце кожную картку ці слоік да рахунку (або стварыце яго) і імпартуйце",
+    "monobankTokenTooltip": "Выдаецца на api.monobank.ua пасля сканавання QR-кода ў дадатку monobank; захоўваецца ў зашыфраваным выглядзе",
     "navigationTooltip": "Адкрыць галоўнае меню",
     "netProfit": "Прыбытак: {value}",
     "@netProfit": {

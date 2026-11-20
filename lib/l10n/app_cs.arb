@@ -403,6 +403,28 @@
     "milestones": "Milníky",
     "minute": "Minuta",
     "missingContent": "Soubor nelze zpracovat (buď zrušen)",
+    "monobankCreateAccount": "Vytvořit účet",
+    "monobankDescription": "Import zůstatků a transakcí karet a pokladniček monobank pomocí osobního tokenu. monobank povoluje jeden požadavek za minutu: import dlouhého období trvá několik minut. Přístup pouze pro čtení: žádné platby se neprovádějí.",
+    "monobankHeadline": "monobank Personal API (Ukrajina)",
+    "monobankJar": "Pokladnička",
+    "monobankProgress": "Načítání výpisů: {done} z {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank povoluje jeden požadavek za minutu: další za {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Osobní token",
+    "monobankTokenSteps": "Jak získat osobní token:\n1. Otevřete api.monobank.ua v prohlížeči\n2. Naskenujte QR kód v aplikaci monobank a potvrďte přístup\n3. Zkopírujte token ze stránky\n4. Vložte jej níže a stiskněte „Připojit“\n5. Propojte každou kartu nebo pokladničku s účtem (nebo jej vytvořte) a importujte",
+    "monobankTokenTooltip": "Vydává se na api.monobank.ua po naskenování QR kódu v aplikaci monobank; uložen šifrovaně",
     "navigationTooltip": "Otevřít hlavní nabídku",
     "netProfit": "Zisk: {value}",
     "@netProfit": {

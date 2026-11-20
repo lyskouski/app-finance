@@ -9,8 +9,7 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '정보';
@@ -606,8 +605,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingCode => '인증 후 열린 페이지 주소';
 
   @override
-  String get enableBankingCodeTooltip =>
-      '은행에서 접근을 승인한 후 브라우저의 주소를 복사하여 여기에 붙여넣으세요';
+  String get enableBankingCodeTooltip => '은행에서 접근을 승인한 후 브라우저의 주소를 복사하여 여기에 붙여넣으세요';
 
   @override
   String get enableBankingCountry => '국가 (ISO 코드, 예: DE)';
@@ -626,8 +624,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingKey => '개인 키 (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      '잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다';
+  String get enableBankingKeyInvalid => '잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다';
 
   @override
   String get enableBankingKeyNotRsa => '잘못된 개인 키: RSA 키가 필요합니다';
@@ -649,8 +646,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingRedirect => '리디렉션 URL';
 
   @override
-  String get enableBankingRedirectTooltip =>
-      '애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다';
+  String get enableBankingRedirectTooltip => '애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다';
 
   @override
   String get enableBankingStateMismatch => '이 주소는 다른 인증에 속합니다. 다시 연결하세요';
@@ -705,8 +701,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finTsCustomerId => '고객 ID (사용자 ID와 다른 경우)';
 
   @override
-  String get finTsDescription =>
-      'FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+  String get finTsDescription => 'FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -758,8 +753,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finTsVersion => '프로토콜 버전';
 
   @override
-  String get finTsWebUnsupported =>
-      '은행 서버는 브라우저에서의 접근을 허용하지 않습니다. 데스크톱 또는 모바일 앱을 사용하세요.';
+  String get finTsWebUnsupported => '은행 서버는 브라우저에서의 접근을 허용하지 않습니다. 데스크톱 또는 모바일 앱을 사용하세요.';
 
   @override
   String get flowTypeInvoice => '인보이스';
@@ -942,6 +936,39 @@ class AppLocalizationsKo extends AppLocalizations {
   String get missingContent => '파일을 처리할 수 없음(취소됨)';
 
   @override
+  String get monobankCreateAccount => '계좌 만들기';
+
+  @override
+  String get monobankDescription =>
+      '개인 토큰으로 monobank 카드와 저금통의 잔액 및 거래를 가져옵니다. monobank는 분당 한 번의 요청만 허용하므로 긴 기간을 가져오는 데 몇 분이 걸립니다. 읽기 전용 액세스: 결제는 이루어지지 않습니다.';
+
+  @override
+  String get monobankHeadline => 'monobank Personal API (우크라이나)';
+
+  @override
+  String get monobankJar => '저금통';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return '거래 내역 요청 중: $done / $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'monobank는 분당 한 번의 요청만 허용: 다음 요청까지 $value초';
+  }
+
+  @override
+  String get monobankToken => '개인 토큰';
+
+  @override
+  String get monobankTokenSteps =>
+      '개인 토큰을 받는 방법:\n1. 브라우저에서 api.monobank.ua를 엽니다\n2. monobank 앱으로 QR 코드를 스캔하고 액세스를 승인합니다\n3. 페이지에서 토큰을 복사합니다\n4. 아래에 붙여넣고 \"연결\"을 누릅니다\n5. 각 카드 또는 저금통을 계좌에 연결(또는 생성)하고 가져옵니다';
+
+  @override
+  String get monobankTokenTooltip => 'monobank 앱에서 QR 코드를 스캔한 후 api.monobank.ua에서 발급됩니다. 암호화되어 저장됩니다';
+
+  @override
   String get navigationTooltip => '메인 메뉴 열기';
 
   @override
@@ -982,8 +1009,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationBalance => '잔액 키워드';
 
   @override
-  String get notificationBalanceTooltip =>
-      '무시할 금액(잔액, 한도) 앞에 오는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
+  String get notificationBalanceTooltip => '무시할 금액(잔액, 한도) 앞에 오는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
 
   @override
   String notificationCaptured(Object value) {
@@ -994,8 +1020,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationClear => '수집된 알림 지우기';
 
   @override
-  String get notificationCurrencyTooltip =>
-      '통화가 없는 금액(예: 출금 20.00)은 이 통화로 처리됩니다';
+  String get notificationCurrencyTooltip => '통화가 없는 금액(예: 출금 20.00)은 이 통화로 처리됩니다';
 
   @override
   String get notificationDefaultAccount => '기본 계좌';
@@ -1011,8 +1036,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationIncome => '수입 키워드';
 
   @override
-  String get notificationIncomeTooltip =>
-      '알림을 수입으로 표시하는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
+  String get notificationIncomeTooltip => '알림을 수입으로 표시하는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
 
   @override
   String get notificationNoApps => '아직 받은 알림이 없습니다: 앱이 알림을 보내면 여기에 표시됩니다';
@@ -1131,8 +1155,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get privatBankIbanInvalid => '우크라이나 IBAN을 입력하세요: UA 다음에 27자리 숫자';
 
   @override
-  String get privatBankIbanTooltip =>
-      'API는 계좌 목록을 제공하지 않습니다: 계좌의 IBAN을 하나씩 추가하세요';
+  String get privatBankIbanTooltip => 'API는 계좌 목록을 제공하지 않습니다: 계좌의 IBAN을 하나씩 추가하세요';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1150,8 +1173,7 @@ class AppLocalizationsKo extends AppLocalizations {
       'Autoclient 토큰을 받는 방법:\n1. Privat24 for Business에 로그인합니다\n2. 연동(Autoclient)을 엽니다\n3. 활성화하고 토큰을 복사합니다\n4. 아래에 붙여넣고 \"연결\"을 누릅니다\n5. 가져올 계좌의 IBAN을 추가합니다';
 
   @override
-  String get privatBankTokenTooltip =>
-      'Privat24 for Business의 연동(Autoclient)에서 발급되며, 암호화되어 저장됩니다';
+  String get privatBankTokenTooltip => 'Privat24 for Business의 연동(Autoclient)에서 발급되며, 암호화되어 저장됩니다';
 
   @override
   String get processIsFinished => '완료!';
@@ -1249,8 +1271,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';
 
   @override
   String get simpleFinToken => 'SimpleFIN 설정 토큰';
@@ -1262,8 +1283,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get simpleFinTokenInvalid => '잘못된 SimpleFIN 설정 토큰';
 
   @override
-  String get simpleFinTokenTooltip =>
-      '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';
+  String get simpleFinTokenTooltip => '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';
 
   @override
   String get skipFromTotals => '합계에서 제외';
@@ -1448,8 +1468,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get wiseProfile => '프로필';
 
   @override
-  String get wiseScaRequired =>
-      'Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요';
+  String get wiseScaRequired => 'Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요';
 
   @override
   String get wiseToken => '개인 API 토큰';
@@ -1459,8 +1478,7 @@ class AppLocalizationsKo extends AppLocalizations {
       '개인 API 토큰 받는 방법:\n1. 브라우저에서 wise.com에 로그인합니다(모바일 앱에서는 토큰을 만들 수 없음)\n2. 설정 → 연동 및 도구 → API 토큰을 엽니다\n3. \"새 토큰 추가\"를 선택하고 이름(예: Fingrom)을 지정한 뒤 \"읽기 전용\" 권한을 선택합니다\n4. 2단계 인증으로 확인하고 토큰을 복사합니다\n5. 아래에 붙여 넣고 \"연결\"을 누릅니다';
 
   @override
-  String get wiseTokenTooltip =>
-      'Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다';
+  String get wiseTokenTooltip => 'Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다';
 
   @override
   String get zoomState => '줌인/줌아웃';

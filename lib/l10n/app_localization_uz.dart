@@ -9,8 +9,7 @@ class AppLocalizationsUz extends AppLocalizations {
   AppLocalizationsUz([String locale = 'uz']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Haqida';
@@ -55,8 +54,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get addGoalTooltip => 'Yangi maqsad qo\'shing';
 
   @override
-  String get addMainTooltip =>
-      'Hisob-kitob, daromad yoki pul o\'tkazmasini qo\'shing';
+  String get addMainTooltip => 'Hisob-kitob, daromad yoki pul o\'tkazmasini qo\'shing';
 
   @override
   String afterNDays(Object value) {
@@ -104,8 +102,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get balanceDate => 'Balans sanasini yangilash';
 
   @override
-  String get balanceDateTooltip =>
-      'Ushbu sanadan oldingi natijalar va daromadlar balansga ta\'sir qilmaydi';
+  String get balanceDateTooltip => 'Ushbu sanadan oldingi natijalar va daromadlar balansga ta\'sir qilmaydi';
 
   @override
   String get balanceTooltip => 'Balansni o\'rnatish';
@@ -324,8 +321,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get confirmHeader => 'Amalni tasdiqlang';
 
   @override
-  String get confirmTooltip =>
-      'Ishonchingiz komilmi? Bu amalni ortga qaytarib bo‘lmaydi.';
+  String get confirmTooltip => 'Ishonchingiz komilmi? Bu amalni ortga qaytarib bo‘lmaydi.';
 
   @override
   String get contributors => 'Himoyachilar';
@@ -606,8 +602,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get enableBankingBank => 'Bank';
 
   @override
-  String get enableBankingCode =>
-      'Avtorizatsiyadan keyin ochilgan sahifa manzili';
+  String get enableBankingCode => 'Avtorizatsiyadan keyin ochilgan sahifa manzili';
 
   @override
   String get enableBankingCodeTooltip =>
@@ -624,19 +619,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete =>
-      'Ilova ID, maxfiy kalit, yo\'naltirish URL manzili va mamlakatni to\'ldiring';
+  String get enableBankingIncomplete => 'Ilova ID, maxfiy kalit, yo\'naltirish URL manzili va mamlakatni to\'ldiring';
 
   @override
   String get enableBankingKey => 'Maxfiy kalit (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      'Noto\'g\'ri maxfiy kalit: \"PRIVATE KEY\" PEM bloki kutilmoqda';
+  String get enableBankingKeyInvalid => 'Noto\'g\'ri maxfiy kalit: \"PRIVATE KEY\" PEM bloki kutilmoqda';
 
   @override
-  String get enableBankingKeyNotRsa =>
-      'Noto\'g\'ri maxfiy kalit: RSA kaliti kutilmoqda';
+  String get enableBankingKeyNotRsa => 'Noto\'g\'ri maxfiy kalit: RSA kaliti kutilmoqda';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -646,8 +638,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get enableBankingLoadBanks => 'Banklarni yuklash';
 
   @override
-  String get enableBankingNoAuthPage =>
-      'Enable Banking avtorizatsiya sahifasini qaytarmadi';
+  String get enableBankingNoAuthPage => 'Enable Banking avtorizatsiya sahifasini qaytarmadi';
 
   @override
   String get enableBankingNoCode => 'Manzilda avtorizatsiya kodi topilmadi';
@@ -660,8 +651,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Ilova uchun ro\'yxatdan o\'tkazilgan; avtorizatsiyadan so\'ng bank unga qaytaradi';
 
   @override
-  String get enableBankingStateMismatch =>
-      'Manzil boshqa avtorizatsiyaga tegishli, qayta ulaning';
+  String get enableBankingStateMismatch => 'Manzil boshqa avtorizatsiyaga tegishli, qayta ulaning';
 
   @override
   String get encryptionMode => 'Ma\'lumotlarni shifrlash';
@@ -675,8 +665,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get errorExpired => 'Karta muddati tugagan';
 
   @override
-  String get errorNegative =>
-      'Salbiy bo\'lishi mumkin emas! Iltimos, xatoni tuzating';
+  String get errorNegative => 'Salbiy bo\'lishi mumkin emas! Iltimos, xatoni tuzating';
 
   @override
   String get example => 'Misol';
@@ -738,15 +727,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint =>
-      'Faqat shu seans uchun ishlatiladi va hech qachon saqlanmaydi';
+  String get finTsPinHint => 'Faqat shu seans uchun ishlatiladi va hech qachon saqlanmaydi';
 
   @override
   String get finTsProductId => 'Mahsulot ro\'yxatdan o\'tish raqami';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Deutsche Kreditwirtschaft tomonidan ilova ishlab chiqaruvchisiga beriladi';
+  String get finTsProductIdTooltip => 'Deutsche Kreditwirtschaft tomonidan ilova ishlab chiqaruvchisiga beriladi';
 
   @override
   String get finTsTan => 'TAN';
@@ -803,8 +790,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get goalTooltip => 'Ochiq maqsadlar';
 
   @override
-  String get hasEncrypted =>
-      'Bir marta o\'rnatilsa, uni o\'zgartirib bo\'lmaydi';
+  String get hasEncrypted => 'Bir marta o\'rnatilsa, uni o\'zgartirib bo\'lmaydi';
 
   @override
   String get helpTooltip => '[Yordam] Sahifaning tavsifini ko\'rsatish';
@@ -843,15 +829,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get incomeTooltip => 'Daromad tafsilotlarini o\'rnating';
 
   @override
-  String get integrationAccessDenied =>
-      'Kirish bekor qilingan yoki hisob ma\'lumotlari noto\'g\'ri';
+  String get integrationAccessDenied => 'Kirish bekor qilingan yoki hisob ma\'lumotlari noto\'g\'ri';
 
   @override
   String get integrationConnect => 'Ulanish';
 
   @override
-  String get integrationDateFrom =>
-      'Tranzaksiyalarni shu sanadan import qilish';
+  String get integrationDateFrom => 'Tranzaksiyalarni shu sanadan import qilish';
 
   @override
   String get integrationDefaultBudgetCategory => 'Standart byudjet toifasi';
@@ -871,8 +855,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired =>
-      'Faqat xavfsiz (HTTPS) manzillarga ruxsat beriladi';
+  String get integrationHttpsRequired => 'Faqat xavfsiz (HTTPS) manzillarga ruxsat beriladi';
 
   @override
   String get integrationImport => 'Tranzaksiyalarni import qilish';
@@ -891,12 +874,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get integrationNoAccounts => 'Bank hech qanday hisob taqdim etmadi';
 
   @override
-  String get integrationPaymentRequired =>
-      'Xizmat kirish uchun to\'lov talab qiladi';
+  String get integrationPaymentRequired => 'Xizmat kirish uchun to\'lov talab qiladi';
 
   @override
-  String get integrationSelectTarget =>
-      'Import uchun hisob va byudjet toifasini tanlang';
+  String get integrationSelectTarget => 'Import uchun hisob va byudjet toifasini tanlang';
 
   @override
   String integrationServiceError(Object value) {
@@ -918,8 +899,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get isCleaned => 'Mavjud ma\'lumotlarni olib tashlang';
 
   @override
-  String get isCreated =>
-      'Allaqachon yaratilgan, keyingi bosqichlarni bajaring!';
+  String get isCreated => 'Allaqachon yaratilgan, keyingi bosqichlarni bajaring!';
 
   @override
   String get isEncrypted => 'Fayl shifrlangan (sukut bo\'yicha)';
@@ -958,8 +938,41 @@ class AppLocalizationsUz extends AppLocalizations {
   String get minute => 'Daqiqa';
 
   @override
-  String get missingContent =>
-      'Faylni qayta ishlash mumkin emas (yoki bekor qilinadi)';
+  String get missingContent => 'Faylni qayta ishlash mumkin emas (yoki bekor qilinadi)';
+
+  @override
+  String get monobankCreateAccount => 'Hisob yaratish';
+
+  @override
+  String get monobankDescription =>
+      'Shaxsiy token yordamida monobank kartalari va jamg‘arma bankalarining qoldiqlari va operatsiyalarini import qilish. monobank daqiqasiga bitta so‘rovga ruxsat beradi: uzoq davrni import qilish bir necha daqiqa davom etadi. Faqat o‘qish uchun ruxsat: to‘lovlar amalga oshirilmaydi.';
+
+  @override
+  String get monobankHeadline => 'monobank Personal API (Ukraina)';
+
+  @override
+  String get monobankJar => 'Jamg‘arma banka';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return 'Ko‘chirmalar so‘ralmoqda: $done / $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'monobank daqiqasiga bitta so‘rovga ruxsat beradi: keyingisi $value s dan keyin';
+  }
+
+  @override
+  String get monobankToken => 'Shaxsiy token';
+
+  @override
+  String get monobankTokenSteps =>
+      'Shaxsiy tokenni qanday olish mumkin:\n1. Brauzerda api.monobank.ua ni oching\n2. QR kodni monobank ilovasi bilan skanerlang va ruxsatni tasdiqlang\n3. Tokenni sahifadan nusxalang\n4. Uni pastga joylashtiring va \"Ulanish\" tugmasini bosing\n5. Har bir karta yoki jamg‘arma bankani hisobga bog‘lang (yoki hisob yarating) va import qiling';
+
+  @override
+  String get monobankTokenTooltip =>
+      'monobank ilovasida QR kod skanerlangandan so‘ng api.monobank.ua da beriladi; shifrlangan holda saqlanadi';
 
   @override
   String get navigationTooltip => 'Asosiy menyuni oching';
@@ -970,8 +983,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get noChartData =>
-      'Koʻrsatish uchun maʼlumotlar yetishmayapti (yoki yetarli emas).';
+  String get noChartData => 'Koʻrsatish uchun maʼlumotlar yetishmayapti (yoki yetarli emas).';
 
   @override
   String get notificationAccessSettings => 'Bildirishnomalarga ruxsat';
@@ -1015,8 +1027,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get notificationClear => 'Olinganlarni tozalash';
 
   @override
-  String get notificationCurrencyTooltip =>
-      'Valyutasiz summalar (masalan, Yechildi 20.00) shu valyutada olinadi';
+  String get notificationCurrencyTooltip => 'Valyutasiz summalar (masalan, Yechildi 20.00) shu valyutada olinadi';
 
   @override
   String get notificationDefaultAccount => 'Standart hisob';
@@ -1150,8 +1161,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get privatBankIban => 'Hisob IBAN raqami';
 
   @override
-  String get privatBankIbanInvalid =>
-      'Ukraina IBAN raqamini kiriting: UA va 27 ta raqam';
+  String get privatBankIbanInvalid => 'Ukraina IBAN raqamini kiriting: UA va 27 ta raqam';
 
   @override
   String get privatBankIbanTooltip =>
@@ -1223,12 +1233,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get searchTooltip => 'Qidiruv';
 
   @override
-  String get secureBioNotMatch =>
-      'Autentifikatsiya muvaffaqiyatsiz! Iltimos, qayta urinib ko\'ring';
+  String get secureBioNotMatch => 'Autentifikatsiya muvaffaqiyatsiz! Iltimos, qayta urinib ko\'ring';
 
   @override
-  String get secureBioPromptReason =>
-      'Iltimos, davom etish uchun autentifikatsiya qiling';
+  String get secureBioPromptReason => 'Iltimos, davom etish uchun autentifikatsiya qiling';
 
   @override
   String get secureBioPromptTitle => 'Biometrik autentifikatsiya';
@@ -1237,8 +1245,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get secureOtpCode => 'Bir martalik parol kodi';
 
   @override
-  String get secureOtpCodeInvalid =>
-      'Noto\'g\'ri! Iltimos, yangi kod oling va uni kiriting';
+  String get secureOtpCodeInvalid => 'Noto\'g\'ri! Iltimos, yangi kod oling va uni kiriting';
 
   @override
   String get secureOtpDeactivated => 'Parol himoyasi o\'chirilgan';
@@ -1275,15 +1282,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'SimpleFIN Bridge hisob ma\'lumotlarisiz kirish manzilini qaytardi';
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge hisob ma\'lumotlarisiz kirish manzilini qaytardi';
 
   @override
   String get simpleFinToken => 'SimpleFIN sozlash tokeni';
 
   @override
-  String get simpleFinTokenClaimed =>
-      'Sozlash tokeni mavjud emas yoki allaqachon ishlatilgan';
+  String get simpleFinTokenClaimed => 'Sozlash tokeni mavjud emas yoki allaqachon ishlatilgan';
 
   @override
   String get simpleFinTokenInvalid => 'Noto\'g\'ri SimpleFIN sozlash tokeni';
@@ -1459,8 +1464,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get validTillDate => 'Qachon amal qiladi';
 
   @override
-  String get webDav =>
-      'Internetda tarqatilgan mualliflik va versiyalarni yaratish (WebDav)';
+  String get webDav => 'Internetda tarqatilgan mualliflik va versiyalarni yaratish (WebDav)';
 
   @override
   String get wiseDescription =>

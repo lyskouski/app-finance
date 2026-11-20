@@ -403,6 +403,28 @@
     "milestones": "المقاييس",
     "minute": "دقيقة",
     "missingContent": "يتعذر معالجة الملف (تم إلغاء إما)",
+    "monobankCreateAccount": "إنشاء حساب",
+    "monobankDescription": "استيراد أرصدة ومعاملات بطاقات وحصالات monobank باستخدام رمز شخصي. يسمح monobank بطلب واحد في الدقيقة: يستغرق استيراد فترة طويلة عدة دقائق. وصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
+    "monobankHeadline": "monobank Personal API (أوكرانيا)",
+    "monobankJar": "حصالة",
+    "monobankProgress": "جارٍ طلب الكشوفات: {done} من {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "يسمح monobank بطلب واحد في الدقيقة: الطلب التالي بعد {value} ث",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "الرمز الشخصي",
+    "monobankTokenSteps": "كيفية الحصول على رمز شخصي:\n1. افتح api.monobank.ua في المتصفح\n2. امسح رمز QR بتطبيق monobank وأكّد الوصول\n3. انسخ الرمز من الصفحة\n4. الصقه أدناه واضغط \"اتصال\"\n5. اربط كل بطاقة أو حصالة بحساب (أو أنشئ حسابًا) واستورد",
+    "monobankTokenTooltip": "يُصدر على api.monobank.ua بعد مسح رمز QR في تطبيق monobank؛ ويُحفظ مشفرًا",
     "navigationTooltip": "فتح القائمة الرئيسية",
     "netProfit": "الربح: {value}",
     "@netProfit": {

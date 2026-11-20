@@ -5,6 +5,7 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 ### 8.1.0
 - Wise API (Global) eklendi: Wise çoklu para birimi hesaplarının bakiyeleri ve işlemlerinin içe aktarılması, dönüşümler transfer olarak
 - PrivatBank Autoclient (Ukrayna) eklendi: IBAN ile ticari hesapların bakiyeleri ve işlemlerinin içe aktarımı
+- monobank Personal API (Ukrayna) eklendi: kartların ve kumbaraların bakiyeleri ve işlemlerinin içe aktarımı, bağlı hesapların oluşturulması
 - Bildirim Ayrıştırıcı (Android) eklendi: bankacılık ve ödeme uygulamalarının bildirimlerinden otomatik olarak veya özel bir kalıpla tanınan işlemler
 - Dosyada kategorisi olmayan içe aktarılan faturalar için bütçe kategorisi tahmini
 

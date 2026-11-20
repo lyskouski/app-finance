@@ -403,6 +403,28 @@
     "milestones": "マイルストーン",
     "minute": "分",
     "missingContent": "ファイルが処理できない（キャンセルされた）",
+    "monobankCreateAccount": "口座を作成",
+    "monobankDescription": "個人トークンで monobank のカードと貯金箱（バンカ）の残高と取引をインポートします。monobank は 1 分間に 1 回のリクエストのみ許可するため、長い期間のインポートには数分かかります。読み取り専用アクセス：支払いは行われません。",
+    "monobankHeadline": "monobank Personal API（ウクライナ）",
+    "monobankJar": "貯金箱",
+    "monobankProgress": "明細を取得中：{done} / {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank は 1 分間に 1 回のリクエストのみ許可：次は {value} 秒後",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "個人トークン",
+    "monobankTokenSteps": "個人トークンの取得方法：\n1. ブラウザで api.monobank.ua を開く\n2. monobank アプリで QR コードをスキャンしてアクセスを承認\n3. ページからトークンをコピー\n4. 下に貼り付けて「接続」を押す\n5. 各カードまたは貯金箱を口座に紐付け（または作成）してインポート",
+    "monobankTokenTooltip": "monobank アプリで QR コードをスキャンすると api.monobank.ua で発行されます。暗号化して保存されます",
     "navigationTooltip": "メインメニューを開く",
     "netProfit": "利益：{value}",
     "@netProfit": {

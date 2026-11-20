@@ -77,6 +77,7 @@
   - Enable Banking (EU)：从欧洲银行导入余额和交易（PSD2）
   - Wise API (Global)：导入 Wise 多币种账户的余额和交易（个人 API 令牌）
   - PrivatBank Autoclient（乌克兰）：导入 Privat24 for Business 企业账户的余额和交易（Autoclient 令牌）
+  - monobank Personal API（乌克兰）：导入 monobank 银行卡和储蓄罐的余额和交易（个人令牌）
   - 通知解析器 (Android)：根据银行和支付应用的通知创建交易
 - 导出为 Excel `XLSX` 文件
 - 数据加密

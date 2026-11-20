@@ -403,6 +403,28 @@
     "milestones": "마일스톤",
     "minute": "분",
     "missingContent": "파일을 처리할 수 없음(취소됨)",
+    "monobankCreateAccount": "계좌 만들기",
+    "monobankDescription": "개인 토큰으로 monobank 카드와 저금통의 잔액 및 거래를 가져옵니다. monobank는 분당 한 번의 요청만 허용하므로 긴 기간을 가져오는 데 몇 분이 걸립니다. 읽기 전용 액세스: 결제는 이루어지지 않습니다.",
+    "monobankHeadline": "monobank Personal API (우크라이나)",
+    "monobankJar": "저금통",
+    "monobankProgress": "거래 내역 요청 중: {done} / {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank는 분당 한 번의 요청만 허용: 다음 요청까지 {value}초",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "개인 토큰",
+    "monobankTokenSteps": "개인 토큰을 받는 방법:\n1. 브라우저에서 api.monobank.ua를 엽니다\n2. monobank 앱으로 QR 코드를 스캔하고 액세스를 승인합니다\n3. 페이지에서 토큰을 복사합니다\n4. 아래에 붙여넣고 \"연결\"을 누릅니다\n5. 각 카드 또는 저금통을 계좌에 연결(또는 생성)하고 가져옵니다",
+    "monobankTokenTooltip": "monobank 앱에서 QR 코드를 스캔한 후 api.monobank.ua에서 발급됩니다. 암호화되어 저장됩니다",
     "navigationTooltip": "메인 메뉴 열기",
     "netProfit": "수익: {value}",
     "@netProfit": {

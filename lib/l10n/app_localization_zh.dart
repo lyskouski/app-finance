@@ -9,8 +9,7 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '关于';
@@ -631,8 +630,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get enableBankingKeyNotRsa => '私钥无效：需要 RSA 密钥';
 
   @override
-  String get enableBankingKeyTooltip =>
-      '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
+  String get enableBankingKeyTooltip => '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
 
   @override
   String get enableBankingLoadBanks => '加载银行';
@@ -702,8 +700,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get finTsCustomerId => '客户 ID（如与用户 ID 不同）';
 
   @override
-  String get finTsDescription =>
-      '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
+  String get finTsDescription => '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -938,6 +935,38 @@ class AppLocalizationsZh extends AppLocalizations {
   String get missingContent => '文件无法处理（或取消）';
 
   @override
+  String get monobankCreateAccount => '创建账户';
+
+  @override
+  String get monobankDescription => '使用个人令牌导入 monobank 银行卡和储蓄罐的余额与交易。monobank 每分钟只允许一次请求：导入较长时间段需要几分钟。只读访问：不会进行任何支付。';
+
+  @override
+  String get monobankHeadline => 'monobank Personal API（乌克兰）';
+
+  @override
+  String get monobankJar => '储蓄罐';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return '正在获取对账单：$done / $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'monobank 每分钟只允许一次请求：$value 秒后发送下一次';
+  }
+
+  @override
+  String get monobankToken => '个人令牌';
+
+  @override
+  String get monobankTokenSteps =>
+      '如何获取个人令牌：\n1. 在浏览器中打开 api.monobank.ua\n2. 使用 monobank 应用扫描二维码并确认访问\n3. 从页面复制令牌\n4. 粘贴到下方并点击“连接”\n5. 将每张卡或储蓄罐关联到账户（或新建账户）并导入';
+
+  @override
+  String get monobankTokenTooltip => '在 monobank 应用中扫描二维码后于 api.monobank.ua 签发；加密存储';
+
+  @override
   String get navigationTooltip => '打开主菜单';
 
   @override
@@ -959,8 +988,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationAccounts => '账户关键词';
 
   @override
-  String get notificationAccountsTooltip =>
-      '用于在通知中识别账户的词语（卡号末几位、钱包名称）：输入词语后按 Enter 添加。否则使用该应用的默认账户';
+  String get notificationAccountsTooltip => '用于在通知中识别账户的词语（卡号末几位、钱包名称）：输入词语后按 Enter 添加。否则使用该应用的默认账户';
 
   @override
   String get notificationApps => '读取通知的应用';
@@ -971,15 +999,13 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get notificationAutoTooltip =>
-      '识别出的通知无需确认即被添加：Fingrom 运行时立即添加，否则在下次启动时添加。未识别的通知等待审核';
+  String get notificationAutoTooltip => '识别出的通知无需确认即被添加：Fingrom 运行时立即添加，否则在下次启动时添加。未识别的通知等待审核';
 
   @override
   String get notificationBalance => '余额关键词';
 
   @override
-  String get notificationBalanceTooltip =>
-      '出现在需要忽略的金额（余额、额度）之前的词语：输入词语后按 Enter 添加';
+  String get notificationBalanceTooltip => '出现在需要忽略的金额（余额、额度）之前的词语：输入词语后按 Enter 添加';
 
   @override
   String notificationCaptured(Object value) {
@@ -996,8 +1022,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationDefaultAccount => '默认账户';
 
   @override
-  String get notificationDescription =>
-      '根据本设备上银行和支付应用的通知创建交易。仅读取所选应用的通知，且在导入前通知保留在设备上。金额和货币会自动识别。';
+  String get notificationDescription => '根据本设备上银行和支付应用的通知创建交易。仅读取所选应用的通知，且在导入前通知保留在设备上。金额和货币会自动识别。';
 
   @override
   String get notificationGrant => '授予访问权限';
@@ -1143,8 +1168,7 @@ class AppLocalizationsZh extends AppLocalizations {
       '如何获取 Autoclient 令牌：\n1. 登录 Privat24 for Business\n2. 打开“集成（Autoclient）”\n3. 启用并复制令牌\n4. 将其粘贴到下方并点击“连接”\n5. 添加要导入的账户 IBAN';
 
   @override
-  String get privatBankTokenTooltip =>
-      '在 Privat24 for Business 的“集成（Autoclient）”中签发；加密存储';
+  String get privatBankTokenTooltip => '在 Privat24 for Business 的“集成（Autoclient）”中签发；加密存储';
 
   @override
   String get processIsFinished => '已完成！';
@@ -1235,8 +1259,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsSaved => '设置已保存！';
 
   @override
-  String get simpleFinDescription =>
-      '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
+  String get simpleFinDescription => '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
@@ -1254,8 +1277,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get simpleFinTokenInvalid => 'SimpleFIN 设置令牌无效';
 
   @override
-  String get simpleFinTokenTooltip =>
-      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次';
+  String get simpleFinTokenTooltip => '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次';
 
   @override
   String get skipFromTotals => '不计入总数';
@@ -1303,8 +1325,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get splitTooltip => '声明每月限额';
 
   @override
-  String get subscription =>
-      '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
+  String get subscription => '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
 
   @override
   String get subscriptionCoffee => '购买咖啡';
@@ -1427,8 +1448,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get webDav => '网络分布式创作和版本管理（WebDav）';
 
   @override
-  String get wiseDescription =>
-      '使用个人 API 令牌导入 Wise 多币种账户的余额和交易。已关联余额之间的换汇将作为转账导入。访问为只读：不会进行任何付款。';
+  String get wiseDescription => '使用个人 API 令牌导入 Wise 多币种账户的余额和交易。已关联余额之间的换汇将作为转账导入。访问为只读：不会进行任何付款。';
 
   @override
   String get wiseHeadline => 'Wise API (Global)';
@@ -1461,8 +1481,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   AppLocalizationsZhTw() : super('zh_TW');
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '關於我們';
@@ -2083,8 +2102,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get enableBankingKeyNotRsa => '私密金鑰無效：需要 RSA 金鑰';
 
   @override
-  String get enableBankingKeyTooltip =>
-      '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
+  String get enableBankingKeyTooltip => '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
 
   @override
   String get enableBankingLoadBanks => '載入銀行';
@@ -2154,8 +2172,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get finTsCustomerId => '客戶 ID（若與使用者 ID 不同）';
 
   @override
-  String get finTsDescription =>
-      '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
+  String get finTsDescription => '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -2390,6 +2407,38 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get missingContent => '檔案無法處理 (或取消)';
 
   @override
+  String get monobankCreateAccount => '建立帳戶';
+
+  @override
+  String get monobankDescription => '使用個人權杖匯入 monobank 金融卡與存錢筒的餘額及交易。monobank 每分鐘只允許一次請求：匯入較長期間需要數分鐘。唯讀存取：不會進行任何付款。';
+
+  @override
+  String get monobankHeadline => 'monobank Personal API（烏克蘭）';
+
+  @override
+  String get monobankJar => '存錢筒';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return '正在取得對帳單：$done / $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'monobank 每分鐘只允許一次請求：$value 秒後傳送下一次';
+  }
+
+  @override
+  String get monobankToken => '個人權杖';
+
+  @override
+  String get monobankTokenSteps =>
+      '如何取得個人權杖：\n1. 在瀏覽器中開啟 api.monobank.ua\n2. 使用 monobank 應用程式掃描 QR 碼並確認存取\n3. 從頁面複製權杖\n4. 貼到下方並點選「連線」\n5. 將每張卡或存錢筒連結到帳戶（或新建帳戶）並匯入';
+
+  @override
+  String get monobankTokenTooltip => '在 monobank 應用程式中掃描 QR 碼後於 api.monobank.ua 核發；加密儲存';
+
+  @override
   String get navigationTooltip => '開啟主功能表';
 
   @override
@@ -2411,8 +2460,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get notificationAccounts => '帳戶關鍵字';
 
   @override
-  String get notificationAccountsTooltip =>
-      '用於在通知中識別帳戶的詞語（卡號末幾碼、錢包名稱）：輸入詞語後按 Enter 新增。否則使用該應用程式的預設帳戶';
+  String get notificationAccountsTooltip => '用於在通知中識別帳戶的詞語（卡號末幾碼、錢包名稱）：輸入詞語後按 Enter 新增。否則使用該應用程式的預設帳戶';
 
   @override
   String get notificationApps => '讀取通知的應用程式';
@@ -2423,15 +2471,13 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   }
 
   @override
-  String get notificationAutoTooltip =>
-      '辨識出的通知無需確認即會新增：Fingrom 執行時立即新增，否則於下次啟動時新增。未辨識的通知等待審核';
+  String get notificationAutoTooltip => '辨識出的通知無需確認即會新增：Fingrom 執行時立即新增，否則於下次啟動時新增。未辨識的通知等待審核';
 
   @override
   String get notificationBalance => '餘額關鍵字';
 
   @override
-  String get notificationBalanceTooltip =>
-      '出現在需要忽略的金額（餘額、額度）之前的詞語：輸入詞語後按 Enter 新增';
+  String get notificationBalanceTooltip => '出現在需要忽略的金額（餘額、額度）之前的詞語：輸入詞語後按 Enter 新增';
 
   @override
   String notificationCaptured(Object value) {
@@ -2448,8 +2494,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get notificationDefaultAccount => '預設帳戶';
 
   @override
-  String get notificationDescription =>
-      '根據本裝置上銀行與支付應用程式的通知建立交易。僅讀取所選應用程式的通知，且在匯入前通知會保留在裝置上。金額與貨幣會自動辨識。';
+  String get notificationDescription => '根據本裝置上銀行與支付應用程式的通知建立交易。僅讀取所選應用程式的通知，且在匯入前通知會保留在裝置上。金額與貨幣會自動辨識。';
 
   @override
   String get notificationGrant => '授予存取權';
@@ -2595,8 +2640,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
       '如何取得 Autoclient 權杖：\n1. 登入 Privat24 for Business\n2. 開啟「整合（Autoclient）」\n3. 啟用並複製權杖\n4. 將其貼到下方並點擊「連線」\n5. 新增要匯入的帳戶 IBAN';
 
   @override
-  String get privatBankTokenTooltip =>
-      '在 Privat24 for Business 的「整合（Autoclient）」中核發；加密儲存';
+  String get privatBankTokenTooltip => '在 Privat24 for Business 的「整合（Autoclient）」中核發；加密儲存';
 
   @override
   String get processIsFinished => '完成！';
@@ -2687,8 +2731,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get settingsSaved => '設定已儲存！';
 
   @override
-  String get simpleFinDescription =>
-      '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
+  String get simpleFinDescription => '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
@@ -2706,8 +2749,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get simpleFinTokenInvalid => 'SimpleFIN 設定權杖無效';
 
   @override
-  String get simpleFinTokenTooltip =>
-      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次';
+  String get simpleFinTokenTooltip => '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次';
 
   @override
   String get skipFromTotals => '總計不包括';
@@ -2755,8 +2797,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get splitTooltip => '宣告每月限制';
 
   @override
-  String get subscription =>
-      '作為一個開放原始碼專案，訂閱不會解鎖任何額外功能。然而，這將會成為對應用程式持續演進與改進的投資，並維持其可用性。';
+  String get subscription => '作為一個開放原始碼專案，訂閱不會解鎖任何額外功能。然而，這將會成為對應用程式持續演進與改進的投資，並維持其可用性。';
 
   @override
   String get subscriptionCoffee => '購買咖啡';
@@ -2879,8 +2920,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get webDav => '網路分散式撰寫與版本控制 (WebDav)';
 
   @override
-  String get wiseDescription =>
-      '使用個人 API 權杖匯入 Wise 多幣別帳戶的餘額與交易。已連結餘額之間的換匯將以轉帳匯入。存取為唯讀：不會進行任何付款。';
+  String get wiseDescription => '使用個人 API 權杖匯入 Wise 多幣別帳戶的餘額與交易。已連結餘額之間的換匯將以轉帳匯入。存取為唯讀：不會進行任何付款。';
 
   @override
   String get wiseHeadline => 'Wise API (Global)';

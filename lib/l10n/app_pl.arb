@@ -403,6 +403,28 @@
     "milestones": "Kamienie milowe",
     "minute": "Minuta",
     "missingContent": "Plik nie może zostać przetworzony (anulowany)",
+    "monobankCreateAccount": "Utwórz konto",
+    "monobankDescription": "Import sald i transakcji kart i słoików monobank za pomocą osobistego tokenu. monobank pozwala na jedno zapytanie na minutę: import długiego okresu trwa kilka minut. Dostęp tylko do odczytu: płatności nie są wykonywane.",
+    "monobankHeadline": "monobank Personal API (Ukraina)",
+    "monobankJar": "Słoik",
+    "monobankProgress": "Pobieranie wyciągów: {done} z {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank pozwala na jedno zapytanie na minutę: następne za {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Token osobisty",
+    "monobankTokenSteps": "Jak uzyskać token osobisty:\n1. Otwórz api.monobank.ua w przeglądarce\n2. Zeskanuj kod QR w aplikacji monobank i potwierdź dostęp\n3. Skopiuj token ze strony\n4. Wklej go poniżej i naciśnij „Połącz”\n5. Powiąż każdą kartę lub słoik z kontem (albo utwórz je) i zaimportuj",
+    "monobankTokenTooltip": "Wydawany na api.monobank.ua po zeskanowaniu kodu QR w aplikacji monobank; przechowywany w postaci zaszyfrowanej",
     "navigationTooltip": "Otwórz menu główne",
     "netProfit": "Zysk: {value}",
     "@netProfit": {

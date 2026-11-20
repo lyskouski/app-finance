@@ -403,6 +403,28 @@
     "milestones": "Marcos",
     "minute": "Minuto",
     "missingContent": "O arquivo não pode ser processado (ou cancelado)",
+    "monobankCreateAccount": "Criar conta",
+    "monobankDescription": "Importação de saldos e transações de cartões e cofrinhos monobank com um token pessoal. O monobank permite uma requisição por minuto: importar um período longo leva vários minutos. Acesso somente leitura: nenhum pagamento é feito.",
+    "monobankHeadline": "monobank Personal API (Ucrânia)",
+    "monobankJar": "Cofrinho",
+    "monobankProgress": "Solicitando extratos: {done} de {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "O monobank permite uma requisição por minuto: a próxima em {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Token pessoal",
+    "monobankTokenSteps": "Como obter um token pessoal:\n1. Abra api.monobank.ua em um navegador\n2. Escaneie o QR code com o app monobank e confirme o acesso\n3. Copie o token da página\n4. Cole-o abaixo e toque em \"Conectar\"\n5. Vincule cada cartão ou cofrinho a uma conta (ou crie uma) e importe",
+    "monobankTokenTooltip": "Emitido em api.monobank.ua após escanear o QR code no app monobank; armazenado criptografado",
     "navigationTooltip": "Abrir o menu principal",
     "netProfit": "Lucro: {value}",
     "@netProfit": {

@@ -403,6 +403,28 @@
     "milestones": "Hitos",
     "minute": "Minuto",
     "missingContent": "No se puede procesar el archivo (o se cancela)",
+    "monobankCreateAccount": "Crear cuenta",
+    "monobankDescription": "Importación de saldos y movimientos de tarjetas y huchas de monobank con un token personal. monobank permite una solicitud por minuto: importar un período largo tarda varios minutos. Acceso de solo lectura: no se realizan pagos.",
+    "monobankHeadline": "monobank Personal API (Ucrania)",
+    "monobankJar": "Hucha",
+    "monobankProgress": "Solicitando extractos: {done} de {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank permite una solicitud por minuto: la siguiente en {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Token personal",
+    "monobankTokenSteps": "Cómo obtener un token personal:\n1. Abra api.monobank.ua en un navegador\n2. Escanee el código QR con la aplicación monobank y confirme el acceso\n3. Copie el token de la página\n4. Péguelo abajo y pulse «Conectar»\n5. Vincule cada tarjeta o hucha a una cuenta (o cree una) e importe",
+    "monobankTokenTooltip": "Se emite en api.monobank.ua tras escanear el código QR en la aplicación monobank; se guarda cifrado",
     "navigationTooltip": "Abrir menú principal",
     "netProfit": "Beneficio: {value}",
     "@netProfit": {

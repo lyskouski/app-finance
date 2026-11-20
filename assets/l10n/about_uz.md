@@ -79,6 +79,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
   - Enable Banking (EU): Yevropa banklaridan qoldiqlar va tranzaksiyalarni import qilish (PSD2)
   - Wise API (Global): Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish (shaxsiy API tokeni)
   - PrivatBank Autoclient (Ukraina): Privat24 for Business biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish (Autoclient tokeni)
+  - monobank Personal API (Ukraina): monobank kartalari va jamg'arma bankalari qoldiqlari va tranzaksiyalarini import qilish (shaxsiy token)
   - Bildirishnomalarni tahlil qilish (Android): bank va to'lov ilovalari bildirishnomalaridan tranzaksiyalar
 - Excel `XLSX` fayliga eksport qiling
 - Ma'lumotlarni shifrlash

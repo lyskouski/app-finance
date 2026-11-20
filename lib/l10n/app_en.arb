@@ -403,6 +403,28 @@
     "milestones": "Milestones",
     "minute": "Minute",
     "missingContent": "File cannot be processed (either canceled)",
+    "monobankCreateAccount": "Create Account",
+    "monobankDescription": "Import balances and transactions of Monobank cards and jars with a personal token. Monobank allows one request per minute: importing a long period takes several minutes. Access is read-only: no payments are made.",
+    "monobankHeadline": "Monobank Personal API (Ukraine)",
+    "monobankJar": "Jar",
+    "monobankProgress": "Requesting statements: {done} of {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "Monobank allows one request per minute: the next one in {value} s",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Personal Token",
+    "monobankTokenSteps": "How to get a personal token:\n1. Open api.monobank.ua in a browser\n2. Scan the QR code with the Monobank app and confirm the access\n3. Copy the token from the page\n4. Paste it below and press \"Connect\"\n5. Link each card or jar to an account (or create one) and import",
+    "monobankTokenTooltip": "Issued at api.monobank.ua after scanning the QR code in the Monobank app; stored encrypted",
     "navigationTooltip": "Open main menu",
     "netProfit": "Profit: {value}",
     "@netProfit": {

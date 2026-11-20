@@ -403,6 +403,28 @@
     "milestones": "Tonggak Pencapaian",
     "minute": "Menit",
     "missingContent": "File tidak dapat diproses (atau dibatalkan)",
+    "monobankCreateAccount": "Buat Akun",
+    "monobankDescription": "Impor saldo dan transaksi kartu dan celengan monobank dengan token pribadi. monobank mengizinkan satu permintaan per menit: impor periode panjang memerlukan beberapa menit. Akses hanya-baca: tidak ada pembayaran yang dilakukan.",
+    "monobankHeadline": "monobank Personal API (Ukraina)",
+    "monobankJar": "Celengan",
+    "monobankProgress": "Meminta laporan: {done} dari {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank mengizinkan satu permintaan per menit: berikutnya dalam {value} dtk",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Token Pribadi",
+    "monobankTokenSteps": "Cara mendapatkan token pribadi:\n1. Buka api.monobank.ua di peramban\n2. Pindai kode QR dengan aplikasi monobank dan konfirmasi akses\n3. Salin token dari halaman\n4. Tempel di bawah dan tekan \"Hubungkan\"\n5. Tautkan setiap kartu atau celengan ke akun (atau buat akun) lalu impor",
+    "monobankTokenTooltip": "Diterbitkan di api.monobank.ua setelah memindai kode QR di aplikasi monobank; disimpan terenkripsi",
     "navigationTooltip": "Buka menu utama",
     "netProfit": "Keuntungan: {value}",
     "@netProfit": {

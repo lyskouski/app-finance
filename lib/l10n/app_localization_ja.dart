@@ -9,8 +9,7 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'ご注文について';
@@ -606,8 +605,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get enableBankingCode => '認可後に開いたページのアドレス';
 
   @override
-  String get enableBankingCodeTooltip =>
-      '銀行でアクセスを承認した後、ブラウザーのアドレスをコピーしてここに貼り付けてください';
+  String get enableBankingCodeTooltip => '銀行でアクセスを承認した後、ブラウザーのアドレスをコピーしてここに貼り付けてください';
 
   @override
   String get enableBankingCountry => '国（ISOコード、例: DE）';
@@ -703,8 +701,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finTsCustomerId => '顧客ID（ユーザーIDと異なる場合）';
 
   @override
-  String get finTsDescription =>
-      'FinTS 4.1（PIN/TAN）対応の銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+  String get finTsDescription => 'FinTS 4.1（PIN/TAN）対応の銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -732,8 +729,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finTsProductId => '製品登録番号';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Deutsche Kreditwirtschaft がアプリの開発元に発行します';
+  String get finTsProductIdTooltip => 'Deutsche Kreditwirtschaft がアプリの開発元に発行します';
 
   @override
   String get finTsTan => 'TAN';
@@ -757,8 +753,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finTsVersion => 'プロトコルバージョン';
 
   @override
-  String get finTsWebUnsupported =>
-      '銀行のサーバーはブラウザーからのアクセスを許可していません。デスクトップ版またはモバイル版アプリを使用してください。';
+  String get finTsWebUnsupported => '銀行のサーバーはブラウザーからのアクセスを許可していません。デスクトップ版またはモバイル版アプリを使用してください。';
 
   @override
   String get flowTypeInvoice => '請求書';
@@ -941,6 +936,39 @@ class AppLocalizationsJa extends AppLocalizations {
   String get missingContent => 'ファイルが処理できない（キャンセルされた）';
 
   @override
+  String get monobankCreateAccount => '口座を作成';
+
+  @override
+  String get monobankDescription =>
+      '個人トークンで monobank のカードと貯金箱（バンカ）の残高と取引をインポートします。monobank は 1 分間に 1 回のリクエストのみ許可するため、長い期間のインポートには数分かかります。読み取り専用アクセス：支払いは行われません。';
+
+  @override
+  String get monobankHeadline => 'monobank Personal API（ウクライナ）';
+
+  @override
+  String get monobankJar => '貯金箱';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return '明細を取得中：$done / $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'monobank は 1 分間に 1 回のリクエストのみ許可：次は $value 秒後';
+  }
+
+  @override
+  String get monobankToken => '個人トークン';
+
+  @override
+  String get monobankTokenSteps =>
+      '個人トークンの取得方法：\n1. ブラウザで api.monobank.ua を開く\n2. monobank アプリで QR コードをスキャンしてアクセスを承認\n3. ページからトークンをコピー\n4. 下に貼り付けて「接続」を押す\n5. 各カードまたは貯金箱を口座に紐付け（または作成）してインポート';
+
+  @override
+  String get monobankTokenTooltip => 'monobank アプリで QR コードをスキャンすると api.monobank.ua で発行されます。暗号化して保存されます';
+
+  @override
   String get navigationTooltip => 'メインメニューを開く';
 
   @override
@@ -974,15 +1002,13 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get notificationAutoTooltip =>
-      '認識された通知は確認なしで追加されます：Fingrom の実行中は即時、それ以外は次回起動時。認識されない通知は確認待ちになります';
+  String get notificationAutoTooltip => '認識された通知は確認なしで追加されます：Fingrom の実行中は即時、それ以外は次回起動時。認識されない通知は確認待ちになります';
 
   @override
   String get notificationBalance => '残高キーワード';
 
   @override
-  String get notificationBalanceTooltip =>
-      '無視する金額（残高、限度額）の前に置かれる語句：語句を入力し、Enterキーで追加します';
+  String get notificationBalanceTooltip => '無視する金額（残高、限度額）の前に置かれる語句：語句を入力し、Enterキーで追加します';
 
   @override
   String notificationCaptured(Object value) {
@@ -1146,8 +1172,7 @@ class AppLocalizationsJa extends AppLocalizations {
       'Autoclientトークンの取得方法：\n1. Privat24 for Businessにサインインします\n2. 「連携（Autoclient）」を開きます\n3. 有効にしてトークンをコピーします\n4. 下に貼り付けて「接続」を押します\n5. インポートする口座のIBANを追加します';
 
   @override
-  String get privatBankTokenTooltip =>
-      'Privat24 for Businessの「連携（Autoclient）」で発行されます。暗号化して保存されます';
+  String get privatBankTokenTooltip => 'Privat24 for Businessの「連携（Autoclient）」で発行されます。暗号化して保存されます';
 
   @override
   String get processIsFinished => '終了しました！';
@@ -1238,15 +1263,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settingsSaved => '設定が保存されました！';
 
   @override
-  String get simpleFinDescription =>
-      'SimpleFIN Bridge を通じて米国の銀行やカード発行会社から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+  String get simpleFinDescription => 'SimpleFIN Bridge を通じて米国の銀行やカード発行会社から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'SimpleFIN Bridge が認証情報のないアクセスアドレスを返しました';
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge が認証情報のないアクセスアドレスを返しました';
 
   @override
   String get simpleFinToken => 'SimpleFIN セットアップトークン';
@@ -1258,8 +1281,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get simpleFinTokenInvalid => '無効な SimpleFIN セットアップトークン';
 
   @override
-  String get simpleFinTokenTooltip =>
-      'このアプリ用に SimpleFIN Bridge（例: bridge.simplefin.org）で作成します。使用できるのは1回のみです';
+  String get simpleFinTokenTooltip => 'このアプリ用に SimpleFIN Bridge（例: bridge.simplefin.org）で作成します。使用できるのは1回のみです';
 
   @override
   String get skipFromTotals => '合計から除外する';
@@ -1444,8 +1466,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get wiseProfile => 'プロフィール';
 
   @override
-  String get wiseScaRequired =>
-      'Wise で強力な顧客認証が必要です。Wise アプリでこの残高の明細を開いてから再試行してください';
+  String get wiseScaRequired => 'Wise で強力な顧客認証が必要です。Wise アプリでこの残高の明細を開いてから再試行してください';
 
   @override
   String get wiseToken => '個人用 API トークン';
@@ -1455,8 +1476,7 @@ class AppLocalizationsJa extends AppLocalizations {
       '個人用 API トークンの取得方法:\n1. ブラウザで wise.com にログインします（モバイルアプリではトークンを作成できません）\n2. 設定 → 連携とツール → API トークン を開きます\n3. 「新しいトークンを追加」を選び、名前（例: Fingrom）を付けて「読み取り専用」アクセスを選択します\n4. 2 段階認証で確認し、トークンをコピーします\n5. 下に貼り付けて「接続」を押します';
 
   @override
-  String get wiseTokenTooltip =>
-      'Wise の 設定 → API トークン で作成します（可能であれば読み取り専用）。暗号化して保存されます';
+  String get wiseTokenTooltip => 'Wise の 設定 → API トークン で作成します（可能であれば読み取り専用）。暗号化して保存されます';
 
   @override
   String get zoomState => 'ズームイン/ズームアウト';

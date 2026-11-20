@@ -8,6 +8,9 @@ import 'package:app_finance/_classes/integration/enablebanking/enablebanking_set
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
 import 'package:app_finance/_classes/integration/notification/notification_channel.dart';
 import 'package:app_finance/_classes/integration/notification/notification_controller.dart';
+import 'package:app_finance/_classes/integration/monobank/monobank_client.dart';
+import 'package:app_finance/_classes/integration/monobank/monobank_importer.dart';
+import 'package:app_finance/_classes/integration/monobank/monobank_settings.dart';
 import 'package:app_finance/_classes/integration/notification/notification_parser.dart';
 import 'package:app_finance/_classes/integration/notification/notification_settings.dart';
 import 'package:app_finance/_classes/integration/privatbank/privatbank_client.dart';
@@ -27,6 +30,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
+import 'package:app_finance/pages/integration/widgets/monobank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
@@ -148,12 +152,14 @@ void main() {
     expect(find.text('Enable Banking (EU)'), findsOneWidget);
     expect(find.text('Wise API (Global)'), findsOneWidget);
     expect(find.text('PrivatBank Autoclient (Ukraine)'), findsOneWidget);
+    expect(find.text('Monobank Personal API (Ukraine)'), findsOneWidget);
     expect(find.text('Notifications Parser'), findsOneWidget);
     // Protocols are separated from the APIs of single institutions
     final divider = tester.getTopLeft(find.byKey(const ValueKey('integration_divider'))).dy;
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_enablebanking'))).dy, lessThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_wise'))).dy, greaterThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_privatbank'))).dy, greaterThan(divider));
+    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_monobank'))).dy, greaterThan(divider));
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsNothing);
     expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsNothing);
 
@@ -466,6 +472,124 @@ void main() {
     await tester.pumpAndSettle();
     expect(PrivatBankSettings.loadToken(), isNull);
     expect(find.byKey(const ValueKey('privatbank_steps')), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Monobank connects with a personal token, creates an account and imports by windows',
+      (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'UAH' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final budget = state.add(BudgetAppData(title: 'Groceries', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+    final accounts = state.getList(AppDataType.accounts, false).length;
+    final now = DateTime.now();
+
+    final requests = <http.Request>[];
+    final waits = <Duration>[];
+    final client = MonobankClient(
+      wait: (duration) async => waits.add(duration),
+      client: MockClient((request) async {
+        requests.add(request);
+        final path = request.url.path;
+        final body = path == '/personal/client-info'
+            ? {
+                'name': 'Client',
+                'accounts': [
+                  {
+                    'id': 'card',
+                    'balance': 152025,
+                    'creditLimit': 0,
+                    'type': 'black',
+                    'currencyCode': 980,
+                    'maskedPan': ['537541******1234'],
+                    'iban': 'UA733220010000026201234567890',
+                  },
+                ],
+                'jars': [],
+              }
+            : path.startsWith('/personal/statement/card/')
+                ? [
+                    if (requests.where((e) => e.url.path.startsWith('/personal/statement/')).length == 1)
+                      {
+                        'id': 'T-1',
+                        'time': now.subtract(const Duration(days: 40)).millisecondsSinceEpoch ~/ 1000,
+                        'description': 'Market',
+                        'mcc': 5411,
+                        'hold': false,
+                        'amount': -25000,
+                        'operationAmount': -25000,
+                        'currencyCode': 980,
+                      },
+                  ]
+                : throw StateError('Unexpected ${request.url}');
+        return http.Response.bytes(utf8.encode(jsonEncode(body)), 200);
+      }),
+    );
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(body: SingleChildScrollView(child: MonobankWidget(client: client))),
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const ValueKey('monobank_steps')), findsOneWidget);
+    await tester.enterText(find.byType(TextField).first, 'personal-token');
+    await tester.ensureVisible(find.byKey(const ValueKey('monobank_connect')));
+    await tester.tap(find.byKey(const ValueKey('monobank_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(requests.first.headers['X-Token'], 'personal-token');
+    expect(MonobankSettings.loadToken(), 'personal-token');
+    expect(find.text('Black — 537541******1234 — UAH'), findsOneWidget);
+    expect(find.textContaining('1520.25 UAH'), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('monobank_create_card')));
+    await tester.tap(find.byKey(const ValueKey('monobank_create_card')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(state.getList(AppDataType.accounts, false).length, accounts + 1);
+    final widgetState = tester.state<MonobankWidgetState>(find.byType(MonobankWidget));
+    final item = widgetState.accounts.single;
+    final created = state.getByUuid(item.appAccount!) as AccountAppData;
+    expect(created.details, 1520.25);
+    expect(created.currency?.code, 'UAH');
+    expect(MonobankSettings.load().links, {'card': created.uuid});
+    expect(find.byKey(const ValueKey('monobank_create_card')), findsNothing);
+
+    item
+      ..category = budget.uuid
+      ..from = now.subtract(const Duration(days: 45));
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    // 45 days are requested by two windows with a pause between them
+    expect(requests.where((e) => e.url.path.startsWith('/personal/statement/card/')).length, 2);
+    expect(waits.length, 1);
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 0'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    final bill = state.getByUuid(MonobankImporter.recordUuid('card', 'T-1')) as BillAppData;
+    expect(bill.title, 'Market');
+    expect(bill.details, 250.0);
+    expect(MonobankSettings.load().records, {bill.uuid: 5411});
+    expect(MonobankSettings.load().imported['card'], DateTime(now.year, now.month, now.day));
+
+    await tester.ensureVisible(find.byKey(const ValueKey('monobank_forget')));
+    await tester.tap(find.byKey(const ValueKey('monobank_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(MonobankSettings.loadToken(), isNull);
+    expect(find.byKey(const ValueKey('monobank_steps')), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

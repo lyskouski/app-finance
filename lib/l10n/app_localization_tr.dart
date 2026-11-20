@@ -9,8 +9,7 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Hakkında';
@@ -103,8 +102,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get balanceDate => 'Denge Tarihi Güncellemesi';
 
   @override
-  String get balanceDateTooltip =>
-      'Bu tarihten önceki Sonuçlar ve Gelirler bakiyeyi etkilemeyecektir';
+  String get balanceDateTooltip => 'Bu tarihten önceki Sonuçlar ve Gelirler bakiyeyi etkilemeyecektir';
 
   @override
   String get balanceTooltip => 'Dengeyi Ayarla';
@@ -604,8 +602,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get enableBankingBank => 'Banka';
 
   @override
-  String get enableBankingCode =>
-      'Yetkilendirmeden sonra açılan sayfanın adresi';
+  String get enableBankingCode => 'Yetkilendirmeden sonra açılan sayfanın adresi';
 
   @override
   String get enableBankingCodeTooltip =>
@@ -622,19 +619,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete =>
-      'Uygulama kimliğini, özel anahtarı, yönlendirme URL\'sini ve ülkeyi doldurun';
+  String get enableBankingIncomplete => 'Uygulama kimliğini, özel anahtarı, yönlendirme URL\'sini ve ülkeyi doldurun';
 
   @override
   String get enableBankingKey => 'Özel anahtar (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      'Geçersiz özel anahtar: \"PRIVATE KEY\" PEM bloğu bekleniyor';
+  String get enableBankingKeyInvalid => 'Geçersiz özel anahtar: \"PRIVATE KEY\" PEM bloğu bekleniyor';
 
   @override
-  String get enableBankingKeyNotRsa =>
-      'Geçersiz özel anahtar: RSA anahtarı bekleniyor';
+  String get enableBankingKeyNotRsa => 'Geçersiz özel anahtar: RSA anahtarı bekleniyor';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -644,8 +638,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get enableBankingLoadBanks => 'Bankaları yükle';
 
   @override
-  String get enableBankingNoAuthPage =>
-      'Enable Banking bir yetkilendirme sayfası döndürmedi';
+  String get enableBankingNoAuthPage => 'Enable Banking bir yetkilendirme sayfası döndürmedi';
 
   @override
   String get enableBankingNoCode => 'Adreste yetkilendirme kodu bulunamadı';
@@ -654,12 +647,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get enableBankingRedirect => 'Yönlendirme URL\'si';
 
   @override
-  String get enableBankingRedirectTooltip =>
-      'Uygulama için kayıtlıdır; banka yetkilendirmeden sonra buraya geri döner';
+  String get enableBankingRedirectTooltip => 'Uygulama için kayıtlıdır; banka yetkilendirmeden sonra buraya geri döner';
 
   @override
-  String get enableBankingStateMismatch =>
-      'Adres başka bir yetkilendirmeye ait, yeniden bağlanın';
+  String get enableBankingStateMismatch => 'Adres başka bir yetkilendirmeye ait, yeniden bağlanın';
 
   @override
   String get encryptionMode => 'Veri Şifreleme';
@@ -708,8 +699,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get finTsBankCode => 'Banka kodu (BLZ)';
 
   @override
-  String get finTsCustomerId =>
-      'Müşteri kimliği (kullanıcı kimliğinden farklıysa)';
+  String get finTsCustomerId => 'Müşteri kimliği (kullanıcı kimliğinden farklıysa)';
 
   @override
   String get finTsDescription =>
@@ -719,8 +709,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete =>
-      'Sunucu URL\'sini, banka kodunu, kullanıcı kimliğini ve ürün kayıt numarasını doldurun';
+  String get finTsIncomplete => 'Sunucu URL\'sini, banka kodunu, kullanıcı kimliğini ve ürün kayıt numarasını doldurun';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -736,15 +725,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint =>
-      'Yalnızca bu oturum için kullanılır ve asla saklanmaz';
+  String get finTsPinHint => 'Yalnızca bu oturum için kullanılır ve asla saklanmaz';
 
   @override
   String get finTsProductId => 'Ürün kayıt numarası';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Deutsche Kreditwirtschaft tarafından uygulama üreticisine verilir';
+  String get finTsProductIdTooltip => 'Deutsche Kreditwirtschaft tarafından uygulama üreticisine verilir';
 
   @override
   String get finTsTan => 'TAN';
@@ -840,8 +827,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get incomeTooltip => 'Gelir Ayrıntılarını Ayarla';
 
   @override
-  String get integrationAccessDenied =>
-      'Erişim iptal edildi veya kimlik bilgileri yanlış';
+  String get integrationAccessDenied => 'Erişim iptal edildi veya kimlik bilgileri yanlış';
 
   @override
   String get integrationConnect => 'Bağlan';
@@ -867,8 +853,7 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired =>
-      'Yalnızca güvenli (HTTPS) adreslere izin verilir';
+  String get integrationHttpsRequired => 'Yalnızca güvenli (HTTPS) adreslere izin verilir';
 
   @override
   String get integrationImport => 'İşlemleri içe aktar';
@@ -887,12 +872,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get integrationNoAccounts => 'Banka herhangi bir hesap sağlamadı';
 
   @override
-  String get integrationPaymentRequired =>
-      'Hizmet, erişim için ödeme gerektiriyor';
+  String get integrationPaymentRequired => 'Hizmet, erişim için ödeme gerektiriyor';
 
   @override
-  String get integrationSelectTarget =>
-      'İçe aktarılacak hesabı ve bütçe kategorisini seçin';
+  String get integrationSelectTarget => 'İçe aktarılacak hesabı ve bütçe kategorisini seçin';
 
   @override
   String integrationServiceError(Object value) {
@@ -956,6 +939,40 @@ class AppLocalizationsTr extends AppLocalizations {
   String get missingContent => 'Dosya işlenemiyor (ya iptal edildi)';
 
   @override
+  String get monobankCreateAccount => 'Hesap oluştur';
+
+  @override
+  String get monobankDescription =>
+      'Kişisel token ile monobank kartlarının ve kumbaralarının bakiyelerini ve işlemlerini içe aktarma. monobank dakikada bir isteğe izin verir: uzun bir dönemin içe aktarılması birkaç dakika sürer. Salt okunur erişim: ödeme yapılmaz.';
+
+  @override
+  String get monobankHeadline => 'monobank Personal API (Ukrayna)';
+
+  @override
+  String get monobankJar => 'Kumbara';
+
+  @override
+  String monobankProgress(Object done, Object total) {
+    return 'Ekstreler isteniyor: $done / $total';
+  }
+
+  @override
+  String monobankRateLimit(Object value) {
+    return 'monobank dakikada bir isteğe izin verir: sonraki $value sn sonra';
+  }
+
+  @override
+  String get monobankToken => 'Kişisel token';
+
+  @override
+  String get monobankTokenSteps =>
+      'Kişisel token nasıl alınır:\n1. Bir tarayıcıda api.monobank.ua adresini açın\n2. QR kodunu monobank uygulamasıyla tarayın ve erişimi onaylayın\n3. Sayfadaki tokenı kopyalayın\n4. Aşağıya yapıştırın ve \"Bağlan\"a basın\n5. Her kartı veya kumbarayı bir hesaba bağlayın (ya da hesap oluşturun) ve içe aktarın';
+
+  @override
+  String get monobankTokenTooltip =>
+      'monobank uygulamasında QR kodu tarandıktan sonra api.monobank.ua üzerinde verilir; şifrelenmiş olarak saklanır';
+
+  @override
   String get navigationTooltip => 'Ana menüyü açın';
 
   @override
@@ -1008,8 +1025,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notificationClear => 'Yakalananları temizle';
 
   @override
-  String get notificationCurrencyTooltip =>
-      'Para birimi olmayan tutarlar (ör. Borç 20,00) bu para biriminde alınır';
+  String get notificationCurrencyTooltip => 'Para birimi olmayan tutarlar (ör. Borç 20,00) bu para biriminde alınır';
 
   @override
   String get notificationDefaultAccount => 'Varsayılan hesap';
@@ -1143,12 +1159,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get privatBankIban => 'Hesap IBAN';
 
   @override
-  String get privatBankIbanInvalid =>
-      'Bir Ukrayna IBAN girin: UA ve ardından 27 rakam';
+  String get privatBankIbanInvalid => 'Bir Ukrayna IBAN girin: UA ve ardından 27 rakam';
 
   @override
-  String get privatBankIbanTooltip =>
-      'API hesap listesi sağlamaz: hesapların IBAN\'larını tek tek ekleyin';
+  String get privatBankIbanTooltip => 'API hesap listesi sağlamaz: hesapların IBAN\'larını tek tek ekleyin';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1216,12 +1230,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get searchTooltip => 'Aramak';
 
   @override
-  String get secureBioNotMatch =>
-      'Kimlik doğrulama başarısız! Lütfen tekrar deneyin';
+  String get secureBioNotMatch => 'Kimlik doğrulama başarısız! Lütfen tekrar deneyin';
 
   @override
-  String get secureBioPromptReason =>
-      'Devam etmek için lütfen kimlik doğrulaması yapın';
+  String get secureBioPromptReason => 'Devam etmek için lütfen kimlik doğrulaması yapın';
 
   @override
   String get secureBioPromptTitle => 'Biyometrik Kimlik Doğrulama';
@@ -1230,8 +1242,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get secureOtpCode => 'Bir Defalık Parola Kodu';
 
   @override
-  String get secureOtpCodeInvalid =>
-      'Geçersiz! Lütfen yeni bir kod oluşturun ve girin';
+  String get secureOtpCodeInvalid => 'Geçersiz! Lütfen yeni bir kod oluşturun ve girin';
 
   @override
   String get secureOtpDeactivated => 'Parola Koruması devre dışı bırakıldı';
@@ -1268,15 +1279,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'SimpleFIN Bridge kimlik bilgileri olmayan bir erişim adresi döndürdü';
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge kimlik bilgileri olmayan bir erişim adresi döndürdü';
 
   @override
   String get simpleFinToken => 'SimpleFIN kurulum belirteci';
 
   @override
-  String get simpleFinTokenClaimed =>
-      'Kurulum belirteci mevcut değil veya zaten kullanılmış';
+  String get simpleFinTokenClaimed => 'Kurulum belirteci mevcut değil veya zaten kullanılmış';
 
   @override
   String get simpleFinTokenInvalid => 'Geçersiz SimpleFIN kurulum belirteci';
@@ -1462,8 +1471,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get wiseHeadline => 'Wise API (Global)';
 
   @override
-  String get wiseNoProfiles =>
-      'Bu anahtar için kullanılabilir Wise profili yok';
+  String get wiseNoProfiles => 'Bu anahtar için kullanılabilir Wise profili yok';
 
   @override
   String get wiseProfile => 'Profil';

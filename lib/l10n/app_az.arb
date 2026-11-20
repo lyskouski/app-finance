@@ -403,6 +403,28 @@
     "milestones": "Mərhələlər",
     "minute": "Dəqiqə",
     "missingContent": "Fayl emal edilə bilməz (və ya ləğv edilir)",
+    "monobankCreateAccount": "Hesab yarat",
+    "monobankDescription": "Şəxsi token ilə monobank kartlarının və banklarının (yığım qutularının) qalıqlarının və əməliyyatlarının idxalı. monobank dəqiqədə bir sorğuya icazə verir: uzun dövrün idxalı bir neçə dəqiqə çəkir. Yalnız oxuma girişi: ödənişlər edilmir.",
+    "monobankHeadline": "monobank Personal API (Ukrayna)",
+    "monobankJar": "Yığım qutusu",
+    "monobankProgress": "Çıxarışlar sorğulanır: {done} / {total}",
+    "@monobankProgress": {
+        "done": {
+            "type": "int"
+        },
+        "total": {
+            "type": "int"
+        }
+    },
+    "monobankRateLimit": "monobank dəqiqədə bir sorğuya icazə verir: növbəti {value} san sonra",
+    "@monobankRateLimit": {
+        "value": {
+            "type": "int"
+        }
+    },
+    "monobankToken": "Şəxsi token",
+    "monobankTokenSteps": "Şəxsi tokeni necə almaq olar:\n1. Brauzerdə api.monobank.ua ünvanını açın\n2. QR kodu monobank tətbiqi ilə skan edin və girişi təsdiqləyin\n3. Tokeni səhifədən kopyalayın\n4. Onu aşağıya yapışdırın və \"Qoşul\" düyməsini basın\n5. Hər kartı və ya yığım qutusunu hesaba bağlayın (və ya hesab yaradın) və idxal edin",
+    "monobankTokenTooltip": "monobank tətbiqində QR kod skan edildikdən sonra api.monobank.ua-da verilir; şifrələnmiş şəkildə saxlanılır",
     "navigationTooltip": "Əsas menyunu açın",
     "netProfit": "Mənfəət: {value}",
     "@netProfit": {

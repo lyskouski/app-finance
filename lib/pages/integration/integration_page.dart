@@ -9,6 +9,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
+import 'package:app_finance/pages/integration/widgets/monobank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
@@ -52,6 +53,12 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
           title: AppLocale.labels.privatBankHeadline,
           icon: Icons.business_center_outlined,
           builder: (_) => const PrivatBankWidget(),
+        ),
+        (
+          id: 'monobank',
+          title: AppLocale.labels.monobankHeadline,
+          icon: Icons.credit_card,
+          builder: (_) => const MonobankWidget(),
         ),
         (
           id: 'wise',
