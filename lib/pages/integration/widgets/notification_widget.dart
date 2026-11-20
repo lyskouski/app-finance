@@ -292,8 +292,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
 
   List<MapEntry<String, String>> _sortedApps() => apps.entries.toList()
     ..sort((a, b) {
-      final selected = (packages.contains(a.key) ? 0 : 1) - (packages.contains(b.key) ? 0 : 1);
-      return selected != 0 ? selected : a.value.toLowerCase().compareTo(b.value.toLowerCase());
+      return a.value.toLowerCase().compareTo(b.value.toLowerCase());
     });
 
   @override
