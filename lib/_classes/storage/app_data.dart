@@ -49,7 +49,10 @@ class AppData extends ChangeNotifier {
   bool isLoading = false;
   final _hashTable = HashMap<String, dynamic>();
   final _data = <AppDataType, SummaryAppData>{};
-  final prediction = BudgetPrediction();
+  late final prediction = BudgetPrediction(isValid: (uuid) {
+    final budget = _hashTable[uuid];
+    return budget is BudgetAppData && !budget.hidden;
+  });
 
   AppData(this.appSync) : super() {
     isLoading = true;
