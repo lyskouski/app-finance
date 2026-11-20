@@ -1132,6 +1132,46 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Tambah Rekening';
+
+  @override
+  String get privatBankDescription =>
+      'Impor saldo dan transaksi rekening bisnis (usaha perorangan dan perusahaan) dari Privat24 for Business dengan token Autoclient. Rekening pribadi tidak didukung oleh API. Akses hanya-baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (Ukraina)';
+
+  @override
+  String get privatBankIban => 'IBAN Rekening';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'Masukkan IBAN Ukraina: UA diikuti 27 digit';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API tidak menyediakan daftar rekening: tambahkan IBAN rekening satu per satu';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank sedang menyiapkan mutasi (fase $value): coba lagi dalam beberapa menit';
+  }
+
+  @override
+  String get privatBankRemove => 'Hapus Rekening';
+
+  @override
+  String get privatBankToken => 'Token Autoclient';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Cara mendapatkan token Autoclient:\n1. Masuk ke Privat24 for Business\n2. Buka Integrasi (Autoclient)\n3. Aktifkan dan salin tokennya\n4. Tempelkan di bawah dan tekan \"Hubungkan\"\n5. Tambahkan IBAN rekening yang akan diimpor';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Diterbitkan di Privat24 for Business pada Integrasi (Autoclient); disimpan terenkripsi';
+
+  @override
   String get processIsFinished => 'Selesai!';
 
   @override

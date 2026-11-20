@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Adicionar conta",
+    "privatBankDescription": "Importar saldos e transações de contas empresariais (empresários individuais e empresas) do Privat24 for Business com um token Autoclient. As contas pessoais não são suportadas pela API. O acesso é apenas de leitura: não são efetuados pagamentos.",
+    "privatBankHeadline": "PrivatBank Autoclient (Ucrânia)",
+    "privatBankIban": "IBAN da conta",
+    "privatBankIbanInvalid": "Introduza um IBAN ucraniano: UA seguido de 27 dígitos",
+    "privatBankIbanTooltip": "A API não fornece uma lista de contas: adicione os IBAN das contas um a um",
+    "privatBankNotReady": "O PrivatBank está a preparar os extratos (fase {value}): tente novamente dentro de alguns minutos",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Remover conta",
+    "privatBankToken": "Token Autoclient",
+    "privatBankTokenSteps": "Como obter um token Autoclient:\n1. Inicie sessão no Privat24 for Business\n2. Abra Integração (Autoclient)\n3. Ative-a e copie o token\n4. Cole-o abaixo e prima «Ligar»\n5. Adicione os IBAN das contas a importar",
+    "privatBankTokenTooltip": "Emitido no Privat24 for Business em Integração (Autoclient); guardado de forma encriptada",
     "processIsFinished": "Terminado!",
     "progress": "Progresso: {value}%",
     "@progress": {

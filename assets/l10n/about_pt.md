@@ -78,6 +78,7 @@ Isto permite aos utilizadores gerir as suas finanças sem esforço, garantindo q
   - SimpleFIN Bridge (US): importação de saldos e movimentos de bancos e emissores de cartões dos EUA
   - Enable Banking (EU): importação de saldos e movimentos de bancos europeus (PSD2)
   - Wise API (Global): importação de saldos e movimentos de contas multimoeda Wise (token de API pessoal)
+  - PrivatBank Autoclient (Ucrânia): importação de saldos e transações de contas empresariais do Privat24 for Business (token Autoclient)
   - Analisador de notificações (Android): movimentos a partir de notificações de aplicações bancárias e de pagamento
 - Exportar para ficheiro Excel `XLSX`
 - Encriptação de dados

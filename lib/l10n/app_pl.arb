@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Dodaj konto",
+    "privatBankDescription": "Import sald i transakcji kont firmowych (JDG i spółek) Privat24 dla Biznesu za pomocą tokenu Autoclient. Konta osobiste nie są obsługiwane przez API. Dostęp tylko do odczytu: płatności nie są realizowane.",
+    "privatBankHeadline": "PrivatBank Autoclient (Ukraina)",
+    "privatBankIban": "IBAN konta",
+    "privatBankIbanInvalid": "Wprowadź ukraiński IBAN: UA i 27 cyfr",
+    "privatBankIbanTooltip": "API nie udostępnia listy kont: dodaj numery IBAN kont pojedynczo",
+    "privatBankNotReady": "PrivatBank przygotowuje wyciągi (faza {value}): spróbuj ponownie za kilka minut",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Usuń konto",
+    "privatBankToken": "Token Autoclient",
+    "privatBankTokenSteps": "Jak uzyskać token Autoclient:\n1. Zaloguj się do Privat24 dla Biznesu\n2. Otwórz Integracja (Autoclient)\n3. Aktywuj ją i skopiuj token\n4. Wklej go poniżej i naciśnij „Połącz”\n5. Dodaj numery IBAN kont do importu",
+    "privatBankTokenTooltip": "Wydawany w Privat24 dla Biznesu w sekcji Integracja (Autoclient); przechowywany w postaci zaszyfrowanej",
     "processIsFinished": "Zakończono!",
     "progress": "Postęp: {value}%",
     "@progress": {

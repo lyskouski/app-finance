@@ -1133,6 +1133,46 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Rekening toevoegen';
+
+  @override
+  String get privatBankDescription =>
+      'Importeer saldi en transacties van zakelijke rekeningen (eenmanszaken en bedrijven) van Privat24 for Business met een Autoclient-token. Privérekeningen worden niet ondersteund door de API. De toegang is alleen-lezen: er worden geen betalingen gedaan.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (Oekraïne)';
+
+  @override
+  String get privatBankIban => 'IBAN van de rekening';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'Voer een Oekraïense IBAN in: UA gevolgd door 27 cijfers';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'De API biedt geen lijst met rekeningen: voeg de IBANs van de rekeningen één voor één toe';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank bereidt de afschriften voor (fase $value): probeer het over een paar minuten opnieuw';
+  }
+
+  @override
+  String get privatBankRemove => 'Rekening verwijderen';
+
+  @override
+  String get privatBankToken => 'Autoclient-token';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Zo krijgt u een Autoclient-token:\n1. Meld u aan bij Privat24 for Business\n2. Open Integratie (Autoclient)\n3. Activeer deze en kopieer het token\n4. Plak het hieronder en druk op \"Verbinden\"\n5. Voeg de IBANs toe van de rekeningen die u wilt importeren';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Uitgegeven in Privat24 for Business onder Integratie (Autoclient); versleuteld opgeslagen';
+
+  @override
   String get processIsFinished => 'Voltooid!';
 
   @override

@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Přidat účet",
+    "privatBankDescription": "Import zůstatků a transakcí podnikatelských účtů (OSVČ a firem) z Privat24 for Business pomocí tokenu Autoclient. Osobní účty API nepodporuje. Přístup je pouze pro čtení: neprovádějí se žádné platby.",
+    "privatBankHeadline": "PrivatBank Autoclient (Ukrajina)",
+    "privatBankIban": "IBAN účtu",
+    "privatBankIbanInvalid": "Zadejte ukrajinský IBAN: UA a 27 číslic",
+    "privatBankIbanTooltip": "API neposkytuje seznam účtů: přidejte IBAN účtů jeden po druhém",
+    "privatBankNotReady": "PrivatBank připravuje výpisy (fáze {value}): zkuste to znovu za několik minut",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Odebrat účet",
+    "privatBankToken": "Token Autoclient",
+    "privatBankTokenSteps": "Jak získat token Autoclient:\n1. Přihlaste se do Privat24 for Business\n2. Otevřete Integrace (Autoclient)\n3. Aktivujte ji a zkopírujte token\n4. Vložte jej níže a stiskněte „Připojit“\n5. Přidejte IBAN účtů k importu",
+    "privatBankTokenTooltip": "Vydává se v Privat24 for Business v sekci Integrace (Autoclient); uloženo šifrovaně",
     "processIsFinished": "Dokončeno!",
     "progress": "Pokrok: {value}%",
     "@progress": {

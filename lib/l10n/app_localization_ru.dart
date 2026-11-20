@@ -1131,6 +1131,45 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Добавить счёт';
+
+  @override
+  String get privatBankDescription =>
+      'Импорт остатков и операций бизнес-счетов (ФЛП и компаний) Приват24 для бизнеса с помощью токена Автоклиента. Личные счета API не поддерживает. Доступ только для чтения: платежи не выполняются.';
+
+  @override
+  String get privatBankHeadline => 'ПриватБанк Автоклиент (Украина)';
+
+  @override
+  String get privatBankIban => 'IBAN счёта';
+
+  @override
+  String get privatBankIbanInvalid => 'Введите украинский IBAN: UA и 27 цифр';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API не предоставляет список счетов: добавьте IBAN счетов по одному';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'ПриватБанк готовит выписки (фаза $value): повторите попытку через несколько минут';
+  }
+
+  @override
+  String get privatBankRemove => 'Удалить счёт';
+
+  @override
+  String get privatBankToken => 'Токен Автоклиента';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Как получить токен Автоклиента:\n1. Войдите в Приват24 для бизнеса\n2. Откройте «Интеграция (Автоклиент)»\n3. Активируйте её и скопируйте токен\n4. Вставьте его ниже и нажмите «Подключиться»\n5. Добавьте IBAN счетов для импорта';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Выдаётся в Приват24 для бизнеса в разделе «Интеграция (Автоклиент)»; хранится в зашифрованном виде';
+
+  @override
   String get processIsFinished => 'Готово!';
 
   @override

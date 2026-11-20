@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "إضافة حساب",
+    "privatBankDescription": "استيراد أرصدة ومعاملات حسابات الأعمال (المنشآت الفردية والشركات) في Privat24 for Business باستخدام رمز Autoclient. لا تدعم واجهة API الحسابات الشخصية. الوصول للقراءة فقط: لا يتم إجراء أي مدفوعات.",
+    "privatBankHeadline": "PrivatBank Autoclient (أوكرانيا)",
+    "privatBankIban": "رقم IBAN للحساب",
+    "privatBankIbanInvalid": "أدخل رقم IBAN أوكرانيًا: UA متبوعًا بـ 27 رقمًا",
+    "privatBankIbanTooltip": "لا توفر واجهة API قائمة بالحسابات: أضف أرقام IBAN للحسابات واحدًا تلو الآخر",
+    "privatBankNotReady": "يقوم PrivatBank بإعداد الكشوفات (المرحلة {value}): أعد المحاولة بعد بضع دقائق",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "إزالة الحساب",
+    "privatBankToken": "رمز Autoclient",
+    "privatBankTokenSteps": "كيفية الحصول على رمز Autoclient:\n1. سجّل الدخول إلى Privat24 for Business\n2. افتح التكامل (Autoclient)\n3. فعّله وانسخ الرمز\n4. الصقه أدناه واضغط \"اتصال\"\n5. أضف أرقام IBAN للحسابات المراد استيرادها",
+    "privatBankTokenTooltip": "يُصدر في Privat24 for Business ضمن التكامل (Autoclient)؛ ويُخزَّن مشفرًا",
     "processIsFinished": "تم الانتهاء",
     "progress": "تقدم {value}٪",
     "@progress": {

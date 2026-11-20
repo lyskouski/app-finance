@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "口座を追加",
+    "privatBankDescription": "Autoclientトークンを使用して、Privat24 for Businessの法人口座（個人事業主および企業）の残高と取引をインポートします。個人口座はAPIでサポートされていません。アクセスは読み取り専用で、支払いは行われません。",
+    "privatBankHeadline": "PrivatBank Autoclient（ウクライナ）",
+    "privatBankIban": "口座のIBAN",
+    "privatBankIbanInvalid": "ウクライナのIBANを入力してください：UAに続く27桁の数字",
+    "privatBankIbanTooltip": "APIは口座の一覧を提供しません：口座のIBANを1つずつ追加してください",
+    "privatBankNotReady": "PrivatBankが明細を準備中です（フェーズ {value}）：数分後に再試行してください",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "口座を削除",
+    "privatBankToken": "Autoclientトークン",
+    "privatBankTokenSteps": "Autoclientトークンの取得方法：\n1. Privat24 for Businessにサインインします\n2. 「連携（Autoclient）」を開きます\n3. 有効にしてトークンをコピーします\n4. 下に貼り付けて「接続」を押します\n5. インポートする口座のIBANを追加します",
+    "privatBankTokenTooltip": "Privat24 for Businessの「連携（Autoclient）」で発行されます。暗号化して保存されます",
     "processIsFinished": "終了しました！",
     "progress": "進捗状況 {value}%",
     "@progress": {

@@ -1129,6 +1129,46 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'खाता जोड़ें';
+
+  @override
+  String get privatBankDescription =>
+      'Autoclient टोकन के साथ Privat24 for Business के व्यावसायिक खातों (एकल स्वामित्व और कंपनियों) के बैलेंस और लेनदेन आयात करें। व्यक्तिगत खाते API द्वारा समर्थित नहीं हैं। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (यूक्रेन)';
+
+  @override
+  String get privatBankIban => 'खाते का IBAN';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'यूक्रेनी IBAN दर्ज करें: UA के बाद 27 अंक';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'API खातों की सूची नहीं देता: खातों के IBAN एक-एक करके जोड़ें';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank विवरण तैयार कर रहा है (चरण $value): कुछ मिनट बाद पुनः प्रयास करें';
+  }
+
+  @override
+  String get privatBankRemove => 'खाता हटाएँ';
+
+  @override
+  String get privatBankToken => 'Autoclient टोकन';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Autoclient टोकन कैसे प्राप्त करें:\n1. Privat24 for Business में साइन इन करें\n2. इंटीग्रेशन (Autoclient) खोलें\n3. इसे सक्रिय करें और टोकन कॉपी करें\n4. इसे नीचे चिपकाएँ और \"कनेक्ट\" दबाएँ\n5. आयात किए जाने वाले खातों के IBAN जोड़ें';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Privat24 for Business में इंटीग्रेशन (Autoclient) के अंतर्गत जारी किया जाता है; एन्क्रिप्टेड रूप में संग्रहीत';
+
+  @override
   String get processIsFinished => 'खत्म!';
 
   @override

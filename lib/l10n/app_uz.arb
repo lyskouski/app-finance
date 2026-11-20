@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Hisob qo'shish",
+    "privatBankDescription": "Privat24 for Business biznes hisoblari (yakka tartibdagi tadbirkorlar va kompaniyalar) qoldiqlari va tranzaksiyalarini Autoclient tokeni orqali import qilish. Shaxsiy hisoblar API tomonidan qo'llab-quvvatlanmaydi. Kirish faqat o'qish uchun: to'lovlar amalga oshirilmaydi.",
+    "privatBankHeadline": "PrivatBank Autoclient (Ukraina)",
+    "privatBankIban": "Hisob IBAN raqami",
+    "privatBankIbanInvalid": "Ukraina IBAN raqamini kiriting: UA va 27 ta raqam",
+    "privatBankIbanTooltip": "API hisoblar ro'yxatini bermaydi: hisoblarning IBAN raqamlarini birma-bir qo'shing",
+    "privatBankNotReady": "PrivatBank ko'chirmalarni tayyorlamoqda (bosqich {value}): bir necha daqiqadan so'ng qayta urinib ko'ring",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Hisobni o'chirish",
+    "privatBankToken": "Autoclient tokeni",
+    "privatBankTokenSteps": "Autoclient tokenini qanday olish mumkin:\n1. Privat24 for Business tizimiga kiring\n2. Integratsiya (Autoclient) bo'limini oching\n3. Uni faollashtiring va tokenni nusxalang\n4. Uni quyiga joylashtiring va \"Ulanish\" tugmasini bosing\n5. Import qilinadigan hisoblarning IBAN raqamlarini qo'shing",
+    "privatBankTokenTooltip": "Privat24 for Business'da Integratsiya (Autoclient) bo'limida beriladi; shifrlangan holda saqlanadi",
     "processIsFinished": "Tugallandi!",
     "progress": "Rivojlanish: {value}%",
     "@progress": {

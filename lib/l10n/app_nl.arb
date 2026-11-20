@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Rekening toevoegen",
+    "privatBankDescription": "Importeer saldi en transacties van zakelijke rekeningen (eenmanszaken en bedrijven) van Privat24 for Business met een Autoclient-token. Privérekeningen worden niet ondersteund door de API. De toegang is alleen-lezen: er worden geen betalingen gedaan.",
+    "privatBankHeadline": "PrivatBank Autoclient (Oekraïne)",
+    "privatBankIban": "IBAN van de rekening",
+    "privatBankIbanInvalid": "Voer een Oekraïense IBAN in: UA gevolgd door 27 cijfers",
+    "privatBankIbanTooltip": "De API biedt geen lijst met rekeningen: voeg de IBANs van de rekeningen één voor één toe",
+    "privatBankNotReady": "PrivatBank bereidt de afschriften voor (fase {value}): probeer het over een paar minuten opnieuw",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Rekening verwijderen",
+    "privatBankToken": "Autoclient-token",
+    "privatBankTokenSteps": "Zo krijgt u een Autoclient-token:\n1. Meld u aan bij Privat24 for Business\n2. Open Integratie (Autoclient)\n3. Activeer deze en kopieer het token\n4. Plak het hieronder en druk op \"Verbinden\"\n5. Voeg de IBANs toe van de rekeningen die u wilt importeren",
+    "privatBankTokenTooltip": "Uitgegeven in Privat24 for Business onder Integratie (Autoclient); versleuteld opgeslagen",
     "processIsFinished": "Voltooid!",
     "progress": "Voortgang: {value}%",
     "@progress": {

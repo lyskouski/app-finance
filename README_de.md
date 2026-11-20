@@ -80,6 +80,7 @@ zurückgelassen wird.
   - SimpleFIN Bridge (US): Import von Salden und Umsätzen von US-Banken und Kartenanbietern
   - Enable Banking (EU): Import von Salden und Umsätzen europäischer Banken (PSD2)
   - Wise API (Global): Import von Salden und Umsätzen von Wise-Mehrwährungskonten (persönliches API-Token)
+  - PrivatBank Autoclient (Ukraine): Import von Salden und Umsätzen von Geschäftskonten aus Privat24 for Business (Autoclient-Token)
   - Benachrichtigungen Parser (Android): Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps
 - Exportieren in die Excel-Datei `XLSX`
 - Verschlüsselung der Daten

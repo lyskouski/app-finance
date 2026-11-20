@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "ანგარიშის დამატება",
+    "privatBankDescription": "Privat24 for Business-ის ბიზნეს ანგარიშების (ინდმეწარმეებისა და კომპანიების) ნაშთებისა და ტრანზაქციების იმპორტი Autoclient ტოკენით. პირად ანგარიშებს API არ უჭერს მხარს. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.",
+    "privatBankHeadline": "PrivatBank Autoclient (უკრაინა)",
+    "privatBankIban": "ანგარიშის IBAN",
+    "privatBankIbanInvalid": "შეიყვანეთ უკრაინული IBAN: UA და 27 ციფრი",
+    "privatBankIbanTooltip": "API არ იძლევა ანგარიშების სიას: დაამატეთ ანგარიშების IBAN-ები სათითაოდ",
+    "privatBankNotReady": "PrivatBank ამზადებს ამონაწერებს (ფაზა {value}): სცადეთ ხელახლა რამდენიმე წუთში",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "ანგარიშის წაშლა",
+    "privatBankToken": "Autoclient ტოკენი",
+    "privatBankTokenSteps": "როგორ მივიღოთ Autoclient ტოკენი:\n1. შედით Privat24 for Business-ში\n2. გახსენით ინტეგრაცია (Autoclient)\n3. გააქტიურეთ და დააკოპირეთ ტოკენი\n4. ჩასვით ქვემოთ და დააჭირეთ „დაკავშირებას“\n5. დაამატეთ იმპორტირებადი ანგარიშების IBAN-ები",
+    "privatBankTokenTooltip": "გაიცემა Privat24 for Business-ში, განყოფილებაში ინტეგრაცია (Autoclient); ინახება დაშიფრული სახით",
     "processIsFinished": "დასრულებულია!",
     "progress": "პროგრესი: {value}%",
     "@progress": {

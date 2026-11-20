@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "Tambah Rekening",
+    "privatBankDescription": "Impor saldo dan transaksi rekening bisnis (usaha perorangan dan perusahaan) dari Privat24 for Business dengan token Autoclient. Rekening pribadi tidak didukung oleh API. Akses hanya-baca: tidak ada pembayaran yang dilakukan.",
+    "privatBankHeadline": "PrivatBank Autoclient (Ukraina)",
+    "privatBankIban": "IBAN Rekening",
+    "privatBankIbanInvalid": "Masukkan IBAN Ukraina: UA diikuti 27 digit",
+    "privatBankIbanTooltip": "API tidak menyediakan daftar rekening: tambahkan IBAN rekening satu per satu",
+    "privatBankNotReady": "PrivatBank sedang menyiapkan mutasi (fase {value}): coba lagi dalam beberapa menit",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "Hapus Rekening",
+    "privatBankToken": "Token Autoclient",
+    "privatBankTokenSteps": "Cara mendapatkan token Autoclient:\n1. Masuk ke Privat24 for Business\n2. Buka Integrasi (Autoclient)\n3. Aktifkan dan salin tokennya\n4. Tempelkan di bawah dan tekan \"Hubungkan\"\n5. Tambahkan IBAN rekening yang akan diimpor",
+    "privatBankTokenTooltip": "Diterbitkan di Privat24 for Business pada Integrasi (Autoclient); disimpan terenkripsi",
     "processIsFinished": "Selesai!",
     "progress": "Kemajuan: {value}%",
     "@progress": {

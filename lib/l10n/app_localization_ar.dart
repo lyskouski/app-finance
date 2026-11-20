@@ -1124,6 +1124,46 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'إضافة حساب';
+
+  @override
+  String get privatBankDescription =>
+      'استيراد أرصدة ومعاملات حسابات الأعمال (المنشآت الفردية والشركات) في Privat24 for Business باستخدام رمز Autoclient. لا تدعم واجهة API الحسابات الشخصية. الوصول للقراءة فقط: لا يتم إجراء أي مدفوعات.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (أوكرانيا)';
+
+  @override
+  String get privatBankIban => 'رقم IBAN للحساب';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'أدخل رقم IBAN أوكرانيًا: UA متبوعًا بـ 27 رقمًا';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'لا توفر واجهة API قائمة بالحسابات: أضف أرقام IBAN للحسابات واحدًا تلو الآخر';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'يقوم PrivatBank بإعداد الكشوفات (المرحلة $value): أعد المحاولة بعد بضع دقائق';
+  }
+
+  @override
+  String get privatBankRemove => 'إزالة الحساب';
+
+  @override
+  String get privatBankToken => 'رمز Autoclient';
+
+  @override
+  String get privatBankTokenSteps =>
+      'كيفية الحصول على رمز Autoclient:\n1. سجّل الدخول إلى Privat24 for Business\n2. افتح التكامل (Autoclient)\n3. فعّله وانسخ الرمز\n4. الصقه أدناه واضغط \"اتصال\"\n5. أضف أرقام IBAN للحسابات المراد استيرادها';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'يُصدر في Privat24 for Business ضمن التكامل (Autoclient)؛ ويُخزَّن مشفرًا';
+
+  @override
   String get processIsFinished => 'تم الانتهاء';
 
   @override

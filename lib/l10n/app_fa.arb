@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "افزودن حساب",
+    "privatBankDescription": "وارد کردن موجودی‌ها و تراکنش‌های حساب‌های تجاری (مشاغل انفرادی و شرکت‌ها) در Privat24 for Business با توکن Autoclient. حساب‌های شخصی توسط API پشتیبانی نمی‌شوند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
+    "privatBankHeadline": "PrivatBank Autoclient (اوکراین)",
+    "privatBankIban": "IBAN حساب",
+    "privatBankIbanInvalid": "یک IBAN اوکراینی وارد کنید: UA و سپس ۲۷ رقم",
+    "privatBankIbanTooltip": "API فهرستی از حساب‌ها ارائه نمی‌دهد: IBAN حساب‌ها را یکی‌یکی اضافه کنید",
+    "privatBankNotReady": "PrivatBank در حال آماده‌سازی صورت‌حساب‌ها است (مرحله {value}): چند دقیقه دیگر دوباره تلاش کنید",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "حذف حساب",
+    "privatBankToken": "توکن Autoclient",
+    "privatBankTokenSteps": "نحوه دریافت توکن Autoclient:\n1. وارد Privat24 for Business شوید\n2. بخش یکپارچه‌سازی (Autoclient) را باز کنید\n3. آن را فعال کرده و توکن را کپی کنید\n4. آن را در زیر جای‌گذاری کرده و «اتصال» را بزنید\n5. IBAN حساب‌های مورد نظر برای وارد کردن را اضافه کنید",
+    "privatBankTokenTooltip": "در Privat24 for Business در بخش یکپارچه‌سازی (Autoclient) صادر می‌شود؛ به صورت رمزگذاری‌شده ذخیره می‌شود",
     "processIsFinished": "تمام شده!",
     "progress": "پیشرفت: {value}%",
     "@progress": {

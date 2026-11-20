@@ -78,6 +78,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - SimpleFIN Bridge (US): ABŞ bankları və kart emitentlərindən qalıqların və əməliyyatların idxalı
   - Enable Banking (EU): Avropa banklarından qalıqların və əməliyyatların idxalı (PSD2)
   - Wise API (Global): Wise çoxvalyutalı hesablarının qalıqlarının və əməliyyatlarının idxalı (şəxsi API tokeni)
+  - PrivatBank Autoclient (Ukrayna): Privat24 for Business biznes hesablarının qalıqlarının və əməliyyatlarının idxalı (Autoclient tokeni)
   - Bildirişlər Parser (Android): bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar
 - Excel `XLSX` faylına ixrac edin
 - Məlumatların şifrələnməsi

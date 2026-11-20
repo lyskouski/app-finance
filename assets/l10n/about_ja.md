@@ -78,6 +78,7 @@
   - SimpleFIN Bridge (US)：米国の銀行やカード発行会社からの残高と取引のインポート
   - Enable Banking (EU)：ヨーロッパの銀行からの残高と取引のインポート（PSD2）
   - Wise API (Global)：Wise マルチカレンシー口座の残高と取引のインポート（個人用 API トークン）
+  - PrivatBank Autoclient（ウクライナ）：Privat24 for Businessの法人口座の残高と取引のインポート（Autoclientトークン）
   - 通知パーサー (Android)：銀行・決済アプリの通知から取引を作成
 - Excel の `XLSX` ファイルにエクスポート
 - データの暗号化

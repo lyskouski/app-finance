@@ -78,6 +78,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
   - SimpleFIN Bridge (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması
   - Enable Banking (EU): Avrupa bankalarından bakiye ve işlemlerin içe aktarılması (PSD2)
   - Wise API (Global): Wise çoklu para birimi hesaplarının bakiye ve işlemlerinin içe aktarılması (kişisel API anahtarı)
+  - PrivatBank Autoclient (Ukrayna): Privat24 for Business ticari hesaplarının bakiye ve işlemlerinin içe aktarımı (Autoclient belirteci)
   - Bildirim Ayrıştırıcı (Android): bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler
 - Excel `XLSX` dosyasına aktarın
 - Veri şifreleme

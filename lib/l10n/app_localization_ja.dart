@@ -1112,6 +1112,44 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => '口座を追加';
+
+  @override
+  String get privatBankDescription =>
+      'Autoclientトークンを使用して、Privat24 for Businessの法人口座（個人事業主および企業）の残高と取引をインポートします。個人口座はAPIでサポートされていません。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient（ウクライナ）';
+
+  @override
+  String get privatBankIban => '口座のIBAN';
+
+  @override
+  String get privatBankIbanInvalid => 'ウクライナのIBANを入力してください：UAに続く27桁の数字';
+
+  @override
+  String get privatBankIbanTooltip => 'APIは口座の一覧を提供しません：口座のIBANを1つずつ追加してください';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBankが明細を準備中です（フェーズ $value）：数分後に再試行してください';
+  }
+
+  @override
+  String get privatBankRemove => '口座を削除';
+
+  @override
+  String get privatBankToken => 'Autoclientトークン';
+
+  @override
+  String get privatBankTokenSteps =>
+      'Autoclientトークンの取得方法：\n1. Privat24 for Businessにサインインします\n2. 「連携（Autoclient）」を開きます\n3. 有効にしてトークンをコピーします\n4. 下に貼り付けて「接続」を押します\n5. インポートする口座のIBANを追加します';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Privat24 for Businessの「連携（Autoclient）」で発行されます。暗号化して保存されます';
+
+  @override
   String get processIsFinished => '終了しました！';
 
   @override

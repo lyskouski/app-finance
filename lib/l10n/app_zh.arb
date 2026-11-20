@@ -480,6 +480,22 @@
             "type": "String"
         }
     },
+    "privatBankAdd": "添加账户",
+    "privatBankDescription": "使用 Autoclient 令牌导入 Privat24 for Business 企业账户（个体经营者和公司）的余额和交易。API 不支持个人账户。仅限只读访问：不会进行任何付款。",
+    "privatBankHeadline": "PrivatBank Autoclient（乌克兰）",
+    "privatBankIban": "账户 IBAN",
+    "privatBankIbanInvalid": "请输入乌克兰 IBAN：UA 后跟 27 位数字",
+    "privatBankIbanTooltip": "API 不提供账户列表：请逐个添加账户的 IBAN",
+    "privatBankNotReady": "PrivatBank 正在准备对账单（阶段 {value}）：请几分钟后重试",
+    "@privatBankNotReady": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "privatBankRemove": "删除账户",
+    "privatBankToken": "Autoclient 令牌",
+    "privatBankTokenSteps": "如何获取 Autoclient 令牌：\n1. 登录 Privat24 for Business\n2. 打开“集成（Autoclient）”\n3. 启用并复制令牌\n4. 将其粘贴到下方并点击“连接”\n5. 添加要导入的账户 IBAN",
+    "privatBankTokenTooltip": "在 Privat24 for Business 的“集成（Autoclient）”中签发；加密存储",
     "processIsFinished": "已完成！",
     "progress": "进度： {value}%",
     "@progress": {

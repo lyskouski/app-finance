@@ -1138,6 +1138,46 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get privatBankAdd => 'Konto hinzufügen';
+
+  @override
+  String get privatBankDescription =>
+      'Salden und Umsätze von Geschäftskonten (Einzelunternehmer und Firmen) aus Privat24 for Business mit einem Autoclient-Token importieren. Privatkonten werden von der API nicht unterstützt. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.';
+
+  @override
+  String get privatBankHeadline => 'PrivatBank Autoclient (Ukraine)';
+
+  @override
+  String get privatBankIban => 'IBAN des Kontos';
+
+  @override
+  String get privatBankIbanInvalid =>
+      'Geben Sie eine ukrainische IBAN ein: UA gefolgt von 27 Ziffern';
+
+  @override
+  String get privatBankIbanTooltip =>
+      'Die API liefert keine Kontoliste: Fügen Sie die IBANs der Konten einzeln hinzu';
+
+  @override
+  String privatBankNotReady(Object value) {
+    return 'PrivatBank bereitet die Kontoauszüge vor (Phase $value): Versuchen Sie es in einigen Minuten erneut';
+  }
+
+  @override
+  String get privatBankRemove => 'Konto entfernen';
+
+  @override
+  String get privatBankToken => 'Autoclient-Token';
+
+  @override
+  String get privatBankTokenSteps =>
+      'So erhalten Sie ein Autoclient-Token:\n1. Melden Sie sich bei Privat24 for Business an\n2. Öffnen Sie Integration (Autoclient)\n3. Aktivieren Sie sie und kopieren Sie das Token\n4. Fügen Sie es unten ein und tippen Sie auf „Verbinden“\n5. Fügen Sie die IBANs der zu importierenden Konten hinzu';
+
+  @override
+  String get privatBankTokenTooltip =>
+      'Wird in Privat24 for Business unter Integration (Autoclient) ausgestellt; verschlüsselt gespeichert';
+
+  @override
   String get processIsFinished => 'Beendet!';
 
   @override

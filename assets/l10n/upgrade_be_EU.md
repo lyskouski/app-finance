@@ -4,6 +4,7 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 
 ### 8.1.0
 - Dadadzieny Wise API (Global): reštki i impart aperacyj šmatvalutnych rachunkaŭ Wise, kanviertacyi jak pieravody
+- Dadadzieny PryvatBank Aŭtaklijent (Ukraina): reštki i impart aperacyj biznes-rachunkaŭ pa IBAN
 - Dadadzieny Apracoŭščyk Apaviaščeńniaŭ (Android): aperacyi z apaviaščeńniaŭ bankaŭskich i placiožnych prahram, raspaznanyja aŭtamatyčna abo pa ŭlasnym šablonie
 - Pradkazańnie katehoryi biudžetu dlia impartavanych rachunkaŭ biez katehoryi ŭ fajle
 

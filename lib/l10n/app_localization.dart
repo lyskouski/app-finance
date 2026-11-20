@@ -2227,6 +2227,72 @@ abstract class AppLocalizations {
   /// **'Taken request from {uuid}'**
   String pongStatus(Object uuid);
 
+  /// No description provided for @privatBankAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Account'**
+  String get privatBankAdd;
+
+  /// No description provided for @privatBankDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of business accounts (sole proprietors and companies) of Privat24 for Business with an Autoclient token. Personal accounts are not supported by the API. Access is read-only: no payments are made.'**
+  String get privatBankDescription;
+
+  /// No description provided for @privatBankHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'PrivatBank Autoclient (Ukraine)'**
+  String get privatBankHeadline;
+
+  /// No description provided for @privatBankIban.
+  ///
+  /// In en, this message translates to:
+  /// **'Account IBAN'**
+  String get privatBankIban;
+
+  /// No description provided for @privatBankIbanInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a Ukrainian IBAN: UA followed by 27 digits'**
+  String get privatBankIbanInvalid;
+
+  /// No description provided for @privatBankIbanTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'The API provides no list of accounts: add IBANs of the accounts one by one'**
+  String get privatBankIbanTooltip;
+
+  /// No description provided for @privatBankNotReady.
+  ///
+  /// In en, this message translates to:
+  /// **'PrivatBank is preparing statements (phase {value}): retry in a few minutes'**
+  String privatBankNotReady(Object value);
+
+  /// No description provided for @privatBankRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Account'**
+  String get privatBankRemove;
+
+  /// No description provided for @privatBankToken.
+  ///
+  /// In en, this message translates to:
+  /// **'Autoclient Token'**
+  String get privatBankToken;
+
+  /// No description provided for @privatBankTokenSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'How to get an Autoclient token:\n1. Sign in to Privat24 for Business\n2. Open Integration (Autoclient)\n3. Activate it and copy the token\n4. Paste it below and press \"Connect\"\n5. Add IBANs of the accounts to import'**
+  String get privatBankTokenSteps;
+
+  /// No description provided for @privatBankTokenTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued in Privat24 for Business under Integration (Autoclient); stored encrypted'**
+  String get privatBankTokenTooltip;
+
   /// No description provided for @processIsFinished.
   ///
   /// In en, this message translates to:
