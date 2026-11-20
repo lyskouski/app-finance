@@ -178,7 +178,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    integration_widgets [label="<0>INTEGRATION_WIDGETS|<fints_dialogs>fints_dialogs|<integration_account_card>integration_account_card|<enablebanking_widget>enablebanking_widget|<notification_widget>notification_widget|<simplefin_widget>simplefin_widget|<fints_widget>fints_widget|<privatbank_widget>privatbank_widget|<wise_widget>wise_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    integration_widgets [label="<0>INTEGRATION_WIDGETS|<fints_dialogs>fints_dialogs|<integration_account_card>integration_account_card|<enablebanking_widget>enablebanking_widget|<notification_widget>notification_widget|<monobank_widget>monobank_widget|<simplefin_widget>simplefin_widget|<fints_widget>fints_widget|<privatbank_widget>privatbank_widget|<wise_widget>wise_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -243,6 +243,10 @@ digraph G {
   {
     rank = same; "_classes";
     integration_notification [label="<0>INTEGRATION_NOTIFICATION|<notification_parser>notification_parser|<notification_controller>notification_controller|<notification_background>notification_background|<notification_importer>notification_importer|<notification_settings>notification_settings|<notification_channel>notification_channel",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    integration_monobank [label="<0>INTEGRATION_MONOBANK|<monobank_settings>monobank_settings|<monobank_client>monobank_client|<monobank_importer>monobank_importer",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_ext";
@@ -1227,6 +1231,16 @@ digraph G {
   integration_widgets -> wrapper [color="#F0F0F050"];
   integration_widgets -> integration_widgets [color="#F0F0F050"];
   integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_monobank [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> structure [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
   integration_widgets -> integration_simplefin [color="#F0F0F050"];
   integration_widgets -> storage [color="#F0F0F050"];
   integration_widgets -> _configs_ [color="#F0F0F050"];
@@ -1463,6 +1477,13 @@ digraph G {
   integration_notification -> integration_notification [color="green"];
   integration_notification -> storage [color="green"];
 
+  integration_monobank -> controller [color="green"];
+  integration_monobank -> storage [color="green"];
+  integration_monobank -> herald [color="green"];
+  integration_monobank -> integration [color="green"];
+  integration_monobank -> integration_monobank [color="green"];
+  integration_monobank -> math [color="green"];
+  integration_monobank -> structure [color="green"];
 
 
 

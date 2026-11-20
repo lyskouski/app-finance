@@ -5,6 +5,7 @@ _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tom
 ### 8.1.0
 - Menambahkan Wise API (Global): saldo dan impor transaksi akun multi-mata uang Wise, konversi sebagai transfer
 - Menambahkan PrivatBank Autoclient (Ukraina): saldo dan impor transaksi rekening bisnis berdasarkan IBAN
+- Menambahkan monobank Personal API (Ukraina): saldo dan impor transaksi kartu dan celengan, pembuatan akun tertaut
 - Menambahkan Pengurai Notifikasi (Android): transaksi dari notifikasi aplikasi perbankan dan pembayaran, dikenali secara otomatis atau dengan pola khusus
 - Prediksi Kategori Anggaran untuk Tagihan yang diimpor tanpa kategori di file
 

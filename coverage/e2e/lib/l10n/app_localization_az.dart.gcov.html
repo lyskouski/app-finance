@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">487</td>
+            <td class="headerCovTableEntry">498</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-20 17:51:20</td>
+            <td class="headerValue">2026-11-20 18:33:09</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -1002,526 +1002,560 @@
 <span id="L940"><span class="lineNum">     940</span>              :   String get missingContent =&gt; 'Fayl emal edilə bilməz (və ya ləğv edilir)';</span>
 <span id="L941"><span class="lineNum">     941</span>              : </span>
 <span id="L942"><span class="lineNum">     942</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L943"><span class="lineNum">     943</span>              :   String get navigationTooltip =&gt; 'Əsas menyunu açın';</span>
+<span id="L943"><span class="lineNum">     943</span>              :   String get monobankCreateAccount =&gt; 'Hesab yarat';</span>
 <span id="L944"><span class="lineNum">     944</span>              : </span>
 <span id="L945"><span class="lineNum">     945</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L946"><span class="lineNum">     946</span>              :   String netProfit(Object value) {</span>
-<span id="L947"><span class="lineNum">     947</span> <span class="tlaUNC">           0 :     return 'Mənfəət: $value';</span></span>
-<span id="L948"><span class="lineNum">     948</span>              :   }</span>
-<span id="L949"><span class="lineNum">     949</span>              : </span>
-<span id="L950"><span class="lineNum">     950</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L951"><span class="lineNum">     951</span>              :   String get noChartData =&gt; 'Göstərilmək üçün məlumat çatışmır (və ya kifayət deyil).';</span>
-<span id="L952"><span class="lineNum">     952</span>              : </span>
-<span id="L953"><span class="lineNum">     953</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L954"><span class="lineNum">     954</span>              :   String get notificationAccessSettings =&gt; 'Bildirişlərə giriş';</span>
-<span id="L955"><span class="lineNum">     955</span>              : </span>
-<span id="L956"><span class="lineNum">     956</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L957"><span class="lineNum">     957</span>              :   String get notificationAccessSteps =&gt;</span>
-<span id="L958"><span class="lineNum">     958</span>              :       'Girişi necə vermək olar:\n1. Sistem ayarlarını açmaq üçün \&quot;Giriş ver\&quot; düyməsini basın\n2. Fingrom-a bildirişləri oxumağa icazə verin\n3. Android məhdudlaşdırılmış ayar barədə bildirərsə: Fingrom tətbiq məlumatı → ⋮ → \&quot;Məhdud ayarlara icazə ver\&quot; seçin və yenidən cəhd edin\n4. Fingrom-a qayıdın və bildirişləri oxunacaq tətbiqləri seçin';</span>
+<span id="L946"><span class="lineNum">     946</span>              :   String get monobankDescription =&gt;</span>
+<span id="L947"><span class="lineNum">     947</span>              :       'Şəxsi token ilə monobank kartlarının və banklarının (yığım qutularının) qalıqlarının və əməliyyatlarının idxalı. monobank dəqiqədə bir sorğuya icazə verir: uzun dövrün idxalı bir neçə dəqiqə çəkir. Yalnız oxuma girişi: ödənişlər edilmir.';</span>
+<span id="L948"><span class="lineNum">     948</span>              : </span>
+<span id="L949"><span class="lineNum">     949</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L950"><span class="lineNum">     950</span>              :   String get monobankHeadline =&gt; 'monobank Personal API (Ukrayna)';</span>
+<span id="L951"><span class="lineNum">     951</span>              : </span>
+<span id="L952"><span class="lineNum">     952</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L953"><span class="lineNum">     953</span>              :   String get monobankJar =&gt; 'Yığım qutusu';</span>
+<span id="L954"><span class="lineNum">     954</span>              : </span>
+<span id="L955"><span class="lineNum">     955</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L956"><span class="lineNum">     956</span>              :   String monobankProgress(Object done, Object total) {</span>
+<span id="L957"><span class="lineNum">     957</span> <span class="tlaUNC">           0 :     return 'Çıxarışlar sorğulanır: $done / $total';</span></span>
+<span id="L958"><span class="lineNum">     958</span>              :   }</span>
 <span id="L959"><span class="lineNum">     959</span>              : </span>
 <span id="L960"><span class="lineNum">     960</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L961"><span class="lineNum">     961</span>              :   String get notificationAccounts =&gt; 'Hesab açar sözləri';</span>
-<span id="L962"><span class="lineNum">     962</span>              : </span>
-<span id="L963"><span class="lineNum">     963</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L964"><span class="lineNum">     964</span>              :   String get notificationAccountsTooltip =&gt;</span>
-<span id="L965"><span class="lineNum">     965</span>              :       'Bildirişdə hesabı müəyyən edən sözlər (kartın son rəqəmləri, pul kisəsinin adı): söz yazın və əlavə etmək üçün Enter düyməsini basın. Əks halda tətbiqin defolt hesabı istifadə olunur';</span>
-<span id="L966"><span class="lineNum">     966</span>              : </span>
-<span id="L967"><span class="lineNum">     967</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L968"><span class="lineNum">     968</span>              :   String get notificationApps =&gt; 'Bildirişləri oxunan tətbiqlər';</span>
-<span id="L969"><span class="lineNum">     969</span>              : </span>
-<span id="L970"><span class="lineNum">     970</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L971"><span class="lineNum">     971</span>              :   String notificationAutoImported(Object value) {</span>
-<span id="L972"><span class="lineNum">     972</span> <span class="tlaUNC">           0 :     return 'Bildirişlərdən əlavə edildi: $value';</span></span>
-<span id="L973"><span class="lineNum">     973</span>              :   }</span>
-<span id="L974"><span class="lineNum">     974</span>              : </span>
-<span id="L975"><span class="lineNum">     975</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L976"><span class="lineNum">     976</span>              :   String get notificationAutoTooltip =&gt;</span>
-<span id="L977"><span class="lineNum">     977</span>              :       'Tanınan bildirişlər təsdiqsiz əlavə olunur: Fingrom işləyərkən dərhal, əks halda növbəti açılışda. Tanınmayanlar yoxlamanı gözləyir';</span>
+<span id="L961"><span class="lineNum">     961</span>              :   String monobankRateLimit(Object value) {</span>
+<span id="L962"><span class="lineNum">     962</span> <span class="tlaUNC">           0 :     return 'monobank dəqiqədə bir sorğuya icazə verir: növbəti $value san sonra';</span></span>
+<span id="L963"><span class="lineNum">     963</span>              :   }</span>
+<span id="L964"><span class="lineNum">     964</span>              : </span>
+<span id="L965"><span class="lineNum">     965</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L966"><span class="lineNum">     966</span>              :   String get monobankToken =&gt; 'Şəxsi token';</span>
+<span id="L967"><span class="lineNum">     967</span>              : </span>
+<span id="L968"><span class="lineNum">     968</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L969"><span class="lineNum">     969</span>              :   String get monobankTokenSteps =&gt;</span>
+<span id="L970"><span class="lineNum">     970</span>              :       'Şəxsi tokeni necə almaq olar:\n1. Brauzerdə api.monobank.ua ünvanını açın\n2. QR kodu monobank tətbiqi ilə skan edin və girişi təsdiqləyin\n3. Tokeni səhifədən kopyalayın\n4. Onu aşağıya yapışdırın və \&quot;Qoşul\&quot; düyməsini basın\n5. Hər kartı və ya yığım qutusunu hesaba bağlayın (və ya hesab yaradın) və idxal edin';</span>
+<span id="L971"><span class="lineNum">     971</span>              : </span>
+<span id="L972"><span class="lineNum">     972</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L973"><span class="lineNum">     973</span>              :   String get monobankTokenTooltip =&gt;</span>
+<span id="L974"><span class="lineNum">     974</span>              :       'monobank tətbiqində QR kod skan edildikdən sonra api.monobank.ua-da verilir; şifrələnmiş şəkildə saxlanılır';</span>
+<span id="L975"><span class="lineNum">     975</span>              : </span>
+<span id="L976"><span class="lineNum">     976</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L977"><span class="lineNum">     977</span>              :   String get navigationTooltip =&gt; 'Əsas menyunu açın';</span>
 <span id="L978"><span class="lineNum">     978</span>              : </span>
 <span id="L979"><span class="lineNum">     979</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L980"><span class="lineNum">     980</span>              :   String get notificationBalance =&gt; 'Balans açar sözləri';</span>
-<span id="L981"><span class="lineNum">     981</span>              : </span>
-<span id="L982"><span class="lineNum">     982</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L983"><span class="lineNum">     983</span>              :   String get notificationBalanceTooltip =&gt;</span>
-<span id="L984"><span class="lineNum">     984</span>              :       'Nəzərə alınmayacaq məbləğdən (balans, limit) əvvəl gələn sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın';</span>
-<span id="L985"><span class="lineNum">     985</span>              : </span>
-<span id="L986"><span class="lineNum">     986</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L987"><span class="lineNum">     987</span>              :   String notificationCaptured(Object value) {</span>
-<span id="L988"><span class="lineNum">     988</span> <span class="tlaUNC">           0 :     return 'Tutulan bildirişlər: $value';</span></span>
-<span id="L989"><span class="lineNum">     989</span>              :   }</span>
-<span id="L990"><span class="lineNum">     990</span>              : </span>
-<span id="L991"><span class="lineNum">     991</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L992"><span class="lineNum">     992</span>              :   String get notificationClear =&gt; 'Tutulanları təmizlə';</span>
+<span id="L980"><span class="lineNum">     980</span>              :   String netProfit(Object value) {</span>
+<span id="L981"><span class="lineNum">     981</span> <span class="tlaUNC">           0 :     return 'Mənfəət: $value';</span></span>
+<span id="L982"><span class="lineNum">     982</span>              :   }</span>
+<span id="L983"><span class="lineNum">     983</span>              : </span>
+<span id="L984"><span class="lineNum">     984</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L985"><span class="lineNum">     985</span>              :   String get noChartData =&gt; 'Göstərilmək üçün məlumat çatışmır (və ya kifayət deyil).';</span>
+<span id="L986"><span class="lineNum">     986</span>              : </span>
+<span id="L987"><span class="lineNum">     987</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L988"><span class="lineNum">     988</span>              :   String get notificationAccessSettings =&gt; 'Bildirişlərə giriş';</span>
+<span id="L989"><span class="lineNum">     989</span>              : </span>
+<span id="L990"><span class="lineNum">     990</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L991"><span class="lineNum">     991</span>              :   String get notificationAccessSteps =&gt;</span>
+<span id="L992"><span class="lineNum">     992</span>              :       'Girişi necə vermək olar:\n1. Sistem ayarlarını açmaq üçün \&quot;Giriş ver\&quot; düyməsini basın\n2. Fingrom-a bildirişləri oxumağa icazə verin\n3. Android məhdudlaşdırılmış ayar barədə bildirərsə: Fingrom tətbiq məlumatı → ⋮ → \&quot;Məhdud ayarlara icazə ver\&quot; seçin və yenidən cəhd edin\n4. Fingrom-a qayıdın və bildirişləri oxunacaq tətbiqləri seçin';</span>
 <span id="L993"><span class="lineNum">     993</span>              : </span>
 <span id="L994"><span class="lineNum">     994</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L995"><span class="lineNum">     995</span>              :   String get notificationCurrencyTooltip =&gt; 'Valyutasız məbləğlər (məs. Debit 20.00) bu valyutada götürülür';</span>
+<span id="L995"><span class="lineNum">     995</span>              :   String get notificationAccounts =&gt; 'Hesab açar sözləri';</span>
 <span id="L996"><span class="lineNum">     996</span>              : </span>
 <span id="L997"><span class="lineNum">     997</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L998"><span class="lineNum">     998</span>              :   String get notificationDefaultAccount =&gt; 'Defolt hesab';</span>
-<span id="L999"><span class="lineNum">     999</span>              : </span>
-<span id="L1000"><span class="lineNum">    1000</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1001"><span class="lineNum">    1001</span>              :   String get notificationDescription =&gt;</span>
-<span id="L1002"><span class="lineNum">    1002</span>              :       'Bu cihazdakı bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar yaradın. Yalnız seçilmiş tətbiqlərin bildirişləri oxunur və idxal olunana qədər cihazda qalır. Məbləğ və valyuta avtomatik tanınır.';</span>
+<span id="L998"><span class="lineNum">     998</span>              :   String get notificationAccountsTooltip =&gt;</span>
+<span id="L999"><span class="lineNum">     999</span>              :       'Bildirişdə hesabı müəyyən edən sözlər (kartın son rəqəmləri, pul kisəsinin adı): söz yazın və əlavə etmək üçün Enter düyməsini basın. Əks halda tətbiqin defolt hesabı istifadə olunur';</span>
+<span id="L1000"><span class="lineNum">    1000</span>              : </span>
+<span id="L1001"><span class="lineNum">    1001</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1002"><span class="lineNum">    1002</span>              :   String get notificationApps =&gt; 'Bildirişləri oxunan tətbiqlər';</span>
 <span id="L1003"><span class="lineNum">    1003</span>              : </span>
 <span id="L1004"><span class="lineNum">    1004</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1005"><span class="lineNum">    1005</span>              :   String get notificationGrant =&gt; 'Giriş ver';</span>
-<span id="L1006"><span class="lineNum">    1006</span>              : </span>
-<span id="L1007"><span class="lineNum">    1007</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1008"><span class="lineNum">    1008</span>              :   String get notificationIncome =&gt; 'Gəlir açar sözləri';</span>
-<span id="L1009"><span class="lineNum">    1009</span>              : </span>
-<span id="L1010"><span class="lineNum">    1010</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1011"><span class="lineNum">    1011</span>              :   String get notificationIncomeTooltip =&gt;</span>
-<span id="L1012"><span class="lineNum">    1012</span>              :       'Bildirişi gəlir kimi qeyd edən sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın';</span>
-<span id="L1013"><span class="lineNum">    1013</span>              : </span>
-<span id="L1014"><span class="lineNum">    1014</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1015"><span class="lineNum">    1015</span>              :   String get notificationNoApps =&gt; 'Hələ bildiriş alınmayıb: tətbiqlər bildiriş göndərdikdən sonra burada görünür';</span>
-<span id="L1016"><span class="lineNum">    1016</span>              : </span>
-<span id="L1017"><span class="lineNum">    1017</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1018"><span class="lineNum">    1018</span>              :   String get notificationUnparsed =&gt; 'Tanınmadı';</span>
+<span id="L1005"><span class="lineNum">    1005</span>              :   String notificationAutoImported(Object value) {</span>
+<span id="L1006"><span class="lineNum">    1006</span> <span class="tlaUNC">           0 :     return 'Bildirişlərdən əlavə edildi: $value';</span></span>
+<span id="L1007"><span class="lineNum">    1007</span>              :   }</span>
+<span id="L1008"><span class="lineNum">    1008</span>              : </span>
+<span id="L1009"><span class="lineNum">    1009</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1010"><span class="lineNum">    1010</span>              :   String get notificationAutoTooltip =&gt;</span>
+<span id="L1011"><span class="lineNum">    1011</span>              :       'Tanınan bildirişlər təsdiqsiz əlavə olunur: Fingrom işləyərkən dərhal, əks halda növbəti açılışda. Tanınmayanlar yoxlamanı gözləyir';</span>
+<span id="L1012"><span class="lineNum">    1012</span>              : </span>
+<span id="L1013"><span class="lineNum">    1013</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1014"><span class="lineNum">    1014</span>              :   String get notificationBalance =&gt; 'Balans açar sözləri';</span>
+<span id="L1015"><span class="lineNum">    1015</span>              : </span>
+<span id="L1016"><span class="lineNum">    1016</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1017"><span class="lineNum">    1017</span>              :   String get notificationBalanceTooltip =&gt;</span>
+<span id="L1018"><span class="lineNum">    1018</span>              :       'Nəzərə alınmayacaq məbləğdən (balans, limit) əvvəl gələn sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın';</span>
 <span id="L1019"><span class="lineNum">    1019</span>              : </span>
 <span id="L1020"><span class="lineNum">    1020</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1021"><span class="lineNum">    1021</span>              :   String get notifyHeadline =&gt; 'Bildirişlər Parser';</span>
-<span id="L1022"><span class="lineNum">    1022</span>              : </span>
-<span id="L1023"><span class="lineNum">    1023</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1024"><span class="lineNum">    1024</span>              :   String get ok =&gt; 'tamam';</span>
-<span id="L1025"><span class="lineNum">    1025</span>              : </span>
-<span id="L1026"><span class="lineNum">    1026</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1027"><span class="lineNum">    1027</span>              :   String get orderPin =&gt; 'Prioritet sifariş';</span>
-<span id="L1028"><span class="lineNum">    1028</span>              : </span>
-<span id="L1029"><span class="lineNum">    1029</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1030"><span class="lineNum">    1030</span>              :   String get orderUnpin =&gt; 'Ümumiləşdirilmiş sifariş';</span>
-<span id="L1031"><span class="lineNum">    1031</span>              : </span>
-<span id="L1032"><span class="lineNum">    1032</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1033"><span class="lineNum">    1033</span>              :   String get outputFile =&gt; 'Fayl üçün təyinat';</span>
-<span id="L1034"><span class="lineNum">    1034</span>              : </span>
-<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1036"><span class="lineNum">    1036</span>              :   String get parseFile =&gt; 'Faylı təhlil edin';</span>
+<span id="L1021"><span class="lineNum">    1021</span>              :   String notificationCaptured(Object value) {</span>
+<span id="L1022"><span class="lineNum">    1022</span> <span class="tlaUNC">           0 :     return 'Tutulan bildirişlər: $value';</span></span>
+<span id="L1023"><span class="lineNum">    1023</span>              :   }</span>
+<span id="L1024"><span class="lineNum">    1024</span>              : </span>
+<span id="L1025"><span class="lineNum">    1025</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1026"><span class="lineNum">    1026</span>              :   String get notificationClear =&gt; 'Tutulanları təmizlə';</span>
+<span id="L1027"><span class="lineNum">    1027</span>              : </span>
+<span id="L1028"><span class="lineNum">    1028</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1029"><span class="lineNum">    1029</span>              :   String get notificationCurrencyTooltip =&gt; 'Valyutasız məbləğlər (məs. Debit 20.00) bu valyutada götürülür';</span>
+<span id="L1030"><span class="lineNum">    1030</span>              : </span>
+<span id="L1031"><span class="lineNum">    1031</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1032"><span class="lineNum">    1032</span>              :   String get notificationDefaultAccount =&gt; 'Defolt hesab';</span>
+<span id="L1033"><span class="lineNum">    1033</span>              : </span>
+<span id="L1034"><span class="lineNum">    1034</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1035"><span class="lineNum">    1035</span>              :   String get notificationDescription =&gt;</span>
+<span id="L1036"><span class="lineNum">    1036</span>              :       'Bu cihazdakı bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar yaradın. Yalnız seçilmiş tətbiqlərin bildirişləri oxunur və idxal olunana qədər cihazda qalır. Məbləğ və valyuta avtomatik tanınır.';</span>
 <span id="L1037"><span class="lineNum">    1037</span>              : </span>
 <span id="L1038"><span class="lineNum">    1038</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1039"><span class="lineNum">    1039</span>              :   String get password =&gt; 'parol';</span>
+<span id="L1039"><span class="lineNum">    1039</span>              :   String get notificationGrant =&gt; 'Giriş ver';</span>
 <span id="L1040"><span class="lineNum">    1040</span>              : </span>
 <span id="L1041"><span class="lineNum">    1041</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1042"><span class="lineNum">    1042</span>              :   String get path =&gt; 'Fayl adı (saxlamaq və ya yükləmək üçün)';</span>
+<span id="L1042"><span class="lineNum">    1042</span>              :   String get notificationIncome =&gt; 'Gəlir açar sözləri';</span>
 <span id="L1043"><span class="lineNum">    1043</span>              : </span>
 <span id="L1044"><span class="lineNum">    1044</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1045"><span class="lineNum">    1045</span>              :   String get paymentType =&gt; 'Ödəniş intervalı';</span>
-<span id="L1046"><span class="lineNum">    1046</span>              : </span>
-<span id="L1047"><span class="lineNum">    1047</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1048"><span class="lineNum">    1048</span>              :   String get paymentsHeadline =&gt; 'Təkrarlanan ödənişlər';</span>
-<span id="L1049"><span class="lineNum">    1049</span>              : </span>
-<span id="L1050"><span class="lineNum">    1050</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1051"><span class="lineNum">    1051</span>              :   String get pearDisabled =&gt; '-- əlil --';</span>
-<span id="L1052"><span class="lineNum">    1052</span>              : </span>
-<span id="L1053"><span class="lineNum">    1053</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1054"><span class="lineNum">    1054</span>              :   String get pearLoading =&gt; 'Davam edir...';</span>
-<span id="L1055"><span class="lineNum">    1055</span>              : </span>
-<span id="L1056"><span class="lineNum">    1056</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1057"><span class="lineNum">    1057</span>              :   String get peerAccept =&gt; 'qəbul et';</span>
-<span id="L1058"><span class="lineNum">    1058</span>              : </span>
-<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1060"><span class="lineNum">    1060</span>              :   String get peerAction =&gt; 'Fəaliyyət';</span>
-<span id="L1061"><span class="lineNum">    1061</span>              : </span>
-<span id="L1062"><span class="lineNum">    1062</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1063"><span class="lineNum">    1063</span>              :   String get peerClosed =&gt; 'dayandırıldı';</span>
-<span id="L1064"><span class="lineNum">    1064</span>              : </span>
-<span id="L1065"><span class="lineNum">    1065</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1066"><span class="lineNum">    1066</span>              :   String get peerConnect =&gt; 'Cihazı birləşdirin';</span>
-<span id="L1067"><span class="lineNum">    1067</span>              : </span>
-<span id="L1068"><span class="lineNum">    1068</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1069"><span class="lineNum">    1069</span>              :   String get peerConnectBtn =&gt; 'qoşulmaq';</span>
-<span id="L1070"><span class="lineNum">    1070</span>              : </span>
-<span id="L1071"><span class="lineNum">    1071</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1072"><span class="lineNum">    1072</span>              :   String get peerDelete =&gt; 'silin';</span>
-<span id="L1073"><span class="lineNum">    1073</span>              : </span>
-<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1075"><span class="lineNum">    1075</span>              :   String get peerDevice =&gt; 'Qoşulmuş Cihazlar';</span>
-<span id="L1076"><span class="lineNum">    1076</span>              : </span>
-<span id="L1077"><span class="lineNum">    1077</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1078"><span class="lineNum">    1078</span>              :   String get peerId =&gt; 'Qoşulma üçün Cihaz İdentifikatorunuz';</span>
-<span id="L1079"><span class="lineNum">    1079</span>              : </span>
-<span id="L1080"><span class="lineNum">    1080</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1081"><span class="lineNum">    1081</span>              :   String get peerOffline =&gt; 'offline';</span>
-<span id="L1082"><span class="lineNum">    1082</span>              : </span>
-<span id="L1083"><span class="lineNum">    1083</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1084"><span class="lineNum">    1084</span>              :   String get peerOnline =&gt; 'əlaqədar';</span>
-<span id="L1085"><span class="lineNum">    1085</span>              : </span>
-<span id="L1086"><span class="lineNum">    1086</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1087"><span class="lineNum">    1087</span>              :   String get peerOtherId =&gt; 'Qoşulma üçün Cihaz İdentifikatoru';</span>
-<span id="L1088"><span class="lineNum">    1088</span>              : </span>
-<span id="L1089"><span class="lineNum">    1089</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1090"><span class="lineNum">    1090</span>              :   String get peerPending =&gt; 'gözləyən';</span>
-<span id="L1091"><span class="lineNum">    1091</span>              : </span>
-<span id="L1092"><span class="lineNum">    1092</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1093"><span class="lineNum">    1093</span>              :   String get peerPing =&gt; 'ping';</span>
-<span id="L1094"><span class="lineNum">    1094</span>              : </span>
-<span id="L1095"><span class="lineNum">    1095</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1096"><span class="lineNum">    1096</span>              :   String get peerSent =&gt; 'Məlumatlar qoşulmuş Cihazlara ötürülür';</span>
-<span id="L1097"><span class="lineNum">    1097</span>              : </span>
-<span id="L1098"><span class="lineNum">    1098</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1099"><span class="lineNum">    1099</span>              :   String get peerStatus =&gt; 'Vəziyyət';</span>
-<span id="L1100"><span class="lineNum">    1100</span>              : </span>
-<span id="L1101"><span class="lineNum">    1101</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1102"><span class="lineNum">    1102</span>              :   String get peerSync =&gt; 'Məlumatların ötürülməsi';</span>
-<span id="L1103"><span class="lineNum">    1103</span>              : </span>
-<span id="L1104"><span class="lineNum">    1104</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1105"><span class="lineNum">    1105</span>              :   String pickFile(Object value) {</span>
-<span id="L1106"><span class="lineNum">    1106</span> <span class="tlaUNC">           0 :     return '.$value-faylını seçin';</span></span>
-<span id="L1107"><span class="lineNum">    1107</span>              :   }</span>
-<span id="L1108"><span class="lineNum">    1108</span>              : </span>
-<span id="L1109"><span class="lineNum">    1109</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1110"><span class="lineNum">    1110</span>              :   String pongStatus(Object uuid) {</span>
-<span id="L1111"><span class="lineNum">    1111</span> <span class="tlaUNC">           0 :     return '$uuid tərəfindən sorğu götürülüb';</span></span>
-<span id="L1112"><span class="lineNum">    1112</span>              :   }</span>
+<span id="L1045"><span class="lineNum">    1045</span>              :   String get notificationIncomeTooltip =&gt;</span>
+<span id="L1046"><span class="lineNum">    1046</span>              :       'Bildirişi gəlir kimi qeyd edən sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın';</span>
+<span id="L1047"><span class="lineNum">    1047</span>              : </span>
+<span id="L1048"><span class="lineNum">    1048</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1049"><span class="lineNum">    1049</span>              :   String get notificationNoApps =&gt; 'Hələ bildiriş alınmayıb: tətbiqlər bildiriş göndərdikdən sonra burada görünür';</span>
+<span id="L1050"><span class="lineNum">    1050</span>              : </span>
+<span id="L1051"><span class="lineNum">    1051</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1052"><span class="lineNum">    1052</span>              :   String get notificationUnparsed =&gt; 'Tanınmadı';</span>
+<span id="L1053"><span class="lineNum">    1053</span>              : </span>
+<span id="L1054"><span class="lineNum">    1054</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1055"><span class="lineNum">    1055</span>              :   String get notifyHeadline =&gt; 'Bildirişlər Parser';</span>
+<span id="L1056"><span class="lineNum">    1056</span>              : </span>
+<span id="L1057"><span class="lineNum">    1057</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1058"><span class="lineNum">    1058</span>              :   String get ok =&gt; 'tamam';</span>
+<span id="L1059"><span class="lineNum">    1059</span>              : </span>
+<span id="L1060"><span class="lineNum">    1060</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1061"><span class="lineNum">    1061</span>              :   String get orderPin =&gt; 'Prioritet sifariş';</span>
+<span id="L1062"><span class="lineNum">    1062</span>              : </span>
+<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1064"><span class="lineNum">    1064</span>              :   String get orderUnpin =&gt; 'Ümumiləşdirilmiş sifariş';</span>
+<span id="L1065"><span class="lineNum">    1065</span>              : </span>
+<span id="L1066"><span class="lineNum">    1066</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1067"><span class="lineNum">    1067</span>              :   String get outputFile =&gt; 'Fayl üçün təyinat';</span>
+<span id="L1068"><span class="lineNum">    1068</span>              : </span>
+<span id="L1069"><span class="lineNum">    1069</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1070"><span class="lineNum">    1070</span>              :   String get parseFile =&gt; 'Faylı təhlil edin';</span>
+<span id="L1071"><span class="lineNum">    1071</span>              : </span>
+<span id="L1072"><span class="lineNum">    1072</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1073"><span class="lineNum">    1073</span>              :   String get password =&gt; 'parol';</span>
+<span id="L1074"><span class="lineNum">    1074</span>              : </span>
+<span id="L1075"><span class="lineNum">    1075</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1076"><span class="lineNum">    1076</span>              :   String get path =&gt; 'Fayl adı (saxlamaq və ya yükləmək üçün)';</span>
+<span id="L1077"><span class="lineNum">    1077</span>              : </span>
+<span id="L1078"><span class="lineNum">    1078</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1079"><span class="lineNum">    1079</span>              :   String get paymentType =&gt; 'Ödəniş intervalı';</span>
+<span id="L1080"><span class="lineNum">    1080</span>              : </span>
+<span id="L1081"><span class="lineNum">    1081</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1082"><span class="lineNum">    1082</span>              :   String get paymentsHeadline =&gt; 'Təkrarlanan ödənişlər';</span>
+<span id="L1083"><span class="lineNum">    1083</span>              : </span>
+<span id="L1084"><span class="lineNum">    1084</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1085"><span class="lineNum">    1085</span>              :   String get pearDisabled =&gt; '-- əlil --';</span>
+<span id="L1086"><span class="lineNum">    1086</span>              : </span>
+<span id="L1087"><span class="lineNum">    1087</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1088"><span class="lineNum">    1088</span>              :   String get pearLoading =&gt; 'Davam edir...';</span>
+<span id="L1089"><span class="lineNum">    1089</span>              : </span>
+<span id="L1090"><span class="lineNum">    1090</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1091"><span class="lineNum">    1091</span>              :   String get peerAccept =&gt; 'qəbul et';</span>
+<span id="L1092"><span class="lineNum">    1092</span>              : </span>
+<span id="L1093"><span class="lineNum">    1093</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1094"><span class="lineNum">    1094</span>              :   String get peerAction =&gt; 'Fəaliyyət';</span>
+<span id="L1095"><span class="lineNum">    1095</span>              : </span>
+<span id="L1096"><span class="lineNum">    1096</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1097"><span class="lineNum">    1097</span>              :   String get peerClosed =&gt; 'dayandırıldı';</span>
+<span id="L1098"><span class="lineNum">    1098</span>              : </span>
+<span id="L1099"><span class="lineNum">    1099</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1100"><span class="lineNum">    1100</span>              :   String get peerConnect =&gt; 'Cihazı birləşdirin';</span>
+<span id="L1101"><span class="lineNum">    1101</span>              : </span>
+<span id="L1102"><span class="lineNum">    1102</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1103"><span class="lineNum">    1103</span>              :   String get peerConnectBtn =&gt; 'qoşulmaq';</span>
+<span id="L1104"><span class="lineNum">    1104</span>              : </span>
+<span id="L1105"><span class="lineNum">    1105</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1106"><span class="lineNum">    1106</span>              :   String get peerDelete =&gt; 'silin';</span>
+<span id="L1107"><span class="lineNum">    1107</span>              : </span>
+<span id="L1108"><span class="lineNum">    1108</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1109"><span class="lineNum">    1109</span>              :   String get peerDevice =&gt; 'Qoşulmuş Cihazlar';</span>
+<span id="L1110"><span class="lineNum">    1110</span>              : </span>
+<span id="L1111"><span class="lineNum">    1111</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1112"><span class="lineNum">    1112</span>              :   String get peerId =&gt; 'Qoşulma üçün Cihaz İdentifikatorunuz';</span>
 <span id="L1113"><span class="lineNum">    1113</span>              : </span>
 <span id="L1114"><span class="lineNum">    1114</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1115"><span class="lineNum">    1115</span>              :   String get privatBankAdd =&gt; 'Hesab əlavə et';</span>
+<span id="L1115"><span class="lineNum">    1115</span>              :   String get peerOffline =&gt; 'offline';</span>
 <span id="L1116"><span class="lineNum">    1116</span>              : </span>
 <span id="L1117"><span class="lineNum">    1117</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1118"><span class="lineNum">    1118</span>              :   String get privatBankDescription =&gt;</span>
-<span id="L1119"><span class="lineNum">    1119</span>              :       'Privat24 for Business biznes hesablarının (fərdi sahibkarlar və şirkətlər) qalıqlarını və əməliyyatlarını Autoclient tokeni ilə idxal edin. Şəxsi hesablar API tərəfindən dəstəklənmir. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';</span>
-<span id="L1120"><span class="lineNum">    1120</span>              : </span>
-<span id="L1121"><span class="lineNum">    1121</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1122"><span class="lineNum">    1122</span>              :   String get privatBankHeadline =&gt; 'PrivatBank Autoclient (Ukrayna)';</span>
-<span id="L1123"><span class="lineNum">    1123</span>              : </span>
-<span id="L1124"><span class="lineNum">    1124</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1125"><span class="lineNum">    1125</span>              :   String get privatBankIban =&gt; 'Hesabın IBAN-ı';</span>
-<span id="L1126"><span class="lineNum">    1126</span>              : </span>
-<span id="L1127"><span class="lineNum">    1127</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1128"><span class="lineNum">    1128</span>              :   String get privatBankIbanInvalid =&gt; 'Ukrayna IBAN-ı daxil edin: UA və ardınca 27 rəqəm';</span>
-<span id="L1129"><span class="lineNum">    1129</span>              : </span>
-<span id="L1130"><span class="lineNum">    1130</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1131"><span class="lineNum">    1131</span>              :   String get privatBankIbanTooltip =&gt; 'API hesabların siyahısını vermir: hesabların IBAN-larını bir-bir əlavə edin';</span>
-<span id="L1132"><span class="lineNum">    1132</span>              : </span>
-<span id="L1133"><span class="lineNum">    1133</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1134"><span class="lineNum">    1134</span>              :   String privatBankNotReady(Object value) {</span>
-<span id="L1135"><span class="lineNum">    1135</span> <span class="tlaUNC">           0 :     return 'PrivatBank çıxarışları hazırlayır (mərhələ $value): bir neçə dəqiqədən sonra yenidən cəhd edin';</span></span>
-<span id="L1136"><span class="lineNum">    1136</span>              :   }</span>
+<span id="L1118"><span class="lineNum">    1118</span>              :   String get peerOnline =&gt; 'əlaqədar';</span>
+<span id="L1119"><span class="lineNum">    1119</span>              : </span>
+<span id="L1120"><span class="lineNum">    1120</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1121"><span class="lineNum">    1121</span>              :   String get peerOtherId =&gt; 'Qoşulma üçün Cihaz İdentifikatoru';</span>
+<span id="L1122"><span class="lineNum">    1122</span>              : </span>
+<span id="L1123"><span class="lineNum">    1123</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1124"><span class="lineNum">    1124</span>              :   String get peerPending =&gt; 'gözləyən';</span>
+<span id="L1125"><span class="lineNum">    1125</span>              : </span>
+<span id="L1126"><span class="lineNum">    1126</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1127"><span class="lineNum">    1127</span>              :   String get peerPing =&gt; 'ping';</span>
+<span id="L1128"><span class="lineNum">    1128</span>              : </span>
+<span id="L1129"><span class="lineNum">    1129</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1130"><span class="lineNum">    1130</span>              :   String get peerSent =&gt; 'Məlumatlar qoşulmuş Cihazlara ötürülür';</span>
+<span id="L1131"><span class="lineNum">    1131</span>              : </span>
+<span id="L1132"><span class="lineNum">    1132</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1133"><span class="lineNum">    1133</span>              :   String get peerStatus =&gt; 'Vəziyyət';</span>
+<span id="L1134"><span class="lineNum">    1134</span>              : </span>
+<span id="L1135"><span class="lineNum">    1135</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1136"><span class="lineNum">    1136</span>              :   String get peerSync =&gt; 'Məlumatların ötürülməsi';</span>
 <span id="L1137"><span class="lineNum">    1137</span>              : </span>
 <span id="L1138"><span class="lineNum">    1138</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1139"><span class="lineNum">    1139</span>              :   String get privatBankRemove =&gt; 'Hesabı sil';</span>
-<span id="L1140"><span class="lineNum">    1140</span>              : </span>
-<span id="L1141"><span class="lineNum">    1141</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1142"><span class="lineNum">    1142</span>              :   String get privatBankToken =&gt; 'Autoclient tokeni';</span>
-<span id="L1143"><span class="lineNum">    1143</span>              : </span>
-<span id="L1144"><span class="lineNum">    1144</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1145"><span class="lineNum">    1145</span>              :   String get privatBankTokenSteps =&gt;</span>
-<span id="L1146"><span class="lineNum">    1146</span>              :       'Autoclient tokenini necə əldə etmək olar:\n1. Privat24 for Business-ə daxil olun\n2. İnteqrasiya (Autoclient) bölməsini açın\n3. Onu aktivləşdirin və tokeni kopyalayın\n4. Aşağıya yapışdırın və \&quot;Qoşul\&quot; düyməsini basın\n5. İdxal ediləcək hesabların IBAN-larını əlavə edin';</span>
+<span id="L1139"><span class="lineNum">    1139</span>              :   String pickFile(Object value) {</span>
+<span id="L1140"><span class="lineNum">    1140</span> <span class="tlaUNC">           0 :     return '.$value-faylını seçin';</span></span>
+<span id="L1141"><span class="lineNum">    1141</span>              :   }</span>
+<span id="L1142"><span class="lineNum">    1142</span>              : </span>
+<span id="L1143"><span class="lineNum">    1143</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1144"><span class="lineNum">    1144</span>              :   String pongStatus(Object uuid) {</span>
+<span id="L1145"><span class="lineNum">    1145</span> <span class="tlaUNC">           0 :     return '$uuid tərəfindən sorğu götürülüb';</span></span>
+<span id="L1146"><span class="lineNum">    1146</span>              :   }</span>
 <span id="L1147"><span class="lineNum">    1147</span>              : </span>
 <span id="L1148"><span class="lineNum">    1148</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1149"><span class="lineNum">    1149</span>              :   String get privatBankTokenTooltip =&gt;</span>
-<span id="L1150"><span class="lineNum">    1150</span>              :       'Privat24 for Business-də İnteqrasiya (Autoclient) bölməsində verilir; şifrələnmiş şəkildə saxlanılır';</span>
-<span id="L1151"><span class="lineNum">    1151</span>              : </span>
-<span id="L1152"><span class="lineNum">    1152</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1153"><span class="lineNum">    1153</span>              :   String get processIsFinished =&gt; 'Bitdi!';</span>
+<span id="L1149"><span class="lineNum">    1149</span>              :   String get privatBankAdd =&gt; 'Hesab əlavə et';</span>
+<span id="L1150"><span class="lineNum">    1150</span>              : </span>
+<span id="L1151"><span class="lineNum">    1151</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1152"><span class="lineNum">    1152</span>              :   String get privatBankDescription =&gt;</span>
+<span id="L1153"><span class="lineNum">    1153</span>              :       'Privat24 for Business biznes hesablarının (fərdi sahibkarlar və şirkətlər) qalıqlarını və əməliyyatlarını Autoclient tokeni ilə idxal edin. Şəxsi hesablar API tərəfindən dəstəklənmir. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';</span>
 <span id="L1154"><span class="lineNum">    1154</span>              : </span>
 <span id="L1155"><span class="lineNum">    1155</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1156"><span class="lineNum">    1156</span>              :   String progress(Object value) {</span>
-<span id="L1157"><span class="lineNum">    1157</span> <span class="tlaUNC">           0 :     return 'Tərəqqi: $value%';</span></span>
-<span id="L1158"><span class="lineNum">    1158</span>              :   }</span>
-<span id="L1159"><span class="lineNum">    1159</span>              : </span>
-<span id="L1160"><span class="lineNum">    1160</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1161"><span class="lineNum">    1161</span>              :   String get raiseData =&gt; 'Məbləğə əlavə';</span>
-<span id="L1162"><span class="lineNum">    1162</span>              : </span>
-<span id="L1163"><span class="lineNum">    1163</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1164"><span class="lineNum">    1164</span>              :   String get recoveryHeadline =&gt; 'Bərpa';</span>
-<span id="L1165"><span class="lineNum">    1165</span>              : </span>
-<span id="L1166"><span class="lineNum">    1166</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1167"><span class="lineNum">    1167</span>              :   String get recoveryTooltip =&gt; 'Kimdən bərpa edin';</span>
-<span id="L1168"><span class="lineNum">    1168</span>              : </span>
-<span id="L1169"><span class="lineNum">    1169</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1170"><span class="lineNum">    1170</span>              :   String get releases =&gt; 'Buraxılışlar';</span>
+<span id="L1156"><span class="lineNum">    1156</span>              :   String get privatBankHeadline =&gt; 'PrivatBank Autoclient (Ukrayna)';</span>
+<span id="L1157"><span class="lineNum">    1157</span>              : </span>
+<span id="L1158"><span class="lineNum">    1158</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1159"><span class="lineNum">    1159</span>              :   String get privatBankIban =&gt; 'Hesabın IBAN-ı';</span>
+<span id="L1160"><span class="lineNum">    1160</span>              : </span>
+<span id="L1161"><span class="lineNum">    1161</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1162"><span class="lineNum">    1162</span>              :   String get privatBankIbanInvalid =&gt; 'Ukrayna IBAN-ı daxil edin: UA və ardınca 27 rəqəm';</span>
+<span id="L1163"><span class="lineNum">    1163</span>              : </span>
+<span id="L1164"><span class="lineNum">    1164</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1165"><span class="lineNum">    1165</span>              :   String get privatBankIbanTooltip =&gt; 'API hesabların siyahısını vermir: hesabların IBAN-larını bir-bir əlavə edin';</span>
+<span id="L1166"><span class="lineNum">    1166</span>              : </span>
+<span id="L1167"><span class="lineNum">    1167</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1168"><span class="lineNum">    1168</span>              :   String privatBankNotReady(Object value) {</span>
+<span id="L1169"><span class="lineNum">    1169</span> <span class="tlaUNC">           0 :     return 'PrivatBank çıxarışları hazırlayır (mərhələ $value): bir neçə dəqiqədən sonra yenidən cəhd edin';</span></span>
+<span id="L1170"><span class="lineNum">    1170</span>              :   }</span>
 <span id="L1171"><span class="lineNum">    1171</span>              : </span>
 <span id="L1172"><span class="lineNum">    1172</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1173"><span class="lineNum">    1173</span>              :   String get reset =&gt; 'sıfırlayın';</span>
+<span id="L1173"><span class="lineNum">    1173</span>              :   String get privatBankRemove =&gt; 'Hesabı sil';</span>
 <span id="L1174"><span class="lineNum">    1174</span>              : </span>
 <span id="L1175"><span class="lineNum">    1175</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1176"><span class="lineNum">    1176</span>              :   String get returnBack =&gt; 'Geri qayıt';</span>
+<span id="L1176"><span class="lineNum">    1176</span>              :   String get privatBankToken =&gt; 'Autoclient tokeni';</span>
 <span id="L1177"><span class="lineNum">    1177</span>              : </span>
 <span id="L1178"><span class="lineNum">    1178</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1179"><span class="lineNum">    1179</span>              :   String get roadmap =&gt; 'Yol xəritəsi';</span>
-<span id="L1180"><span class="lineNum">    1180</span>              : </span>
-<span id="L1181"><span class="lineNum">    1181</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1182"><span class="lineNum">    1182</span>              :   String get saveNotification =&gt; 'Dəyişikliklər yadda saxlanıldı!';</span>
-<span id="L1183"><span class="lineNum">    1183</span>              : </span>
-<span id="L1184"><span class="lineNum">    1184</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1185"><span class="lineNum">    1185</span>              :   String get saveSettingsTooltip =&gt; 'Yadda saxla';</span>
-<span id="L1186"><span class="lineNum">    1186</span>              : </span>
-<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1188"><span class="lineNum">    1188</span>              :   String get saveTooltip =&gt; 'Saxlamaq';</span>
-<span id="L1189"><span class="lineNum">    1189</span>              : </span>
-<span id="L1190"><span class="lineNum">    1190</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1191"><span class="lineNum">    1191</span>              :   String search(Object value) {</span>
-<span id="L1192"><span class="lineNum">    1192</span> <span class="tlaUNC">           0 :     return '\'$value\' Nümunəsi ilə Göstərin';</span></span>
-<span id="L1193"><span class="lineNum">    1193</span>              :   }</span>
-<span id="L1194"><span class="lineNum">    1194</span>              : </span>
-<span id="L1195"><span class="lineNum">    1195</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1196"><span class="lineNum">    1196</span>              :   String get searchTooltip =&gt; 'Axtar';</span>
-<span id="L1197"><span class="lineNum">    1197</span>              : </span>
-<span id="L1198"><span class="lineNum">    1198</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1199"><span class="lineNum">    1199</span>              :   String get secureBioNotMatch =&gt; 'Təsdiqləmə uğursuz oldu! Zəhmət olmasa, yenidən cəhd edin';</span>
-<span id="L1200"><span class="lineNum">    1200</span>              : </span>
-<span id="L1201"><span class="lineNum">    1201</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1202"><span class="lineNum">    1202</span>              :   String get secureBioPromptReason =&gt; 'Davam etmək üçün zəhmət olmasa təsdiqlənin';</span>
-<span id="L1203"><span class="lineNum">    1203</span>              : </span>
-<span id="L1204"><span class="lineNum">    1204</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1205"><span class="lineNum">    1205</span>              :   String get secureBioPromptTitle =&gt; 'Biometrik Təsdiqləmə';</span>
-<span id="L1206"><span class="lineNum">    1206</span>              : </span>
-<span id="L1207"><span class="lineNum">    1207</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1208"><span class="lineNum">    1208</span>              :   String get secureOtpCode =&gt; 'Bir dəfəlik Şifrə Kodu';</span>
-<span id="L1209"><span class="lineNum">    1209</span>              : </span>
-<span id="L1210"><span class="lineNum">    1210</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1211"><span class="lineNum">    1211</span>              :   String get secureOtpCodeInvalid =&gt; 'Etkisiz! Zəhmət olmasa, yeni kod götürün və daxil edin';</span>
-<span id="L1212"><span class="lineNum">    1212</span>              : </span>
-<span id="L1213"><span class="lineNum">    1213</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1214"><span class="lineNum">    1214</span>              :   String get secureOtpDeactivated =&gt; 'Şifrə qorunması deaktiv edilib';</span>
-<span id="L1215"><span class="lineNum">    1215</span>              : </span>
-<span id="L1216"><span class="lineNum">    1216</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1217"><span class="lineNum">    1217</span>              :   String get securePassword =&gt; 'Şifrə (Bərpa ifadəsi)';</span>
-<span id="L1218"><span class="lineNum">    1218</span>              : </span>
-<span id="L1219"><span class="lineNum">    1219</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1220"><span class="lineNum">    1220</span>              :   String get securePasswordEmpty =&gt; 'Şifrə boş ola bilməz!';</span>
-<span id="L1221"><span class="lineNum">    1221</span>              : </span>
-<span id="L1222"><span class="lineNum">    1222</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1223"><span class="lineNum">    1223</span>              :   String get securePasswordNotMatch =&gt; 'Şifrələr uyğun gəlmir!';</span>
-<span id="L1224"><span class="lineNum">    1224</span>              : </span>
-<span id="L1225"><span class="lineNum">    1225</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1226"><span class="lineNum">    1226</span>              :   String get securePasswordRepeat =&gt; 'Təkrar Şifrə';</span>
-<span id="L1227"><span class="lineNum">    1227</span>              : </span>
-<span id="L1228"><span class="lineNum">    1228</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1229"><span class="lineNum">    1229</span>              :   String get securityHeadline =&gt; 'Təhlükəsizlik';</span>
-<span id="L1230"><span class="lineNum">    1230</span>              : </span>
-<span id="L1231"><span class="lineNum">    1231</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1232"><span class="lineNum">    1232</span>              :   String get settingsBaseHeadline =&gt; 'Əsaslar';</span>
-<span id="L1233"><span class="lineNum">    1233</span>              : </span>
-<span id="L1234"><span class="lineNum">    1234</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1235"><span class="lineNum">    1235</span>              :   String get settingsHeadline =&gt; 'Parametrlər';</span>
-<span id="L1236"><span class="lineNum">    1236</span>              : </span>
-<span id="L1237"><span class="lineNum">    1237</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1238"><span class="lineNum">    1238</span>              :   String get settingsSaved =&gt; 'Tənzimləmələr yadda saxlanıldı!';</span>
-<span id="L1239"><span class="lineNum">    1239</span>              : </span>
-<span id="L1240"><span class="lineNum">    1240</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1241"><span class="lineNum">    1241</span>              :   String get simpleFinDescription =&gt;</span>
-<span id="L1242"><span class="lineNum">    1242</span>              :       'ABŞ bankları və kart emitentlərinin qalıqlarını və əməliyyatlarını SimpleFIN Bridge vasitəsilə idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';</span>
+<span id="L1179"><span class="lineNum">    1179</span>              :   String get privatBankTokenSteps =&gt;</span>
+<span id="L1180"><span class="lineNum">    1180</span>              :       'Autoclient tokenini necə əldə etmək olar:\n1. Privat24 for Business-ə daxil olun\n2. İnteqrasiya (Autoclient) bölməsini açın\n3. Onu aktivləşdirin və tokeni kopyalayın\n4. Aşağıya yapışdırın və \&quot;Qoşul\&quot; düyməsini basın\n5. İdxal ediləcək hesabların IBAN-larını əlavə edin';</span>
+<span id="L1181"><span class="lineNum">    1181</span>              : </span>
+<span id="L1182"><span class="lineNum">    1182</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1183"><span class="lineNum">    1183</span>              :   String get privatBankTokenTooltip =&gt;</span>
+<span id="L1184"><span class="lineNum">    1184</span>              :       'Privat24 for Business-də İnteqrasiya (Autoclient) bölməsində verilir; şifrələnmiş şəkildə saxlanılır';</span>
+<span id="L1185"><span class="lineNum">    1185</span>              : </span>
+<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1187"><span class="lineNum">    1187</span>              :   String get processIsFinished =&gt; 'Bitdi!';</span>
+<span id="L1188"><span class="lineNum">    1188</span>              : </span>
+<span id="L1189"><span class="lineNum">    1189</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1190"><span class="lineNum">    1190</span>              :   String progress(Object value) {</span>
+<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaUNC">           0 :     return 'Tərəqqi: $value%';</span></span>
+<span id="L1192"><span class="lineNum">    1192</span>              :   }</span>
+<span id="L1193"><span class="lineNum">    1193</span>              : </span>
+<span id="L1194"><span class="lineNum">    1194</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1195"><span class="lineNum">    1195</span>              :   String get raiseData =&gt; 'Məbləğə əlavə';</span>
+<span id="L1196"><span class="lineNum">    1196</span>              : </span>
+<span id="L1197"><span class="lineNum">    1197</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1198"><span class="lineNum">    1198</span>              :   String get recoveryHeadline =&gt; 'Bərpa';</span>
+<span id="L1199"><span class="lineNum">    1199</span>              : </span>
+<span id="L1200"><span class="lineNum">    1200</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1201"><span class="lineNum">    1201</span>              :   String get recoveryTooltip =&gt; 'Kimdən bərpa edin';</span>
+<span id="L1202"><span class="lineNum">    1202</span>              : </span>
+<span id="L1203"><span class="lineNum">    1203</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1204"><span class="lineNum">    1204</span>              :   String get releases =&gt; 'Buraxılışlar';</span>
+<span id="L1205"><span class="lineNum">    1205</span>              : </span>
+<span id="L1206"><span class="lineNum">    1206</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1207"><span class="lineNum">    1207</span>              :   String get reset =&gt; 'sıfırlayın';</span>
+<span id="L1208"><span class="lineNum">    1208</span>              : </span>
+<span id="L1209"><span class="lineNum">    1209</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1210"><span class="lineNum">    1210</span>              :   String get returnBack =&gt; 'Geri qayıt';</span>
+<span id="L1211"><span class="lineNum">    1211</span>              : </span>
+<span id="L1212"><span class="lineNum">    1212</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1213"><span class="lineNum">    1213</span>              :   String get roadmap =&gt; 'Yol xəritəsi';</span>
+<span id="L1214"><span class="lineNum">    1214</span>              : </span>
+<span id="L1215"><span class="lineNum">    1215</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1216"><span class="lineNum">    1216</span>              :   String get saveNotification =&gt; 'Dəyişikliklər yadda saxlanıldı!';</span>
+<span id="L1217"><span class="lineNum">    1217</span>              : </span>
+<span id="L1218"><span class="lineNum">    1218</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1219"><span class="lineNum">    1219</span>              :   String get saveSettingsTooltip =&gt; 'Yadda saxla';</span>
+<span id="L1220"><span class="lineNum">    1220</span>              : </span>
+<span id="L1221"><span class="lineNum">    1221</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1222"><span class="lineNum">    1222</span>              :   String get saveTooltip =&gt; 'Saxlamaq';</span>
+<span id="L1223"><span class="lineNum">    1223</span>              : </span>
+<span id="L1224"><span class="lineNum">    1224</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1225"><span class="lineNum">    1225</span>              :   String search(Object value) {</span>
+<span id="L1226"><span class="lineNum">    1226</span> <span class="tlaUNC">           0 :     return '\'$value\' Nümunəsi ilə Göstərin';</span></span>
+<span id="L1227"><span class="lineNum">    1227</span>              :   }</span>
+<span id="L1228"><span class="lineNum">    1228</span>              : </span>
+<span id="L1229"><span class="lineNum">    1229</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1230"><span class="lineNum">    1230</span>              :   String get searchTooltip =&gt; 'Axtar';</span>
+<span id="L1231"><span class="lineNum">    1231</span>              : </span>
+<span id="L1232"><span class="lineNum">    1232</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1233"><span class="lineNum">    1233</span>              :   String get secureBioNotMatch =&gt; 'Təsdiqləmə uğursuz oldu! Zəhmət olmasa, yenidən cəhd edin';</span>
+<span id="L1234"><span class="lineNum">    1234</span>              : </span>
+<span id="L1235"><span class="lineNum">    1235</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1236"><span class="lineNum">    1236</span>              :   String get secureBioPromptReason =&gt; 'Davam etmək üçün zəhmət olmasa təsdiqlənin';</span>
+<span id="L1237"><span class="lineNum">    1237</span>              : </span>
+<span id="L1238"><span class="lineNum">    1238</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1239"><span class="lineNum">    1239</span>              :   String get secureBioPromptTitle =&gt; 'Biometrik Təsdiqləmə';</span>
+<span id="L1240"><span class="lineNum">    1240</span>              : </span>
+<span id="L1241"><span class="lineNum">    1241</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1242"><span class="lineNum">    1242</span>              :   String get secureOtpCode =&gt; 'Bir dəfəlik Şifrə Kodu';</span>
 <span id="L1243"><span class="lineNum">    1243</span>              : </span>
 <span id="L1244"><span class="lineNum">    1244</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1245"><span class="lineNum">    1245</span>              :   String get simpleFinHeadline =&gt; 'SimpleFIN Bridge (US)';</span>
+<span id="L1245"><span class="lineNum">    1245</span>              :   String get secureOtpCodeInvalid =&gt; 'Etkisiz! Zəhmət olmasa, yeni kod götürün və daxil edin';</span>
 <span id="L1246"><span class="lineNum">    1246</span>              : </span>
 <span id="L1247"><span class="lineNum">    1247</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1248"><span class="lineNum">    1248</span>              :   String get simpleFinNoCredentials =&gt; 'SimpleFIN Bridge giriş məlumatları olmayan giriş ünvanı qaytardı';</span>
+<span id="L1248"><span class="lineNum">    1248</span>              :   String get secureOtpDeactivated =&gt; 'Şifrə qorunması deaktiv edilib';</span>
 <span id="L1249"><span class="lineNum">    1249</span>              : </span>
 <span id="L1250"><span class="lineNum">    1250</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1251"><span class="lineNum">    1251</span>              :   String get simpleFinToken =&gt; 'SimpleFIN quraşdırma tokeni';</span>
+<span id="L1251"><span class="lineNum">    1251</span>              :   String get securePassword =&gt; 'Şifrə (Bərpa ifadəsi)';</span>
 <span id="L1252"><span class="lineNum">    1252</span>              : </span>
 <span id="L1253"><span class="lineNum">    1253</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1254"><span class="lineNum">    1254</span>              :   String get simpleFinTokenClaimed =&gt; 'Quraşdırma tokeni mövcud deyil və ya artıq istifadə olunub';</span>
+<span id="L1254"><span class="lineNum">    1254</span>              :   String get securePasswordEmpty =&gt; 'Şifrə boş ola bilməz!';</span>
 <span id="L1255"><span class="lineNum">    1255</span>              : </span>
 <span id="L1256"><span class="lineNum">    1256</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1257"><span class="lineNum">    1257</span>              :   String get simpleFinTokenInvalid =&gt; 'Yanlış SimpleFIN quraşdırma tokeni';</span>
+<span id="L1257"><span class="lineNum">    1257</span>              :   String get securePasswordNotMatch =&gt; 'Şifrələr uyğun gəlmir!';</span>
 <span id="L1258"><span class="lineNum">    1258</span>              : </span>
 <span id="L1259"><span class="lineNum">    1259</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1260"><span class="lineNum">    1260</span>              :   String get simpleFinTokenTooltip =&gt;</span>
-<span id="L1261"><span class="lineNum">    1261</span>              :       'Bu tətbiq üçün SimpleFIN Bridge-də (məs. bridge.simplefin.org) yaradılır; yalnız bir dəfə istifadə oluna bilər';</span>
-<span id="L1262"><span class="lineNum">    1262</span>              : </span>
-<span id="L1263"><span class="lineNum">    1263</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1264"><span class="lineNum">    1264</span>              :   String get skipFromTotals =&gt; 'Cəmilərdən xaric edin';</span>
-<span id="L1265"><span class="lineNum">    1265</span>              : </span>
-<span id="L1266"><span class="lineNum">    1266</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1267"><span class="lineNum">    1267</span>              :   String get skipTooltip =&gt; 'Addım(lar)ı atlayın';</span>
-<span id="L1268"><span class="lineNum">    1268</span>              : </span>
-<span id="L1269"><span class="lineNum">    1269</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1270"><span class="lineNum">    1270</span>              :   String get sortTooltip =&gt; 'Elementləri sırala';</span>
-<span id="L1271"><span class="lineNum">    1271</span>              : </span>
-<span id="L1272"><span class="lineNum">    1272</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1273"><span class="lineNum">    1273</span>              :   String get sortingAmountAsc =&gt; 'Məbləğ Artan';</span>
-<span id="L1274"><span class="lineNum">    1274</span>              : </span>
-<span id="L1275"><span class="lineNum">    1275</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1276"><span class="lineNum">    1276</span>              :   String get sortingAmountDesc =&gt; 'Məbləğ Enən';</span>
+<span id="L1260"><span class="lineNum">    1260</span>              :   String get securePasswordRepeat =&gt; 'Təkrar Şifrə';</span>
+<span id="L1261"><span class="lineNum">    1261</span>              : </span>
+<span id="L1262"><span class="lineNum">    1262</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1263"><span class="lineNum">    1263</span>              :   String get securityHeadline =&gt; 'Təhlükəsizlik';</span>
+<span id="L1264"><span class="lineNum">    1264</span>              : </span>
+<span id="L1265"><span class="lineNum">    1265</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1266"><span class="lineNum">    1266</span>              :   String get settingsBaseHeadline =&gt; 'Əsaslar';</span>
+<span id="L1267"><span class="lineNum">    1267</span>              : </span>
+<span id="L1268"><span class="lineNum">    1268</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1269"><span class="lineNum">    1269</span>              :   String get settingsHeadline =&gt; 'Parametrlər';</span>
+<span id="L1270"><span class="lineNum">    1270</span>              : </span>
+<span id="L1271"><span class="lineNum">    1271</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1272"><span class="lineNum">    1272</span>              :   String get settingsSaved =&gt; 'Tənzimləmələr yadda saxlanıldı!';</span>
+<span id="L1273"><span class="lineNum">    1273</span>              : </span>
+<span id="L1274"><span class="lineNum">    1274</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1275"><span class="lineNum">    1275</span>              :   String get simpleFinDescription =&gt;</span>
+<span id="L1276"><span class="lineNum">    1276</span>              :       'ABŞ bankları və kart emitentlərinin qalıqlarını və əməliyyatlarını SimpleFIN Bridge vasitəsilə idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';</span>
 <span id="L1277"><span class="lineNum">    1277</span>              : </span>
 <span id="L1278"><span class="lineNum">    1278</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1279"><span class="lineNum">    1279</span>              :   String get sortingCreatedAtAsc =&gt; 'Yaradılma Tarixi Artan';</span>
+<span id="L1279"><span class="lineNum">    1279</span>              :   String get simpleFinHeadline =&gt; 'SimpleFIN Bridge (US)';</span>
 <span id="L1280"><span class="lineNum">    1280</span>              : </span>
 <span id="L1281"><span class="lineNum">    1281</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1282"><span class="lineNum">    1282</span>              :   String get sortingCreatedAtDesc =&gt; 'Yaradılma Tarixi Enən';</span>
+<span id="L1282"><span class="lineNum">    1282</span>              :   String get simpleFinNoCredentials =&gt; 'SimpleFIN Bridge giriş məlumatları olmayan giriş ünvanı qaytardı';</span>
 <span id="L1283"><span class="lineNum">    1283</span>              : </span>
 <span id="L1284"><span class="lineNum">    1284</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1285"><span class="lineNum">    1285</span>              :   String get sortingTitleAsc =&gt; 'Başlıq Artan';</span>
+<span id="L1285"><span class="lineNum">    1285</span>              :   String get simpleFinToken =&gt; 'SimpleFIN quraşdırma tokeni';</span>
 <span id="L1286"><span class="lineNum">    1286</span>              : </span>
 <span id="L1287"><span class="lineNum">    1287</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1288"><span class="lineNum">    1288</span>              :   String get sortingTitleDesc =&gt; 'Başlıq Enən';</span>
+<span id="L1288"><span class="lineNum">    1288</span>              :   String get simpleFinTokenClaimed =&gt; 'Quraşdırma tokeni mövcud deyil və ya artıq istifadə olunub';</span>
 <span id="L1289"><span class="lineNum">    1289</span>              : </span>
 <span id="L1290"><span class="lineNum">    1290</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1291"><span class="lineNum">    1291</span>              :   String get sortingUpdatedAtAsc =&gt; 'Yenilənmə Tarixi Artan';</span>
+<span id="L1291"><span class="lineNum">    1291</span>              :   String get simpleFinTokenInvalid =&gt; 'Yanlış SimpleFIN quraşdırma tokeni';</span>
 <span id="L1292"><span class="lineNum">    1292</span>              : </span>
 <span id="L1293"><span class="lineNum">    1293</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1294"><span class="lineNum">    1294</span>              :   String get sortingUpdatedAtDesc =&gt; 'Yenilənmə Tarixi Enən';</span>
-<span id="L1295"><span class="lineNum">    1295</span>              : </span>
-<span id="L1296"><span class="lineNum">    1296</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1297"><span class="lineNum">    1297</span>              :   String get spent =&gt; 'sərf etdi';</span>
-<span id="L1298"><span class="lineNum">    1298</span>              : </span>
-<span id="L1299"><span class="lineNum">    1299</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1300"><span class="lineNum">    1300</span>              :   String get splitCancelTooltip =&gt; 'Ayda bölünməni ləğv edin';</span>
-<span id="L1301"><span class="lineNum">    1301</span>              : </span>
-<span id="L1302"><span class="lineNum">    1302</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1303"><span class="lineNum">    1303</span>              :   String get splitHeadline =&gt; 'Hesabı böl';</span>
-<span id="L1304"><span class="lineNum">    1304</span>              : </span>
-<span id="L1305"><span class="lineNum">    1305</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1306"><span class="lineNum">    1306</span>              :   String get splitTooltip =&gt; 'Aylıq Limitləri Bəyan edin';</span>
-<span id="L1307"><span class="lineNum">    1307</span>              : </span>
-<span id="L1308"><span class="lineNum">    1308</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1309"><span class="lineNum">    1309</span>              :   String get subscription =&gt;</span>
-<span id="L1310"><span class="lineNum">    1310</span>              :       'Açıq mənbəli layihə olaraq, abunəlik heç bir əlavə funksiyanın kilidini açmayacaq. Bununla belə, o, tətbiqin davamlı təkamülünə və təkmilləşdirilməsinə və onun mövcudluğunun qorunmasına investisiya kimi xidmət edəcəkdir.';</span>
+<span id="L1294"><span class="lineNum">    1294</span>              :   String get simpleFinTokenTooltip =&gt;</span>
+<span id="L1295"><span class="lineNum">    1295</span>              :       'Bu tətbiq üçün SimpleFIN Bridge-də (məs. bridge.simplefin.org) yaradılır; yalnız bir dəfə istifadə oluna bilər';</span>
+<span id="L1296"><span class="lineNum">    1296</span>              : </span>
+<span id="L1297"><span class="lineNum">    1297</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1298"><span class="lineNum">    1298</span>              :   String get skipFromTotals =&gt; 'Cəmilərdən xaric edin';</span>
+<span id="L1299"><span class="lineNum">    1299</span>              : </span>
+<span id="L1300"><span class="lineNum">    1300</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1301"><span class="lineNum">    1301</span>              :   String get skipTooltip =&gt; 'Addım(lar)ı atlayın';</span>
+<span id="L1302"><span class="lineNum">    1302</span>              : </span>
+<span id="L1303"><span class="lineNum">    1303</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1304"><span class="lineNum">    1304</span>              :   String get sortTooltip =&gt; 'Elementləri sırala';</span>
+<span id="L1305"><span class="lineNum">    1305</span>              : </span>
+<span id="L1306"><span class="lineNum">    1306</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1307"><span class="lineNum">    1307</span>              :   String get sortingAmountAsc =&gt; 'Məbləğ Artan';</span>
+<span id="L1308"><span class="lineNum">    1308</span>              : </span>
+<span id="L1309"><span class="lineNum">    1309</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1310"><span class="lineNum">    1310</span>              :   String get sortingAmountDesc =&gt; 'Məbləğ Enən';</span>
 <span id="L1311"><span class="lineNum">    1311</span>              : </span>
 <span id="L1312"><span class="lineNum">    1312</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1313"><span class="lineNum">    1313</span>              :   String get subscriptionCoffee =&gt; 'Qəhvə al';</span>
+<span id="L1313"><span class="lineNum">    1313</span>              :   String get sortingCreatedAtAsc =&gt; 'Yaradılma Tarixi Artan';</span>
 <span id="L1314"><span class="lineNum">    1314</span>              : </span>
 <span id="L1315"><span class="lineNum">    1315</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1316"><span class="lineNum">    1316</span>              :   String get subscriptionDinner =&gt; 'Axşam yeməyinə dəvət edin';</span>
+<span id="L1316"><span class="lineNum">    1316</span>              :   String get sortingCreatedAtDesc =&gt; 'Yaradılma Tarixi Enən';</span>
 <span id="L1317"><span class="lineNum">    1317</span>              : </span>
 <span id="L1318"><span class="lineNum">    1318</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1319"><span class="lineNum">    1319</span>              :   String get subscriptionDonorbox =&gt; 'Donorbox vasitəsilə abunə olun';</span>
+<span id="L1319"><span class="lineNum">    1319</span>              :   String get sortingTitleAsc =&gt; 'Başlıq Artan';</span>
 <span id="L1320"><span class="lineNum">    1320</span>              : </span>
 <span id="L1321"><span class="lineNum">    1321</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1322"><span class="lineNum">    1322</span>              :   String get subscriptionGithub =&gt; 'GitHub vasitəsilə abunə olun';</span>
+<span id="L1322"><span class="lineNum">    1322</span>              :   String get sortingTitleDesc =&gt; 'Başlıq Enən';</span>
 <span id="L1323"><span class="lineNum">    1323</span>              : </span>
 <span id="L1324"><span class="lineNum">    1324</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1325"><span class="lineNum">    1325</span>              :   String get subscriptionHeadline =&gt; 'Sponsorluq';</span>
+<span id="L1325"><span class="lineNum">    1325</span>              :   String get sortingUpdatedAtAsc =&gt; 'Yenilənmə Tarixi Artan';</span>
 <span id="L1326"><span class="lineNum">    1326</span>              : </span>
 <span id="L1327"><span class="lineNum">    1327</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1328"><span class="lineNum">    1328</span>              :   String get subscriptionInactive =&gt; 'Satınalma xidməti əlçatan deyil';</span>
+<span id="L1328"><span class="lineNum">    1328</span>              :   String get sortingUpdatedAtDesc =&gt; 'Yenilənmə Tarixi Enən';</span>
 <span id="L1329"><span class="lineNum">    1329</span>              : </span>
 <span id="L1330"><span class="lineNum">    1330</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1331"><span class="lineNum">    1331</span>              :   String get subscriptionPatreon =&gt; 'Patreon vasitəsilə abunə olun';</span>
+<span id="L1331"><span class="lineNum">    1331</span>              :   String get spent =&gt; 'sərf etdi';</span>
 <span id="L1332"><span class="lineNum">    1332</span>              : </span>
 <span id="L1333"><span class="lineNum">    1333</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1334"><span class="lineNum">    1334</span>              :   String get subscriptionPaypal =&gt; 'Qəhvə alın (PayPal)';</span>
+<span id="L1334"><span class="lineNum">    1334</span>              :   String get splitCancelTooltip =&gt; 'Ayda bölünməni ləğv edin';</span>
 <span id="L1335"><span class="lineNum">    1335</span>              : </span>
 <span id="L1336"><span class="lineNum">    1336</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1337"><span class="lineNum">    1337</span>              :   String get subscriptionTiny =&gt; 'Şanslı bir sikkə verin';</span>
+<span id="L1337"><span class="lineNum">    1337</span>              :   String get splitHeadline =&gt; 'Hesabı böl';</span>
 <span id="L1338"><span class="lineNum">    1338</span>              : </span>
 <span id="L1339"><span class="lineNum">    1339</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1340"><span class="lineNum">    1340</span>              :   String get subscriptionTooltip =&gt; 'Dəstək (Sponsorluq)';</span>
+<span id="L1340"><span class="lineNum">    1340</span>              :   String get splitTooltip =&gt; 'Aylıq Limitləri Bəyan edin';</span>
 <span id="L1341"><span class="lineNum">    1341</span>              : </span>
 <span id="L1342"><span class="lineNum">    1342</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1343"><span class="lineNum">    1343</span>              :   String get success =&gt; 'Müvəffəq oldu';</span>
-<span id="L1344"><span class="lineNum">    1344</span>              : </span>
-<span id="L1345"><span class="lineNum">    1345</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1346"><span class="lineNum">    1346</span>              :   String get summary =&gt; 'Xülasə';</span>
-<span id="L1347"><span class="lineNum">    1347</span>              : </span>
-<span id="L1348"><span class="lineNum">    1348</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1349"><span class="lineNum">    1349</span>              :   String get symbol =&gt; 'Simvol';</span>
-<span id="L1350"><span class="lineNum">    1350</span>              : </span>
-<span id="L1351"><span class="lineNum">    1351</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1352"><span class="lineNum">    1352</span>              :   String get syncHeadline =&gt; 'Cihazları Sinxronlaşdırın';</span>
-<span id="L1353"><span class="lineNum">    1353</span>              : </span>
-<span id="L1354"><span class="lineNum">    1354</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1355"><span class="lineNum">    1355</span>              :   String get systemMode =&gt; 'Sistem';</span>
-<span id="L1356"><span class="lineNum">    1356</span>              : </span>
-<span id="L1357"><span class="lineNum">    1357</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1358"><span class="lineNum">    1358</span>              :   String get tapToOpen =&gt; 'Açmaq üçün toxunun';</span>
-<span id="L1359"><span class="lineNum">    1359</span>              : </span>
-<span id="L1360"><span class="lineNum">    1360</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1361"><span class="lineNum">    1361</span>              :   String get targetAmount =&gt; 'Hədəf məbləği';</span>
-<span id="L1362"><span class="lineNum">    1362</span>              : </span>
-<span id="L1363"><span class="lineNum">    1363</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1364"><span class="lineNum">    1364</span>              :   String get termPrivacy =&gt; 'Gizlilik Siyasəti';</span>
-<span id="L1365"><span class="lineNum">    1365</span>              : </span>
-<span id="L1366"><span class="lineNum">    1366</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1367"><span class="lineNum">    1367</span>              :   String get termUse =&gt; 'İstifadə qaydaları';</span>
-<span id="L1368"><span class="lineNum">    1368</span>              : </span>
-<span id="L1369"><span class="lineNum">    1369</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1370"><span class="lineNum">    1370</span>              :   String get title =&gt; 'Başlıq';</span>
-<span id="L1371"><span class="lineNum">    1371</span>              : </span>
-<span id="L1372"><span class="lineNum">    1372</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1373"><span class="lineNum">    1373</span>              :   String get titleAccountTooltip =&gt; 'Hesab İdentifikatorunu daxil edin';</span>
-<span id="L1374"><span class="lineNum">    1374</span>              : </span>
-<span id="L1375"><span class="lineNum">    1375</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1376"><span class="lineNum">    1376</span>              :   String get titleBudgetTooltip =&gt; 'Büdcə Kateqoriyasının adını daxil edin';</span>
-<span id="L1377"><span class="lineNum">    1377</span>              : </span>
-<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1379"><span class="lineNum">    1379</span>              :   String get titleGoal =&gt; 'Məqsəd';</span>
-<span id="L1380"><span class="lineNum">    1380</span>              : </span>
-<span id="L1381"><span class="lineNum">    1381</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1382"><span class="lineNum">    1382</span>              :   String get titleGoalTooltip =&gt; 'Məqsəd təsvirini müəyyənləşdirin';</span>
-<span id="L1383"><span class="lineNum">    1383</span>              : </span>
-<span id="L1384"><span class="lineNum">    1384</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1385"><span class="lineNum">    1385</span>              :   String get to =&gt; 'üçün';</span>
-<span id="L1386"><span class="lineNum">    1386</span>              : </span>
-<span id="L1387"><span class="lineNum">    1387</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1388"><span class="lineNum">    1388</span>              :   String get total =&gt; 'ümumi';</span>
-<span id="L1389"><span class="lineNum">    1389</span>              : </span>
-<span id="L1390"><span class="lineNum">    1390</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1391"><span class="lineNum">    1391</span>              :   String get transactionFile =&gt; 'Fingrom Transactions Log File (.log)';</span>
-<span id="L1392"><span class="lineNum">    1392</span>              : </span>
-<span id="L1393"><span class="lineNum">    1393</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1394"><span class="lineNum">    1394</span>              :   String get transferHeadline =&gt; 'Transfer';</span>
-<span id="L1395"><span class="lineNum">    1395</span>              : </span>
-<span id="L1396"><span class="lineNum">    1396</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1397"><span class="lineNum">    1397</span>              :   String get transferTooltip =&gt; 'Transfer təfərrüatlarını təyin edin';</span>
-<span id="L1398"><span class="lineNum">    1398</span>              : </span>
-<span id="L1399"><span class="lineNum">    1399</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1400"><span class="lineNum">    1400</span>              :   String get transfersHeadline =&gt; 'Transferlər';</span>
-<span id="L1401"><span class="lineNum">    1401</span>              : </span>
-<span id="L1402"><span class="lineNum">    1402</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1403"><span class="lineNum">    1403</span>              :   String get typeButton =&gt; 'Düymə';</span>
-<span id="L1404"><span class="lineNum">    1404</span>              : </span>
-<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1406"><span class="lineNum">    1406</span>              :   String get updateAccountTooltip =&gt; 'Hesabı yeniləyin';</span>
-<span id="L1407"><span class="lineNum">    1407</span>              : </span>
-<span id="L1408"><span class="lineNum">    1408</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1409"><span class="lineNum">    1409</span>              :   String get updateBillTooltip =&gt; 'Billi yeniləyin';</span>
-<span id="L1410"><span class="lineNum">    1410</span>              : </span>
-<span id="L1411"><span class="lineNum">    1411</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1412"><span class="lineNum">    1412</span>              :   String get updateBudgetTooltip =&gt; 'Büdcə Kateqoriyasını yeniləyin';</span>
-<span id="L1413"><span class="lineNum">    1413</span>              : </span>
-<span id="L1414"><span class="lineNum">    1414</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1415"><span class="lineNum">    1415</span>              :   String get updateGoalTooltip =&gt; 'Məqsədi yeniləyin';</span>
-<span id="L1416"><span class="lineNum">    1416</span>              : </span>
-<span id="L1417"><span class="lineNum">    1417</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1418"><span class="lineNum">    1418</span>              :   String get updatePaymentTooltip =&gt; 'Ödənişi yeniləyin';</span>
-<span id="L1419"><span class="lineNum">    1419</span>              : </span>
-<span id="L1420"><span class="lineNum">    1420</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1421"><span class="lineNum">    1421</span>              :   String get username =&gt; 'İstifadəçi adı (Hesab)';</span>
-<span id="L1422"><span class="lineNum">    1422</span>              : </span>
-<span id="L1423"><span class="lineNum">    1423</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1424"><span class="lineNum">    1424</span>              :   String get uuid =&gt; 'Unikal Tranzaksiya İdentifikatoru';</span>
-<span id="L1425"><span class="lineNum">    1425</span>              : </span>
-<span id="L1426"><span class="lineNum">    1426</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1427"><span class="lineNum">    1427</span>              :   String get validTillDate =&gt; 'Qədər etibarlıdır';</span>
-<span id="L1428"><span class="lineNum">    1428</span>              : </span>
-<span id="L1429"><span class="lineNum">    1429</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1430"><span class="lineNum">    1430</span>              :   String get webDav =&gt; 'Veb Paylanmış Müəlliflik və Versiyalaşdırma (WebDav)';</span>
-<span id="L1431"><span class="lineNum">    1431</span>              : </span>
-<span id="L1432"><span class="lineNum">    1432</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1433"><span class="lineNum">    1433</span>              :   String get wiseDescription =&gt;</span>
-<span id="L1434"><span class="lineNum">    1434</span>              :       'Şəxsi API tokeni ilə Wise çoxvalyutalı hesablarının qalıqlarını və əməliyyatlarını idxal edin. Əlaqələndirilmiş balanslar arasında konvertasiyalar köçürmə kimi idxal olunur. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';</span>
+<span id="L1343"><span class="lineNum">    1343</span>              :   String get subscription =&gt;</span>
+<span id="L1344"><span class="lineNum">    1344</span>              :       'Açıq mənbəli layihə olaraq, abunəlik heç bir əlavə funksiyanın kilidini açmayacaq. Bununla belə, o, tətbiqin davamlı təkamülünə və təkmilləşdirilməsinə və onun mövcudluğunun qorunmasına investisiya kimi xidmət edəcəkdir.';</span>
+<span id="L1345"><span class="lineNum">    1345</span>              : </span>
+<span id="L1346"><span class="lineNum">    1346</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1347"><span class="lineNum">    1347</span>              :   String get subscriptionCoffee =&gt; 'Qəhvə al';</span>
+<span id="L1348"><span class="lineNum">    1348</span>              : </span>
+<span id="L1349"><span class="lineNum">    1349</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1350"><span class="lineNum">    1350</span>              :   String get subscriptionDinner =&gt; 'Axşam yeməyinə dəvət edin';</span>
+<span id="L1351"><span class="lineNum">    1351</span>              : </span>
+<span id="L1352"><span class="lineNum">    1352</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1353"><span class="lineNum">    1353</span>              :   String get subscriptionDonorbox =&gt; 'Donorbox vasitəsilə abunə olun';</span>
+<span id="L1354"><span class="lineNum">    1354</span>              : </span>
+<span id="L1355"><span class="lineNum">    1355</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1356"><span class="lineNum">    1356</span>              :   String get subscriptionGithub =&gt; 'GitHub vasitəsilə abunə olun';</span>
+<span id="L1357"><span class="lineNum">    1357</span>              : </span>
+<span id="L1358"><span class="lineNum">    1358</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1359"><span class="lineNum">    1359</span>              :   String get subscriptionHeadline =&gt; 'Sponsorluq';</span>
+<span id="L1360"><span class="lineNum">    1360</span>              : </span>
+<span id="L1361"><span class="lineNum">    1361</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1362"><span class="lineNum">    1362</span>              :   String get subscriptionInactive =&gt; 'Satınalma xidməti əlçatan deyil';</span>
+<span id="L1363"><span class="lineNum">    1363</span>              : </span>
+<span id="L1364"><span class="lineNum">    1364</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1365"><span class="lineNum">    1365</span>              :   String get subscriptionPatreon =&gt; 'Patreon vasitəsilə abunə olun';</span>
+<span id="L1366"><span class="lineNum">    1366</span>              : </span>
+<span id="L1367"><span class="lineNum">    1367</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1368"><span class="lineNum">    1368</span>              :   String get subscriptionPaypal =&gt; 'Qəhvə alın (PayPal)';</span>
+<span id="L1369"><span class="lineNum">    1369</span>              : </span>
+<span id="L1370"><span class="lineNum">    1370</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1371"><span class="lineNum">    1371</span>              :   String get subscriptionTiny =&gt; 'Şanslı bir sikkə verin';</span>
+<span id="L1372"><span class="lineNum">    1372</span>              : </span>
+<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1374"><span class="lineNum">    1374</span>              :   String get subscriptionTooltip =&gt; 'Dəstək (Sponsorluq)';</span>
+<span id="L1375"><span class="lineNum">    1375</span>              : </span>
+<span id="L1376"><span class="lineNum">    1376</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1377"><span class="lineNum">    1377</span>              :   String get success =&gt; 'Müvəffəq oldu';</span>
+<span id="L1378"><span class="lineNum">    1378</span>              : </span>
+<span id="L1379"><span class="lineNum">    1379</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1380"><span class="lineNum">    1380</span>              :   String get summary =&gt; 'Xülasə';</span>
+<span id="L1381"><span class="lineNum">    1381</span>              : </span>
+<span id="L1382"><span class="lineNum">    1382</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1383"><span class="lineNum">    1383</span>              :   String get symbol =&gt; 'Simvol';</span>
+<span id="L1384"><span class="lineNum">    1384</span>              : </span>
+<span id="L1385"><span class="lineNum">    1385</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1386"><span class="lineNum">    1386</span>              :   String get syncHeadline =&gt; 'Cihazları Sinxronlaşdırın';</span>
+<span id="L1387"><span class="lineNum">    1387</span>              : </span>
+<span id="L1388"><span class="lineNum">    1388</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1389"><span class="lineNum">    1389</span>              :   String get systemMode =&gt; 'Sistem';</span>
+<span id="L1390"><span class="lineNum">    1390</span>              : </span>
+<span id="L1391"><span class="lineNum">    1391</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1392"><span class="lineNum">    1392</span>              :   String get tapToOpen =&gt; 'Açmaq üçün toxunun';</span>
+<span id="L1393"><span class="lineNum">    1393</span>              : </span>
+<span id="L1394"><span class="lineNum">    1394</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1395"><span class="lineNum">    1395</span>              :   String get targetAmount =&gt; 'Hədəf məbləği';</span>
+<span id="L1396"><span class="lineNum">    1396</span>              : </span>
+<span id="L1397"><span class="lineNum">    1397</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1398"><span class="lineNum">    1398</span>              :   String get termPrivacy =&gt; 'Gizlilik Siyasəti';</span>
+<span id="L1399"><span class="lineNum">    1399</span>              : </span>
+<span id="L1400"><span class="lineNum">    1400</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1401"><span class="lineNum">    1401</span>              :   String get termUse =&gt; 'İstifadə qaydaları';</span>
+<span id="L1402"><span class="lineNum">    1402</span>              : </span>
+<span id="L1403"><span class="lineNum">    1403</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1404"><span class="lineNum">    1404</span>              :   String get title =&gt; 'Başlıq';</span>
+<span id="L1405"><span class="lineNum">    1405</span>              : </span>
+<span id="L1406"><span class="lineNum">    1406</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1407"><span class="lineNum">    1407</span>              :   String get titleAccountTooltip =&gt; 'Hesab İdentifikatorunu daxil edin';</span>
+<span id="L1408"><span class="lineNum">    1408</span>              : </span>
+<span id="L1409"><span class="lineNum">    1409</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1410"><span class="lineNum">    1410</span>              :   String get titleBudgetTooltip =&gt; 'Büdcə Kateqoriyasının adını daxil edin';</span>
+<span id="L1411"><span class="lineNum">    1411</span>              : </span>
+<span id="L1412"><span class="lineNum">    1412</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1413"><span class="lineNum">    1413</span>              :   String get titleGoal =&gt; 'Məqsəd';</span>
+<span id="L1414"><span class="lineNum">    1414</span>              : </span>
+<span id="L1415"><span class="lineNum">    1415</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1416"><span class="lineNum">    1416</span>              :   String get titleGoalTooltip =&gt; 'Məqsəd təsvirini müəyyənləşdirin';</span>
+<span id="L1417"><span class="lineNum">    1417</span>              : </span>
+<span id="L1418"><span class="lineNum">    1418</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1419"><span class="lineNum">    1419</span>              :   String get to =&gt; 'üçün';</span>
+<span id="L1420"><span class="lineNum">    1420</span>              : </span>
+<span id="L1421"><span class="lineNum">    1421</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1422"><span class="lineNum">    1422</span>              :   String get total =&gt; 'ümumi';</span>
+<span id="L1423"><span class="lineNum">    1423</span>              : </span>
+<span id="L1424"><span class="lineNum">    1424</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1425"><span class="lineNum">    1425</span>              :   String get transactionFile =&gt; 'Fingrom Transactions Log File (.log)';</span>
+<span id="L1426"><span class="lineNum">    1426</span>              : </span>
+<span id="L1427"><span class="lineNum">    1427</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1428"><span class="lineNum">    1428</span>              :   String get transferHeadline =&gt; 'Transfer';</span>
+<span id="L1429"><span class="lineNum">    1429</span>              : </span>
+<span id="L1430"><span class="lineNum">    1430</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1431"><span class="lineNum">    1431</span>              :   String get transferTooltip =&gt; 'Transfer təfərrüatlarını təyin edin';</span>
+<span id="L1432"><span class="lineNum">    1432</span>              : </span>
+<span id="L1433"><span class="lineNum">    1433</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1434"><span class="lineNum">    1434</span>              :   String get transfersHeadline =&gt; 'Transferlər';</span>
 <span id="L1435"><span class="lineNum">    1435</span>              : </span>
 <span id="L1436"><span class="lineNum">    1436</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1437"><span class="lineNum">    1437</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
+<span id="L1437"><span class="lineNum">    1437</span>              :   String get typeButton =&gt; 'Düymə';</span>
 <span id="L1438"><span class="lineNum">    1438</span>              : </span>
 <span id="L1439"><span class="lineNum">    1439</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1440"><span class="lineNum">    1440</span>              :   String get wiseNoProfiles =&gt; 'Token üçün mövcud Wise profili yoxdur';</span>
+<span id="L1440"><span class="lineNum">    1440</span>              :   String get updateAccountTooltip =&gt; 'Hesabı yeniləyin';</span>
 <span id="L1441"><span class="lineNum">    1441</span>              : </span>
 <span id="L1442"><span class="lineNum">    1442</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1443"><span class="lineNum">    1443</span>              :   String get wiseProfile =&gt; 'Profil';</span>
+<span id="L1443"><span class="lineNum">    1443</span>              :   String get updateBillTooltip =&gt; 'Billi yeniləyin';</span>
 <span id="L1444"><span class="lineNum">    1444</span>              : </span>
 <span id="L1445"><span class="lineNum">    1445</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1446"><span class="lineNum">    1446</span>              :   String get wiseScaRequired =&gt;</span>
-<span id="L1447"><span class="lineNum">    1447</span>              :       'Wise güclü müştəri autentifikasiyası tələb edir: bu balansın çıxarışını Wise tətbiqində açın, sonra yenidən cəhd edin';</span>
-<span id="L1448"><span class="lineNum">    1448</span>              : </span>
-<span id="L1449"><span class="lineNum">    1449</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1450"><span class="lineNum">    1450</span>              :   String get wiseToken =&gt; 'Şəxsi API tokeni';</span>
-<span id="L1451"><span class="lineNum">    1451</span>              : </span>
-<span id="L1452"><span class="lineNum">    1452</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1453"><span class="lineNum">    1453</span>              :   String get wiseTokenSteps =&gt;</span>
-<span id="L1454"><span class="lineNum">    1454</span>              :       'Şəxsi API tokenini necə əldə etmək olar:\n1. Brauzerdə wise.com saytına daxil olun (mobil tətbiqdə token yaratmaq olmur)\n2. Parametrlər → İnteqrasiyalar və alətlər → API tokenləri bölməsini açın\n3. \&quot;Yeni token əlavə et\&quot; seçin, ad verin (məs. Fingrom) və \&quot;Yalnız oxumaq\&quot; girişini seçin\n4. İkimərhələli doğrulama ilə təsdiqləyin və tokeni kopyalayın\n5. Onu aşağıya yapışdırın və \&quot;Qoşul\&quot; düyməsini basın';</span>
-<span id="L1455"><span class="lineNum">    1455</span>              : </span>
-<span id="L1456"><span class="lineNum">    1456</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1457"><span class="lineNum">    1457</span>              :   String get wiseTokenTooltip =&gt;</span>
-<span id="L1458"><span class="lineNum">    1458</span>              :       'Wise-da Parametrlər → API tokenləri bölməsində yaradılır (mümkündürsə, yalnız oxumaq üçün); şifrələnmiş saxlanılır';</span>
+<span id="L1446"><span class="lineNum">    1446</span>              :   String get updateBudgetTooltip =&gt; 'Büdcə Kateqoriyasını yeniləyin';</span>
+<span id="L1447"><span class="lineNum">    1447</span>              : </span>
+<span id="L1448"><span class="lineNum">    1448</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1449"><span class="lineNum">    1449</span>              :   String get updateGoalTooltip =&gt; 'Məqsədi yeniləyin';</span>
+<span id="L1450"><span class="lineNum">    1450</span>              : </span>
+<span id="L1451"><span class="lineNum">    1451</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1452"><span class="lineNum">    1452</span>              :   String get updatePaymentTooltip =&gt; 'Ödənişi yeniləyin';</span>
+<span id="L1453"><span class="lineNum">    1453</span>              : </span>
+<span id="L1454"><span class="lineNum">    1454</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1455"><span class="lineNum">    1455</span>              :   String get username =&gt; 'İstifadəçi adı (Hesab)';</span>
+<span id="L1456"><span class="lineNum">    1456</span>              : </span>
+<span id="L1457"><span class="lineNum">    1457</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1458"><span class="lineNum">    1458</span>              :   String get uuid =&gt; 'Unikal Tranzaksiya İdentifikatoru';</span>
 <span id="L1459"><span class="lineNum">    1459</span>              : </span>
 <span id="L1460"><span class="lineNum">    1460</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1461"><span class="lineNum">    1461</span>              :   String get zoomState =&gt; 'Böyüt / Uçaltın';</span>
-<span id="L1462"><span class="lineNum">    1462</span>              : }</span>
+<span id="L1461"><span class="lineNum">    1461</span>              :   String get validTillDate =&gt; 'Qədər etibarlıdır';</span>
+<span id="L1462"><span class="lineNum">    1462</span>              : </span>
+<span id="L1463"><span class="lineNum">    1463</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1464"><span class="lineNum">    1464</span>              :   String get webDav =&gt; 'Veb Paylanmış Müəlliflik və Versiyalaşdırma (WebDav)';</span>
+<span id="L1465"><span class="lineNum">    1465</span>              : </span>
+<span id="L1466"><span class="lineNum">    1466</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1467"><span class="lineNum">    1467</span>              :   String get wiseDescription =&gt;</span>
+<span id="L1468"><span class="lineNum">    1468</span>              :       'Şəxsi API tokeni ilə Wise çoxvalyutalı hesablarının qalıqlarını və əməliyyatlarını idxal edin. Əlaqələndirilmiş balanslar arasında konvertasiyalar köçürmə kimi idxal olunur. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';</span>
+<span id="L1469"><span class="lineNum">    1469</span>              : </span>
+<span id="L1470"><span class="lineNum">    1470</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1471"><span class="lineNum">    1471</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
+<span id="L1472"><span class="lineNum">    1472</span>              : </span>
+<span id="L1473"><span class="lineNum">    1473</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1474"><span class="lineNum">    1474</span>              :   String get wiseNoProfiles =&gt; 'Token üçün mövcud Wise profili yoxdur';</span>
+<span id="L1475"><span class="lineNum">    1475</span>              : </span>
+<span id="L1476"><span class="lineNum">    1476</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1477"><span class="lineNum">    1477</span>              :   String get wiseProfile =&gt; 'Profil';</span>
+<span id="L1478"><span class="lineNum">    1478</span>              : </span>
+<span id="L1479"><span class="lineNum">    1479</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1480"><span class="lineNum">    1480</span>              :   String get wiseScaRequired =&gt;</span>
+<span id="L1481"><span class="lineNum">    1481</span>              :       'Wise güclü müştəri autentifikasiyası tələb edir: bu balansın çıxarışını Wise tətbiqində açın, sonra yenidən cəhd edin';</span>
+<span id="L1482"><span class="lineNum">    1482</span>              : </span>
+<span id="L1483"><span class="lineNum">    1483</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1484"><span class="lineNum">    1484</span>              :   String get wiseToken =&gt; 'Şəxsi API tokeni';</span>
+<span id="L1485"><span class="lineNum">    1485</span>              : </span>
+<span id="L1486"><span class="lineNum">    1486</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1487"><span class="lineNum">    1487</span>              :   String get wiseTokenSteps =&gt;</span>
+<span id="L1488"><span class="lineNum">    1488</span>              :       'Şəxsi API tokenini necə əldə etmək olar:\n1. Brauzerdə wise.com saytına daxil olun (mobil tətbiqdə token yaratmaq olmur)\n2. Parametrlər → İnteqrasiyalar və alətlər → API tokenləri bölməsini açın\n3. \&quot;Yeni token əlavə et\&quot; seçin, ad verin (məs. Fingrom) və \&quot;Yalnız oxumaq\&quot; girişini seçin\n4. İkimərhələli doğrulama ilə təsdiqləyin və tokeni kopyalayın\n5. Onu aşağıya yapışdırın və \&quot;Qoşul\&quot; düyməsini basın';</span>
+<span id="L1489"><span class="lineNum">    1489</span>              : </span>
+<span id="L1490"><span class="lineNum">    1490</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1491"><span class="lineNum">    1491</span>              :   String get wiseTokenTooltip =&gt;</span>
+<span id="L1492"><span class="lineNum">    1492</span>              :       'Wise-da Parametrlər → API tokenləri bölməsində yaradılır (mümkündürsə, yalnız oxumaq üçün); şifrələnmiş saxlanılır';</span>
+<span id="L1493"><span class="lineNum">    1493</span>              : </span>
+<span id="L1494"><span class="lineNum">    1494</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1495"><span class="lineNum">    1495</span>              :   String get zoomState =&gt; 'Böyüt / Uçaltın';</span>
+<span id="L1496"><span class="lineNum">    1496</span>              : }</span>
         </pre>
               </td>
             </tr>

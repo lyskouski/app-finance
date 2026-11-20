@@ -79,6 +79,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
   - Enable Banking (EU): import sald i transakcji z europejskich banków (PSD2)
   - Wise API (Global): import sald i transakcji wielowalutowych kont Wise (osobisty token API)
   - PrivatBank Autoclient (Ukraina): import sald i transakcji kont firmowych Privat24 dla Biznesu (token Autoclient)
+  - monobank Personal API (Ukraina): import sald i transakcji kart i słoików monobank (token osobisty)
   - Parser powiadomień (Android): transakcje z powiadomień aplikacji bankowych i płatniczych
 - Eksport do pliku Excel `XLSX`
 - Szyfrowanie danych

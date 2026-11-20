@@ -79,6 +79,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
   - Enable Banking (EU): import zůstatků a transakcí evropských bank (PSD2)
   - Wise API (Global): import zůstatků a transakcí víceměnových účtů Wise (osobní token API)
   - PrivatBank Autoclient (Ukrajina): import zůstatků a transakcí podnikatelských účtů z Privat24 for Business (token Autoclient)
+  - monobank Personal API (Ukrajina): import zůstatků a transakcí karet a pokladniček monobank (osobní token)
   - Parser oznámení (Android): transakce z oznámení bankovních a platebních aplikací
 - Export do souboru `XLSX` aplikace Excel
 - Šifrování dat
