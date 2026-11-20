@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.5&nbsp;%</td>
-            <td class="headerCovTableEntry">198</td>
+            <td class="headerCovTableEntry">197</td>
             <td class="headerCovTableEntry">1</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-19 19:30:55</td>
+            <td class="headerValue">2026-11-20 17:51:20</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -354,90 +354,89 @@
 <span id="L292"><span class="lineNum">     292</span>              : </span>
 <span id="L293"><span class="lineNum">     293</span> <span class="tlaUNC">           0 :   List&lt;MapEntry&lt;String, String&gt;&gt; _sortedApps() =&gt; apps.entries.toList()</span></span>
 <span id="L294"><span class="lineNum">     294</span> <span class="tlaUNC">           0 :     ..sort((a, b) {</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaUNC">           0 :       final selected = (packages.contains(a.key) ? 0 : 1) - (packages.contains(b.key) ? 0 : 1);</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaUNC">           0 :       return selected != 0 ? selected : a.value.toLowerCase().compareTo(b.value.toLowerCase());</span></span>
-<span id="L297"><span class="lineNum">     297</span>              :     });</span>
-<span id="L298"><span class="lineNum">     298</span>              : </span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L300"><span class="lineNum">     300</span>              :   Widget build(BuildContext context) {</span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaUNC">           0 :     final textTheme = context.textTheme;</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaUNC">           0 :     final colorScheme = context.colorScheme;</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaUNC">           0 :     return Consumer&lt;AppData&gt;(builder: (context, state, _) {</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC">           0 :       return Column(</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC">           0 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaUNC">           0 :         children: [</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaUNC">           0 :           Text(AppLocale.labels.notificationDescription, style: textTheme.bodyMedium),</span></span>
-<span id="L308"><span class="lineNum">     308</span>              :           ThemeHelper.hIndent2x,</span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC">           0 :           TagsInput(</span></span>
-<span id="L310"><span class="lineNum">     310</span>              :             key: const ValueKey('notification_income'),</span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :             title: AppLocale.labels.notificationIncome,</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC">           0 :             tooltip: AppLocale.labels.notificationIncomeTooltip,</span></span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaUNC">           0 :             controller: income,</span></span>
-<span id="L314"><span class="lineNum">     314</span>              :             defaults: NotificationParser.incomeKeywords,</span>
-<span id="L315"><span class="lineNum">     315</span>              :             normalize: _normalize,</span>
-<span id="L316"><span class="lineNum">     316</span>              :           ),</span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaUNC">           0 :           TagsInput(</span></span>
-<span id="L318"><span class="lineNum">     318</span>              :             key: const ValueKey('notification_balance'),</span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :             title: AppLocale.labels.notificationBalance,</span></span>
-<span id="L320"><span class="lineNum">     320</span> <span class="tlaUNC">           0 :             tooltip: AppLocale.labels.notificationBalanceTooltip,</span></span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaUNC">           0 :             controller: balance,</span></span>
-<span id="L322"><span class="lineNum">     322</span>              :             defaults: NotificationParser.balanceKeywords,</span>
-<span id="L323"><span class="lineNum">     323</span>              :             normalize: _normalize,</span>
-<span id="L324"><span class="lineNum">     324</span>              :           ),</span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :           Text(AppLocale.labels.notificationAccounts, style: textTheme.titleMedium),</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC">           0 :           Text(AppLocale.labels.notificationAccountsTooltip, style: textTheme.bodyMedium),</span></span>
-<span id="L327"><span class="lineNum">     327</span>              :           ThemeHelper.hIndent,</span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaUNC">           0 :           for (final account in state.getList(AppDataType.accounts).whereType&lt;AccountAppData&gt;())</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaUNC">           0 :             TagsInput(</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC">           0 :               key: ValueKey('notification_account_${account.uuid}'),</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC">           0 :               title: account.title,</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaUNC">           0 :               controller: accountKeywords(account.uuid!),</span></span>
-<span id="L333"><span class="lineNum">     333</span>              :               normalize: _normalize,</span>
-<span id="L334"><span class="lineNum">     334</span>              :             ),</span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC">           0 :           if (error != null) ...[</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaUNC">           0 :             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),</span></span>
-<span id="L337"><span class="lineNum">     337</span>              :             ThemeHelper.hIndent,</span>
-<span id="L338"><span class="lineNum">     338</span>              :           ],</span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC">           0 :           if (isLoading &amp;&amp; apps.isEmpty)</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :           else if (!isGranted) ...[</span></span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :             Text(AppLocale.labels.notificationAccessSteps,</span></span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :                 key: const ValueKey('notification_steps'), style: textTheme.bodyMedium),</span></span>
-<span id="L344"><span class="lineNum">     344</span>              :             ThemeHelper.hIndent2x,</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC">           0 :             FullSizedButtonWidget(</span></span>
-<span id="L346"><span class="lineNum">     346</span>              :               key: const ValueKey('notification_grant'),</span>
-<span id="L347"><span class="lineNum">     347</span>              :               icon: Icons.notifications_active_outlined,</span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :               onPressed: grant,</span></span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :               title: AppLocale.labels.notificationGrant,</span></span>
-<span id="L350"><span class="lineNum">     350</span>              :             ),</span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaUNC">           0 :           ] else ...[</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :             Text(AppLocale.labels.notificationApps, style: textTheme.titleMedium),</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :             if (apps.isEmpty) Text(AppLocale.labels.notificationNoApps, style: textTheme.bodyMedium),</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :             for (final app in _sortedApps())</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :               SwitchListTile(</span></span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC">           0 :                 key: ValueKey('notification_app_${app.key}'),</span></span>
-<span id="L357"><span class="lineNum">     357</span>              :                 contentPadding: EdgeInsets.zero,</span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :                 title: Text(app.value),</span></span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaUNC">           0 :                 subtitle: Text(app.key, style: textTheme.bodySmall),</span></span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :                 value: packages.contains(app.key),</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaUNC">           0 :                 onChanged: isLoading ? null : (value) =&gt; toggle(app.key, value),</span></span>
-<span id="L362"><span class="lineNum">     362</span>              :               ),</span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC">           0 :             for (final package in packages) buildSource(context, source(package), state),</span></span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC">           0 :             Align(</span></span>
-<span id="L365"><span class="lineNum">     365</span>              :               alignment: Alignment.centerRight,</span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaUNC">           0 :               child: TextButton.icon(</span></span>
-<span id="L367"><span class="lineNum">     367</span>              :                 key: const ValueKey('notification_settings'),</span>
-<span id="L368"><span class="lineNum">     368</span>              :                 icon: const Icon(Icons.settings_outlined),</span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaUNC">           0 :                 onPressed: grant,</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaUNC">           0 :                 label: Text(AppLocale.labels.notificationAccessSettings),</span></span>
-<span id="L371"><span class="lineNum">     371</span>              :               ),</span>
-<span id="L372"><span class="lineNum">     372</span>              :             ),</span>
-<span id="L373"><span class="lineNum">     373</span>              :           ],</span>
-<span id="L374"><span class="lineNum">     374</span>              :         ],</span>
-<span id="L375"><span class="lineNum">     375</span>              :       );</span>
-<span id="L376"><span class="lineNum">     376</span>              :     });</span>
-<span id="L377"><span class="lineNum">     377</span>              :   }</span>
-<span id="L378"><span class="lineNum">     378</span>              : }</span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaUNC">           0 :       return a.value.toLowerCase().compareTo(b.value.toLowerCase());</span></span>
+<span id="L296"><span class="lineNum">     296</span>              :     });</span>
+<span id="L297"><span class="lineNum">     297</span>              : </span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L299"><span class="lineNum">     299</span>              :   Widget build(BuildContext context) {</span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaUNC">           0 :     final textTheme = context.textTheme;</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaUNC">           0 :     final colorScheme = context.colorScheme;</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaUNC">           0 :     return Consumer&lt;AppData&gt;(builder: (context, state, _) {</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaUNC">           0 :       return Column(</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC">           0 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC">           0 :         children: [</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaUNC">           0 :           Text(AppLocale.labels.notificationDescription, style: textTheme.bodyMedium),</span></span>
+<span id="L307"><span class="lineNum">     307</span>              :           ThemeHelper.hIndent2x,</span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :           TagsInput(</span></span>
+<span id="L309"><span class="lineNum">     309</span>              :             key: const ValueKey('notification_income'),</span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC">           0 :             title: AppLocale.labels.notificationIncome,</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :             tooltip: AppLocale.labels.notificationIncomeTooltip,</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC">           0 :             controller: income,</span></span>
+<span id="L313"><span class="lineNum">     313</span>              :             defaults: NotificationParser.incomeKeywords,</span>
+<span id="L314"><span class="lineNum">     314</span>              :             normalize: _normalize,</span>
+<span id="L315"><span class="lineNum">     315</span>              :           ),</span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaUNC">           0 :           TagsInput(</span></span>
+<span id="L317"><span class="lineNum">     317</span>              :             key: const ValueKey('notification_balance'),</span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaUNC">           0 :             title: AppLocale.labels.notificationBalance,</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :             tooltip: AppLocale.labels.notificationBalanceTooltip,</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaUNC">           0 :             controller: balance,</span></span>
+<span id="L321"><span class="lineNum">     321</span>              :             defaults: NotificationParser.balanceKeywords,</span>
+<span id="L322"><span class="lineNum">     322</span>              :             normalize: _normalize,</span>
+<span id="L323"><span class="lineNum">     323</span>              :           ),</span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC">           0 :           Text(AppLocale.labels.notificationAccounts, style: textTheme.titleMedium),</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :           Text(AppLocale.labels.notificationAccountsTooltip, style: textTheme.bodyMedium),</span></span>
+<span id="L326"><span class="lineNum">     326</span>              :           ThemeHelper.hIndent,</span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaUNC">           0 :           for (final account in state.getList(AppDataType.accounts).whereType&lt;AccountAppData&gt;())</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaUNC">           0 :             TagsInput(</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaUNC">           0 :               key: ValueKey('notification_account_${account.uuid}'),</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC">           0 :               title: account.title,</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC">           0 :               controller: accountKeywords(account.uuid!),</span></span>
+<span id="L332"><span class="lineNum">     332</span>              :               normalize: _normalize,</span>
+<span id="L333"><span class="lineNum">     333</span>              :             ),</span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :           if (error != null) ...[</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC">           0 :             Text(error!, style: textTheme.bodyLarge?.copyWith(color: colorScheme.error)),</span></span>
+<span id="L336"><span class="lineNum">     336</span>              :             ThemeHelper.hIndent,</span>
+<span id="L337"><span class="lineNum">     337</span>              :           ],</span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaUNC">           0 :           if (isLoading &amp;&amp; apps.isEmpty)</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC">           0 :             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :           else if (!isGranted) ...[</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :             Text(AppLocale.labels.notificationAccessSteps,</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :                 key: const ValueKey('notification_steps'), style: textTheme.bodyMedium),</span></span>
+<span id="L343"><span class="lineNum">     343</span>              :             ThemeHelper.hIndent2x,</span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :             FullSizedButtonWidget(</span></span>
+<span id="L345"><span class="lineNum">     345</span>              :               key: const ValueKey('notification_grant'),</span>
+<span id="L346"><span class="lineNum">     346</span>              :               icon: Icons.notifications_active_outlined,</span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :               onPressed: grant,</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :               title: AppLocale.labels.notificationGrant,</span></span>
+<span id="L349"><span class="lineNum">     349</span>              :             ),</span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaUNC">           0 :           ] else ...[</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaUNC">           0 :             Text(AppLocale.labels.notificationApps, style: textTheme.titleMedium),</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :             if (apps.isEmpty) Text(AppLocale.labels.notificationNoApps, style: textTheme.bodyMedium),</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :             for (final app in _sortedApps())</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :               SwitchListTile(</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :                 key: ValueKey('notification_app_${app.key}'),</span></span>
+<span id="L356"><span class="lineNum">     356</span>              :                 contentPadding: EdgeInsets.zero,</span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaUNC">           0 :                 title: Text(app.value),</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :                 subtitle: Text(app.key, style: textTheme.bodySmall),</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaUNC">           0 :                 value: packages.contains(app.key),</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :                 onChanged: isLoading ? null : (value) =&gt; toggle(app.key, value),</span></span>
+<span id="L361"><span class="lineNum">     361</span>              :               ),</span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC">           0 :             for (final package in packages) buildSource(context, source(package), state),</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC">           0 :             Align(</span></span>
+<span id="L364"><span class="lineNum">     364</span>              :               alignment: Alignment.centerRight,</span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC">           0 :               child: TextButton.icon(</span></span>
+<span id="L366"><span class="lineNum">     366</span>              :                 key: const ValueKey('notification_settings'),</span>
+<span id="L367"><span class="lineNum">     367</span>              :                 icon: const Icon(Icons.settings_outlined),</span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaUNC">           0 :                 onPressed: grant,</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaUNC">           0 :                 label: Text(AppLocale.labels.notificationAccessSettings),</span></span>
+<span id="L370"><span class="lineNum">     370</span>              :               ),</span>
+<span id="L371"><span class="lineNum">     371</span>              :             ),</span>
+<span id="L372"><span class="lineNum">     372</span>              :           ],</span>
+<span id="L373"><span class="lineNum">     373</span>              :         ],</span>
+<span id="L374"><span class="lineNum">     374</span>              :       );</span>
+<span id="L375"><span class="lineNum">     375</span>              :     });</span>
+<span id="L376"><span class="lineNum">     376</span>              :   }</span>
+<span id="L377"><span class="lineNum">     377</span>              : }</span>
         </pre>
               </td>
             </tr>

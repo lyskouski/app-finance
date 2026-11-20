@@ -4,6 +4,7 @@ _La liste complète des mises à jour peut être consultée via l'élément de n
 
 ### 8.1.0
 - Ajout de Wise API (Global) : soldes et importation des opérations des comptes multidevises Wise, conversions en virements
+- Ajout de PrivatBank Autoclient (Ukraine) : soldes et import des transactions des comptes professionnels par IBAN
 - Ajout de Analyseur de notifications (Android) : opérations à partir des notifications des applications bancaires et de paiement, reconnues automatiquement ou par un modèle personnalisé
 - Prédiction de la catégorie de budget pour les factures importées sans catégorie dans le fichier
 

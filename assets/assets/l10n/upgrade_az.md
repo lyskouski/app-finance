@@ -4,6 +4,7 @@ _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasi
 
 ### 8.1.0
 - Wise API (Global) əlavə edildi: Wise çoxvalyutalı hesablarının qalıqları və əməliyyatlarının idxalı, konvertasiyalar köçürmə kimi
+- PrivatBank Autoclient (Ukrayna) əlavə edildi: IBAN üzrə biznes hesablarının qalıqları və əməliyyatlarının idxalı
 - Bildirişlər Parser (Android) əlavə edildi: bank və ödəniş tətbiqlərinin bildirişlərindən avtomatik və ya fərdi şablonla tanınan əməliyyatlar
 - Faylda kateqoriyası olmayan idxal edilmiş hesablar üçün büdcə kateqoriyasının proqnozlaşdırılması
 

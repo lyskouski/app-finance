@@ -5,6 +5,7 @@ pulsante “Suggerimenti”._
 
 ### 8.1.0
 - Aggiunto Wise API (Global): saldi e importazione dei movimenti dei conti multivaluta Wise, conversioni come trasferimenti
+- Aggiunto PrivatBank Autoclient (Ucraina): saldi e importazione delle transazioni dei conti aziendali tramite IBAN
 - Aggiunto Parser delle notifiche (Android): movimenti dalle notifiche delle app bancarie e di pagamento, riconosciuti automaticamente o tramite un modello personalizzato
 - Previsione della categoria di budget per le fatture importate senza categoria nel file
 

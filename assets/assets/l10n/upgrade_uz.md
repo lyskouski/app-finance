@@ -4,6 +4,7 @@ _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” 
 
 ### 8.1.0
 - Wise API (Global) qo'shildi: Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish, konvertatsiyalar o'tkazma sifatida
+- PrivatBank Autoclient (Ukraina) qo'shildi: IBAN bo'yicha biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish
 - Bildirishnomalarni tahlil qilish (Android) qo'shildi: bank va to'lov ilovalari bildirishnomalaridan avtomatik yoki maxsus shablon bo'yicha aniqlangan tranzaksiyalar
 - Faylda toifasi bo'lmagan import qilingan hisoblar uchun byudjet toifasini bashorat qilish
 

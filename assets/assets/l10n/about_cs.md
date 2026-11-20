@@ -78,6 +78,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
   - SimpleFIN Bridge (US): import zůstatků a transakcí amerických bank a vydavatelů karet
   - Enable Banking (EU): import zůstatků a transakcí evropských bank (PSD2)
   - Wise API (Global): import zůstatků a transakcí víceměnových účtů Wise (osobní token API)
+  - PrivatBank Autoclient (Ukrajina): import zůstatků a transakcí podnikatelských účtů z Privat24 for Business (token Autoclient)
   - Parser oznámení (Android): transakce z oznámení bankovních a platebních aplikací
 - Export do souboru `XLSX` aplikace Excel
 - Šifrování dat

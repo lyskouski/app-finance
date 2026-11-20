@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">475</td>
+            <td class="headerCovTableEntry">487</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-19 19:30:55</td>
+            <td class="headerValue">2026-11-20 17:51:20</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -1168,313 +1168,350 @@
 <span id="L1106"><span class="lineNum">    1106</span>              :   }</span>
 <span id="L1107"><span class="lineNum">    1107</span>              : </span>
 <span id="L1108"><span class="lineNum">    1108</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1109"><span class="lineNum">    1109</span>              :   String get processIsFinished =&gt; '완료!';</span>
+<span id="L1109"><span class="lineNum">    1109</span>              :   String get privatBankAdd =&gt; '계좌 추가';</span>
 <span id="L1110"><span class="lineNum">    1110</span>              : </span>
 <span id="L1111"><span class="lineNum">    1111</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1112"><span class="lineNum">    1112</span>              :   String progress(Object value) {</span>
-<span id="L1113"><span class="lineNum">    1113</span> <span class="tlaUNC">           0 :     return '진행 중입니다: $value%';</span></span>
-<span id="L1114"><span class="lineNum">    1114</span>              :   }</span>
-<span id="L1115"><span class="lineNum">    1115</span>              : </span>
-<span id="L1116"><span class="lineNum">    1116</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1117"><span class="lineNum">    1117</span>              :   String get raiseData =&gt; '금액 추가';</span>
-<span id="L1118"><span class="lineNum">    1118</span>              : </span>
-<span id="L1119"><span class="lineNum">    1119</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1120"><span class="lineNum">    1120</span>              :   String get recoveryHeadline =&gt; '복구';</span>
-<span id="L1121"><span class="lineNum">    1121</span>              : </span>
-<span id="L1122"><span class="lineNum">    1122</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1123"><span class="lineNum">    1123</span>              :   String get recoveryTooltip =&gt; '복구 대상';</span>
-<span id="L1124"><span class="lineNum">    1124</span>              : </span>
-<span id="L1125"><span class="lineNum">    1125</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1126"><span class="lineNum">    1126</span>              :   String get releases =&gt; '릴리스';</span>
-<span id="L1127"><span class="lineNum">    1127</span>              : </span>
-<span id="L1128"><span class="lineNum">    1128</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1129"><span class="lineNum">    1129</span>              :   String get reset =&gt; '재설정';</span>
-<span id="L1130"><span class="lineNum">    1130</span>              : </span>
-<span id="L1131"><span class="lineNum">    1131</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1132"><span class="lineNum">    1132</span>              :   String get returnBack =&gt; '뒤로 돌아가기';</span>
-<span id="L1133"><span class="lineNum">    1133</span>              : </span>
-<span id="L1134"><span class="lineNum">    1134</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1135"><span class="lineNum">    1135</span>              :   String get roadmap =&gt; '로드맵';</span>
-<span id="L1136"><span class="lineNum">    1136</span>              : </span>
-<span id="L1137"><span class="lineNum">    1137</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1138"><span class="lineNum">    1138</span>              :   String get saveNotification =&gt; '변경 사항이 저장되었습니다!';</span>
-<span id="L1139"><span class="lineNum">    1139</span>              : </span>
-<span id="L1140"><span class="lineNum">    1140</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1141"><span class="lineNum">    1141</span>              :   String get saveSettingsTooltip =&gt; '저장';</span>
-<span id="L1142"><span class="lineNum">    1142</span>              : </span>
-<span id="L1143"><span class="lineNum">    1143</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1144"><span class="lineNum">    1144</span>              :   String get saveTooltip =&gt; '저장 대상';</span>
-<span id="L1145"><span class="lineNum">    1145</span>              : </span>
-<span id="L1146"><span class="lineNum">    1146</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1147"><span class="lineNum">    1147</span>              :   String search(Object value) {</span>
-<span id="L1148"><span class="lineNum">    1148</span> <span class="tlaUNC">           0 :     return '\'$value\' 패턴으로 표시';</span></span>
-<span id="L1149"><span class="lineNum">    1149</span>              :   }</span>
-<span id="L1150"><span class="lineNum">    1150</span>              : </span>
-<span id="L1151"><span class="lineNum">    1151</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1152"><span class="lineNum">    1152</span>              :   String get searchTooltip =&gt; '찾다';</span>
-<span id="L1153"><span class="lineNum">    1153</span>              : </span>
-<span id="L1154"><span class="lineNum">    1154</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1155"><span class="lineNum">    1155</span>              :   String get secureBioNotMatch =&gt; '인증에 실패했습니다! 다시 시도해주세요';</span>
-<span id="L1156"><span class="lineNum">    1156</span>              : </span>
-<span id="L1157"><span class="lineNum">    1157</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1158"><span class="lineNum">    1158</span>              :   String get secureBioPromptReason =&gt; '계속하려면 인증해주세요';</span>
-<span id="L1159"><span class="lineNum">    1159</span>              : </span>
-<span id="L1160"><span class="lineNum">    1160</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1161"><span class="lineNum">    1161</span>              :   String get secureBioPromptTitle =&gt; '생체 인증';</span>
-<span id="L1162"><span class="lineNum">    1162</span>              : </span>
-<span id="L1163"><span class="lineNum">    1163</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1164"><span class="lineNum">    1164</span>              :   String get secureOtpCode =&gt; '일회용 비밀번호 코드';</span>
-<span id="L1165"><span class="lineNum">    1165</span>              : </span>
-<span id="L1166"><span class="lineNum">    1166</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1167"><span class="lineNum">    1167</span>              :   String get secureOtpCodeInvalid =&gt; '유효하지 않은 코드입니다! 새로운 코드를 받아서 입력해주세요.';</span>
-<span id="L1168"><span class="lineNum">    1168</span>              : </span>
-<span id="L1169"><span class="lineNum">    1169</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1170"><span class="lineNum">    1170</span>              :   String get secureOtpDeactivated =&gt; '비밀번호 보호가 비활성화되었습니다';</span>
-<span id="L1171"><span class="lineNum">    1171</span>              : </span>
-<span id="L1172"><span class="lineNum">    1172</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1173"><span class="lineNum">    1173</span>              :   String get securePassword =&gt; '비밀번호 (복구 문구)';</span>
-<span id="L1174"><span class="lineNum">    1174</span>              : </span>
-<span id="L1175"><span class="lineNum">    1175</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1176"><span class="lineNum">    1176</span>              :   String get securePasswordEmpty =&gt; '비밀번호를 비워 둘 수 없습니다!';</span>
-<span id="L1177"><span class="lineNum">    1177</span>              : </span>
-<span id="L1178"><span class="lineNum">    1178</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1179"><span class="lineNum">    1179</span>              :   String get securePasswordNotMatch =&gt; '비밀번호가 일치하지 않습니다!';</span>
-<span id="L1180"><span class="lineNum">    1180</span>              : </span>
-<span id="L1181"><span class="lineNum">    1181</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1182"><span class="lineNum">    1182</span>              :   String get securePasswordRepeat =&gt; '비밀번호 재입력';</span>
-<span id="L1183"><span class="lineNum">    1183</span>              : </span>
-<span id="L1184"><span class="lineNum">    1184</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1185"><span class="lineNum">    1185</span>              :   String get securityHeadline =&gt; '보안';</span>
-<span id="L1186"><span class="lineNum">    1186</span>              : </span>
-<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1188"><span class="lineNum">    1188</span>              :   String get settingsBaseHeadline =&gt; '기본 사항';</span>
-<span id="L1189"><span class="lineNum">    1189</span>              : </span>
-<span id="L1190"><span class="lineNum">    1190</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1191"><span class="lineNum">    1191</span>              :   String get settingsHeadline =&gt; '설정';</span>
-<span id="L1192"><span class="lineNum">    1192</span>              : </span>
-<span id="L1193"><span class="lineNum">    1193</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1194"><span class="lineNum">    1194</span>              :   String get settingsSaved =&gt; '설정이 저장되었습니다!';</span>
-<span id="L1195"><span class="lineNum">    1195</span>              : </span>
-<span id="L1196"><span class="lineNum">    1196</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1197"><span class="lineNum">    1197</span>              :   String get simpleFinDescription =&gt;</span>
-<span id="L1198"><span class="lineNum">    1198</span>              :       'SimpleFIN Bridge를 통해 미국 은행 및 카드 발급사의 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';</span>
+<span id="L1112"><span class="lineNum">    1112</span>              :   String get privatBankDescription =&gt;</span>
+<span id="L1113"><span class="lineNum">    1113</span>              :       'Autoclient 토큰으로 Privat24 for Business의 사업자 계좌(개인사업자 및 법인)의 잔액과 거래 내역을 가져옵니다. 개인 계좌는 API에서 지원되지 않습니다. 읽기 전용 접근으로 결제는 이루어지지 않습니다.';</span>
+<span id="L1114"><span class="lineNum">    1114</span>              : </span>
+<span id="L1115"><span class="lineNum">    1115</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1116"><span class="lineNum">    1116</span>              :   String get privatBankHeadline =&gt; 'PrivatBank Autoclient (우크라이나)';</span>
+<span id="L1117"><span class="lineNum">    1117</span>              : </span>
+<span id="L1118"><span class="lineNum">    1118</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1119"><span class="lineNum">    1119</span>              :   String get privatBankIban =&gt; '계좌 IBAN';</span>
+<span id="L1120"><span class="lineNum">    1120</span>              : </span>
+<span id="L1121"><span class="lineNum">    1121</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1122"><span class="lineNum">    1122</span>              :   String get privatBankIbanInvalid =&gt; '우크라이나 IBAN을 입력하세요: UA 다음에 27자리 숫자';</span>
+<span id="L1123"><span class="lineNum">    1123</span>              : </span>
+<span id="L1124"><span class="lineNum">    1124</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1125"><span class="lineNum">    1125</span>              :   String get privatBankIbanTooltip =&gt; 'API는 계좌 목록을 제공하지 않습니다: 계좌의 IBAN을 하나씩 추가하세요';</span>
+<span id="L1126"><span class="lineNum">    1126</span>              : </span>
+<span id="L1127"><span class="lineNum">    1127</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1128"><span class="lineNum">    1128</span>              :   String privatBankNotReady(Object value) {</span>
+<span id="L1129"><span class="lineNum">    1129</span> <span class="tlaUNC">           0 :     return 'PrivatBank에서 거래 내역서를 준비 중입니다(단계 $value): 몇 분 후에 다시 시도하세요';</span></span>
+<span id="L1130"><span class="lineNum">    1130</span>              :   }</span>
+<span id="L1131"><span class="lineNum">    1131</span>              : </span>
+<span id="L1132"><span class="lineNum">    1132</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1133"><span class="lineNum">    1133</span>              :   String get privatBankRemove =&gt; '계좌 삭제';</span>
+<span id="L1134"><span class="lineNum">    1134</span>              : </span>
+<span id="L1135"><span class="lineNum">    1135</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1136"><span class="lineNum">    1136</span>              :   String get privatBankToken =&gt; 'Autoclient 토큰';</span>
+<span id="L1137"><span class="lineNum">    1137</span>              : </span>
+<span id="L1138"><span class="lineNum">    1138</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1139"><span class="lineNum">    1139</span>              :   String get privatBankTokenSteps =&gt;</span>
+<span id="L1140"><span class="lineNum">    1140</span>              :       'Autoclient 토큰을 받는 방법:\n1. Privat24 for Business에 로그인합니다\n2. 연동(Autoclient)을 엽니다\n3. 활성화하고 토큰을 복사합니다\n4. 아래에 붙여넣고 \&quot;연결\&quot;을 누릅니다\n5. 가져올 계좌의 IBAN을 추가합니다';</span>
+<span id="L1141"><span class="lineNum">    1141</span>              : </span>
+<span id="L1142"><span class="lineNum">    1142</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1143"><span class="lineNum">    1143</span>              :   String get privatBankTokenTooltip =&gt; 'Privat24 for Business의 연동(Autoclient)에서 발급되며, 암호화되어 저장됩니다';</span>
+<span id="L1144"><span class="lineNum">    1144</span>              : </span>
+<span id="L1145"><span class="lineNum">    1145</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1146"><span class="lineNum">    1146</span>              :   String get processIsFinished =&gt; '완료!';</span>
+<span id="L1147"><span class="lineNum">    1147</span>              : </span>
+<span id="L1148"><span class="lineNum">    1148</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1149"><span class="lineNum">    1149</span>              :   String progress(Object value) {</span>
+<span id="L1150"><span class="lineNum">    1150</span> <span class="tlaUNC">           0 :     return '진행 중입니다: $value%';</span></span>
+<span id="L1151"><span class="lineNum">    1151</span>              :   }</span>
+<span id="L1152"><span class="lineNum">    1152</span>              : </span>
+<span id="L1153"><span class="lineNum">    1153</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1154"><span class="lineNum">    1154</span>              :   String get raiseData =&gt; '금액 추가';</span>
+<span id="L1155"><span class="lineNum">    1155</span>              : </span>
+<span id="L1156"><span class="lineNum">    1156</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1157"><span class="lineNum">    1157</span>              :   String get recoveryHeadline =&gt; '복구';</span>
+<span id="L1158"><span class="lineNum">    1158</span>              : </span>
+<span id="L1159"><span class="lineNum">    1159</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1160"><span class="lineNum">    1160</span>              :   String get recoveryTooltip =&gt; '복구 대상';</span>
+<span id="L1161"><span class="lineNum">    1161</span>              : </span>
+<span id="L1162"><span class="lineNum">    1162</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1163"><span class="lineNum">    1163</span>              :   String get releases =&gt; '릴리스';</span>
+<span id="L1164"><span class="lineNum">    1164</span>              : </span>
+<span id="L1165"><span class="lineNum">    1165</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1166"><span class="lineNum">    1166</span>              :   String get reset =&gt; '재설정';</span>
+<span id="L1167"><span class="lineNum">    1167</span>              : </span>
+<span id="L1168"><span class="lineNum">    1168</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1169"><span class="lineNum">    1169</span>              :   String get returnBack =&gt; '뒤로 돌아가기';</span>
+<span id="L1170"><span class="lineNum">    1170</span>              : </span>
+<span id="L1171"><span class="lineNum">    1171</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1172"><span class="lineNum">    1172</span>              :   String get roadmap =&gt; '로드맵';</span>
+<span id="L1173"><span class="lineNum">    1173</span>              : </span>
+<span id="L1174"><span class="lineNum">    1174</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1175"><span class="lineNum">    1175</span>              :   String get saveNotification =&gt; '변경 사항이 저장되었습니다!';</span>
+<span id="L1176"><span class="lineNum">    1176</span>              : </span>
+<span id="L1177"><span class="lineNum">    1177</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1178"><span class="lineNum">    1178</span>              :   String get saveSettingsTooltip =&gt; '저장';</span>
+<span id="L1179"><span class="lineNum">    1179</span>              : </span>
+<span id="L1180"><span class="lineNum">    1180</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1181"><span class="lineNum">    1181</span>              :   String get saveTooltip =&gt; '저장 대상';</span>
+<span id="L1182"><span class="lineNum">    1182</span>              : </span>
+<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1184"><span class="lineNum">    1184</span>              :   String search(Object value) {</span>
+<span id="L1185"><span class="lineNum">    1185</span> <span class="tlaUNC">           0 :     return '\'$value\' 패턴으로 표시';</span></span>
+<span id="L1186"><span class="lineNum">    1186</span>              :   }</span>
+<span id="L1187"><span class="lineNum">    1187</span>              : </span>
+<span id="L1188"><span class="lineNum">    1188</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1189"><span class="lineNum">    1189</span>              :   String get searchTooltip =&gt; '찾다';</span>
+<span id="L1190"><span class="lineNum">    1190</span>              : </span>
+<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1192"><span class="lineNum">    1192</span>              :   String get secureBioNotMatch =&gt; '인증에 실패했습니다! 다시 시도해주세요';</span>
+<span id="L1193"><span class="lineNum">    1193</span>              : </span>
+<span id="L1194"><span class="lineNum">    1194</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1195"><span class="lineNum">    1195</span>              :   String get secureBioPromptReason =&gt; '계속하려면 인증해주세요';</span>
+<span id="L1196"><span class="lineNum">    1196</span>              : </span>
+<span id="L1197"><span class="lineNum">    1197</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1198"><span class="lineNum">    1198</span>              :   String get secureBioPromptTitle =&gt; '생체 인증';</span>
 <span id="L1199"><span class="lineNum">    1199</span>              : </span>
 <span id="L1200"><span class="lineNum">    1200</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1201"><span class="lineNum">    1201</span>              :   String get simpleFinHeadline =&gt; 'SimpleFIN Bridge (US)';</span>
+<span id="L1201"><span class="lineNum">    1201</span>              :   String get secureOtpCode =&gt; '일회용 비밀번호 코드';</span>
 <span id="L1202"><span class="lineNum">    1202</span>              : </span>
 <span id="L1203"><span class="lineNum">    1203</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1204"><span class="lineNum">    1204</span>              :   String get simpleFinNoCredentials =&gt; 'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';</span>
+<span id="L1204"><span class="lineNum">    1204</span>              :   String get secureOtpCodeInvalid =&gt; '유효하지 않은 코드입니다! 새로운 코드를 받아서 입력해주세요.';</span>
 <span id="L1205"><span class="lineNum">    1205</span>              : </span>
 <span id="L1206"><span class="lineNum">    1206</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1207"><span class="lineNum">    1207</span>              :   String get simpleFinToken =&gt; 'SimpleFIN 설정 토큰';</span>
+<span id="L1207"><span class="lineNum">    1207</span>              :   String get secureOtpDeactivated =&gt; '비밀번호 보호가 비활성화되었습니다';</span>
 <span id="L1208"><span class="lineNum">    1208</span>              : </span>
 <span id="L1209"><span class="lineNum">    1209</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1210"><span class="lineNum">    1210</span>              :   String get simpleFinTokenClaimed =&gt; '설정 토큰이 존재하지 않거나 이미 사용되었습니다';</span>
+<span id="L1210"><span class="lineNum">    1210</span>              :   String get securePassword =&gt; '비밀번호 (복구 문구)';</span>
 <span id="L1211"><span class="lineNum">    1211</span>              : </span>
 <span id="L1212"><span class="lineNum">    1212</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1213"><span class="lineNum">    1213</span>              :   String get simpleFinTokenInvalid =&gt; '잘못된 SimpleFIN 설정 토큰';</span>
+<span id="L1213"><span class="lineNum">    1213</span>              :   String get securePasswordEmpty =&gt; '비밀번호를 비워 둘 수 없습니다!';</span>
 <span id="L1214"><span class="lineNum">    1214</span>              : </span>
 <span id="L1215"><span class="lineNum">    1215</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1216"><span class="lineNum">    1216</span>              :   String get simpleFinTokenTooltip =&gt; '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';</span>
+<span id="L1216"><span class="lineNum">    1216</span>              :   String get securePasswordNotMatch =&gt; '비밀번호가 일치하지 않습니다!';</span>
 <span id="L1217"><span class="lineNum">    1217</span>              : </span>
 <span id="L1218"><span class="lineNum">    1218</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1219"><span class="lineNum">    1219</span>              :   String get skipFromTotals =&gt; '합계에서 제외';</span>
+<span id="L1219"><span class="lineNum">    1219</span>              :   String get securePasswordRepeat =&gt; '비밀번호 재입력';</span>
 <span id="L1220"><span class="lineNum">    1220</span>              : </span>
 <span id="L1221"><span class="lineNum">    1221</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1222"><span class="lineNum">    1222</span>              :   String get skipTooltip =&gt; '단계 건너뛰기';</span>
+<span id="L1222"><span class="lineNum">    1222</span>              :   String get securityHeadline =&gt; '보안';</span>
 <span id="L1223"><span class="lineNum">    1223</span>              : </span>
 <span id="L1224"><span class="lineNum">    1224</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1225"><span class="lineNum">    1225</span>              :   String get sortTooltip =&gt; '항목 정렬';</span>
+<span id="L1225"><span class="lineNum">    1225</span>              :   String get settingsBaseHeadline =&gt; '기본 사항';</span>
 <span id="L1226"><span class="lineNum">    1226</span>              : </span>
 <span id="L1227"><span class="lineNum">    1227</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1228"><span class="lineNum">    1228</span>              :   String get sortingAmountAsc =&gt; '금액 (오름차순)';</span>
+<span id="L1228"><span class="lineNum">    1228</span>              :   String get settingsHeadline =&gt; '설정';</span>
 <span id="L1229"><span class="lineNum">    1229</span>              : </span>
 <span id="L1230"><span class="lineNum">    1230</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1231"><span class="lineNum">    1231</span>              :   String get sortingAmountDesc =&gt; '금액 (내림차순)';</span>
+<span id="L1231"><span class="lineNum">    1231</span>              :   String get settingsSaved =&gt; '설정이 저장되었습니다!';</span>
 <span id="L1232"><span class="lineNum">    1232</span>              : </span>
 <span id="L1233"><span class="lineNum">    1233</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1234"><span class="lineNum">    1234</span>              :   String get sortingCreatedAtAsc =&gt; '생성일 (오름차순)';</span>
-<span id="L1235"><span class="lineNum">    1235</span>              : </span>
-<span id="L1236"><span class="lineNum">    1236</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1237"><span class="lineNum">    1237</span>              :   String get sortingCreatedAtDesc =&gt; '생성일 (내림차순)';</span>
-<span id="L1238"><span class="lineNum">    1238</span>              : </span>
-<span id="L1239"><span class="lineNum">    1239</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1240"><span class="lineNum">    1240</span>              :   String get sortingTitleAsc =&gt; '제목 (오름차순)';</span>
-<span id="L1241"><span class="lineNum">    1241</span>              : </span>
-<span id="L1242"><span class="lineNum">    1242</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1243"><span class="lineNum">    1243</span>              :   String get sortingTitleDesc =&gt; '제목 (내림차순)';</span>
-<span id="L1244"><span class="lineNum">    1244</span>              : </span>
-<span id="L1245"><span class="lineNum">    1245</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1246"><span class="lineNum">    1246</span>              :   String get sortingUpdatedAtAsc =&gt; '업데이트 날짜 (오름차순)';</span>
-<span id="L1247"><span class="lineNum">    1247</span>              : </span>
-<span id="L1248"><span class="lineNum">    1248</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1249"><span class="lineNum">    1249</span>              :   String get sortingUpdatedAtDesc =&gt; '업데이트 날짜 (내림차순)';</span>
-<span id="L1250"><span class="lineNum">    1250</span>              : </span>
-<span id="L1251"><span class="lineNum">    1251</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1252"><span class="lineNum">    1252</span>              :   String get spent =&gt; '지출';</span>
-<span id="L1253"><span class="lineNum">    1253</span>              : </span>
-<span id="L1254"><span class="lineNum">    1254</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1255"><span class="lineNum">    1255</span>              :   String get splitCancelTooltip =&gt; '월별 분할 취소';</span>
-<span id="L1256"><span class="lineNum">    1256</span>              : </span>
-<span id="L1257"><span class="lineNum">    1257</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1258"><span class="lineNum">    1258</span>              :   String get splitHeadline =&gt; '청구서 분할';</span>
-<span id="L1259"><span class="lineNum">    1259</span>              : </span>
-<span id="L1260"><span class="lineNum">    1260</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1261"><span class="lineNum">    1261</span>              :   String get splitTooltip =&gt; '월별 한도 선언';</span>
-<span id="L1262"><span class="lineNum">    1262</span>              : </span>
-<span id="L1263"><span class="lineNum">    1263</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1264"><span class="lineNum">    1264</span>              :   String get subscription =&gt;</span>
-<span id="L1265"><span class="lineNum">    1265</span>              :       '오픈소스 프로젝트이므로 구독한다고 해서 추가 기능이 제공되지는 않습니다. 하지만 애플리케이션의 지속적인 발전과 개선, 가용성 유지를 위한 투자로 활용될 수 있습니다.';</span>
+<span id="L1234"><span class="lineNum">    1234</span>              :   String get simpleFinDescription =&gt;</span>
+<span id="L1235"><span class="lineNum">    1235</span>              :       'SimpleFIN Bridge를 통해 미국 은행 및 카드 발급사의 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';</span>
+<span id="L1236"><span class="lineNum">    1236</span>              : </span>
+<span id="L1237"><span class="lineNum">    1237</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1238"><span class="lineNum">    1238</span>              :   String get simpleFinHeadline =&gt; 'SimpleFIN Bridge (US)';</span>
+<span id="L1239"><span class="lineNum">    1239</span>              : </span>
+<span id="L1240"><span class="lineNum">    1240</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1241"><span class="lineNum">    1241</span>              :   String get simpleFinNoCredentials =&gt; 'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';</span>
+<span id="L1242"><span class="lineNum">    1242</span>              : </span>
+<span id="L1243"><span class="lineNum">    1243</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1244"><span class="lineNum">    1244</span>              :   String get simpleFinToken =&gt; 'SimpleFIN 설정 토큰';</span>
+<span id="L1245"><span class="lineNum">    1245</span>              : </span>
+<span id="L1246"><span class="lineNum">    1246</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1247"><span class="lineNum">    1247</span>              :   String get simpleFinTokenClaimed =&gt; '설정 토큰이 존재하지 않거나 이미 사용되었습니다';</span>
+<span id="L1248"><span class="lineNum">    1248</span>              : </span>
+<span id="L1249"><span class="lineNum">    1249</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1250"><span class="lineNum">    1250</span>              :   String get simpleFinTokenInvalid =&gt; '잘못된 SimpleFIN 설정 토큰';</span>
+<span id="L1251"><span class="lineNum">    1251</span>              : </span>
+<span id="L1252"><span class="lineNum">    1252</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1253"><span class="lineNum">    1253</span>              :   String get simpleFinTokenTooltip =&gt; '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';</span>
+<span id="L1254"><span class="lineNum">    1254</span>              : </span>
+<span id="L1255"><span class="lineNum">    1255</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1256"><span class="lineNum">    1256</span>              :   String get skipFromTotals =&gt; '합계에서 제외';</span>
+<span id="L1257"><span class="lineNum">    1257</span>              : </span>
+<span id="L1258"><span class="lineNum">    1258</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1259"><span class="lineNum">    1259</span>              :   String get skipTooltip =&gt; '단계 건너뛰기';</span>
+<span id="L1260"><span class="lineNum">    1260</span>              : </span>
+<span id="L1261"><span class="lineNum">    1261</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1262"><span class="lineNum">    1262</span>              :   String get sortTooltip =&gt; '항목 정렬';</span>
+<span id="L1263"><span class="lineNum">    1263</span>              : </span>
+<span id="L1264"><span class="lineNum">    1264</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1265"><span class="lineNum">    1265</span>              :   String get sortingAmountAsc =&gt; '금액 (오름차순)';</span>
 <span id="L1266"><span class="lineNum">    1266</span>              : </span>
 <span id="L1267"><span class="lineNum">    1267</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1268"><span class="lineNum">    1268</span>              :   String get subscriptionCoffee =&gt; '커피 구매';</span>
+<span id="L1268"><span class="lineNum">    1268</span>              :   String get sortingAmountDesc =&gt; '금액 (내림차순)';</span>
 <span id="L1269"><span class="lineNum">    1269</span>              : </span>
 <span id="L1270"><span class="lineNum">    1270</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1271"><span class="lineNum">    1271</span>              :   String get subscriptionDinner =&gt; '저녁 식사';</span>
+<span id="L1271"><span class="lineNum">    1271</span>              :   String get sortingCreatedAtAsc =&gt; '생성일 (오름차순)';</span>
 <span id="L1272"><span class="lineNum">    1272</span>              : </span>
 <span id="L1273"><span class="lineNum">    1273</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1274"><span class="lineNum">    1274</span>              :   String get subscriptionDonorbox =&gt; '도너박스를 통해 구독하기';</span>
+<span id="L1274"><span class="lineNum">    1274</span>              :   String get sortingCreatedAtDesc =&gt; '생성일 (내림차순)';</span>
 <span id="L1275"><span class="lineNum">    1275</span>              : </span>
 <span id="L1276"><span class="lineNum">    1276</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1277"><span class="lineNum">    1277</span>              :   String get subscriptionGithub =&gt; '깃허브를 통해 구독하기';</span>
+<span id="L1277"><span class="lineNum">    1277</span>              :   String get sortingTitleAsc =&gt; '제목 (오름차순)';</span>
 <span id="L1278"><span class="lineNum">    1278</span>              : </span>
 <span id="L1279"><span class="lineNum">    1279</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1280"><span class="lineNum">    1280</span>              :   String get subscriptionHeadline =&gt; '후원하기';</span>
+<span id="L1280"><span class="lineNum">    1280</span>              :   String get sortingTitleDesc =&gt; '제목 (내림차순)';</span>
 <span id="L1281"><span class="lineNum">    1281</span>              : </span>
 <span id="L1282"><span class="lineNum">    1282</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1283"><span class="lineNum">    1283</span>              :   String get subscriptionInactive =&gt; '구매 서비스 이용 불가';</span>
+<span id="L1283"><span class="lineNum">    1283</span>              :   String get sortingUpdatedAtAsc =&gt; '업데이트 날짜 (오름차순)';</span>
 <span id="L1284"><span class="lineNum">    1284</span>              : </span>
 <span id="L1285"><span class="lineNum">    1285</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1286"><span class="lineNum">    1286</span>              :   String get subscriptionPatreon =&gt; 'Patreon을 통해 구독';</span>
+<span id="L1286"><span class="lineNum">    1286</span>              :   String get sortingUpdatedAtDesc =&gt; '업데이트 날짜 (내림차순)';</span>
 <span id="L1287"><span class="lineNum">    1287</span>              : </span>
 <span id="L1288"><span class="lineNum">    1288</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1289"><span class="lineNum">    1289</span>              :   String get subscriptionPaypal =&gt; '커피 구매(PayPal)';</span>
+<span id="L1289"><span class="lineNum">    1289</span>              :   String get spent =&gt; '지출';</span>
 <span id="L1290"><span class="lineNum">    1290</span>              : </span>
 <span id="L1291"><span class="lineNum">    1291</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1292"><span class="lineNum">    1292</span>              :   String get subscriptionTiny =&gt; '행운의 코인 선물하기';</span>
+<span id="L1292"><span class="lineNum">    1292</span>              :   String get splitCancelTooltip =&gt; '월별 분할 취소';</span>
 <span id="L1293"><span class="lineNum">    1293</span>              : </span>
 <span id="L1294"><span class="lineNum">    1294</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1295"><span class="lineNum">    1295</span>              :   String get subscriptionTooltip =&gt; '지원(스폰서십)';</span>
+<span id="L1295"><span class="lineNum">    1295</span>              :   String get splitHeadline =&gt; '청구서 분할';</span>
 <span id="L1296"><span class="lineNum">    1296</span>              : </span>
 <span id="L1297"><span class="lineNum">    1297</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1298"><span class="lineNum">    1298</span>              :   String get success =&gt; '성공';</span>
+<span id="L1298"><span class="lineNum">    1298</span>              :   String get splitTooltip =&gt; '월별 한도 선언';</span>
 <span id="L1299"><span class="lineNum">    1299</span>              : </span>
 <span id="L1300"><span class="lineNum">    1300</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1301"><span class="lineNum">    1301</span>              :   String get summary =&gt; '요약';</span>
-<span id="L1302"><span class="lineNum">    1302</span>              : </span>
-<span id="L1303"><span class="lineNum">    1303</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1304"><span class="lineNum">    1304</span>              :   String get symbol =&gt; '기호';</span>
-<span id="L1305"><span class="lineNum">    1305</span>              : </span>
-<span id="L1306"><span class="lineNum">    1306</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1307"><span class="lineNum">    1307</span>              :   String get syncHeadline =&gt; '장치 동기화';</span>
-<span id="L1308"><span class="lineNum">    1308</span>              : </span>
-<span id="L1309"><span class="lineNum">    1309</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1310"><span class="lineNum">    1310</span>              :   String get systemMode =&gt; '시스템';</span>
-<span id="L1311"><span class="lineNum">    1311</span>              : </span>
-<span id="L1312"><span class="lineNum">    1312</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1313"><span class="lineNum">    1313</span>              :   String get tapToOpen =&gt; '탭하여 열기';</span>
-<span id="L1314"><span class="lineNum">    1314</span>              : </span>
-<span id="L1315"><span class="lineNum">    1315</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1316"><span class="lineNum">    1316</span>              :   String get targetAmount =&gt; '목표 금액';</span>
-<span id="L1317"><span class="lineNum">    1317</span>              : </span>
-<span id="L1318"><span class="lineNum">    1318</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1319"><span class="lineNum">    1319</span>              :   String get termPrivacy =&gt; '개인정보 보호정책';</span>
-<span id="L1320"><span class="lineNum">    1320</span>              : </span>
-<span id="L1321"><span class="lineNum">    1321</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1322"><span class="lineNum">    1322</span>              :   String get termUse =&gt; '이용 약관';</span>
-<span id="L1323"><span class="lineNum">    1323</span>              : </span>
-<span id="L1324"><span class="lineNum">    1324</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1325"><span class="lineNum">    1325</span>              :   String get title =&gt; '제목';</span>
-<span id="L1326"><span class="lineNum">    1326</span>              : </span>
-<span id="L1327"><span class="lineNum">    1327</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1328"><span class="lineNum">    1328</span>              :   String get titleAccountTooltip =&gt; '계정 식별자 입력';</span>
-<span id="L1329"><span class="lineNum">    1329</span>              : </span>
-<span id="L1330"><span class="lineNum">    1330</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1331"><span class="lineNum">    1331</span>              :   String get titleBudgetTooltip =&gt; '예산 카테고리 이름 입력';</span>
-<span id="L1332"><span class="lineNum">    1332</span>              : </span>
-<span id="L1333"><span class="lineNum">    1333</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1334"><span class="lineNum">    1334</span>              :   String get titleGoal =&gt; '목표';</span>
-<span id="L1335"><span class="lineNum">    1335</span>              : </span>
-<span id="L1336"><span class="lineNum">    1336</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1337"><span class="lineNum">    1337</span>              :   String get titleGoalTooltip =&gt; '목표 설명 정의';</span>
-<span id="L1338"><span class="lineNum">    1338</span>              : </span>
-<span id="L1339"><span class="lineNum">    1339</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1340"><span class="lineNum">    1340</span>              :   String get to =&gt; '에';</span>
-<span id="L1341"><span class="lineNum">    1341</span>              : </span>
-<span id="L1342"><span class="lineNum">    1342</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1343"><span class="lineNum">    1343</span>              :   String get total =&gt; '합계';</span>
-<span id="L1344"><span class="lineNum">    1344</span>              : </span>
-<span id="L1345"><span class="lineNum">    1345</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1346"><span class="lineNum">    1346</span>              :   String get transactionFile =&gt; '핑프롬 트랜잭션 로그 파일(.log)';</span>
-<span id="L1347"><span class="lineNum">    1347</span>              : </span>
-<span id="L1348"><span class="lineNum">    1348</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1349"><span class="lineNum">    1349</span>              :   String get transferHeadline =&gt; '전송';</span>
-<span id="L1350"><span class="lineNum">    1350</span>              : </span>
-<span id="L1351"><span class="lineNum">    1351</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1352"><span class="lineNum">    1352</span>              :   String get transferTooltip =&gt; '전송 세부 정보 설정';</span>
-<span id="L1353"><span class="lineNum">    1353</span>              : </span>
-<span id="L1354"><span class="lineNum">    1354</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1355"><span class="lineNum">    1355</span>              :   String get transfersHeadline =&gt; '전송';</span>
-<span id="L1356"><span class="lineNum">    1356</span>              : </span>
-<span id="L1357"><span class="lineNum">    1357</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1358"><span class="lineNum">    1358</span>              :   String get typeButton =&gt; '버튼';</span>
-<span id="L1359"><span class="lineNum">    1359</span>              : </span>
-<span id="L1360"><span class="lineNum">    1360</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1361"><span class="lineNum">    1361</span>              :   String get updateAccountTooltip =&gt; '계정 업데이트';</span>
-<span id="L1362"><span class="lineNum">    1362</span>              : </span>
-<span id="L1363"><span class="lineNum">    1363</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1364"><span class="lineNum">    1364</span>              :   String get updateBillTooltip =&gt; '청구서 업데이트';</span>
-<span id="L1365"><span class="lineNum">    1365</span>              : </span>
-<span id="L1366"><span class="lineNum">    1366</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1367"><span class="lineNum">    1367</span>              :   String get updateBudgetTooltip =&gt; '예산 카테고리 업데이트';</span>
-<span id="L1368"><span class="lineNum">    1368</span>              : </span>
-<span id="L1369"><span class="lineNum">    1369</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1370"><span class="lineNum">    1370</span>              :   String get updateGoalTooltip =&gt; '목표 업데이트';</span>
-<span id="L1371"><span class="lineNum">    1371</span>              : </span>
-<span id="L1372"><span class="lineNum">    1372</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1373"><span class="lineNum">    1373</span>              :   String get updatePaymentTooltip =&gt; '결제 업데이트';</span>
-<span id="L1374"><span class="lineNum">    1374</span>              : </span>
-<span id="L1375"><span class="lineNum">    1375</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1376"><span class="lineNum">    1376</span>              :   String get username =&gt; '사용자 이름(계정)';</span>
-<span id="L1377"><span class="lineNum">    1377</span>              : </span>
-<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1379"><span class="lineNum">    1379</span>              :   String get uuid =&gt; '고유 거래 식별자';</span>
-<span id="L1380"><span class="lineNum">    1380</span>              : </span>
-<span id="L1381"><span class="lineNum">    1381</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1382"><span class="lineNum">    1382</span>              :   String get validTillDate =&gt; '유효 기간';</span>
-<span id="L1383"><span class="lineNum">    1383</span>              : </span>
-<span id="L1384"><span class="lineNum">    1384</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1385"><span class="lineNum">    1385</span>              :   String get webDav =&gt; '웹 분산 저작 및 버전 관리(WebDav)';</span>
-<span id="L1386"><span class="lineNum">    1386</span>              : </span>
-<span id="L1387"><span class="lineNum">    1387</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1388"><span class="lineNum">    1388</span>              :   String get wiseDescription =&gt;</span>
-<span id="L1389"><span class="lineNum">    1389</span>              :       '개인 API 토큰으로 Wise 다중 통화 계좌의 잔액과 거래를 가져옵니다. 연결된 잔액 간 환전은 이체로 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';</span>
+<span id="L1301"><span class="lineNum">    1301</span>              :   String get subscription =&gt;</span>
+<span id="L1302"><span class="lineNum">    1302</span>              :       '오픈소스 프로젝트이므로 구독한다고 해서 추가 기능이 제공되지는 않습니다. 하지만 애플리케이션의 지속적인 발전과 개선, 가용성 유지를 위한 투자로 활용될 수 있습니다.';</span>
+<span id="L1303"><span class="lineNum">    1303</span>              : </span>
+<span id="L1304"><span class="lineNum">    1304</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1305"><span class="lineNum">    1305</span>              :   String get subscriptionCoffee =&gt; '커피 구매';</span>
+<span id="L1306"><span class="lineNum">    1306</span>              : </span>
+<span id="L1307"><span class="lineNum">    1307</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1308"><span class="lineNum">    1308</span>              :   String get subscriptionDinner =&gt; '저녁 식사';</span>
+<span id="L1309"><span class="lineNum">    1309</span>              : </span>
+<span id="L1310"><span class="lineNum">    1310</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1311"><span class="lineNum">    1311</span>              :   String get subscriptionDonorbox =&gt; '도너박스를 통해 구독하기';</span>
+<span id="L1312"><span class="lineNum">    1312</span>              : </span>
+<span id="L1313"><span class="lineNum">    1313</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1314"><span class="lineNum">    1314</span>              :   String get subscriptionGithub =&gt; '깃허브를 통해 구독하기';</span>
+<span id="L1315"><span class="lineNum">    1315</span>              : </span>
+<span id="L1316"><span class="lineNum">    1316</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1317"><span class="lineNum">    1317</span>              :   String get subscriptionHeadline =&gt; '후원하기';</span>
+<span id="L1318"><span class="lineNum">    1318</span>              : </span>
+<span id="L1319"><span class="lineNum">    1319</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1320"><span class="lineNum">    1320</span>              :   String get subscriptionInactive =&gt; '구매 서비스 이용 불가';</span>
+<span id="L1321"><span class="lineNum">    1321</span>              : </span>
+<span id="L1322"><span class="lineNum">    1322</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1323"><span class="lineNum">    1323</span>              :   String get subscriptionPatreon =&gt; 'Patreon을 통해 구독';</span>
+<span id="L1324"><span class="lineNum">    1324</span>              : </span>
+<span id="L1325"><span class="lineNum">    1325</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1326"><span class="lineNum">    1326</span>              :   String get subscriptionPaypal =&gt; '커피 구매(PayPal)';</span>
+<span id="L1327"><span class="lineNum">    1327</span>              : </span>
+<span id="L1328"><span class="lineNum">    1328</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1329"><span class="lineNum">    1329</span>              :   String get subscriptionTiny =&gt; '행운의 코인 선물하기';</span>
+<span id="L1330"><span class="lineNum">    1330</span>              : </span>
+<span id="L1331"><span class="lineNum">    1331</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1332"><span class="lineNum">    1332</span>              :   String get subscriptionTooltip =&gt; '지원(스폰서십)';</span>
+<span id="L1333"><span class="lineNum">    1333</span>              : </span>
+<span id="L1334"><span class="lineNum">    1334</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1335"><span class="lineNum">    1335</span>              :   String get success =&gt; '성공';</span>
+<span id="L1336"><span class="lineNum">    1336</span>              : </span>
+<span id="L1337"><span class="lineNum">    1337</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1338"><span class="lineNum">    1338</span>              :   String get summary =&gt; '요약';</span>
+<span id="L1339"><span class="lineNum">    1339</span>              : </span>
+<span id="L1340"><span class="lineNum">    1340</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1341"><span class="lineNum">    1341</span>              :   String get symbol =&gt; '기호';</span>
+<span id="L1342"><span class="lineNum">    1342</span>              : </span>
+<span id="L1343"><span class="lineNum">    1343</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1344"><span class="lineNum">    1344</span>              :   String get syncHeadline =&gt; '장치 동기화';</span>
+<span id="L1345"><span class="lineNum">    1345</span>              : </span>
+<span id="L1346"><span class="lineNum">    1346</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1347"><span class="lineNum">    1347</span>              :   String get systemMode =&gt; '시스템';</span>
+<span id="L1348"><span class="lineNum">    1348</span>              : </span>
+<span id="L1349"><span class="lineNum">    1349</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1350"><span class="lineNum">    1350</span>              :   String get tapToOpen =&gt; '탭하여 열기';</span>
+<span id="L1351"><span class="lineNum">    1351</span>              : </span>
+<span id="L1352"><span class="lineNum">    1352</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1353"><span class="lineNum">    1353</span>              :   String get targetAmount =&gt; '목표 금액';</span>
+<span id="L1354"><span class="lineNum">    1354</span>              : </span>
+<span id="L1355"><span class="lineNum">    1355</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1356"><span class="lineNum">    1356</span>              :   String get termPrivacy =&gt; '개인정보 보호정책';</span>
+<span id="L1357"><span class="lineNum">    1357</span>              : </span>
+<span id="L1358"><span class="lineNum">    1358</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1359"><span class="lineNum">    1359</span>              :   String get termUse =&gt; '이용 약관';</span>
+<span id="L1360"><span class="lineNum">    1360</span>              : </span>
+<span id="L1361"><span class="lineNum">    1361</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1362"><span class="lineNum">    1362</span>              :   String get title =&gt; '제목';</span>
+<span id="L1363"><span class="lineNum">    1363</span>              : </span>
+<span id="L1364"><span class="lineNum">    1364</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1365"><span class="lineNum">    1365</span>              :   String get titleAccountTooltip =&gt; '계정 식별자 입력';</span>
+<span id="L1366"><span class="lineNum">    1366</span>              : </span>
+<span id="L1367"><span class="lineNum">    1367</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1368"><span class="lineNum">    1368</span>              :   String get titleBudgetTooltip =&gt; '예산 카테고리 이름 입력';</span>
+<span id="L1369"><span class="lineNum">    1369</span>              : </span>
+<span id="L1370"><span class="lineNum">    1370</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1371"><span class="lineNum">    1371</span>              :   String get titleGoal =&gt; '목표';</span>
+<span id="L1372"><span class="lineNum">    1372</span>              : </span>
+<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1374"><span class="lineNum">    1374</span>              :   String get titleGoalTooltip =&gt; '목표 설명 정의';</span>
+<span id="L1375"><span class="lineNum">    1375</span>              : </span>
+<span id="L1376"><span class="lineNum">    1376</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1377"><span class="lineNum">    1377</span>              :   String get to =&gt; '에';</span>
+<span id="L1378"><span class="lineNum">    1378</span>              : </span>
+<span id="L1379"><span class="lineNum">    1379</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1380"><span class="lineNum">    1380</span>              :   String get total =&gt; '합계';</span>
+<span id="L1381"><span class="lineNum">    1381</span>              : </span>
+<span id="L1382"><span class="lineNum">    1382</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1383"><span class="lineNum">    1383</span>              :   String get transactionFile =&gt; '핑프롬 트랜잭션 로그 파일(.log)';</span>
+<span id="L1384"><span class="lineNum">    1384</span>              : </span>
+<span id="L1385"><span class="lineNum">    1385</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1386"><span class="lineNum">    1386</span>              :   String get transferHeadline =&gt; '전송';</span>
+<span id="L1387"><span class="lineNum">    1387</span>              : </span>
+<span id="L1388"><span class="lineNum">    1388</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1389"><span class="lineNum">    1389</span>              :   String get transferTooltip =&gt; '전송 세부 정보 설정';</span>
 <span id="L1390"><span class="lineNum">    1390</span>              : </span>
 <span id="L1391"><span class="lineNum">    1391</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1392"><span class="lineNum">    1392</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
+<span id="L1392"><span class="lineNum">    1392</span>              :   String get transfersHeadline =&gt; '전송';</span>
 <span id="L1393"><span class="lineNum">    1393</span>              : </span>
 <span id="L1394"><span class="lineNum">    1394</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1395"><span class="lineNum">    1395</span>              :   String get wiseNoProfiles =&gt; '이 토큰으로 사용할 수 있는 Wise 프로필이 없습니다';</span>
+<span id="L1395"><span class="lineNum">    1395</span>              :   String get typeButton =&gt; '버튼';</span>
 <span id="L1396"><span class="lineNum">    1396</span>              : </span>
 <span id="L1397"><span class="lineNum">    1397</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1398"><span class="lineNum">    1398</span>              :   String get wiseProfile =&gt; '프로필';</span>
+<span id="L1398"><span class="lineNum">    1398</span>              :   String get updateAccountTooltip =&gt; '계정 업데이트';</span>
 <span id="L1399"><span class="lineNum">    1399</span>              : </span>
 <span id="L1400"><span class="lineNum">    1400</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1401"><span class="lineNum">    1401</span>              :   String get wiseScaRequired =&gt; 'Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요';</span>
+<span id="L1401"><span class="lineNum">    1401</span>              :   String get updateBillTooltip =&gt; '청구서 업데이트';</span>
 <span id="L1402"><span class="lineNum">    1402</span>              : </span>
 <span id="L1403"><span class="lineNum">    1403</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1404"><span class="lineNum">    1404</span>              :   String get wiseToken =&gt; '개인 API 토큰';</span>
+<span id="L1404"><span class="lineNum">    1404</span>              :   String get updateBudgetTooltip =&gt; '예산 카테고리 업데이트';</span>
 <span id="L1405"><span class="lineNum">    1405</span>              : </span>
 <span id="L1406"><span class="lineNum">    1406</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1407"><span class="lineNum">    1407</span>              :   String get wiseTokenSteps =&gt;</span>
-<span id="L1408"><span class="lineNum">    1408</span>              :       '개인 API 토큰 받는 방법:\n1. 브라우저에서 wise.com에 로그인합니다(모바일 앱에서는 토큰을 만들 수 없음)\n2. 설정 → 연동 및 도구 → API 토큰을 엽니다\n3. \&quot;새 토큰 추가\&quot;를 선택하고 이름(예: Fingrom)을 지정한 뒤 \&quot;읽기 전용\&quot; 권한을 선택합니다\n4. 2단계 인증으로 확인하고 토큰을 복사합니다\n5. 아래에 붙여 넣고 \&quot;연결\&quot;을 누릅니다';</span>
-<span id="L1409"><span class="lineNum">    1409</span>              : </span>
-<span id="L1410"><span class="lineNum">    1410</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1411"><span class="lineNum">    1411</span>              :   String get wiseTokenTooltip =&gt; 'Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다';</span>
-<span id="L1412"><span class="lineNum">    1412</span>              : </span>
-<span id="L1413"><span class="lineNum">    1413</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1414"><span class="lineNum">    1414</span>              :   String get zoomState =&gt; '줌인/줌아웃';</span>
-<span id="L1415"><span class="lineNum">    1415</span>              : }</span>
+<span id="L1407"><span class="lineNum">    1407</span>              :   String get updateGoalTooltip =&gt; '목표 업데이트';</span>
+<span id="L1408"><span class="lineNum">    1408</span>              : </span>
+<span id="L1409"><span class="lineNum">    1409</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1410"><span class="lineNum">    1410</span>              :   String get updatePaymentTooltip =&gt; '결제 업데이트';</span>
+<span id="L1411"><span class="lineNum">    1411</span>              : </span>
+<span id="L1412"><span class="lineNum">    1412</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1413"><span class="lineNum">    1413</span>              :   String get username =&gt; '사용자 이름(계정)';</span>
+<span id="L1414"><span class="lineNum">    1414</span>              : </span>
+<span id="L1415"><span class="lineNum">    1415</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1416"><span class="lineNum">    1416</span>              :   String get uuid =&gt; '고유 거래 식별자';</span>
+<span id="L1417"><span class="lineNum">    1417</span>              : </span>
+<span id="L1418"><span class="lineNum">    1418</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1419"><span class="lineNum">    1419</span>              :   String get validTillDate =&gt; '유효 기간';</span>
+<span id="L1420"><span class="lineNum">    1420</span>              : </span>
+<span id="L1421"><span class="lineNum">    1421</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1422"><span class="lineNum">    1422</span>              :   String get webDav =&gt; '웹 분산 저작 및 버전 관리(WebDav)';</span>
+<span id="L1423"><span class="lineNum">    1423</span>              : </span>
+<span id="L1424"><span class="lineNum">    1424</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1425"><span class="lineNum">    1425</span>              :   String get wiseDescription =&gt;</span>
+<span id="L1426"><span class="lineNum">    1426</span>              :       '개인 API 토큰으로 Wise 다중 통화 계좌의 잔액과 거래를 가져옵니다. 연결된 잔액 간 환전은 이체로 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';</span>
+<span id="L1427"><span class="lineNum">    1427</span>              : </span>
+<span id="L1428"><span class="lineNum">    1428</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1429"><span class="lineNum">    1429</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
+<span id="L1430"><span class="lineNum">    1430</span>              : </span>
+<span id="L1431"><span class="lineNum">    1431</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1432"><span class="lineNum">    1432</span>              :   String get wiseNoProfiles =&gt; '이 토큰으로 사용할 수 있는 Wise 프로필이 없습니다';</span>
+<span id="L1433"><span class="lineNum">    1433</span>              : </span>
+<span id="L1434"><span class="lineNum">    1434</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1435"><span class="lineNum">    1435</span>              :   String get wiseProfile =&gt; '프로필';</span>
+<span id="L1436"><span class="lineNum">    1436</span>              : </span>
+<span id="L1437"><span class="lineNum">    1437</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1438"><span class="lineNum">    1438</span>              :   String get wiseScaRequired =&gt; 'Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요';</span>
+<span id="L1439"><span class="lineNum">    1439</span>              : </span>
+<span id="L1440"><span class="lineNum">    1440</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1441"><span class="lineNum">    1441</span>              :   String get wiseToken =&gt; '개인 API 토큰';</span>
+<span id="L1442"><span class="lineNum">    1442</span>              : </span>
+<span id="L1443"><span class="lineNum">    1443</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1444"><span class="lineNum">    1444</span>              :   String get wiseTokenSteps =&gt;</span>
+<span id="L1445"><span class="lineNum">    1445</span>              :       '개인 API 토큰 받는 방법:\n1. 브라우저에서 wise.com에 로그인합니다(모바일 앱에서는 토큰을 만들 수 없음)\n2. 설정 → 연동 및 도구 → API 토큰을 엽니다\n3. \&quot;새 토큰 추가\&quot;를 선택하고 이름(예: Fingrom)을 지정한 뒤 \&quot;읽기 전용\&quot; 권한을 선택합니다\n4. 2단계 인증으로 확인하고 토큰을 복사합니다\n5. 아래에 붙여 넣고 \&quot;연결\&quot;을 누릅니다';</span>
+<span id="L1446"><span class="lineNum">    1446</span>              : </span>
+<span id="L1447"><span class="lineNum">    1447</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1448"><span class="lineNum">    1448</span>              :   String get wiseTokenTooltip =&gt; 'Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다';</span>
+<span id="L1449"><span class="lineNum">    1449</span>              : </span>
+<span id="L1450"><span class="lineNum">    1450</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1451"><span class="lineNum">    1451</span>              :   String get zoomState =&gt; '줌인/줌아웃';</span>
+<span id="L1452"><span class="lineNum">    1452</span>              : }</span>
         </pre>
               </td>
             </tr>
