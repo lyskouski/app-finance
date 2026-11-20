@@ -40,9 +40,11 @@ class BillHeaderWidget extends StatelessWidget {
                 children: [
                   Icon(item.icon, color: item.color, size: 20),
                   ThemeHelper.wIndent,
-                  TextWrapper(
-                    item.title,
-                    style: textTheme.headlineMedium,
+                  Expanded(
+                    child: TextWrapper(
+                      item.title,
+                      style: textTheme.headlineMedium,
+                    ),
                   ),
                 ],
               ),
