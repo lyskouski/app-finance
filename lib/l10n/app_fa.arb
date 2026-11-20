@@ -460,6 +460,8 @@
     "notificationGrant": "اعطای دسترسی",
     "notificationIncome": "کلیدواژه‌های درآمد",
     "notificationIncomeTooltip": "واژه‌هایی که اعلان را به عنوان درآمد مشخص می‌کنند: واژه‌ای بنویسید و برای افزودن Enter را بزنید",
+    "notificationMerchant": "برچسب‌های فروشنده",
+    "notificationMerchantTooltip": "واژه‌هایی که پس از آن‌ها دونقطه و نام فروشنده می‌آید (مکان: فروشگاه): واژه‌ای بنویسید و برای افزودن Enter را بزنید",
     "notificationNoApps": "هنوز اعلانی دریافت نشده است: برنامه‌ها پس از ارسال اعلان در اینجا نمایش داده می‌شوند",
     "notificationUnparsed": "شناسایی نشد",
     "notifyHeadline": "تجزیه کننده اطلاعیه ها",

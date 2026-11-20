@@ -460,6 +460,8 @@
     "notificationGrant": "Ruxsat berish",
     "notificationIncome": "Daromad kalit so'zlari",
     "notificationIncomeTooltip": "Bildirishnomani daromad sifatida belgilovchi so'zlar: so'z kiriting va qo'shish uchun Enter tugmasini bosing",
+    "notificationMerchant": "Sotuvchi belgilari",
+    "notificationMerchantTooltip": "Ortidan ikki nuqta va sotuvchi keladigan so'zlar (Joy: Do'kon): so'z yozing va qo'shish uchun Enter tugmasini bosing",
     "notificationNoApps": "Hali bildirishnomalar olinmagan: ilovalar bildirishnoma yuborgandan keyin shu yerda paydo bo'ladi",
     "notificationUnparsed": "Aniqlanmadi",
     "notifyHeadline": "Bildirishnomalarni tahlil qilish",

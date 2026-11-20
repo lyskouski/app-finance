@@ -460,6 +460,8 @@
     "notificationGrant": "Giriş ver",
     "notificationIncome": "Gəlir açar sözləri",
     "notificationIncomeTooltip": "Bildirişi gəlir kimi qeyd edən sözlər: söz yazın və əlavə etmək üçün Enter düyməsini basın",
+    "notificationMerchant": "Satıcı etiketləri",
+    "notificationMerchantTooltip": "İki nöqtə və satıcı adı ilə davam edən sözlər (Yer: Mağaza): söz yazın və əlavə etmək üçün Enter düyməsini basın",
     "notificationNoApps": "Hələ bildiriş alınmayıb: tətbiqlər bildiriş göndərdikdən sonra burada görünür",
     "notificationUnparsed": "Tanınmadı",
     "notifyHeadline": "Bildirişlər Parser",

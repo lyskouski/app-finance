@@ -460,6 +460,8 @@
     "notificationGrant": "एक्सेस दें",
     "notificationIncome": "आय कीवर्ड",
     "notificationIncomeTooltip": "सूचना को आय के रूप में चिह्नित करने वाले शब्द: शब्द लिखें और जोड़ने के लिए Enter दबाएँ",
+    "notificationMerchant": "व्यापारी लेबल",
+    "notificationMerchantTooltip": "शब्द जिनके बाद कोलन और व्यापारी आता है (स्थान: दुकान): शब्द लिखें और जोड़ने के लिए Enter दबाएँ",
     "notificationNoApps": "अभी तक कोई सूचना प्राप्त नहीं हुई: ऐप्स सूचना भेजने के बाद यहाँ दिखाई देंगे",
     "notificationUnparsed": "पहचाना नहीं गया",
     "notifyHeadline": "सूचनाएं पार्सर",

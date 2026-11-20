@@ -460,6 +460,8 @@
     "notificationGrant": "Concedi accesso",
     "notificationIncome": "Parole chiave di entrata",
     "notificationIncomeTooltip": "Parole che contrassegnano una notifica come entrata: digita una parola e premi Invio per aggiungerla",
+    "notificationMerchant": "Etichette dell'esercente",
+    "notificationMerchantTooltip": "Parole seguite da due punti e da un esercente (Luogo: Negozio): digita una parola e premi Invio per aggiungerla",
     "notificationNoApps": "Nessuna notifica ricevuta finora: le app compaiono qui dopo aver inviato una notifica",
     "notificationUnparsed": "Non riconosciuto",
     "notifyHeadline": "Parser delle notifiche",

@@ -57,6 +57,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
   // Parsing options shared by all apps
   late final ValueNotifier<List<String>> income;
   late final ValueNotifier<List<String>> balance;
+  late final ValueNotifier<List<String>> merchant;
   // Keywords recognizing the account of a transaction instead of the default one
   final Map<String, ValueNotifier<List<String>>> accounts = {};
   bool isGranted = false;
@@ -77,6 +78,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     settings = NotificationSettings.load();
     income = ValueNotifier([...settings.income])..addListener(persistKeywords);
     balance = ValueNotifier([...settings.balance])..addListener(persistKeywords);
+    merchant = ValueNotifier([...settings.merchant])..addListener(persistKeywords);
     WidgetsBinding.instance.addObserver(this);
     controller.revision.addListener(refresh);
     refresh();
@@ -88,6 +90,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     controller.revision.removeListener(refresh);
     income.dispose();
     balance.dispose();
+    merchant.dispose();
     for (final item in accounts.values) {
       item.dispose();
     }
@@ -162,12 +165,13 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
         () => ValueNotifier([...?settings.accounts[uuid]])..addListener(persistKeywords),
       );
 
-  Listenable get keywords => Listenable.merge([income, balance, ...accounts.values]);
+  Listenable get keywords => Listenable.merge([income, balance, merchant, ...accounts.values]);
 
   Future<void> persistKeywords() async {
     settings
       ..income = [...income.value]
-      ..balance = [...balance.value];
+      ..balance = [...balance.value]
+      ..merchant = [...merchant.value];
     accounts.forEach((uuid, item) => settings.accounts[uuid] = [...item.value]);
     await settings.save();
     await importLinked();
@@ -319,6 +323,14 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
             tooltip: AppLocale.labels.notificationBalanceTooltip,
             controller: balance,
             defaults: NotificationParser.balanceKeywords,
+            normalize: _normalize,
+          ),
+          TagsInput(
+            key: const ValueKey('notification_merchant'),
+            title: AppLocale.labels.notificationMerchant,
+            tooltip: AppLocale.labels.notificationMerchantTooltip,
+            controller: merchant,
+            defaults: NotificationParser.merchantLabels,
             normalize: _normalize,
           ),
           Text(AppLocale.labels.notificationAccounts, style: textTheme.titleMedium),

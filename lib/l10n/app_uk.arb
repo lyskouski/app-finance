@@ -460,6 +460,8 @@
     "notificationGrant": "Надати доступ",
     "notificationIncome": "Ключові слова доходу",
     "notificationIncomeTooltip": "Слова, що позначають сповіщення як дохід: введіть слово й натисніть Enter, щоб додати його",
+    "notificationMerchant": "Мітки продавця",
+    "notificationMerchantTooltip": "Слова, за якими йдуть двокрапка і продавець (Місце: Магазин): введіть слово і натисніть Enter, щоб додати його",
     "notificationNoApps": "Сповіщень ще не було: застосунки з'являться тут після того, як надішлють сповіщення",
     "notificationUnparsed": "Не розпізнано",
     "notifyHeadline": "Відпрацьовник повідомлень",

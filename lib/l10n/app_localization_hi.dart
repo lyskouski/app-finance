@@ -9,7 +9,8 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'के बारे में';
@@ -102,7 +103,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get balanceDate => 'शेष तिथि अद्यतन';
 
   @override
-  String get balanceDateTooltip => 'इस तिथि से पहले के परिणाम और आय शेष राशि को प्रभावित नहीं करेंगे';
+  String get balanceDateTooltip =>
+      'इस तिथि से पहले के परिणाम और आय शेष राशि को प्रभावित नहीं करेंगे';
 
   @override
   String get balanceTooltip => 'संतुलन स्थापित करें';
@@ -321,7 +323,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get confirmHeader => 'कार्रवाई की पुष्टि करें';
 
   @override
-  String get confirmTooltip => 'क्या आपको यकीन है? इस एक्शन को वापस नहीं किया जा सकता।';
+  String get confirmTooltip =>
+      'क्या आपको यकीन है? इस एक्शन को वापस नहीं किया जा सकता।';
 
   @override
   String get contributors => 'योगदानकर्ताओं';
@@ -605,7 +608,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get enableBankingCode => 'प्राधिकरण के बाद खुले पृष्ठ का पता';
 
   @override
-  String get enableBankingCodeTooltip => 'बैंक में पहुँच की पुष्टि करें, फिर ब्राउज़र से पता कॉपी करके यहाँ पेस्ट करें';
+  String get enableBankingCodeTooltip =>
+      'बैंक में पहुँच की पुष्टि करें, फिर ब्राउज़र से पता कॉपी करके यहाँ पेस्ट करें';
 
   @override
   String get enableBankingCountry => 'देश (ISO कोड, जैसे DE)';
@@ -618,16 +622,19 @@ class AppLocalizationsHi extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete => 'ऐप्लिकेशन आईडी, निजी कुंजी, रीडायरेक्ट URL और देश भरें';
+  String get enableBankingIncomplete =>
+      'ऐप्लिकेशन आईडी, निजी कुंजी, रीडायरेक्ट URL और देश भरें';
 
   @override
   String get enableBankingKey => 'निजी कुंजी (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => 'अमान्य निजी कुंजी: PEM ब्लॉक \"PRIVATE KEY\" अपेक्षित है';
+  String get enableBankingKeyInvalid =>
+      'अमान्य निजी कुंजी: PEM ब्लॉक \"PRIVATE KEY\" अपेक्षित है';
 
   @override
-  String get enableBankingKeyNotRsa => 'अमान्य निजी कुंजी: RSA कुंजी अपेक्षित है';
+  String get enableBankingKeyNotRsa =>
+      'अमान्य निजी कुंजी: RSA कुंजी अपेक्षित है';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -637,7 +644,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get enableBankingLoadBanks => 'बैंक लोड करें';
 
   @override
-  String get enableBankingNoAuthPage => 'Enable Banking ने कोई प्राधिकरण पृष्ठ नहीं लौटाया';
+  String get enableBankingNoAuthPage =>
+      'Enable Banking ने कोई प्राधिकरण पृष्ठ नहीं लौटाया';
 
   @override
   String get enableBankingNoCode => 'पते में कोई प्राधिकरण कोड नहीं मिला';
@@ -646,10 +654,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get enableBankingRedirect => 'रीडायरेक्ट URL';
 
   @override
-  String get enableBankingRedirectTooltip => 'ऐप्लिकेशन के लिए पंजीकृत; प्राधिकरण के बाद बैंक इसी पर लौटता है';
+  String get enableBankingRedirectTooltip =>
+      'ऐप्लिकेशन के लिए पंजीकृत; प्राधिकरण के बाद बैंक इसी पर लौटता है';
 
   @override
-  String get enableBankingStateMismatch => 'यह पता किसी अन्य प्राधिकरण का है, फिर से कनेक्ट करें';
+  String get enableBankingStateMismatch =>
+      'यह पता किसी अन्य प्राधिकरण का है, फिर से कनेक्ट करें';
 
   @override
   String get encryptionMode => 'डेटा एन्क्रिप्शन';
@@ -708,7 +718,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete => 'सर्वर URL, बैंक कोड, उपयोगकर्ता आईडी और उत्पाद पंजीकरण संख्या भरें';
+  String get finTsIncomplete =>
+      'सर्वर URL, बैंक कोड, उपयोगकर्ता आईडी और उत्पाद पंजीकरण संख्या भरें';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -724,13 +735,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint => 'केवल इस सत्र के लिए उपयोग होता है और कभी संग्रहीत नहीं किया जाता';
+  String get finTsPinHint =>
+      'केवल इस सत्र के लिए उपयोग होता है और कभी संग्रहीत नहीं किया जाता';
 
   @override
   String get finTsProductId => 'उत्पाद पंजीकरण संख्या';
 
   @override
-  String get finTsProductIdTooltip => 'Deutsche Kreditwirtschaft द्वारा ऐप निर्माता को जारी की जाती है';
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft द्वारा ऐप निर्माता को जारी की जाती है';
 
   @override
   String get finTsTan => 'TAN';
@@ -826,7 +839,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get incomeTooltip => 'आय विवरण निर्धारित करें';
 
   @override
-  String get integrationAccessDenied => 'पहुँच रद्द कर दी गई है या क्रेडेंशियल गलत हैं';
+  String get integrationAccessDenied =>
+      'पहुँच रद्द कर दी गई है या क्रेडेंशियल गलत हैं';
 
   @override
   String get integrationConnect => 'कनेक्ट करें';
@@ -852,7 +866,8 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired => 'केवल सुरक्षित (HTTPS) पतों की अनुमति है';
+  String get integrationHttpsRequired =>
+      'केवल सुरक्षित (HTTPS) पतों की अनुमति है';
 
   @override
   String get integrationImport => 'लेनदेन आयात करें';
@@ -935,7 +950,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get minute => 'मिनट';
 
   @override
-  String get missingContent => 'फ़ाइल संसाधित नहीं की जा सकती (या तो रद्द की गई)';
+  String get missingContent =>
+      'फ़ाइल संसाधित नहीं की जा सकती (या तो रद्द की गई)';
 
   @override
   String get monobankCreateAccount => 'खाता बनाएँ';
@@ -1024,7 +1040,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notificationClear => 'प्राप्त सूचनाएँ साफ़ करें';
 
   @override
-  String get notificationCurrencyTooltip => 'बिना मुद्रा वाली राशियाँ (जैसे डेबिट 20.00) इस मुद्रा में ली जाती हैं';
+  String get notificationCurrencyTooltip =>
+      'बिना मुद्रा वाली राशियाँ (जैसे डेबिट 20.00) इस मुद्रा में ली जाती हैं';
 
   @override
   String get notificationDefaultAccount => 'डिफ़ॉल्ट खाता';
@@ -1044,7 +1061,15 @@ class AppLocalizationsHi extends AppLocalizations {
       'सूचना को आय के रूप में चिह्नित करने वाले शब्द: शब्द लिखें और जोड़ने के लिए Enter दबाएँ';
 
   @override
-  String get notificationNoApps => 'अभी तक कोई सूचना प्राप्त नहीं हुई: ऐप्स सूचना भेजने के बाद यहाँ दिखाई देंगे';
+  String get notificationMerchant => 'व्यापारी लेबल';
+
+  @override
+  String get notificationMerchantTooltip =>
+      'शब्द जिनके बाद कोलन और व्यापारी आता है (स्थान: दुकान): शब्द लिखें और जोड़ने के लिए Enter दबाएँ';
+
+  @override
+  String get notificationNoApps =>
+      'अभी तक कोई सूचना प्राप्त नहीं हुई: ऐप्स सूचना भेजने के बाद यहाँ दिखाई देंगे';
 
   @override
   String get notificationUnparsed => 'पहचाना नहीं गया';
@@ -1125,7 +1150,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get peerPing => 'गुनगुनाहट';
 
   @override
-  String get peerSent => 'डेटा को कनेक्टेड डिवाइसेस में स्थानांतरित किया जाता है';
+  String get peerSent =>
+      'डेटा को कनेक्टेड डिवाइसेस में स्थानांतरित किया जाता है';
 
   @override
   String get peerStatus => 'स्थिति';
@@ -1157,10 +1183,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get privatBankIban => 'खाते का IBAN';
 
   @override
-  String get privatBankIbanInvalid => 'यूक्रेनी IBAN दर्ज करें: UA के बाद 27 अंक';
+  String get privatBankIbanInvalid =>
+      'यूक्रेनी IBAN दर्ज करें: UA के बाद 27 अंक';
 
   @override
-  String get privatBankIbanTooltip => 'API खातों की सूची नहीं देता: खातों के IBAN एक-एक करके जोड़ें';
+  String get privatBankIbanTooltip =>
+      'API खातों की सूची नहीं देता: खातों के IBAN एक-एक करके जोड़ें';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1240,7 +1268,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get secureOtpCode => 'एक बार के लिए पासवर्ड कोड';
 
   @override
-  String get secureOtpCodeInvalid => 'अमान्य! कृपया एक नया कोड प्राप्त करें और इसे दर्ज करें';
+  String get secureOtpCodeInvalid =>
+      'अमान्य! कृपया एक नया कोड प्राप्त करें और इसे दर्ज करें';
 
   @override
   String get secureOtpDeactivated => 'पासवर्ड सुरक्षा अक्षम है';
@@ -1277,13 +1306,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge ने क्रेडेंशियल के बिना पहुँच पता लौटाया';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge ने क्रेडेंशियल के बिना पहुँच पता लौटाया';
 
   @override
   String get simpleFinToken => 'SimpleFIN सेटअप टोकन';
 
   @override
-  String get simpleFinTokenClaimed => 'सेटअप टोकन मौजूद नहीं है या पहले ही उपयोग किया जा चुका है';
+  String get simpleFinTokenClaimed =>
+      'सेटअप टोकन मौजूद नहीं है या पहले ही उपयोग किया जा चुका है';
 
   @override
   String get simpleFinTokenInvalid => 'अमान्य SimpleFIN सेटअप टोकन';
@@ -1469,7 +1500,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get wiseHeadline => 'Wise API (Global)';
 
   @override
-  String get wiseNoProfiles => 'इस टोकन के लिए कोई Wise प्रोफ़ाइल उपलब्ध नहीं है';
+  String get wiseNoProfiles =>
+      'इस टोकन के लिए कोई Wise प्रोफ़ाइल उपलब्ध नहीं है';
 
   @override
   String get wiseProfile => 'प्रोफ़ाइल';

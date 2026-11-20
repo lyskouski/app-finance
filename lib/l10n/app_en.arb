@@ -460,6 +460,8 @@
     "notificationGrant": "Grant Access",
     "notificationIncome": "Income Keywords",
     "notificationIncomeTooltip": "Words marking a notification as income: type a word and press Enter to add it",
+    "notificationMerchant": "Merchant Labels",
+    "notificationMerchantTooltip": "Words followed by a colon and a merchant (Location: Shop): type a word and press Enter to add it",
     "notificationNoApps": "No notifications have been received yet: apps appear here after they post a notification",
     "notificationUnparsed": "Not recognized",
     "notifyHeadline": "Notifications Parser",

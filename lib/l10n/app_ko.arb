@@ -460,6 +460,8 @@
     "notificationGrant": "접근 허용",
     "notificationIncome": "수입 키워드",
     "notificationIncomeTooltip": "알림을 수입으로 표시하는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요",
+    "notificationMerchant": "가맹점 레이블",
+    "notificationMerchantTooltip": "콜론과 가맹점이 뒤따르는 단어(위치: 상점): 단어를 입력하고 Enter 키를 눌러 추가하세요",
     "notificationNoApps": "아직 받은 알림이 없습니다: 앱이 알림을 보내면 여기에 표시됩니다",
     "notificationUnparsed": "인식되지 않음",
     "notifyHeadline": "알림 파서",

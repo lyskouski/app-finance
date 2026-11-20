@@ -9,7 +9,8 @@ class AppLocalizationsPl extends AppLocalizations {
   AppLocalizationsPl([String locale = 'pl']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'O aplikacji';
@@ -102,7 +103,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get balanceDate => 'Data aktualizacji salda';
 
   @override
-  String get balanceDateTooltip => 'Wyniki i przychody sprzed tej daty nie wpłyną na saldo.';
+  String get balanceDateTooltip =>
+      'Wyniki i przychody sprzed tej daty nie wpłyną na saldo.';
 
   @override
   String get balanceTooltip => 'Ustaw saldo';
@@ -619,16 +621,19 @@ class AppLocalizationsPl extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete => 'Uzupełnij ID aplikacji, klucz prywatny, URL przekierowania i kraj';
+  String get enableBankingIncomplete =>
+      'Uzupełnij ID aplikacji, klucz prywatny, URL przekierowania i kraj';
 
   @override
   String get enableBankingKey => 'Klucz prywatny (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => 'Nieprawidłowy klucz prywatny: oczekiwano bloku PEM \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid =>
+      'Nieprawidłowy klucz prywatny: oczekiwano bloku PEM \"PRIVATE KEY\"';
 
   @override
-  String get enableBankingKeyNotRsa => 'Nieprawidłowy klucz prywatny: oczekiwano klucza RSA';
+  String get enableBankingKeyNotRsa =>
+      'Nieprawidłowy klucz prywatny: oczekiwano klucza RSA';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -638,7 +643,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get enableBankingLoadBanks => 'Wczytaj banki';
 
   @override
-  String get enableBankingNoAuthPage => 'Enable Banking nie zwrócił strony autoryzacji';
+  String get enableBankingNoAuthPage =>
+      'Enable Banking nie zwrócił strony autoryzacji';
 
   @override
   String get enableBankingNoCode => 'Nie znaleziono kodu autoryzacji w adresie';
@@ -647,10 +653,12 @@ class AppLocalizationsPl extends AppLocalizations {
   String get enableBankingRedirect => 'URL przekierowania';
 
   @override
-  String get enableBankingRedirectTooltip => 'Zarejestrowany dla aplikacji; bank wraca do niego po autoryzacji';
+  String get enableBankingRedirectTooltip =>
+      'Zarejestrowany dla aplikacji; bank wraca do niego po autoryzacji';
 
   @override
-  String get enableBankingStateMismatch => 'Adres należy do innej autoryzacji, połącz się ponownie';
+  String get enableBankingStateMismatch =>
+      'Adres należy do innej autoryzacji, połącz się ponownie';
 
   @override
   String get encryptionMode => 'Szyfrowanie danych';
@@ -709,7 +717,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete => 'Uzupełnij URL serwera, kod banku, ID użytkownika i numer rejestracyjny produktu';
+  String get finTsIncomplete =>
+      'Uzupełnij URL serwera, kod banku, ID użytkownika i numer rejestracyjny produktu';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -731,7 +740,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get finTsProductId => 'Numer rejestracyjny produktu';
 
   @override
-  String get finTsProductIdTooltip => 'Nadawany przez Deutsche Kreditwirtschaft producentowi aplikacji';
+  String get finTsProductIdTooltip =>
+      'Nadawany przez Deutsche Kreditwirtschaft producentowi aplikacji';
 
   @override
   String get finTsTan => 'TAN';
@@ -827,7 +837,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get incomeTooltip => 'Ustawianie szczegółów dochodu';
 
   @override
-  String get integrationAccessDenied => 'Dostęp został cofnięty lub dane logowania są nieprawidłowe';
+  String get integrationAccessDenied =>
+      'Dostęp został cofnięty lub dane logowania są nieprawidłowe';
 
   @override
   String get integrationConnect => 'Połącz';
@@ -853,7 +864,8 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired => 'Dozwolone są tylko bezpieczne adresy (HTTPS)';
+  String get integrationHttpsRequired =>
+      'Dozwolone są tylko bezpieczne adresy (HTTPS)';
 
   @override
   String get integrationImport => 'Importuj transakcje';
@@ -875,7 +887,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get integrationPaymentRequired => 'Usługa wymaga płatności za dostęp';
 
   @override
-  String get integrationSelectTarget => 'Wybierz konto i kategorię budżetu do importu';
+  String get integrationSelectTarget =>
+      'Wybierz konto i kategorię budżetu do importu';
 
   @override
   String integrationServiceError(Object value) {
@@ -981,7 +994,8 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Brakuje danych (lub jest ich za mało) do wyświetlenia';
+  String get noChartData =>
+      'Brakuje danych (lub jest ich za mało) do wyświetlenia';
 
   @override
   String get notificationAccessSettings => 'Dostęp do powiadomień';
@@ -1025,7 +1039,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get notificationClear => 'Wyczyść odebrane';
 
   @override
-  String get notificationCurrencyTooltip => 'Kwoty bez waluty (np. Obciążenie 20,00) są przyjmowane w tej walucie';
+  String get notificationCurrencyTooltip =>
+      'Kwoty bez waluty (np. Obciążenie 20,00) są przyjmowane w tej walucie';
 
   @override
   String get notificationDefaultAccount => 'Konto domyślne';
@@ -1043,6 +1058,13 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get notificationIncomeTooltip =>
       'Słowa oznaczające powiadomienie jako przychód: wpisz słowo i naciśnij Enter, aby je dodać';
+
+  @override
+  String get notificationMerchant => 'Etykiety sprzedawcy';
+
+  @override
+  String get notificationMerchantTooltip =>
+      'Słowa, po których następuje dwukropek i sprzedawca (Lokalizacja: Sklep): wpisz słowo i naciśnij Enter, aby je dodać';
 
   @override
   String get notificationNoApps =>
@@ -1162,7 +1184,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get privatBankIbanInvalid => 'Wprowadź ukraiński IBAN: UA i 27 cyfr';
 
   @override
-  String get privatBankIbanTooltip => 'API nie udostępnia listy kont: dodaj numery IBAN kont pojedynczo';
+  String get privatBankIbanTooltip =>
+      'API nie udostępnia listy kont: dodaj numery IBAN kont pojedynczo';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1230,10 +1253,12 @@ class AppLocalizationsPl extends AppLocalizations {
   String get searchTooltip => 'Szukaj';
 
   @override
-  String get secureBioNotMatch => 'Uwierzytelnianie nie powiodło się! Spróbuj ponownie';
+  String get secureBioNotMatch =>
+      'Uwierzytelnianie nie powiodło się! Spróbuj ponownie';
 
   @override
-  String get secureBioPromptReason => 'Proszę uwierzytelnić się, aby kontynuować';
+  String get secureBioPromptReason =>
+      'Proszę uwierzytelnić się, aby kontynuować';
 
   @override
   String get secureBioPromptTitle => 'Uwierzytelnianie biometryczne';
@@ -1242,7 +1267,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get secureOtpCode => 'Kod jednorazowego hasła';
 
   @override
-  String get secureOtpCodeInvalid => 'Nieprawidłowy kod! Proszę, wygeneruj nowy kod i wprowadź go';
+  String get secureOtpCodeInvalid =>
+      'Nieprawidłowy kod! Proszę, wygeneruj nowy kod i wprowadź go';
 
   @override
   String get secureOtpDeactivated => 'Ochrona hasłem jest wyłączona';
@@ -1279,16 +1305,19 @@ class AppLocalizationsPl extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge zwrócił adres dostępu bez danych logowania';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge zwrócił adres dostępu bez danych logowania';
 
   @override
   String get simpleFinToken => 'Token konfiguracyjny SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed => 'Token konfiguracyjny nie istnieje lub został już użyty';
+  String get simpleFinTokenClaimed =>
+      'Token konfiguracyjny nie istnieje lub został już użyty';
 
   @override
-  String get simpleFinTokenInvalid => 'Nieprawidłowy token konfiguracyjny SimpleFIN';
+  String get simpleFinTokenInvalid =>
+      'Nieprawidłowy token konfiguracyjny SimpleFIN';
 
   @override
   String get simpleFinTokenTooltip =>
@@ -1461,7 +1490,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get validTillDate => 'Ważny termin płatności';
 
   @override
-  String get webDav => 'Rozproszone tworzenie i wersjonowanie przez Internet (WebDav)';
+  String get webDav =>
+      'Rozproszone tworzenie i wersjonowanie przez Internet (WebDav)';
 
   @override
   String get wiseDescription =>

@@ -460,6 +460,8 @@
     "notificationGrant": "منح الوصول",
     "notificationIncome": "كلمات مفتاحية للدخل",
     "notificationIncomeTooltip": "كلمات تحدد الإشعار كدخل: اكتب كلمة واضغط Enter لإضافتها",
+    "notificationMerchant": "تسميات التاجر",
+    "notificationMerchantTooltip": "كلمات يليها نقطتان واسم التاجر (الموقع: متجر): اكتب كلمة واضغط Enter لإضافتها",
     "notificationNoApps": "لم يتم استلام أي إشعارات بعد: تظهر التطبيقات هنا بعد أن ترسل إشعارًا",
     "notificationUnparsed": "لم يتم التعرف عليه",
     "notifyHeadline": "محلل الإخطارات",

@@ -460,6 +460,8 @@
     "notificationGrant": "Даць доступ",
     "notificationIncome": "Ключавыя словы даходу",
     "notificationIncomeTooltip": "Словы, якія пазначаюць апавяшчэнне як даход: увядзіце слова і націсніце Enter, каб дадаць яго",
+    "notificationMerchant": "Меткі прадаўца",
+    "notificationMerchantTooltip": "Словы, за якімі ідуць двукроп'е і прадавец (Месца: Крама): увядзіце слова і націсніце Enter, каб дадаць яго",
     "notificationNoApps": "Апавяшчэньняў яшчэ не было: праграмы зьявяцца тут пасьля таго, як дашлюць апавяшчэньне",
     "notificationUnparsed": "Не распазнана",
     "notifyHeadline": "Апрацоўшчык апавяшчэньняў",

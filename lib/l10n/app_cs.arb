@@ -460,6 +460,8 @@
     "notificationGrant": "Udělit přístup",
     "notificationIncome": "Klíčová slova příjmu",
     "notificationIncomeTooltip": "Slova, která označují oznámení jako příjem: napište slovo a stiskněte Enter pro přidání",
+    "notificationMerchant": "Označení obchodníka",
+    "notificationMerchantTooltip": "Slova, za kterými následuje dvojtečka a obchodník (Místo: Obchod): napište slovo a stiskněte Enter pro přidání",
     "notificationNoApps": "Zatím nebyla přijata žádná oznámení: aplikace se zde zobrazí poté, co odešlou oznámení",
     "notificationUnparsed": "Nerozpoznáno",
     "notifyHeadline": "Parser oznámení",

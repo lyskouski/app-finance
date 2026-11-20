@@ -9,7 +9,8 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Tentang';
@@ -102,7 +103,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get balanceDate => 'Tanggal Pembaruan Saldo';
 
   @override
-  String get balanceDateTooltip => 'Pengeluaran dan Pemasukan sebelum tanggal ini tidak akan memengaruhi saldo';
+  String get balanceDateTooltip =>
+      'Pengeluaran dan Pemasukan sebelum tanggal ini tidak akan memengaruhi saldo';
 
   @override
   String get balanceTooltip => 'Atur Saldo';
@@ -321,7 +323,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get confirmHeader => 'Konfirmasi Tindakan';
 
   @override
-  String get confirmTooltip => 'Apakah Anda yakin? Tindakan ini tidak dapat dibatalkan.';
+  String get confirmTooltip =>
+      'Apakah Anda yakin? Tindakan ini tidak dapat dibatalkan.';
 
   @override
   String get contributors => 'Kontributor';
@@ -602,7 +605,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get enableBankingBank => 'Bank';
 
   @override
-  String get enableBankingCode => 'Alamat halaman yang terbuka setelah otorisasi';
+  String get enableBankingCode =>
+      'Alamat halaman yang terbuka setelah otorisasi';
 
   @override
   String get enableBankingCodeTooltip =>
@@ -619,16 +623,19 @@ class AppLocalizationsId extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete => 'Isi ID aplikasi, kunci privat, URL pengalihan, dan negara';
+  String get enableBankingIncomplete =>
+      'Isi ID aplikasi, kunci privat, URL pengalihan, dan negara';
 
   @override
   String get enableBankingKey => 'Kunci privat (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => 'Kunci privat tidak valid: blok PEM \"PRIVATE KEY\" diharapkan';
+  String get enableBankingKeyInvalid =>
+      'Kunci privat tidak valid: blok PEM \"PRIVATE KEY\" diharapkan';
 
   @override
-  String get enableBankingKeyNotRsa => 'Kunci privat tidak valid: kunci RSA diharapkan';
+  String get enableBankingKeyNotRsa =>
+      'Kunci privat tidak valid: kunci RSA diharapkan';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -638,7 +645,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get enableBankingLoadBanks => 'Muat bank';
 
   @override
-  String get enableBankingNoAuthPage => 'Enable Banking tidak mengembalikan halaman otorisasi';
+  String get enableBankingNoAuthPage =>
+      'Enable Banking tidak mengembalikan halaman otorisasi';
 
   @override
   String get enableBankingNoCode => 'Kode otorisasi tidak ditemukan di alamat';
@@ -647,10 +655,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get enableBankingRedirect => 'URL pengalihan';
 
   @override
-  String get enableBankingRedirectTooltip => 'Terdaftar untuk aplikasi; bank kembali ke URL ini setelah otorisasi';
+  String get enableBankingRedirectTooltip =>
+      'Terdaftar untuk aplikasi; bank kembali ke URL ini setelah otorisasi';
 
   @override
-  String get enableBankingStateMismatch => 'Alamat milik otorisasi lain, hubungkan kembali';
+  String get enableBankingStateMismatch =>
+      'Alamat milik otorisasi lain, hubungkan kembali';
 
   @override
   String get encryptionMode => 'Enkripsi Data';
@@ -709,7 +719,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete => 'Isi URL server, kode bank, ID pengguna, dan nomor registrasi produk';
+  String get finTsIncomplete =>
+      'Isi URL server, kode bank, ID pengguna, dan nomor registrasi produk';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -725,13 +736,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint => 'Hanya digunakan untuk sesi ini dan tidak pernah disimpan';
+  String get finTsPinHint =>
+      'Hanya digunakan untuk sesi ini dan tidak pernah disimpan';
 
   @override
   String get finTsProductId => 'Nomor registrasi produk';
 
   @override
-  String get finTsProductIdTooltip => 'Diterbitkan oleh Deutsche Kreditwirtschaft untuk pembuat aplikasi';
+  String get finTsProductIdTooltip =>
+      'Diterbitkan oleh Deutsche Kreditwirtschaft untuk pembuat aplikasi';
 
   @override
   String get finTsTan => 'TAN';
@@ -827,7 +840,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get incomeTooltip => 'Atur Detail Pemasukan';
 
   @override
-  String get integrationAccessDenied => 'Akses telah dicabut atau kredensial salah';
+  String get integrationAccessDenied =>
+      'Akses telah dicabut atau kredensial salah';
 
   @override
   String get integrationConnect => 'Hubungkan';
@@ -853,7 +867,8 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired => 'Hanya alamat aman (HTTPS) yang diizinkan';
+  String get integrationHttpsRequired =>
+      'Hanya alamat aman (HTTPS) yang diizinkan';
 
   @override
   String get integrationImport => 'Impor transaksi';
@@ -872,10 +887,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get integrationNoAccounts => 'Bank tidak memberikan rekening apa pun';
 
   @override
-  String get integrationPaymentRequired => 'Layanan memerlukan pembayaran untuk akses';
+  String get integrationPaymentRequired =>
+      'Layanan memerlukan pembayaran untuk akses';
 
   @override
-  String get integrationSelectTarget => 'Pilih rekening dan kategori anggaran tujuan impor';
+  String get integrationSelectTarget =>
+      'Pilih rekening dan kategori anggaran tujuan impor';
 
   @override
   String integrationServiceError(Object value) {
@@ -883,7 +900,8 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get integrationUnexpectedResponse => 'Respons tak terduga dari layanan';
+  String get integrationUnexpectedResponse =>
+      'Respons tak terduga dari layanan';
 
   @override
   String get invoiceHeadline => 'Faktur';
@@ -981,7 +999,8 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Data tidak ada (atau tidak cukup) untuk ditampilkan';
+  String get noChartData =>
+      'Data tidak ada (atau tidak cukup) untuk ditampilkan';
 
   @override
   String get notificationAccessSettings => 'Akses Notifikasi';
@@ -1025,7 +1044,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get notificationClear => 'Hapus yang ditangkap';
 
   @override
-  String get notificationCurrencyTooltip => 'Jumlah tanpa mata uang (mis. Debit 20.00) diambil dalam mata uang ini';
+  String get notificationCurrencyTooltip =>
+      'Jumlah tanpa mata uang (mis. Debit 20.00) diambil dalam mata uang ini';
 
   @override
   String get notificationDefaultAccount => 'Akun bawaan';
@@ -1043,6 +1063,13 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get notificationIncomeTooltip =>
       'Kata yang menandai notifikasi sebagai pemasukan: ketik kata dan tekan Enter untuk menambahkannya';
+
+  @override
+  String get notificationMerchant => 'Label pedagang';
+
+  @override
+  String get notificationMerchantTooltip =>
+      'Kata yang diikuti titik dua dan nama pedagang (Lokasi: Toko): ketik kata dan tekan Enter untuk menambahkannya';
 
   @override
   String get notificationNoApps =>
@@ -1159,10 +1186,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get privatBankIban => 'IBAN Rekening';
 
   @override
-  String get privatBankIbanInvalid => 'Masukkan IBAN Ukraina: UA diikuti 27 digit';
+  String get privatBankIbanInvalid =>
+      'Masukkan IBAN Ukraina: UA diikuti 27 digit';
 
   @override
-  String get privatBankIbanTooltip => 'API tidak menyediakan daftar rekening: tambahkan IBAN rekening satu per satu';
+  String get privatBankIbanTooltip =>
+      'API tidak menyediakan daftar rekening: tambahkan IBAN rekening satu per satu';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1242,7 +1271,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get secureOtpCode => 'Kode Kata Sandi Sekali Pakai';
 
   @override
-  String get secureOtpCodeInvalid => 'Tidak valid! Silakan ambil kode baru dan masukkan';
+  String get secureOtpCodeInvalid =>
+      'Tidak valid! Silakan ambil kode baru dan masukkan';
 
   @override
   String get secureOtpDeactivated => 'Perlindungan Kata Sandi dinonaktifkan';
@@ -1279,13 +1309,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge mengembalikan alamat akses tanpa kredensial';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge mengembalikan alamat akses tanpa kredensial';
 
   @override
   String get simpleFinToken => 'Token penyiapan SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed => 'Token penyiapan tidak ada atau sudah digunakan';
+  String get simpleFinTokenClaimed =>
+      'Token penyiapan tidak ada atau sudah digunakan';
 
   @override
   String get simpleFinTokenInvalid => 'Token penyiapan SimpleFIN tidak valid';
@@ -1471,7 +1503,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get wiseHeadline => 'Wise API (Global)';
 
   @override
-  String get wiseNoProfiles => 'Tidak ada profil Wise yang tersedia untuk token ini';
+  String get wiseNoProfiles =>
+      'Tidak ada profil Wise yang tersedia untuk token ini';
 
   @override
   String get wiseProfile => 'Profil';

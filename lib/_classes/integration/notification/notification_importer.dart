@@ -35,6 +35,7 @@ class NotificationImporter {
     Currency? appCurrency,
     List<String> income = NotificationParser.incomeKeywords,
     List<String> balance = NotificationParser.balanceKeywords,
+    List<String> merchant = NotificationParser.merchantLabels,
     // Keywords of accounts to be recognized instead of the default one, with their currencies
     Map<String, List<String>> accounts = const {},
     Currency? Function(String account)? currencyOf,
@@ -64,6 +65,7 @@ class NotificationImporter {
         isBare: appCurrency != null,
         income: income,
         balance: balance,
+        merchant: merchant,
       );
       if (parsed == null) {
         pending++;

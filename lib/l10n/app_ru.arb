@@ -460,6 +460,8 @@
     "notificationGrant": "Предоставить доступ",
     "notificationIncome": "Ключевые слова дохода",
     "notificationIncomeTooltip": "Слова, отмечающие уведомление как доход: введите слово и нажмите Enter, чтобы добавить его",
+    "notificationMerchant": "Метки продавца",
+    "notificationMerchantTooltip": "Слова, за которыми следуют двоеточие и продавец (Место: Магазин): введите слово и нажмите Enter, чтобы добавить его",
     "notificationNoApps": "Уведомлений ещё не было: приложения появятся здесь после того, как пришлют уведомление",
     "notificationUnparsed": "Не распознано",
     "notifyHeadline": "Парсер уведомлений",

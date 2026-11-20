@@ -460,6 +460,8 @@
     "notificationGrant": "Dać dostup",
     "notificationIncome": "Klučavyja słovy dachodu",
     "notificationIncomeTooltip": "Słovy, jakija paznačajuć apaviaščennie jak dachod: uviadzicie słova i naciśnicie Enter, kab dadać jaho",
+    "notificationMerchant": "Mietki pradaŭca",
+    "notificationMerchantTooltip": "Słovy, za jakimi iduć dvukropje i pradaviec (Miesca: Krama): uviadzicie słova i naciśnicie Enter, kab dadać jaho",
     "notificationNoApps": "Apaviaščeńniaŭ jašče nie było: prahramy źjaviacca tut paślia taho, jak dašliuć apaviaščeńnie",
     "notificationUnparsed": "Nie raspaznana",
     "notifyHeadline": "Apracoŭščyk Apaviaščeńniaŭ",

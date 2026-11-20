@@ -460,6 +460,8 @@
     "notificationGrant": "Przyznaj dostęp",
     "notificationIncome": "Słowa kluczowe przychodu",
     "notificationIncomeTooltip": "Słowa oznaczające powiadomienie jako przychód: wpisz słowo i naciśnij Enter, aby je dodać",
+    "notificationMerchant": "Etykiety sprzedawcy",
+    "notificationMerchantTooltip": "Słowa, po których następuje dwukropek i sprzedawca (Lokalizacja: Sklep): wpisz słowo i naciśnij Enter, aby je dodać",
     "notificationNoApps": "Nie otrzymano jeszcze powiadomień: aplikacje pojawią się tutaj po wysłaniu powiadomienia",
     "notificationUnparsed": "Nie rozpoznano",
     "notifyHeadline": "Parser powiadomień",

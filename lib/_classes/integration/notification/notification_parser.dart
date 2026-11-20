@@ -161,7 +161,76 @@ class NotificationParser {
     '환불',
   ];
 
+  // Defaults of user-defined keywords: labels of a field with a merchant, "Lokalizacja: ROSSMANN 42", "Merchant: Starbucks"
+  static const merchantLabels = [
+    'merchant',
+    'payee',
+    'location',
+    'place',
+    'store',
+    'shop',
+    'lokalizacja',
+    'miejsce',
+    'odbiorca',
+    'sprzedawca',
+    'händler',
+    'empfänger',
+    'geschäft',
+    'commerçant',
+    'marchand',
+    'bénéficiaire',
+    'lieu',
+    'comercio',
+    'establecimiento',
+    'beneficiario',
+    'esercente',
+    'estabelecimento',
+    'místo',
+    'obchodník',
+    'příjemce',
+    'comerciant',
+    'locație',
+    'işyeri',
+    'winkel',
+    'begunstigde',
+    'место',
+    'магазин',
+    'получатель',
+    'торговая точка',
+    'месца',
+    'атрымальнік',
+    'місце',
+    'отримувач',
+  ];
+
+  static const _letter = r'A-Za-zÀ-ÿĀ-žЀ-ӿ';
+
   static final _merchant = RegExp(r'(?:^|\s)(?:at|bei|chez|в|у|@)\s+([^\n,;]+?)(?=\s*(?:[,;\n]|\.\s|\.$|$))');
+
+  static RegExp toLabelled(List<String> merchant) => RegExp(
+        '(?<![$_letter])(?:${merchant.map(RegExp.escape).join('|')})\\s*:\\s*([^\\n,;]+?)(?=\\s*(?:[,;\\n]|\\.\\s|\\.\$|\$))',
+        caseSensitive: false,
+      );
+
+  static final _labelled = toLabelled(merchantLabels);
+
+  // The latest user-defined labels are kept compiled, they are the same for all notifications of a run
+  static (String, RegExp)? _custom;
+
+  static RegExp? _toLabelled(List<String> merchant) {
+    if (merchant.isEmpty) {
+      return null;
+    }
+    if (identical(merchant, merchantLabels)) {
+      return _labelled;
+    }
+    final key = merchant.join('\n');
+    final custom = _custom;
+    if (custom != null && custom.$1 == key) {
+      return custom.$2;
+    }
+    return (_custom = (key, toLabelled(merchant))).$2;
+  }
 
   static final RegExp _money = () {
     // A currency should not be a part of a word
@@ -238,9 +307,14 @@ class NotificationParser {
     return line.length > 100 ? '${line.substring(0, 99)}…' : line;
   }
 
-  static String getTitle(String text, String fallback) {
-    final merchant = _merchant.firstMatch(text)?.group(1)?.trim();
-    return toLine(merchant != null && merchant.isNotEmpty && !_money.hasMatch(merchant) ? merchant : fallback);
+  static String getTitle(String text, String fallback, {List<String> merchant = merchantLabels}) {
+    for (final pattern in [_toLabelled(merchant), _merchant].nonNulls) {
+      final value = pattern.firstMatch(text)?.group(1)?.trim();
+      if (value != null && value.isNotEmpty && !_money.hasMatch(value)) {
+        return toLine(value);
+      }
+    }
+    return toLine(fallback);
   }
 
   static int? _sign(String? value) => switch (value) {
@@ -263,6 +337,7 @@ class NotificationParser {
     bool isBare = false,
     List<String> income = incomeKeywords,
     List<String> balance = balanceKeywords,
+    List<String> merchant = merchantLabels,
   }) {
     final content = [title, text].where((e) => e.isNotEmpty).join('\n');
     var from = 0;
@@ -279,7 +354,7 @@ class NotificationParser {
       final sign = _sign(match.namedGroup('s0')) ??
           _sign(match.namedGroup('s1')) ??
           (isIncome(content, income: income) ? 1 : -1);
-      final result = (amount: sign * amount, currency: currency, title: getTitle(content, text));
+      final result = (amount: sign * amount, currency: currency, title: getTitle(content, text, merchant: merchant));
       if (!_isWeak(symbol!)) {
         return result;
       }
@@ -288,7 +363,7 @@ class NotificationParser {
     if (weak != null || !isBare || fallback == null) {
       return weak;
     }
-    return _parseBare(content, text, fallback, income: income, balance: balance);
+    return _parseBare(content, text, fallback, income: income, balance: balance, merchant: merchant);
   }
 
   static NotificationParsed? _parseBare(
@@ -297,6 +372,7 @@ class NotificationParser {
     Currency currency, {
     required List<String> income,
     required List<String> balance,
+    required List<String> merchant,
   }) {
     var from = 0;
     for (final match in _bare.allMatches(content)) {
@@ -307,7 +383,7 @@ class NotificationParser {
         continue;
       }
       final sign = _sign(match.namedGroup('s')) ?? (isIncome(content, income: income) ? 1 : -1);
-      return (amount: sign * amount, currency: currency.code, title: getTitle(content, text));
+      return (amount: sign * amount, currency: currency.code, title: getTitle(content, text, merchant: merchant));
     }
     return null;
   }
