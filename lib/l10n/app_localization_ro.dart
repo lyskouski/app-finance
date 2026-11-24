@@ -9,8 +9,7 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Despre';
@@ -103,8 +102,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get balanceDate => 'Data actualizării soldului';
 
   @override
-  String get balanceDateTooltip =>
-      'Rezultatele și veniturile anterioare acestei date nu vor afecta soldul';
+  String get balanceDateTooltip => 'Rezultatele și veniturile anterioare acestei date nu vor afecta soldul';
 
   @override
   String get balanceTooltip => 'Setați soldul';
@@ -323,8 +321,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get confirmHeader => 'Confirmați acțiunea';
 
   @override
-  String get confirmTooltip =>
-      'Sunteți sigur? Această acțiune nu poate fi anulată.';
+  String get confirmTooltip => 'Sunteți sigur? Această acțiune nu poate fi anulată.';
 
   @override
   String get contributors => 'Contributori';
@@ -622,19 +619,16 @@ class AppLocalizationsRo extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete =>
-      'Completați ID-ul aplicației, cheia privată, URL-ul de redirecționare și țara';
+  String get enableBankingIncomplete => 'Completați ID-ul aplicației, cheia privată, URL-ul de redirecționare și țara';
 
   @override
   String get enableBankingKey => 'Cheie privată (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      'Cheie privată nevalidă: se așteaptă un bloc PEM \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid => 'Cheie privată nevalidă: se așteaptă un bloc PEM \"PRIVATE KEY\"';
 
   @override
-  String get enableBankingKeyNotRsa =>
-      'Cheie privată nevalidă: se așteaptă o cheie RSA';
+  String get enableBankingKeyNotRsa => 'Cheie privată nevalidă: se așteaptă o cheie RSA';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -644,23 +638,19 @@ class AppLocalizationsRo extends AppLocalizations {
   String get enableBankingLoadBanks => 'Încarcă băncile';
 
   @override
-  String get enableBankingNoAuthPage =>
-      'Enable Banking nu a returnat nicio pagină de autorizare';
+  String get enableBankingNoAuthPage => 'Enable Banking nu a returnat nicio pagină de autorizare';
 
   @override
-  String get enableBankingNoCode =>
-      'Nu s-a găsit niciun cod de autorizare în adresă';
+  String get enableBankingNoCode => 'Nu s-a găsit niciun cod de autorizare în adresă';
 
   @override
   String get enableBankingRedirect => 'URL de redirecționare';
 
   @override
-  String get enableBankingRedirectTooltip =>
-      'Înregistrat pentru aplicație; banca revine la el după autorizare';
+  String get enableBankingRedirectTooltip => 'Înregistrat pentru aplicație; banca revine la el după autorizare';
 
   @override
-  String get enableBankingStateMismatch =>
-      'Adresa aparține altei autorizări, conectați-vă din nou';
+  String get enableBankingStateMismatch => 'Adresa aparține altei autorizări, conectați-vă din nou';
 
   @override
   String get encryptionMode => 'Criptarea datelor';
@@ -674,8 +664,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get errorExpired => 'Card expirat';
 
   @override
-  String get errorNegative =>
-      'Nu poate fi negativ! Vă rugăm, corectați eroarea';
+  String get errorNegative => 'Nu poate fi negativ! Vă rugăm, corectați eroarea';
 
   @override
   String get example => 'Exemplu';
@@ -710,8 +699,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get finTsBankCode => 'Cod bancar (BLZ)';
 
   @override
-  String get finTsCustomerId =>
-      'ID client (dacă diferă de ID-ul de utilizator)';
+  String get finTsCustomerId => 'ID client (dacă diferă de ID-ul de utilizator)';
 
   @override
   String get finTsDescription =>
@@ -738,15 +726,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint =>
-      'Folosit doar pentru această sesiune și niciodată salvat';
+  String get finTsPinHint => 'Folosit doar pentru această sesiune și niciodată salvat';
 
   @override
   String get finTsProductId => 'Număr de înregistrare al produsului';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Emis de Deutsche Kreditwirtschaft producătorului aplicației';
+  String get finTsProductIdTooltip => 'Emis de Deutsche Kreditwirtschaft producătorului aplicației';
 
   @override
   String get finTsTan => 'TAN';
@@ -842,8 +828,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get incomeTooltip => 'Setați detaliile privind venitul';
 
   @override
-  String get integrationAccessDenied =>
-      'Accesul a fost revocat sau datele de autentificare sunt incorecte';
+  String get integrationAccessDenied => 'Accesul a fost revocat sau datele de autentificare sunt incorecte';
 
   @override
   String get integrationConnect => 'Conectare';
@@ -869,8 +854,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired =>
-      'Sunt permise doar adrese securizate (HTTPS)';
+  String get integrationHttpsRequired => 'Sunt permise doar adrese securizate (HTTPS)';
 
   @override
   String get integrationImport => 'Importă tranzacții';
@@ -889,12 +873,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get integrationNoAccounts => 'Banca nu a furnizat niciun cont';
 
   @override
-  String get integrationPaymentRequired =>
-      'Serviciul solicită o plată pentru acces';
+  String get integrationPaymentRequired => 'Serviciul solicită o plată pentru acces';
 
   @override
-  String get integrationSelectTarget =>
-      'Selectați contul și categoria de buget pentru import';
+  String get integrationSelectTarget => 'Selectați contul și categoria de buget pentru import';
 
   @override
   String integrationServiceError(Object value) {
@@ -902,8 +884,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get integrationUnexpectedResponse =>
-      'Răspuns neașteptat al serviciului';
+  String get integrationUnexpectedResponse => 'Răspuns neașteptat al serviciului';
 
   @override
   String get invoiceHeadline => 'Facturi';
@@ -1001,8 +982,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get noChartData =>
-      'Datele lipsesc (sau nu sunt suficiente) pentru a fi afișate';
+  String get noChartData => 'Datele lipsesc (sau nu sunt suficiente) pentru a fi afișate';
 
   @override
   String get notificationAccessSettings => 'Acces la notificări';
@@ -1046,8 +1026,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get notificationClear => 'Șterge capturate';
 
   @override
-  String get notificationCurrencyTooltip =>
-      'Sumele fără monedă (de ex. Debit 20,00) sunt luate în această monedă';
+  String get notificationCurrencyTooltip => 'Sumele fără monedă (de ex. Debit 20,00) sunt luate în această monedă';
 
   @override
   String get notificationDefaultAccount => 'Cont implicit';
@@ -1074,8 +1053,7 @@ class AppLocalizationsRo extends AppLocalizations {
       'Cuvinte urmate de două puncte și un comerciant (Locație: Magazin): tastați un cuvânt și apăsați Enter pentru a-l adăuga';
 
   @override
-  String get notificationNoApps =>
-      'Nu s-au primit încă notificări: aplicațiile apar aici după ce trimit o notificare';
+  String get notificationNoApps => 'Nu s-au primit încă notificări: aplicațiile apar aici după ce trimit o notificare';
 
   @override
   String get notificationUnparsed => 'Nerecunoscut';
@@ -1102,8 +1080,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get password => 'Parolă';
 
   @override
-  String get path =>
-      'Numele fișierului (în care se salvează sau din care se încarcă)';
+  String get path => 'Numele fișierului (în care se salvează sau din care se încarcă)';
 
   @override
   String get paymentType => 'Interval de plată';
@@ -1157,8 +1134,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get peerPing => 'ping';
 
   @override
-  String get peerSent =>
-      'Datele sunt transferate către dispozitivele conectate';
+  String get peerSent => 'Datele sunt transferate către dispozitivele conectate';
 
   @override
   String get peerStatus => 'Stare';
@@ -1190,8 +1166,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get privatBankIban => 'IBAN-ul contului';
 
   @override
-  String get privatBankIbanInvalid =>
-      'Introduceți un IBAN ucrainean: UA urmat de 27 de cifre';
+  String get privatBankIbanInvalid => 'Introduceți un IBAN ucrainean: UA urmat de 27 de cifre';
 
   @override
   String get privatBankIbanTooltip =>
@@ -1213,8 +1188,7 @@ class AppLocalizationsRo extends AppLocalizations {
       'Cum obțineți un token Autoclient:\n1. Autentificați-vă în Privat24 for Business\n2. Deschideți Integrare (Autoclient)\n3. Activați-o și copiați tokenul\n4. Lipiți-l mai jos și apăsați „Conectare”\n5. Adăugați IBAN-urile conturilor de importat';
 
   @override
-  String get privatBankTokenTooltip =>
-      'Emis în Privat24 for Business la Integrare (Autoclient); stocat criptat';
+  String get privatBankTokenTooltip => 'Emis în Privat24 for Business la Integrare (Autoclient); stocat criptat';
 
   @override
   String get processIsFinished => 'Terminat!';
@@ -1263,12 +1237,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get searchTooltip => 'Căutare';
 
   @override
-  String get secureBioNotMatch =>
-      'Autentificare eșuată! Vă rugăm să încercați din nou';
+  String get secureBioNotMatch => 'Autentificare eșuată! Vă rugăm să încercați din nou';
 
   @override
-  String get secureBioPromptReason =>
-      'Vă rugăm să vă autentificați pentru a continua';
+  String get secureBioPromptReason => 'Vă rugăm să vă autentificați pentru a continua';
 
   @override
   String get secureBioPromptTitle => 'Autentificare biometrică';
@@ -1277,8 +1249,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get secureOtpCode => 'Cod parolă unică';
 
   @override
-  String get secureOtpCodeInvalid =>
-      'Cod invalid! Vă rugăm să generați un cod nou și să-l introduceți';
+  String get secureOtpCodeInvalid => 'Cod invalid! Vă rugăm să generați un cod nou și să-l introduceți';
 
   @override
   String get secureOtpDeactivated => 'Protecția cu parolă este dezactivată';
@@ -1315,15 +1286,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'SimpleFIN Bridge a returnat o adresă de acces fără date de autentificare';
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge a returnat o adresă de acces fără date de autentificare';
 
   @override
   String get simpleFinToken => 'Token de configurare SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed =>
-      'Tokenul de configurare nu există sau a fost deja folosit';
+  String get simpleFinTokenClaimed => 'Tokenul de configurare nu există sau a fost deja folosit';
 
   @override
   String get simpleFinTokenInvalid => 'Token de configurare SimpleFIN nevalid';
@@ -1460,8 +1429,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get total => 'total';
 
   @override
-  String get transactionFile =>
-      'Fișierul jurnal al tranzacțiilor Fingrom (.log)';
+  String get transactionFile => 'Fișierul jurnal al tranzacțiilor Fingrom (.log)';
 
   @override
   String get transferHeadline => 'Transfer';
@@ -1510,8 +1478,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get wiseHeadline => 'Wise API (Global)';
 
   @override
-  String get wiseNoProfiles =>
-      'Nu există profiluri Wise disponibile pentru token';
+  String get wiseNoProfiles => 'Nu există profiluri Wise disponibile pentru token';
 
   @override
   String get wiseProfile => 'Profil';
