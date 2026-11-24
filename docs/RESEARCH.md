@@ -1,6 +1,6 @@
 # Fingrom: Competitive & Market Research
 
-> Date: 2026-10-25
+> Date: 2026-11-24
 
 > Scope: personal finance / budgeting applications that a Fingrom user could pick instead.
 
@@ -10,7 +10,7 @@
 
 **Method & caveats**
 
-- Fingrom's baseline comes from the [README](../README.md) and checks against the code in `lib/` (October 2026).
+- Fingrom's baseline comes from the [README](../README.md) and checks against the code in `lib/` (November 2026).
 - Competitor data comes from vendor pages, app store listings, independent reviews and 2025–2026 roundups. Prices
   change often, and many roundups are written by competing vendors, so treat prices as approximate.
 - User demand comes from: the top-voted feature requests in public GitHub trackers (Actual Budget, Cashew, Ivy Wallet),
@@ -31,7 +31,8 @@
 | Transactions | Bills, incomes, transfers, recurring payments, split bill, category prediction, filtering/search |
 | Goals | Goals with a gauge chart |
 | Analytics | Monte Carlo budget forecast, OHLC account chart, income health radar, currency distribution, YTD, bar race, currency history |
-| Data | Import CSV/QIF/OFX; export XLSX; recovery via WebDAV or file; encryption |
+| Data | Import CSV/QIF/OFX/MT940/camt.053; export XLSX; recovery via WebDAV or file; encryption |
+| Integrations | FinTS 4.1 (Germany), SimpleFIN (US), Enable Banking PSD2 (EU), Wise Personal API (global), PrivatBank Autoclient (Ukraine), Monobank Personal API (Ukraine), and Android notification auto-capture |
 | Sync | Serverless P2P sync between devices (WebRTC) |
 | Security | TOTP code, recovery code, biometrics |
 | UX | Configurable dashboard per screen size, adaptive navigation, themes and custom palettes, zoom 60–200%, keyboard shortcuts, Android home widget (recurring payments) |
@@ -46,7 +47,7 @@
 | App | Platforms | Price (approx., 2026) | Strong options |
 | --- | --------- | --------------------- | -------------- |
 | **YNAB** | iOS, Android, Web | $14.99/mo or ~$109/yr | Zero-based "give every dollar a job" method, Age of Money, target-based category goals, loan planner, strong education/community. *Weak:* price, learning curve, and backlash against the June 2026 redesign and in-app promotions |
-| **Monarch Money** | iOS, Android, Web | $14.99/mo or $99.99/yr (Plus ~$199/yr) | The main Mint successor. Household sharing at no extra cost, investments and net worth, AI assistant (Dec 2025), receipt scanning, equity tracking, cash-flow forecasting, rental/business tracking in the Plus plan |
+| **Monarch Money** | iOS, Android, Web | $14.99/mo or $99.99/yr (Plus ~$199/yr) | The main Mint successor. Household sharing at no extra cost, investments and net worth, AI assistant and MCP integration (2026), receipt scanning, equity tracking, cash-flow forecasting, rental/business tracking in the Plus plan |
 | **Copilot Money** | iOS/macOS, Web (since Dec 2025) | $13/mo or $95/yr | Polished native UX, AI auto-categorization that learns from corrections, rollover budgets, spending pace, subscription detection. No Android app |
 | **Rocket Money** | iOS, Android, Web | Free / $7–14/mo | Subscription detection and cancellation concierge, bill negotiation, credit score |
 | **Quicken Simplifi** | iOS, Android, Web | ~$6/mo | Spending plan ("what's left"), projected cash flow, watchlists |
@@ -95,8 +96,8 @@ Legend: ✅ supported · ⚠️ partial/limited · ❌ missing
 | Works fully offline / local-first | ✅ | ✅ | ❌ | ✅ | ⚠️ | ✅ | ❌ | ❌ |
 | Multi-currency + crypto | ✅ | ⚠️ | ✅ | ✅ | ✅ | ✅ | ❌ | ⚠️ |
 | Device sync | ✅ P2P | ✅ server | ✅ server | ✅ GDrive | ✅ cloud | ⚠️ backup | ✅ | ✅ |
-| Automatic bank sync | ❌ | ✅ | ⚠️ (importer) | ❌ | ✅ | ❌ | ✅ | ✅ |
-| Notification/SMS auto-capture | ❌ | ❌ | ❌ | ✅ | ❌ | ⚠️ | ❌ | ❌ |
+| Automatic bank sync | ⚠️ (regional/direct integrations) | ✅ | ⚠️ (importer) | ❌ | ✅ | ❌ | ✅ | ✅ |
+| Notification/SMS auto-capture | ✅ Android notifications | ❌ | ❌ | ✅ | ❌ | ⚠️ | ❌ | ❌ |
 | User-defined rules (auto-categorize/rename) | ⚠️ (prediction only) | ✅ | ✅ | ⚠️ | ✅ | ❌ | ⚠️ | ✅ |
 | Tags / labels | ❌ | ✅ | ✅ | ⚠️ | ✅ | ❌ | ⚠️ (flags) | ✅ |
 | Payees / merchants as entities | ❌ | ✅ | ✅ | ⚠️ | ✅ | ❌ | ✅ | ✅ |
@@ -143,6 +144,9 @@ only on some platforms.*
 6. **Engineering quality.** Unit, widget and E2E coverage. By contrast, the closest Flutter competitor (Cashew) has a
    103k-LOC codebase with zero tests, and Ivy Wallet is abandoned. This means Fingrom can credibly be a *maintained*
    successor for those users.
+7. **Broad, privacy-conscious import options.** Beyond file formats, Fingrom now integrates FinTS, SimpleFIN, Enable
+   Banking, Wise, PrivatBank and Monobank. This combines regional bank coverage with a local-first and read-only import
+   model instead of relying on one commercial account aggregator.
 
 **Perception risks to address**
 
@@ -162,7 +166,7 @@ Priority = user demand × competitive pressure × fit with Fingrom's privacy/off
 
 | # | Gap | Evidence / who has it | Suggested approach for Fingrom | Related issue |
 | - | --- | --------------------- | ------------------------------ | ------------- |
-| 1 | **Automatic transaction capture** | Manual entry is the #1 friction. Bank sync is a "must-have" in every 2026 checklist, but it is also the #1 source of negative reviews (34% of 1–3★, caused by Plaid/MX breakage) | Use cheap, private capture first: **Android notification/SMS parser** (Cashew's most-loved feature), share-intent from banking apps, Shortcuts/Tasker/app links. Then add opt-in open banking: **Enable Banking** (EU), **FinTS** (DE), **SimpleFIN** (US). GoCardless stopped taking new sign-ups in July 2025 | #120, #314, #252, #630 |
+| 1 | **Automatic transaction capture** | Manual entry is the #1 friction. Bank sync is a "must-have" in every 2026 checklist, but it is also a major source of negative reviews because third-party aggregators break. | **Partially delivered:** Android Notification Listener capture, merchant and currency parsing, account keywords, custom income/balance/merchant patterns, and background/foreground auto-import are implemented. Broaden direct bank integrations, add share-intent/Shortcuts/Tasker and SMS support where permitted, and keep file/API fallbacks. | #120, #314, #252, #630 |
 | 2 | **Tags and payees** | Top request in Cashew ("Payer, Payee, and Tag functionality much needed", #birthday/#amazon tags) and Actual. Standard in Firefly, Wallet, Toshl, Monarch | Add free-form tags (cross-category reporting, e.g. trips, events), and payees with a default category, which also feeds the prediction | — |
 | 3 | **Rules engine** | Core to Actual, Firefly, Monarch, Lunch Money. Essential once imports or auto-capture exist | "If description/payee/amount matches → set category, tags, rename". Run on import and capture | #275 |
 | 4 | **Receipt attachments and scanning** | Wallet, Money Manager, Firefly have attachments. Monarch shipped receipt scanning in Dec 2025. Requested in Ivy | Store images per bill (encrypted, synced via P2P), then add on-device OCR (ML Kit / Apple Vision) to prefill amount, date and merchant | #321, #293 |
@@ -221,9 +225,9 @@ Ranked from the strongest signals across surveys, review analyses and issue trac
 
 | Phase | Items | Why first |
 | ----- | ----- | --------- |
-| **Next** | Tags + payees (#2), rules (#3), local notifications (#5), CSV/JSON export + importers for Ivy/Cashew/YNAB/Mint (#9) | Low effort, unblock everything else, and capture users of abandoned or stalled apps |
-| **Then** | Android notification parser (#1, #120), receipt attachments → OCR (#4, #321, #293), rollover (#6), loans (#7, #309) | High demand with an offline-first approach |
-| **Later** | Open banking (Enable Banking / FinTS / SimpleFIN) (#1, #314), custom reports (#8), household sharing (#11), investments (#15), on-device AI (#16) | Larger scope or external dependencies |
+| **Next** | Tags + payees (#2), rules (#3), bill/local notifications (#5), CSV/JSON export + importers for Ivy/Cashew/YNAB/Mint (#9), bulk edit/undo (#8.3) | Low effort, unblock everything else, and capture users of abandoned or stalled apps |
+| **Then** | Expand direct integrations and notification coverage (#1), receipt attachments → OCR (#4, #321, #293), rollover (#6), loans (#7, #309) | High demand with an offline-first approach |
+| **Later** | Custom reports (#8), household sharing (#11), investments (#15), on-device AI (#16) | Larger scope or external dependencies |
 | **Positioning** | Reconsider the license for F-Droid/FLOSS perception. Add an analytics opt-out or a tracker-free flavor. Market Fingrom as "the maintained, free, cross-platform, private alternative to Mint/Ivy/Cashew" | Low cost, high trust impact |
 
 ---
@@ -351,6 +355,11 @@ self-hosting (Firefly's #1 barrier).
 ---
 
 ## Sources
+
+- Fingrom implementation snapshot (2026-11-24): [README feature list](../README.md), notification parser/controller under `lib/_classes/integration/notification/`, direct integrations under `lib/_classes/integration/`.
+- Android platform: [NotificationListenerService](https://developer.android.com/reference/android/service/notification/NotificationListenerService), including notification-access permission and listener callback behavior.
+- Open banking providers: [Enable Banking documentation](https://enablebanking.com/docs/), [SimpleFIN specification](https://www.simplefin.org/), [Wise Platform documentation](https://docs.wise.com/).
+- Current competitor update: [Monarch October 2026 product update](https://www.monarch.com/blog/october-product-update), including MCP, savings recommendations and transaction/report filters.
 
 - Roundups and pricing: [Penny Hoarder: Best budgeting apps 2026](https://www.thepennyhoarder.com/budgeting/best-budgeting-apps/),
   [Forbes Advisor: Best budgeting apps 2026](https://www.forbes.com/advisor/banking/best-budgeting-apps/),
