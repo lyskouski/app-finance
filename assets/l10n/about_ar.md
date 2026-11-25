@@ -80,6 +80,7 @@
   - Enable Banking (EU): استيراد الأرصدة والمعاملات من البنوك الأوروبية (PSD2)
   - Wise API (Global): استيراد الأرصدة والمعاملات لحسابات Wise متعددة العملات (رمز API شخصي)
   - Investec Programmable Banking (جنوب أفريقيا): استيراد الأرصدة والمعاملات لحسابات Private Banking (مفاتيح API خاصة)
+  - Monzo Developer API (المملكة المتحدة): استيراد الأرصدة والمعاملات (عميل OAuth خاص للاستخدام الشخصي)
   - PrivatBank Autoclient (أوكرانيا): استيراد أرصدة ومعاملات حسابات الأعمال في Privat24 for Business (رمز Autoclient)
   - monobank Personal API (أوكرانيا): استيراد أرصدة ومعاملات بطاقات وحصالات monobank (رمز شخصي)
   - محلل الإخطارات (Android): معاملات من إشعارات تطبيقات البنوك والدفع

@@ -1014,6 +1014,62 @@ class AppLocalizationsAr extends AppLocalizations {
       'يُصدر على api.monobank.ua بعد مسح رمز QR في تطبيق monobank؛ ويُحفظ مشفرًا';
 
   @override
+  String get monzoApprove =>
+      'وافق على الوصول في تطبيق Monzo، ثم اضغط «اتصال» مرة أخرى';
+
+  @override
+  String get monzoClientId => 'معرّف العميل';
+
+  @override
+  String get monzoClientSecret => 'سر العميل';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'يظهر لعميل OAuth في developers.monzo.com؛ ويُخزَّن مشفّرًا. اتركه فارغًا للاحتفاظ بالسر المخزَّن';
+
+  @override
+  String get monzoCode => 'عنوان الصفحة المفتوحة بعد تسجيل الدخول';
+
+  @override
+  String get monzoCodeTooltip =>
+      'إذا لم يُفتح Fingrom تلقائيًا، فانسخ العنوان من المتصفح والصقه هنا';
+
+  @override
+  String get monzoDescription =>
+      'استيراد الأرصدة والمعاملات لحسابات Monzo باستخدام عميل OAuth الخاص بك المسجَّل في developers.monzo.com (للاستخدام الشخصي فقط). الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get monzoExpired => 'انتهت صلاحية الوصول إلى Monzo: اتصل مجددًا';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'السجل الكامل متاح حتى $value: اختر تاريخًا أقدم واستورد الآن. لاحقًا يوفّر Monzo آخر 90 يومًا فقط';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (المملكة المتحدة)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'يوفّر Monzo آخر 90 يومًا فقط: تُستورد المعاملات منذ $value';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'املأ معرّف العميل وسر العميل وعنوان URL لإعادة التوجيه';
+
+  @override
+  String get monzoRedirect => 'عنوان URL لإعادة التوجيه';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'اضبط هذا العنوان بالضبط لعميل OAuth؛ يعود إليه Monzo بعد تسجيل الدخول';
+
+  @override
+  String get monzoSteps =>
+      'كيفية الاتصال:\n1. سجّل الدخول إلى developers.monzo.com بالبريد الإلكتروني لحساب Monzo الخاص بك\n2. افتح Clients → New OAuth Client، واختر «Confidential»، واضبط عنوان URL لإعادة التوجيه الموضّح أدناه\n3. انسخ معرّف العميل وسر العميل، والصقهما أدناه، واضغط «اتصال»\n4. افتح الرابط المرسَل عبر البريد الإلكتروني، ووافق على الوصول في تطبيق Monzo، واضغط «اتصال» مرة أخرى\n5. استورد فورًا: السجل الكامل متاح لمدة 5 دقائق فقط بعد الموافقة، ولاحقًا آخر 90 يومًا فقط';
+
+  @override
   String get navigationTooltip => 'فتح القائمة الرئيسية';
 
   @override

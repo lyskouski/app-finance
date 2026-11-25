@@ -11,6 +11,7 @@ import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart'
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/investec_widget.dart';
 import 'package:app_finance/pages/integration/widgets/monobank_widget.dart';
+import 'package:app_finance/pages/integration/widgets/monzo_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
@@ -64,6 +65,12 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
           builder: (_) => const MonobankWidget(),
         ),
         (
+          id: 'monzo',
+          title: AppLocale.labels.monzoHeadline,
+          icon: Icons.contactless_outlined,
+          builder: (_) => const MonzoWidget(),
+        ),
+        (
           id: 'privatbank',
           title: AppLocale.labels.privatBankHeadline,
           icon: Icons.business_center_outlined,
@@ -96,6 +103,7 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
         initiallyExpanded: switch (item.id) {
           'enablebanking' => DeepLinkHandler.enableBankingCallback.value != null,
           'teller' => DeepLinkHandler.tellerCallback.value != null,
+          'monzo' => DeepLinkHandler.monzoCallback.value != null,
           _ => false,
         },
         childrenPadding: EdgeInsets.fromLTRB(indent * 2, 0, indent * 2, indent * 2),

@@ -1005,6 +1005,60 @@ class AppLocalizationsJa extends AppLocalizations {
       'monobank アプリで QR コードをスキャンすると api.monobank.ua で発行されます。暗号化して保存されます';
 
   @override
+  String get monzoApprove => 'Monzo アプリでアクセスを承認してから、もう一度「接続」を押してください';
+
+  @override
+  String get monzoClientId => 'クライアント ID';
+
+  @override
+  String get monzoClientSecret => 'クライアントシークレット';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'developers.monzo.com の OAuth クライアントに表示され、暗号化して保存されます。保存済みのシークレットを使う場合は空欄のままにしてください';
+
+  @override
+  String get monzoCode => 'サインイン後に開いたページのアドレス';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Fingrom が自動的に開かなかった場合は、ブラウザーのアドレスをコピーしてここに貼り付けてください';
+
+  @override
+  String get monzoDescription =>
+      'developers.monzo.com に登録した独自の OAuth クライアントで Monzo 口座の残高と取引をインポートします（個人利用のみ）。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get monzoExpired => 'Monzo へのアクセスの有効期限が切れました。もう一度接続してください';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return '$value まで全履歴を取得できます。より前の日付を選んで今すぐインポートしてください。その後、Monzo は直近 90 日分のみ提供します';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API（英国）';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo は直近 90 日分のみ提供します。取引は $value からインポートされます';
+  }
+
+  @override
+  String get monzoIncomplete => 'クライアント ID、クライアントシークレット、リダイレクトURLを入力してください';
+
+  @override
+  String get monzoRedirect => 'リダイレクトURL';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'OAuth クライアントにこのアドレスをそのまま設定してください。サインイン後、Monzo はここに戻ります';
+
+  @override
+  String get monzoSteps =>
+      '接続方法:\n1. Monzo アカウントのメールアドレスで developers.monzo.com にサインインします\n2. Clients → New OAuth Client を開き、「Confidential」を選んで、下に表示されたリダイレクトURLを設定します\n3. クライアント ID とクライアントシークレットをコピーして下に貼り付け、「接続」を押します\n4. メールで届いたリンクを開き、Monzo アプリでアクセスを承認して、もう一度「接続」を押します\n5. すぐにインポートしてください: 全履歴は承認後 5 分間のみ取得でき、その後は直近 90 日分のみです';
+
+  @override
   String get navigationTooltip => 'メインメニューを開く';
 
   @override

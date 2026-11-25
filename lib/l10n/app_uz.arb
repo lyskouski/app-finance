@@ -434,6 +434,31 @@
     "monobankToken": "Shaxsiy token",
     "monobankTokenSteps": "Shaxsiy tokenni qanday olish mumkin:\n1. Brauzerda api.monobank.ua ni oching\n2. QR kodni monobank ilovasi bilan skanerlang va ruxsatni tasdiqlang\n3. Tokenni sahifadan nusxalang\n4. Uni pastga joylashtiring va \"Ulanish\" tugmasini bosing\n5. Har bir karta yoki jamg‘arma bankani hisobga bog‘lang (yoki hisob yarating) va import qiling",
     "monobankTokenTooltip": "monobank ilovasida QR kod skanerlangandan so‘ng api.monobank.ua da beriladi; shifrlangan holda saqlanadi",
+    "monzoApprove": "Monzo ilovasida kirishni tasdiqlang, so‘ng yana «Ulanish» tugmasini bosing",
+    "monzoClientId": "Mijoz ID",
+    "monzoClientSecret": "Mijoz maxfiy kodi",
+    "monzoClientSecretTooltip": "developers.monzo.com saytida OAuth mijozi uchun ko‘rsatiladi; shifrlangan holda saqlanadi. Saqlangan maxfiy kodni qoldirish uchun bo‘sh qoldiring",
+    "monzoCode": "Kirishdan keyin ochilgan sahifa manzili",
+    "monzoCodeTooltip": "Agar Fingrom avtomatik ochilmagan bo‘lsa, manzilni brauzerdan nusxalab, shu yerga joylashtiring",
+    "monzoDescription": "developers.monzo.com saytida ro‘yxatdan o‘tkazilgan o‘z OAuth mijozingiz orqali Monzo hisoblarining qoldiqlari va tranzaksiyalarini import qiling (faqat shaxsiy foydalanish uchun). Kirish faqat o‘qish uchun: to‘lovlar amalga oshirilmaydi.",
+    "monzoExpired": "Monzo’ga kirish muddati tugadi: qayta ulaning",
+    "monzoFullHistory": "To‘liq tarix {value} gacha mavjud: oldinroq sanani tanlang va hozir import qiling. Keyin Monzo faqat oxirgi 90 kunni taqdim etadi",
+    "@monzoFullHistory": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoHeadline": "Monzo Developer API (Buyuk Britaniya)",
+    "monzoHistoryLimited": "Monzo faqat oxirgi 90 kunni taqdim etadi: tranzaksiyalar {value} dan boshlab import qilinadi",
+    "@monzoHistoryLimited": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoIncomplete": "Mijoz ID, mijoz maxfiy kodi va yo‘naltirish URL manzilini to‘ldiring",
+    "monzoRedirect": "Yo'naltirish URL manzili",
+    "monzoRedirectTooltip": "OAuth mijozi uchun aynan shu manzilni belgilang; kirishdan so‘ng Monzo unga qaytaradi",
+    "monzoSteps": "Qanday ulanish mumkin:\n1. Monzo hisobingiz elektron pochtasi bilan developers.monzo.com saytiga kiring\n2. Clients → New OAuth Client bo‘limini oching, «Confidential»ni tanlang va quyida ko‘rsatilgan yo‘naltirish URL manzilini belgilang\n3. Mijoz ID va mijoz maxfiy kodini nusxalang, quyiga joylang va «Ulanish» tugmasini bosing\n4. Elektron pochta orqali yuborilgan havolani oching, Monzo ilovasida kirishni tasdiqlang va yana «Ulanish» tugmasini bosing\n5. Darhol import qiling: to‘liq tarix tasdiqlashdan keyin faqat 5 daqiqa davomida mavjud, keyin faqat oxirgi 90 kun",
     "navigationTooltip": "Asosiy menyuni oching",
     "netProfit": "Foyda: {value}",
     "@netProfit": {

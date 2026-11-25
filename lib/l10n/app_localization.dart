@@ -2023,6 +2023,96 @@ abstract class AppLocalizations {
   /// **'Issued at api.monobank.ua after scanning the QR code in the Monobank app; stored encrypted'**
   String get monobankTokenTooltip;
 
+  /// No description provided for @monzoApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve the access in the Monzo app, then press \"Connect\" again'**
+  String get monzoApprove;
+
+  /// No description provided for @monzoClientId.
+  ///
+  /// In en, this message translates to:
+  /// **'Client ID'**
+  String get monzoClientId;
+
+  /// No description provided for @monzoClientSecret.
+  ///
+  /// In en, this message translates to:
+  /// **'Client Secret'**
+  String get monzoClientSecret;
+
+  /// No description provided for @monzoClientSecretTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown for the OAuth client at developers.monzo.com; stored encrypted. Leave empty to keep the stored one'**
+  String get monzoClientSecretTooltip;
+
+  /// No description provided for @monzoCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Address of the Page Opened after the Sign-in'**
+  String get monzoCode;
+
+  /// No description provided for @monzoCodeTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'If Fingrom has not been opened automatically, copy the address from the browser and paste it here'**
+  String get monzoCodeTooltip;
+
+  /// No description provided for @monzoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of Monzo accounts with your own OAuth client registered at developers.monzo.com (for personal use only). Access is read-only: no payments are made.'**
+  String get monzoDescription;
+
+  /// No description provided for @monzoExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'The access to Monzo has expired: connect again'**
+  String get monzoExpired;
+
+  /// No description provided for @monzoFullHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'The full history is available until {value}: choose an earlier date and import now. Later Monzo provides only the last 90 days'**
+  String monzoFullHistory(Object value);
+
+  /// No description provided for @monzoHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Monzo Developer API (United Kingdom)'**
+  String get monzoHeadline;
+
+  /// No description provided for @monzoHistoryLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Monzo provides only the last 90 days: transactions are imported since {value}'**
+  String monzoHistoryLimited(Object value);
+
+  /// No description provided for @monzoIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the client ID, the client secret, and the redirect URL'**
+  String get monzoIncomplete;
+
+  /// No description provided for @monzoRedirect.
+  ///
+  /// In en, this message translates to:
+  /// **'Redirect URL'**
+  String get monzoRedirect;
+
+  /// No description provided for @monzoRedirectTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Set exactly this address for the OAuth client; Monzo returns to it after the sign-in'**
+  String get monzoRedirectTooltip;
+
+  /// No description provided for @monzoSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'How to connect:\n1. Sign in at developers.monzo.com with the email of your Monzo account\n2. Open Clients → New OAuth Client, choose \"Confidential\", and set the redirect URL shown below\n3. Copy the client ID and the client secret, paste them below, and press \"Connect\"\n4. Open the link sent by email, approve the access in the Monzo app, and press \"Connect\" again\n5. Import right away: the full history is available only for 5 minutes after the approval, later only the last 90 days'**
+  String get monzoSteps;
+
   /// No description provided for @navigationTooltip.
   ///
   /// In en, this message translates to:

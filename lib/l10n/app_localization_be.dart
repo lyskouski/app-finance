@@ -1021,6 +1021,63 @@ class AppLocalizationsBe extends AppLocalizations {
       'Выдаецца на api.monobank.ua пасля сканавання QR-кода ў дадатку monobank; захоўваецца ў зашыфраваным выглядзе';
 
   @override
+  String get monzoApprove =>
+      'Пацвердзіце доступ у праграме Monzo, потым зноў націсніце «Падлучыцца»';
+
+  @override
+  String get monzoClientId => 'ID кліента';
+
+  @override
+  String get monzoClientSecret => 'Сакрэт кліента';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'Паказваецца для OAuth-кліента на developers.monzo.com; захоўваецца ў зашыфраваным выглядзе. Пакіньце пустым, каб захаваць бягучы сакрэт';
+
+  @override
+  String get monzoCode => 'Адрас старонкі пасля ўваходу';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Калі Fingrom не адкрыўся аўтаматычна, скапіруйце адрас з браўзера і ўстаўце яго сюды';
+
+  @override
+  String get monzoDescription =>
+      'Імпарт рэшткаў і аперацый рахункаў Monzo з уласным OAuth-кліентам, зарэгістраваным на developers.monzo.com (толькі для асабістага выкарыстання). Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get monzoExpired =>
+      'Тэрмін доступу да Monzo скончыўся: падлучыцеся зноў';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'Поўная гісторыя даступная да $value: выберыце больш ранную дату і імпартуйце зараз. Пазней Monzo дае толькі апошнія 90 дзён';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (Вялікабрытанія)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo дае толькі апошнія 90 дзён: аперацыі імпартуюцца з $value';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'Запоўніце ID кліента, сакрэт кліента і URL перанакіравання';
+
+  @override
+  String get monzoRedirect => 'URL перанакіравання';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'Задайце менавіта гэты адрас для OAuth-кліента; пасля ўваходу Monzo вяртае на яго';
+
+  @override
+  String get monzoSteps =>
+      'Як падлучыцца:\n1. Увайдзіце на developers.monzo.com з электроннай поштай вашага акаўнта Monzo\n2. Адкрыйце Clients → New OAuth Client, выберыце «Confidential» і задайце URL перанакіравання, паказаны ніжэй\n3. Скапіруйце ID кліента і сакрэт кліента, устаўце іх ніжэй і націсніце «Падлучыцца»\n4. Адкрыйце спасылку з ліста, пацвердзіце доступ у праграме Monzo і зноў націсніце «Падлучыцца»\n5. Імпартуйце адразу: поўная гісторыя даступная толькі 5 хвілін пасля пацвярджэння, пазней — толькі апошнія 90 дзён';
+
+  @override
   String get navigationTooltip => 'Адкрыць галоўнае меню';
 
   @override
@@ -2649,6 +2706,63 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   @override
   String get monobankTokenTooltip =>
       'Vydajecca na api.monobank.ua paślia skanavannia QR-koda ŭ dadatku monobank; zachoŭvajecca ŭ zašyfravanym vyhladzie';
+
+  @override
+  String get monzoApprove =>
+      'Paćvierdzicie dostup u prahramie Monzo, potym znoŭ naciśnicie «Padłučycca»';
+
+  @override
+  String get monzoClientId => 'ID klijenta';
+
+  @override
+  String get monzoClientSecret => 'Sakret klijenta';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'Pakazvajecca dla OAuth-klijenta na developers.monzo.com; zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy sakret';
+
+  @override
+  String get monzoCode => 'Adras staronki paslia ŭvachodu';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Kali Fingrom nie adkryŭsia aŭtamatyčna, skapirujcie adras z braŭziera i ŭstaŭcie jaho siudy';
+
+  @override
+  String get monzoDescription =>
+      'Impart reštkaŭ i aperacyj rachunkaŭ Monzo z ułasnym OAuth-klijentam, zarehistravanym na developers.monzo.com (toĺki dla asabistaha vykarystannia). Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get monzoExpired =>
+      'Termin dostupu da Monzo skončyŭsia: padłučycieśsia znoŭ';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'Poŭnaja historyja dastupnaja da $value: vybierycie bolš rannuju datu i impartujcie zaraz. Paźniej Monzo daje toĺki apošnija 90 dzion';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (Vialikabrytanija)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo daje toĺki apošnija 90 dzion: aperacyi impartujucca z $value';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'Zapoŭnicie ID klijenta, sakret klijenta i URL pieranakiravannia';
+
+  @override
+  String get monzoRedirect => 'URL pieranakiravannia';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'Zadajcie mienavita hety adras dla OAuth-klijenta; paslia ŭvachodu Monzo viartaje na jaho';
+
+  @override
+  String get monzoSteps =>
+      'Jak padłučycca:\n1. Uvajdzicie na developers.monzo.com z elektronnaj poštaj vašaha akaŭnta Monzo\n2. Adkryjcie Clients → New OAuth Client, vybierycie «Confidential» i zadajcie URL pieranakiravannia, pakazany nižej\n3. Skapirujcie ID klijenta i sakret klijenta, ustaŭcie ich nižej i naciśnicie «Padłučycca»\n4. Adkryjcie spasyłku z lista, paćvierdzicie dostup u prahramie Monzo i znoŭ naciśnicie «Padłučycca»\n5. Impartujcie adrazu: poŭnaja historyja dastupnaja toĺki 5 chvilin paslia paćvierdžańnia, paźniej — toĺki apošnija 90 dzion';
 
   @override
   String get navigationTooltip => 'Adkryć haloŭnaje mieniu';

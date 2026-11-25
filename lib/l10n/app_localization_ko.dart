@@ -1006,6 +1006,60 @@ class AppLocalizationsKo extends AppLocalizations {
       'monobank 앱에서 QR 코드를 스캔한 후 api.monobank.ua에서 발급됩니다. 암호화되어 저장됩니다';
 
   @override
+  String get monzoApprove => 'Monzo 앱에서 접근을 승인한 후 \"연결\"을 다시 누르세요';
+
+  @override
+  String get monzoClientId => '클라이언트 ID';
+
+  @override
+  String get monzoClientSecret => '클라이언트 시크릿';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'developers.monzo.com의 OAuth 클라이언트에 표시되며 암호화되어 저장됩니다. 저장된 시크릿을 유지하려면 비워 두세요';
+
+  @override
+  String get monzoCode => '로그인 후 열린 페이지 주소';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Fingrom이 자동으로 열리지 않았다면 브라우저의 주소를 복사하여 여기에 붙여넣으세요';
+
+  @override
+  String get monzoDescription =>
+      'developers.monzo.com에 등록한 자체 OAuth 클라이언트로 Monzo 계좌의 잔액과 거래를 가져옵니다(개인 용도 전용). 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+
+  @override
+  String get monzoExpired => 'Monzo 접근 권한이 만료되었습니다. 다시 연결하세요';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return '전체 내역은 $value까지 이용할 수 있습니다. 더 이른 날짜를 선택하고 지금 가져오세요. 이후에는 Monzo가 최근 90일만 제공합니다';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (영국)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo는 최근 90일만 제공합니다. 거래는 $value부터 가져옵니다';
+  }
+
+  @override
+  String get monzoIncomplete => '클라이언트 ID, 클라이언트 시크릿, 리디렉션 URL을 입력하세요';
+
+  @override
+  String get monzoRedirect => '리디렉션 URL';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'OAuth 클라이언트에 정확히 이 주소를 설정하세요. 로그인 후 Monzo가 이 주소로 돌아옵니다';
+
+  @override
+  String get monzoSteps =>
+      '연결 방법:\n1. Monzo 계정의 이메일로 developers.monzo.com에 로그인합니다\n2. Clients → New OAuth Client를 열고 \"Confidential\"을 선택한 뒤 아래에 표시된 리디렉션 URL을 설정합니다\n3. 클라이언트 ID와 클라이언트 시크릿을 복사하여 아래에 붙여 넣고 \"연결\"을 누릅니다\n4. 이메일로 받은 링크를 열고 Monzo 앱에서 접근을 승인한 뒤 \"연결\"을 다시 누릅니다\n5. 바로 가져오세요: 전체 내역은 승인 후 5분 동안만 이용할 수 있으며, 이후에는 최근 90일만 제공됩니다';
+
+  @override
   String get navigationTooltip => '메인 메뉴 열기';
 
   @override

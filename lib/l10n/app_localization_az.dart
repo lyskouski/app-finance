@@ -1024,6 +1024,62 @@ class AppLocalizationsAz extends AppLocalizations {
       'monobank tətbiqində QR kod skan edildikdən sonra api.monobank.ua-da verilir; şifrələnmiş şəkildə saxlanılır';
 
   @override
+  String get monzoApprove =>
+      'Monzo tətbiqində girişi təsdiqləyin, sonra yenidən \"Qoşul\" düyməsini basın';
+
+  @override
+  String get monzoClientId => 'Müştəri ID-si';
+
+  @override
+  String get monzoClientSecret => 'Müştəri gizli açarı';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'developers.monzo.com saytında OAuth müştərisi üçün göstərilir; şifrələnmiş saxlanılır. Saxlanılmış açarı saxlamaq üçün boş buraxın';
+
+  @override
+  String get monzoCode => 'Girişdən sonra açılan səhifənin ünvanı';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Fingrom avtomatik açılmayıbsa, ünvanı brauzerdən kopyalayıb bura yapışdırın';
+
+  @override
+  String get monzoDescription =>
+      'developers.monzo.com saytında qeydiyyatdan keçmiş öz OAuth müştərinizlə Monzo hesablarının qalıqlarını və əməliyyatlarını idxal edin (yalnız şəxsi istifadə üçün). Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get monzoExpired => 'Monzo-ya girişin müddəti bitib: yenidən qoşulun';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'Tam tarixçə $value vaxtına qədər əlçatandır: daha erkən tarix seçin və indi idxal edin. Sonra Monzo yalnız son 90 günü təqdim edir';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (Birləşmiş Krallıq)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo yalnız son 90 günü təqdim edir: əməliyyatlar $value tarixindən idxal olunur';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'Müştəri ID-sini, müştəri gizli açarını və yönləndirmə URL-ini doldurun';
+
+  @override
+  String get monzoRedirect => 'Yönləndirmə URL-i';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'OAuth müştərisi üçün məhz bu ünvanı təyin edin; Monzo girişdən sonra ona qayıdır';
+
+  @override
+  String get monzoSteps =>
+      'Necə qoşulmaq olar:\n1. Monzo hesabınızın e-poçtu ilə developers.monzo.com saytına daxil olun\n2. Clients → New OAuth Client bölməsini açın, \"Confidential\" seçin və aşağıda göstərilən yönləndirmə URL-ini təyin edin\n3. Müştəri ID-sini və müştəri gizli açarını kopyalayın, aşağıya yapışdırın və \"Qoşul\" düyməsini basın\n4. E-poçtla göndərilən linki açın, Monzo tətbiqində girişi təsdiqləyin və yenidən \"Qoşul\" düyməsini basın\n5. Dərhal idxal edin: tam tarixçə təsdiqdən sonra yalnız 5 dəqiqə ərzində əlçatandır, sonra yalnız son 90 gün';
+
+  @override
   String get navigationTooltip => 'Əsas menyunu açın';
 
   @override

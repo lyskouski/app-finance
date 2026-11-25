@@ -434,6 +434,31 @@
     "monobankToken": "Token personal",
     "monobankTokenSteps": "Cum obțineți un token personal:\n1. Deschideți api.monobank.ua într-un browser\n2. Scanați codul QR cu aplicația monobank și confirmați accesul\n3. Copiați tokenul de pe pagină\n4. Lipiți-l mai jos și apăsați „Conectare”\n5. Asociați fiecare card sau pușculiță cu un cont (sau creați unul) și importați",
     "monobankTokenTooltip": "Emis pe api.monobank.ua după scanarea codului QR în aplicația monobank; stocat criptat",
+    "monzoApprove": "Aprobați accesul în aplicația Monzo, apoi apăsați din nou „Conectare”",
+    "monzoClientId": "ID client",
+    "monzoClientSecret": "Secret client",
+    "monzoClientSecretTooltip": "Afișat pentru clientul OAuth pe developers.monzo.com; stocat criptat. Lăsați gol pentru a păstra secretul stocat",
+    "monzoCode": "Adresa paginii deschise după autentificare",
+    "monzoCodeTooltip": "Dacă Fingrom nu s-a deschis automat, copiați adresa din browser și lipiți-o aici",
+    "monzoDescription": "Importă soldurile și tranzacțiile conturilor Monzo cu propriul client OAuth înregistrat pe developers.monzo.com (doar pentru uz personal). Accesul este doar pentru citire: nu se efectuează plăți.",
+    "monzoExpired": "Accesul la Monzo a expirat: conectați-vă din nou",
+    "monzoFullHistory": "Istoricul complet este disponibil până la {value}: alegeți o dată anterioară și importați acum. Ulterior Monzo oferă doar ultimele 90 de zile",
+    "@monzoFullHistory": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoHeadline": "Monzo Developer API (Regatul Unit)",
+    "monzoHistoryLimited": "Monzo oferă doar ultimele 90 de zile: tranzacțiile sunt importate din {value}",
+    "@monzoHistoryLimited": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoIncomplete": "Completați ID-ul clientului, secretul clientului și URL-ul de redirecționare",
+    "monzoRedirect": "URL de redirecționare",
+    "monzoRedirectTooltip": "Setați exact această adresă pentru clientul OAuth; Monzo revine la ea după autentificare",
+    "monzoSteps": "Cum vă conectați:\n1. Conectați-vă la developers.monzo.com cu e-mailul contului Monzo\n2. Deschideți Clients → New OAuth Client, alegeți „Confidential” și setați URL-ul de redirecționare afișat mai jos\n3. Copiați ID-ul clientului și secretul clientului, lipiți-le mai jos și apăsați „Conectare”\n4. Deschideți linkul trimis prin e-mail, aprobați accesul în aplicația Monzo și apăsați din nou „Conectare”\n5. Importați imediat: istoricul complet este disponibil doar 5 minute după aprobare, ulterior doar ultimele 90 de zile",
     "navigationTooltip": "Deschideți meniul principal",
     "netProfit": "Profit: {value}",
     "@netProfit": {

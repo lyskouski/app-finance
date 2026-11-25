@@ -1024,6 +1024,63 @@ class AppLocalizationsKa extends AppLocalizations {
       'გაიცემა api.monobank.ua-ზე monobank-ის აპლიკაციაში QR კოდის დასკანერების შემდეგ; ინახება დაშიფრული სახით';
 
   @override
+  String get monzoApprove =>
+      'დაადასტურეთ წვდომა Monzo-ს აპში, შემდეგ ხელახლა დააჭირეთ ღილაკს „დაკავშირება“';
+
+  @override
+  String get monzoClientId => 'კლიენტის ID';
+
+  @override
+  String get monzoClientSecret => 'კლიენტის საიდუმლო';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'ნაჩვენებია OAuth კლიენტისთვის developers.monzo.com-ზე; ინახება დაშიფრული სახით. დატოვეთ ცარიელი შენახული საიდუმლოს შესანარჩუნებლად';
+
+  @override
+  String get monzoCode => 'შესვლის შემდეგ გახსნილი გვერდის მისამართი';
+
+  @override
+  String get monzoCodeTooltip =>
+      'თუ Fingrom ავტომატურად არ გაიხსნა, დააკოპირეთ მისამართი ბრაუზერიდან და ჩასვით აქ';
+
+  @override
+  String get monzoDescription =>
+      'Monzo-ს ანგარიშების ნაშთებისა და ტრანზაქციების იმპორტი developers.monzo.com-ზე რეგისტრირებული საკუთარი OAuth კლიენტით (მხოლოდ პირადი გამოყენებისთვის). წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get monzoExpired =>
+      'Monzo-ზე წვდომის ვადა ამოიწურა: ხელახლა დაუკავშირდით';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'სრული ისტორია ხელმისაწვდომია $value-მდე: აირჩიეთ უფრო ადრეული თარიღი და შეასრულეთ იმპორტი ახლავე. შემდეგ Monzo მხოლოდ ბოლო 90 დღეს გასცემს';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (გაერთიანებული სამეფო)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo მხოლოდ ბოლო 90 დღეს გასცემს: ტრანზაქციები იმპორტირდება $value-დან';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'შეავსეთ კლიენტის ID, კლიენტის საიდუმლო და გადამისამართების URL';
+
+  @override
+  String get monzoRedirect => 'გადამისამართების URL';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'OAuth კლიენტისთვის მიუთითეთ ზუსტად ეს მისამართი; შესვლის შემდეგ Monzo მასზე ბრუნდება';
+
+  @override
+  String get monzoSteps =>
+      'როგორ დავუკავშირდეთ:\n1. შედით developers.monzo.com-ზე თქვენი Monzo ანგარიშის ელფოსტით\n2. გახსენით Clients → New OAuth Client, აირჩიეთ „Confidential“ და მიუთითეთ ქვემოთ ნაჩვენები გადამისამართების URL\n3. დააკოპირეთ კლიენტის ID და კლიენტის საიდუმლო, ჩასვით ისინი ქვემოთ და დააჭირეთ ღილაკს „დაკავშირება“\n4. გახსენით ელფოსტით გამოგზავნილი ბმული, დაადასტურეთ წვდომა Monzo-ს აპში და ხელახლა დააჭირეთ ღილაკს „დაკავშირება“\n5. შეასრულეთ იმპორტი დაუყოვნებლივ: სრული ისტორია ხელმისაწვდომია დადასტურებიდან მხოლოდ 5 წუთის განმავლობაში, შემდეგ მხოლოდ ბოლო 90 დღე';
+
+  @override
   String get navigationTooltip => 'მთავარი მენიუს გახსნა';
 
   @override

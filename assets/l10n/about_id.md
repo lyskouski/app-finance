@@ -80,6 +80,7 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
   - Enable Banking (EU): impor saldo dan transaksi dari bank Eropa (PSD2)
   - Wise API (Global): impor saldo dan transaksi akun multi-mata uang Wise (Token API Pribadi)
   - Investec Programmable Banking (Afrika Selatan): impor saldo dan transaksi rekening Private Banking (kunci API sendiri)
+  - Monzo Developer API (Britania Raya): impor saldo dan transaksi (klien OAuth sendiri untuk penggunaan pribadi)
   - PrivatBank Autoclient (Ukraina): impor saldo dan transaksi rekening bisnis dari Privat24 for Business (token Autoclient)
   - monobank Personal API (Ukraina): impor saldo dan transaksi kartu dan celengan monobank (token pribadi)
   - Pengurai Notifikasi (Android): transaksi dari notifikasi aplikasi perbankan dan pembayaran

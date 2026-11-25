@@ -434,6 +434,31 @@
     "monobankToken": "الرمز الشخصي",
     "monobankTokenSteps": "كيفية الحصول على رمز شخصي:\n1. افتح api.monobank.ua في المتصفح\n2. امسح رمز QR بتطبيق monobank وأكّد الوصول\n3. انسخ الرمز من الصفحة\n4. الصقه أدناه واضغط \"اتصال\"\n5. اربط كل بطاقة أو حصالة بحساب (أو أنشئ حسابًا) واستورد",
     "monobankTokenTooltip": "يُصدر على api.monobank.ua بعد مسح رمز QR في تطبيق monobank؛ ويُحفظ مشفرًا",
+    "monzoApprove": "وافق على الوصول في تطبيق Monzo، ثم اضغط «اتصال» مرة أخرى",
+    "monzoClientId": "معرّف العميل",
+    "monzoClientSecret": "سر العميل",
+    "monzoClientSecretTooltip": "يظهر لعميل OAuth في developers.monzo.com؛ ويُخزَّن مشفّرًا. اتركه فارغًا للاحتفاظ بالسر المخزَّن",
+    "monzoCode": "عنوان الصفحة المفتوحة بعد تسجيل الدخول",
+    "monzoCodeTooltip": "إذا لم يُفتح Fingrom تلقائيًا، فانسخ العنوان من المتصفح والصقه هنا",
+    "monzoDescription": "استيراد الأرصدة والمعاملات لحسابات Monzo باستخدام عميل OAuth الخاص بك المسجَّل في developers.monzo.com (للاستخدام الشخصي فقط). الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
+    "monzoExpired": "انتهت صلاحية الوصول إلى Monzo: اتصل مجددًا",
+    "monzoFullHistory": "السجل الكامل متاح حتى {value}: اختر تاريخًا أقدم واستورد الآن. لاحقًا يوفّر Monzo آخر 90 يومًا فقط",
+    "@monzoFullHistory": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoHeadline": "Monzo Developer API (المملكة المتحدة)",
+    "monzoHistoryLimited": "يوفّر Monzo آخر 90 يومًا فقط: تُستورد المعاملات منذ {value}",
+    "@monzoHistoryLimited": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoIncomplete": "املأ معرّف العميل وسر العميل وعنوان URL لإعادة التوجيه",
+    "monzoRedirect": "عنوان URL لإعادة التوجيه",
+    "monzoRedirectTooltip": "اضبط هذا العنوان بالضبط لعميل OAuth؛ يعود إليه Monzo بعد تسجيل الدخول",
+    "monzoSteps": "كيفية الاتصال:\n1. سجّل الدخول إلى developers.monzo.com بالبريد الإلكتروني لحساب Monzo الخاص بك\n2. افتح Clients → New OAuth Client، واختر «Confidential»، واضبط عنوان URL لإعادة التوجيه الموضّح أدناه\n3. انسخ معرّف العميل وسر العميل، والصقهما أدناه، واضغط «اتصال»\n4. افتح الرابط المرسَل عبر البريد الإلكتروني، ووافق على الوصول في تطبيق Monzo، واضغط «اتصال» مرة أخرى\n5. استورد فورًا: السجل الكامل متاح لمدة 5 دقائق فقط بعد الموافقة، ولاحقًا آخر 90 يومًا فقط",
     "navigationTooltip": "فتح القائمة الرئيسية",
     "netProfit": "الربح: {value}",
     "@netProfit": {

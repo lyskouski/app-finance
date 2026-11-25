@@ -434,6 +434,31 @@
     "monobankToken": "個人トークン",
     "monobankTokenSteps": "個人トークンの取得方法：\n1. ブラウザで api.monobank.ua を開く\n2. monobank アプリで QR コードをスキャンしてアクセスを承認\n3. ページからトークンをコピー\n4. 下に貼り付けて「接続」を押す\n5. 各カードまたは貯金箱を口座に紐付け（または作成）してインポート",
     "monobankTokenTooltip": "monobank アプリで QR コードをスキャンすると api.monobank.ua で発行されます。暗号化して保存されます",
+    "monzoApprove": "Monzo アプリでアクセスを承認してから、もう一度「接続」を押してください",
+    "monzoClientId": "クライアント ID",
+    "monzoClientSecret": "クライアントシークレット",
+    "monzoClientSecretTooltip": "developers.monzo.com の OAuth クライアントに表示され、暗号化して保存されます。保存済みのシークレットを使う場合は空欄のままにしてください",
+    "monzoCode": "サインイン後に開いたページのアドレス",
+    "monzoCodeTooltip": "Fingrom が自動的に開かなかった場合は、ブラウザーのアドレスをコピーしてここに貼り付けてください",
+    "monzoDescription": "developers.monzo.com に登録した独自の OAuth クライアントで Monzo 口座の残高と取引をインポートします（個人利用のみ）。アクセスは読み取り専用で、支払いは行われません。",
+    "monzoExpired": "Monzo へのアクセスの有効期限が切れました。もう一度接続してください",
+    "monzoFullHistory": "{value} まで全履歴を取得できます。より前の日付を選んで今すぐインポートしてください。その後、Monzo は直近 90 日分のみ提供します",
+    "@monzoFullHistory": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoHeadline": "Monzo Developer API（英国）",
+    "monzoHistoryLimited": "Monzo は直近 90 日分のみ提供します。取引は {value} からインポートされます",
+    "@monzoHistoryLimited": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoIncomplete": "クライアント ID、クライアントシークレット、リダイレクトURLを入力してください",
+    "monzoRedirect": "リダイレクトURL",
+    "monzoRedirectTooltip": "OAuth クライアントにこのアドレスをそのまま設定してください。サインイン後、Monzo はここに戻ります",
+    "monzoSteps": "接続方法:\n1. Monzo アカウントのメールアドレスで developers.monzo.com にサインインします\n2. Clients → New OAuth Client を開き、「Confidential」を選んで、下に表示されたリダイレクトURLを設定します\n3. クライアント ID とクライアントシークレットをコピーして下に貼り付け、「接続」を押します\n4. メールで届いたリンクを開き、Monzo アプリでアクセスを承認して、もう一度「接続」を押します\n5. すぐにインポートしてください: 全履歴は承認後 5 分間のみ取得でき、その後は直近 90 日分のみです",
     "navigationTooltip": "メインメニューを開く",
     "netProfit": "利益：{value}",
     "@netProfit": {

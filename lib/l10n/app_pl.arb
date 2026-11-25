@@ -434,6 +434,31 @@
     "monobankToken": "Token osobisty",
     "monobankTokenSteps": "Jak uzyskać token osobisty:\n1. Otwórz api.monobank.ua w przeglądarce\n2. Zeskanuj kod QR w aplikacji monobank i potwierdź dostęp\n3. Skopiuj token ze strony\n4. Wklej go poniżej i naciśnij „Połącz”\n5. Powiąż każdą kartę lub słoik z kontem (albo utwórz je) i zaimportuj",
     "monobankTokenTooltip": "Wydawany na api.monobank.ua po zeskanowaniu kodu QR w aplikacji monobank; przechowywany w postaci zaszyfrowanej",
+    "monzoApprove": "Zatwierdź dostęp w aplikacji Monzo, a następnie ponownie naciśnij „Połącz”",
+    "monzoClientId": "ID klienta",
+    "monzoClientSecret": "Sekret klienta",
+    "monzoClientSecretTooltip": "Wyświetlany dla klienta OAuth na developers.monzo.com; przechowywany w postaci zaszyfrowanej. Pozostaw puste, aby zachować zapisany sekret",
+    "monzoCode": "Adres strony otwartej po zalogowaniu",
+    "monzoCodeTooltip": "Jeśli Fingrom nie otworzył się automatycznie, skopiuj adres z przeglądarki i wklej go tutaj",
+    "monzoDescription": "Import sald i transakcji kont Monzo za pomocą własnego klienta OAuth zarejestrowanego na developers.monzo.com (tylko do użytku osobistego). Dostęp tylko do odczytu: nie są wykonywane żadne płatności.",
+    "monzoExpired": "Dostęp do Monzo wygasł: połącz się ponownie",
+    "monzoFullHistory": "Pełna historia jest dostępna do {value}: wybierz wcześniejszą datę i zaimportuj teraz. Później Monzo udostępnia tylko ostatnie 90 dni",
+    "@monzoFullHistory": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoHeadline": "Monzo Developer API (Wielka Brytania)",
+    "monzoHistoryLimited": "Monzo udostępnia tylko ostatnie 90 dni: transakcje są importowane od {value}",
+    "@monzoHistoryLimited": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoIncomplete": "Uzupełnij ID klienta, sekret klienta i URL przekierowania",
+    "monzoRedirect": "URL przekierowania",
+    "monzoRedirectTooltip": "Ustaw dokładnie ten adres dla klienta OAuth; Monzo wraca do niego po zalogowaniu",
+    "monzoSteps": "Jak połączyć:\n1. Zaloguj się na developers.monzo.com adresem e-mail swojego konta Monzo\n2. Otwórz Clients → New OAuth Client, wybierz „Confidential” i ustaw URL przekierowania pokazany poniżej\n3. Skopiuj ID klienta i sekret klienta, wklej je poniżej i naciśnij „Połącz”\n4. Otwórz link wysłany e-mailem, zatwierdź dostęp w aplikacji Monzo i ponownie naciśnij „Połącz”\n5. Importuj od razu: pełna historia jest dostępna tylko przez 5 minut po zatwierdzeniu, później tylko ostatnie 90 dni",
     "navigationTooltip": "Otwórz menu główne",
     "netProfit": "Zysk: {value}",
     "@netProfit": {

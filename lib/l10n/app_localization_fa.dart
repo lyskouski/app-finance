@@ -1018,6 +1018,62 @@ class AppLocalizationsFa extends AppLocalizations {
       'پس از اسکن کد QR در برنامه monobank در api.monobank.ua صادر می‌شود؛ به صورت رمزگذاری‌شده ذخیره می‌شود';
 
   @override
+  String get monzoApprove =>
+      'دسترسی را در برنامه Monzo تأیید کنید، سپس دوباره «اتصال» را بزنید';
+
+  @override
+  String get monzoClientId => 'شناسه کلاینت';
+
+  @override
+  String get monzoClientSecret => 'رمز محرمانه کلاینت';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'برای کلاینت OAuth در developers.monzo.com نمایش داده می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. برای نگه‌داشتن رمز ذخیره‌شده خالی بگذارید';
+
+  @override
+  String get monzoCode => 'نشانی صفحه‌ای که پس از ورود باز می‌شود';
+
+  @override
+  String get monzoCodeTooltip =>
+      'اگر Fingrom به‌طور خودکار باز نشد، نشانی را از مرورگر کپی کرده و اینجا جای‌گذاری کنید';
+
+  @override
+  String get monzoDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های حساب‌های Monzo با کلاینت OAuth شخصی شما که در developers.monzo.com ثبت شده است (فقط برای استفاده شخصی). دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get monzoExpired => 'دسترسی به Monzo منقضی شده است: دوباره متصل شوید';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'تاریخچه کامل تا $value در دسترس است: تاریخ زودتری انتخاب کنید و همین حالا وارد کنید. پس از آن Monzo فقط 90 روز اخیر را ارائه می‌دهد';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (بریتانیا)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo فقط 90 روز اخیر را ارائه می‌دهد: تراکنش‌ها از $value وارد می‌شوند';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'شناسه کلاینت، رمز محرمانه کلاینت و نشانی URL بازگشت را وارد کنید';
+
+  @override
+  String get monzoRedirect => 'نشانی URL بازگشت';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'دقیقاً همین نشانی را برای کلاینت OAuth تنظیم کنید؛ Monzo پس از ورود به آن بازمی‌گردد';
+
+  @override
+  String get monzoSteps =>
+      'نحوه اتصال:\n1. با ایمیل حساب Monzo خود وارد developers.monzo.com شوید\n2. Clients → New OAuth Client را باز کنید، «Confidential» را انتخاب کنید و نشانی URL بازگشت نمایش‌داده‌شده در زیر را تنظیم کنید\n3. شناسه کلاینت و رمز محرمانه کلاینت را کپی کنید، در زیر جای‌گذاری کرده و «اتصال» را بزنید\n4. پیوند ارسال‌شده با ایمیل را باز کنید، دسترسی را در برنامه Monzo تأیید کنید و دوباره «اتصال» را بزنید\n5. بی‌درنگ وارد کنید: تاریخچه کامل فقط تا 5 دقیقه پس از تأیید در دسترس است، پس از آن فقط 90 روز اخیر';
+
+  @override
   String get navigationTooltip => 'منوی اصلی را باز کنید';
 
   @override

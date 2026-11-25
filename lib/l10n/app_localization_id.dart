@@ -1022,6 +1022,63 @@ class AppLocalizationsId extends AppLocalizations {
       'Diterbitkan di api.monobank.ua setelah memindai kode QR di aplikasi monobank; disimpan terenkripsi';
 
   @override
+  String get monzoApprove =>
+      'Setujui akses di aplikasi Monzo, lalu tekan \"Hubungkan\" lagi';
+
+  @override
+  String get monzoClientId => 'ID klien';
+
+  @override
+  String get monzoClientSecret => 'Secret klien';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'Ditampilkan untuk klien OAuth di developers.monzo.com; disimpan terenkripsi. Biarkan kosong untuk mempertahankan secret yang tersimpan';
+
+  @override
+  String get monzoCode => 'Alamat halaman yang terbuka setelah masuk';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Jika Fingrom tidak terbuka secara otomatis, salin alamat dari browser dan tempelkan di sini';
+
+  @override
+  String get monzoDescription =>
+      'Impor saldo dan transaksi rekening Monzo dengan klien OAuth Anda sendiri yang terdaftar di developers.monzo.com (hanya untuk penggunaan pribadi). Akses hanya-baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get monzoExpired =>
+      'Akses ke Monzo telah kedaluwarsa: hubungkan kembali';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'Riwayat lengkap tersedia hingga $value: pilih tanggal yang lebih awal dan impor sekarang. Setelah itu Monzo hanya menyediakan 90 hari terakhir';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (Britania Raya)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo hanya menyediakan 90 hari terakhir: transaksi diimpor sejak $value';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'Isi ID klien, secret klien, dan URL pengalihan';
+
+  @override
+  String get monzoRedirect => 'URL pengalihan';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'Atur persis alamat ini untuk klien OAuth; Monzo kembali ke alamat ini setelah masuk';
+
+  @override
+  String get monzoSteps =>
+      'Cara menghubungkan:\n1. Masuk ke developers.monzo.com dengan email akun Monzo Anda\n2. Buka Clients → New OAuth Client, pilih \"Confidential\", dan atur URL pengalihan yang ditampilkan di bawah\n3. Salin ID klien dan secret klien, tempel di bawah, dan tekan \"Hubungkan\"\n4. Buka tautan yang dikirim melalui email, setujui akses di aplikasi Monzo, dan tekan \"Hubungkan\" lagi\n5. Segera impor: riwayat lengkap hanya tersedia selama 5 menit setelah persetujuan, setelah itu hanya 90 hari terakhir';
+
+  @override
   String get navigationTooltip => 'Buka menu utama';
 
   @override

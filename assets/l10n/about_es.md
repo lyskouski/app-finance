@@ -80,6 +80,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
   - Enable Banking (EU): importación de saldos y movimientos de bancos europeos (PSD2)
   - Wise API (Global): importación de saldos y movimientos de cuentas multidivisa de Wise (token de API personal)
   - Investec Programmable Banking (Sudáfrica): importación de saldos y movimientos de cuentas de Private Banking (claves de API propias)
+  - Monzo Developer API (Reino Unido): importación de saldos y movimientos (cliente OAuth propio para uso personal)
   - PrivatBank Autoclient (Ucrania): importación de saldos y transacciones de cuentas empresariales de Privat24 for Business (token de Autoclient)
   - monobank Personal API (Ucrania): importación de saldos y transacciones de tarjetas y huchas de monobank (token personal)
   - Notificaciones Parser (Android): movimientos a partir de notificaciones de aplicaciones bancarias y de pago

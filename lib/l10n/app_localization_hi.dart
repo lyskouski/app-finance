@@ -1019,6 +1019,63 @@ class AppLocalizationsHi extends AppLocalizations {
       'monobank ऐप में QR कोड स्कैन करने के बाद api.monobank.ua पर जारी किया जाता है; एन्क्रिप्टेड रूप में संग्रहीत';
 
   @override
+  String get monzoApprove =>
+      'Monzo ऐप में पहुँच को स्वीकृत करें, फिर \"कनेक्ट करें\" दोबारा दबाएँ';
+
+  @override
+  String get monzoClientId => 'क्लाइंट आईडी';
+
+  @override
+  String get monzoClientSecret => 'क्लाइंट सीक्रेट';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'developers.monzo.com पर OAuth क्लाइंट के लिए दिखाया जाता है; एन्क्रिप्टेड रूप में संग्रहीत। संग्रहीत सीक्रेट रखने के लिए खाली छोड़ें';
+
+  @override
+  String get monzoCode => 'साइन-इन के बाद खुले पृष्ठ का पता';
+
+  @override
+  String get monzoCodeTooltip =>
+      'यदि Fingrom अपने आप नहीं खुला है, तो ब्राउज़र से पता कॉपी करके यहाँ पेस्ट करें';
+
+  @override
+  String get monzoDescription =>
+      'developers.monzo.com पर पंजीकृत अपने स्वयं के OAuth क्लाइंट के साथ Monzo खातों के बैलेंस और लेन-देन इम्पोर्ट करें (केवल व्यक्तिगत उपयोग के लिए)। एक्सेस केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get monzoExpired =>
+      'Monzo तक पहुँच की अवधि समाप्त हो गई है: फिर से कनेक्ट करें';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'पूरा इतिहास $value तक उपलब्ध है: कोई पहले की तारीख चुनें और अभी आयात करें। बाद में Monzo केवल पिछले 90 दिन प्रदान करता है';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (यूनाइटेड किंगडम)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo केवल पिछले 90 दिन प्रदान करता है: लेनदेन $value से आयात किए जाते हैं';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'क्लाइंट आईडी, क्लाइंट सीक्रेट और रीडायरेक्ट URL भरें';
+
+  @override
+  String get monzoRedirect => 'रीडायरेक्ट URL';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'OAuth क्लाइंट के लिए ठीक यही पता सेट करें; साइन-इन के बाद Monzo इसी पर लौटता है';
+
+  @override
+  String get monzoSteps =>
+      'कैसे कनेक्ट करें:\n1. अपने Monzo खाते के ईमेल से developers.monzo.com पर साइन इन करें\n2. Clients → New OAuth Client खोलें, \"Confidential\" चुनें और नीचे दिखाया गया रीडायरेक्ट URL सेट करें\n3. क्लाइंट आईडी और क्लाइंट सीक्रेट कॉपी करें, उन्हें नीचे चिपकाएँ और \"कनेक्ट करें\" दबाएँ\n4. ईमेल से भेजा गया लिंक खोलें, Monzo ऐप में पहुँच को स्वीकृत करें और \"कनेक्ट करें\" दोबारा दबाएँ\n5. तुरंत आयात करें: पूरा इतिहास स्वीकृति के बाद केवल 5 मिनट तक उपलब्ध है, बाद में केवल पिछले 90 दिन';
+
+  @override
   String get navigationTooltip => 'मुख्य मेनू खोलें';
 
   @override

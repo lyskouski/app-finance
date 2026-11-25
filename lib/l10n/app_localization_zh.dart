@@ -1002,6 +1002,58 @@ class AppLocalizationsZh extends AppLocalizations {
       '在 monobank 应用中扫描二维码后于 api.monobank.ua 签发；加密存储';
 
   @override
+  String get monzoApprove => '在 Monzo 应用中批准访问，然后再次点击“连接”';
+
+  @override
+  String get monzoClientId => '客户端 ID';
+
+  @override
+  String get monzoClientSecret => '客户端密钥';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      '在 developers.monzo.com 的 OAuth 客户端中显示；加密存储。留空则保留已存储的密钥';
+
+  @override
+  String get monzoCode => '登录后打开页面的地址';
+
+  @override
+  String get monzoCodeTooltip => '如果 Fingrom 未自动打开，请从浏览器复制地址并粘贴到此处';
+
+  @override
+  String get monzoDescription =>
+      '使用您在 developers.monzo.com 注册的自有 OAuth 客户端导入 Monzo 账户的余额和交易（仅限个人使用）。访问为只读：不会进行任何付款。';
+
+  @override
+  String get monzoExpired => 'Monzo 访问已过期：请重新连接';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return '完整历史记录在 $value 之前可用：请选择更早的日期并立即导入。之后 Monzo 仅提供最近 90 天的数据';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API（英国）';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo 仅提供最近 90 天的数据：将从 $value 起导入交易';
+  }
+
+  @override
+  String get monzoIncomplete => '请填写客户端 ID、客户端密钥和重定向 URL';
+
+  @override
+  String get monzoRedirect => '重定向 URL';
+
+  @override
+  String get monzoRedirectTooltip => '请为 OAuth 客户端准确设置此地址；登录后 Monzo 将返回此地址';
+
+  @override
+  String get monzoSteps =>
+      '如何连接：\n1. 使用您的 Monzo 账户邮箱登录 developers.monzo.com\n2. 打开 Clients → New OAuth Client，选择“Confidential”，并设置下方显示的重定向 URL\n3. 复制客户端 ID 和客户端密钥，粘贴到下方并点击“连接”\n4. 打开邮件中的链接，在 Monzo 应用中批准访问，然后再次点击“连接”\n5. 请立即导入：完整历史记录仅在批准后 5 分钟内可用，之后仅提供最近 90 天';
+
+  @override
   String get navigationTooltip => '打开主菜单';
 
   @override
@@ -2592,6 +2644,58 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   @override
   String get monobankTokenTooltip =>
       '在 monobank 應用程式中掃描 QR 碼後於 api.monobank.ua 核發；加密儲存';
+
+  @override
+  String get monzoApprove => '在 Monzo 應用程式中核准存取，然後再次點選「連線」';
+
+  @override
+  String get monzoClientId => '用戶端 ID';
+
+  @override
+  String get monzoClientSecret => '用戶端密碼';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      '顯示於 developers.monzo.com 的 OAuth 用戶端中；加密儲存。留空則保留已儲存的密碼';
+
+  @override
+  String get monzoCode => '登入後開啟頁面的網址';
+
+  @override
+  String get monzoCodeTooltip => '若 Fingrom 未自動開啟，請從瀏覽器複製網址並貼上至此處';
+
+  @override
+  String get monzoDescription =>
+      '使用您在 developers.monzo.com 註冊的自有 OAuth 用戶端匯入 Monzo 帳戶的餘額與交易（僅限個人使用）。存取為唯讀：不會進行任何付款。';
+
+  @override
+  String get monzoExpired => 'Monzo 存取已過期：請重新連線';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return '完整歷史記錄在 $value 之前可用：請選擇較早的日期並立即匯入。之後 Monzo 僅提供最近 90 天的資料';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API（英國）';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo 僅提供最近 90 天的資料：將從 $value 起匯入交易';
+  }
+
+  @override
+  String get monzoIncomplete => '請填寫用戶端 ID、用戶端密碼與重新導向 URL';
+
+  @override
+  String get monzoRedirect => '重新導向 URL';
+
+  @override
+  String get monzoRedirectTooltip => '請為 OAuth 用戶端準確設定此網址；登入後 Monzo 將返回此網址';
+
+  @override
+  String get monzoSteps =>
+      '如何連線：\n1. 使用您的 Monzo 帳戶電子郵件登入 developers.monzo.com\n2. 開啟 Clients → New OAuth Client，選擇「Confidential」，並設定下方顯示的重新導向 URL\n3. 複製用戶端 ID 與用戶端密碼，貼到下方並點選「連線」\n4. 開啟電子郵件中的連結，在 Monzo 應用程式中核准存取，然後再次點選「連線」\n5. 請立即匯入：完整歷史記錄僅在核准後 5 分鐘內可用，之後僅提供最近 90 天';
 
   @override
   String get navigationTooltip => '開啟主功能表';

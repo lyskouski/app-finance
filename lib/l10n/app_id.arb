@@ -434,6 +434,31 @@
     "monobankToken": "Token Pribadi",
     "monobankTokenSteps": "Cara mendapatkan token pribadi:\n1. Buka api.monobank.ua di peramban\n2. Pindai kode QR dengan aplikasi monobank dan konfirmasi akses\n3. Salin token dari halaman\n4. Tempel di bawah dan tekan \"Hubungkan\"\n5. Tautkan setiap kartu atau celengan ke akun (atau buat akun) lalu impor",
     "monobankTokenTooltip": "Diterbitkan di api.monobank.ua setelah memindai kode QR di aplikasi monobank; disimpan terenkripsi",
+    "monzoApprove": "Setujui akses di aplikasi Monzo, lalu tekan \"Hubungkan\" lagi",
+    "monzoClientId": "ID klien",
+    "monzoClientSecret": "Secret klien",
+    "monzoClientSecretTooltip": "Ditampilkan untuk klien OAuth di developers.monzo.com; disimpan terenkripsi. Biarkan kosong untuk mempertahankan secret yang tersimpan",
+    "monzoCode": "Alamat halaman yang terbuka setelah masuk",
+    "monzoCodeTooltip": "Jika Fingrom tidak terbuka secara otomatis, salin alamat dari browser dan tempelkan di sini",
+    "monzoDescription": "Impor saldo dan transaksi rekening Monzo dengan klien OAuth Anda sendiri yang terdaftar di developers.monzo.com (hanya untuk penggunaan pribadi). Akses hanya-baca: tidak ada pembayaran yang dilakukan.",
+    "monzoExpired": "Akses ke Monzo telah kedaluwarsa: hubungkan kembali",
+    "monzoFullHistory": "Riwayat lengkap tersedia hingga {value}: pilih tanggal yang lebih awal dan impor sekarang. Setelah itu Monzo hanya menyediakan 90 hari terakhir",
+    "@monzoFullHistory": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoHeadline": "Monzo Developer API (Britania Raya)",
+    "monzoHistoryLimited": "Monzo hanya menyediakan 90 hari terakhir: transaksi diimpor sejak {value}",
+    "@monzoHistoryLimited": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoIncomplete": "Isi ID klien, secret klien, dan URL pengalihan",
+    "monzoRedirect": "URL pengalihan",
+    "monzoRedirectTooltip": "Atur persis alamat ini untuk klien OAuth; Monzo kembali ke alamat ini setelah masuk",
+    "monzoSteps": "Cara menghubungkan:\n1. Masuk ke developers.monzo.com dengan email akun Monzo Anda\n2. Buka Clients → New OAuth Client, pilih \"Confidential\", dan atur URL pengalihan yang ditampilkan di bawah\n3. Salin ID klien dan secret klien, tempel di bawah, dan tekan \"Hubungkan\"\n4. Buka tautan yang dikirim melalui email, setujui akses di aplikasi Monzo, dan tekan \"Hubungkan\" lagi\n5. Segera impor: riwayat lengkap hanya tersedia selama 5 menit setelah persetujuan, setelah itu hanya 90 hari terakhir",
     "navigationTooltip": "Buka menu utama",
     "netProfit": "Keuntungan: {value}",
     "@netProfit": {

@@ -81,6 +81,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
   - Enable Banking (EU): import of balances and transactions from European banks (PSD2)
   - Wise API (Global): import of balances and transactions of Wise multi-currency accounts (Personal API Token)
   - Investec Programmable Banking (South Africa): import of balances and transactions of Private Banking accounts (own API keys)
+  - Monzo Developer API (United Kingdom): import of balances and transactions (own OAuth client for personal use)
   - PrivatBank Autoclient (Ukraine): import of balances and transactions of business accounts of Privat24 for Business (Autoclient token)
   - Monobank Personal API (Ukraine): import of balances and transactions of Monobank cards and jars (personal token)
   - Notifications Parser (Android): transactions from notifications of banking and payment apps

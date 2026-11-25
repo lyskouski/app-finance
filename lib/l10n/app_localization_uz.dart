@@ -1028,6 +1028,62 @@ class AppLocalizationsUz extends AppLocalizations {
       'monobank ilovasida QR kod skanerlangandan so‘ng api.monobank.ua da beriladi; shifrlangan holda saqlanadi';
 
   @override
+  String get monzoApprove =>
+      'Monzo ilovasida kirishni tasdiqlang, so‘ng yana «Ulanish» tugmasini bosing';
+
+  @override
+  String get monzoClientId => 'Mijoz ID';
+
+  @override
+  String get monzoClientSecret => 'Mijoz maxfiy kodi';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'developers.monzo.com saytida OAuth mijozi uchun ko‘rsatiladi; shifrlangan holda saqlanadi. Saqlangan maxfiy kodni qoldirish uchun bo‘sh qoldiring';
+
+  @override
+  String get monzoCode => 'Kirishdan keyin ochilgan sahifa manzili';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Agar Fingrom avtomatik ochilmagan bo‘lsa, manzilni brauzerdan nusxalab, shu yerga joylashtiring';
+
+  @override
+  String get monzoDescription =>
+      'developers.monzo.com saytida ro‘yxatdan o‘tkazilgan o‘z OAuth mijozingiz orqali Monzo hisoblarining qoldiqlari va tranzaksiyalarini import qiling (faqat shaxsiy foydalanish uchun). Kirish faqat o‘qish uchun: to‘lovlar amalga oshirilmaydi.';
+
+  @override
+  String get monzoExpired => 'Monzo’ga kirish muddati tugadi: qayta ulaning';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'To‘liq tarix $value gacha mavjud: oldinroq sanani tanlang va hozir import qiling. Keyin Monzo faqat oxirgi 90 kunni taqdim etadi';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (Buyuk Britaniya)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo faqat oxirgi 90 kunni taqdim etadi: tranzaksiyalar $value dan boshlab import qilinadi';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'Mijoz ID, mijoz maxfiy kodi va yo‘naltirish URL manzilini to‘ldiring';
+
+  @override
+  String get monzoRedirect => 'Yo\'naltirish URL manzili';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'OAuth mijozi uchun aynan shu manzilni belgilang; kirishdan so‘ng Monzo unga qaytaradi';
+
+  @override
+  String get monzoSteps =>
+      'Qanday ulanish mumkin:\n1. Monzo hisobingiz elektron pochtasi bilan developers.monzo.com saytiga kiring\n2. Clients → New OAuth Client bo‘limini oching, «Confidential»ni tanlang va quyida ko‘rsatilgan yo‘naltirish URL manzilini belgilang\n3. Mijoz ID va mijoz maxfiy kodini nusxalang, quyiga joylang va «Ulanish» tugmasini bosing\n4. Elektron pochta orqali yuborilgan havolani oching, Monzo ilovasida kirishni tasdiqlang va yana «Ulanish» tugmasini bosing\n5. Darhol import qiling: to‘liq tarix tasdiqlashdan keyin faqat 5 daqiqa davomida mavjud, keyin faqat oxirgi 90 kun';
+
+  @override
   String get navigationTooltip => 'Asosiy menyuni oching';
 
   @override

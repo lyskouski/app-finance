@@ -13,6 +13,7 @@ import 'package:app_finance/_classes/integration/notification/notification_contr
 import 'package:app_finance/_classes/integration/monobank/monobank_client.dart';
 import 'package:app_finance/_classes/integration/monobank/monobank_importer.dart';
 import 'package:app_finance/_classes/integration/monobank/monobank_settings.dart';
+import 'package:app_finance/_classes/integration/monzo/monzo_settings.dart';
 import 'package:app_finance/_classes/integration/notification/notification_parser.dart';
 import 'package:app_finance/_classes/integration/notification/notification_settings.dart';
 import 'package:app_finance/_classes/integration/privatbank/privatbank_client.dart';
@@ -37,6 +38,7 @@ import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart'
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/investec_widget.dart';
 import 'package:app_finance/pages/integration/widgets/monobank_widget.dart';
+import 'package:app_finance/pages/integration/widgets/monzo_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
@@ -156,7 +158,6 @@ void main() {
     expect(find.text('Integrations'), findsWidgets);
     expect(find.text('Financial Transaction Services (FinTS 4.1)'), findsOneWidget);
     expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
-    expect(find.text('Teller (US)'), findsOneWidget);
     expect(find.text('Enable Banking (EU)'), findsOneWidget);
     expect(find.text('PrivatBank Autoclient (Ukraine)'), findsOneWidget);
     expect(find.text('Monobank Personal API (Ukraine)'), findsOneWidget);
@@ -164,7 +165,6 @@ void main() {
     // Protocols are separated from the APIs of single institutions
     final divider = tester.getTopLeft(find.byKey(const ValueKey('integration_divider'))).dy;
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_enablebanking'))).dy, lessThan(divider));
-    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_teller'))).dy, greaterThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_privatbank'))).dy, greaterThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_monobank'))).dy, greaterThan(divider));
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsNothing);
@@ -184,8 +184,15 @@ void main() {
 
     // Services of single institutions follow at the end of the list, sorted by name
     expect(
-        IntegrationPageState.getServices().map((e) => e.id), ['investec', 'monobank', 'privatbank', 'teller', 'wise']);
-    for (final title in ['Investec Programmable Banking (South Africa)', 'Wise API (Global)']) {
+      IntegrationPageState.getServices().map((e) => e.id),
+      ['investec', 'monobank', 'monzo', 'privatbank', 'teller', 'wise'],
+    );
+    for (final title in [
+      'Investec Programmable Banking (South Africa)',
+      'Monzo Developer API (United Kingdom)',
+      'Teller (US)',
+      'Wise API (Global)',
+    ]) {
       await tester.scrollUntilVisible(find.text(title), 200, scrollable: find.byType(Scrollable).first);
       expect(find.text(title), findsOneWidget);
     }
@@ -707,6 +714,158 @@ void main() {
     await tester.pumpAndSettle();
     expect(WiseSettings.loadToken(), isNull);
     expect(find.textContaining('Personal API Tokenrequired', findRichText: true), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Monzo signs in with an own OAuth client, waits for the approval and imports transactions',
+      (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    DeepLinkHandler.monzoCallback.value = null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Monzo',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Eating Out', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    var now = DateTime.now();
+    var approved = false;
+    final requests = <http.Request>[];
+    final launched = <Uri>[];
+    final client = MockClient((request) async {
+      requests.add(request);
+      final body = switch ((request.method, request.url.path)) {
+        ('POST', '/oauth2/token') => {'access_token': 'A1', 'refresh_token': 'R1', 'expires_in': 21600},
+        ('POST', '/oauth2/logout') => <String, dynamic>{},
+        (_, _) when !approved => null,
+        (_, '/accounts') => {
+            'accounts': [
+              {'id': 'acc_1', 'description': 'Peter Pan', 'currency': 'GBP', 'account_number': '12345678'},
+            ],
+          },
+        (_, '/balance') => {'balance': 12345, 'total_balance': 12345, 'currency': 'GBP'},
+        _ => {
+            'transactions': [
+              {
+                'id': 'tx_1',
+                'created': '2026-11-20T12:20:18Z',
+                'amount': -510,
+                'currency': 'GBP',
+                'description': 'DELI',
+                'merchant': {'name': 'The Deli'},
+                'settled': '2026-11-21T12:20:18Z',
+              },
+              {'id': 'tx_2', 'created': '2026-11-21T09:00:00Z', 'amount': -100, 'currency': 'GBP', 'settled': ''},
+              {
+                'id': 'tx_3',
+                'created': '2026-11-21T10:00:00Z',
+                'amount': -999,
+                'currency': 'GBP',
+                'settled': '',
+                'decline_reason': 'INSUFFICIENT_FUNDS',
+              },
+            ],
+          },
+      };
+      return body == null
+          ? http.Response(jsonEncode({'code': 'forbidden.insufficient_permissions', 'message': 'No access'}), 403)
+          : http.Response(jsonEncode(body), 200);
+    });
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(
+        body: SingleChildScrollView(
+          child: MonzoWidget(httpClient: client, launcher: (uri) async => launched.add(uri), now: () => now),
+        ),
+      ),
+    ));
+    await tester.pumpAndSettle();
+    final widgetState = tester.state<MonzoWidgetState>(find.byType(MonzoWidget));
+    expect(widgetState.redirectUrl.text, 'fingrom://integration/monzo');
+
+    await tester.ensureVisible(find.byKey(const ValueKey('monzo_connect')));
+    await tester.tap(find.byKey(const ValueKey('monzo_connect')));
+    await pumpFrames(tester);
+    expect(find.text('Fill in the client ID, the client secret, and the redirect URL'), findsOneWidget);
+
+    widgetState.clientId.text = 'oauth2client_1';
+    widgetState.clientSecret.text = 'mnzconf.secret';
+    await tester.ensureVisible(find.byKey(const ValueKey('monzo_connect')));
+    await tester.tap(find.byKey(const ValueKey('monzo_connect')));
+    await pumpFrames(tester);
+    final stateToken = launched.single.queryParameters['state']!;
+    expect(launched.single.host, 'auth.monzo.com');
+    expect(launched.single.queryParameters['client_id'], 'oauth2client_1');
+    expect(stateToken, startsWith('monzo.'));
+    expect(MonzoSettings.loadSecret(), 'mnzconf.secret');
+
+    // Monzo returns to the application, the access is approved in the Monzo app afterwards
+    DeepLinkHandler.handle(Uri.parse('fingrom://integration/monzo?code=CODE&state=$stateToken'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(requests.first.bodyFields['code'], 'CODE');
+    expect(MonzoSettings.loadTokens()!.accessToken, 'A1');
+    expect(find.text('Approve the access in the Monzo app, then press "Connect" again'), findsOneWidget);
+    expect(MonzoSettings.load().approvedAt, isNull);
+
+    approved = true;
+    await tester.ensureVisible(find.byKey(const ValueKey('monzo_connect')));
+    await tester.tap(find.byKey(const ValueKey('monzo_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Peter Pan …5678'), findsOneWidget);
+    expect(find.textContaining('123.45 GBP'), findsOneWidget);
+    expect(find.textContaining('The full history is available until'), findsOneWidget);
+    expect(MonzoSettings.load().approvedAt, now);
+
+    // The full history within the first minutes
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid
+      ..from = DateTime(2020);
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 1'), findsOneWidget);
+    expect(DateTime.parse(requests.last.url.queryParameters['since']!).isAtSameMomentAs(DateTime(2020)), isTrue);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    final bill = state.getList(AppDataType.bills, false).whereType<BillAppData>().last;
+    expect(bill.title, 'The Deli');
+    expect(bill.details, 5.1);
+    expect(MonzoSettings.load().links, {'acc_1': account.uuid});
+
+    // Later only the last 90 days
+    now = now.add(const Duration(minutes: 10));
+    widgetState.accounts.single.from = DateTime(2020);
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    final since = DateTime.parse(requests.last.url.queryParameters['since']!);
+    expect(now.difference(since).inDays, lessThanOrEqualTo(90));
+    expect(find.textContaining('Monzo provides only the last 90 days'), findsOneWidget);
+    expect(
+        find.textContaining('Imported: 0, skipped as already present: 1, pending (not imported): 1'), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('monzo_forget')));
+    await tester.tap(find.byKey(const ValueKey('monzo_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(requests.last.url.path, '/oauth2/logout');
+    expect(MonzoSettings.loadTokens(), isNull);
+    expect(find.byKey(const ValueKey('monzo_steps')), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

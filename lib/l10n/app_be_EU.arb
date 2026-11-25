@@ -434,6 +434,31 @@
     "monobankToken": "Piersanaĺny tokien",
     "monobankTokenSteps": "Jak atrymać piersanaĺny tokien:\n1. Adkryjcie api.monobank.ua ŭ braŭzery\n2. Adskanirujcie QR-kod u dadatku monobank i pacvierdzicie dostup\n3. Skapirujcie tokien sa staronki\n4. Ustaŭcie jaho nižej i naciśnicie «Padłučycca»\n5. Pryviažycie kožnuju kartku ci słoik da rachunku (abo stvarycie jaho) i impartujcie",
     "monobankTokenTooltip": "Vydajecca na api.monobank.ua paślia skanavannia QR-koda ŭ dadatku monobank; zachoŭvajecca ŭ zašyfravanym vyhladzie",
+    "monzoApprove": "Paćvierdzicie dostup u prahramie Monzo, potym znoŭ naciśnicie «Padłučycca»",
+    "monzoClientId": "ID klijenta",
+    "monzoClientSecret": "Sakret klijenta",
+    "monzoClientSecretTooltip": "Pakazvajecca dla OAuth-klijenta na developers.monzo.com; zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy sakret",
+    "monzoCode": "Adras staronki paslia ŭvachodu",
+    "monzoCodeTooltip": "Kali Fingrom nie adkryŭsia aŭtamatyčna, skapirujcie adras z braŭziera i ŭstaŭcie jaho siudy",
+    "monzoDescription": "Impart reštkaŭ i aperacyj rachunkaŭ Monzo z ułasnym OAuth-klijentam, zarehistravanym na developers.monzo.com (toĺki dla asabistaha vykarystannia). Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "monzoExpired": "Termin dostupu da Monzo skončyŭsia: padłučycieśsia znoŭ",
+    "monzoFullHistory": "Poŭnaja historyja dastupnaja da {value}: vybierycie bolš rannuju datu i impartujcie zaraz. Paźniej Monzo daje toĺki apošnija 90 dzion",
+    "@monzoFullHistory": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoHeadline": "Monzo Developer API (Vialikabrytanija)",
+    "monzoHistoryLimited": "Monzo daje toĺki apošnija 90 dzion: aperacyi impartujucca z {value}",
+    "@monzoHistoryLimited": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoIncomplete": "Zapoŭnicie ID klijenta, sakret klijenta i URL pieranakiravannia",
+    "monzoRedirect": "URL pieranakiravannia",
+    "monzoRedirectTooltip": "Zadajcie mienavita hety adras dla OAuth-klijenta; paslia ŭvachodu Monzo viartaje na jaho",
+    "monzoSteps": "Jak padłučycca:\n1. Uvajdzicie na developers.monzo.com z elektronnaj poštaj vašaha akaŭnta Monzo\n2. Adkryjcie Clients → New OAuth Client, vybierycie «Confidential» i zadajcie URL pieranakiravannia, pakazany nižej\n3. Skapirujcie ID klijenta i sakret klijenta, ustaŭcie ich nižej i naciśnicie «Padłučycca»\n4. Adkryjcie spasyłku z lista, paćvierdzicie dostup u prahramie Monzo i znoŭ naciśnicie «Padłučycca»\n5. Impartujcie adrazu: poŭnaja historyja dastupnaja toĺki 5 chvilin paslia paćvierdžańnia, paźniej — toĺki apošnija 90 dzion",
     "navigationTooltip": "Adkryć haloŭnaje mieniu",
     "netProfit": "Prybytak: {value}",
     "@netProfit": {

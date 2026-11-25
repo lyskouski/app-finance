@@ -80,6 +80,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
   - Enable Banking (EU): import van saldi en transacties van Europese banken (PSD2)
   - Wise API (Global): import van saldi en transacties van Wise-rekeningen in meerdere valuta (persoonlijk API-token)
   - Investec Programmable Banking (Zuid-Afrika): import van saldi en transacties van Private Banking-rekeningen (eigen API-sleutels)
+  - Monzo Developer API (Verenigd Koninkrijk): import van saldi en transacties (eigen OAuth-client voor persoonlijk gebruik)
   - PrivatBank Autoclient (Oekraïne): import van saldi en transacties van zakelijke rekeningen van Privat24 for Business (Autoclient-token)
   - monobank Personal API (Oekraïne): import van saldi en transacties van monobank-kaarten en spaarpotten (persoonlijk token)
   - Meldingen Parser (Android): transacties uit meldingen van bank- en betaalapps

@@ -434,6 +434,31 @@
     "monobankToken": "個人權杖",
     "monobankTokenSteps": "如何取得個人權杖：\n1. 在瀏覽器中開啟 api.monobank.ua\n2. 使用 monobank 應用程式掃描 QR 碼並確認存取\n3. 從頁面複製權杖\n4. 貼到下方並點選「連線」\n5. 將每張卡或存錢筒連結到帳戶（或新建帳戶）並匯入",
     "monobankTokenTooltip": "在 monobank 應用程式中掃描 QR 碼後於 api.monobank.ua 核發；加密儲存",
+    "monzoApprove": "在 Monzo 應用程式中核准存取，然後再次點選「連線」",
+    "monzoClientId": "用戶端 ID",
+    "monzoClientSecret": "用戶端密碼",
+    "monzoClientSecretTooltip": "顯示於 developers.monzo.com 的 OAuth 用戶端中；加密儲存。留空則保留已儲存的密碼",
+    "monzoCode": "登入後開啟頁面的網址",
+    "monzoCodeTooltip": "若 Fingrom 未自動開啟，請從瀏覽器複製網址並貼上至此處",
+    "monzoDescription": "使用您在 developers.monzo.com 註冊的自有 OAuth 用戶端匯入 Monzo 帳戶的餘額與交易（僅限個人使用）。存取為唯讀：不會進行任何付款。",
+    "monzoExpired": "Monzo 存取已過期：請重新連線",
+    "monzoFullHistory": "完整歷史記錄在 {value} 之前可用：請選擇較早的日期並立即匯入。之後 Monzo 僅提供最近 90 天的資料",
+    "@monzoFullHistory": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoHeadline": "Monzo Developer API（英國）",
+    "monzoHistoryLimited": "Monzo 僅提供最近 90 天的資料：將從 {value} 起匯入交易",
+    "@monzoHistoryLimited": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "monzoIncomplete": "請填寫用戶端 ID、用戶端密碼與重新導向 URL",
+    "monzoRedirect": "重新導向 URL",
+    "monzoRedirectTooltip": "請為 OAuth 用戶端準確設定此網址；登入後 Monzo 將返回此網址",
+    "monzoSteps": "如何連線：\n1. 使用您的 Monzo 帳戶電子郵件登入 developers.monzo.com\n2. 開啟 Clients → New OAuth Client，選擇「Confidential」，並設定下方顯示的重新導向 URL\n3. 複製用戶端 ID 與用戶端密碼，貼到下方並點選「連線」\n4. 開啟電子郵件中的連結，在 Monzo 應用程式中核准存取，然後再次點選「連線」\n5. 請立即匯入：完整歷史記錄僅在核准後 5 分鐘內可用，之後僅提供最近 90 天",
     "navigationTooltip": "開啟主功能表",
     "netProfit": "利潤：{value}",
     "@netProfit": {

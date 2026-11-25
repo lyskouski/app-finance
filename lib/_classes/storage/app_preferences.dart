@@ -47,6 +47,9 @@ class AppPreferences {
   static const String prefPrivatBankToken = 'privatbankToken';
   static const String prefMonobank = 'monobank';
   static const String prefMonobankToken = 'monobankToken';
+  static const String prefMonzo = 'monzo';
+  static const String prefMonzoSecret = 'monzoSecret';
+  static const String prefMonzoTokens = 'monzoTokens';
   static const String prefNotification = 'notificationParser';
 
   static const String isActive = 'true';

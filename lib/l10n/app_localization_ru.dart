@@ -1020,6 +1020,62 @@ class AppLocalizationsRu extends AppLocalizations {
       'Выдаётся на api.monobank.ua после сканирования QR-кода в приложении monobank; хранится в зашифрованном виде';
 
   @override
+  String get monzoApprove =>
+      'Подтвердите доступ в приложении Monzo, затем снова нажмите «Подключиться»';
+
+  @override
+  String get monzoClientId => 'ID клиента';
+
+  @override
+  String get monzoClientSecret => 'Секрет клиента';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'Отображается для OAuth-клиента на developers.monzo.com; хранится в зашифрованном виде. Оставьте пустым, чтобы сохранить текущий секрет';
+
+  @override
+  String get monzoCode => 'Адрес страницы после входа';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Если Fingrom не открылся автоматически, скопируйте адрес из браузера и вставьте его сюда';
+
+  @override
+  String get monzoDescription =>
+      'Импорт остатков и операций счетов Monzo с собственным OAuth-клиентом, зарегистрированным на developers.monzo.com (только для личного использования). Доступ только для чтения: платежи не выполняются.';
+
+  @override
+  String get monzoExpired => 'Срок доступа к Monzo истёк: подключитесь заново';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'Полная история доступна до $value: выберите более раннюю дату и импортируйте сейчас. Позже Monzo предоставляет только последние 90 дней';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (Великобритания)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo предоставляет только последние 90 дней: операции импортируются с $value';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'Заполните ID клиента, секрет клиента и URL перенаправления';
+
+  @override
+  String get monzoRedirect => 'URL перенаправления';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'Укажите именно этот адрес для OAuth-клиента; после входа Monzo возвращает на него';
+
+  @override
+  String get monzoSteps =>
+      'Как подключиться:\n1. Войдите на developers.monzo.com с электронной почтой вашего аккаунта Monzo\n2. Откройте Clients → New OAuth Client, выберите «Confidential» и укажите URL перенаправления, показанный ниже\n3. Скопируйте ID клиента и секрет клиента, вставьте их ниже и нажмите «Подключиться»\n4. Откройте ссылку из письма, подтвердите доступ в приложении Monzo и снова нажмите «Подключиться»\n5. Импортируйте сразу: полная история доступна только 5 минут после подтверждения, позже — только последние 90 дней';
+
+  @override
   String get navigationTooltip => 'Открыть главное меню';
 
   @override

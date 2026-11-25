@@ -1018,6 +1018,62 @@ class AppLocalizationsCs extends AppLocalizations {
       'Vydává se na api.monobank.ua po naskenování QR kódu v aplikaci monobank; uložen šifrovaně';
 
   @override
+  String get monzoApprove =>
+      'Schvalte přístup v aplikaci Monzo a poté znovu stiskněte „Připojit“';
+
+  @override
+  String get monzoClientId => 'ID klienta';
+
+  @override
+  String get monzoClientSecret => 'Tajný klíč klienta';
+
+  @override
+  String get monzoClientSecretTooltip =>
+      'Zobrazen u klienta OAuth na developers.monzo.com; uložen šifrovaně. Ponechte prázdné pro zachování uloženého klíče';
+
+  @override
+  String get monzoCode => 'Adresa stránky po přihlášení';
+
+  @override
+  String get monzoCodeTooltip =>
+      'Pokud se Fingrom neotevřel automaticky, zkopírujte adresu z prohlížeče a vložte ji sem';
+
+  @override
+  String get monzoDescription =>
+      'Import zůstatků a transakcí účtů Monzo s vlastním klientem OAuth registrovaným na developers.monzo.com (pouze pro osobní použití). Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get monzoExpired => 'Přístup k Monzo vypršel: připojte se znovu';
+
+  @override
+  String monzoFullHistory(Object value) {
+    return 'Úplná historie je dostupná do $value: zvolte dřívější datum a importujte hned. Později Monzo poskytuje jen posledních 90 dní';
+  }
+
+  @override
+  String get monzoHeadline => 'Monzo Developer API (Spojené království)';
+
+  @override
+  String monzoHistoryLimited(Object value) {
+    return 'Monzo poskytuje jen posledních 90 dní: transakce se importují od $value';
+  }
+
+  @override
+  String get monzoIncomplete =>
+      'Vyplňte ID klienta, tajný klíč klienta a URL přesměrování';
+
+  @override
+  String get monzoRedirect => 'URL přesměrování';
+
+  @override
+  String get monzoRedirectTooltip =>
+      'Nastavte přesně tuto adresu pro klienta OAuth; Monzo se na ni po přihlášení vrátí';
+
+  @override
+  String get monzoSteps =>
+      'Jak se připojit:\n1. Přihlaste se na developers.monzo.com e-mailem svého účtu Monzo\n2. Otevřete Clients → New OAuth Client, zvolte „Confidential“ a nastavte URL přesměrování uvedenou níže\n3. Zkopírujte ID klienta a tajný klíč klienta, vložte je níže a stiskněte „Připojit“\n4. Otevřete odkaz zaslaný e-mailem, schvalte přístup v aplikaci Monzo a znovu stiskněte „Připojit“\n5. Importujte ihned: úplná historie je dostupná jen 5 minut po schválení, později jen posledních 90 dní';
+
+  @override
   String get navigationTooltip => 'Otevřít hlavní nabídku';
 
   @override

@@ -5,6 +5,7 @@ _A lista completa de atualizações pode ser visualizada no item de navegação 
 ### 8.1.0
 - Adicionado o Teller (US): saldos e importação de transações de bancos e emissores de cartões dos EUA com seu próprio aplicativo Teller (baseado em certificado)
 - Adicionado o Investec Programmable Banking (África do Sul): saldos e importação de transações de contas Private Banking com suas próprias chaves de API
+- Adicionado o Monzo Developer API (Reino Unido): saldos e importação de transações com seu próprio cliente OAuth, aprovado no aplicativo Monzo
 - Adicionado o Wise API (Global): saldos e importação de transações de contas multimoeda Wise, conversões como transferências
 - Adicionado PrivatBank Autoclient (Ucrânia): saldos e importação de transações de contas empresariais por IBAN
 - Adicionado monobank Personal API (Ucrânia): saldos e importação de transações de cartões e cofrinhos, criação de contas vinculadas

@@ -5,6 +5,7 @@ _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf
 ### 8.1.0
 - Teller (US) hinzugefügt: Salden und Import von Umsätzen von US-Banken und Kartenanbietern mit eigener Teller-Anwendung (zertifikatsbasiert)
 - Investec Programmable Banking (Südafrika) hinzugefügt: Salden und Import von Umsätzen von Private-Banking-Konten mit eigenen API-Schlüsseln
+- Monzo Developer API (Vereinigtes Königreich) hinzugefügt: Salden und Import von Umsätzen mit eigenem OAuth-Client, bestätigt in der Monzo-App
 - Wise API (Global) hinzugefügt: Salden und Import von Umsätzen von Wise-Mehrwährungskonten, Umrechnungen als Überweisungen
 - PrivatBank Autoclient (Ukraine) hinzugefügt: Salden und Import von Umsätzen von Geschäftskonten per IBAN
 - monobank Personal API (Ukraine) hinzugefügt: Salden und Import von Umsätzen der Karten und Sparbüchsen, Anlegen verknüpfter Konten

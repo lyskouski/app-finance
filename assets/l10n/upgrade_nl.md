@@ -5,6 +5,7 @@ _De volledige lijst met updates kan worden bekeken via het navigatie-item “Ove
 ### 8.1.0
 - Teller (US) toegevoegd: saldi en import van transacties van Amerikaanse banken en kaartuitgevers met uw eigen Teller-applicatie (op basis van een certificaat)
 - Investec Programmable Banking (Zuid-Afrika) toegevoegd: saldi en import van transacties van Private Banking-rekeningen met uw eigen API-sleutels
+- Monzo Developer API (Verenigd Koninkrijk) toegevoegd: saldi en import van transacties met uw eigen OAuth-client, goedgekeurd in de Monzo-app
 - Wise API (Global) toegevoegd: saldi en import van transacties van Wise-rekeningen in meerdere valuta, omwisselingen als overboekingen
 - PrivatBank Autoclient (Oekraïne) toegevoegd: saldi en import van transacties van zakelijke rekeningen via IBAN
 - monobank Personal API (Oekraïne) toegevoegd: saldi en import van transacties van kaarten en spaarpotten, aanmaken van gekoppelde rekeningen
