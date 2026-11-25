@@ -1702,6 +1702,24 @@ class AppLocalizationsFr extends AppLocalizations {
   String get typeButton => 'Bouton';
 
   @override
+  String get upDescription =>
+      'Importer les soldes et les transactions des comptes de dépenses et d’épargne Up avec un jeton d’accès personnel. Les virements entre comptes Up liés (y compris les Round Ups) sont importés comme virements. L’accès est en lecture seule : aucun paiement n’est effectué.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Australie)';
+
+  @override
+  String get upToken => 'Jeton d’accès personnel';
+
+  @override
+  String get upTokenSteps =>
+      'Comment obtenir un jeton d’accès personnel :\n1. Ouvrez l’application Up et allez dans Data sharing → Personal Access Token (ou connectez-vous sur api.up.com.au)\n2. Créez un jeton et copiez-le (il commence par \"up:yeah:\") ; un nouveau jeton remplace le précédent\n3. Collez-le ci-dessous et appuyez sur « Se connecter »\n4. Liez chaque compte Up (y compris les comptes d’épargne) pour que les virements entre eux soient importés comme virements';
+
+  @override
+  String get upTokenTooltip =>
+      'Créé dans l’application Up ou sur api.up.com.au ; stocké chiffré. Seul le jeton le plus récent est valide';
+
+  @override
   String get updateAccountTooltip => 'Mise à jour du compte';
 
   @override

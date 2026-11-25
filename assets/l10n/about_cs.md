@@ -83,6 +83,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
   - Monzo Developer API (Spojené království): import zůstatků a transakcí (vlastní klient OAuth pro osobní použití)
   - Starling Bank Personal Access (Spojené království): import zůstatků a transakcí (osobní přístupový token)
   - Akahu Personal App (Nový Zéland): import zůstatků a transakcí novozélandských bank (vlastní osobní aplikace)
+  - Up Banking API (Austrálie): import zůstatků a transakcí výdajových a spořicích účtů (osobní přístupový token)
   - PrivatBank Autoclient (Ukrajina): import zůstatků a transakcí podnikatelských účtů z Privat24 for Business (token Autoclient)
   - monobank Personal API (Ukrajina): import zůstatků a transakcí karet a pokladniček monobank (osobní token)
   - Parser oznámení (Android): transakce z oznámení bankovních a platebních aplikací

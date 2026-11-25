@@ -1694,6 +1694,24 @@ class AppLocalizationsAz extends AppLocalizations {
   String get typeButton => 'Düymə';
 
   @override
+  String get upDescription =>
+      'Şəxsi giriş tokeni ilə Up xərc və yığım hesablarının qalıqlarını və əməliyyatlarını idxal edin. Əlaqələndirilmiş Up hesabları arasında köçürmələr (Round Ups daxil olmaqla) köçürmə kimi idxal olunur. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Avstraliya)';
+
+  @override
+  String get upToken => 'Şəxsi giriş tokeni';
+
+  @override
+  String get upTokenSteps =>
+      'Şəxsi giriş tokenini necə əldə etmək olar:\n1. Up tətbiqini açın və Data sharing → Personal Access Token bölməsinə keçin (və ya api.up.com.au saytında daxil olun)\n2. Token yaradın və onu kopyalayın (\"up:yeah:\" ilə başlayır); yeni token əvvəlkini əvəz edir\n3. Onu aşağıya yapışdırın və \"Qoşul\" düyməsini basın\n4. Aralarındakı köçürmələrin köçürmə kimi idxal olunması üçün bütün Up hesablarını (yığım hesabları daxil olmaqla) əlaqələndirin';
+
+  @override
+  String get upTokenTooltip =>
+      'Up tətbiqində və ya api.up.com.au saytında yaradılır; şifrələnmiş saxlanılır. Yalnız ən son token etibarlıdır';
+
+  @override
   String get updateAccountTooltip => 'Hesabı yeniləyin';
 
   @override

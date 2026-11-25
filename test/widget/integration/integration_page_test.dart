@@ -26,6 +26,8 @@ import 'package:app_finance/_classes/integration/starling/starling_client.dart';
 import 'package:app_finance/_classes/integration/starling/starling_settings.dart';
 import 'package:app_finance/_classes/integration/teller/teller_client.dart';
 import 'package:app_finance/_classes/integration/teller/teller_settings.dart';
+import 'package:app_finance/_classes/integration/up/up_client.dart';
+import 'package:app_finance/_classes/integration/up/up_settings.dart';
 import 'package:app_finance/_classes/integration/wise/wise_client.dart';
 import 'package:app_finance/_classes/integration/wise/wise_settings.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -49,6 +51,7 @@ import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:app_finance/pages/integration/widgets/starling_widget.dart';
 import 'package:app_finance/pages/integration/widgets/teller_widget.dart';
+import 'package:app_finance/pages/integration/widgets/up_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:fints/fints.dart';
 import 'package:flutter/services.dart';
@@ -179,7 +182,7 @@ void main() {
     // Services of single institutions follow at the end of the list, sorted by name
     expect(
       IntegrationPageState.getServices().map((e) => e.id),
-      ['akahu', 'investec', 'monobank', 'monzo', 'privatbank', 'starling', 'teller', 'wise'],
+      ['akahu', 'investec', 'monobank', 'monzo', 'privatbank', 'starling', 'teller', 'up', 'wise'],
     );
     // The page's list (text fields hold horizontal scrollables of their own)
     final list = find.byWidgetPredicate((e) => e is Scrollable && e.axisDirection == AxisDirection.down);
@@ -1145,6 +1148,154 @@ void main() {
     await tester.pumpAndSettle();
     expect(AkahuSettings.loadTokens(), isNull);
     expect(find.byKey(const ValueKey('akahu_steps')), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Up connects with a Personal Access Token and imports transfers between linked accounts',
+      (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    AccountAppData addAccount(String title) => state.add(AccountAppData(
+          title: title,
+          type: AppAccountType.account.toString(),
+          details: 0.0,
+          hidden: false,
+        )) as AccountAppData;
+    final spending = addAccount('Up Spending');
+    final saver = addAccount('Up Saver');
+    final budget = state.add(BudgetAppData(title: 'Eating Out', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+    final invoices = state.getList(AppDataType.invoice, false).length;
+
+    Map<String, dynamic> transaction(String id, String value, String description, {String? transfer}) => {
+          'type': 'transactions',
+          'id': id,
+          'attributes': {
+            'status': 'SETTLED',
+            'description': description,
+            'amount': {'currencyCode': 'AUD', 'value': value},
+            'createdAt': DateTime.now().toUtc().toIso8601String(),
+          },
+          'relationships': {
+            'transferAccount': {
+              'data': transfer != null ? {'type': 'accounts', 'id': transfer} : null,
+            },
+          },
+        };
+    final requests = <http.Request>[];
+    final client = UpClient(
+      client: MockClient((request) async {
+        requests.add(request);
+        if (request.headers['Authorization'] != 'Bearer up:yeah:T') {
+          return http.Response(
+              jsonEncode({
+                'errors': [
+                  {'status': '401', 'title': 'Not Authorized'}
+                ]
+              }),
+              401);
+        }
+        final body = switch (request.url.path) {
+          '/api/v1/util/ping' => {
+              'meta': {'id': 'x'}
+            },
+          '/api/v1/accounts' => {
+              'data': [
+                for (final (id, name) in [('spending', 'Spending'), ('saver', 'Rainy Day')])
+                  {
+                    'type': 'accounts',
+                    'id': id,
+                    'attributes': {
+                      'displayName': name,
+                      'balance': {'currencyCode': 'AUD', 'value': '100.00'},
+                    },
+                  },
+              ],
+              'links': {'next': null},
+            },
+          '/api/v1/accounts/spending/transactions' => {
+              'data': [
+                transaction('t1', '-4.50', 'Coffee Shop'),
+                transaction('t-out', '-50.00', 'Transfer to Rainy Day', transfer: 'saver'),
+              ],
+              'links': {'next': null},
+            },
+          _ => {
+              'data': [transaction('t-in', '50.00', 'Transfer from Spending', transfer: 'spending')],
+              'links': {'next': null},
+            },
+        };
+        return http.Response(jsonEncode(body), 200);
+      }),
+    );
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(body: SingleChildScrollView(child: UpWidget(client: client))),
+    ));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('up_steps')), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField).first, 'wrong');
+    await tester.ensureVisible(find.byKey(const ValueKey('up_connect')));
+    await tester.tap(find.byKey(const ValueKey('up_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Access has been revoked or the credentials are incorrect'), findsOneWidget);
+    expect(UpSettings.loadToken(), isNull);
+
+    await tester.enterText(find.byType(TextField).first, 'up:yeah:T');
+    await tester.ensureVisible(find.byKey(const ValueKey('up_connect')));
+    await tester.tap(find.byKey(const ValueKey('up_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(requests.where((e) => e.url.path == '/api/v1/util/ping').length, 2);
+    expect(UpSettings.loadToken(), 'up:yeah:T');
+    expect(find.text('Spending'), findsOneWidget);
+    expect(find.text('Rainy Day'), findsOneWidget);
+
+    final widgetState = tester.state<UpWidgetState>(find.byType(UpWidget));
+    widgetState.accounts.first
+      ..appAccount = spending.uuid
+      ..category = budget.uuid;
+    widgetState.accounts.last
+      ..appAccount = saver.uuid
+      ..category = budget.uuid;
+
+    // The sending side of a transfer is left to the receiving account
+    await tester.ensureVisible(find.text('Import Transactions').first);
+    await tester.tap(find.text('Import Transactions').first);
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 0'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+
+    await tester.ensureVisible(find.text('Import Transactions').last);
+    await tester.tap(find.text('Import Transactions').last);
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 0'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    final transfer = state.getList(AppDataType.invoice, false).whereType<InvoiceAppData>().last;
+    expect(state.getList(AppDataType.invoice, false).length, invoices + 1);
+    expect(transfer.accountFrom, spending.uuid);
+    expect(transfer.account, saver.uuid);
+    expect(transfer.details, 50);
+    expect(UpSettings.load().links, {'spending': spending.uuid, 'saver': saver.uuid});
+
+    await tester.ensureVisible(find.byKey(const ValueKey('up_forget')));
+    await tester.tap(find.byKey(const ValueKey('up_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(UpSettings.loadToken(), isNull);
+    expect(find.byKey(const ValueKey('up_steps')), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

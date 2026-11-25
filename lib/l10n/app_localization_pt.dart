@@ -1698,6 +1698,24 @@ class AppLocalizationsPt extends AppLocalizations {
   String get typeButton => 'Botão';
 
   @override
+  String get upDescription =>
+      'Importe saldos e transações de contas de despesas e poupança Up com um token de acesso pessoal. As transferências entre contas Up vinculadas (incluindo Round Ups) são importadas como transferências. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Austrália)';
+
+  @override
+  String get upToken => 'Token de acesso pessoal';
+
+  @override
+  String get upTokenSteps =>
+      'Como obter um token de acesso pessoal:\n1. Abra a aplicação Up e vá a Data sharing → Personal Access Token (ou inicie sessão em api.up.com.au)\n2. Crie um token e copie-o (começa por \"up:yeah:\"); um novo token substitui o anterior\n3. Cole-o abaixo e prima \"Ligar\"\n4. Vincule todas as contas Up (incluindo as de poupança) para que as transferências entre elas sejam importadas como transferências';
+
+  @override
+  String get upTokenTooltip =>
+      'Criado na aplicação Up ou em api.up.com.au; guardado encriptado. Apenas o token mais recente é válido';
+
+  @override
   String get updateAccountTooltip => 'Atualizar conta';
 
   @override
@@ -3446,6 +3464,24 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get typeButton => 'Botão';
+
+  @override
+  String get upDescription =>
+      'Importe saldos e transações de contas de gastos e poupança Up com um token de acesso pessoal. As transferências entre contas Up vinculadas (incluindo Round Ups) são importadas como transferências. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Austrália)';
+
+  @override
+  String get upToken => 'Token de acesso pessoal';
+
+  @override
+  String get upTokenSteps =>
+      'Como obter um token de acesso pessoal:\n1. Abra o aplicativo Up e vá em Data sharing → Personal Access Token (ou entre em api.up.com.au)\n2. Crie um token e copie-o (ele começa com \"up:yeah:\"); um novo token substitui o anterior\n3. Cole-o abaixo e toque em \"Conectar\"\n4. Vincule todas as contas Up (incluindo as de poupança) para que as transferências entre elas sejam importadas como transferências';
+
+  @override
+  String get upTokenTooltip =>
+      'Criado no aplicativo Up ou em api.up.com.au; armazenado criptografado. Apenas o token mais recente é válido';
 
   @override
   String get updateAccountTooltip => 'Atualizar conta';

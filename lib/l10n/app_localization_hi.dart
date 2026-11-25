@@ -1687,6 +1687,24 @@ class AppLocalizationsHi extends AppLocalizations {
   String get typeButton => 'बटन';
 
   @override
+  String get upDescription =>
+      'व्यक्तिगत एक्सेस टोकन से Up के खर्च और बचत खातों के बैलेंस और लेन-देन इम्पोर्ट करें। लिंक किए गए Up खातों के बीच ट्रांसफर (Round Ups सहित) ट्रांसफर के रूप में इम्पोर्ट होते हैं। एक्सेस केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get upHeadline => 'Up Banking API (ऑस्ट्रेलिया)';
+
+  @override
+  String get upToken => 'व्यक्तिगत एक्सेस टोकन';
+
+  @override
+  String get upTokenSteps =>
+      'व्यक्तिगत एक्सेस टोकन कैसे प्राप्त करें:\n1. Up ऐप खोलें और Data sharing → Personal Access Token पर जाएँ (या api.up.com.au पर साइन इन करें)\n2. टोकन बनाएँ और उसे कॉपी करें (यह \"up:yeah:\" से शुरू होता है); नया टोकन पिछले टोकन की जगह ले लेता है\n3. इसे नीचे चिपकाएँ और \"कनेक्ट करें\" दबाएँ\n4. हर Up खाते (बचत खातों सहित) को लिंक करें ताकि उनके बीच ट्रांसफर, ट्रांसफर के रूप में इम्पोर्ट हों';
+
+  @override
+  String get upTokenTooltip =>
+      'Up ऐप में या api.up.com.au पर बनाया जाता है; एन्क्रिप्ट करके संग्रहीत। केवल नवीनतम टोकन मान्य है';
+
+  @override
   String get updateAccountTooltip => 'खाता अद्यतन करें';
 
   @override

@@ -1689,6 +1689,24 @@ class AppLocalizationsRu extends AppLocalizations {
   String get typeButton => 'Кнопка';
 
   @override
+  String get upDescription =>
+      'Импорт остатков и операций расходных и накопительных счетов Up с помощью персонального токена доступа. Переводы между связанными счетами Up (включая Round Ups) импортируются как переводы. Доступ только для чтения: платежи не выполняются.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Австралия)';
+
+  @override
+  String get upToken => 'Персональный токен доступа';
+
+  @override
+  String get upTokenSteps =>
+      'Как получить персональный токен доступа:\n1. Откройте приложение Up и перейдите в Data sharing → Personal Access Token (или войдите на api.up.com.au)\n2. Создайте токен и скопируйте его (он начинается с \"up:yeah:\"); новый токен заменяет предыдущий\n3. Вставьте его ниже и нажмите «Подключиться»\n4. Свяжите все счета Up (включая накопительные), чтобы переводы между ними импортировались как переводы';
+
+  @override
+  String get upTokenTooltip =>
+      'Создаётся в приложении Up или на api.up.com.au; хранится в зашифрованном виде. Действует только последний токен';
+
+  @override
   String get updateAccountTooltip => 'Обновить счёт';
 
   @override

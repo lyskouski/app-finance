@@ -1690,6 +1690,24 @@ class AppLocalizationsId extends AppLocalizations {
   String get typeButton => 'Tombol';
 
   @override
+  String get upDescription =>
+      'Impor saldo dan transaksi rekening pengeluaran dan tabungan Up dengan Token Akses Pribadi. Transfer antar rekening Up yang ditautkan (termasuk Round Ups) diimpor sebagai transfer. Akses hanya-baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Australia)';
+
+  @override
+  String get upToken => 'Token Akses Pribadi';
+
+  @override
+  String get upTokenSteps =>
+      'Cara mendapatkan Token Akses Pribadi:\n1. Buka aplikasi Up dan masuk ke Data sharing → Personal Access Token (atau masuk di api.up.com.au)\n2. Buat token dan salin (diawali dengan \"up:yeah:\"); token baru menggantikan token sebelumnya\n3. Tempel di bawah dan tekan \"Hubungkan\"\n4. Tautkan setiap rekening Up (termasuk tabungan) agar transfer di antaranya diimpor sebagai transfer';
+
+  @override
+  String get upTokenTooltip =>
+      'Dibuat di aplikasi Up atau di api.up.com.au; disimpan terenkripsi. Hanya token terbaru yang berlaku';
+
+  @override
   String get updateAccountTooltip => 'Perbarui Akun';
 
   @override

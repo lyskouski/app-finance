@@ -83,6 +83,7 @@
   - Monzo Developer API（英国）：残高と取引のインポート（個人利用向けの独自の OAuth クライアント）
   - Starling Bank Personal Access（英国）：残高と取引のインポート（個人用アクセストークン）
   - Akahu Personal App（ニュージーランド）：ニュージーランドの銀行の残高と取引のインポート（自分の個人用アプリ）
+  - Up Banking API（オーストラリア）：支出口座と貯蓄口座の残高と取引のインポート（個人用アクセストークン）
   - PrivatBank Autoclient（ウクライナ）：Privat24 for Businessの法人口座の残高と取引のインポート（Autoclientトークン）
   - monobank Personal API（ウクライナ）：monobankのカードと貯金箱の残高と取引のインポート（個人トークン）
   - 通知パーサー (Android)：銀行・決済アプリの通知から取引を作成

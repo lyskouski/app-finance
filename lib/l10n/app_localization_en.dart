@@ -1688,6 +1688,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get typeButton => 'Button';
 
   @override
+  String get upDescription =>
+      'Import balances and transactions of Up spending and saver accounts with a Personal Access Token. Transfers between linked Up accounts (including Round Ups) are imported as transfers. Access is read-only: no payments are made.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Australia)';
+
+  @override
+  String get upToken => 'Personal Access Token';
+
+  @override
+  String get upTokenSteps =>
+      'How to get a Personal Access Token:\n1. Open the Up app and go to Data sharing → Personal Access Token (or sign in at api.up.com.au)\n2. Create a token and copy it (it starts with \"up:yeah:\"); a new token replaces the previous one\n3. Paste it below and press \"Connect\"\n4. Link every Up account (including savers) to have transfers between them imported as transfers';
+
+  @override
+  String get upTokenTooltip =>
+      'Created in the Up app or at api.up.com.au; stored encrypted. Only the latest token is valid';
+
+  @override
   String get updateAccountTooltip => 'Update Account';
 
   @override

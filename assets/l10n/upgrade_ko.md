@@ -8,6 +8,7 @@ _전체 업데이트 목록은 '힌트' 버튼의 '정보' 탐색 항목을 통�
 - Monzo Developer API (영국) 추가: Monzo 앱에서 승인한 자체 OAuth 클라이언트로 잔액 및 거래 내역 가져오기
 - Starling Bank Personal Access (영국) 추가: 개인 액세스 토큰으로 잔액 및 거래 내역 가져오기
 - Akahu Personal App (뉴질랜드) 추가: Akahu에 연결된 뉴질랜드 은행의 잔액 및 거래 내역 가져오기
+- Up Banking API (호주) 추가: 지출 및 저축 계좌의 잔액 및 거래 내역 가져오기, 계좌 간 이체는 이체로
 - Wise API (Global) 추가: Wise 다중 통화 계좌의 잔액 및 거래 내역 가져오기, 환전은 이체로
 - PrivatBank Autoclient (우크라이나) 추가: IBAN으로 사업자 계좌의 잔액 및 거래 내역 가져오기
 - monobank Personal API (우크라이나) 추가: 카드 및 저금통의 잔액과 거래 내역 가져오기, 연결된 계좌 생성

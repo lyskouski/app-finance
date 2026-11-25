@@ -83,6 +83,7 @@
   - Monzo Developer API (영국): 잔액 및 거래 내역 가져오기 (개인 용도의 자체 OAuth 클라이언트)
   - Starling Bank Personal Access (영국): 잔액 및 거래 내역 가져오기 (개인 액세스 토큰)
   - Akahu Personal App (뉴질랜드): 뉴질랜드 은행의 잔액 및 거래 내역 가져오기 (본인의 개인 앱)
+  - Up Banking API (호주): 지출 및 저축 계좌의 잔액 및 거래 내역 가져오기 (개인 액세스 토큰)
   - PrivatBank Autoclient (우크라이나): Privat24 for Business 사업자 계좌의 잔액 및 거래 내역 가져오기 (Autoclient 토큰)
   - monobank Personal API (우크라이나): monobank 카드 및 저금통의 잔액과 거래 내역 가져오기 (개인 토큰)
   - 알림 파서 (Android): 은행 및 결제 앱 알림에서 거래 생성

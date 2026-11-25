@@ -83,6 +83,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
   - Monzo Developer API (Reino Unido): importación de saldos y movimientos (cliente OAuth propio para uso personal)
   - Starling Bank Personal Access (Reino Unido): importación de saldos y movimientos (token de acceso personal)
   - Akahu Personal App (Nueva Zelanda): importación de saldos y movimientos de bancos de Nueva Zelanda (app personal propia)
+  - Up Banking API (Australia): importación de saldos y movimientos de cuentas de gastos y de ahorro (token de acceso personal)
   - PrivatBank Autoclient (Ucrania): importación de saldos y transacciones de cuentas empresariales de Privat24 for Business (token de Autoclient)
   - monobank Personal API (Ucrania): importación de saldos y transacciones de tarjetas y huchas de monobank (token personal)
   - Notificaciones Parser (Android): movimientos a partir de notificaciones de aplicaciones bancarias y de pago

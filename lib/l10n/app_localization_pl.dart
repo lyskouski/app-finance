@@ -1687,6 +1687,24 @@ class AppLocalizationsPl extends AppLocalizations {
   String get typeButton => 'Przycisk';
 
   @override
+  String get upDescription =>
+      'Import sald i transakcji kont wydatkowych i oszczędnościowych Up za pomocą osobistego tokena dostępu. Przelewy między powiązanymi kontami Up (w tym Round Ups) są importowane jako przelewy. Dostęp tylko do odczytu: nie są wykonywane żadne płatności.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Australia)';
+
+  @override
+  String get upToken => 'Osobisty token dostępu';
+
+  @override
+  String get upTokenSteps =>
+      'Jak uzyskać osobisty token dostępu:\n1. Otwórz aplikację Up i przejdź do Data sharing → Personal Access Token (lub zaloguj się na api.up.com.au)\n2. Utwórz token i skopiuj go (zaczyna się od \"up:yeah:\"); nowy token zastępuje poprzedni\n3. Wklej go poniżej i naciśnij „Połącz”\n4. Powiąż każde konto Up (w tym oszczędnościowe), aby przelewy między nimi były importowane jako przelewy';
+
+  @override
+  String get upTokenTooltip =>
+      'Tworzony w aplikacji Up lub na api.up.com.au; przechowywany w postaci zaszyfrowanej. Ważny jest tylko najnowszy token';
+
+  @override
   String get updateAccountTooltip => 'Zaktualizuj rachunek';
 
   @override

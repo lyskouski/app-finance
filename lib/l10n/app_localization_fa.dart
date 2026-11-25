@@ -1684,6 +1684,24 @@ class AppLocalizationsFa extends AppLocalizations {
   String get typeButton => 'دکمه';
 
   @override
+  String get upDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های حساب‌های هزینه و پس‌انداز Up با توکن دسترسی شخصی. انتقال‌های بین حساب‌های پیوندشده Up (از جمله Round Ups) به‌عنوان انتقال وارد می‌شوند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get upHeadline => 'Up Banking API (استرالیا)';
+
+  @override
+  String get upToken => 'توکن دسترسی شخصی';
+
+  @override
+  String get upTokenSteps =>
+      'نحوه دریافت توکن دسترسی شخصی:\n1. برنامه Up را باز کنید و به Data sharing → Personal Access Token بروید (یا در api.up.com.au وارد شوید)\n2. یک توکن ایجاد کرده و آن را کپی کنید (با \"up:yeah:\" شروع می‌شود)؛ توکن جدید جایگزین توکن قبلی می‌شود\n3. آن را در زیر جای‌گذاری کرده و «اتصال» را بزنید\n4. همه حساب‌های Up (از جمله حساب‌های پس‌انداز) را پیوند دهید تا انتقال‌های بین آن‌ها به‌عنوان انتقال وارد شوند';
+
+  @override
+  String get upTokenTooltip =>
+      'در برنامه Up یا در api.up.com.au ایجاد می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. فقط آخرین توکن معتبر است';
+
+  @override
   String get updateAccountTooltip => 'به روز رسانی حساب کاربری';
 
   @override

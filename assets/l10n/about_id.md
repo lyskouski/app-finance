@@ -83,6 +83,7 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
   - Monzo Developer API (Britania Raya): impor saldo dan transaksi (klien OAuth sendiri untuk penggunaan pribadi)
   - Starling Bank Personal Access (Britania Raya): impor saldo dan transaksi (Token Akses Pribadi)
   - Akahu Personal App (Selandia Baru): impor saldo dan transaksi bank Selandia Baru (aplikasi pribadi sendiri)
+  - Up Banking API (Australia): impor saldo dan transaksi rekening pengeluaran dan tabungan (Token Akses Pribadi)
   - PrivatBank Autoclient (Ukraina): impor saldo dan transaksi rekening bisnis dari Privat24 for Business (token Autoclient)
   - monobank Personal API (Ukraina): impor saldo dan transaksi kartu dan celengan monobank (token pribadi)
   - Pengurai Notifikasi (Android): transaksi dari notifikasi aplikasi perbankan dan pembayaran

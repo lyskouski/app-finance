@@ -1647,6 +1647,23 @@ class AppLocalizationsZh extends AppLocalizations {
   String get typeButton => '按钮';
 
   @override
+  String get upDescription =>
+      '使用个人访问令牌导入 Up 支出账户和储蓄账户的余额和交易。已关联的 Up 账户之间的转账（包括 Round Ups）将作为转账导入。访问为只读：不会进行任何付款。';
+
+  @override
+  String get upHeadline => 'Up Banking API（澳大利亚）';
+
+  @override
+  String get upToken => '个人访问令牌';
+
+  @override
+  String get upTokenSteps =>
+      '如何获取个人访问令牌：\n1. 打开 Up 应用并前往 Data sharing → Personal Access Token（或登录 api.up.com.au）\n2. 创建令牌并复制（以 \"up:yeah:\" 开头）；新令牌会替换之前的令牌\n3. 粘贴到下方并点击“连接”\n4. 关联所有 Up 账户（包括储蓄账户），以便将它们之间的转账作为转账导入';
+
+  @override
+  String get upTokenTooltip => '在 Up 应用或 api.up.com.au 中创建；加密存储。仅最新的令牌有效';
+
+  @override
   String get updateAccountTooltip => '更新账户';
 
   @override
@@ -3344,6 +3361,23 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get typeButton => '按鈕';
+
+  @override
+  String get upDescription =>
+      '使用個人存取權杖匯入 Up 支出帳戶與儲蓄帳戶的餘額與交易。已連結的 Up 帳戶之間的轉帳（包括 Round Ups）將以轉帳匯入。存取為唯讀：不會進行任何付款。';
+
+  @override
+  String get upHeadline => 'Up Banking API（澳洲）';
+
+  @override
+  String get upToken => '個人存取權杖';
+
+  @override
+  String get upTokenSteps =>
+      '如何取得個人存取權杖：\n1. 開啟 Up 應用程式並前往 Data sharing → Personal Access Token（或登入 api.up.com.au）\n2. 建立權杖並複製（以 \"up:yeah:\" 開頭）；新權杖會取代先前的權杖\n3. 貼到下方並點選「連線」\n4. 連結所有 Up 帳戶（包括儲蓄帳戶），以將它們之間的轉帳以轉帳匯入';
+
+  @override
+  String get upTokenTooltip => '在 Up 應用程式或 api.up.com.au 中建立；加密儲存。僅最新的權杖有效';
 
   @override
   String get updateAccountTooltip => '更新帳戶';

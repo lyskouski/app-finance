@@ -1657,6 +1657,24 @@ class AppLocalizationsJa extends AppLocalizations {
   String get typeButton => 'ボタン';
 
   @override
+  String get upDescription =>
+      '個人用アクセストークンで Up の支出口座と貯蓄口座の残高と取引をインポートします。連携した Up 口座間の振替（Round Ups を含む）は振替としてインポートされます。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get upHeadline => 'Up Banking API（オーストラリア）';
+
+  @override
+  String get upToken => '個人用アクセストークン';
+
+  @override
+  String get upTokenSteps =>
+      '個人用アクセストークンの取得方法:\n1. Up アプリを開き、Data sharing → Personal Access Token に移動します（または api.up.com.au でサインインします）\n2. トークンを作成してコピーします（\"up:yeah:\" で始まります）。新しいトークンは以前のトークンを置き換えます\n3. 下に貼り付けて「接続」を押します\n4. すべての Up 口座（貯蓄口座を含む）を連携すると、口座間の振替が振替としてインポートされます';
+
+  @override
+  String get upTokenTooltip =>
+      'Up アプリまたは api.up.com.au で作成します。暗号化して保存されます。有効なのは最新のトークンのみです';
+
+  @override
   String get updateAccountTooltip => 'アカウントの更新';
 
   @override

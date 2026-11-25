@@ -83,6 +83,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - Monzo Developer API (Birləşmiş Krallıq): qalıqların və əməliyyatların idxalı (şəxsi istifadə üçün öz OAuth müştərisi)
   - Starling Bank Personal Access (Birləşmiş Krallıq): qalıqların və əməliyyatların idxalı (şəxsi giriş tokeni)
   - Akahu Personal App (Yeni Zelandiya): Yeni Zelandiya banklarının qalıqlarının və əməliyyatlarının idxalı (öz şəxsi tətbiqi)
+  - Up Banking API (Avstraliya): xərc və yığım hesablarının qalıqlarının və əməliyyatlarının idxalı (şəxsi giriş tokeni)
   - PrivatBank Autoclient (Ukrayna): Privat24 for Business biznes hesablarının qalıqlarının və əməliyyatlarının idxalı (Autoclient tokeni)
   - monobank Personal API (Ukrayna): monobank kartlarının və yığım qutularının qalıqlarının və əməliyyatlarının idxalı (şəxsi token)
   - Bildirişlər Parser (Android): bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar

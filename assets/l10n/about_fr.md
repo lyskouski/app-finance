@@ -83,6 +83,7 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
   - Monzo Developer API (Royaume-Uni) : importation des soldes et des opérations (client OAuth personnel pour un usage privé)
   - Starling Bank Personal Access (Royaume-Uni) : importation des soldes et des opérations (jeton d'accès personnel)
   - Akahu Personal App (Nouvelle-Zélande) : importation des soldes et des opérations des banques néo-zélandaises (votre propre application personnelle)
+  - Up Banking API (Australie) : importation des soldes et des opérations des comptes de dépenses et d'épargne (jeton d'accès personnel)
   - PrivatBank Autoclient (Ukraine) : import des soldes et des transactions des comptes professionnels de Privat24 for Business (jeton Autoclient)
   - monobank Personal API (Ukraine) : import des soldes et des transactions des cartes et des tirelires monobank (jeton personnel)
   - Analyseur de notifications (Android) : opérations à partir des notifications des applications bancaires et de paiement

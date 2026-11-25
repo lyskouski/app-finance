@@ -8,6 +8,7 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 - Monzo Developer API (Birleşik Krallık) eklendi: Monzo uygulamasında onaylanan kendi OAuth istemcinizle bakiyeler ve işlemlerin içe aktarılması
 - Starling Bank Personal Access (Birleşik Krallık) eklendi: kişisel erişim anahtarıyla bakiyeler ve işlemlerin içe aktarılması
 - Akahu Personal App (Yeni Zelanda) eklendi: Akahu'ya bağlı Yeni Zelanda bankalarının bakiyeleri ve işlemlerinin içe aktarılması
+- Up Banking API (Avustralya) eklendi: harcama ve birikim hesaplarının bakiyeleri ve işlemlerinin içe aktarılması, aralarındaki transferler transfer olarak
 - Wise API (Global) eklendi: Wise çoklu para birimi hesaplarının bakiyeleri ve işlemlerinin içe aktarılması, dönüşümler transfer olarak
 - PrivatBank Autoclient (Ukrayna) eklendi: IBAN ile ticari hesapların bakiyeleri ve işlemlerinin içe aktarımı
 - monobank Personal API (Ukrayna) eklendi: kartların ve kumbaraların bakiyeleri ve işlemlerinin içe aktarımı, bağlı hesapların oluşturulması

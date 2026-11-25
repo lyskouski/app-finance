@@ -1663,6 +1663,24 @@ class AppLocalizationsKo extends AppLocalizations {
   String get typeButton => '버튼';
 
   @override
+  String get upDescription =>
+      '개인 액세스 토큰으로 Up 지출 계좌와 저축 계좌의 잔액과 거래를 가져옵니다. 연결된 Up 계좌 간 이체(Round Ups 포함)는 이체로 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+
+  @override
+  String get upHeadline => 'Up Banking API (호주)';
+
+  @override
+  String get upToken => '개인 액세스 토큰';
+
+  @override
+  String get upTokenSteps =>
+      '개인 액세스 토큰 받는 방법:\n1. Up 앱을 열고 Data sharing → Personal Access Token으로 이동합니다(또는 api.up.com.au에 로그인합니다)\n2. 토큰을 만들고 복사합니다(\"up:yeah:\"로 시작합니다). 새 토큰은 이전 토큰을 대체합니다\n3. 아래에 붙여 넣고 \"연결\"을 누릅니다\n4. 모든 Up 계좌(저축 계좌 포함)를 연결하면 계좌 간 이체를 이체로 가져옵니다';
+
+  @override
+  String get upTokenTooltip =>
+      'Up 앱 또는 api.up.com.au에서 생성합니다. 암호화되어 저장됩니다. 최신 토큰만 유효합니다';
+
+  @override
   String get updateAccountTooltip => '계정 업데이트';
 
   @override

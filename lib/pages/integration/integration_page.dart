@@ -18,6 +18,7 @@ import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:app_finance/pages/integration/widgets/starling_widget.dart';
 import 'package:app_finance/pages/integration/widgets/teller_widget.dart';
+import 'package:app_finance/pages/integration/widgets/up_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
@@ -98,6 +99,14 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
             title: AppLocale.labels.tellerHeadline,
             icon: Icons.account_balance_outlined,
             builder: (_) => const TellerWidget(),
+          ),
+        // Browser requests (CORS) are not confirmed by Up
+        if (!kIsWeb)
+          (
+            id: 'up',
+            title: AppLocale.labels.upHeadline,
+            icon: Icons.arrow_circle_up_outlined,
+            builder: (_) => const UpWidget(),
           ),
         (
           id: 'wise',

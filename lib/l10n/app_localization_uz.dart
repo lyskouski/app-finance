@@ -1698,6 +1698,24 @@ class AppLocalizationsUz extends AppLocalizations {
   String get typeButton => 'Tugma';
 
   @override
+  String get upDescription =>
+      'Shaxsiy kirish tokeni orqali Up xarajat va jamg‘arma hisoblarining qoldiqlari va tranzaksiyalarini import qiling. Bog‘langan Up hisoblari orasidagi o‘tkazmalar (Round Ups ham) o‘tkazma sifatida import qilinadi. Kirish faqat o‘qish uchun: to‘lovlar amalga oshirilmaydi.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Avstraliya)';
+
+  @override
+  String get upToken => 'Shaxsiy kirish tokeni';
+
+  @override
+  String get upTokenSteps =>
+      'Shaxsiy kirish tokenini qanday olish mumkin:\n1. Up ilovasini oching va Data sharing → Personal Access Token bo‘limiga o‘ting (yoki api.up.com.au saytiga kiring)\n2. Token yarating va uni nusxalang (u \"up:yeah:\" bilan boshlanadi); yangi token avvalgisini almashtiradi\n3. Uni quyiga joylang va «Ulanish» tugmasini bosing\n4. Ular orasidagi o‘tkazmalar o‘tkazma sifatida import qilinishi uchun barcha Up hisoblarini (jamg‘arma hisoblari ham) bog‘lang';
+
+  @override
+  String get upTokenTooltip =>
+      'Up ilovasida yoki api.up.com.au saytida yaratiladi; shifrlangan holda saqlanadi. Faqat eng so‘nggi token amal qiladi';
+
+  @override
   String get updateAccountTooltip => 'Hisobni yangilash';
 
   @override

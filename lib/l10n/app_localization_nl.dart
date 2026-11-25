@@ -1692,6 +1692,24 @@ class AppLocalizationsNl extends AppLocalizations {
   String get typeButton => 'Knop';
 
   @override
+  String get upDescription =>
+      'Importeer saldi en transacties van betaal- en spaarrekeningen van Up met een persoonlijk toegangstoken. Overboekingen tussen gekoppelde Up-rekeningen (inclusief Round Ups) worden als overboekingen geïmporteerd. De toegang is alleen-lezen: er worden geen betalingen uitgevoerd.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Australië)';
+
+  @override
+  String get upToken => 'Persoonlijk toegangstoken';
+
+  @override
+  String get upTokenSteps =>
+      'Zo krijgt u een persoonlijk toegangstoken:\n1. Open de Up-app en ga naar Data sharing → Personal Access Token (of log in op api.up.com.au)\n2. Maak een token aan en kopieer het (het begint met \"up:yeah:\"); een nieuw token vervangt het vorige\n3. Plak het hieronder en druk op \'Verbinden\'\n4. Koppel elke Up-rekening (inclusief spaarrekeningen) zodat overboekingen ertussen als overboekingen worden geïmporteerd';
+
+  @override
+  String get upTokenTooltip =>
+      'Aangemaakt in de Up-app of op api.up.com.au; versleuteld opgeslagen. Alleen het nieuwste token is geldig';
+
+  @override
   String get updateAccountTooltip => 'Rekening bijwerken';
 
   @override

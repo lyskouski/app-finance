@@ -1699,6 +1699,24 @@ class AppLocalizationsDe extends AppLocalizations {
   String get typeButton => 'Schaltfläche';
 
   @override
+  String get upDescription =>
+      'Salden und Umsätze von Ausgaben- und Sparkonten bei Up mit einem persönlichen Zugriffstoken importieren. Überweisungen zwischen verknüpften Up-Konten (einschließlich Round Ups) werden als Überweisungen importiert. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Australien)';
+
+  @override
+  String get upToken => 'Persönliches Zugriffstoken';
+
+  @override
+  String get upTokenSteps =>
+      'So erhalten Sie ein persönliches Zugriffstoken:\n1. Öffnen Sie die Up-App und gehen Sie zu Data sharing → Personal Access Token (oder melden Sie sich auf api.up.com.au an)\n2. Erstellen Sie ein Token und kopieren Sie es (es beginnt mit \"up:yeah:\"); ein neues Token ersetzt das vorherige\n3. Fügen Sie es unten ein und tippen Sie auf „Verbinden“\n4. Verknüpfen Sie jedes Up-Konto (einschließlich Sparkonten), damit Überweisungen zwischen ihnen als Überweisungen importiert werden';
+
+  @override
+  String get upTokenTooltip =>
+      'Wird in der Up-App oder auf api.up.com.au erstellt; verschlüsselt gespeichert. Nur das neueste Token ist gültig';
+
+  @override
   String get updateAccountTooltip => 'Konto aktualisieren';
 
   @override

@@ -1690,6 +1690,24 @@ class AppLocalizationsTr extends AppLocalizations {
   String get typeButton => 'Düğme';
 
   @override
+  String get upDescription =>
+      'Kişisel erişim anahtarıyla Up harcama ve birikim hesaplarının bakiyelerini ve işlemlerini içe aktarın. Bağlı Up hesapları arasındaki transferler (Round Ups dahil) transfer olarak içe aktarılır. Erişim salt okunurdur: hiçbir ödeme yapılmaz.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Avustralya)';
+
+  @override
+  String get upToken => 'Kişisel Erişim Anahtarı';
+
+  @override
+  String get upTokenSteps =>
+      'Kişisel erişim anahtarı nasıl alınır:\n1. Up uygulamasını açın ve Data sharing → Personal Access Token bölümüne gidin (veya api.up.com.au\'da oturum açın)\n2. Bir anahtar oluşturun ve kopyalayın (\"up:yeah:\" ile başlar); yeni anahtar öncekinin yerini alır\n3. Aşağıya yapıştırın ve \"Bağlan\"a basın\n4. Aralarındaki transferlerin transfer olarak içe aktarılması için tüm Up hesaplarını (birikim hesapları dahil) bağlayın';
+
+  @override
+  String get upTokenTooltip =>
+      'Up uygulamasında veya api.up.com.au\'da oluşturulur; şifreli olarak saklanır. Yalnızca en son anahtar geçerlidir';
+
+  @override
   String get updateAccountTooltip => 'Hesap Güncelleme';
 
   @override

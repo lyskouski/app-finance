@@ -8,6 +8,7 @@ _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” 
 - Monzo Developer API (Buyuk Britaniya) qo'shildi: Monzo ilovasida tasdiqlangan o'z OAuth mijozingiz bilan qoldiqlar va tranzaksiyalarni import qilish
 - Starling Bank Personal Access (Buyuk Britaniya) qo'shildi: shaxsiy kirish tokeni bilan qoldiqlar va tranzaksiyalarni import qilish
 - Akahu Personal App (Yangi Zelandiya) qo'shildi: Akahu'ga ulangan Yangi Zelandiya banklarining qoldiqlari va tranzaksiyalarini import qilish
+- Up Banking API (Avstraliya) qo'shildi: xarajat va jamg'arma hisoblarining qoldiqlari va tranzaksiyalarini import qilish, ular orasidagi o'tkazmalar o'tkazma sifatida
 - Wise API (Global) qo'shildi: Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish, konvertatsiyalar o'tkazma sifatida
 - PrivatBank Autoclient (Ukraina) qo'shildi: IBAN bo'yicha biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish
 - monobank Personal API (Ukraina) qo'shildi: kartalar va jamg'arma bankalari qoldiqlari va tranzaksiyalarini import qilish, bog'langan hisoblarni yaratish

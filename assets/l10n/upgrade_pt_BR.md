@@ -8,6 +8,7 @@ _A lista completa de atualizações pode ser visualizada no item de navegação 
 - Adicionado o Monzo Developer API (Reino Unido): saldos e importação de transações com seu próprio cliente OAuth, aprovado no aplicativo Monzo
 - Adicionado o Starling Bank Personal Access (Reino Unido): saldos e importação de transações com um token de acesso pessoal
 - Adicionado o Akahu Personal App (Nova Zelândia): saldos e importação de transações de bancos da Nova Zelândia conectados ao Akahu
+- Adicionado o Up Banking API (Austrália): saldos e importação de transações de contas de gastos e poupança, transferências entre elas como transferências
 - Adicionado o Wise API (Global): saldos e importação de transações de contas multimoeda Wise, conversões como transferências
 - Adicionado PrivatBank Autoclient (Ucrânia): saldos e importação de transações de contas empresariais por IBAN
 - Adicionado monobank Personal API (Ucrânia): saldos e importação de transações de cartões e cofrinhos, criação de contas vinculadas

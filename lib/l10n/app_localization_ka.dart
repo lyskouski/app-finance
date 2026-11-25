@@ -1693,6 +1693,24 @@ class AppLocalizationsKa extends AppLocalizations {
   String get typeButton => 'ღილაკი';
 
   @override
+  String get upDescription =>
+      'Up-ის სახარჯო და შემნახველი ანგარიშების ნაშთებისა და ტრანზაქციების იმპორტი პერსონალური წვდომის ტოკენით. დაკავშირებულ Up ანგარიშებს შორის გადარიცხვები (Round Ups-ის ჩათვლით) იმპორტირდება გადარიცხვებად. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get upHeadline => 'Up Banking API (ავსტრალია)';
+
+  @override
+  String get upToken => 'პერსონალური წვდომის ტოკენი';
+
+  @override
+  String get upTokenSteps =>
+      'როგორ მივიღოთ პერსონალური წვდომის ტოკენი:\n1. გახსენით Up-ის აპი და გადადით Data sharing → Personal Access Token-ზე (ან შედით api.up.com.au-ზე)\n2. შექმენით ტოკენი და დააკოპირეთ (იწყება \"up:yeah:\"-ით); ახალი ტოკენი ცვლის წინას\n3. ჩასვით ქვემოთ და დააჭირეთ „დაკავშირებას“\n4. დააკავშირეთ ყველა Up ანგარიში (შემნახველების ჩათვლით), რომ მათ შორის გადარიცხვები იმპორტირდეს გადარიცხვებად';
+
+  @override
+  String get upTokenTooltip =>
+      'იქმნება Up-ის აპში ან api.up.com.au-ზე; ინახება დაშიფრული სახით. მოქმედებს მხოლოდ უახლესი ტოკენი';
+
+  @override
   String get updateAccountTooltip => 'ანგარიშის განახლება';
 
   @override

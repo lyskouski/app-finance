@@ -1691,6 +1691,24 @@ class AppLocalizationsBe extends AppLocalizations {
   String get typeButton => 'Кнопка';
 
   @override
+  String get upDescription =>
+      'Імпарт рэшткаў і аперацый расходных і назапашвальных рахункаў Up з дапамогай персанальнага токена доступу. Пераводы паміж звязанымі рахункамі Up (уключаючы Round Ups) імпартуюцца як пераводы. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Аўстралія)';
+
+  @override
+  String get upToken => 'Персанальны токен доступу';
+
+  @override
+  String get upTokenSteps =>
+      'Як атрымаць персанальны токен доступу:\n1. Адкрыйце праграму Up і перайдзіце ў Data sharing → Personal Access Token (або ўвайдзіце на api.up.com.au)\n2. Стварыце токен і скапіруйце яго (ён пачынаецца з \"up:yeah:\"); новы токен замяняе папярэдні\n3. Устаўце яго ніжэй і націсніце «Падлучыцца»\n4. Звяжыце ўсе рахункі Up (уключаючы назапашвальныя), каб пераводы паміж імі імпартаваліся як пераводы';
+
+  @override
+  String get upTokenTooltip =>
+      'Ствараецца ў праграме Up або на api.up.com.au; захоўваецца ў зашыфраваным выглядзе. Дзейнічае толькі апошні токен';
+
+  @override
   String get updateAccountTooltip => 'Змяніць рахунак';
 
   @override
@@ -3436,6 +3454,24 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get typeButton => 'Knopka';
+
+  @override
+  String get upDescription =>
+      'Impart reštkaŭ i aperacyj raschodnych i nazapašvaĺnych rachunkaŭ Up z dapamohaj persanaĺnaha tokiena dostupu. Pieravody pamiž zviazanymi rachunkami Up (ŭklučajučy Round Ups) impartujucca jak pieravody. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Aŭstralija)';
+
+  @override
+  String get upToken => 'Persanaĺny tokien dostupu';
+
+  @override
+  String get upTokenSteps =>
+      'Jak atrymać persanaĺny tokien dostupu:\n1. Adkryjcie prahramu Up i pierajdzicie ŭ Data sharing → Personal Access Token (abo ŭvajdzicie na api.up.com.au)\n2. Stvarycie tokien i skapirujcie jaho (jon pačynajecca z \"up:yeah:\"); novy tokien zamianiaje papiaredni\n3. Ustaŭcie jaho nižej i naciśnicie «Padłučycca»\n4. Zviažycie ŭsie rachunki Up (ŭklučajučy nazapašvaĺnyja), kab pieravody pamiž imi impartavalisia jak pieravody';
+
+  @override
+  String get upTokenTooltip =>
+      'Stvarajecca ŭ prahramie Up abo na api.up.com.au; zachoŭvajecca ŭ zašyfravanym vyhladzie. Dziejničaje toĺki apošni tokien';
 
   @override
   String get updateAccountTooltip => 'Zmianić Rachunak';

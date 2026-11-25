@@ -8,6 +8,7 @@ _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „
 - Přidáno Monzo Developer API (Spojené království): zůstatky a import transakcí s vlastním klientem OAuth schváleným v aplikaci Monzo
 - Přidáno Starling Bank Personal Access (Spojené království): zůstatky a import transakcí s osobním přístupovým tokenem
 - Přidáno Akahu Personal App (Nový Zéland): zůstatky a import transakcí novozélandských bank připojených k Akahu
+- Přidáno Up Banking API (Austrálie): zůstatky a import transakcí výdajových a spořicích účtů, převody mezi nimi jako převody
 - Přidáno Wise API (Global): zůstatky a import transakcí víceměnových účtů Wise, převody měn jako převody
 - Přidán PrivatBank Autoclient (Ukrajina): zůstatky a import transakcí podnikatelských účtů podle IBAN
 - Přidán monobank Personal API (Ukrajina): zůstatky a import transakcí karet a pokladniček, vytváření propojených účtů

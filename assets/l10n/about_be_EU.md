@@ -83,6 +83,7 @@ zastaniecca ŭ baku.
   - Monzo Developer API (Vialikabrytanija): impart reštkaŭ i aperacyj (ułasny OAuth-klijent dla asabistaha vykarystannia)
   - Starling Bank Personal Access (Vialikabrytanija): impart reštkaŭ i aperacyj (persanaĺny tokien dostupu)
   - Akahu Personal App (Novaja Zielandyja): impart reštkaŭ i aperacyj bankaŭ Novaj Zielandyi (ułasnaja persanaĺnaja prahrama)
+  - Up Banking API (Aŭstralija): impart reštkaŭ i aperacyj raschodnych i nazapašvaĺnych rachunkaŭ (persanaĺny tokien dostupu)
   - PryvatBank Aŭtaklijent (Ukraina): impart reštak i aperacyj biznes-rachunkaŭ Privat24 dla biznesu (tokien Aŭtaklijenta)
   - monobank Personal API (Ukraina): impart reštak i aperacyj kartak i słoikaŭ monobank (piersanaĺny tokien)
   - Apracoŭščyk Apaviaščeńniaŭ (Android): aperacyi z apaviaščeńniaŭ bankaŭskich i placiožnych prahram

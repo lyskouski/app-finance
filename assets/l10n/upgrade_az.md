@@ -8,6 +8,7 @@ _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasi
 - Monzo Developer API (Birləşmiş Krallıq) əlavə edildi: Monzo tətbiqində təsdiqlənən öz OAuth müştərinizlə qalıqlar və əməliyyatların idxalı
 - Starling Bank Personal Access (Birləşmiş Krallıq) əlavə edildi: şəxsi giriş tokeni ilə qalıqlar və əməliyyatların idxalı
 - Akahu Personal App (Yeni Zelandiya) əlavə edildi: Akahu-ya qoşulmuş Yeni Zelandiya banklarının qalıqları və əməliyyatlarının idxalı
+- Up Banking API (Avstraliya) əlavə edildi: xərc və yığım hesablarının qalıqları və əməliyyatlarının idxalı, onlar arasında köçürmələr köçürmə kimi
 - Wise API (Global) əlavə edildi: Wise çoxvalyutalı hesablarının qalıqları və əməliyyatlarının idxalı, konvertasiyalar köçürmə kimi
 - PrivatBank Autoclient (Ukrayna) əlavə edildi: IBAN üzrə biznes hesablarının qalıqları və əməliyyatlarının idxalı
 - monobank Personal API (Ukrayna) əlavə edildi: kartların və yığım qutularının qalıqları və əməliyyatlarının idxalı, əlaqəli hesabların yaradılması

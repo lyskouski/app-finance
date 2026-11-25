@@ -1686,6 +1686,24 @@ class AppLocalizationsCs extends AppLocalizations {
   String get typeButton => 'Tlačítko';
 
   @override
+  String get upDescription =>
+      'Import zůstatků a transakcí výdajových a spořicích účtů Up pomocí osobního přístupového tokenu. Převody mezi propojenými účty Up (včetně Round Ups) se importují jako převody. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get upHeadline => 'Up Banking API (Austrálie)';
+
+  @override
+  String get upToken => 'Osobní přístupový token';
+
+  @override
+  String get upTokenSteps =>
+      'Jak získat osobní přístupový token:\n1. Otevřete aplikaci Up a přejděte do Data sharing → Personal Access Token (nebo se přihlaste na api.up.com.au)\n2. Vytvořte token a zkopírujte jej (začíná na \"up:yeah:\"); nový token nahrazuje předchozí\n3. Vložte jej níže a stiskněte „Připojit“\n4. Propojte všechny účty Up (včetně spořicích), aby se převody mezi nimi importovaly jako převody';
+
+  @override
+  String get upTokenTooltip =>
+      'Vytváří se v aplikaci Up nebo na api.up.com.au; ukládá se šifrovaně. Platný je pouze nejnovější token';
+
+  @override
   String get updateAccountTooltip => 'Aktualizovat účet';
 
   @override

@@ -1680,6 +1680,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get typeButton => 'الزر';
 
   @override
+  String get upDescription =>
+      'استيراد الأرصدة والمعاملات لحسابات الإنفاق والادخار في Up باستخدام رمز وصول شخصي. يتم استيراد التحويلات بين حسابات Up المرتبطة (بما في ذلك Round Ups) كتحويلات. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get upHeadline => 'Up Banking API (أستراليا)';
+
+  @override
+  String get upToken => 'رمز الوصول الشخصي';
+
+  @override
+  String get upTokenSteps =>
+      'كيفية الحصول على رمز الوصول الشخصي:\n1. افتح تطبيق Up وانتقل إلى Data sharing → Personal Access Token (أو سجّل الدخول في api.up.com.au)\n2. أنشئ رمزًا وانسخه (يبدأ بـ \"up:yeah:\")؛ الرمز الجديد يحل محل الرمز السابق\n3. الصقه أدناه واضغط «اتصال»\n4. اربط كل حسابات Up (بما في ذلك حسابات الادخار) ليتم استيراد التحويلات بينها كتحويلات';
+
+  @override
+  String get upTokenTooltip =>
+      'يُنشأ في تطبيق Up أو على api.up.com.au؛ ويُخزَّن مشفرًا. الرمز الأحدث فقط هو الصالح';
+
+  @override
   String get updateAccountTooltip => 'تحديث الحساب';
 
   @override
