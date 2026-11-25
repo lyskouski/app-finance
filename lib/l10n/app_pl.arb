@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Nieoczekiwana odpowiedź usługi",
+    "investecApiKey": "Klucz API",
+    "investecClientId": "ID klienta",
+    "investecCredentialsTooltip": "Tworzony w Investec Online w Investec Developer → API keys; przechowywany w postaci zaszyfrowanej",
+    "investecDescription": "Import sald i transakcji kont Investec Private Banking (Republika Południowej Afryki) przez Programmable Banking API z własnymi kluczami API. Dostęp tylko do odczytu: nie są wykonywane żadne płatności.",
+    "investecHeadline": "Investec Programmable Banking (Republika Południowej Afryki)",
+    "investecIncomplete": "Uzupełnij ID klienta, sekret i klucz API",
+    "investecSandbox": "Sandbox (dane testowe)",
+    "investecSecret": "Sekret",
+    "investecSteps": "Jak uzyskać klucze API:\n1. Zaloguj się do Investec Online i zarejestruj się w Investec Developer (Programmable Banking)\n2. Otwórz API keys i utwórz klucz z dostępem do kont i transakcji\n3. Potwierdź go weryfikacją dwuetapową i skopiuj ID klienta, sekret i klucz API\n4. Wklej je poniżej i naciśnij „Połącz”",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {

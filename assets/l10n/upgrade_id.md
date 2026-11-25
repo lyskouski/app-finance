@@ -4,6 +4,7 @@ _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tom
 
 ### 8.1.0
 - Menambahkan Teller (US): saldo dan impor transaksi dari bank dan penerbit kartu AS dengan aplikasi Teller Anda sendiri (berbasis sertifikat)
+- Menambahkan Investec Programmable Banking (Afrika Selatan): saldo dan impor transaksi rekening Private Banking dengan kunci API Anda sendiri
 - Menambahkan Wise API (Global): saldo dan impor transaksi akun multi-mata uang Wise, konversi sebagai transfer
 - Menambahkan PrivatBank Autoclient (Ukraina): saldo dan impor transaksi rekening bisnis berdasarkan IBAN
 - Menambahkan monobank Personal API (Ukraina): saldo dan impor transaksi kartu dan celengan, pembuatan akun tertaut

@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Unerwartete Antwort des Dienstes",
+    "investecApiKey": "API-Schlüssel",
+    "investecClientId": "Client-ID",
+    "investecCredentialsTooltip": "Wird in Investec Online unter Investec Developer → API keys erstellt; verschlüsselt gespeichert",
+    "investecDescription": "Salden und Umsätze von Konten bei Investec Private Banking (Südafrika) über die Programmable Banking API mit eigenen API-Schlüsseln importieren. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.",
+    "investecHeadline": "Investec Programmable Banking (Südafrika)",
+    "investecIncomplete": "Client-ID, Client-Secret und API-Schlüssel ausfüllen",
+    "investecSandbox": "Sandbox (Testdaten)",
+    "investecSecret": "Client-Secret",
+    "investecSteps": "So erhalten Sie die API-Schlüssel:\n1. Melden Sie sich bei Investec Online an und registrieren Sie sich für Investec Developer (Programmable Banking)\n2. Öffnen Sie API keys und erstellen Sie einen Schlüssel mit Zugriff auf Konten und Umsätze\n3. Bestätigen Sie ihn mit der Zwei-Faktor-Verifizierung und kopieren Sie die Client-ID, das Client-Secret und den API-Schlüssel\n4. Fügen Sie sie unten ein und tippen Sie auf „Verbinden“",
     "invoiceHeadline": "Rechnungen",
     "invoiceSum": "Rechnungen: {value}",
     "@invoiceSum": {

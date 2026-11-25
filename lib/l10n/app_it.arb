@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Risposta inattesa del servizio",
+    "investecApiKey": "Chiave API",
+    "investecClientId": "ID client",
+    "investecCredentialsTooltip": "Creato in Investec Online in Investec Developer → API keys; memorizzato cifrato",
+    "investecDescription": "Importa saldi e transazioni dei conti Investec Private Banking (Sudafrica) tramite la Programmable Banking API con le proprie chiavi API. L’accesso è di sola lettura: non vengono effettuati pagamenti.",
+    "investecHeadline": "Investec Programmable Banking (Sudafrica)",
+    "investecIncomplete": "Compila l’ID client, il segreto e la chiave API",
+    "investecSandbox": "Sandbox (dati di prova)",
+    "investecSecret": "Segreto",
+    "investecSteps": "Come ottenere le chiavi API:\n1. Accedi a Investec Online e iscriviti a Investec Developer (Programmable Banking)\n2. Apri API keys e crea una chiave con accesso a conti e transazioni\n3. Confermala con la verifica in due passaggi e copia l’ID client, il segreto e la chiave API\n4. Incollali qui sotto e premi «Connetti»",
     "invoiceHeadline": "Fatture",
     "invoiceSum": "Fatture: {value}",
     "@invoiceSum": {

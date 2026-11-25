@@ -79,6 +79,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
   - Teller (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması (sertifikalı kendi Teller uygulamanız)
   - Enable Banking (EU): Avrupa bankalarından bakiye ve işlemlerin içe aktarılması (PSD2)
   - Wise API (Global): Wise çoklu para birimi hesaplarının bakiye ve işlemlerinin içe aktarılması (kişisel API anahtarı)
+  - Investec Programmable Banking (Güney Afrika): Private Banking hesaplarının bakiye ve işlemlerinin içe aktarılması (kendi API anahtarlarınız)
   - PrivatBank Autoclient (Ukrayna): Privat24 for Business ticari hesaplarının bakiye ve işlemlerinin içe aktarımı (Autoclient belirteci)
   - monobank Personal API (Ukrayna): monobank kartlarının ve kumbaralarının bakiye ve işlemlerinin içe aktarımı (kişisel token)
   - Bildirim Ayrıştırıcı (Android): bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler

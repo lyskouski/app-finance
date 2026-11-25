@@ -903,6 +903,37 @@ class AppLocalizationsBe extends AppLocalizations {
   String get integrationUnexpectedResponse => 'Нечаканы адказ сэрвісу';
 
   @override
+  String get investecApiKey => 'API-ключ';
+
+  @override
+  String get investecClientId => 'ID кліента';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Ствараецца ў Investec Online у раздзеле Investec Developer → API keys; захоўваецца ў зашыфраваным выглядзе';
+
+  @override
+  String get investecDescription =>
+      'Імпарт рэшткаў і аперацый рахункаў Investec Private Banking (Паўднёвая Афрыка) праз Programmable Banking API з уласнымі API-ключамі. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (Паўднёвая Афрыка)';
+
+  @override
+  String get investecIncomplete => 'Запоўніце ID кліента, сакрэт і API-ключ';
+
+  @override
+  String get investecSandbox => 'Sandbox (тэставыя даныя)';
+
+  @override
+  String get investecSecret => 'Сакрэт';
+
+  @override
+  String get investecSteps =>
+      'Як атрымаць API-ключы:\n1. Увайдзіце ў Investec Online і зарэгіструйцеся ў Investec Developer (Programmable Banking)\n2. Адкрыйце API keys і стварыце ключ з доступам да рахункаў і аперацый\n3. Пацвердзіце яго двухэтапнай праверкай і скапіруйце ID кліента, сакрэт і API-ключ\n4. Устаўце іх ніжэй і націсніце «Падлучыцца»';
+
+  @override
   String get invoiceHeadline => 'Фактуры';
 
   @override
@@ -2500,6 +2531,37 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get integrationUnexpectedResponse => 'Niečakany adkaz servisu';
+
+  @override
+  String get investecApiKey => 'API-kluč';
+
+  @override
+  String get investecClientId => 'ID klijenta';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Stvarajecca ŭ Investec Online u raździele Investec Developer → API keys; zachoŭvajecca ŭ zašyfravanym vyhladzie';
+
+  @override
+  String get investecDescription =>
+      'Impart reštkaŭ i aperacyj rachunkaŭ Investec Private Banking (Paŭdniovaja Afryka) praz Programmable Banking API z ułasnymi API-klučami. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (Paŭdniovaja Afryka)';
+
+  @override
+  String get investecIncomplete => 'Zapoŭnicie ID klijenta, sakret i API-kluč';
+
+  @override
+  String get investecSandbox => 'Sandbox (testavyja danyja)';
+
+  @override
+  String get investecSecret => 'Sakret';
+
+  @override
+  String get investecSteps =>
+      'Jak atrymać API-klučy:\n1. Uvajdzicie ŭ Investec Online i zarehistrujciesia ŭ Investec Developer (Programmable Banking)\n2. Adkryjcie API keys i stvarycie kluč z dostupam da rachunkaŭ i aperacyj\n3. Paćvierdzicie jaho dvuchetapnaj pravierkaj i skapirujcie ID klijenta, sakret i API-kluč\n4. Ustaŭcie ich nižej i naciśnicie «Padłučycca»';
 
   @override
   String get invoiceHeadline => 'Faktury';

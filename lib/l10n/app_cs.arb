@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Neočekávaná odpověď služby",
+    "investecApiKey": "Klíč API",
+    "investecClientId": "ID klienta",
+    "investecCredentialsTooltip": "Vytváří se v Investec Online v Investec Developer → API keys; ukládá se šifrovaně",
+    "investecDescription": "Import zůstatků a transakcí účtů Investec Private Banking (Jihoafrická republika) přes Programmable Banking API s vlastními klíči API. Přístup pouze pro čtení: neprovádějí se žádné platby.",
+    "investecHeadline": "Investec Programmable Banking (Jihoafrická republika)",
+    "investecIncomplete": "Vyplňte ID klienta, tajný klíč a klíč API",
+    "investecSandbox": "Sandbox (testovací data)",
+    "investecSecret": "Tajný klíč",
+    "investecSteps": "Jak získat klíče API:\n1. Přihlaste se do Investec Online a zaregistrujte se do Investec Developer (Programmable Banking)\n2. Otevřete API keys a vytvořte klíč s přístupem k účtům a transakcím\n3. Potvrďte jej dvoufázovým ověřením a zkopírujte ID klienta, tajný klíč a klíč API\n4. Vložte je níže a stiskněte „Připojit“",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {

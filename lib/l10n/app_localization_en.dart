@@ -903,6 +903,37 @@ class AppLocalizationsEn extends AppLocalizations {
       'Unexpected response of the service';
 
   @override
+  String get investecApiKey => 'API Key';
+
+  @override
+  String get investecClientId => 'Client ID';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Created in Investec Online under Investec Developer → API keys; stored encrypted';
+
+  @override
+  String get investecDescription =>
+      'Import balances and transactions of Investec Private Banking accounts (South Africa) through the Programmable Banking API with your own API keys. Access is read-only: no payments are made.';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking (South Africa)';
+
+  @override
+  String get investecIncomplete =>
+      'Fill in the client ID, the secret, and the API key';
+
+  @override
+  String get investecSandbox => 'Sandbox (test data)';
+
+  @override
+  String get investecSecret => 'Secret';
+
+  @override
+  String get investecSteps =>
+      'How to get the API keys:\n1. Sign in to Investec Online and enroll in Investec Developer (Programmable Banking)\n2. Open API keys and create a key with access to accounts and transactions\n3. Confirm it with the two-step verification and copy the client ID, the secret, and the API key\n4. Paste them below and press \"Connect\"';
+
+  @override
   String get invoiceHeadline => 'Invoices';
 
   @override

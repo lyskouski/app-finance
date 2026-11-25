@@ -41,6 +41,8 @@ class AppPreferences {
   static const String prefTellerEnrollments = 'tellerEnrollments';
   static const String prefWise = 'wise';
   static const String prefWiseToken = 'wiseToken';
+  static const String prefInvestec = 'investec';
+  static const String prefInvestecCredentials = 'investecCredentials';
   static const String prefPrivatBank = 'privatbank';
   static const String prefPrivatBankToken = 'privatbankToken';
   static const String prefMonobank = 'monobank';

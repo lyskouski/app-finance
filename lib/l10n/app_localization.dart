@@ -1813,6 +1813,60 @@ abstract class AppLocalizations {
   /// **'Unexpected response of the service'**
   String get integrationUnexpectedResponse;
 
+  /// No description provided for @investecApiKey.
+  ///
+  /// In en, this message translates to:
+  /// **'API Key'**
+  String get investecApiKey;
+
+  /// No description provided for @investecClientId.
+  ///
+  /// In en, this message translates to:
+  /// **'Client ID'**
+  String get investecClientId;
+
+  /// No description provided for @investecCredentialsTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Created in Investec Online under Investec Developer → API keys; stored encrypted'**
+  String get investecCredentialsTooltip;
+
+  /// No description provided for @investecDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of Investec Private Banking accounts (South Africa) through the Programmable Banking API with your own API keys. Access is read-only: no payments are made.'**
+  String get investecDescription;
+
+  /// No description provided for @investecHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Investec Programmable Banking (South Africa)'**
+  String get investecHeadline;
+
+  /// No description provided for @investecIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the client ID, the secret, and the API key'**
+  String get investecIncomplete;
+
+  /// No description provided for @investecSandbox.
+  ///
+  /// In en, this message translates to:
+  /// **'Sandbox (test data)'**
+  String get investecSandbox;
+
+  /// No description provided for @investecSecret.
+  ///
+  /// In en, this message translates to:
+  /// **'Secret'**
+  String get investecSecret;
+
+  /// No description provided for @investecSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'How to get the API keys:\n1. Sign in to Investec Online and enroll in Investec Developer (Programmable Banking)\n2. Open API keys and create a key with access to accounts and transactions\n3. Confirm it with the two-step verification and copy the client ID, the secret, and the API key\n4. Paste them below and press \"Connect\"'**
+  String get investecSteps;
+
   /// No description provided for @invoiceHeadline.
   ///
   /// In en, this message translates to:

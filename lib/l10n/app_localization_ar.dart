@@ -897,6 +897,36 @@ class AppLocalizationsAr extends AppLocalizations {
   String get integrationUnexpectedResponse => 'استجابة غير متوقعة من الخدمة';
 
   @override
+  String get investecApiKey => 'مفتاح API';
+
+  @override
+  String get investecClientId => 'معرّف العميل';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'يُنشأ في Investec Online من Investec Developer → API keys؛ ويُخزَّن مشفرًا';
+
+  @override
+  String get investecDescription =>
+      'استيراد الأرصدة والمعاملات لحسابات Investec Private Banking (جنوب أفريقيا) عبر Programmable Banking API باستخدام مفاتيح API الخاصة بك. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking (جنوب أفريقيا)';
+
+  @override
+  String get investecIncomplete => 'املأ معرّف العميل والسر ومفتاح API';
+
+  @override
+  String get investecSandbox => 'Sandbox (بيانات تجريبية)';
+
+  @override
+  String get investecSecret => 'السر';
+
+  @override
+  String get investecSteps =>
+      'كيفية الحصول على مفاتيح API:\n1. سجّل الدخول إلى Investec Online واشترك في Investec Developer (Programmable Banking)\n2. افتح API keys وأنشئ مفتاحًا مع صلاحية الوصول إلى الحسابات والمعاملات\n3. أكّده بالتحقق بخطوتين وانسخ معرّف العميل والسر ومفتاح API\n4. الصقها أدناه واضغط «اتصال»';
+
+  @override
   String get invoiceHeadline => 'الفواتير';
 
   @override

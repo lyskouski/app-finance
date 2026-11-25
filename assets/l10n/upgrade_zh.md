@@ -4,6 +4,7 @@ _更新的完整列表可通过 "提示 "按钮上的 "关于 "导航项查看�
 
 ### 8.1.0
 - 新增 Teller (US)：使用您自己的 Teller 应用（基于证书）导入美国银行和发卡机构的余额及交易
+- 新增 Investec Programmable Banking（南非）：使用您自己的 API 密钥导入 Private Banking 账户的余额及交易
 - 新增 Wise API (Global)：Wise 多币种账户的余额及交易导入，换汇作为转账
 - 新增 PrivatBank Autoclient（乌克兰）：按 IBAN 导入企业账户的余额和交易
 - 新增 monobank Personal API（乌克兰）：银行卡和储蓄罐的余额及交易导入，创建关联账户

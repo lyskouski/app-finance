@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Răspuns neașteptat al serviciului",
+    "investecApiKey": "Cheie API",
+    "investecClientId": "ID client",
+    "investecCredentialsTooltip": "Creat în Investec Online în Investec Developer → API keys; stocat criptat",
+    "investecDescription": "Importă soldurile și tranzacțiile conturilor Investec Private Banking (Africa de Sud) prin Programmable Banking API cu propriile chei API. Accesul este doar pentru citire: nu se efectuează plăți.",
+    "investecHeadline": "Investec Programmable Banking (Africa de Sud)",
+    "investecIncomplete": "Completați ID-ul clientului, secretul și cheia API",
+    "investecSandbox": "Sandbox (date de test)",
+    "investecSecret": "Secret",
+    "investecSteps": "Cum obțineți cheile API:\n1. Conectați-vă la Investec Online și înscrieți-vă în Investec Developer (Programmable Banking)\n2. Deschideți API keys și creați o cheie cu acces la conturi și tranzacții\n3. Confirmați-o cu verificarea în doi pași și copiați ID-ul clientului, secretul și cheia API\n4. Lipiți-le mai jos și apăsați „Conectare”",
     "invoiceHeadline": "Facturi",
     "invoiceSum": "Facturi: {value}",
     "@invoiceSum": {

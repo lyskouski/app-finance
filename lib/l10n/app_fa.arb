@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "پاسخ غیرمنتظره از سرویس",
+    "investecApiKey": "کلید API",
+    "investecClientId": "شناسه کلاینت",
+    "investecCredentialsTooltip": "در Investec Online از مسیر Investec Developer → API keys ایجاد می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود",
+    "investecDescription": "وارد کردن موجودی‌ها و تراکنش‌های حساب‌های Investec Private Banking (آفریقای جنوبی) از طریق Programmable Banking API با کلیدهای API شخصی شما. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
+    "investecHeadline": "Investec Programmable Banking (آفریقای جنوبی)",
+    "investecIncomplete": "شناسه کلاینت، رمز محرمانه و کلید API را وارد کنید",
+    "investecSandbox": "Sandbox (داده‌های آزمایشی)",
+    "investecSecret": "رمز محرمانه",
+    "investecSteps": "نحوه دریافت کلیدهای API:\n1. وارد Investec Online شوید و در Investec Developer (Programmable Banking) ثبت‌نام کنید\n2. بخش API keys را باز کنید و کلیدی با دسترسی به حساب‌ها و تراکنش‌ها بسازید\n3. آن را با تأیید دومرحله‌ای تأیید کنید و شناسه کلاینت، رمز محرمانه و کلید API را کپی کنید\n4. آن‌ها را در زیر جای‌گذاری کرده و «اتصال» را بزنید",
     "invoiceHeadline": "فاکتورها",
     "invoiceSum": "فاکتورها: {value}",
     "@invoiceSum": {

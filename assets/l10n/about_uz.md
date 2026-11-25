@@ -79,6 +79,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
   - Teller (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish (sertifikatli o'z Teller ilovasi)
   - Enable Banking (EU): Yevropa banklaridan qoldiqlar va tranzaksiyalarni import qilish (PSD2)
   - Wise API (Global): Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish (shaxsiy API tokeni)
+  - Investec Programmable Banking (Janubiy Afrika): Private Banking hisoblarining qoldiqlari va tranzaksiyalarini import qilish (o'z API kalitlari)
   - PrivatBank Autoclient (Ukraina): Privat24 for Business biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish (Autoclient tokeni)
   - monobank Personal API (Ukraina): monobank kartalari va jamg'arma bankalari qoldiqlari va tranzaksiyalarini import qilish (shaxsiy token)
   - Bildirishnomalarni tahlil qilish (Android): bank va to'lov ilovalari bildirishnomalaridan tranzaksiyalar

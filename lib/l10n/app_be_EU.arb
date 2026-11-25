@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Niečakany adkaz servisu",
+    "investecApiKey": "API-kluč",
+    "investecClientId": "ID klijenta",
+    "investecCredentialsTooltip": "Stvarajecca ŭ Investec Online u raździele Investec Developer → API keys; zachoŭvajecca ŭ zašyfravanym vyhladzie",
+    "investecDescription": "Impart reštkaŭ i aperacyj rachunkaŭ Investec Private Banking (Paŭdniovaja Afryka) praz Programmable Banking API z ułasnymi API-klučami. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "investecHeadline": "Investec Programmable Banking (Paŭdniovaja Afryka)",
+    "investecIncomplete": "Zapoŭnicie ID klijenta, sakret i API-kluč",
+    "investecSandbox": "Sandbox (testavyja danyja)",
+    "investecSecret": "Sakret",
+    "investecSteps": "Jak atrymać API-klučy:\n1. Uvajdzicie ŭ Investec Online i zarehistrujciesia ŭ Investec Developer (Programmable Banking)\n2. Adkryjcie API keys i stvarycie kluč z dostupam da rachunkaŭ i aperacyj\n3. Paćvierdzicie jaho dvuchetapnaj pravierkaj i skapirujcie ID klijenta, sakret i API-kluč\n4. Ustaŭcie ich nižej i naciśnicie «Padłučycca»",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {

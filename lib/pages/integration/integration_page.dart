@@ -9,6 +9,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
+import 'package:app_finance/pages/integration/widgets/investec_widget.dart';
 import 'package:app_finance/pages/integration/widgets/monobank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
@@ -50,6 +51,12 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
       ];
 
   static List<IntegrationItem> getServices() => [
+        (
+          id: 'investec',
+          title: AppLocale.labels.investecHeadline,
+          icon: Icons.savings_outlined,
+          builder: (_) => const InvestecWidget(),
+        ),
         (
           id: 'monobank',
           title: AppLocale.labels.monobankHeadline,

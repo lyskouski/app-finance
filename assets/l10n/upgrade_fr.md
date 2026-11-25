@@ -4,6 +4,7 @@ _La liste complète des mises à jour peut être consultée via l'élément de n
 
 ### 8.1.0
 - Ajout de Teller (US) : soldes et importation des opérations des banques et émetteurs de cartes américains avec votre propre application Teller (par certificat)
+- Ajout de Investec Programmable Banking (Afrique du Sud) : soldes et importation des opérations des comptes Private Banking avec vos propres clés d'API
 - Ajout de Wise API (Global) : soldes et importation des opérations des comptes multidevises Wise, conversions en virements
 - Ajout de PrivatBank Autoclient (Ukraine) : soldes et import des transactions des comptes professionnels par IBAN
 - Ajout de monobank Personal API (Ukraine) : soldes et import des transactions des cartes et des tirelires, création des comptes liés

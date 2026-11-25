@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "服務傳回了非預期的回應",
+    "investecApiKey": "API 金鑰",
+    "investecClientId": "用戶端 ID",
+    "investecCredentialsTooltip": "在 Investec Online 的 Investec Developer → API keys 中建立；加密儲存",
+    "investecDescription": "使用您自己的 API 金鑰，透過 Programmable Banking API 匯入 Investec Private Banking 帳戶（南非）的餘額與交易。存取為唯讀：不會進行任何付款。",
+    "investecHeadline": "Investec Programmable Banking（南非）",
+    "investecIncomplete": "請填寫用戶端 ID、用戶端密碼與 API 金鑰",
+    "investecSandbox": "沙箱（測試資料）",
+    "investecSecret": "用戶端密碼",
+    "investecSteps": "如何取得 API 金鑰：\n1. 登入 Investec Online 並註冊 Investec Developer（Programmable Banking）\n2. 開啟 API keys，建立可存取帳戶與交易的金鑰\n3. 透過兩步驟驗證確認，並複製用戶端 ID、用戶端密碼與 API 金鑰\n4. 貼到下方並點選「連線」",
     "invoiceHeadline": "發票",
     "invoiceSum": "發票：{value}",
     "@invoiceSum": {

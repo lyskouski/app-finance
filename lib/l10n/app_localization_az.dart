@@ -905,6 +905,38 @@ class AppLocalizationsAz extends AppLocalizations {
   String get integrationUnexpectedResponse => 'Xidmətdən gözlənilməz cavab';
 
   @override
+  String get investecApiKey => 'API açarı';
+
+  @override
+  String get investecClientId => 'Müştəri ID-si';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Investec Online-da Investec Developer → API keys bölməsində yaradılır; şifrələnmiş saxlanılır';
+
+  @override
+  String get investecDescription =>
+      'Öz API açarlarınızla Programmable Banking API vasitəsilə Investec Private Banking hesablarının (Cənubi Afrika) qalıqlarını və əməliyyatlarını idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (Cənubi Afrika)';
+
+  @override
+  String get investecIncomplete =>
+      'Müştəri ID-sini, gizli açarı və API açarını doldurun';
+
+  @override
+  String get investecSandbox => 'Sandbox (test məlumatları)';
+
+  @override
+  String get investecSecret => 'Gizli açar';
+
+  @override
+  String get investecSteps =>
+      'API açarlarını necə əldə etmək olar:\n1. Investec Online-a daxil olun və Investec Developer-də (Programmable Banking) qeydiyyatdan keçin\n2. API keys bölməsini açın və hesablara və əməliyyatlara girişi olan açar yaradın\n3. İkimərhələli doğrulama ilə təsdiqləyin və müştəri ID-sini, gizli açarı və API açarını kopyalayın\n4. Onları aşağıya yapışdırın və \"Qoşul\" düyməsini basın';
+
+  @override
   String get invoiceHeadline => 'Fakturalar';
 
   @override

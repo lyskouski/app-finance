@@ -4,6 +4,7 @@ _The full list of updates can be viewed via the "About" navigation item on the "
 
 ### 8.1.0
 - Adding Teller (US): balances and import of transactions from US banks and card issuers with your own Teller application (certificate-based)
+- Adding Investec Programmable Banking (South Africa): balances and import of transactions of Private Banking accounts with your own API keys
 - Adding Wise API (Global): balances and import of transactions of Wise multi-currency accounts, conversions as transfers
 - Adding PrivatBank Autoclient (Ukraine): balances and import of transactions of business accounts by IBAN
 - Adding Monobank Personal API (Ukraine): balances and import of transactions of cards and jars, creation of linked accounts

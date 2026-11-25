@@ -4,6 +4,7 @@ _完整的更新清單可透過「關於」導覽項目中的「提示」按鈕�
 
 ### 8.1.0
 - 新增 Teller (US)：使用您自己的 Teller 應用程式（基於憑證）匯入美國銀行與發卡機構的餘額及交易
+- 新增 Investec Programmable Banking（南非）：使用您自己的 API 金鑰匯入 Private Banking 帳戶的餘額及交易
 - 新增 Wise API (Global)：Wise 多幣別帳戶的餘額及交易匯入，換匯作為轉帳
 - 新增 PrivatBank Autoclient（烏克蘭）：依 IBAN 匯入企業帳戶的餘額和交易
 - 新增 monobank Personal API（烏克蘭）：金融卡和存錢筒的餘額及交易匯入，建立連結帳戶

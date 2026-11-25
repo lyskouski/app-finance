@@ -4,6 +4,7 @@ _更新の完全なリストは、「ヒント」ボタンの「バージョン�
 
 ### 8.1.0
 - Teller (US) を追加：独自の Teller アプリケーション（証明書ベース）による米国の銀行やカード発行会社の残高と取引のインポート
+- Investec Programmable Banking（南アフリカ） を追加：独自の API キーによる Private Banking 口座の残高と取引のインポート
 - Wise API (Global) を追加：Wise マルチカレンシー口座の残高と取引のインポート、両替は振替として
 - PrivatBank Autoclient（ウクライナ）を追加：IBANによる法人口座の残高と取引のインポート
 - monobank Personal API（ウクライナ）を追加：カードと貯金箱の残高と取引のインポート、連携口座の作成

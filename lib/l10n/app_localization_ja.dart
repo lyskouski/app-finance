@@ -888,6 +888,36 @@ class AppLocalizationsJa extends AppLocalizations {
   String get integrationUnexpectedResponse => 'サービスからの予期しない応答';
 
   @override
+  String get investecApiKey => 'API キー';
+
+  @override
+  String get investecClientId => 'クライアント ID';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Investec Online の Investec Developer → API keys で作成します。暗号化して保存されます';
+
+  @override
+  String get investecDescription =>
+      '独自の API キーを使い、Programmable Banking API 経由で Investec Private Banking 口座（南アフリカ）の残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking（南アフリカ）';
+
+  @override
+  String get investecIncomplete => 'クライアント ID、シークレット、API キーを入力してください';
+
+  @override
+  String get investecSandbox => 'サンドボックス（テストデータ）';
+
+  @override
+  String get investecSecret => 'シークレット';
+
+  @override
+  String get investecSteps =>
+      'API キーの取得方法:\n1. Investec Online にログインし、Investec Developer（Programmable Banking）に登録します\n2. API keys を開き、口座と取引へのアクセス権を持つキーを作成します\n3. 2 段階認証で確認し、クライアント ID、シークレット、API キーをコピーします\n4. 下に貼り付けて「接続」を押します';
+
+  @override
   String get invoiceHeadline => '請求書';
 
   @override

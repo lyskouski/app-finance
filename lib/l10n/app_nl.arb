@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Onverwacht antwoord van de dienst",
+    "investecApiKey": "API-sleutel",
+    "investecClientId": "Client-ID",
+    "investecCredentialsTooltip": "Aangemaakt in Investec Online onder Investec Developer → API keys; versleuteld opgeslagen",
+    "investecDescription": "Importeer saldi en transacties van Investec Private Banking-rekeningen (Zuid-Afrika) via de Programmable Banking API met uw eigen API-sleutels. De toegang is alleen-lezen: er worden geen betalingen uitgevoerd.",
+    "investecHeadline": "Investec Programmable Banking (Zuid-Afrika)",
+    "investecIncomplete": "Vul de client-ID, het geheim en de API-sleutel in",
+    "investecSandbox": "Sandbox (testgegevens)",
+    "investecSecret": "Geheim",
+    "investecSteps": "Zo krijgt u de API-sleutels:\n1. Log in op Investec Online en meld u aan voor Investec Developer (Programmable Banking)\n2. Open API keys en maak een sleutel aan met toegang tot rekeningen en transacties\n3. Bevestig deze met tweestapsverificatie en kopieer de client-ID, het geheim en de API-sleutel\n4. Plak ze hieronder en druk op 'Verbinden'",
     "invoiceHeadline": "Facturen",
     "invoiceSum": "Facturen: {value}",
     "@invoiceSum": {

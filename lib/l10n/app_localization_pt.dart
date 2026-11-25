@@ -905,6 +905,38 @@ class AppLocalizationsPt extends AppLocalizations {
   String get integrationUnexpectedResponse => 'Resposta inesperada do serviço';
 
   @override
+  String get investecApiKey => 'Chave de API';
+
+  @override
+  String get investecClientId => 'ID de cliente';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Criado no Investec Online em Investec Developer → API keys; guardado encriptado';
+
+  @override
+  String get investecDescription =>
+      'Importe saldos e transações de contas Investec Private Banking (África do Sul) através da Programmable Banking API com as suas próprias chaves de API. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (África do Sul)';
+
+  @override
+  String get investecIncomplete =>
+      'Preencha o ID de cliente, o segredo e a chave de API';
+
+  @override
+  String get investecSandbox => 'Sandbox (dados de teste)';
+
+  @override
+  String get investecSecret => 'Segredo';
+
+  @override
+  String get investecSteps =>
+      'Como obter as chaves de API:\n1. Inicie sessão no Investec Online e inscreva-se no Investec Developer (Programmable Banking)\n2. Abra API keys e crie uma chave com acesso a contas e transações\n3. Confirme-a com a verificação em dois passos e copie o ID de cliente, o segredo e a chave de API\n4. Cole-os abaixo e prima \"Ligar\"';
+
+  @override
   String get invoiceHeadline => 'Facturas';
 
   @override
@@ -2509,6 +2541,38 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get integrationUnexpectedResponse => 'Resposta inesperada do serviço';
+
+  @override
+  String get investecApiKey => 'Chave de API';
+
+  @override
+  String get investecClientId => 'ID de cliente';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Criado no Investec Online em Investec Developer → API keys; armazenado criptografado';
+
+  @override
+  String get investecDescription =>
+      'Importe saldos e transações de contas Investec Private Banking (África do Sul) por meio da Programmable Banking API com suas próprias chaves de API. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (África do Sul)';
+
+  @override
+  String get investecIncomplete =>
+      'Preencha o ID de cliente, o segredo e a chave de API';
+
+  @override
+  String get investecSandbox => 'Sandbox (dados de teste)';
+
+  @override
+  String get investecSecret => 'Segredo';
+
+  @override
+  String get investecSteps =>
+      'Como obter as chaves de API:\n1. Entre no Investec Online e inscreva-se no Investec Developer (Programmable Banking)\n2. Abra API keys e crie uma chave com acesso a contas e transações\n3. Confirme-a com a verificação em duas etapas e copie o ID de cliente, o segredo e a chave de API\n4. Cole-os abaixo e toque em \"Conectar\"';
 
   @override
   String get invoiceHeadline => 'Faturas';

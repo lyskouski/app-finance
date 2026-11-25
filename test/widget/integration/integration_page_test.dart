@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_settings.dart';
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
+import 'package:app_finance/_classes/integration/investec/investec_settings.dart';
 import 'package:app_finance/_classes/integration/notification/notification_channel.dart';
 import 'package:app_finance/_classes/integration/notification/notification_controller.dart';
 import 'package:app_finance/_classes/integration/monobank/monobank_client.dart';
@@ -31,8 +32,10 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/account_type.dart';
+import 'package:app_finance/pages/integration/integration_page.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
+import 'package:app_finance/pages/integration/widgets/investec_widget.dart';
 import 'package:app_finance/pages/integration/widgets/monobank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
@@ -155,15 +158,13 @@ void main() {
     expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
     expect(find.text('Teller (US)'), findsOneWidget);
     expect(find.text('Enable Banking (EU)'), findsOneWidget);
-    expect(find.text('Wise API (Global)'), findsOneWidget);
     expect(find.text('PrivatBank Autoclient (Ukraine)'), findsOneWidget);
     expect(find.text('Monobank Personal API (Ukraine)'), findsOneWidget);
     expect(find.text('Notifications Parser'), findsOneWidget);
     // Protocols are separated from the APIs of single institutions
     final divider = tester.getTopLeft(find.byKey(const ValueKey('integration_divider'))).dy;
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_enablebanking'))).dy, lessThan(divider));
-    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_teller'))).dy, lessThan(divider));
-    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_wise'))).dy, greaterThan(divider));
+    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_teller'))).dy, greaterThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_privatbank'))).dy, greaterThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_monobank'))).dy, greaterThan(divider));
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsNothing);
@@ -180,6 +181,15 @@ void main() {
 
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsOneWidget);
     expect(find.byKey(const ValueKey('fints_connect')), findsOneWidget);
+
+    // Services of single institutions follow at the end of the list, sorted by name
+    expect(
+        IntegrationPageState.getServices().map((e) => e.id), ['investec', 'monobank', 'privatbank', 'teller', 'wise']);
+    for (final title in ['Investec Programmable Banking (South Africa)', 'Wise API (Global)']) {
+      await tester.scrollUntilVisible(find.text(title), 200, scrollable: find.byType(Scrollable).first);
+      expect(find.text(title), findsOneWidget);
+    }
+    await tester.pump(const Duration(seconds: 10));
   });
 
   testWidgets('FinTS connects with a PIN, asks for a TAN and imports transactions', (WidgetTester tester) async {
@@ -697,6 +707,137 @@ void main() {
     await tester.pumpAndSettle();
     expect(WiseSettings.loadToken(), isNull);
     expect(find.textContaining('Personal API Tokenrequired', findRichText: true), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Investec connects with API keys and imports transactions', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Investec',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Groceries', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    final requests = <http.Request>[];
+    final client = MockClient((request) async {
+      requests.add(request);
+      if (request.url.path == '/identity/v2/oauth2/token') {
+        return request.headers['x-api-key'] == 'key'
+            ? http.Response(jsonEncode({'access_token': 'T', 'token_type': 'Bearer', 'expires_in': '1799'}), 200)
+            : http.Response(jsonEncode({'error': 'invalid_client'}), 401);
+      }
+      final data = switch (request.url.path) {
+        '/za/pb/v1/accounts' => {
+            'accounts': [
+              {'accountId': 'ACC-1', 'accountNumber': '10012345678', 'referenceName': 'Everyday', 'productName': 'PBA'},
+            ],
+          },
+        '/za/pb/v1/accounts/ACC-1/balance' => {'accountId': 'ACC-1', 'currentBalance': 1500.25, 'currency': 'ZAR'},
+        _ => {
+            'transactions': [
+              {
+                'accountId': 'ACC-1',
+                'type': 'DEBIT',
+                'status': 'POSTED',
+                'description': 'FRESH PRODUCE',
+                'postingDate': '2026-11-20',
+                'transactionDate': '2026-11-19',
+                'amount': 53.6,
+              },
+              {
+                'accountId': 'ACC-1',
+                'type': 'DEBIT',
+                'status': 'PENDING',
+                'description': 'HOLD',
+                'postingDate': '2026-11-21',
+                'amount': 10,
+              },
+            ],
+          },
+      };
+      return http.Response(
+          jsonEncode({
+            'data': data,
+            'meta': {'totalPages': 1}
+          }),
+          200);
+    });
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(body: SingleChildScrollView(child: InvestecWidget(httpClient: client))),
+    ));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('investec_steps')), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('investec_connect')));
+    await tester.tap(find.byKey(const ValueKey('investec_connect')));
+    await pumpFrames(tester);
+    expect(find.text('Fill in the client ID, the secret, and the API key'), findsOneWidget);
+
+    final fields = find.byType(TextField);
+    await tester.enterText(fields.at(0), 'client');
+    await tester.enterText(fields.at(1), 'secret');
+    await tester.enterText(fields.at(2), 'wrong');
+    await tester.ensureVisible(find.byKey(const ValueKey('investec_connect')));
+    await tester.tap(find.byKey(const ValueKey('investec_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Access has been revoked or the credentials are incorrect'), findsOneWidget);
+    expect(InvestecSettings.loadCredentials(), isNull);
+
+    await tester.enterText(find.byType(TextField).at(2), 'key');
+    await tester.ensureVisible(find.byKey(const ValueKey('investec_connect')));
+    await tester.tap(find.byKey(const ValueKey('investec_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(InvestecSettings.loadCredentials(), (clientId: 'client', secret: 'secret', apiKey: 'key'));
+    expect(find.byKey(const ValueKey('investec_steps')), findsNothing);
+    expect(find.text('Everyday …5678'), findsOneWidget);
+    expect(find.textContaining('1500.25 ZAR'), findsOneWidget);
+
+    final widgetState = tester.state<InvestecWidgetState>(find.byType(InvestecWidget));
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 1'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    final bill = state.getList(AppDataType.bills, false).whereType<BillAppData>().last;
+    expect(bill.title, 'FRESH PRODUCE');
+    expect(bill.details, 53.6);
+    expect(InvestecSettings.load().links, {'ACC-1': account.uuid});
+    // The token of the connection is reused
+    expect(requests.where((e) => e.url.path.contains('oauth2') && e.headers['x-api-key'] == 'key').length, 1);
+
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 0, skipped as already present: 1, pending (not imported): 1'), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('investec_forget')));
+    await tester.tap(find.byKey(const ValueKey('investec_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(InvestecSettings.loadCredentials(), isNull);
+    expect(find.byKey(const ValueKey('investec_steps')), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

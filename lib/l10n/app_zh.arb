@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "服务返回了意外的响应",
+    "investecApiKey": "API 密钥",
+    "investecClientId": "客户端 ID",
+    "investecCredentialsTooltip": "在 Investec Online 的 Investec Developer → API keys 中创建；加密存储",
+    "investecDescription": "使用您自己的 API 密钥，通过 Programmable Banking API 导入 Investec Private Banking 账户（南非）的余额和交易。访问为只读：不会进行任何付款。",
+    "investecHeadline": "Investec Programmable Banking（南非）",
+    "investecIncomplete": "请填写客户端 ID、客户端密钥和 API 密钥",
+    "investecSandbox": "沙盒（测试数据）",
+    "investecSecret": "客户端密钥",
+    "investecSteps": "如何获取 API 密钥：\n1. 登录 Investec Online 并注册 Investec Developer（Programmable Banking）\n2. 打开 API keys，创建一个可访问账户和交易的密钥\n3. 通过两步验证确认，并复制客户端 ID、客户端密钥和 API 密钥\n4. 粘贴到下方并点击“连接”",
     "invoiceHeadline": "发票",
     "invoiceSum": "发票： {value}",
     "@invoiceSum": {

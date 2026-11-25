@@ -903,6 +903,36 @@ class AppLocalizationsUk extends AppLocalizations {
   String get integrationUnexpectedResponse => 'Неочікувана відповідь сервісу';
 
   @override
+  String get investecApiKey => 'API-ключ';
+
+  @override
+  String get investecClientId => 'ID клієнта';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Створюється в Investec Online у розділі Investec Developer → API keys; зберігається в зашифрованому вигляді';
+
+  @override
+  String get investecDescription =>
+      'Імпорт залишків і операцій рахунків Investec Private Banking (ПАР) через Programmable Banking API з власними API-ключами. Доступ лише для читання: платежі не виконуються.';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking (ПАР)';
+
+  @override
+  String get investecIncomplete => 'Заповніть ID клієнта, секрет і API-ключ';
+
+  @override
+  String get investecSandbox => 'Sandbox (тестові дані)';
+
+  @override
+  String get investecSecret => 'Секрет';
+
+  @override
+  String get investecSteps =>
+      'Як отримати API-ключі:\n1. Увійдіть в Investec Online і зареєструйтеся в Investec Developer (Programmable Banking)\n2. Відкрийте API keys і створіть ключ із доступом до рахунків та операцій\n3. Підтвердьте його двоетапною перевіркою та скопіюйте ID клієнта, секрет і API-ключ\n4. Вставте їх нижче й натисніть «Підключитися»';
+
+  @override
   String get invoiceHeadline => 'Фактури';
 
   @override

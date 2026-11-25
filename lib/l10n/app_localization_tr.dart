@@ -903,6 +903,37 @@ class AppLocalizationsTr extends AppLocalizations {
   String get integrationUnexpectedResponse => 'Hizmetten beklenmeyen yanıt';
 
   @override
+  String get investecApiKey => 'API anahtarı';
+
+  @override
+  String get investecClientId => 'İstemci kimliği';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Investec Online\'da Investec Developer → API keys bölümünde oluşturulur; şifreli olarak saklanır';
+
+  @override
+  String get investecDescription =>
+      'Investec Private Banking hesaplarının (Güney Afrika) bakiyelerini ve işlemlerini kendi API anahtarlarınızla Programmable Banking API üzerinden içe aktarın. Erişim salt okunurdur: hiçbir ödeme yapılmaz.';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking (Güney Afrika)';
+
+  @override
+  String get investecIncomplete =>
+      'İstemci kimliğini, gizli anahtarı ve API anahtarını doldurun';
+
+  @override
+  String get investecSandbox => 'Sandbox (test verileri)';
+
+  @override
+  String get investecSecret => 'Gizli anahtar';
+
+  @override
+  String get investecSteps =>
+      'API anahtarları nasıl alınır:\n1. Investec Online\'a giriş yapın ve Investec Developer\'a (Programmable Banking) kaydolun\n2. API keys bölümünü açın ve hesaplara ve işlemlere erişimi olan bir anahtar oluşturun\n3. İki adımlı doğrulamayla onaylayın ve istemci kimliğini, gizli anahtarı ve API anahtarını kopyalayın\n4. Bunları aşağıya yapıştırın ve \"Bağlan\"a basın';
+
+  @override
   String get invoiceHeadline => 'Invoices';
 
   @override

@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Xidmətdən gözlənilməz cavab",
+    "investecApiKey": "API açarı",
+    "investecClientId": "Müştəri ID-si",
+    "investecCredentialsTooltip": "Investec Online-da Investec Developer → API keys bölməsində yaradılır; şifrələnmiş saxlanılır",
+    "investecDescription": "Öz API açarlarınızla Programmable Banking API vasitəsilə Investec Private Banking hesablarının (Cənubi Afrika) qalıqlarını və əməliyyatlarını idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.",
+    "investecHeadline": "Investec Programmable Banking (Cənubi Afrika)",
+    "investecIncomplete": "Müştəri ID-sini, gizli açarı və API açarını doldurun",
+    "investecSandbox": "Sandbox (test məlumatları)",
+    "investecSecret": "Gizli açar",
+    "investecSteps": "API açarlarını necə əldə etmək olar:\n1. Investec Online-a daxil olun və Investec Developer-də (Programmable Banking) qeydiyyatdan keçin\n2. API keys bölməsini açın və hesablara və əməliyyatlara girişi olan açar yaradın\n3. İkimərhələli doğrulama ilə təsdiqləyin və müştəri ID-sini, gizli açarı və API açarını kopyalayın\n4. Onları aşağıya yapışdırın və \"Qoşul\" düyməsini basın",
     "invoiceHeadline": "Fakturalar",
     "invoiceSum": "Fakturalar: {value}",
     "@invoiceSum": {

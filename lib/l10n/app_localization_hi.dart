@@ -900,6 +900,37 @@ class AppLocalizationsHi extends AppLocalizations {
   String get integrationUnexpectedResponse => 'सेवा से अप्रत्याशित उत्तर';
 
   @override
+  String get investecApiKey => 'API कुंजी';
+
+  @override
+  String get investecClientId => 'क्लाइंट आईडी';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Investec Online में Investec Developer → API keys में बनाया जाता है; एन्क्रिप्ट करके संग्रहीत';
+
+  @override
+  String get investecDescription =>
+      'अपनी API कुंजियों से Programmable Banking API के माध्यम से Investec Private Banking खातों (दक्षिण अफ्रीका) के बैलेंस और लेन-देन इम्पोर्ट करें। एक्सेस केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (दक्षिण अफ्रीका)';
+
+  @override
+  String get investecIncomplete => 'क्लाइंट आईडी, सीक्रेट और API कुंजी भरें';
+
+  @override
+  String get investecSandbox => 'Sandbox (परीक्षण डेटा)';
+
+  @override
+  String get investecSecret => 'सीक्रेट';
+
+  @override
+  String get investecSteps =>
+      'API कुंजियाँ कैसे प्राप्त करें:\n1. Investec Online में साइन इन करें और Investec Developer (Programmable Banking) में नामांकन करें\n2. API keys खोलें और खातों व लेन-देन तक पहुँच वाली एक कुंजी बनाएँ\n3. दो-चरणीय सत्यापन से इसकी पुष्टि करें और क्लाइंट आईडी, सीक्रेट और API कुंजी कॉपी करें\n4. इन्हें नीचे चिपकाएँ और \"कनेक्ट करें\" दबाएँ';
+
+  @override
   String get invoiceHeadline => 'चालान';
 
   @override

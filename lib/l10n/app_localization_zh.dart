@@ -885,6 +885,36 @@ class AppLocalizationsZh extends AppLocalizations {
   String get integrationUnexpectedResponse => '服务返回了意外的响应';
 
   @override
+  String get investecApiKey => 'API 密钥';
+
+  @override
+  String get investecClientId => '客户端 ID';
+
+  @override
+  String get investecCredentialsTooltip =>
+      '在 Investec Online 的 Investec Developer → API keys 中创建；加密存储';
+
+  @override
+  String get investecDescription =>
+      '使用您自己的 API 密钥，通过 Programmable Banking API 导入 Investec Private Banking 账户（南非）的余额和交易。访问为只读：不会进行任何付款。';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking（南非）';
+
+  @override
+  String get investecIncomplete => '请填写客户端 ID、客户端密钥和 API 密钥';
+
+  @override
+  String get investecSandbox => '沙盒（测试数据）';
+
+  @override
+  String get investecSecret => '客户端密钥';
+
+  @override
+  String get investecSteps =>
+      '如何获取 API 密钥：\n1. 登录 Investec Online 并注册 Investec Developer（Programmable Banking）\n2. 打开 API keys，创建一个可访问账户和交易的密钥\n3. 通过两步验证确认，并复制客户端 ID、客户端密钥和 API 密钥\n4. 粘贴到下方并点击“连接”';
+
+  @override
   String get invoiceHeadline => '发票';
 
   @override
@@ -2445,6 +2475,36 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get integrationUnexpectedResponse => '服務傳回了非預期的回應';
+
+  @override
+  String get investecApiKey => 'API 金鑰';
+
+  @override
+  String get investecClientId => '用戶端 ID';
+
+  @override
+  String get investecCredentialsTooltip =>
+      '在 Investec Online 的 Investec Developer → API keys 中建立；加密儲存';
+
+  @override
+  String get investecDescription =>
+      '使用您自己的 API 金鑰，透過 Programmable Banking API 匯入 Investec Private Banking 帳戶（南非）的餘額與交易。存取為唯讀：不會進行任何付款。';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking（南非）';
+
+  @override
+  String get investecIncomplete => '請填寫用戶端 ID、用戶端密碼與 API 金鑰';
+
+  @override
+  String get investecSandbox => '沙箱（測試資料）';
+
+  @override
+  String get investecSecret => '用戶端密碼';
+
+  @override
+  String get investecSteps =>
+      '如何取得 API 金鑰：\n1. 登入 Investec Online 並註冊 Investec Developer（Programmable Banking）\n2. 開啟 API keys，建立可存取帳戶與交易的金鑰\n3. 透過兩步驟驗證確認，並複製用戶端 ID、用戶端密碼與 API 金鑰\n4. 貼到下方並點選「連線」';
 
   @override
   String get invoiceHeadline => '發票';

@@ -889,6 +889,36 @@ class AppLocalizationsKo extends AppLocalizations {
   String get integrationUnexpectedResponse => '서비스의 예기치 않은 응답';
 
   @override
+  String get investecApiKey => 'API 키';
+
+  @override
+  String get investecClientId => '클라이언트 ID';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Investec Online의 Investec Developer → API keys에서 생성합니다. 암호화되어 저장됩니다';
+
+  @override
+  String get investecDescription =>
+      '자체 API 키를 사용하여 Programmable Banking API를 통해 Investec Private Banking 계좌(남아프리카 공화국)의 잔액과 거래를 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking (남아프리카 공화국)';
+
+  @override
+  String get investecIncomplete => '클라이언트 ID, 시크릿, API 키를 입력하세요';
+
+  @override
+  String get investecSandbox => '샌드박스(테스트 데이터)';
+
+  @override
+  String get investecSecret => '시크릿';
+
+  @override
+  String get investecSteps =>
+      'API 키 받는 방법:\n1. Investec Online에 로그인하고 Investec Developer(Programmable Banking)에 등록합니다\n2. API keys를 열고 계좌 및 거래에 접근할 수 있는 키를 생성합니다\n3. 2단계 인증으로 확인하고 클라이언트 ID, 시크릿, API 키를 복사합니다\n4. 아래에 붙여 넣고 \"연결\"을 누릅니다';
+
+  @override
   String get invoiceHeadline => '인보이스';
 
   @override

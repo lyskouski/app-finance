@@ -907,6 +907,38 @@ class AppLocalizationsUz extends AppLocalizations {
   String get integrationUnexpectedResponse => 'Xizmatdan kutilmagan javob';
 
   @override
+  String get investecApiKey => 'API kaliti';
+
+  @override
+  String get investecClientId => 'Mijoz ID';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Investec Online’da Investec Developer → API keys bo‘limida yaratiladi; shifrlangan holda saqlanadi';
+
+  @override
+  String get investecDescription =>
+      'O‘z API kalitlaringiz bilan Programmable Banking API orqali Investec Private Banking hisoblarining (Janubiy Afrika) qoldiqlari va tranzaksiyalarini import qiling. Kirish faqat o‘qish uchun: to‘lovlar amalga oshirilmaydi.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (Janubiy Afrika)';
+
+  @override
+  String get investecIncomplete =>
+      'Mijoz ID, maxfiy kod va API kalitini to‘ldiring';
+
+  @override
+  String get investecSandbox => 'Sandbox (test ma’lumotlari)';
+
+  @override
+  String get investecSecret => 'Maxfiy kod';
+
+  @override
+  String get investecSteps =>
+      'API kalitlarini qanday olish mumkin:\n1. Investec Online’ga kiring va Investec Developer’da (Programmable Banking) ro‘yxatdan o‘ting\n2. API keys bo‘limini oching va hisoblar hamda tranzaksiyalarga kirish huquqiga ega kalit yarating\n3. Ikki bosqichli tasdiqlash bilan tasdiqlang va mijoz ID, maxfiy kod va API kalitini nusxalang\n4. Ularni quyiga joylang va «Ulanish» tugmasini bosing';
+
+  @override
   String get invoiceHeadline => 'Hisob-fakturalar';
 
   @override

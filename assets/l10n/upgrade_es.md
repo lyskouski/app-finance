@@ -4,6 +4,7 @@ _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" 
 
 ### 8.1.0
 - Se añade Teller (US): saldos e importación de movimientos de bancos y emisores de tarjetas de EE. UU. con tu propia aplicación de Teller (basada en certificado)
+- Se añade Investec Programmable Banking (Sudáfrica): saldos e importación de movimientos de cuentas de Private Banking con tus propias claves de API
 - Se añade Wise API (Global): saldos e importación de movimientos de cuentas multidivisa de Wise, conversiones como transferencias
 - Se añade PrivatBank Autoclient (Ucrania): saldos e importación de transacciones de cuentas empresariales por IBAN
 - Se añade monobank Personal API (Ucrania): saldos e importación de transacciones de tarjetas y huchas, creación de cuentas vinculadas

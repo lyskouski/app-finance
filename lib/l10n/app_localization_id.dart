@@ -904,6 +904,37 @@ class AppLocalizationsId extends AppLocalizations {
       'Respons tak terduga dari layanan';
 
   @override
+  String get investecApiKey => 'Kunci API';
+
+  @override
+  String get investecClientId => 'ID klien';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Dibuat di Investec Online pada Investec Developer → API keys; disimpan terenkripsi';
+
+  @override
+  String get investecDescription =>
+      'Impor saldo dan transaksi rekening Investec Private Banking (Afrika Selatan) melalui Programmable Banking API dengan kunci API Anda sendiri. Akses hanya-baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (Afrika Selatan)';
+
+  @override
+  String get investecIncomplete => 'Isi ID klien, secret, dan kunci API';
+
+  @override
+  String get investecSandbox => 'Sandbox (data uji)';
+
+  @override
+  String get investecSecret => 'Secret';
+
+  @override
+  String get investecSteps =>
+      'Cara mendapatkan kunci API:\n1. Masuk ke Investec Online dan daftar ke Investec Developer (Programmable Banking)\n2. Buka API keys dan buat kunci dengan akses ke rekening dan transaksi\n3. Konfirmasi dengan verifikasi dua langkah lalu salin ID klien, secret, dan kunci API\n4. Tempel di bawah dan tekan \"Hubungkan\"';
+
+  @override
   String get invoiceHeadline => 'Faktur';
 
   @override

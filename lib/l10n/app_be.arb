@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Нечаканы адказ сэрвісу",
+    "investecApiKey": "API-ключ",
+    "investecClientId": "ID кліента",
+    "investecCredentialsTooltip": "Ствараецца ў Investec Online у раздзеле Investec Developer → API keys; захоўваецца ў зашыфраваным выглядзе",
+    "investecDescription": "Імпарт рэшткаў і аперацый рахункаў Investec Private Banking (Паўднёвая Афрыка) праз Programmable Banking API з уласнымі API-ключамі. Доступ толькі для чытання: плацяжы не выконваюцца.",
+    "investecHeadline": "Investec Programmable Banking (Паўднёвая Афрыка)",
+    "investecIncomplete": "Запоўніце ID кліента, сакрэт і API-ключ",
+    "investecSandbox": "Sandbox (тэставыя даныя)",
+    "investecSecret": "Сакрэт",
+    "investecSteps": "Як атрымаць API-ключы:\n1. Увайдзіце ў Investec Online і зарэгіструйцеся ў Investec Developer (Programmable Banking)\n2. Адкрыйце API keys і стварыце ключ з доступам да рахункаў і аперацый\n3. Пацвердзіце яго двухэтапнай праверкай і скапіруйце ID кліента, сакрэт і API-ключ\n4. Устаўце іх ніжэй і націсніце «Падлучыцца»",
     "invoiceHeadline": "Фактуры",
     "invoiceSum": "Фактуры: {value}",
     "@invoiceSum": {

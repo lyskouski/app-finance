@@ -905,6 +905,38 @@ class AppLocalizationsKa extends AppLocalizations {
   String get integrationUnexpectedResponse => 'სერვისის მოულოდნელი პასუხი';
 
   @override
+  String get investecApiKey => 'API გასაღები';
+
+  @override
+  String get investecClientId => 'კლიენტის ID';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'იქმნება Investec Online-ში: Investec Developer → API keys; ინახება დაშიფრული სახით';
+
+  @override
+  String get investecDescription =>
+      'Investec Private Banking-ის ანგარიშების (სამხრეთ აფრიკა) ნაშთებისა და ტრანზაქციების იმპორტი Programmable Banking API-ით საკუთარი API გასაღებებით. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (სამხრეთ აფრიკა)';
+
+  @override
+  String get investecIncomplete =>
+      'შეავსეთ კლიენტის ID, საიდუმლო და API გასაღები';
+
+  @override
+  String get investecSandbox => 'Sandbox (სატესტო მონაცემები)';
+
+  @override
+  String get investecSecret => 'საიდუმლო';
+
+  @override
+  String get investecSteps =>
+      'როგორ მივიღოთ API გასაღებები:\n1. შედით Investec Online-ში და დარეგისტრირდით Investec Developer-ში (Programmable Banking)\n2. გახსენით API keys და შექმენით გასაღები ანგარიშებსა და ტრანზაქციებზე წვდომით\n3. დაადასტურეთ ორსაფეხურიანი ვერიფიკაციით და დააკოპირეთ კლიენტის ID, საიდუმლო და API გასაღები\n4. ჩასვით ისინი ქვემოთ და დააჭირეთ ღილაკს „დაკავშირება“';
+
+  @override
   String get invoiceHeadline => 'ინვოისები';
 
   @override

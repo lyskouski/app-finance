@@ -79,6 +79,7 @@
   - Teller (US)：米国の銀行やカード発行会社からの残高と取引のインポート（証明書付きの独自の Teller アプリケーション）
   - Enable Banking (EU)：ヨーロッパの銀行からの残高と取引のインポート（PSD2）
   - Wise API (Global)：Wise マルチカレンシー口座の残高と取引のインポート（個人用 API トークン）
+  - Investec Programmable Banking（南アフリカ）：Private Banking 口座の残高と取引のインポート（独自の API キー）
   - PrivatBank Autoclient（ウクライナ）：Privat24 for Businessの法人口座の残高と取引のインポート（Autoclientトークン）
   - monobank Personal API（ウクライナ）：monobankのカードと貯金箱の残高と取引のインポート（個人トークン）
   - 通知パーサー (Android)：銀行・決済アプリの通知から取引を作成

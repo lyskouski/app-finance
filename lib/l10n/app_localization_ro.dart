@@ -906,6 +906,38 @@ class AppLocalizationsRo extends AppLocalizations {
       'Răspuns neașteptat al serviciului';
 
   @override
+  String get investecApiKey => 'Cheie API';
+
+  @override
+  String get investecClientId => 'ID client';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Creat în Investec Online în Investec Developer → API keys; stocat criptat';
+
+  @override
+  String get investecDescription =>
+      'Importă soldurile și tranzacțiile conturilor Investec Private Banking (Africa de Sud) prin Programmable Banking API cu propriile chei API. Accesul este doar pentru citire: nu se efectuează plăți.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (Africa de Sud)';
+
+  @override
+  String get investecIncomplete =>
+      'Completați ID-ul clientului, secretul și cheia API';
+
+  @override
+  String get investecSandbox => 'Sandbox (date de test)';
+
+  @override
+  String get investecSecret => 'Secret';
+
+  @override
+  String get investecSteps =>
+      'Cum obțineți cheile API:\n1. Conectați-vă la Investec Online și înscrieți-vă în Investec Developer (Programmable Banking)\n2. Deschideți API keys și creați o cheie cu acces la conturi și tranzacții\n3. Confirmați-o cu verificarea în doi pași și copiați ID-ul clientului, secretul și cheia API\n4. Lipiți-le mai jos și apăsați „Conectare”';
+
+  @override
   String get invoiceHeadline => 'Facturi';
 
   @override

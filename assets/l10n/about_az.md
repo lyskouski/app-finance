@@ -79,6 +79,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - Teller (US): ABŞ bankları və kart emitentlərindən qalıqların və əməliyyatların idxalı (sertifikatlı öz Teller tətbiqi)
   - Enable Banking (EU): Avropa banklarından qalıqların və əməliyyatların idxalı (PSD2)
   - Wise API (Global): Wise çoxvalyutalı hesablarının qalıqlarının və əməliyyatlarının idxalı (şəxsi API tokeni)
+  - Investec Programmable Banking (Cənubi Afrika): Private Banking hesablarının qalıqlarının və əməliyyatlarının idxalı (öz API açarları)
   - PrivatBank Autoclient (Ukrayna): Privat24 for Business biznes hesablarının qalıqlarının və əməliyyatlarının idxalı (Autoclient tokeni)
   - monobank Personal API (Ukrayna): monobank kartlarının və yığım qutularının qalıqlarının və əməliyyatlarının idxalı (şəxsi token)
   - Bildirişlər Parser (Android): bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar

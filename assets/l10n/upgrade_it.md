@@ -5,6 +5,7 @@ pulsante “Suggerimenti”._
 
 ### 8.1.0
 - Aggiunto Teller (US): saldi e importazione dei movimenti di banche ed emittenti di carte statunitensi con la propria applicazione Teller (basata su certificato)
+- Aggiunto Investec Programmable Banking (Sudafrica): saldi e importazione dei movimenti dei conti Private Banking con le proprie chiavi API
 - Aggiunto Wise API (Global): saldi e importazione dei movimenti dei conti multivaluta Wise, conversioni come trasferimenti
 - Aggiunto PrivatBank Autoclient (Ucraina): saldi e importazione delle transazioni dei conti aziendali tramite IBAN
 - Aggiunto monobank Personal API (Ucraina): saldi e importazione delle transazioni di carte e salvadanai, creazione di conti collegati

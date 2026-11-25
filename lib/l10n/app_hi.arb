@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "सेवा से अप्रत्याशित उत्तर",
+    "investecApiKey": "API कुंजी",
+    "investecClientId": "क्लाइंट आईडी",
+    "investecCredentialsTooltip": "Investec Online में Investec Developer → API keys में बनाया जाता है; एन्क्रिप्ट करके संग्रहीत",
+    "investecDescription": "अपनी API कुंजियों से Programmable Banking API के माध्यम से Investec Private Banking खातों (दक्षिण अफ्रीका) के बैलेंस और लेन-देन इम्पोर्ट करें। एक्सेस केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।",
+    "investecHeadline": "Investec Programmable Banking (दक्षिण अफ्रीका)",
+    "investecIncomplete": "क्लाइंट आईडी, सीक्रेट और API कुंजी भरें",
+    "investecSandbox": "Sandbox (परीक्षण डेटा)",
+    "investecSecret": "सीक्रेट",
+    "investecSteps": "API कुंजियाँ कैसे प्राप्त करें:\n1. Investec Online में साइन इन करें और Investec Developer (Programmable Banking) में नामांकन करें\n2. API keys खोलें और खातों व लेन-देन तक पहुँच वाली एक कुंजी बनाएँ\n3. दो-चरणीय सत्यापन से इसकी पुष्टि करें और क्लाइंट आईडी, सीक्रेट और API कुंजी कॉपी करें\n4. इन्हें नीचे चिपकाएँ और \"कनेक्ट करें\" दबाएँ",
     "invoiceHeadline": "चालान",
     "invoiceSum": "चालान: {value}",
     "@invoiceSum": {

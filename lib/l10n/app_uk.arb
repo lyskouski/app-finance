@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "Неочікувана відповідь сервісу",
+    "investecApiKey": "API-ключ",
+    "investecClientId": "ID клієнта",
+    "investecCredentialsTooltip": "Створюється в Investec Online у розділі Investec Developer → API keys; зберігається в зашифрованому вигляді",
+    "investecDescription": "Імпорт залишків і операцій рахунків Investec Private Banking (ПАР) через Programmable Banking API з власними API-ключами. Доступ лише для читання: платежі не виконуються.",
+    "investecHeadline": "Investec Programmable Banking (ПАР)",
+    "investecIncomplete": "Заповніть ID клієнта, секрет і API-ключ",
+    "investecSandbox": "Sandbox (тестові дані)",
+    "investecSecret": "Секрет",
+    "investecSteps": "Як отримати API-ключі:\n1. Увійдіть в Investec Online і зареєструйтеся в Investec Developer (Programmable Banking)\n2. Відкрийте API keys і створіть ключ із доступом до рахунків та операцій\n3. Підтвердьте його двоетапною перевіркою та скопіюйте ID клієнта, секрет і API-ключ\n4. Вставте їх нижче й натисніть «Підключитися»",
     "invoiceHeadline": "Фактури",
     "invoiceSum": "Фактури: {value}",
     "@invoiceSum": {

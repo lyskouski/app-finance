@@ -900,6 +900,37 @@ class AppLocalizationsCs extends AppLocalizations {
   String get integrationUnexpectedResponse => 'Neočekávaná odpověď služby';
 
   @override
+  String get investecApiKey => 'Klíč API';
+
+  @override
+  String get investecClientId => 'ID klienta';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Vytváří se v Investec Online v Investec Developer → API keys; ukládá se šifrovaně';
+
+  @override
+  String get investecDescription =>
+      'Import zůstatků a transakcí účtů Investec Private Banking (Jihoafrická republika) přes Programmable Banking API s vlastními klíči API. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (Jihoafrická republika)';
+
+  @override
+  String get investecIncomplete => 'Vyplňte ID klienta, tajný klíč a klíč API';
+
+  @override
+  String get investecSandbox => 'Sandbox (testovací data)';
+
+  @override
+  String get investecSecret => 'Tajný klíč';
+
+  @override
+  String get investecSteps =>
+      'Jak získat klíče API:\n1. Přihlaste se do Investec Online a zaregistrujte se do Investec Developer (Programmable Banking)\n2. Otevřete API keys a vytvořte klíč s přístupem k účtům a transakcím\n3. Potvrďte jej dvoufázovým ověřením a zkopírujte ID klienta, tajný klíč a klíč API\n4. Vložte je níže a stiskněte „Připojit“';
+
+  @override
   String get invoiceHeadline => 'Faktury';
 
   @override

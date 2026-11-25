@@ -904,6 +904,37 @@ class AppLocalizationsNl extends AppLocalizations {
       'Onverwacht antwoord van de dienst';
 
   @override
+  String get investecApiKey => 'API-sleutel';
+
+  @override
+  String get investecClientId => 'Client-ID';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Aangemaakt in Investec Online onder Investec Developer → API keys; versleuteld opgeslagen';
+
+  @override
+  String get investecDescription =>
+      'Importeer saldi en transacties van Investec Private Banking-rekeningen (Zuid-Afrika) via de Programmable Banking API met uw eigen API-sleutels. De toegang is alleen-lezen: er worden geen betalingen uitgevoerd.';
+
+  @override
+  String get investecHeadline => 'Investec Programmable Banking (Zuid-Afrika)';
+
+  @override
+  String get investecIncomplete =>
+      'Vul de client-ID, het geheim en de API-sleutel in';
+
+  @override
+  String get investecSandbox => 'Sandbox (testgegevens)';
+
+  @override
+  String get investecSecret => 'Geheim';
+
+  @override
+  String get investecSteps =>
+      'Zo krijgt u de API-sleutels:\n1. Log in op Investec Online en meld u aan voor Investec Developer (Programmable Banking)\n2. Open API keys en maak een sleutel aan met toegang tot rekeningen en transacties\n3. Bevestig deze met tweestapsverificatie en kopieer de client-ID, het geheim en de API-sleutel\n4. Plak ze hieronder en druk op \'Verbinden\'';
+
+  @override
   String get invoiceHeadline => 'Facturen';
 
   @override

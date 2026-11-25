@@ -79,6 +79,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
   - Teller (US): import de solduri și tranzacții de la băncile și emitenții de carduri din SUA (aplicație Teller proprie cu certificat)
   - Enable Banking (EU): import de solduri și tranzacții de la băncile europene (PSD2)
   - Wise API (Global): import de solduri și tranzacții ale conturilor multivalută Wise (token API personal)
+  - Investec Programmable Banking (Africa de Sud): import de solduri și tranzacții ale conturilor Private Banking (chei API proprii)
   - PrivatBank Autoclient (Ucraina): importul soldurilor și tranzacțiilor conturilor de afaceri din Privat24 for Business (token Autoclient)
   - monobank Personal API (Ucraina): importul soldurilor și tranzacțiilor cardurilor și pușculițelor monobank (token personal)
   - Notificări Parser (Android): tranzacții din notificările aplicațiilor bancare și de plată

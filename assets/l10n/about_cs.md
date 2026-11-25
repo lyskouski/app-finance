@@ -79,6 +79,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
   - Teller (US): import zůstatků a transakcí amerických bank a vydavatelů karet (vlastní aplikace Teller s certifikátem)
   - Enable Banking (EU): import zůstatků a transakcí evropských bank (PSD2)
   - Wise API (Global): import zůstatků a transakcí víceměnových účtů Wise (osobní token API)
+  - Investec Programmable Banking (Jihoafrická republika): import zůstatků a transakcí účtů Private Banking (vlastní klíče API)
   - PrivatBank Autoclient (Ukrajina): import zůstatků a transakcí podnikatelských účtů z Privat24 for Business (token Autoclient)
   - monobank Personal API (Ukrajina): import zůstatků a transakcí karet a pokladniček monobank (osobní token)
   - Parser oznámení (Android): transakce z oznámení bankovních a platebních aplikací

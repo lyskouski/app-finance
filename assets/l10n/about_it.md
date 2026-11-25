@@ -79,6 +79,7 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
   - Teller (US): importazione di saldi e movimenti di banche ed emittenti di carte statunitensi (applicazione Teller propria con certificato)
   - Enable Banking (EU): importazione di saldi e movimenti delle banche europee (PSD2)
   - Wise API (Global): importazione di saldi e movimenti dei conti multivaluta Wise (token API personale)
+  - Investec Programmable Banking (Sudafrica): importazione di saldi e movimenti dei conti Private Banking (chiavi API proprie)
   - PrivatBank Autoclient (Ucraina): importazione di saldi e transazioni dei conti aziendali di Privat24 for Business (token Autoclient)
   - monobank Personal API (Ucraina): importazione di saldi e transazioni di carte e salvadanai monobank (token personale)
   - Parser delle notifiche (Android): movimenti dalle notifiche delle app bancarie e di pagamento

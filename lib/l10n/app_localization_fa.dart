@@ -899,6 +899,38 @@ class AppLocalizationsFa extends AppLocalizations {
   String get integrationUnexpectedResponse => 'پاسخ غیرمنتظره از سرویس';
 
   @override
+  String get investecApiKey => 'کلید API';
+
+  @override
+  String get investecClientId => 'شناسه کلاینت';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'در Investec Online از مسیر Investec Developer → API keys ایجاد می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود';
+
+  @override
+  String get investecDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های حساب‌های Investec Private Banking (آفریقای جنوبی) از طریق Programmable Banking API با کلیدهای API شخصی شما. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (آفریقای جنوبی)';
+
+  @override
+  String get investecIncomplete =>
+      'شناسه کلاینت، رمز محرمانه و کلید API را وارد کنید';
+
+  @override
+  String get investecSandbox => 'Sandbox (داده‌های آزمایشی)';
+
+  @override
+  String get investecSecret => 'رمز محرمانه';
+
+  @override
+  String get investecSteps =>
+      'نحوه دریافت کلیدهای API:\n1. وارد Investec Online شوید و در Investec Developer (Programmable Banking) ثبت‌نام کنید\n2. بخش API keys را باز کنید و کلیدی با دسترسی به حساب‌ها و تراکنش‌ها بسازید\n3. آن را با تأیید دومرحله‌ای تأیید کنید و شناسه کلاینت، رمز محرمانه و کلید API را کپی کنید\n4. آن‌ها را در زیر جای‌گذاری کرده و «اتصال» را بزنید';
+
+  @override
   String get invoiceHeadline => 'فاکتورها';
 
   @override

@@ -381,6 +381,15 @@
         }
     },
     "integrationUnexpectedResponse": "استجابة غير متوقعة من الخدمة",
+    "investecApiKey": "مفتاح API",
+    "investecClientId": "معرّف العميل",
+    "investecCredentialsTooltip": "يُنشأ في Investec Online من Investec Developer → API keys؛ ويُخزَّن مشفرًا",
+    "investecDescription": "استيراد الأرصدة والمعاملات لحسابات Investec Private Banking (جنوب أفريقيا) عبر Programmable Banking API باستخدام مفاتيح API الخاصة بك. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
+    "investecHeadline": "Investec Programmable Banking (جنوب أفريقيا)",
+    "investecIncomplete": "املأ معرّف العميل والسر ومفتاح API",
+    "investecSandbox": "Sandbox (بيانات تجريبية)",
+    "investecSecret": "السر",
+    "investecSteps": "كيفية الحصول على مفاتيح API:\n1. سجّل الدخول إلى Investec Online واشترك في Investec Developer (Programmable Banking)\n2. افتح API keys وأنشئ مفتاحًا مع صلاحية الوصول إلى الحسابات والمعاملات\n3. أكّده بالتحقق بخطوتين وانسخ معرّف العميل والسر ومفتاح API\n4. الصقها أدناه واضغط «اتصال»",
     "invoiceHeadline": "الفواتير",
     "invoiceSum": "الفواتير {value}",
     "@invoiceSum": {

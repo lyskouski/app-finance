@@ -899,6 +899,37 @@ class AppLocalizationsPl extends AppLocalizations {
   String get integrationUnexpectedResponse => 'Nieoczekiwana odpowiedź usługi';
 
   @override
+  String get investecApiKey => 'Klucz API';
+
+  @override
+  String get investecClientId => 'ID klienta';
+
+  @override
+  String get investecCredentialsTooltip =>
+      'Tworzony w Investec Online w Investec Developer → API keys; przechowywany w postaci zaszyfrowanej';
+
+  @override
+  String get investecDescription =>
+      'Import sald i transakcji kont Investec Private Banking (Republika Południowej Afryki) przez Programmable Banking API z własnymi kluczami API. Dostęp tylko do odczytu: nie są wykonywane żadne płatności.';
+
+  @override
+  String get investecHeadline =>
+      'Investec Programmable Banking (Republika Południowej Afryki)';
+
+  @override
+  String get investecIncomplete => 'Uzupełnij ID klienta, sekret i klucz API';
+
+  @override
+  String get investecSandbox => 'Sandbox (dane testowe)';
+
+  @override
+  String get investecSecret => 'Sekret';
+
+  @override
+  String get investecSteps =>
+      'Jak uzyskać klucze API:\n1. Zaloguj się do Investec Online i zarejestruj się w Investec Developer (Programmable Banking)\n2. Otwórz API keys i utwórz klucz z dostępem do kont i transakcji\n3. Potwierdź go weryfikacją dwuetapową i skopiuj ID klienta, sekret i klucz API\n4. Wklej je poniżej i naciśnij „Połącz”';
+
+  @override
   String get invoiceHeadline => 'Faktury';
 
   @override
