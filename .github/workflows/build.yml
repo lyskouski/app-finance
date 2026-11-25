@@ -26,7 +26,8 @@ jobs:
             build_path: build/macos/Build/Products/Release
             asset_extension: .zip
             asset_content_type: application/zip
-          - os: macos-latest
+          # Xcode 27 (iOS 27 SDK) ships only on the Xcode-based `xcode-27` image; macos-latest tops out at Xcode 26.x
+          - os: xcode-27
             target: iOS
             build_path: build/ios/ipa
             asset_extension: .ipa
@@ -178,9 +179,28 @@ jobs:
 
 # iOS
       - uses: maxim-lobanov/setup-xcode@v1
-        if: matrix.target == 'iOS' || matrix.target == 'macOS'
+        if: matrix.target == 'macOS'
         with:
           xcode-version: latest-stable
+
+      # App Store Connect requires iOS 27 SDK builds starting April 2027 (ITMS-90725)
+      - name: Select latest Xcode and verify iOS SDK
+        if: matrix.target == 'iOS'
+        run: |
+          LATEST_XCODE=$(ls -d /Applications/Xcode*.app 2>/dev/null | sort -V | tail -1)
+          if [ -z "$LATEST_XCODE" ]; then
+            echo "::error::No Xcode installation found on the runner"
+            exit 1
+          fi
+          sudo xcode-select -s "$LATEST_XCODE/Contents/Developer"
+          xcodebuild -version
+          IOS_SDK_VERSION=$(xcrun --sdk iphoneos --show-sdk-version)
+          IOS_SDK_MAJOR=${IOS_SDK_VERSION%%.*}
+          if [ "$IOS_SDK_MAJOR" -lt 27 ]; then
+            echo "::error::iOS 27 SDK or later is required; selected SDK is $IOS_SDK_VERSION"
+            exit 1
+          fi
+          echo "Building with iOS SDK $IOS_SDK_VERSION"
 
       - name: Import Distribution Certificate
         if: matrix.target == 'iOS'
@@ -203,15 +223,6 @@ jobs:
           # Show iOS SDKs specifically
           echo "iOS SDKs:"
           xcrun xcodebuild -showsdks | grep -i ios
-
-          # Check if iOS 26+ SDK is available
-          if xcrun xcodebuild -showsdks | grep -q "iphoneos2[6-9]\|iphoneos[3-9][0-9]"; then
-            echo "✅ iOS 26+ SDK found"
-          else
-            echo "❌ Warning: iOS 26+ SDK not found, build will use available SDK"
-            echo "Available iOS SDKs:"
-            xcrun xcodebuild -showsdks | grep iphoneos
-          fi
 
 
 #      - name: Import Development Certificate
