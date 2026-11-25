@@ -178,7 +178,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    integration_widgets [label="<0>INTEGRATION_WIDGETS|<fints_dialogs>fints_dialogs|<integration_account_card>integration_account_card|<enablebanking_widget>enablebanking_widget|<notification_widget>notification_widget|<monobank_widget>monobank_widget|<simplefin_widget>simplefin_widget|<fints_widget>fints_widget|<privatbank_widget>privatbank_widget|<wise_widget>wise_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    integration_widgets [label="<0>INTEGRATION_WIDGETS|<teller_widget>teller_widget|<up_widget>up_widget|<fints_dialogs>fints_dialogs|<integration_account_card>integration_account_card|<enablebanking_widget>enablebanking_widget|<notification_widget>notification_widget|<starling_widget>starling_widget|<monobank_widget>monobank_widget|<simplefin_widget>simplefin_widget|<fints_widget>fints_widget|<akahu_widget>akahu_widget|<privatbank_widget>privatbank_widget|<investec_widget>investec_widget|<wise_widget>wise_widget|<monzo_widget>monzo_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -230,7 +230,15 @@ digraph G {
   }
   {
     rank = same; "_classes";
+    integration_up [label="<0>INTEGRATION_UP|<up_importer>up_importer|<up_settings>up_settings|<up_client>up_client",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
     integration_simplefin [label="<0>INTEGRATION_SIMPLEFIN|<simplefin_client>simplefin_client|<simplefin_importer>simplefin_importer|<simplefin_settings>simplefin_settings",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    integration_starling [label="<0>INTEGRATION_STARLING|<starling_settings>starling_settings|<starling_importer>starling_importer|<starling_client>starling_client",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -246,7 +254,23 @@ digraph G {
   }
   {
     rank = same; "_classes";
+    integration_monzo [label="<0>INTEGRATION_MONZO|<monzo_settings>monzo_settings|<monzo_client>monzo_client|<monzo_importer>monzo_importer",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    integration_teller [label="<0>INTEGRATION_TELLER|<teller_client>teller_client|<teller_http_stub>teller_http_stub|<teller_http>teller_http|<teller_settings>teller_settings|<teller_importer>teller_importer|<teller_http_io>teller_http_io",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
     integration_monobank [label="<0>INTEGRATION_MONOBANK|<monobank_settings>monobank_settings|<monobank_client>monobank_client|<monobank_importer>monobank_importer",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    integration_akahu [label="<0>INTEGRATION_AKAHU|<akahu_settings>akahu_settings|<akahu_client>akahu_client|<akahu_importer>akahu_importer",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    integration_investec [label="<0>INTEGRATION_INVESTEC|<investec_client>investec_client|<investec_settings>investec_settings|<investec_importer>investec_importer",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_ext";
@@ -1199,6 +1223,27 @@ digraph G {
   integration -> _ext_ [color="#F0F0F050"];
   integration -> _interfaces [color="#F0F0F050"];
   integration -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> controller_deep_link [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_teller [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> file [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> form [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_up [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
   integration_widgets -> herald [color="#F0F0F050"];
   integration_widgets -> _configs_ [color="#F0F0F050"];
   integration_widgets -> _ext_ [color="#F0F0F050"];
@@ -1227,6 +1272,15 @@ digraph G {
   integration_widgets -> _ext_ [color="#F0F0F050"];
   integration_widgets -> button [color="#F0F0F050"];
   integration_widgets -> form [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_starling [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
   integration_widgets -> generic [color="#F0F0F050"];
   integration_widgets -> wrapper [color="#F0F0F050"];
   integration_widgets -> integration_widgets [color="#F0F0F050"];
@@ -1260,7 +1314,26 @@ digraph G {
   integration_widgets -> wrapper [color="#F0F0F050"];
   integration_widgets -> integration_widgets [color="#F0F0F050"];
   integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_akahu [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> structure [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
   integration_widgets -> integration_privatbank [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_investec [color="#F0F0F050"];
   integration_widgets -> storage [color="#F0F0F050"];
   integration_widgets -> _configs_ [color="#F0F0F050"];
   integration_widgets -> _ext_ [color="#F0F0F050"];
@@ -1275,6 +1348,16 @@ digraph G {
   integration_widgets -> _ext_ [color="#F0F0F050"];
   integration_widgets -> button [color="#F0F0F050"];
   integration_widgets -> form [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> controller_deep_link [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_monzo [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
   integration_widgets -> generic [color="#F0F0F050"];
   integration_widgets -> wrapper [color="#F0F0F050"];
   integration_widgets -> integration_widgets [color="#F0F0F050"];
@@ -1440,6 +1523,13 @@ digraph G {
   integration_privatbank -> structure [color="green"];
   integration -> math [color="green"];
   integration -> structure [color="green"];
+  integration_up -> integration [color="green"];
+  integration_up -> integration_up [color="green"];
+  integration_up -> math [color="green"];
+  integration_up -> structure [color="green"];
+  integration_up -> controller [color="green"];
+  integration_up -> storage [color="green"];
+  integration_up -> herald [color="green"];
   integration_simplefin -> herald [color="green"];
   integration_simplefin -> math [color="green"];
   integration_simplefin -> integration [color="green"];
@@ -1447,6 +1537,13 @@ digraph G {
   integration_simplefin -> structure [color="green"];
   integration_simplefin -> controller [color="green"];
   integration_simplefin -> storage [color="green"];
+  integration_starling -> controller [color="green"];
+  integration_starling -> storage [color="green"];
+  integration_starling -> integration [color="green"];
+  integration_starling -> integration_starling [color="green"];
+  integration_starling -> math [color="green"];
+  integration_starling -> structure [color="green"];
+  integration_starling -> herald [color="green"];
   integration_wise -> integration [color="green"];
   integration_wise -> integration_wise [color="green"];
   integration_wise -> math [color="green"];
@@ -1477,6 +1574,29 @@ digraph G {
   integration_notification -> integration_notification [color="green"];
   integration_notification -> storage [color="green"];
 
+  integration_monzo -> controller_deep_link [color="green"];
+  integration_monzo -> controller [color="green"];
+  integration_monzo -> integration_enablebanking [color="green"];
+  integration_monzo -> integration_monzo [color="green"];
+  integration_monzo -> storage [color="green"];
+  integration_monzo -> herald [color="green"];
+  integration_monzo -> integration_enablebanking [color="green"];
+  integration_monzo -> integration [color="green"];
+  integration_monzo -> integration_monzo [color="green"];
+  integration_monzo -> math [color="green"];
+  integration_monzo -> structure [color="green"];
+  integration_teller -> herald [color="green"];
+
+
+  integration_teller -> controller_deep_link [color="green"];
+  integration_teller -> controller [color="green"];
+  integration_teller -> integration_teller [color="green"];
+  integration_teller -> storage [color="green"];
+  integration_teller -> integration [color="green"];
+  integration_teller -> integration_teller [color="green"];
+  integration_teller -> math [color="green"];
+  integration_teller -> structure [color="green"];
+
   integration_monobank -> controller [color="green"];
   integration_monobank -> storage [color="green"];
   integration_monobank -> herald [color="green"];
@@ -1484,6 +1604,22 @@ digraph G {
   integration_monobank -> integration_monobank [color="green"];
   integration_monobank -> math [color="green"];
   integration_monobank -> structure [color="green"];
+  integration_akahu -> controller [color="green"];
+  integration_akahu -> integration_akahu [color="green"];
+  integration_akahu -> storage [color="green"];
+  integration_akahu -> herald [color="green"];
+  integration_akahu -> integration_akahu [color="green"];
+  integration_akahu -> integration [color="green"];
+  integration_akahu -> math [color="green"];
+  integration_akahu -> structure [color="green"];
+  integration_investec -> herald [color="green"];
+  integration_investec -> controller [color="green"];
+  integration_investec -> integration_investec [color="green"];
+  integration_investec -> storage [color="green"];
+  integration_investec -> integration [color="green"];
+  integration_investec -> integration_investec [color="green"];
+  integration_investec -> math [color="green"];
+  integration_investec -> structure [color="green"];
 
 
 

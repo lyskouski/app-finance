@@ -3,7 +3,7 @@
   Copyright 2026 The terCAD team. All rights reserved.
   Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-  Redirect URL for bank authorizations (Integrations > Enable Banking):
+  Redirect URL for bank authorizations (Integrations > Enable Banking, Monzo: recognized by the state "monzo.…"):
   without the application installed, the address can be copied into it manually
 -->
 <html lang="en">
@@ -35,7 +35,7 @@
   <div id="actions" hidden>
     <a id="open" class="button" href="#">Open Fingrom</a>
     <p>If the application does not open, copy this address and paste it into
-      <em>Integrations › Enable Banking</em>:</p>
+      <em id="integration">Integrations › Enable Banking</em>:</p>
     <textarea id="address" readonly></textarea>
     <button id="copy" class="secondary" type="button">Copy</button>
   </div>
@@ -54,7 +54,11 @@
       message.textContent = 'The bank reported: ' + error;
       message.hidden = false;
     }
-    var link = 'fingrom://integration/enablebanking' + window.location.search;
+    var isMonzo = (params.get('state') || '').indexOf('monzo.') === 0;
+    var link = 'fingrom://integration/' + (isMonzo ? 'monzo' : 'enablebanking') + window.location.search;
+    if (isMonzo) {
+      document.getElementById('integration').textContent = 'Integrations › Monzo';
+    }
     document.getElementById('open').href = link;
     document.getElementById('address').value = window.location.href;
     document.getElementById('copy').addEventListener('click', function () {

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2026 The terCAD team. All rights reserved.
+  Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+  Teller Connect for the application (Integrations > Teller): ?app=<application id>&env=<sandbox|development|production>
+  [&enrollment=<id> to repair a disconnected one]. The access token is returned only to fingrom://integration/teller,
+  or shown to be copied into the application manually.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Fingrom: Connect a Bank (Teller)</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root { color-scheme: light dark; --accent: #2e7d32; }
+    body { margin: 0; font-family: system-ui, sans-serif; display: flex; min-height: 100vh; align-items: center;
+           justify-content: center; padding: 16px; box-sizing: border-box; }
+    main { max-width: 560px; width: 100%; text-align: center; }
+    a.button, button { display: inline-block; margin: 8px 4px; padding: 12px 20px; border-radius: 8px; border: 0;
+                       font-size: 1rem; cursor: pointer; text-decoration: none; background: var(--accent); color: #fff; }
+    button.secondary { background: transparent; color: inherit; border: 1px solid currentColor; }
+    textarea { width: 100%; min-height: 64px; box-sizing: border-box; font-family: monospace; font-size: .85rem; }
+    .error { color: #c62828; }
+    [hidden] { display: none; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Fingrom</h1>
+  <p id="status">Opening Teller Connect…</p>
+  <p id="error" class="error" hidden></p>
+  <button id="connect" type="button" hidden>Connect a Bank</button>
+  <div id="actions" hidden>
+    <a id="open" class="button" href="#">Open Fingrom</a>
+    <p>If the application does not open, copy this text and paste it into
+      <em>Integrations › Teller › Access Token</em>:</p>
+    <textarea id="token" readonly></textarea>
+    <button id="copy" class="secondary" type="button">Copy</button>
+  </div>
+</main>
+<script src="https://cdn.teller.io/connect/connect.js"></script>
+<script>
+  (function () {
+    var callback = 'fingrom://integration/teller';
+    var params = new URLSearchParams(window.location.search);
+    var status = document.getElementById('status');
+    var connect = document.getElementById('connect');
+
+    function fail(text) {
+      var message = document.getElementById('error');
+      message.textContent = text;
+      message.hidden = false;
+      status.hidden = true;
+    }
+
+    var app = params.get('app') || '';
+    var env = params.get('env') || 'sandbox';
+    if (!/^app_[A-Za-z0-9]+$/.test(app)) {
+      return fail('No valid application ID ("app_…") found in the address: open this page from Fingrom.');
+    }
+    if (['sandbox', 'development', 'production'].indexOf(env) < 0) {
+      return fail('Unknown environment: ' + env);
+    }
+    if (typeof TellerConnect === 'undefined') {
+      return fail('Teller Connect could not be loaded: check the connection and reload the page.');
+    }
+
+    function done(enrollment) {
+      var link = callback + '?' + new URLSearchParams({
+        token: enrollment.accessToken,
+        enrollment: (enrollment.enrollment && enrollment.enrollment.id) || '',
+        institution: (enrollment.enrollment && enrollment.enrollment.institution &&
+          enrollment.enrollment.institution.name) || ''
+      }).toString();
+      status.textContent = 'Returning to the application…';
+      connect.hidden = true;
+      document.getElementById('open').href = link;
+      document.getElementById('token').value = link;
+      window.location.href = link;
+      setTimeout(function () {
+        status.textContent = 'The bank has been connected.';
+        document.getElementById('actions').hidden = false;
+      }, 1500);
+    }
+
+    var options = {
+      applicationId: app,
+      environment: env,
+      products: ['balance', 'transactions'],
+      onSuccess: done,
+      onExit: function () {
+        status.textContent = 'No bank has been connected.';
+        connect.hidden = false;
+      }
+    };
+    if (params.get('enrollment')) {
+      options.enrollmentId = params.get('enrollment');
+    }
+    var teller = TellerConnect.setup(options);
+    connect.addEventListener('click', function () {
+      connect.hidden = true;
+      teller.open();
+    });
+    document.getElementById('copy').addEventListener('click', function () {
+      var field = document.getElementById('token');
+      field.select();
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(field.value);
+      } else {
+        document.execCommand('copy');
+      }
+    });
+    teller.open();
+  })();
+</script>
+</body>
+</html>

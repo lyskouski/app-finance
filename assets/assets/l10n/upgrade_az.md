@@ -1,8 +1,17 @@
 ﻿## Ən Son Dəyişikliklər
 
+Tətbiqi faydalı hesab etdinizsə, onu qiymətləndirməyi unutmayın:
+[mağazaların siyahısı](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
-### 8.1.0
+### 8.5.0
+- Teller (US) əlavə edildi: öz Teller tətbiqinizlə ABŞ bankları və kart emitentlərindən qalıqlar və əməliyyatların idxalı (sertifikat əsasında)
+- Investec Programmable Banking (Cənubi Afrika) əlavə edildi: öz API açarlarınızla Private Banking hesablarının qalıqları və əməliyyatlarının idxalı
+- Monzo Developer API (Birləşmiş Krallıq) əlavə edildi: Monzo tətbiqində təsdiqlənən öz OAuth müştərinizlə qalıqlar və əməliyyatların idxalı
+- Starling Bank Personal Access (Birləşmiş Krallıq) əlavə edildi: şəxsi giriş tokeni ilə qalıqlar və əməliyyatların idxalı
+- Akahu Personal App (Yeni Zelandiya) əlavə edildi: Akahu-ya qoşulmuş Yeni Zelandiya banklarının qalıqları və əməliyyatlarının idxalı
+- Up Banking API (Avstraliya) əlavə edildi: xərc və yığım hesablarının qalıqları və əməliyyatlarının idxalı, onlar arasında köçürmələr köçürmə kimi
 - Wise API (Global) əlavə edildi: Wise çoxvalyutalı hesablarının qalıqları və əməliyyatlarının idxalı, konvertasiyalar köçürmə kimi
 - PrivatBank Autoclient (Ukrayna) əlavə edildi: IBAN üzrə biznes hesablarının qalıqları və əməliyyatlarının idxalı
 - monobank Personal API (Ukrayna) əlavə edildi: kartların və yığım qutularının qalıqları və əməliyyatlarının idxalı, əlaqəli hesabların yaradılması

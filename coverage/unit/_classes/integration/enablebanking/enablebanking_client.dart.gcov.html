@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-24 18:34:53</td>
+            <td class="headerValue">2026-11-25 18:11:47</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -75,7 +75,7 @@
 <span id="L13"><span class="lineNum">      13</span>              :   final String message;</span>
 <span id="L14"><span class="lineNum">      14</span>              :   final int? statusCode;</span>
 <span id="L15"><span class="lineNum">      15</span>              : </span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           1 :   const EnableBankingException(this.message, [this.statusCode]);</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           2 :   const EnableBankingException(this.message, [this.statusCode]);</span></span>
 <span id="L17"><span class="lineNum">      17</span>              : </span>
 <span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :   @override</span></span>
 <span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :   String toString() =&gt; message;</span></span>
@@ -275,31 +275,31 @@
 <span id="L213"><span class="lineNum">     213</span>              : </span>
 <span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           3 :   static String _base64Url(List&lt;int&gt; bytes) =&gt; base64Url.encode(bytes).replaceAll('=', '');</span></span>
 <span id="L215"><span class="lineNum">     215</span>              : </span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">           1 :   static String extractCode(String input, {String? state, bool requireState = false}) {</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">           1 :     final value = input.trim();</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">           1 :     final uri = Uri.tryParse(value);</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">           2 :   static String extractCode(String input, {String? state, bool requireState = false}) {</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">           2 :     final value = input.trim();</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">           2 :     final uri = Uri.tryParse(value);</span></span>
 <span id="L219"><span class="lineNum">     219</span>              :     if (requireState) {</span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           3 :       final returned = uri != null &amp;&amp; uri.hasQuery ? uri.queryParameters['state'] : null;</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           3 :       final hasError = uri != null &amp;&amp; uri.hasQuery &amp;&amp; uri.queryParameters.containsKey('error');</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">           2 :       if (!hasError &amp;&amp; (state == null || state.isEmpty || returned == null || returned != state)) {</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           3 :         throw EnableBankingException(AppLocale.labels.enableBankingStateMismatch);</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           6 :       final returned = uri != null &amp;&amp; uri.hasQuery ? uri.queryParameters['state'] : null;</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           6 :       final hasError = uri != null &amp;&amp; uri.hasQuery &amp;&amp; uri.queryParameters.containsKey('error');</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">           4 :       if (!hasError &amp;&amp; (state == null || state.isEmpty || returned == null || returned != state)) {</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           6 :         throw EnableBankingException(AppLocale.labels.enableBankingStateMismatch);</span></span>
 <span id="L224"><span class="lineNum">     224</span>              :       }</span>
 <span id="L225"><span class="lineNum">     225</span>              :     }</span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">           1 :     if (uri != null &amp;&amp; uri.hasQuery) {</span></span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">           4 :       final error = uri.queryParameters['error_description'] ?? uri.queryParameters['error'];</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">           2 :     if (uri != null &amp;&amp; uri.hasQuery) {</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">           8 :       final error = uri.queryParameters['error_description'] ?? uri.queryParameters['error'];</span></span>
 <span id="L228"><span class="lineNum">     228</span>              :       if (error != null) {</span>
 <span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">           3 :         throw EnableBankingException(AppLocale.labels.integrationServiceError(error));</span></span>
 <span id="L230"><span class="lineNum">     230</span>              :       }</span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">           2 :       final returned = uri.queryParameters['state'];</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">           1 :       if (state != null &amp;&amp; returned != null &amp;&amp; returned != state) {</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">           4 :       final returned = uri.queryParameters['state'];</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">           2 :       if (state != null &amp;&amp; returned != null &amp;&amp; returned != state) {</span></span>
 <span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">           3 :         throw EnableBankingException(AppLocale.labels.enableBankingStateMismatch);</span></span>
 <span id="L234"><span class="lineNum">     234</span>              :       }</span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           2 :       final code = uri.queryParameters['code'];</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">           1 :       if (code != null &amp;&amp; code.isNotEmpty) {</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           4 :       final code = uri.queryParameters['code'];</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">           2 :       if (code != null &amp;&amp; code.isNotEmpty) {</span></span>
 <span id="L237"><span class="lineNum">     237</span>              :         return code;</span>
 <span id="L238"><span class="lineNum">     238</span>              :       }</span>
 <span id="L239"><span class="lineNum">     239</span>              :     }</span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           2 :     if (value.isEmpty || value.contains('://')) {</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           4 :     if (value.isEmpty || value.contains('://')) {</span></span>
 <span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">           3 :       throw EnableBankingException(AppLocale.labels.enableBankingNoCode);</span></span>
 <span id="L242"><span class="lineNum">     242</span>              :     }</span>
 <span id="L243"><span class="lineNum">     243</span>              :     return value;</span>

@@ -76,8 +76,14 @@
 - 集成
   - Financial Transaction Services (FinTS 4.1)：从德国银行导入余额和交易（PIN/TAN）
   - SimpleFIN Bridge (US)：从美国银行和发卡机构导入余额和交易
+  - Teller (US)：从美国银行和发卡机构导入余额和交易（使用带证书的自有 Teller 应用）
   - Enable Banking (EU)：从欧洲银行导入余额和交易（PSD2）
   - Wise API (Global)：导入 Wise 多币种账户的余额和交易（个人 API 令牌）
+  - Investec Programmable Banking（南非）：导入 Private Banking 账户的余额和交易（自有 API 密钥）
+  - Monzo Developer API（英国）：导入余额和交易（供个人使用的自有 OAuth 客户端）
+  - Starling Bank Personal Access（英国）：导入余额和交易（个人访问令牌）
+  - Akahu Personal App（新西兰）：导入新西兰银行的余额和交易（自己的个人应用）
+  - Up Banking API（澳大利亚）：导入支出账户和储蓄账户的余额和交易（个人访问令牌）
   - PrivatBank Autoclient（乌克兰）：导入 Privat24 for Business 企业账户的余额和交易（Autoclient 令牌）
   - monobank Personal API（乌克兰）：导入 monobank 银行卡和储蓄罐的余额和交易（个人令牌）
   - 通知解析器 (Android)：根据银行和支付应用的通知创建交易

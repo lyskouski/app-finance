@@ -1,8 +1,17 @@
 ## Latest Changes
 
+If you've found the app useful, don't forget to rate it:
+[list of marketplaces](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
-### 8.1.0
+### 8.5.0
+- Adding Teller (US): balances and import of transactions from US banks and card issuers with your own Teller application (certificate-based)
+- Adding Investec Programmable Banking (South Africa): balances and import of transactions of Private Banking accounts with your own API keys
+- Adding Monzo Developer API (United Kingdom): balances and import of transactions with your own OAuth client, approved in the Monzo app
+- Adding Starling Bank Personal Access (United Kingdom): balances and import of transactions with a Personal Access Token
+- Adding Akahu Personal App (New Zealand): balances and import of transactions of New Zealand banks connected to Akahu
+- Adding Up Banking API (Australia): balances and import of transactions of spending and saver accounts, transfers between them as transfers
 - Adding Wise API (Global): balances and import of transactions of Wise multi-currency accounts, conversions as transfers
 - Adding PrivatBank Autoclient (Ukraine): balances and import of transactions of business accounts by IBAN
 - Adding Monobank Personal API (Ukraine): balances and import of transactions of cards and jars, creation of linked accounts

@@ -76,8 +76,14 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 - Entegrasyonlar
   - Financial Transaction Services (FinTS 4.1): Alman bankalarından bakiye ve işlemlerin içe aktarılması (PIN/TAN)
   - SimpleFIN Bridge (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması
+  - Teller (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması (sertifikalı kendi Teller uygulamanız)
   - Enable Banking (EU): Avrupa bankalarından bakiye ve işlemlerin içe aktarılması (PSD2)
   - Wise API (Global): Wise çoklu para birimi hesaplarının bakiye ve işlemlerinin içe aktarılması (kişisel API anahtarı)
+  - Investec Programmable Banking (Güney Afrika): Private Banking hesaplarının bakiye ve işlemlerinin içe aktarılması (kendi API anahtarlarınız)
+  - Monzo Developer API (Birleşik Krallık): bakiye ve işlemlerin içe aktarılması (kişisel kullanım için kendi OAuth istemciniz)
+  - Starling Bank Personal Access (Birleşik Krallık): bakiye ve işlemlerin içe aktarılması (kişisel erişim anahtarı)
+  - Akahu Personal App (Yeni Zelanda): Yeni Zelanda bankalarının bakiye ve işlemlerinin içe aktarılması (kendi kişisel uygulamanız)
+  - Up Banking API (Avustralya): harcama ve birikim hesaplarının bakiye ve işlemlerinin içe aktarılması (kişisel erişim anahtarı)
   - PrivatBank Autoclient (Ukrayna): Privat24 for Business ticari hesaplarının bakiye ve işlemlerinin içe aktarımı (Autoclient belirteci)
   - monobank Personal API (Ukrayna): monobank kartlarının ve kumbaralarının bakiye ve işlemlerinin içe aktarımı (kişisel token)
   - Bildirim Ayrıştırıcı (Android): bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler

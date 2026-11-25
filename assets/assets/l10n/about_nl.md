@@ -76,8 +76,14 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 - Integraties
   - Financial Transaction Services (FinTS 4.1): import van saldi en transacties van Duitse banken (PIN/TAN)
   - SimpleFIN Bridge (US): import van saldi en transacties van Amerikaanse banken en kaartuitgevers
+  - Teller (US): import van saldi en transacties van Amerikaanse banken en kaartuitgevers (eigen Teller-applicatie met een certificaat)
   - Enable Banking (EU): import van saldi en transacties van Europese banken (PSD2)
   - Wise API (Global): import van saldi en transacties van Wise-rekeningen in meerdere valuta (persoonlijk API-token)
+  - Investec Programmable Banking (Zuid-Afrika): import van saldi en transacties van Private Banking-rekeningen (eigen API-sleutels)
+  - Monzo Developer API (Verenigd Koninkrijk): import van saldi en transacties (eigen OAuth-client voor persoonlijk gebruik)
+  - Starling Bank Personal Access (Verenigd Koninkrijk): import van saldi en transacties (persoonlijk toegangstoken)
+  - Akahu Personal App (Nieuw-Zeeland): import van saldi en transacties van Nieuw-Zeelandse banken (eigen persoonlijke app)
+  - Up Banking API (Australië): import van saldi en transacties van betaal- en spaarrekeningen (persoonlijk toegangstoken)
   - PrivatBank Autoclient (Oekraïne): import van saldi en transacties van zakelijke rekeningen van Privat24 for Business (Autoclient-token)
   - monobank Personal API (Oekraïne): import van saldi en transacties van monobank-kaarten en spaarpotten (persoonlijk token)
   - Meldingen Parser (Android): transacties uit meldingen van bank- en betaalapps

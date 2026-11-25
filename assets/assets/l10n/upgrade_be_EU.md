@@ -1,8 +1,17 @@
 ﻿## Apošnija zmieny
 
+Kali prahrama akazałasia karysnaj, nie zabudźciesia jaje acanić:
+[spis kram prahram](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
-### 8.1.0
+### 8.5.0
+- Dadadzieny Teller (US): reštki i impart aperacyj bankaŭ i emitentaŭ kartak ZŠA z ułasnaj prahramaj Teller (z sertyfikatam)
+- Dadadzieny Investec Programmable Banking (Paŭdniovaja Afryka): reštki i impart aperacyj rachunkaŭ Private Banking z ułasnymi API-klučami
+- Dadadzieny Monzo Developer API (Vialikabrytanija): reštki i impart aperacyj z ułasnym OAuth-klijentam, paćvierdžanym u prahramie Monzo
+- Dadadzieny Starling Bank Personal Access (Vialikabrytanija): reštki i impart aperacyj z persanaĺnym tokienam dostupu
+- Dadadzieny Akahu Personal App (Novaja Zielandyja): reštki i impart aperacyj bankaŭ Novaj Zielandyi, padłučanych da Akahu
+- Dadadzieny Up Banking API (Aŭstralija): reštki i impart aperacyj raschodnych i nazapašvaĺnych rachunkaŭ, pieravody pamiž imi jak pieravody
 - Dadadzieny Wise API (Global): reštki i impart aperacyj šmatvalutnych rachunkaŭ Wise, kanviertacyi jak pieravody
 - Dadadzieny PryvatBank Aŭtaklijent (Ukraina): reštki i impart aperacyj biznes-rachunkaŭ pa IBAN
 - Dadadzieny monobank Personal API (Ukraina): reštki i impart aperacyj kartak i słoikaŭ, stvareńnie zviazanych rachunkaŭ

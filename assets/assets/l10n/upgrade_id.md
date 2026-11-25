@@ -1,8 +1,17 @@
 ﻿## Perubahan Terbaru
 
+Jika aplikasi ini bermanfaat, jangan lupa memberikan penilaian:
+[daftar toko aplikasi](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tombol "Petunjuk"._
 
-### 8.1.0
+### 8.5.0
+- Menambahkan Teller (US): saldo dan impor transaksi dari bank dan penerbit kartu AS dengan aplikasi Teller Anda sendiri (berbasis sertifikat)
+- Menambahkan Investec Programmable Banking (Afrika Selatan): saldo dan impor transaksi rekening Private Banking dengan kunci API Anda sendiri
+- Menambahkan Monzo Developer API (Britania Raya): saldo dan impor transaksi dengan klien OAuth Anda sendiri, disetujui di aplikasi Monzo
+- Menambahkan Starling Bank Personal Access (Britania Raya): saldo dan impor transaksi dengan Token Akses Pribadi
+- Menambahkan Akahu Personal App (Selandia Baru): saldo dan impor transaksi bank Selandia Baru yang terhubung ke Akahu
+- Menambahkan Up Banking API (Australia): saldo dan impor transaksi rekening pengeluaran dan tabungan, transfer di antaranya sebagai transfer
 - Menambahkan Wise API (Global): saldo dan impor transaksi akun multi-mata uang Wise, konversi sebagai transfer
 - Menambahkan PrivatBank Autoclient (Ukraina): saldo dan impor transaksi rekening bisnis berdasarkan IBAN
 - Menambahkan monobank Personal API (Ukraina): saldo dan impor transaksi kartu dan celengan, pembuatan akun tertaut

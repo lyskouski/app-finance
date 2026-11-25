@@ -76,8 +76,14 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 - Integraciones
   - Financial Transaction Services (FinTS 4.1): importación de saldos y movimientos de bancos alemanes (PIN/TAN)
   - SimpleFIN Bridge (US): importación de saldos y movimientos de bancos y emisores de tarjetas de EE. UU.
+  - Teller (US): importación de saldos y movimientos de bancos y emisores de tarjetas de EE. UU. (aplicación propia de Teller con certificado)
   - Enable Banking (EU): importación de saldos y movimientos de bancos europeos (PSD2)
   - Wise API (Global): importación de saldos y movimientos de cuentas multidivisa de Wise (token de API personal)
+  - Investec Programmable Banking (Sudáfrica): importación de saldos y movimientos de cuentas de Private Banking (claves de API propias)
+  - Monzo Developer API (Reino Unido): importación de saldos y movimientos (cliente OAuth propio para uso personal)
+  - Starling Bank Personal Access (Reino Unido): importación de saldos y movimientos (token de acceso personal)
+  - Akahu Personal App (Nueva Zelanda): importación de saldos y movimientos de bancos de Nueva Zelanda (app personal propia)
+  - Up Banking API (Australia): importación de saldos y movimientos de cuentas de gastos y de ahorro (token de acceso personal)
   - PrivatBank Autoclient (Ucrania): importación de saldos y transacciones de cuentas empresariales de Privat24 for Business (token de Autoclient)
   - monobank Personal API (Ucrania): importación de saldos y transacciones de tarjetas y huchas de monobank (token personal)
   - Notificaciones Parser (Android): movimientos a partir de notificaciones de aplicaciones bancarias y de pago

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-24 18:36:30</td>
+            <td class="headerValue">2026-11-25 18:13:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -279,9 +279,9 @@
 <span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">           2 :     final value = input.trim();</span></span>
 <span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">           2 :     final uri = Uri.tryParse(value);</span></span>
 <span id="L219"><span class="lineNum">     219</span>              :     if (requireState) {</span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           3 :       final returned = uri != null &amp;&amp; uri.hasQuery ? uri.queryParameters['state'] : null;</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           3 :       final hasError = uri != null &amp;&amp; uri.hasQuery &amp;&amp; uri.queryParameters.containsKey('error');</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">           2 :       if (!hasError &amp;&amp; (state == null || state.isEmpty || returned == null || returned != state)) {</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           6 :       final returned = uri != null &amp;&amp; uri.hasQuery ? uri.queryParameters['state'] : null;</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           6 :       final hasError = uri != null &amp;&amp; uri.hasQuery &amp;&amp; uri.queryParameters.containsKey('error');</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">           4 :       if (!hasError &amp;&amp; (state == null || state.isEmpty || returned == null || returned != state)) {</span></span>
 <span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           3 :         throw EnableBankingException(AppLocale.labels.enableBankingStateMismatch);</span></span>
 <span id="L224"><span class="lineNum">     224</span>              :       }</span>
 <span id="L225"><span class="lineNum">     225</span>              :     }</span>

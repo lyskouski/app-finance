@@ -1,9 +1,18 @@
 ﻿## Ultime modifiche
 
+Se l’app ti è stata utile, non dimenticare di valutarla:
+[elenco degli store](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
 
-### 8.1.0
+### 8.5.0
+- Aggiunto Teller (US): saldi e importazione dei movimenti di banche ed emittenti di carte statunitensi con la propria applicazione Teller (basata su certificato)
+- Aggiunto Investec Programmable Banking (Sudafrica): saldi e importazione dei movimenti dei conti Private Banking con le proprie chiavi API
+- Aggiunto Monzo Developer API (Regno Unito): saldi e importazione dei movimenti con il proprio client OAuth, approvato nell'app Monzo
+- Aggiunto Starling Bank Personal Access (Regno Unito): saldi e importazione dei movimenti con un token di accesso personale
+- Aggiunto Akahu Personal App (Nuova Zelanda): saldi e importazione dei movimenti delle banche neozelandesi collegate ad Akahu
+- Aggiunto Up Banking API (Australia): saldi e importazione dei movimenti dei conti di spesa e di risparmio, trasferimenti tra di essi come trasferimenti
 - Aggiunto Wise API (Global): saldi e importazione dei movimenti dei conti multivaluta Wise, conversioni come trasferimenti
 - Aggiunto PrivatBank Autoclient (Ucraina): saldi e importazione delle transazioni dei conti aziendali tramite IBAN
 - Aggiunto monobank Personal API (Ucraina): saldi e importazione delle transazioni di carte e salvadanai, creazione di conti collegati

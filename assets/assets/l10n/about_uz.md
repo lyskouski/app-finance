@@ -76,8 +76,14 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 - Integratsiyalar
   - Financial Transaction Services (FinTS 4.1): nemis banklaridan qoldiqlar va tranzaksiyalarni import qilish (PIN/TAN)
   - SimpleFIN Bridge (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish
+  - Teller (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish (sertifikatli o'z Teller ilovasi)
   - Enable Banking (EU): Yevropa banklaridan qoldiqlar va tranzaksiyalarni import qilish (PSD2)
   - Wise API (Global): Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish (shaxsiy API tokeni)
+  - Investec Programmable Banking (Janubiy Afrika): Private Banking hisoblarining qoldiqlari va tranzaksiyalarini import qilish (o'z API kalitlari)
+  - Monzo Developer API (Buyuk Britaniya): qoldiqlar va tranzaksiyalarni import qilish (shaxsiy foydalanish uchun o'z OAuth mijozi)
+  - Starling Bank Personal Access (Buyuk Britaniya): qoldiqlar va tranzaksiyalarni import qilish (shaxsiy kirish tokeni)
+  - Akahu Personal App (Yangi Zelandiya): Yangi Zelandiya banklarining qoldiqlari va tranzaksiyalarini import qilish (o'z shaxsiy ilovangiz)
+  - Up Banking API (Avstraliya): xarajat va jamg'arma hisoblarining qoldiqlari va tranzaksiyalarini import qilish (shaxsiy kirish tokeni)
   - PrivatBank Autoclient (Ukraina): Privat24 for Business biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish (Autoclient tokeni)
   - monobank Personal API (Ukraina): monobank kartalari va jamg'arma bankalari qoldiqlari va tranzaksiyalarini import qilish (shaxsiy token)
   - Bildirishnomalarni tahlil qilish (Android): bank va to'lov ilovalari bildirishnomalaridan tranzaksiyalar

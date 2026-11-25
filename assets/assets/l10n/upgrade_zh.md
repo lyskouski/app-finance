@@ -1,8 +1,17 @@
 ﻿## 最新更改
 
+如果您觉得这款应用有用，别忘了给它评分：
+[应用商店列表](https://github.com/lyskouski/app-finance/blob/main/README_zh-CN.md).
+
 _更新的完整列表可通过 "提示 "按钮上的 "关于 "导航项查看。_
 
-### 8.1.0
+### 8.5.0
+- 新增 Teller (US)：使用您自己的 Teller 应用（基于证书）导入美国银行和发卡机构的余额及交易
+- 新增 Investec Programmable Banking（南非）：使用您自己的 API 密钥导入 Private Banking 账户的余额及交易
+- 新增 Monzo Developer API（英国）：使用您自己的 OAuth 客户端（在 Monzo 应用中批准）导入余额及交易
+- 新增 Starling Bank Personal Access（英国）：使用个人访问令牌导入余额及交易
+- 新增 Akahu Personal App（新西兰）：导入已连接到 Akahu 的新西兰银行的余额及交易
+- 新增 Up Banking API（澳大利亚）：导入支出账户和储蓄账户的余额及交易，账户之间的转账作为转账
 - 新增 Wise API (Global)：Wise 多币种账户的余额及交易导入，换汇作为转账
 - 新增 PrivatBank Autoclient（乌克兰）：按 IBAN 导入企业账户的余额和交易
 - 新增 monobank Personal API（乌克兰）：银行卡和储蓄罐的余额及交易导入，创建关联账户

@@ -76,8 +76,14 @@
 - 連携
   - Financial Transaction Services (FinTS 4.1)：ドイツの銀行からの残高と取引のインポート（PIN/TAN）
   - SimpleFIN Bridge (US)：米国の銀行やカード発行会社からの残高と取引のインポート
+  - Teller (US)：米国の銀行やカード発行会社からの残高と取引のインポート（証明書付きの独自の Teller アプリケーション）
   - Enable Banking (EU)：ヨーロッパの銀行からの残高と取引のインポート（PSD2）
   - Wise API (Global)：Wise マルチカレンシー口座の残高と取引のインポート（個人用 API トークン）
+  - Investec Programmable Banking（南アフリカ）：Private Banking 口座の残高と取引のインポート（独自の API キー）
+  - Monzo Developer API（英国）：残高と取引のインポート（個人利用向けの独自の OAuth クライアント）
+  - Starling Bank Personal Access（英国）：残高と取引のインポート（個人用アクセストークン）
+  - Akahu Personal App（ニュージーランド）：ニュージーランドの銀行の残高と取引のインポート（自分の個人用アプリ）
+  - Up Banking API（オーストラリア）：支出口座と貯蓄口座の残高と取引のインポート（個人用アクセストークン）
   - PrivatBank Autoclient（ウクライナ）：Privat24 for Businessの法人口座の残高と取引のインポート（Autoclientトークン）
   - monobank Personal API（ウクライナ）：monobankのカードと貯金箱の残高と取引のインポート（個人トークン）
   - 通知パーサー (Android)：銀行・決済アプリの通知から取引を作成

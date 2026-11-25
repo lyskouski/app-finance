@@ -1,8 +1,17 @@
 ﻿## 最新の変更
 
+アプリが役に立ったら、ぜひ評価をお願いします:
+[ストアの一覧](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _更新の完全なリストは、「ヒント」ボタンの「バージョン情報」ナビゲーショ ンアイテムから見ることができます。_
 
-### 8.1.0
+### 8.5.0
+- Teller (US) を追加：独自の Teller アプリケーション（証明書ベース）による米国の銀行やカード発行会社の残高と取引のインポート
+- Investec Programmable Banking（南アフリカ） を追加：独自の API キーによる Private Banking 口座の残高と取引のインポート
+- Monzo Developer API（英国） を追加：Monzo アプリで承認した独自の OAuth クライアントによる残高と取引のインポート
+- Starling Bank Personal Access（英国） を追加：個人用アクセストークンによる残高と取引のインポート
+- Akahu Personal App（ニュージーランド） を追加：Akahu に接続したニュージーランドの銀行の残高と取引のインポート
+- Up Banking API（オーストラリア） を追加：支出口座と貯蓄口座の残高と取引のインポート、口座間の振替は振替として
 - Wise API (Global) を追加：Wise マルチカレンシー口座の残高と取引のインポート、両替は振替として
 - PrivatBank Autoclient（ウクライナ）を追加：IBANによる法人口座の残高と取引のインポート
 - monobank Personal API（ウクライナ）を追加：カードと貯金箱の残高と取引のインポート、連携口座の作成

@@ -1,8 +1,17 @@
 ﻿## Poslední změny
 
+Pokud je pro vás aplikace užitečná, nezapomeňte ji ohodnotit:
+[seznam obchodů s aplikacemi](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
-### 8.1.0
+### 8.5.0
+- Přidán Teller (US): zůstatky a import transakcí amerických bank a vydavatelů karet s vlastní aplikací Teller (na základě certifikátu)
+- Přidáno Investec Programmable Banking (Jihoafrická republika): zůstatky a import transakcí účtů Private Banking s vlastními klíči API
+- Přidáno Monzo Developer API (Spojené království): zůstatky a import transakcí s vlastním klientem OAuth schváleným v aplikaci Monzo
+- Přidáno Starling Bank Personal Access (Spojené království): zůstatky a import transakcí s osobním přístupovým tokenem
+- Přidáno Akahu Personal App (Nový Zéland): zůstatky a import transakcí novozélandských bank připojených k Akahu
+- Přidáno Up Banking API (Austrálie): zůstatky a import transakcí výdajových a spořicích účtů, převody mezi nimi jako převody
 - Přidáno Wise API (Global): zůstatky a import transakcí víceměnových účtů Wise, převody měn jako převody
 - Přidán PrivatBank Autoclient (Ukrajina): zůstatky a import transakcí podnikatelských účtů podle IBAN
 - Přidán monobank Personal API (Ukrajina): zůstatky a import transakcí karet a pokladniček, vytváření propojených účtů

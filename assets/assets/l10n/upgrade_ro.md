@@ -1,8 +1,17 @@
 ﻿## Ultimele modificări
 
+Dacă aplicația vi s-a părut utilă, nu uitați să o evaluați:
+[lista magazinelor de aplicații](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
-### 8.1.0
+### 8.5.0
+- Adăugat Teller (US): solduri și import de tranzacții de la băncile și emitenții de carduri din SUA cu propria aplicație Teller (pe bază de certificat)
+- Adăugat Investec Programmable Banking (Africa de Sud): solduri și import de tranzacții ale conturilor Private Banking cu propriile chei API
+- Adăugat Monzo Developer API (Regatul Unit): solduri și import de tranzacții cu propriul client OAuth, aprobat în aplicația Monzo
+- Adăugat Starling Bank Personal Access (Regatul Unit): solduri și import de tranzacții cu un token de acces personal
+- Adăugat Akahu Personal App (Noua Zeelandă): solduri și import de tranzacții ale băncilor din Noua Zeelandă conectate la Akahu
+- Adăugat Up Banking API (Australia): solduri și import de tranzacții ale conturilor de cheltuieli și de economii, transferuri între ele ca transferuri
 - Adăugat Wise API (Global): solduri și import de tranzacții ale conturilor multivalută Wise, conversii ca transferuri
 - Adăugat PrivatBank Autoclient (Ucraina): solduri și importul tranzacțiilor conturilor de afaceri după IBAN
 - Adăugat monobank Personal API (Ucraina): solduri și importul tranzacțiilor cardurilor și pușculițelor, crearea conturilor asociate

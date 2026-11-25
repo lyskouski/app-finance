@@ -76,8 +76,14 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 - İnteqrasiyalar
   - Financial Transaction Services (FinTS 4.1): Alman banklarından qalıqların və əməliyyatların idxalı (PIN/TAN)
   - SimpleFIN Bridge (US): ABŞ bankları və kart emitentlərindən qalıqların və əməliyyatların idxalı
+  - Teller (US): ABŞ bankları və kart emitentlərindən qalıqların və əməliyyatların idxalı (sertifikatlı öz Teller tətbiqi)
   - Enable Banking (EU): Avropa banklarından qalıqların və əməliyyatların idxalı (PSD2)
   - Wise API (Global): Wise çoxvalyutalı hesablarının qalıqlarının və əməliyyatlarının idxalı (şəxsi API tokeni)
+  - Investec Programmable Banking (Cənubi Afrika): Private Banking hesablarının qalıqlarının və əməliyyatlarının idxalı (öz API açarları)
+  - Monzo Developer API (Birləşmiş Krallıq): qalıqların və əməliyyatların idxalı (şəxsi istifadə üçün öz OAuth müştərisi)
+  - Starling Bank Personal Access (Birləşmiş Krallıq): qalıqların və əməliyyatların idxalı (şəxsi giriş tokeni)
+  - Akahu Personal App (Yeni Zelandiya): Yeni Zelandiya banklarının qalıqlarının və əməliyyatlarının idxalı (öz şəxsi tətbiqi)
+  - Up Banking API (Avstraliya): xərc və yığım hesablarının qalıqlarının və əməliyyatlarının idxalı (şəxsi giriş tokeni)
   - PrivatBank Autoclient (Ukrayna): Privat24 for Business biznes hesablarının qalıqlarının və əməliyyatlarının idxalı (Autoclient tokeni)
   - monobank Personal API (Ukrayna): monobank kartlarının və yığım qutularının qalıqlarının və əməliyyatlarının idxalı (şəxsi token)
   - Bildirişlər Parser (Android): bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar

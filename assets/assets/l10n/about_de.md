@@ -77,8 +77,14 @@ zurückgelassen wird.
 - Integrationen
   - Financial Transaction Services (FinTS 4.1): Import von Salden und Umsätzen deutscher Banken (PIN/TAN)
   - SimpleFIN Bridge (US): Import von Salden und Umsätzen von US-Banken und Kartenanbietern
+  - Teller (US): Import von Salden und Umsätzen von US-Banken und Kartenanbietern (eigene Teller-Anwendung mit Zertifikat)
   - Enable Banking (EU): Import von Salden und Umsätzen europäischer Banken (PSD2)
   - Wise API (Global): Import von Salden und Umsätzen von Wise-Mehrwährungskonten (persönliches API-Token)
+  - Investec Programmable Banking (Südafrika): Import von Salden und Umsätzen von Private-Banking-Konten (eigene API-Schlüssel)
+  - Monzo Developer API (Vereinigtes Königreich): Import von Salden und Umsätzen (eigener OAuth-Client für den persönlichen Gebrauch)
+  - Starling Bank Personal Access (Vereinigtes Königreich): Import von Salden und Umsätzen (persönliches Zugriffstoken)
+  - Akahu Personal App (Neuseeland): Import von Salden und Umsätzen neuseeländischer Banken (eigene persönliche App)
+  - Up Banking API (Australien): Import von Salden und Umsätzen von Ausgaben- und Sparkonten (persönliches Zugriffstoken)
   - PrivatBank Autoclient (Ukraine): Import von Salden und Umsätzen von Geschäftskonten aus Privat24 for Business (Autoclient-Token)
   - monobank Personal API (Ukraine): Import von Salden und Umsätzen der Karten und Sparbüchsen von monobank (persönliches Token)
   - Benachrichtigungen Parser (Android): Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps
