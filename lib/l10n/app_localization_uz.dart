@@ -1434,6 +1434,81 @@ class AppLocalizationsUz extends AppLocalizations {
   String get targetAmount => 'Maqsadli miqdor';
 
   @override
+  String get tellerAccessToken => 'Kirish tokeni';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Bank ulangandan so\'ng ulanish sahifasida ko\'rsatiladi: agar Fingrom avtomatik ochilmagan bo\'lsa, uni shu yerga joylashtiring';
+
+  @override
+  String get tellerAppId => 'Ilova ID';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Teller Dashboard\'da ko\'rsatiladi, \"app_\" bilan boshlanadi';
+
+  @override
+  String get tellerCertificate => 'Sertifikat (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Noto\'g\'ri sertifikat: \"CERTIFICATE\" PEM bloki kutilmoqda';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Teller Dashboard\'da beriladi (Certificates); shifrlangan holda saqlanadi. Saqlangan sertifikatni qoldirish uchun bo\'sh qoldiring';
+
+  @override
+  String get tellerConnectBank => 'Bankni ulash';
+
+  @override
+  String get tellerConnectPage => 'Ulanish sahifasi';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Teller Connect\'ni brauzerda ochadi va kirish tokenini Fingrom\'ga qaytaradi';
+
+  @override
+  String get tellerDescription =>
+      'AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini teller.io\'da ro\'yxatdan o\'tkazilgan o\'z ilovangiz bilan Teller orqali import qiling (bepul tarif 100 ta haqiqiy bank ulanishiga ruxsat beradi). Kirish faqat o\'qish uchun: to\'lovlar amalga oshirilmaydi.';
+
+  @override
+  String get tellerDisconnected =>
+      'Bank ulanishi e\'tiboringizni talab qiladi (masalan, qayta kirish yoki tasdiqlash kodi): bankni qayta ulang';
+
+  @override
+  String get tellerEnvironment => 'Muhit';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Ilova ID ni to\'ldiring; haqiqiy bank ma\'lumotlari uchun sertifikat va maxfiy kalit talab qilinadi';
+
+  @override
+  String get tellerKey => 'Maxfiy kalit (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Noto\'g\'ri maxfiy kalit: \"PRIVATE KEY\" PEM bloki kutilmoqda';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Sertifikat bilan birga yuklab olinadi; shifrlangan holda saqlanadi. Saqlangan kalitni qoldirish uchun bo\'sh qoldiring';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller so\'rovni mijoz sertifikatisiz rad etdi: sertifikat va maxfiy kalitni yuklang yoki sandbox ni tanlang';
+
+  @override
+  String get tellerSteps =>
+      'Qanday ulanish mumkin:\n1. teller.io saytida ro\'yxatdan o\'ting va Teller Dashboard\'ni oching\n2. Ilova ID ni nusxalang, so\'ng maxfiy kaliti bilan sertifikat yarating va yuklab oling (Certificates)\n3. Ularni quyida to\'ldiring va muhitni tanlang (sandbox: test ma\'lumotlari, bankka \"username\" va \"password\" bilan kiring)\n4. «Bankni ulash» tugmasini bosing va ochilgan sahifada bankingizga kiring\n5. Hisob va byudjet toifasini tanlang, so\'ng «Tranzaksiyalarni import qilish» tugmasini bosing';
+
+  @override
+  String get tellerUpload => 'Faylni yuklash';
+
+  @override
   String get termPrivacy => 'Maxfiylik siyosati';
 
   @override

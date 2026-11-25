@@ -76,6 +76,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 - Integrări
   - Financial Transaction Services (FinTS 4.1): import de solduri și tranzacții de la băncile germane (PIN/TAN)
   - SimpleFIN Bridge (US): import de solduri și tranzacții de la băncile și emitenții de carduri din SUA
+  - Teller (US): import de solduri și tranzacții de la băncile și emitenții de carduri din SUA (aplicație Teller proprie cu certificat)
   - Enable Banking (EU): import de solduri și tranzacții de la băncile europene (PSD2)
   - Wise API (Global): import de solduri și tranzacții ale conturilor multivalută Wise (token API personal)
   - PrivatBank Autoclient (Ucraina): importul soldurilor și tranzacțiilor conturilor de afaceri din Privat24 for Business (token Autoclient)

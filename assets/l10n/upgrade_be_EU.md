@@ -3,6 +3,7 @@
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
 ### 8.1.0
+- Dadadzieny Teller (US): reštki i impart aperacyj bankaŭ i emitentaŭ kartak ZŠA z ułasnaj prahramaj Teller (z sertyfikatam)
 - Dadadzieny Wise API (Global): reštki i impart aperacyj šmatvalutnych rachunkaŭ Wise, kanviertacyi jak pieravody
 - Dadadzieny PryvatBank Aŭtaklijent (Ukraina): reštki i impart aperacyj biznes-rachunkaŭ pa IBAN
 - Dadadzieny monobank Personal API (Ukraina): reštki i impart aperacyj kartak i słoikaŭ, stvareńnie zviazanych rachunkaŭ

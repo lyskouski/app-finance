@@ -1427,6 +1427,81 @@ class AppLocalizationsTr extends AppLocalizations {
   String get targetAmount => 'Hedef Miktar';
 
   @override
+  String get tellerAccessToken => 'Erişim anahtarı';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Bir banka bağlandıktan sonra bağlantı sayfasında gösterilir: Fingrom otomatik olarak açılmadıysa buraya yapıştırın';
+
+  @override
+  String get tellerAppId => 'Uygulama kimliği';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Teller Dashboard\'da gösterilir, \"app_\" ile başlar';
+
+  @override
+  String get tellerCertificate => 'Sertifika (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Geçersiz sertifika: \"CERTIFICATE\" PEM bloğu bekleniyor';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Teller Dashboard\'da düzenlenir (Certificates); şifreli olarak saklanır. Kayıtlı sertifikayı korumak için boş bırakın';
+
+  @override
+  String get tellerConnectBank => 'Bankayı bağla';
+
+  @override
+  String get tellerConnectPage => 'Bağlantı sayfası';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Teller Connect\'i tarayıcıda açar ve erişim anahtarını Fingrom\'a döndürür';
+
+  @override
+  String get tellerDescription =>
+      'ABD bankaları ve kart sağlayıcılarının bakiyelerini ve işlemlerini, teller.io\'da kayıtlı kendi uygulamanızla Teller üzerinden içe aktarın (ücretsiz plan 100 gerçek banka bağlantısına izin verir). Erişim salt okunurdur: ödeme yapılmaz.';
+
+  @override
+  String get tellerDisconnected =>
+      'Banka bağlantısı ilginizi gerektiriyor (ör. yeni bir giriş veya onay kodu): bankayı yeniden bağlayın';
+
+  @override
+  String get tellerEnvironment => 'Ortam';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Uygulama kimliğini doldurun; gerçek banka verileri için sertifika ve özel anahtar gereklidir';
+
+  @override
+  String get tellerKey => 'Özel anahtar (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Geçersiz özel anahtar: \"PRIVATE KEY\" PEM bloğu bekleniyor';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Sertifikayla birlikte indirilir; şifreli olarak saklanır. Kayıtlı anahtarı korumak için boş bırakın';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller isteği istemci sertifikası olmadığı için reddetti: sertifikayı ve özel anahtarı yükleyin veya sandbox\'ı seçin';
+
+  @override
+  String get tellerSteps =>
+      'Nasıl bağlanılır:\n1. teller.io\'ya kaydolun ve Teller Dashboard\'u açın\n2. Uygulama kimliğini kopyalayın, ardından özel anahtarıyla birlikte bir sertifika oluşturup indirin (Certificates)\n3. Bunları aşağıya girin ve ortamı seçin (sandbox: test verileri, bir bankaya \"username\" ve \"password\" ile giriş yapın)\n4. \"Bankayı bağla\"ya basın ve açılan sayfada bankanıza giriş yapın\n5. Hesabı ve bütçe kategorisini seçin, ardından \"İşlemleri içe aktar\"a basın';
+
+  @override
+  String get tellerUpload => 'Dosya yükle';
+
+  @override
   String get termPrivacy => 'Gizlilik Politikası';
 
   @override

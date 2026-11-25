@@ -76,6 +76,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 - Integraciones
   - Financial Transaction Services (FinTS 4.1): importación de saldos y movimientos de bancos alemanes (PIN/TAN)
   - SimpleFIN Bridge (US): importación de saldos y movimientos de bancos y emisores de tarjetas de EE. UU.
+  - Teller (US): importación de saldos y movimientos de bancos y emisores de tarjetas de EE. UU. (aplicación propia de Teller con certificado)
   - Enable Banking (EU): importación de saldos y movimientos de bancos europeos (PSD2)
   - Wise API (Global): importación de saldos y movimientos de cuentas multidivisa de Wise (token de API personal)
   - PrivatBank Autoclient (Ucrania): importación de saldos y transacciones de cuentas empresariales de Privat24 for Business (token de Autoclient)

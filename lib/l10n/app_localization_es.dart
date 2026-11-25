@@ -1434,6 +1434,81 @@ class AppLocalizationsEs extends AppLocalizations {
   String get targetAmount => 'Importe objetivo';
 
   @override
+  String get tellerAccessToken => 'Token de acceso';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Se muestra en la página de conexión tras vincular un banco: pégalo aquí si Fingrom no se ha abierto automáticamente';
+
+  @override
+  String get tellerAppId => 'ID de la aplicación';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Se muestra en el Teller Dashboard, empieza por \"app_\"';
+
+  @override
+  String get tellerCertificate => 'Certificado (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Certificado no válido: se espera un bloque PEM \"CERTIFICATE\"';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Se emite en el Teller Dashboard (Certificates); se guarda cifrado. Déjalo vacío para conservar el certificado guardado';
+
+  @override
+  String get tellerConnectBank => 'Conectar banco';
+
+  @override
+  String get tellerConnectPage => 'Página de conexión';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Abre Teller Connect en un navegador y devuelve el token de acceso a Fingrom';
+
+  @override
+  String get tellerDescription =>
+      'Importa saldos y movimientos de bancos y emisores de tarjetas de EE. UU. mediante Teller con tu propia aplicación registrada en teller.io (el plan gratuito permite 100 conexiones bancarias reales). Acceso de solo lectura: no se realizan pagos.';
+
+  @override
+  String get tellerDisconnected =>
+      'La conexión con el banco requiere tu atención (p. ej., un nuevo inicio de sesión o un código de confirmación): vuelve a conectar el banco';
+
+  @override
+  String get tellerEnvironment => 'Entorno';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Rellena el ID de la aplicación; el certificado y la clave privada son necesarios para los datos bancarios reales';
+
+  @override
+  String get tellerKey => 'Clave privada (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Clave privada no válida: se espera un bloque PEM \"PRIVATE KEY\"';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Se descarga junto con el certificado; se guarda cifrada. Déjala vacía para conservar la clave guardada';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller ha rechazado la solicitud sin un certificado de cliente: sube el certificado y la clave privada, o elige sandbox';
+
+  @override
+  String get tellerSteps =>
+      'Cómo conectar:\n1. Regístrate en teller.io y abre el Teller Dashboard\n2. Copia el ID de la aplicación y, a continuación, crea y descarga un certificado con su clave privada (Certificates)\n3. Rellénalos abajo y elige el entorno (sandbox: datos de prueba, inicia sesión en un banco como \"username\" con \"password\")\n4. Pulsa «Conectar banco» e inicia sesión en tu banco en la página abierta\n5. Selecciona la cuenta y la categoría de presupuesto y pulsa «Importar movimientos»';
+
+  @override
+  String get tellerUpload => 'Subir archivo';
+
+  @override
   String get termPrivacy => 'Política de privacidad';
 
   @override

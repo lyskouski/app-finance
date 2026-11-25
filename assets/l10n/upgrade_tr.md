@@ -3,6 +3,7 @@
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
 ### 8.1.0
+- Teller (US) eklendi: kendi Teller uygulamanızla (sertifika tabanlı) ABD bankaları ve kart sağlayıcılarının bakiyeleri ve işlemlerinin içe aktarılması
 - Wise API (Global) eklendi: Wise çoklu para birimi hesaplarının bakiyeleri ve işlemlerinin içe aktarılması, dönüşümler transfer olarak
 - PrivatBank Autoclient (Ukrayna) eklendi: IBAN ile ticari hesapların bakiyeleri ve işlemlerinin içe aktarımı
 - monobank Personal API (Ukrayna) eklendi: kartların ve kumbaraların bakiyeleri ve işlemlerinin içe aktarımı, bağlı hesapların oluşturulması

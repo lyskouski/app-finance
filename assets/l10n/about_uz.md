@@ -76,6 +76,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 - Integratsiyalar
   - Financial Transaction Services (FinTS 4.1): nemis banklaridan qoldiqlar va tranzaksiyalarni import qilish (PIN/TAN)
   - SimpleFIN Bridge (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish
+  - Teller (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish (sertifikatli o'z Teller ilovasi)
   - Enable Banking (EU): Yevropa banklaridan qoldiqlar va tranzaksiyalarni import qilish (PSD2)
   - Wise API (Global): Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish (shaxsiy API tokeni)
   - PrivatBank Autoclient (Ukraina): Privat24 for Business biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish (Autoclient tokeni)

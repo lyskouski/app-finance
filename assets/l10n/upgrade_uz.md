@@ -3,6 +3,7 @@
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
 ### 8.1.0
+- Teller (US) qo'shildi: o'z Teller ilovangiz bilan (sertifikat asosida) AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini import qilish
 - Wise API (Global) qo'shildi: Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish, konvertatsiyalar o'tkazma sifatida
 - PrivatBank Autoclient (Ukraina) qo'shildi: IBAN bo'yicha biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish
 - monobank Personal API (Ukraina) qo'shildi: kartalar va jamg'arma bankalari qoldiqlari va tranzaksiyalarini import qilish, bog'langan hisoblarni yaratish

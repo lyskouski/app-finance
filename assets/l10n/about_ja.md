@@ -76,6 +76,7 @@
 - 連携
   - Financial Transaction Services (FinTS 4.1)：ドイツの銀行からの残高と取引のインポート（PIN/TAN）
   - SimpleFIN Bridge (US)：米国の銀行やカード発行会社からの残高と取引のインポート
+  - Teller (US)：米国の銀行やカード発行会社からの残高と取引のインポート（証明書付きの独自の Teller アプリケーション）
   - Enable Banking (EU)：ヨーロッパの銀行からの残高と取引のインポート（PSD2）
   - Wise API (Global)：Wise マルチカレンシー口座の残高と取引のインポート（個人用 API トークン）
   - PrivatBank Autoclient（ウクライナ）：Privat24 for Businessの法人口座の残高と取引のインポート（Autoclientトークン）

@@ -1403,6 +1403,77 @@ class AppLocalizationsJa extends AppLocalizations {
   String get targetAmount => '目標金額';
 
   @override
+  String get tellerAccessToken => 'アクセストークン';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      '銀行の連携後に接続ページに表示されます。Fingrom が自動的に開かなかった場合はここに貼り付けてください';
+
+  @override
+  String get tellerAppId => 'アプリケーションID';
+
+  @override
+  String get tellerAppIdTooltip => 'Teller Dashboard に表示され、「app_」で始まります';
+
+  @override
+  String get tellerCertificate => '証明書（PEM）';
+
+  @override
+  String get tellerCertificateInvalid => '無効な証明書: PEM ブロック「CERTIFICATE」が必要です';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Teller Dashboard（Certificates）で発行され、暗号化して保存されます。保存済みの証明書を使う場合は空欄のままにしてください';
+
+  @override
+  String get tellerConnectBank => '銀行を接続';
+
+  @override
+  String get tellerConnectPage => '接続ページ';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'ブラウザで Teller Connect を開き、アクセストークンを Fingrom に返します';
+
+  @override
+  String get tellerDescription =>
+      'teller.io に登録した独自のアプリケーションを使い、Teller を通じて米国の銀行やカード発行会社から残高と取引をインポートします（無料プランでは 100 件の実際の銀行接続が可能）。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get tellerDisconnected =>
+      '銀行との接続に対応が必要です（新しいログインや確認コードなど）。銀行を再度接続してください';
+
+  @override
+  String get tellerEnvironment => '環境';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete => 'アプリケーションIDを入力してください。実際の銀行データには証明書と秘密鍵が必要です';
+
+  @override
+  String get tellerKey => '秘密鍵（PEM）';
+
+  @override
+  String get tellerKeyInvalid => '無効な秘密鍵: PEM ブロック「PRIVATE KEY」が必要です';
+
+  @override
+  String get tellerKeyTooltip =>
+      '証明書と一緒にダウンロードされ、暗号化して保存されます。保存済みの鍵を使う場合は空欄のままにしてください';
+
+  @override
+  String get tellerMissingCertificate =>
+      'クライアント証明書がないため Teller がリクエストを拒否しました。証明書と秘密鍵をアップロードするか、sandbox を選択してください';
+
+  @override
+  String get tellerSteps =>
+      '接続方法:\n1. teller.io に登録し、Teller Dashboard を開きます\n2. アプリケーションIDをコピーし、秘密鍵付きの証明書を作成してダウンロードします（Certificates）\n3. 下に入力し、環境を選択します（sandbox: テストデータ、銀行には \"username\" と \"password\" でログイン）\n4. 「銀行を接続」を押し、開いたページで銀行にログインします\n5. 口座と予算カテゴリを選択し、「取引をインポート」を押します';
+
+  @override
+  String get tellerUpload => 'ファイルをアップロード';
+
+  @override
   String get termPrivacy => 'プライバシーポリシー';
 
   @override

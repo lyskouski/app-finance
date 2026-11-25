@@ -2767,6 +2767,132 @@ abstract class AppLocalizations {
   /// **'Target Amount'**
   String get targetAmount;
 
+  /// No description provided for @tellerAccessToken.
+  ///
+  /// In en, this message translates to:
+  /// **'Access Token'**
+  String get tellerAccessToken;
+
+  /// No description provided for @tellerAccessTokenTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown by the connection page after a bank is linked: paste it here if Fingrom has not been opened automatically'**
+  String get tellerAccessTokenTooltip;
+
+  /// No description provided for @tellerAppId.
+  ///
+  /// In en, this message translates to:
+  /// **'Application ID'**
+  String get tellerAppId;
+
+  /// No description provided for @tellerAppIdTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown in the Teller Dashboard, starts with \"app_\"'**
+  String get tellerAppIdTooltip;
+
+  /// No description provided for @tellerCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate (PEM)'**
+  String get tellerCertificate;
+
+  /// No description provided for @tellerCertificateInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid certificate: a PEM block \"CERTIFICATE\" is expected'**
+  String get tellerCertificateInvalid;
+
+  /// No description provided for @tellerCertificateTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued in the Teller Dashboard (Certificates); stored encrypted. Leave empty to keep the stored one'**
+  String get tellerCertificateTooltip;
+
+  /// No description provided for @tellerConnectBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect Bank'**
+  String get tellerConnectBank;
+
+  /// No description provided for @tellerConnectPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection Page'**
+  String get tellerConnectPage;
+
+  /// No description provided for @tellerConnectPageTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens Teller Connect in a browser and returns the access token to Fingrom'**
+  String get tellerConnectPageTooltip;
+
+  /// No description provided for @tellerDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of US banks and card issuers through Teller with your own application registered at teller.io (the free plan allows 100 live bank connections). Access is read-only: no payments are made.'**
+  String get tellerDescription;
+
+  /// No description provided for @tellerDisconnected.
+  ///
+  /// In en, this message translates to:
+  /// **'The bank connection requires your attention (e.g. a new login or a confirmation code): connect the bank again'**
+  String get tellerDisconnected;
+
+  /// No description provided for @tellerEnvironment.
+  ///
+  /// In en, this message translates to:
+  /// **'Environment'**
+  String get tellerEnvironment;
+
+  /// No description provided for @tellerHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Teller (US)'**
+  String get tellerHeadline;
+
+  /// No description provided for @tellerIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the application ID; the certificate and the private key are required for real bank data'**
+  String get tellerIncomplete;
+
+  /// No description provided for @tellerKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Private Key (PEM)'**
+  String get tellerKey;
+
+  /// No description provided for @tellerKeyInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid private key: a PEM block \"PRIVATE KEY\" is expected'**
+  String get tellerKeyInvalid;
+
+  /// No description provided for @tellerKeyTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloaded together with the certificate; stored encrypted. Leave empty to keep the stored key'**
+  String get tellerKeyTooltip;
+
+  /// No description provided for @tellerMissingCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Teller rejected the request without a client certificate: upload the certificate and the private key, or choose the sandbox'**
+  String get tellerMissingCertificate;
+
+  /// No description provided for @tellerSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'How to connect:\n1. Sign up at teller.io and open the Teller Dashboard\n2. Copy the Application ID, then create and download a certificate with its private key (Certificates)\n3. Fill them in below and choose the environment (sandbox: test data, sign in to a bank as \"username\" with \"password\")\n4. Press \"Connect Bank\" and sign in to your bank on the opened page\n5. Select the account and the budget category, then press \"Import Transactions\"'**
+  String get tellerSteps;
+
+  /// No description provided for @tellerUpload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload File'**
+  String get tellerUpload;
+
   /// No description provided for @termPrivacy.
   ///
   /// In en, this message translates to:

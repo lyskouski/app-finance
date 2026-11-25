@@ -76,6 +76,7 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
 - Intégrations
   - Financial Transaction Services (FinTS 4.1) : importation des soldes et des opérations des banques allemandes (PIN/TAN)
   - SimpleFIN Bridge (US) : importation des soldes et des opérations des banques et émetteurs de cartes américains
+  - Teller (US) : importation des soldes et des opérations des banques et émetteurs de cartes américains (application Teller personnelle avec certificat)
   - Enable Banking (EU) : importation des soldes et des opérations des banques européennes (DSP2)
   - Wise API (Global) : importation des soldes et des opérations des comptes multidevises Wise (jeton d'API personnel)
   - PrivatBank Autoclient (Ukraine) : import des soldes et des transactions des comptes professionnels de Privat24 for Business (jeton Autoclient)

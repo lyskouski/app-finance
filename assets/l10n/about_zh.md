@@ -76,6 +76,7 @@
 - 集成
   - Financial Transaction Services (FinTS 4.1)：从德国银行导入余额和交易（PIN/TAN）
   - SimpleFIN Bridge (US)：从美国银行和发卡机构导入余额和交易
+  - Teller (US)：从美国银行和发卡机构导入余额和交易（使用带证书的自有 Teller 应用）
   - Enable Banking (EU)：从欧洲银行导入余额和交易（PSD2）
   - Wise API (Global)：导入 Wise 多币种账户的余额和交易（个人 API 令牌）
   - PrivatBank Autoclient（乌克兰）：导入 Privat24 for Business 企业账户的余额和交易（Autoclient 令牌）

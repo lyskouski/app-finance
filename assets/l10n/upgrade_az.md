@@ -3,6 +3,7 @@
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
 ### 8.1.0
+- Teller (US) əlavə edildi: öz Teller tətbiqinizlə ABŞ bankları və kart emitentlərindən qalıqlar və əməliyyatların idxalı (sertifikat əsasında)
 - Wise API (Global) əlavə edildi: Wise çoxvalyutalı hesablarının qalıqları və əməliyyatlarının idxalı, konvertasiyalar köçürmə kimi
 - PrivatBank Autoclient (Ukrayna) əlavə edildi: IBAN üzrə biznes hesablarının qalıqları və əməliyyatlarının idxalı
 - monobank Personal API (Ukrayna) əlavə edildi: kartların və yığım qutularının qalıqları və əməliyyatlarının idxalı, əlaqəli hesabların yaradılması

@@ -9,7 +9,8 @@ class AppLocalizationsKa extends AppLocalizations {
   AppLocalizationsKa([String locale = 'ka']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'შესახებ';
@@ -102,7 +103,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get balanceDate => 'ბალანსის თარიღის განახლება';
 
   @override
-  String get balanceDateTooltip => 'ამ თარიღამდე ხარჯები და შემოსავლები ბალანსზე გავლენას არ მოახდენს';
+  String get balanceDateTooltip =>
+      'ამ თარიღამდე ხარჯები და შემოსავლები ბალანსზე გავლენას არ მოახდენს';
 
   @override
   String get balanceTooltip => 'ბალანსის დაყენება';
@@ -321,7 +323,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get confirmHeader => 'მოქმედების დადასტურება';
 
   @override
-  String get confirmTooltip => 'დარწმუნებული ხართ? ამ მოქმედების გაუქმება შეუძლებელია.';
+  String get confirmTooltip =>
+      'დარწმუნებული ხართ? ამ მოქმედების გაუქმება შეუძლებელია.';
 
   @override
   String get contributors => 'კონტრიბუტორები';
@@ -602,7 +605,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get enableBankingBank => 'ბანკი';
 
   @override
-  String get enableBankingCode => 'ავტორიზაციის შემდეგ გახსნილი გვერდის მისამართი';
+  String get enableBankingCode =>
+      'ავტორიზაციის შემდეგ გახსნილი გვერდის მისამართი';
 
   @override
   String get enableBankingCodeTooltip =>
@@ -619,16 +623,19 @@ class AppLocalizationsKa extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete => 'შეავსეთ აპლიკაციის ID, პირადი გასაღები, გადამისამართების URL და ქვეყანა';
+  String get enableBankingIncomplete =>
+      'შეავსეთ აპლიკაციის ID, პირადი გასაღები, გადამისამართების URL და ქვეყანა';
 
   @override
   String get enableBankingKey => 'პირადი გასაღები (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => 'არასწორი პირადი გასაღები: მოსალოდნელია PEM ბლოკი \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid =>
+      'არასწორი პირადი გასაღები: მოსალოდნელია PEM ბლოკი \"PRIVATE KEY\"';
 
   @override
-  String get enableBankingKeyNotRsa => 'არასწორი პირადი გასაღები: მოსალოდნელია RSA გასაღები';
+  String get enableBankingKeyNotRsa =>
+      'არასწორი პირადი გასაღები: მოსალოდნელია RSA გასაღები';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -638,7 +645,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get enableBankingLoadBanks => 'ბანკების ჩატვირთვა';
 
   @override
-  String get enableBankingNoAuthPage => 'Enable Banking-მა ავტორიზაციის გვერდი არ დააბრუნა';
+  String get enableBankingNoAuthPage =>
+      'Enable Banking-მა ავტორიზაციის გვერდი არ დააბრუნა';
 
   @override
   String get enableBankingNoCode => 'მისამართში ავტორიზაციის კოდი ვერ მოიძებნა';
@@ -647,10 +655,12 @@ class AppLocalizationsKa extends AppLocalizations {
   String get enableBankingRedirect => 'გადამისამართების URL';
 
   @override
-  String get enableBankingRedirectTooltip => 'რეგისტრირებულია აპლიკაციისთვის; ავტორიზაციის შემდეგ ბანკი მასზე ბრუნდება';
+  String get enableBankingRedirectTooltip =>
+      'რეგისტრირებულია აპლიკაციისთვის; ავტორიზაციის შემდეგ ბანკი მასზე ბრუნდება';
 
   @override
-  String get enableBankingStateMismatch => 'მისამართი სხვა ავტორიზაციას ეკუთვნის, ხელახლა დაუკავშირდით';
+  String get enableBankingStateMismatch =>
+      'მისამართი სხვა ავტორიზაციას ეკუთვნის, ხელახლა დაუკავშირდით';
 
   @override
   String get encryptionMode => 'მონაცემთა დაშიფვრა';
@@ -699,7 +709,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get finTsBankCode => 'ბანკის კოდი (BLZ)';
 
   @override
-  String get finTsCustomerId => 'კლიენტის ID (თუ განსხვავდება მომხმარებლის ID-სგან)';
+  String get finTsCustomerId =>
+      'კლიენტის ID (თუ განსხვავდება მომხმარებლის ID-სგან)';
 
   @override
   String get finTsDescription =>
@@ -709,7 +720,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete => 'შეავსეთ სერვერის URL, ბანკის კოდი, მომხმარებლის ID და პროდუქტის სარეგისტრაციო ნომერი';
+  String get finTsIncomplete =>
+      'შეავსეთ სერვერის URL, ბანკის კოდი, მომხმარებლის ID და პროდუქტის სარეგისტრაციო ნომერი';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -725,13 +737,15 @@ class AppLocalizationsKa extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint => 'გამოიყენება მხოლოდ ამ სესიისთვის და არასოდეს ინახება';
+  String get finTsPinHint =>
+      'გამოიყენება მხოლოდ ამ სესიისთვის და არასოდეს ინახება';
 
   @override
   String get finTsProductId => 'პროდუქტის სარეგისტრაციო ნომერი';
 
   @override
-  String get finTsProductIdTooltip => 'გაიცემა Deutsche Kreditwirtschaft-ის მიერ აპლიკაციის მწარმოებლისთვის';
+  String get finTsProductIdTooltip =>
+      'გაიცემა Deutsche Kreditwirtschaft-ის მიერ აპლიკაციის მწარმოებლისთვის';
 
   @override
   String get finTsTan => 'TAN';
@@ -827,7 +841,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get incomeTooltip => 'შემოსავლის დეტალების დაყენება';
 
   @override
-  String get integrationAccessDenied => 'წვდომა გაუქმებულია ან მონაცემები არასწორია';
+  String get integrationAccessDenied =>
+      'წვდომა გაუქმებულია ან მონაცემები არასწორია';
 
   @override
   String get integrationConnect => 'დაკავშირება';
@@ -836,7 +851,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get integrationDateFrom => 'ტრანზაქციების იმპორტი თარიღიდან';
 
   @override
-  String get integrationDefaultBudgetCategory => 'ნაგულისხმევი ბიუჯეტის კატეგორია';
+  String get integrationDefaultBudgetCategory =>
+      'ნაგულისხმევი ბიუჯეტის კატეგორია';
 
   @override
   String get integrationDisconnect => 'გათიშვა';
@@ -853,7 +869,8 @@ class AppLocalizationsKa extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired => 'დაშვებულია მხოლოდ დაცული (HTTPS) მისამართები';
+  String get integrationHttpsRequired =>
+      'დაშვებულია მხოლოდ დაცული (HTTPS) მისამართები';
 
   @override
   String get integrationImport => 'ტრანზაქციების იმპორტი';
@@ -872,10 +889,12 @@ class AppLocalizationsKa extends AppLocalizations {
   String get integrationNoAccounts => 'ბანკს არცერთი ანგარიში არ მოუწოდებია';
 
   @override
-  String get integrationPaymentRequired => 'სერვისი წვდომისთვის გადახდას მოითხოვს';
+  String get integrationPaymentRequired =>
+      'სერვისი წვდომისთვის გადახდას მოითხოვს';
 
   @override
-  String get integrationSelectTarget => 'აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის';
+  String get integrationSelectTarget =>
+      'აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის';
 
   @override
   String integrationServiceError(Object value) {
@@ -1025,7 +1044,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get notificationClear => 'მიღებულის გასუფთავება';
 
   @override
-  String get notificationCurrencyTooltip => 'ვალუტის გარეშე თანხები (მაგ. ჩამოჭრა 20.00) ამ ვალუტით აღირიცხება';
+  String get notificationCurrencyTooltip =>
+      'ვალუტის გარეშე თანხები (მაგ. ჩამოჭრა 20.00) ამ ვალუტით აღირიცხება';
 
   @override
   String get notificationDefaultAccount => 'ნაგულისხმევი ანგარიში';
@@ -1052,7 +1072,8 @@ class AppLocalizationsKa extends AppLocalizations {
       'სიტყვები, რომლებსაც მოსდევს ორწერტილი და მოვაჭრე (ადგილი: მაღაზია): შეიყვანეთ სიტყვა და დასამატებლად დააჭირეთ Enter-ს';
 
   @override
-  String get notificationNoApps => 'შეტყობინებები ჯერ არ მიღებულა: აპები აქ გამოჩნდება შეტყობინების გამოგზავნის შემდეგ';
+  String get notificationNoApps =>
+      'შეტყობინებები ჯერ არ მიღებულა: აპები აქ გამოჩნდება შეტყობინების გამოგზავნის შემდეგ';
 
   @override
   String get notificationUnparsed => 'ვერ ამოიცნო';
@@ -1165,10 +1186,12 @@ class AppLocalizationsKa extends AppLocalizations {
   String get privatBankIban => 'ანგარიშის IBAN';
 
   @override
-  String get privatBankIbanInvalid => 'შეიყვანეთ უკრაინული IBAN: UA და 27 ციფრი';
+  String get privatBankIbanInvalid =>
+      'შეიყვანეთ უკრაინული IBAN: UA და 27 ციფრი';
 
   @override
-  String get privatBankIbanTooltip => 'API არ იძლევა ანგარიშების სიას: დაამატეთ ანგარიშების IBAN-ები სათითაოდ';
+  String get privatBankIbanTooltip =>
+      'API არ იძლევა ანგარიშების სიას: დაამატეთ ანგარიშების IBAN-ები სათითაოდ';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1236,7 +1259,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get searchTooltip => 'ძებნა';
 
   @override
-  String get secureBioNotMatch => 'ავთენტიფიკაცია ვერ შესრულდა! გთხოვთ, სცადოთ ხელახლა';
+  String get secureBioNotMatch =>
+      'ავთენტიფიკაცია ვერ შესრულდა! გთხოვთ, სცადოთ ხელახლა';
 
   @override
   String get secureBioPromptReason => 'გასაგრძელებლად გაიარეთ ავთენტიფიკაცია';
@@ -1248,7 +1272,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get secureOtpCode => 'ერთჯერადი პაროლის კოდი';
 
   @override
-  String get secureOtpCodeInvalid => 'არასწორია! გთხოვთ, აიღეთ ახალი კოდი და შეიყვანეთ';
+  String get secureOtpCodeInvalid =>
+      'არასწორია! გთხოვთ, აიღეთ ახალი კოდი და შეიყვანეთ';
 
   @override
   String get secureOtpDeactivated => 'პაროლით დაცვა გამორთულია';
@@ -1285,13 +1310,15 @@ class AppLocalizationsKa extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge-მა დააბრუნა წვდომის მისამართი მონაცემების გარეშე';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge-მა დააბრუნა წვდომის მისამართი მონაცემების გარეშე';
 
   @override
   String get simpleFinToken => 'SimpleFIN-ის დაყენების ტოკენი';
 
   @override
-  String get simpleFinTokenClaimed => 'დაყენების ტოკენი არ არსებობს ან უკვე გამოყენებულია';
+  String get simpleFinTokenClaimed =>
+      'დაყენების ტოკენი არ არსებობს ან უკვე გამოყენებულია';
 
   @override
   String get simpleFinTokenInvalid => 'SimpleFIN-ის არასწორი დაყენების ტოკენი';
@@ -1401,6 +1428,81 @@ class AppLocalizationsKa extends AppLocalizations {
   String get targetAmount => 'სამიზნე თანხა';
 
   @override
+  String get tellerAccessToken => 'წვდომის ტოკენი';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'ნაჩვენებია დაკავშირების გვერდზე ბანკის მიბმის შემდეგ: ჩასვით აქ, თუ Fingrom ავტომატურად არ გაიხსნა';
+
+  @override
+  String get tellerAppId => 'აპლიკაციის ID';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'ნაჩვენებია Teller Dashboard-ში, იწყება \"app_\"-ით';
+
+  @override
+  String get tellerCertificate => 'სერტიფიკატი (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'არასწორი სერტიფიკატი: მოსალოდნელია PEM ბლოკი \"CERTIFICATE\"';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'გაიცემა Teller Dashboard-ში (Certificates); ინახება დაშიფრული სახით. დატოვეთ ცარიელი შენახული სერტიფიკატის შესანარჩუნებლად';
+
+  @override
+  String get tellerConnectBank => 'ბანკის დაკავშირება';
+
+  @override
+  String get tellerConnectPage => 'დაკავშირების გვერდი';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'ხსნის Teller Connect-ს ბრაუზერში და აბრუნებს წვდომის ტოკენს Fingrom-ში';
+
+  @override
+  String get tellerDescription =>
+      'აშშ-ის ბანკებისა და ბარათების ემიტენტების ნაშთებისა და ტრანზაქციების იმპორტი Teller-ის მეშვეობით teller.io-ზე რეგისტრირებული საკუთარი აპლიკაციით (უფასო გეგმა იძლევა 100 რეალურ საბანკო კავშირს). წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get tellerDisconnected =>
+      'ბანკთან კავშირი თქვენს ყურადღებას საჭიროებს (მაგ. ხელახალი შესვლა ან დადასტურების კოდი): დააკავშირეთ ბანკი ხელახლა';
+
+  @override
+  String get tellerEnvironment => 'გარემო';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'შეავსეთ აპლიკაციის ID; რეალური საბანკო მონაცემებისთვის საჭიროა სერტიფიკატი და პირადი გასაღები';
+
+  @override
+  String get tellerKey => 'პირადი გასაღები (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'არასწორი პირადი გასაღები: მოსალოდნელია PEM ბლოკი \"PRIVATE KEY\"';
+
+  @override
+  String get tellerKeyTooltip =>
+      'ჩამოიტვირთება სერტიფიკატთან ერთად; ინახება დაშიფრული სახით. დატოვეთ ცარიელი შენახული გასაღების შესანარჩუნებლად';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller-მა უარყო მოთხოვნა კლიენტის სერტიფიკატის გარეშე: ატვირთეთ სერტიფიკატი და პირადი გასაღები, ან აირჩიეთ sandbox';
+
+  @override
+  String get tellerSteps =>
+      'როგორ დავაკავშიროთ:\n1. დარეგისტრირდით teller.io-ზე და გახსენით Teller Dashboard\n2. დააკოპირეთ აპლიკაციის ID, შემდეგ შექმენით და ჩამოტვირთეთ სერტიფიკატი მისი პირადი გასაღებით (Certificates)\n3. შეავსეთ ისინი ქვემოთ და აირჩიეთ გარემო (sandbox: სატესტო მონაცემები, შედით ბანკში როგორც \"username\" პაროლით \"password\")\n4. დააჭირეთ „ბანკის დაკავშირებას“ და შედით თქვენს ბანკში გახსნილ გვერდზე\n5. აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია, შემდეგ დააჭირეთ „ტრანზაქციების იმპორტს“';
+
+  @override
+  String get tellerUpload => 'ფაილის ატვირთვა';
+
+  @override
   String get termPrivacy => 'კონფიდენციალურობის პოლიტიკა';
 
   @override
@@ -1467,7 +1569,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get validTillDate => 'მოქმედებს თარიღამდე';
 
   @override
-  String get webDav => 'ვებ-დისტრიბუციული ავტორიზაცია და ვერსიების მართვა (WebDav)';
+  String get webDav =>
+      'ვებ-დისტრიბუციული ავტორიზაცია და ვერსიების მართვა (WebDav)';
 
   @override
   String get wiseDescription =>
@@ -1477,7 +1580,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get wiseHeadline => 'Wise API (Global)';
 
   @override
-  String get wiseNoProfiles => 'ტოკენისთვის Wise-ის პროფილები ხელმისაწვდომი არ არის';
+  String get wiseNoProfiles =>
+      'ტოკენისთვის Wise-ის პროფილები ხელმისაწვდომი არ არის';
 
   @override
   String get wiseProfile => 'პროფილი';

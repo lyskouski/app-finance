@@ -1427,6 +1427,81 @@ class AppLocalizationsId extends AppLocalizations {
   String get targetAmount => 'Jumlah Target';
 
   @override
+  String get tellerAccessToken => 'Token akses';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Ditampilkan oleh halaman koneksi setelah bank ditautkan: tempelkan di sini jika Fingrom tidak terbuka secara otomatis';
+
+  @override
+  String get tellerAppId => 'ID aplikasi';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Ditampilkan di Teller Dashboard, diawali dengan \"app_\"';
+
+  @override
+  String get tellerCertificate => 'Sertifikat (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Sertifikat tidak valid: blok PEM \"CERTIFICATE\" diharapkan';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Diterbitkan di Teller Dashboard (Certificates); disimpan terenkripsi. Biarkan kosong untuk mempertahankan sertifikat yang tersimpan';
+
+  @override
+  String get tellerConnectBank => 'Hubungkan bank';
+
+  @override
+  String get tellerConnectPage => 'Halaman koneksi';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Membuka Teller Connect di browser dan mengembalikan token akses ke Fingrom';
+
+  @override
+  String get tellerDescription =>
+      'Impor saldo dan transaksi dari bank dan penerbit kartu AS melalui Teller dengan aplikasi Anda sendiri yang terdaftar di teller.io (paket gratis mengizinkan 100 koneksi bank nyata). Akses hanya baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get tellerDisconnected =>
+      'Koneksi bank memerlukan perhatian Anda (mis. login baru atau kode konfirmasi): hubungkan bank lagi';
+
+  @override
+  String get tellerEnvironment => 'Lingkungan';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Isi ID aplikasi; sertifikat dan kunci privat diperlukan untuk data bank nyata';
+
+  @override
+  String get tellerKey => 'Kunci privat (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Kunci privat tidak valid: blok PEM \"PRIVATE KEY\" diharapkan';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Diunduh bersama sertifikat; disimpan terenkripsi. Biarkan kosong untuk mempertahankan kunci yang tersimpan';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller menolak permintaan tanpa sertifikat klien: unggah sertifikat dan kunci privat, atau pilih sandbox';
+
+  @override
+  String get tellerSteps =>
+      'Cara menghubungkan:\n1. Daftar di teller.io dan buka Teller Dashboard\n2. Salin ID aplikasi, lalu buat dan unduh sertifikat beserta kunci privatnya (Certificates)\n3. Isi di bawah dan pilih lingkungan (sandbox: data uji, masuk ke bank sebagai \"username\" dengan \"password\")\n4. Tekan \"Hubungkan bank\" dan masuk ke bank Anda di halaman yang terbuka\n5. Pilih rekening dan kategori anggaran, lalu tekan \"Impor transaksi\"';
+
+  @override
+  String get tellerUpload => 'Unggah file';
+
+  @override
   String get termPrivacy => 'Kebijakan Privasi';
 
   @override

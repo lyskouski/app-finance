@@ -13,7 +13,9 @@ import 'package:app_finance/pages/integration/widgets/monobank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
+import 'package:app_finance/pages/integration/widgets/teller_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 
 typedef IntegrationItem = ({String id, String title, IconData icon, WidgetBuilder builder});
@@ -49,17 +51,24 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
 
   static List<IntegrationItem> getServices() => [
         (
-          id: 'privatbank',
-          title: AppLocale.labels.privatBankHeadline,
-          icon: Icons.business_center_outlined,
-          builder: (_) => const PrivatBankWidget(),
-        ),
-        (
           id: 'monobank',
           title: AppLocale.labels.monobankHeadline,
           icon: Icons.credit_card,
           builder: (_) => const MonobankWidget(),
         ),
+        (
+          id: 'privatbank',
+          title: AppLocale.labels.privatBankHeadline,
+          icon: Icons.business_center_outlined,
+          builder: (_) => const PrivatBankWidget(),
+        ),
+        if (!kIsWeb)
+          (
+            id: 'teller',
+            title: AppLocale.labels.tellerHeadline,
+            icon: Icons.account_balance_outlined,
+            builder: (_) => const TellerWidget(),
+          ),
         (
           id: 'wise',
           title: AppLocale.labels.wiseHeadline,
@@ -77,7 +86,11 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
         leading: Icon(item.icon),
         title: Text(item.title, style: context.textTheme.titleMedium),
         maintainState: true,
-        initiallyExpanded: item.id == 'enablebanking' && DeepLinkHandler.enableBankingCallback.value != null,
+        initiallyExpanded: switch (item.id) {
+          'enablebanking' => DeepLinkHandler.enableBankingCallback.value != null,
+          'teller' => DeepLinkHandler.tellerCallback.value != null,
+          _ => false,
+        },
         childrenPadding: EdgeInsets.fromLTRB(indent * 2, 0, indent * 2, indent * 2),
         expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
         children: [Builder(builder: item.builder)],

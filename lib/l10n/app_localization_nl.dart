@@ -1428,6 +1428,81 @@ class AppLocalizationsNl extends AppLocalizations {
   String get targetAmount => 'Doel Bedrag';
 
   @override
+  String get tellerAccessToken => 'Toegangstoken';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Getoond door de verbindingspagina nadat een bank is gekoppeld: plak het hier als Fingrom niet automatisch is geopend';
+
+  @override
+  String get tellerAppId => 'Applicatie-ID';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Getoond in het Teller Dashboard, begint met \"app_\"';
+
+  @override
+  String get tellerCertificate => 'Certificaat (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Ongeldig certificaat: een PEM-blok \"CERTIFICATE\" wordt verwacht';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Uitgegeven in het Teller Dashboard (Certificates); versleuteld opgeslagen. Laat leeg om het opgeslagen certificaat te behouden';
+
+  @override
+  String get tellerConnectBank => 'Bank verbinden';
+
+  @override
+  String get tellerConnectPage => 'Verbindingspagina';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Opent Teller Connect in een browser en geeft het toegangstoken terug aan Fingrom';
+
+  @override
+  String get tellerDescription =>
+      'Importeer saldi en transacties van Amerikaanse banken en kaartuitgevers via Teller met uw eigen applicatie, geregistreerd op teller.io (het gratis abonnement staat 100 echte bankverbindingen toe). Alleen-lezen toegang: er worden geen betalingen uitgevoerd.';
+
+  @override
+  String get tellerDisconnected =>
+      'De bankverbinding vereist uw aandacht (bijv. een nieuwe aanmelding of een bevestigingscode): verbind de bank opnieuw';
+
+  @override
+  String get tellerEnvironment => 'Omgeving';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Vul de applicatie-ID in; het certificaat en de privésleutel zijn vereist voor echte bankgegevens';
+
+  @override
+  String get tellerKey => 'Privésleutel (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Ongeldige privésleutel: een PEM-blok \"PRIVATE KEY\" wordt verwacht';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Samen met het certificaat gedownload; versleuteld opgeslagen. Laat leeg om de opgeslagen sleutel te behouden';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller heeft het verzoek zonder clientcertificaat geweigerd: upload het certificaat en de privésleutel, of kies sandbox';
+
+  @override
+  String get tellerSteps =>
+      'Zo maakt u verbinding:\n1. Registreer u op teller.io en open het Teller Dashboard\n2. Kopieer de applicatie-ID, maak daarna een certificaat met de bijbehorende privésleutel aan en download het (Certificates)\n3. Vul ze hieronder in en kies de omgeving (sandbox: testgegevens, meld u bij een bank aan als \"username\" met \"password\")\n4. Druk op \'Bank verbinden\' en meld u op de geopende pagina aan bij uw bank\n5. Selecteer de rekening en de budgetcategorie en druk op \'Transacties importeren\'';
+
+  @override
+  String get tellerUpload => 'Bestand uploaden';
+
+  @override
   String get termPrivacy => 'Privacybeleid';
 
   @override

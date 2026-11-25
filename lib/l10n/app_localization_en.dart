@@ -1425,6 +1425,81 @@ class AppLocalizationsEn extends AppLocalizations {
   String get targetAmount => 'Target Amount';
 
   @override
+  String get tellerAccessToken => 'Access Token';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Shown by the connection page after a bank is linked: paste it here if Fingrom has not been opened automatically';
+
+  @override
+  String get tellerAppId => 'Application ID';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Shown in the Teller Dashboard, starts with \"app_\"';
+
+  @override
+  String get tellerCertificate => 'Certificate (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Invalid certificate: a PEM block \"CERTIFICATE\" is expected';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Issued in the Teller Dashboard (Certificates); stored encrypted. Leave empty to keep the stored one';
+
+  @override
+  String get tellerConnectBank => 'Connect Bank';
+
+  @override
+  String get tellerConnectPage => 'Connection Page';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Opens Teller Connect in a browser and returns the access token to Fingrom';
+
+  @override
+  String get tellerDescription =>
+      'Import balances and transactions of US banks and card issuers through Teller with your own application registered at teller.io (the free plan allows 100 live bank connections). Access is read-only: no payments are made.';
+
+  @override
+  String get tellerDisconnected =>
+      'The bank connection requires your attention (e.g. a new login or a confirmation code): connect the bank again';
+
+  @override
+  String get tellerEnvironment => 'Environment';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Fill in the application ID; the certificate and the private key are required for real bank data';
+
+  @override
+  String get tellerKey => 'Private Key (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Invalid private key: a PEM block \"PRIVATE KEY\" is expected';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Downloaded together with the certificate; stored encrypted. Leave empty to keep the stored key';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller rejected the request without a client certificate: upload the certificate and the private key, or choose the sandbox';
+
+  @override
+  String get tellerSteps =>
+      'How to connect:\n1. Sign up at teller.io and open the Teller Dashboard\n2. Copy the Application ID, then create and download a certificate with its private key (Certificates)\n3. Fill them in below and choose the environment (sandbox: test data, sign in to a bank as \"username\" with \"password\")\n4. Press \"Connect Bank\" and sign in to your bank on the opened page\n5. Select the account and the budget category, then press \"Import Transactions\"';
+
+  @override
+  String get tellerUpload => 'Upload File';
+
+  @override
   String get termPrivacy => 'Privacy Policy';
 
   @override

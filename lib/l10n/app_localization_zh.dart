@@ -1399,6 +1399,75 @@ class AppLocalizationsZh extends AppLocalizations {
   String get targetAmount => '目标金额';
 
   @override
+  String get tellerAccessToken => '访问令牌';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      '关联银行后在连接页面上显示：如果 Fingrom 未自动打开，请将其粘贴到此处';
+
+  @override
+  String get tellerAppId => '应用 ID';
+
+  @override
+  String get tellerAppIdTooltip => '显示在 Teller Dashboard 中，以“app_”开头';
+
+  @override
+  String get tellerCertificate => '证书（PEM）';
+
+  @override
+  String get tellerCertificateInvalid => '证书无效：需要 PEM 块“CERTIFICATE”';
+
+  @override
+  String get tellerCertificateTooltip =>
+      '在 Teller Dashboard（Certificates）中签发；加密存储。留空则保留已存储的证书';
+
+  @override
+  String get tellerConnectBank => '连接银行';
+
+  @override
+  String get tellerConnectPage => '连接页面';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      '在浏览器中打开 Teller Connect，并将访问令牌返回给 Fingrom';
+
+  @override
+  String get tellerDescription =>
+      '使用您在 teller.io 注册的应用，通过 Teller 导入美国银行和发卡机构的余额与交易（免费套餐允许 100 个真实银行连接）。仅限只读访问：不会执行任何付款。';
+
+  @override
+  String get tellerDisconnected => '银行连接需要您处理（例如重新登录或输入验证码）：请重新连接银行';
+
+  @override
+  String get tellerEnvironment => '环境';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete => '请填写应用 ID；获取真实银行数据需要证书和私钥';
+
+  @override
+  String get tellerKey => '私钥（PEM）';
+
+  @override
+  String get tellerKeyInvalid => '私钥无效：需要 PEM 块“PRIVATE KEY”';
+
+  @override
+  String get tellerKeyTooltip => '与证书一起下载；加密存储。留空则保留已存储的私钥';
+
+  @override
+  String get tellerMissingCertificate =>
+      '由于缺少客户端证书，Teller 拒绝了请求：请上传证书和私钥，或选择 sandbox';
+
+  @override
+  String get tellerSteps =>
+      '连接方法：\n1. 在 teller.io 注册并打开 Teller Dashboard\n2. 复制应用 ID，然后创建并下载证书及其私钥（Certificates）\n3. 在下方填写并选择环境（sandbox：测试数据，以 \"username\" 和 \"password\" 登录银行）\n4. 点击“连接银行”，在打开的页面中登录您的银行\n5. 选择账户和预算类别，然后点击“导入交易”';
+
+  @override
+  String get tellerUpload => '上传文件';
+
+  @override
   String get termPrivacy => '隐私政策';
 
   @override
@@ -2890,6 +2959,75 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get targetAmount => '目標金額';
+
+  @override
+  String get tellerAccessToken => '存取權杖';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      '連結銀行後於連線頁面上顯示：若 Fingrom 未自動開啟，請將其貼至此處';
+
+  @override
+  String get tellerAppId => '應用程式 ID';
+
+  @override
+  String get tellerAppIdTooltip => '顯示於 Teller Dashboard 中，以「app_」開頭';
+
+  @override
+  String get tellerCertificate => '憑證（PEM）';
+
+  @override
+  String get tellerCertificateInvalid => '憑證無效：需要 PEM 區塊「CERTIFICATE」';
+
+  @override
+  String get tellerCertificateTooltip =>
+      '於 Teller Dashboard（Certificates）中核發；加密儲存。留空則保留已儲存的憑證';
+
+  @override
+  String get tellerConnectBank => '連結銀行';
+
+  @override
+  String get tellerConnectPage => '連線頁面';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      '在瀏覽器中開啟 Teller Connect，並將存取權杖傳回 Fingrom';
+
+  @override
+  String get tellerDescription =>
+      '使用您在 teller.io 註冊的應用程式，透過 Teller 匯入美國銀行與發卡機構的餘額及交易（免費方案允許 100 個真實銀行連線）。僅限唯讀存取：不會執行任何付款。';
+
+  @override
+  String get tellerDisconnected => '銀行連線需要您處理（例如重新登入或輸入驗證碼）：請重新連結銀行';
+
+  @override
+  String get tellerEnvironment => '環境';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete => '請填寫應用程式 ID；取得真實銀行資料需要憑證與私密金鑰';
+
+  @override
+  String get tellerKey => '私密金鑰（PEM）';
+
+  @override
+  String get tellerKeyInvalid => '私密金鑰無效：需要 PEM 區塊「PRIVATE KEY」';
+
+  @override
+  String get tellerKeyTooltip => '與憑證一併下載；加密儲存。留空則保留已儲存的金鑰';
+
+  @override
+  String get tellerMissingCertificate =>
+      '由於缺少用戶端憑證，Teller 拒絕了請求：請上傳憑證與私密金鑰，或選擇 sandbox';
+
+  @override
+  String get tellerSteps =>
+      '連線方式：\n1. 在 teller.io 註冊並開啟 Teller Dashboard\n2. 複製應用程式 ID，然後建立並下載憑證及其私密金鑰（Certificates）\n3. 在下方填寫並選擇環境（sandbox：測試資料，以 \"username\" 和 \"password\" 登入銀行）\n4. 點選「連結銀行」，在開啟的頁面中登入您的銀行\n5. 選擇帳戶與預算類別，然後點選「匯入交易」';
+
+  @override
+  String get tellerUpload => '上傳檔案';
 
   @override
   String get termPrivacy => '隱私權政策';

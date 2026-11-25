@@ -3,6 +3,7 @@
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
 ### 8.1.0
+- Dodano Teller (US): salda i import transakcji z amerykańskich banków i od wydawców kart z własną aplikacją Teller (na podstawie certyfikatu)
 - Dodano Wise API (Global): salda i import transakcji wielowalutowych kont Wise, przewalutowania jako przelewy
 - Dodano PrivatBank Autoclient (Ukraina): salda i import transakcji kont firmowych według IBAN
 - Dodano monobank Personal API (Ukraina): salda i import transakcji kart i słoików, tworzenie powiązanych kont

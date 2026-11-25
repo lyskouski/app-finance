@@ -1422,6 +1422,81 @@ class AppLocalizationsFa extends AppLocalizations {
   String get targetAmount => 'مقدار هدف';
 
   @override
+  String get tellerAccessToken => 'توکن دسترسی';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'پس از اتصال بانک در صفحه اتصال نمایش داده می‌شود: اگر Fingrom به‌طور خودکار باز نشد، آن را اینجا جای‌گذاری کنید';
+
+  @override
+  String get tellerAppId => 'شناسه برنامه';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'در Teller Dashboard نمایش داده می‌شود و با «app_» شروع می‌شود';
+
+  @override
+  String get tellerCertificate => 'گواهی (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'گواهی نامعتبر: بلوک PEM «CERTIFICATE» مورد انتظار است';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'در Teller Dashboard صادر می‌شود (Certificates)؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. برای نگه‌داشتن گواهی ذخیره‌شده خالی بگذارید';
+
+  @override
+  String get tellerConnectBank => 'اتصال بانک';
+
+  @override
+  String get tellerConnectPage => 'صفحه اتصال';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Teller Connect را در مرورگر باز می‌کند و توکن دسترسی را به Fingrom بازمی‌گرداند';
+
+  @override
+  String get tellerDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های بانک‌ها و صادرکنندگان کارت آمریکایی از طریق Teller با برنامه شخصی شما که در teller.io ثبت شده است (طرح رایگان امکان ۱۰۰ اتصال واقعی بانکی را می‌دهد). دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get tellerDisconnected =>
+      'اتصال بانک نیاز به توجه شما دارد (مثلاً ورود دوباره یا کد تأیید): بانک را دوباره متصل کنید';
+
+  @override
+  String get tellerEnvironment => 'محیط';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'شناسه برنامه را وارد کنید؛ گواهی و کلید خصوصی برای داده‌های واقعی بانکی لازم است';
+
+  @override
+  String get tellerKey => 'کلید خصوصی (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'کلید خصوصی نامعتبر: بلوک PEM «PRIVATE KEY» مورد انتظار است';
+
+  @override
+  String get tellerKeyTooltip =>
+      'همراه با گواهی دانلود می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. برای نگه‌داشتن کلید ذخیره‌شده خالی بگذارید';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller درخواست را بدون گواهی کلاینت رد کرد: گواهی و کلید خصوصی را بارگذاری کنید یا sandbox را انتخاب کنید';
+
+  @override
+  String get tellerSteps =>
+      'نحوه اتصال:\n1. در teller.io ثبت‌نام کنید و Teller Dashboard را باز کنید\n2. شناسه برنامه را کپی کنید، سپس یک گواهی همراه با کلید خصوصی آن بسازید و دانلود کنید (Certificates)\n3. آن‌ها را در زیر وارد کرده و محیط را انتخاب کنید (sandbox: داده‌های آزمایشی، با \"username\" و \"password\" وارد بانک شوید)\n4. «اتصال بانک» را بزنید و در صفحه بازشده وارد بانک خود شوید\n5. حساب و دسته بودجه را انتخاب کرده و «وارد کردن تراکنش‌ها» را بزنید';
+
+  @override
+  String get tellerUpload => 'بارگذاری فایل';
+
+  @override
   String get termPrivacy => 'سیاست حفظ حریم خصوصی';
 
   @override

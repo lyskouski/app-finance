@@ -76,6 +76,7 @@
 - 통합
   - Financial Transaction Services (FinTS 4.1): 독일 은행의 잔액 및 거래 내역 가져오기 (PIN/TAN)
   - SimpleFIN Bridge (US): 미국 은행 및 카드 발급사의 잔액 및 거래 내역 가져오기
+  - Teller (US): 미국 은행 및 카드 발급사의 잔액 및 거래 내역 가져오기 (인증서를 사용하는 자체 Teller 애플리케이션)
   - Enable Banking (EU): 유럽 은행의 잔액 및 거래 내역 가져오기 (PSD2)
   - Wise API (Global): Wise 다중 통화 계좌의 잔액 및 거래 내역 가져오기 (개인 API 토큰)
   - PrivatBank Autoclient (우크라이나): Privat24 for Business 사업자 계좌의 잔액 및 거래 내역 가져오기 (Autoclient 토큰)

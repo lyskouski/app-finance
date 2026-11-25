@@ -3,6 +3,7 @@
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
 ### 8.1.0
+- Adăugat Teller (US): solduri și import de tranzacții de la băncile și emitenții de carduri din SUA cu propria aplicație Teller (pe bază de certificat)
 - Adăugat Wise API (Global): solduri și import de tranzacții ale conturilor multivalută Wise, conversii ca transferuri
 - Adăugat PrivatBank Autoclient (Ucraina): solduri și importul tranzacțiilor conturilor de afaceri după IBAN
 - Adăugat monobank Personal API (Ucraina): solduri și importul tranzacțiilor cardurilor și pușculițelor, crearea conturilor asociate

@@ -1427,6 +1427,81 @@ class AppLocalizationsBe extends AppLocalizations {
   String get targetAmount => 'Мэтавая сума';
 
   @override
+  String get tellerAccessToken => 'Токен доступу';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Паказваецца на старонцы падлучэння пасля прывязкі банка: устаўце яго сюды, калі Fingrom не адкрыўся аўтаматычна';
+
+  @override
+  String get tellerAppId => 'ID праграмы';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Паказаны ў Teller Dashboard, пачынаецца з \"app_\"';
+
+  @override
+  String get tellerCertificate => 'Сертыфікат (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Няправільны сертыфікат: чакаецца PEM-блок \"CERTIFICATE\"';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Выдаецца ў Teller Dashboard (Certificates); захоўваецца ў зашыфраваным выглядзе. Пакіньце пустым, каб захаваць бягучы сертыфікат';
+
+  @override
+  String get tellerConnectBank => 'Падлучыць банк';
+
+  @override
+  String get tellerConnectPage => 'Старонка падлучэння';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Адкрывае Teller Connect у браўзеры і вяртае токен доступу ў Fingrom';
+
+  @override
+  String get tellerDescription =>
+      'Імпарт рэшткаў і аперацый банкаў і эмітэнтаў картак ЗША праз Teller з уласнай праграмай, зарэгістраванай на teller.io (бясплатны тарыф дазваляе 100 рэальных падлучэнняў да банкаў). Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get tellerDisconnected =>
+      'Падлучэнне да банка патрабуе вашай увагі (напрыклад, новага ўваходу або кода пацвярджэння): падлучыце банк зноў';
+
+  @override
+  String get tellerEnvironment => 'Асяроддзе';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Запоўніце ID праграмы; сертыфікат і закрыты ключ патрэбныя для рэальных банкаўскіх даных';
+
+  @override
+  String get tellerKey => 'Закрыты ключ (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Няправільны закрыты ключ: чакаецца PEM-блок \"PRIVATE KEY\"';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Спампоўваецца разам з сертыфікатам; захоўваецца ў зашыфраваным выглядзе. Пакіньце пустым, каб захаваць бягучы ключ';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller адхіліў запыт без кліенцкага сертыфіката: загрузіце сертыфікат і закрыты ключ або абярыце sandbox';
+
+  @override
+  String get tellerSteps =>
+      'Як падлучыцца:\n1. Зарэгіструйцеся на teller.io і адкрыйце Teller Dashboard\n2. Скапіруйце ID праграмы, потым стварыце і спампуйце сертыфікат з закрытым ключом (Certificates)\n3. Запоўніце іх ніжэй і абярыце асяроддзе (sandbox: тэставыя даныя, уваход у банк як \"username\" з паролем \"password\")\n4. Націсніце «Падлучыць банк» і ўвайдзіце ў свой банк на адкрытай старонцы\n5. Абярыце рахунак і катэгорыю бюджэту, потым націсніце «Імпартаваць аперацыі»';
+
+  @override
+  String get tellerUpload => 'Загрузіць файл';
+
+  @override
   String get termPrivacy => 'Палітыка прыватнасьці';
 
   @override
@@ -2950,6 +3025,81 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get targetAmount => 'Metavaja Suma';
+
+  @override
+  String get tellerAccessToken => 'Tokien dostupu';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Pakazvajecca na staroncy padłučeńnia paślia pryviazki banka: ustaŭcie jaho siudy, kali Fingrom nie adkryŭsia aŭtamatyčna';
+
+  @override
+  String get tellerAppId => 'ID prahramy';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Pakazany ŭ Teller Dashboard, pačynajecca z \"app_\"';
+
+  @override
+  String get tellerCertificate => 'Sertyfikat (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Niapraviĺny sertyfikat: čakajecca PEM-błok \"CERTIFICATE\"';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Vydajecca ŭ Teller Dashboard (Certificates); zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy sertyfikat';
+
+  @override
+  String get tellerConnectBank => 'Padłučyć bank';
+
+  @override
+  String get tellerConnectPage => 'Staronka padłučeńnia';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Adkryvaje Teller Connect u braŭziery i viartaje tokien dostupu ŭ Fingrom';
+
+  @override
+  String get tellerDescription =>
+      'Impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA praz Teller z ułasnaj prahramaj, zarehistravanaj na teller.io (biaspłatny taryf dazvalaje 100 reaĺnych padłučeńniaŭ da bankaŭ). Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get tellerDisconnected =>
+      'Padłučeńnie da banka patrabuje vašaj uvahi (napryklad, novaha ŭvachodu abo koda paćvierdžańnia): padłučycie bank znoŭ';
+
+  @override
+  String get tellerEnvironment => 'Asiaroddzie';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Zapoŭnicie ID prahramy; sertyfikat i zakryty kluč patrebnyja dla reaĺnych bankaŭskich danych';
+
+  @override
+  String get tellerKey => 'Zakryty kluč (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Niapraviĺny zakryty kluč: čakajecca PEM-błok \"PRIVATE KEY\"';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Spampoŭvajecca razam z sertyfikatam; zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy kluč';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller adchiliŭ zapyt biez klijenckaha sertyfikata: zahruzicie sertyfikat i zakryty kluč abo abiarycie sandbox';
+
+  @override
+  String get tellerSteps =>
+      'Jak padłučycca:\n1. Zarehistrujciesia na teller.io i adkryjcie Teller Dashboard\n2. Skapirujcie ID prahramy, potym stvarycie i spampujcie sertyfikat z zakrytym klučom (Certificates)\n3. Zapoŭnicie ich nižej i abiarycie asiaroddzie (sandbox: testavyja danyja, uvachod u bank jak \"username\" z parolem \"password\")\n4. Naciśnicie «Padłučyć bank» i ŭvajdzicie ŭ svoj bank na adkrytaj staroncy\n5. Abiarycie rachunak i katehoryju biudžetu, potym naciśnicie «Impartavać aperacyi»';
+
+  @override
+  String get tellerUpload => 'Zahruzić fajł';
 
   @override
   String get termPrivacy => 'Palityka Pryvatnaści';

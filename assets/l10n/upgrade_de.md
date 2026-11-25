@@ -3,6 +3,7 @@
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
 ### 8.1.0
+- Teller (US) hinzugefügt: Salden und Import von Umsätzen von US-Banken und Kartenanbietern mit eigener Teller-Anwendung (zertifikatsbasiert)
 - Wise API (Global) hinzugefügt: Salden und Import von Umsätzen von Wise-Mehrwährungskonten, Umrechnungen als Überweisungen
 - PrivatBank Autoclient (Ukraine) hinzugefügt: Salden und Import von Umsätzen von Geschäftskonten per IBAN
 - monobank Personal API (Ukraine) hinzugefügt: Salden und Import von Umsätzen der Karten und Sparbüchsen, Anlegen verknüpfter Konten

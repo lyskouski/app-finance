@@ -76,6 +76,7 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
 - Integrasi
   - Financial Transaction Services (FinTS 4.1): impor saldo dan transaksi dari bank Jerman (PIN/TAN)
   - SimpleFIN Bridge (US): impor saldo dan transaksi dari bank dan penerbit kartu AS
+  - Teller (US): impor saldo dan transaksi dari bank dan penerbit kartu AS (aplikasi Teller sendiri dengan sertifikat)
   - Enable Banking (EU): impor saldo dan transaksi dari bank Eropa (PSD2)
   - Wise API (Global): impor saldo dan transaksi akun multi-mata uang Wise (Token API Pribadi)
   - PrivatBank Autoclient (Ukraina): impor saldo dan transaksi rekening bisnis dari Privat24 for Business (token Autoclient)

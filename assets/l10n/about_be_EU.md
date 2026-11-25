@@ -76,6 +76,7 @@ zastaniecca ŭ baku.
 - Intehracyi
   - Financial Transaction Services (FinTS 4.1): impart reštkaŭ i aperacyj z niamieckich bankaŭ (PIN/TAN)
   - SimpleFIN Bridge (US): impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA
+  - Teller (US): impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA (ułasnaja prahrama Teller z sertyfikatam)
   - Enable Banking (EU): impart reštkaŭ i aperacyj jeŭrapiejskich bankaŭ (PSD2)
   - Wise API (Global): impart reštkaŭ i aperacyj šmatvalutnych rachunkaŭ Wise (persanaĺny API-tokien)
   - PryvatBank Aŭtaklijent (Ukraina): impart reštak i aperacyj biznes-rachunkaŭ Privat24 dla biznesu (tokien Aŭtaklijenta)

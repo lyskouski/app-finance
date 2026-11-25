@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_settings.dart';
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
@@ -17,6 +18,8 @@ import 'package:app_finance/_classes/integration/privatbank/privatbank_client.da
 import 'package:app_finance/_classes/integration/privatbank/privatbank_settings.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
+import 'package:app_finance/_classes/integration/teller/teller_client.dart';
+import 'package:app_finance/_classes/integration/teller/teller_settings.dart';
 import 'package:app_finance/_classes/integration/wise/wise_client.dart';
 import 'package:app_finance/_classes/integration/wise/wise_settings.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -34,6 +37,7 @@ import 'package:app_finance/pages/integration/widgets/monobank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
+import 'package:app_finance/pages/integration/widgets/teller_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:fints/fints.dart';
 import 'package:flutter/services.dart';
@@ -149,6 +153,7 @@ void main() {
     expect(find.text('Integrations'), findsWidgets);
     expect(find.text('Financial Transaction Services (FinTS 4.1)'), findsOneWidget);
     expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
+    expect(find.text('Teller (US)'), findsOneWidget);
     expect(find.text('Enable Banking (EU)'), findsOneWidget);
     expect(find.text('Wise API (Global)'), findsOneWidget);
     expect(find.text('PrivatBank Autoclient (Ukraine)'), findsOneWidget);
@@ -157,6 +162,7 @@ void main() {
     // Protocols are separated from the APIs of single institutions
     final divider = tester.getTopLeft(find.byKey(const ValueKey('integration_divider'))).dy;
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_enablebanking'))).dy, lessThan(divider));
+    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_teller'))).dy, lessThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_wise'))).dy, greaterThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_privatbank'))).dy, greaterThan(divider));
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_monobank'))).dy, greaterThan(divider));
@@ -691,6 +697,150 @@ void main() {
     await tester.pumpAndSettle();
     expect(WiseSettings.loadToken(), isNull);
     expect(find.textContaining('Personal API Tokenrequired', findRichText: true), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Teller connects a bank by Teller Connect and imports transactions', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Checking',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Dining', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    const token = 'test_token_abc';
+    var disconnected = false;
+    final requests = <http.Request>[];
+    final launched = <Uri>[];
+    final client = MockClient((request) async {
+      requests.add(request);
+      if (disconnected) {
+        return http.Response(
+            jsonEncode({
+              'error': {'code': 'enrollment.disconnected.user_action.mfa_required', 'message': 'User MFA is required.'}
+            }),
+            404);
+      }
+      if (request.method == 'DELETE') {
+        return http.Response('', 204);
+      }
+      final body = switch (request.url.path) {
+        '/accounts' => [
+            {
+              'id': 'acc_1',
+              'enrollment_id': 'enr_1',
+              'name': 'Checking',
+              'institution': {'id': 'bank', 'name': 'My Bank'},
+              'last_four': '7857',
+              'currency': 'USD',
+              'type': 'depository',
+              'status': 'open',
+            },
+          ],
+        '/accounts/acc_1/balances' => {'account_id': 'acc_1', 'ledger': '100.25', 'available': '90.00'},
+        _ => [
+            {'id': 'txn_1', 'amount': '-4.75', 'date': '2026-11-20', 'description': 'Coffee Shop', 'status': 'posted'},
+            {'id': 'txn_2', 'amount': '-1.00', 'date': '2026-11-21', 'description': 'Hold', 'status': 'pending'},
+          ],
+      };
+      return http.Response(jsonEncode(body), 200);
+    });
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(
+        body: SingleChildScrollView(
+          child: TellerWidget(httpClient: client, launcher: (uri) async => launched.add(uri)),
+        ),
+      ),
+    ));
+    await tester.pumpAndSettle();
+
+    // Real bank data requires the certificate
+    final widgetState = tester.state<TellerWidgetState>(find.byType(TellerWidget));
+    widgetState.applicationId.text = 'app_123';
+    widgetState.settings.environment = TellerEnvironment.development;
+    await tester.ensureVisible(find.byKey(const ValueKey('teller_connect_bank')));
+    await tester.tap(find.byKey(const ValueKey('teller_connect_bank')));
+    await pumpFrames(tester);
+    expect(find.text('Fill in the application ID; the certificate and the private key are required for real bank data'),
+        findsOneWidget);
+    expect(launched, isEmpty);
+
+    widgetState.settings.environment = TellerEnvironment.sandbox;
+    await tester.ensureVisible(find.byKey(const ValueKey('teller_connect_bank')));
+    await tester.tap(find.byKey(const ValueKey('teller_connect_bank')));
+    await pumpFrames(tester);
+    expect(launched.single.toString(), '${TellerSettings.defaultConnectPage}?app=app_123&env=sandbox');
+    expect(TellerSettings.load().applicationId, 'app_123');
+
+    // Teller Connect returns to the application
+    DeepLinkHandler.handle(Uri.parse('fingrom://integration/teller?token=$token&enrollment=enr_1&institution=My+Bank'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(DeepLinkHandler.tellerCallback.value, isNull);
+    expect(TellerSettings.loadEnrollments().single.id, 'enr_1');
+    expect(find.text('My Bank — Checking …7857'), findsOneWidget);
+    expect(find.textContaining('100.25 USD'), findsOneWidget);
+    expect(requests.first.headers['Authorization'], 'Basic ${base64.encode(utf8.encode('$token:'))}');
+
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 1'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    expect(state.getList(AppDataType.bills, false).whereType<BillAppData>().last.title, 'Coffee Shop');
+    expect(TellerSettings.load().links, {'acc_1': account.uuid});
+
+    // A repeated import looks back for transactions posted meanwhile
+    final today = DateTime.now();
+    widgetState.accounts.single.from = DateTime(today.year, today.month, today.day);
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 0, skipped as already present: 1, pending (not imported): 1'), findsOneWidget);
+    final since = DateTime.parse(requests.last.url.queryParameters['start_date']!);
+    expect(since, DateTime(today.year, today.month, today.day).subtract(TellerWidgetState.postingDelay));
+
+    // The bank asks for a new login: Teller Connect repairs the enrollment
+    disconnected = true;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('connect the bank again'), findsOneWidget);
+    expect(widgetState.disconnected, 'enr_1');
+    await tester.ensureVisible(find.byKey(const ValueKey('teller_add_bank')));
+    await tester.tap(find.byKey(const ValueKey('teller_add_bank')));
+    await pumpFrames(tester);
+    expect(launched.last.queryParameters['enrollment'], 'enr_1');
+
+    disconnected = false;
+    await tester.ensureVisible(find.byKey(const ValueKey('teller_forget')));
+    await tester.tap(find.byKey(const ValueKey('teller_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(requests.last.method, 'DELETE');
+    expect(TellerSettings.loadEnrollments(), isEmpty);
+    expect(find.byKey(const ValueKey('teller_connect')), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

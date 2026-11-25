@@ -76,6 +76,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 - Entegrasyonlar
   - Financial Transaction Services (FinTS 4.1): Alman bankalarından bakiye ve işlemlerin içe aktarılması (PIN/TAN)
   - SimpleFIN Bridge (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması
+  - Teller (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması (sertifikalı kendi Teller uygulamanız)
   - Enable Banking (EU): Avrupa bankalarından bakiye ve işlemlerin içe aktarılması (PSD2)
   - Wise API (Global): Wise çoklu para birimi hesaplarının bakiye ve işlemlerinin içe aktarılması (kişisel API anahtarı)
   - PrivatBank Autoclient (Ukrayna): Privat24 for Business ticari hesaplarının bakiye ve işlemlerinin içe aktarımı (Autoclient belirteci)

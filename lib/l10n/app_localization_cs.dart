@@ -1423,6 +1423,81 @@ class AppLocalizationsCs extends AppLocalizations {
   String get targetAmount => 'Cílová částka';
 
   @override
+  String get tellerAccessToken => 'Přístupový token';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Zobrazí se na stránce připojení po propojení banky: vložte jej sem, pokud se Fingrom neotevřel automaticky';
+
+  @override
+  String get tellerAppId => 'ID aplikace';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Zobrazeno v Teller Dashboard, začíná na \"app_\"';
+
+  @override
+  String get tellerCertificate => 'Certifikát (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Neplatný certifikát: očekává se blok PEM \"CERTIFICATE\"';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Vydává se v Teller Dashboard (Certificates); uložen šifrovaně. Ponechte prázdné pro zachování uloženého certifikátu';
+
+  @override
+  String get tellerConnectBank => 'Připojit banku';
+
+  @override
+  String get tellerConnectPage => 'Stránka připojení';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Otevře Teller Connect v prohlížeči a vrátí přístupový token do Fingrom';
+
+  @override
+  String get tellerDescription =>
+      'Import zůstatků a transakcí amerických bank a vydavatelů karet přes Teller s vlastní aplikací registrovanou na teller.io (bezplatný tarif umožňuje 100 skutečných připojení k bankám). Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get tellerDisconnected =>
+      'Připojení k bance vyžaduje vaši pozornost (např. nové přihlášení nebo potvrzovací kód): připojte banku znovu';
+
+  @override
+  String get tellerEnvironment => 'Prostředí';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Vyplňte ID aplikace; certifikát a soukromý klíč jsou nutné pro skutečná bankovní data';
+
+  @override
+  String get tellerKey => 'Soukromý klíč (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Neplatný soukromý klíč: očekává se blok PEM \"PRIVATE KEY\"';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Stahuje se spolu s certifikátem; uložen šifrovaně. Ponechte prázdné pro zachování uloženého klíče';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller odmítl požadavek bez klientského certifikátu: nahrajte certifikát a soukromý klíč, nebo zvolte sandbox';
+
+  @override
+  String get tellerSteps =>
+      'Jak se připojit:\n1. Zaregistrujte se na teller.io a otevřete Teller Dashboard\n2. Zkopírujte ID aplikace, poté vytvořte a stáhněte certifikát s jeho soukromým klíčem (Certificates)\n3. Vyplňte je níže a zvolte prostředí (sandbox: testovací data, přihlaste se do banky jako \"username\" s heslem \"password\")\n4. Stiskněte „Připojit banku“ a přihlaste se do své banky na otevřené stránce\n5. Vyberte účet a kategorii rozpočtu a stiskněte „Importovat transakce“';
+
+  @override
+  String get tellerUpload => 'Nahrát soubor';
+
+  @override
   String get termPrivacy => 'Zásady ochrany osobních údajů';
 
   @override

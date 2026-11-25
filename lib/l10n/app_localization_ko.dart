@@ -9,7 +9,8 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '정보';
@@ -605,7 +606,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingCode => '인증 후 열린 페이지 주소';
 
   @override
-  String get enableBankingCodeTooltip => '은행에서 접근을 승인한 후 브라우저의 주소를 복사하여 여기에 붙여넣으세요';
+  String get enableBankingCodeTooltip =>
+      '은행에서 접근을 승인한 후 브라우저의 주소를 복사하여 여기에 붙여넣으세요';
 
   @override
   String get enableBankingCountry => '국가 (ISO 코드, 예: DE)';
@@ -624,7 +626,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingKey => '개인 키 (PEM)';
 
   @override
-  String get enableBankingKeyInvalid => '잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다';
+  String get enableBankingKeyInvalid =>
+      '잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다';
 
   @override
   String get enableBankingKeyNotRsa => '잘못된 개인 키: RSA 키가 필요합니다';
@@ -646,7 +649,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingRedirect => '리디렉션 URL';
 
   @override
-  String get enableBankingRedirectTooltip => '애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다';
+  String get enableBankingRedirectTooltip =>
+      '애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다';
 
   @override
   String get enableBankingStateMismatch => '이 주소는 다른 인증에 속합니다. 다시 연결하세요';
@@ -701,7 +705,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finTsCustomerId => '고객 ID (사용자 ID와 다른 경우)';
 
   @override
-  String get finTsDescription => 'FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+  String get finTsDescription =>
+      'FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -753,7 +758,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finTsVersion => '프로토콜 버전';
 
   @override
-  String get finTsWebUnsupported => '은행 서버는 브라우저에서의 접근을 허용하지 않습니다. 데스크톱 또는 모바일 앱을 사용하세요.';
+  String get finTsWebUnsupported =>
+      '은행 서버는 브라우저에서의 접근을 허용하지 않습니다. 데스크톱 또는 모바일 앱을 사용하세요.';
 
   @override
   String get flowTypeInvoice => '인보이스';
@@ -966,7 +972,8 @@ class AppLocalizationsKo extends AppLocalizations {
       '개인 토큰을 받는 방법:\n1. 브라우저에서 api.monobank.ua를 엽니다\n2. monobank 앱으로 QR 코드를 스캔하고 액세스를 승인합니다\n3. 페이지에서 토큰을 복사합니다\n4. 아래에 붙여넣고 \"연결\"을 누릅니다\n5. 각 카드 또는 저금통을 계좌에 연결(또는 생성)하고 가져옵니다';
 
   @override
-  String get monobankTokenTooltip => 'monobank 앱에서 QR 코드를 스캔한 후 api.monobank.ua에서 발급됩니다. 암호화되어 저장됩니다';
+  String get monobankTokenTooltip =>
+      'monobank 앱에서 QR 코드를 스캔한 후 api.monobank.ua에서 발급됩니다. 암호화되어 저장됩니다';
 
   @override
   String get navigationTooltip => '메인 메뉴 열기';
@@ -1009,7 +1016,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationBalance => '잔액 키워드';
 
   @override
-  String get notificationBalanceTooltip => '무시할 금액(잔액, 한도) 앞에 오는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
+  String get notificationBalanceTooltip =>
+      '무시할 금액(잔액, 한도) 앞에 오는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
 
   @override
   String notificationCaptured(Object value) {
@@ -1020,7 +1028,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationClear => '수집된 알림 지우기';
 
   @override
-  String get notificationCurrencyTooltip => '통화가 없는 금액(예: 출금 20.00)은 이 통화로 처리됩니다';
+  String get notificationCurrencyTooltip =>
+      '통화가 없는 금액(예: 출금 20.00)은 이 통화로 처리됩니다';
 
   @override
   String get notificationDefaultAccount => '기본 계좌';
@@ -1036,13 +1045,15 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notificationIncome => '수입 키워드';
 
   @override
-  String get notificationIncomeTooltip => '알림을 수입으로 표시하는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
+  String get notificationIncomeTooltip =>
+      '알림을 수입으로 표시하는 단어: 단어를 입력하고 Enter 키를 눌러 추가하세요';
 
   @override
   String get notificationMerchant => '가맹점 레이블';
 
   @override
-  String get notificationMerchantTooltip => '콜론과 가맹점이 뒤따르는 단어(위치: 상점): 단어를 입력하고 Enter 키를 눌러 추가하세요';
+  String get notificationMerchantTooltip =>
+      '콜론과 가맹점이 뒤따르는 단어(위치: 상점): 단어를 입력하고 Enter 키를 눌러 추가하세요';
 
   @override
   String get notificationNoApps => '아직 받은 알림이 없습니다: 앱이 알림을 보내면 여기에 표시됩니다';
@@ -1161,7 +1172,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get privatBankIbanInvalid => '우크라이나 IBAN을 입력하세요: UA 다음에 27자리 숫자';
 
   @override
-  String get privatBankIbanTooltip => 'API는 계좌 목록을 제공하지 않습니다: 계좌의 IBAN을 하나씩 추가하세요';
+  String get privatBankIbanTooltip =>
+      'API는 계좌 목록을 제공하지 않습니다: 계좌의 IBAN을 하나씩 추가하세요';
 
   @override
   String privatBankNotReady(Object value) {
@@ -1179,7 +1191,8 @@ class AppLocalizationsKo extends AppLocalizations {
       'Autoclient 토큰을 받는 방법:\n1. Privat24 for Business에 로그인합니다\n2. 연동(Autoclient)을 엽니다\n3. 활성화하고 토큰을 복사합니다\n4. 아래에 붙여넣고 \"연결\"을 누릅니다\n5. 가져올 계좌의 IBAN을 추가합니다';
 
   @override
-  String get privatBankTokenTooltip => 'Privat24 for Business의 연동(Autoclient)에서 발급되며, 암호화되어 저장됩니다';
+  String get privatBankTokenTooltip =>
+      'Privat24 for Business의 연동(Autoclient)에서 발급되며, 암호화되어 저장됩니다';
 
   @override
   String get processIsFinished => '완료!';
@@ -1277,7 +1290,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials => 'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';
 
   @override
   String get simpleFinToken => 'SimpleFIN 설정 토큰';
@@ -1289,7 +1303,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get simpleFinTokenInvalid => '잘못된 SimpleFIN 설정 토큰';
 
   @override
-  String get simpleFinTokenTooltip => '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';
+  String get simpleFinTokenTooltip =>
+      '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';
 
   @override
   String get skipFromTotals => '합계에서 제외';
@@ -1392,6 +1407,79 @@ class AppLocalizationsKo extends AppLocalizations {
   String get targetAmount => '목표 금액';
 
   @override
+  String get tellerAccessToken => '액세스 토큰';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      '은행을 연결한 후 연결 페이지에 표시됩니다. Fingrom이 자동으로 열리지 않았다면 여기에 붙여 넣으세요';
+
+  @override
+  String get tellerAppId => '애플리케이션 ID';
+
+  @override
+  String get tellerAppIdTooltip => 'Teller Dashboard에 표시되며 \"app_\"로 시작합니다';
+
+  @override
+  String get tellerCertificate => '인증서 (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      '잘못된 인증서: PEM 블록 \"CERTIFICATE\"가 필요합니다';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Teller Dashboard(Certificates)에서 발급되며 암호화되어 저장됩니다. 저장된 인증서를 유지하려면 비워 두세요';
+
+  @override
+  String get tellerConnectBank => '은행 연결';
+
+  @override
+  String get tellerConnectPage => '연결 페이지';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      '브라우저에서 Teller Connect를 열고 액세스 토큰을 Fingrom으로 반환합니다';
+
+  @override
+  String get tellerDescription =>
+      'teller.io에 등록한 자체 애플리케이션으로 Teller를 통해 미국 은행 및 카드 발급사의 잔액과 거래 내역을 가져옵니다(무료 요금제는 실제 은행 연결 100개 허용). 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+
+  @override
+  String get tellerDisconnected =>
+      '은행 연결에 확인이 필요합니다(예: 새 로그인 또는 확인 코드). 은행을 다시 연결하세요';
+
+  @override
+  String get tellerEnvironment => '환경';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      '애플리케이션 ID를 입력하세요. 실제 은행 데이터에는 인증서와 개인 키가 필요합니다';
+
+  @override
+  String get tellerKey => '개인 키 (PEM)';
+
+  @override
+  String get tellerKeyInvalid => '잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다';
+
+  @override
+  String get tellerKeyTooltip =>
+      '인증서와 함께 다운로드되며 암호화되어 저장됩니다. 저장된 키를 유지하려면 비워 두세요';
+
+  @override
+  String get tellerMissingCertificate =>
+      '클라이언트 인증서가 없어 Teller가 요청을 거부했습니다. 인증서와 개인 키를 업로드하거나 sandbox를 선택하세요';
+
+  @override
+  String get tellerSteps =>
+      '연결 방법:\n1. teller.io에 가입하고 Teller Dashboard를 엽니다\n2. 애플리케이션 ID를 복사한 다음 개인 키가 포함된 인증서를 생성하여 다운로드합니다(Certificates)\n3. 아래에 입력하고 환경을 선택합니다(sandbox: 테스트 데이터, 은행에 \"username\"과 \"password\"로 로그인)\n4. \"은행 연결\"을 누르고 열린 페이지에서 은행에 로그인합니다\n5. 계좌와 예산 카테고리를 선택한 후 \"거래 가져오기\"를 누릅니다';
+
+  @override
+  String get tellerUpload => '파일 업로드';
+
+  @override
   String get termPrivacy => '개인정보 보호정책';
 
   @override
@@ -1474,7 +1562,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get wiseProfile => '프로필';
 
   @override
-  String get wiseScaRequired => 'Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요';
+  String get wiseScaRequired =>
+      'Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요';
 
   @override
   String get wiseToken => '개인 API 토큰';
@@ -1484,7 +1573,8 @@ class AppLocalizationsKo extends AppLocalizations {
       '개인 API 토큰 받는 방법:\n1. 브라우저에서 wise.com에 로그인합니다(모바일 앱에서는 토큰을 만들 수 없음)\n2. 설정 → 연동 및 도구 → API 토큰을 엽니다\n3. \"새 토큰 추가\"를 선택하고 이름(예: Fingrom)을 지정한 뒤 \"읽기 전용\" 권한을 선택합니다\n4. 2단계 인증으로 확인하고 토큰을 복사합니다\n5. 아래에 붙여 넣고 \"연결\"을 누릅니다';
 
   @override
-  String get wiseTokenTooltip => 'Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다';
+  String get wiseTokenTooltip =>
+      'Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다';
 
   @override
   String get zoomState => '줌인/줌아웃';

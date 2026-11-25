@@ -1427,6 +1427,81 @@ class AppLocalizationsUk extends AppLocalizations {
   String get targetAmount => 'Цільова сума';
 
   @override
+  String get tellerAccessToken => 'Токен доступу';
+
+  @override
+  String get tellerAccessTokenTooltip =>
+      'Показується на сторінці підключення після прив’язки банку: вставте його сюди, якщо Fingrom не відкрився автоматично';
+
+  @override
+  String get tellerAppId => 'ID застосунку';
+
+  @override
+  String get tellerAppIdTooltip =>
+      'Показаний у Teller Dashboard, починається з \"app_\"';
+
+  @override
+  String get tellerCertificate => 'Сертифікат (PEM)';
+
+  @override
+  String get tellerCertificateInvalid =>
+      'Неправильний сертифікат: очікується PEM-блок \"CERTIFICATE\"';
+
+  @override
+  String get tellerCertificateTooltip =>
+      'Видається в Teller Dashboard (Certificates); зберігається в зашифрованому вигляді. Залиште порожнім, щоб зберегти поточний сертифікат';
+
+  @override
+  String get tellerConnectBank => 'Підключити банк';
+
+  @override
+  String get tellerConnectPage => 'Сторінка підключення';
+
+  @override
+  String get tellerConnectPageTooltip =>
+      'Відкриває Teller Connect у браузері та повертає токен доступу до Fingrom';
+
+  @override
+  String get tellerDescription =>
+      'Імпорт залишків і операцій банків та емітентів карток США через Teller з власним застосунком, зареєстрованим на teller.io (безкоштовний тариф дозволяє 100 реальних підключень до банків). Доступ лише для читання: платежі не виконуються.';
+
+  @override
+  String get tellerDisconnected =>
+      'Підключення до банку потребує вашої уваги (наприклад, нового входу або коду підтвердження): підключіть банк знову';
+
+  @override
+  String get tellerEnvironment => 'Середовище';
+
+  @override
+  String get tellerHeadline => 'Teller (US)';
+
+  @override
+  String get tellerIncomplete =>
+      'Заповніть ID застосунку; сертифікат і закритий ключ потрібні для реальних банківських даних';
+
+  @override
+  String get tellerKey => 'Закритий ключ (PEM)';
+
+  @override
+  String get tellerKeyInvalid =>
+      'Неправильний закритий ключ: очікується PEM-блок \"PRIVATE KEY\"';
+
+  @override
+  String get tellerKeyTooltip =>
+      'Завантажується разом із сертифікатом; зберігається в зашифрованому вигляді. Залиште порожнім, щоб зберегти поточний ключ';
+
+  @override
+  String get tellerMissingCertificate =>
+      'Teller відхилив запит без клієнтського сертифіката: завантажте сертифікат і закритий ключ або оберіть sandbox';
+
+  @override
+  String get tellerSteps =>
+      'Як підключитися:\n1. Зареєструйтеся на teller.io та відкрийте Teller Dashboard\n2. Скопіюйте ID застосунку, потім створіть і завантажте сертифікат із закритим ключем (Certificates)\n3. Заповніть їх нижче й оберіть середовище (sandbox: тестові дані, вхід до банку як \"username\" з паролем \"password\")\n4. Натисніть «Підключити банк» і увійдіть до свого банку на відкритій сторінці\n5. Оберіть рахунок і категорію бюджету, потім натисніть «Імпортувати операції»';
+
+  @override
+  String get tellerUpload => 'Завантажити файл';
+
+  @override
   String get termPrivacy => 'Політика приватності';
 
   @override

@@ -3,6 +3,7 @@
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
 ### 8.1.0
+- Přidán Teller (US): zůstatky a import transakcí amerických bank a vydavatelů karet s vlastní aplikací Teller (na základě certifikátu)
 - Přidáno Wise API (Global): zůstatky a import transakcí víceměnových účtů Wise, převody měn jako převody
 - Přidán PrivatBank Autoclient (Ukrajina): zůstatky a import transakcí podnikatelských účtů podle IBAN
 - Přidán monobank Personal API (Ukrajina): zůstatky a import transakcí karet a pokladniček, vytváření propojených účtů
