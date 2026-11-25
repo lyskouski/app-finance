@@ -1460,6 +1460,29 @@ class AppLocalizationsBe extends AppLocalizations {
   String get splitTooltip => 'Вызначыць месячныя ліміты';
 
   @override
+  String get starlingDescription =>
+      'Імпарт рэшткаў і аперацый рахункаў Starling Bank з дапамогай персанальнага токена доступу вашага бясплатнага акаўнта распрацоўшчыка. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (Вялікабрытанія)';
+
+  @override
+  String get starlingScopes =>
+      'У токена не хапае дазволу: стварыце яго з абласцямі доступу \"account:read\", \"balance:read\" і \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Персанальны токен доступу';
+
+  @override
+  String get starlingTokenSteps =>
+      'Як атрымаць персанальны токен доступу:\n1. Зарэгіструйцеся на developer.starlingbank.com (бясплатна)\n2. Адкрыйце Personal Access, дадайце свой акаўнт Starling і пацвердзіце яго ў праграме Starling\n3. Стварыце токен з абласцямі доступу \"account:read\", \"balance:read\" і \"transaction:read\"\n4. Устаўце яго ніжэй і націсніце «Падлучыцца»';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Ствараецца на developer.starlingbank.com у раздзеле Personal Access; захоўваецца ў зашыфраваным выглядзе';
+
+  @override
   String get subscription =>
       'Як праект з адкрытым зыходным кодам, падпіска не адкрые аніякіх дадатковых функцый. Аднак гэта паслужыць інвестыцыяй у бесперапынную эвалюцыю і ўдасканаленьне прыкладаньня, а таксама захаваньне яго даступнасьці.';
 
@@ -3146,6 +3169,29 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get splitTooltip => 'Vyznačyć Miesiačnyja Limity';
+
+  @override
+  String get starlingDescription =>
+      'Impart reštkaŭ i aperacyj rachunkaŭ Starling Bank z dapamohaj persanaĺnaha tokiena dostupu vašaha biaspłatnaha akaŭnta raspracoŭščyka. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (Vialikabrytanija)';
+
+  @override
+  String get starlingScopes =>
+      'U tokiena nie chapaje dazvołu: stvarycie jaho z abłaściami dostupu \"account:read\", \"balance:read\" i \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Persanaĺny tokien dostupu';
+
+  @override
+  String get starlingTokenSteps =>
+      'Jak atrymać persanaĺny tokien dostupu:\n1. Zarehistrujciesia na developer.starlingbank.com (biaspłatna)\n2. Adkryjcie Personal Access, dadajcie svoj akaŭnt Starling i paćvierdzicie jaho ŭ prahramie Starling\n3. Stvarycie tokien z abłaściami dostupu \"account:read\", \"balance:read\" i \"transaction:read\"\n4. Ustaŭcie jaho nižej i naciśnicie «Padłučycca»';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Stvarajecca na developer.starlingbank.com u raździele Personal Access; zachoŭvajecca ŭ zašyfravanym vyhladzie';
 
   @override
   String get subscription =>

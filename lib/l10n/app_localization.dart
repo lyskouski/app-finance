@@ -2803,6 +2803,42 @@ abstract class AppLocalizations {
   /// **'Declare Limits per Month'**
   String get splitTooltip;
 
+  /// No description provided for @starlingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of Starling Bank accounts with a Personal Access Token of your free developer account. Access is read-only: no payments are made.'**
+  String get starlingDescription;
+
+  /// No description provided for @starlingHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Starling Bank Personal Access (United Kingdom)'**
+  String get starlingHeadline;
+
+  /// No description provided for @starlingScopes.
+  ///
+  /// In en, this message translates to:
+  /// **'The token lacks a permission: create it with the scopes \"account:read\", \"balance:read\", and \"transaction:read\"'**
+  String get starlingScopes;
+
+  /// No description provided for @starlingToken.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Access Token'**
+  String get starlingToken;
+
+  /// No description provided for @starlingTokenSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'How to get a Personal Access Token:\n1. Sign up at developer.starlingbank.com (free)\n2. Open Personal Access, add your Starling account, and approve it in the Starling app\n3. Create a token with the scopes \"account:read\", \"balance:read\", and \"transaction:read\"\n4. Paste it below and press \"Connect\"'**
+  String get starlingTokenSteps;
+
+  /// No description provided for @starlingTokenTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Created at developer.starlingbank.com under Personal Access; stored encrypted'**
+  String get starlingTokenTooltip;
+
   /// No description provided for @subscription.
   ///
   /// In en, this message translates to:

@@ -1459,6 +1459,29 @@ class AppLocalizationsUk extends AppLocalizations {
   String get splitTooltip => 'Задекларуйте місячні ліміти';
 
   @override
+  String get starlingDescription =>
+      'Імпорт залишків і операцій рахунків Starling Bank за допомогою персонального токена доступу вашого безкоштовного облікового запису розробника. Доступ лише для читання: платежі не виконуються.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (Велика Британія)';
+
+  @override
+  String get starlingScopes =>
+      'Токену бракує дозволу: створіть його з областями доступу \"account:read\", \"balance:read\" і \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Персональний токен доступу';
+
+  @override
+  String get starlingTokenSteps =>
+      'Як отримати персональний токен доступу:\n1. Зареєструйтеся на developer.starlingbank.com (безкоштовно)\n2. Відкрийте Personal Access, додайте свій обліковий запис Starling і підтвердьте його в застосунку Starling\n3. Створіть токен з областями доступу \"account:read\", \"balance:read\" і \"transaction:read\"\n4. Вставте його нижче й натисніть «Підключитися»';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Створюється на developer.starlingbank.com у розділі Personal Access; зберігається в зашифрованому вигляді';
+
+  @override
   String get subscription =>
       'Оскільки це проект із відкритим кодом, підписка не розблокує жодних додаткових функцій. Однак це буде інвестицією в безперервний розвиток і вдосконалення програми, а також для збереження її доступності.';
 

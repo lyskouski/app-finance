@@ -1457,6 +1457,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get splitTooltip => 'Declare Limits per Month';
 
   @override
+  String get starlingDescription =>
+      'Import balances and transactions of Starling Bank accounts with a Personal Access Token of your free developer account. Access is read-only: no payments are made.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (United Kingdom)';
+
+  @override
+  String get starlingScopes =>
+      'The token lacks a permission: create it with the scopes \"account:read\", \"balance:read\", and \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Personal Access Token';
+
+  @override
+  String get starlingTokenSteps =>
+      'How to get a Personal Access Token:\n1. Sign up at developer.starlingbank.com (free)\n2. Open Personal Access, add your Starling account, and approve it in the Starling app\n3. Create a token with the scopes \"account:read\", \"balance:read\", and \"transaction:read\"\n4. Paste it below and press \"Connect\"';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Created at developer.starlingbank.com under Personal Access; stored encrypted';
+
+  @override
   String get subscription =>
       'As an open-source project, subscribing will not unlock any additional features. However, it would serve as an investment in the continuous evolution and improvement of the application, and to preserve its availability.';
 

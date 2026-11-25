@@ -1467,6 +1467,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String get splitTooltip => 'Declarar límites por mes';
 
   @override
+  String get starlingDescription =>
+      'Importa saldos y transacciones de cuentas de Starling Bank con un token de acceso personal de tu cuenta de desarrollador gratuita. El acceso es de solo lectura: no se realizan pagos.';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access (Reino Unido)';
+
+  @override
+  String get starlingScopes =>
+      'Al token le falta un permiso: créalo con los ámbitos \"account:read\", \"balance:read\" y \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Token de acceso personal';
+
+  @override
+  String get starlingTokenSteps =>
+      'Cómo obtener un token de acceso personal:\n1. Regístrate en developer.starlingbank.com (gratis)\n2. Abre Personal Access, añade tu cuenta de Starling y apruébala en la app de Starling\n3. Crea un token con los ámbitos \"account:read\", \"balance:read\" y \"transaction:read\"\n4. Pégalo abajo y pulsa «Conectar»';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Se crea en developer.starlingbank.com en Personal Access; se guarda cifrado';
+
+  @override
   String get subscription =>
       'Al tratarse de un proyecto de código abierto, la suscripción no desbloqueará ninguna función adicional. Sin embargo, serviría como inversión en la continua evolución y mejora de la aplicación, y para preservar su disponibilidad.';
 

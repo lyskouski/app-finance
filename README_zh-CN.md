@@ -79,6 +79,7 @@
   - Wise API (Global)：导入 Wise 多币种账户的余额和交易（个人 API 令牌）
   - Investec Programmable Banking（南非）：导入 Private Banking 账户的余额和交易（自有 API 密钥）
   - Monzo Developer API（英国）：导入余额和交易（供个人使用的自有 OAuth 客户端）
+  - Starling Bank Personal Access（英国）：导入余额和交易（个人访问令牌）
   - PrivatBank Autoclient（乌克兰）：导入 Privat24 for Business 企业账户的余额和交易（Autoclient 令牌）
   - monobank Personal API（乌克兰）：导入 monobank 银行卡和储蓄罐的余额和交易（个人令牌）
   - 通知解析器 (Android)：根据银行和支付应用的通知创建交易

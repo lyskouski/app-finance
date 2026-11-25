@@ -1426,6 +1426,28 @@ class AppLocalizationsZh extends AppLocalizations {
   String get splitTooltip => '声明每月限额';
 
   @override
+  String get starlingDescription =>
+      '使用您免费开发者账户的个人访问令牌导入 Starling Bank 账户的余额和交易。访问为只读：不会进行任何付款。';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access（英国）';
+
+  @override
+  String get starlingScopes =>
+      '令牌缺少权限：请使用范围 \"account:read\"、\"balance:read\" 和 \"transaction:read\" 创建令牌';
+
+  @override
+  String get starlingToken => '个人访问令牌';
+
+  @override
+  String get starlingTokenSteps =>
+      '如何获取个人访问令牌：\n1. 在 developer.starlingbank.com 注册（免费）\n2. 打开 Personal Access，添加您的 Starling 账户，并在 Starling 应用中批准\n3. 创建带有范围 \"account:read\"、\"balance:read\" 和 \"transaction:read\" 的令牌\n4. 粘贴到下方并点击“连接”';
+
+  @override
+  String get starlingTokenTooltip =>
+      '在 developer.starlingbank.com 的 Personal Access 中创建；加密存储';
+
+  @override
   String get subscription =>
       '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
 
@@ -3068,6 +3090,28 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get splitTooltip => '宣告每月限制';
+
+  @override
+  String get starlingDescription =>
+      '使用您免費開發者帳戶的個人存取權杖匯入 Starling Bank 帳戶的餘額與交易。存取為唯讀：不會進行任何付款。';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access（英國）';
+
+  @override
+  String get starlingScopes =>
+      '權杖缺少權限：請使用範圍 \"account:read\"、\"balance:read\" 與 \"transaction:read\" 建立權杖';
+
+  @override
+  String get starlingToken => '個人存取權杖';
+
+  @override
+  String get starlingTokenSteps =>
+      '如何取得個人存取權杖：\n1. 在 developer.starlingbank.com 註冊（免費）\n2. 開啟 Personal Access，新增您的 Starling 帳戶，並在 Starling 應用程式中核准\n3. 建立具有範圍 \"account:read\"、\"balance:read\" 與 \"transaction:read\" 的權杖\n4. 貼到下方並點選「連線」';
+
+  @override
+  String get starlingTokenTooltip =>
+      '在 developer.starlingbank.com 的 Personal Access 中建立；加密儲存';
 
   @override
   String get subscription =>

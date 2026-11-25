@@ -39,6 +39,8 @@ class AppPreferences {
   static const String prefTellerCertificate = 'tellerCertificate';
   static const String prefTellerKey = 'tellerKey';
   static const String prefTellerEnrollments = 'tellerEnrollments';
+  static const String prefStarling = 'starling';
+  static const String prefStarlingToken = 'starlingToken';
   static const String prefWise = 'wise';
   static const String prefWiseToken = 'wiseToken';
   static const String prefInvestec = 'investec';

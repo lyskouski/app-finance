@@ -1460,6 +1460,29 @@ class AppLocalizationsId extends AppLocalizations {
   String get splitTooltip => 'Tentukan Batas per Bulan';
 
   @override
+  String get starlingDescription =>
+      'Impor saldo dan transaksi rekening Starling Bank dengan Token Akses Pribadi dari akun pengembang gratis Anda. Akses hanya-baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (Britania Raya)';
+
+  @override
+  String get starlingScopes =>
+      'Token tidak memiliki salah satu izin: buat dengan cakupan \"account:read\", \"balance:read\", dan \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Token Akses Pribadi';
+
+  @override
+  String get starlingTokenSteps =>
+      'Cara mendapatkan Token Akses Pribadi:\n1. Daftar di developer.starlingbank.com (gratis)\n2. Buka Personal Access, tambahkan akun Starling Anda, dan setujui di aplikasi Starling\n3. Buat token dengan cakupan \"account:read\", \"balance:read\", dan \"transaction:read\"\n4. Tempel di bawah dan tekan \"Hubungkan\"';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Dibuat di developer.starlingbank.com pada Personal Access; disimpan terenkripsi';
+
+  @override
   String get subscription =>
       'Sebagai proyek sumber terbuka, berlangganan tidak akan membuka fitur tambahan apa pun. Namun, hal ini akan menjadi investasi bagi pengembangan dan peningkatan aplikasi yang berkelanjutan, serta untuk menjaga ketersediaannya.';
 

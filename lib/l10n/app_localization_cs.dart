@@ -1455,6 +1455,29 @@ class AppLocalizationsCs extends AppLocalizations {
   String get splitTooltip => 'Vyhlášení limitů za měsíc';
 
   @override
+  String get starlingDescription =>
+      'Import zůstatků a transakcí účtů Starling Bank pomocí osobního přístupového tokenu z vašeho bezplatného vývojářského účtu. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (Spojené království)';
+
+  @override
+  String get starlingScopes =>
+      'Tokenu chybí oprávnění: vytvořte jej s rozsahy \"account:read\", \"balance:read\" a \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Osobní přístupový token';
+
+  @override
+  String get starlingTokenSteps =>
+      'Jak získat osobní přístupový token:\n1. Zaregistrujte se na developer.starlingbank.com (zdarma)\n2. Otevřete Personal Access, přidejte svůj účet Starling a schvalte jej v aplikaci Starling\n3. Vytvořte token s rozsahy \"account:read\", \"balance:read\" a \"transaction:read\"\n4. Vložte jej níže a stiskněte „Připojit“';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Vytváří se na developer.starlingbank.com v sekci Personal Access; ukládá se šifrovaně';
+
+  @override
   String get subscription =>
       'Jelikož se jedná o projekt s otevřeným zdrojovým kódem, předplatné neodemkne žádné další funkce. Sloužilo by však jako investice do neustálého vývoje a zlepšování aplikace a k zachování její dostupnosti.';
 

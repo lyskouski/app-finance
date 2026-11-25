@@ -81,6 +81,7 @@
   - Wise API (Global): Wise मल्टी-करेंसी खातों की शेष राशि और लेनदेन का आयात (व्यक्तिगत API टोकन)
   - Investec Programmable Banking (दक्षिण अफ्रीका): Private Banking खातों की शेष राशि और लेनदेन का आयात (अपनी API कुंजियाँ)
   - Monzo Developer API (यूनाइटेड किंगडम): शेष राशि और लेनदेन का आयात (व्यक्तिगत उपयोग के लिए अपना OAuth क्लाइंट)
+  - Starling Bank Personal Access (यूनाइटेड किंगडम): शेष राशि और लेनदेन का आयात (व्यक्तिगत एक्सेस टोकन)
   - PrivatBank Autoclient (यूक्रेन): Privat24 for Business के व्यावसायिक खातों के बैलेंस और लेनदेन का आयात (Autoclient टोकन)
   - monobank Personal API (यूक्रेन): monobank कार्डों और जार के बैलेंस और लेनदेन का आयात (व्यक्तिगत टोकन)
   - सूचनाएं पार्सर (Android): बैंकिंग और भुगतान ऐप्स की सूचनाओं से लेनदेन

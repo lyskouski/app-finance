@@ -82,6 +82,7 @@
   - Wise API (Global): وارد کردن موجودی‌ها و تراکنش‌های حساب‌های چندارزی Wise (توکن API شخصی)
   - Investec Programmable Banking (آفریقای جنوبی): وارد کردن موجودی‌ها و تراکنش‌های حساب‌های Private Banking (کلیدهای API شخصی)
   - Monzo Developer API (بریتانیا): وارد کردن موجودی‌ها و تراکنش‌ها (کلاینت OAuth شخصی برای استفاده شخصی)
+  - Starling Bank Personal Access (بریتانیا): وارد کردن موجودی‌ها و تراکنش‌ها (توکن دسترسی شخصی)
   - PrivatBank Autoclient (اوکراین): وارد کردن موجودی‌ها و تراکنش‌های حساب‌های تجاری Privat24 for Business (توکن Autoclient)
   - monobank Personal API (اوکراین): وارد کردن موجودی‌ها و تراکنش‌های کارت‌ها و قلک‌های monobank (توکن شخصی)
   - تجزیه کننده اطلاعیه ها (Android): تراکنش‌ها از اعلان‌های برنامه‌های بانکی و پرداخت

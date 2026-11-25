@@ -1459,6 +1459,29 @@ class AppLocalizationsTr extends AppLocalizations {
   String get splitTooltip => 'Aylık Limitleri Bildirin';
 
   @override
+  String get starlingDescription =>
+      'Ücretsiz geliştirici hesabınızın kişisel erişim anahtarıyla Starling Bank hesaplarının bakiyelerini ve işlemlerini içe aktarın. Erişim salt okunurdur: hiçbir ödeme yapılmaz.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (Birleşik Krallık)';
+
+  @override
+  String get starlingScopes =>
+      'Anahtarda bir izin eksik: \"account:read\", \"balance:read\" ve \"transaction:read\" kapsamlarıyla oluşturun';
+
+  @override
+  String get starlingToken => 'Kişisel Erişim Anahtarı';
+
+  @override
+  String get starlingTokenSteps =>
+      'Kişisel erişim anahtarı nasıl alınır:\n1. developer.starlingbank.com\'a kaydolun (ücretsiz)\n2. Personal Access bölümünü açın, Starling hesabınızı ekleyin ve Starling uygulamasında onaylayın\n3. \"account:read\", \"balance:read\" ve \"transaction:read\" kapsamlarıyla bir anahtar oluşturun\n4. Aşağıya yapıştırın ve \"Bağlan\"a basın';
+
+  @override
+  String get starlingTokenTooltip =>
+      'developer.starlingbank.com\'da Personal Access bölümünde oluşturulur; şifreli olarak saklanır';
+
+  @override
   String get subscription =>
       'Açık kaynaklı bir proje olarak, abone olmak herhangi bir ek özelliğin kilidini açmayacaktır. Ancak, uygulamanın sürekli gelişimi ve iyileştirilmesi ve kullanılabilirliğinin korunması için bir yatırım olarak hizmet edecektir.';
 

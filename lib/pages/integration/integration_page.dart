@@ -15,6 +15,7 @@ import 'package:app_finance/pages/integration/widgets/monzo_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
+import 'package:app_finance/pages/integration/widgets/starling_widget.dart';
 import 'package:app_finance/pages/integration/widgets/teller_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:flutter/foundation.dart';
@@ -76,13 +77,21 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
           icon: Icons.business_center_outlined,
           builder: (_) => const PrivatBankWidget(),
         ),
-        if (!kIsWeb)
+        // Browsers are not allowed to call the API
+        if (!kIsWeb) ...[
+          (
+            id: 'starling',
+            title: AppLocale.labels.starlingHeadline,
+            icon: Icons.star_outline,
+            builder: (_) => const StarlingWidget(),
+          ),
           (
             id: 'teller',
             title: AppLocale.labels.tellerHeadline,
             icon: Icons.account_balance_outlined,
             builder: (_) => const TellerWidget(),
           ),
+        ],
         (
           id: 'wise',
           title: AppLocale.labels.wiseHeadline,

@@ -6,6 +6,7 @@ _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” 
 - Teller (US) qo'shildi: o'z Teller ilovangiz bilan (sertifikat asosida) AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini import qilish
 - Investec Programmable Banking (Janubiy Afrika) qo'shildi: o'z API kalitlaringiz bilan Private Banking hisoblarining qoldiqlari va tranzaksiyalarini import qilish
 - Monzo Developer API (Buyuk Britaniya) qo'shildi: Monzo ilovasida tasdiqlangan o'z OAuth mijozingiz bilan qoldiqlar va tranzaksiyalarni import qilish
+- Starling Bank Personal Access (Buyuk Britaniya) qo'shildi: shaxsiy kirish tokeni bilan qoldiqlar va tranzaksiyalarni import qilish
 - Wise API (Global) qo'shildi: Wise ko'p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qilish, konvertatsiyalar o'tkazma sifatida
 - PrivatBank Autoclient (Ukraina) qo'shildi: IBAN bo'yicha biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish
 - monobank Personal API (Ukraina) qo'shildi: kartalar va jamg'arma bankalari qoldiqlari va tranzaksiyalarini import qilish, bog'langan hisoblarni yaratish

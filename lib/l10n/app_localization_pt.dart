@@ -1466,6 +1466,28 @@ class AppLocalizationsPt extends AppLocalizations {
   String get splitTooltip => 'Declarar limites por mês';
 
   @override
+  String get starlingDescription =>
+      'Importe saldos e transações de contas Starling Bank com um token de acesso pessoal da sua conta de programador gratuita. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access (Reino Unido)';
+
+  @override
+  String get starlingScopes =>
+      'Falta uma permissão ao token: crie-o com os âmbitos \"account:read\", \"balance:read\" e \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Token de acesso pessoal';
+
+  @override
+  String get starlingTokenSteps =>
+      'Como obter um token de acesso pessoal:\n1. Registe-se em developer.starlingbank.com (gratuito)\n2. Abra Personal Access, adicione a sua conta Starling e aprove-a na aplicação Starling\n3. Crie um token com os âmbitos \"account:read\", \"balance:read\" e \"transaction:read\"\n4. Cole-o abaixo e prima \"Ligar\"';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Criado em developer.starlingbank.com em Personal Access; guardado encriptado';
+
+  @override
   String get subscription =>
       'Sendo um projeto de código aberto, a subscrição não desbloqueia quaisquer funcionalidades adicionais. No entanto, serviria como um investimento na evolução e melhoria contínuas da aplicação, e para preservar a sua disponibilidade.';
 
@@ -3157,6 +3179,28 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get splitTooltip => 'Declarar limites por mês';
+
+  @override
+  String get starlingDescription =>
+      'Importe saldos e transações de contas Starling Bank com um token de acesso pessoal da sua conta de desenvolvedor gratuita. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access (Reino Unido)';
+
+  @override
+  String get starlingScopes =>
+      'Falta uma permissão no token: crie-o com os escopos \"account:read\", \"balance:read\" e \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Token de acesso pessoal';
+
+  @override
+  String get starlingTokenSteps =>
+      'Como obter um token de acesso pessoal:\n1. Cadastre-se em developer.starlingbank.com (gratuito)\n2. Abra Personal Access, adicione sua conta Starling e aprove-a no aplicativo Starling\n3. Crie um token com os escopos \"account:read\", \"balance:read\" e \"transaction:read\"\n4. Cole-o abaixo e toque em \"Conectar\"';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Criado em developer.starlingbank.com em Personal Access; armazenado criptografado';
 
   @override
   String get subscription =>

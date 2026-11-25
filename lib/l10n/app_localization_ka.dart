@@ -1462,6 +1462,29 @@ class AppLocalizationsKa extends AppLocalizations {
   String get splitTooltip => 'თვეში ლიმიტების განსაზღვრა';
 
   @override
+  String get starlingDescription =>
+      'Starling Bank-ის ანგარიშების ნაშთებისა და ტრანზაქციების იმპორტი თქვენი უფასო დეველოპერის ანგარიშის პერსონალური წვდომის ტოკენით. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (გაერთიანებული სამეფო)';
+
+  @override
+  String get starlingScopes =>
+      'ტოკენს აკლია ნებართვა: შექმენით ის სკოუპებით \"account:read\", \"balance:read\" და \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'პერსონალური წვდომის ტოკენი';
+
+  @override
+  String get starlingTokenSteps =>
+      'როგორ მივიღოთ პერსონალური წვდომის ტოკენი:\n1. დარეგისტრირდით developer.starlingbank.com-ზე (უფასოდ)\n2. გახსენით Personal Access, დაამატეთ თქვენი Starling ანგარიში და დაადასტურეთ ის Starling-ის აპში\n3. შექმენით ტოკენი სკოუპებით \"account:read\", \"balance:read\" და \"transaction:read\"\n4. ჩასვით ქვემოთ და დააჭირეთ „დაკავშირებას“';
+
+  @override
+  String get starlingTokenTooltip =>
+      'იქმნება developer.starlingbank.com-ზე, Personal Access განყოფილებაში; ინახება დაშიფრული სახით';
+
+  @override
   String get subscription =>
       'როგორც ღია კოდის პროექტში, გამოწერა არ გახსნის დამატებით ფუნქციებს. თუმცა, ეს იქნება აპლიკაციის უწყვეტი განვითარებისა და გაუმჯობესების მხარდაჭერა და მისი ხელმისაწვდომობის შენარჩუნება.';
 

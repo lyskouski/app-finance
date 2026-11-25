@@ -1466,6 +1466,28 @@ class AppLocalizationsRo extends AppLocalizations {
   String get splitTooltip => 'Declararea limitelor pe lună';
 
   @override
+  String get starlingDescription =>
+      'Importă soldurile și tranzacțiile conturilor Starling Bank cu un token de acces personal din contul dvs. gratuit de dezvoltator. Accesul este doar pentru citire: nu se efectuează plăți.';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access (Regatul Unit)';
+
+  @override
+  String get starlingScopes =>
+      'Tokenului îi lipsește o permisiune: creați-l cu domeniile \"account:read\", \"balance:read\" și \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Token de acces personal';
+
+  @override
+  String get starlingTokenSteps =>
+      'Cum obțineți un token de acces personal:\n1. Înregistrați-vă pe developer.starlingbank.com (gratuit)\n2. Deschideți Personal Access, adăugați contul Starling și aprobați-l în aplicația Starling\n3. Creați un token cu domeniile \"account:read\", \"balance:read\" și \"transaction:read\"\n4. Lipiți-l mai jos și apăsați „Conectare”';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Creat pe developer.starlingbank.com în Personal Access; stocat criptat';
+
+  @override
   String get subscription =>
       'Fiind un proiect open-source, abonarea nu va debloca nicio funcție suplimentară. Cu toate acestea, ar servi ca o investiție în evoluția și îmbunătățirea continuă a aplicației și pentru a păstra disponibilitatea acesteia.';
 

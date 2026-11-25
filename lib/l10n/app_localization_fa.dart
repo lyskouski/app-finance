@@ -1455,6 +1455,28 @@ class AppLocalizationsFa extends AppLocalizations {
   String get splitTooltip => 'محدودیت ها را در ماه اعلام کنید';
 
   @override
+  String get starlingDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های حساب‌های Starling Bank با توکن دسترسی شخصی از حساب توسعه‌دهنده رایگان شما. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access (بریتانیا)';
+
+  @override
+  String get starlingScopes =>
+      'توکن فاقد یک مجوز است: آن را با دامنه‌های \"account:read\"، \"balance:read\" و \"transaction:read\" ایجاد کنید';
+
+  @override
+  String get starlingToken => 'توکن دسترسی شخصی';
+
+  @override
+  String get starlingTokenSteps =>
+      'نحوه دریافت توکن دسترسی شخصی:\n1. در developer.starlingbank.com ثبت‌نام کنید (رایگان)\n2. Personal Access را باز کنید، حساب Starling خود را اضافه کنید و آن را در برنامه Starling تأیید کنید\n3. توکنی با دامنه‌های \"account:read\"، \"balance:read\" و \"transaction:read\" ایجاد کنید\n4. آن را در زیر جای‌گذاری کرده و «اتصال» را بزنید';
+
+  @override
+  String get starlingTokenTooltip =>
+      'در developer.starlingbank.com در بخش Personal Access ایجاد می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود';
+
+  @override
   String get subscription =>
       'به عنوان یک پروژه منبع باز، اشتراک هیچ ویژگی اضافی را باز نمی کند. با این حال، به عنوان یک سرمایه گذاری در تکامل و بهبود مستمر برنامه و حفظ در دسترس بودن آن عمل می کند.';
 

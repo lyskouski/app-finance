@@ -1471,6 +1471,28 @@ class AppLocalizationsFr extends AppLocalizations {
   String get splitTooltip => 'Déclarer des limites par mois';
 
   @override
+  String get starlingDescription =>
+      'Importer les soldes et les transactions des comptes Starling Bank avec un jeton d’accès personnel de votre compte développeur gratuit. L’accès est en lecture seule : aucun paiement n’est effectué.';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access (Royaume-Uni)';
+
+  @override
+  String get starlingScopes =>
+      'Il manque une autorisation au jeton : créez-le avec les portées \"account:read\", \"balance:read\" et \"transaction:read\"';
+
+  @override
+  String get starlingToken => 'Jeton d’accès personnel';
+
+  @override
+  String get starlingTokenSteps =>
+      'Comment obtenir un jeton d’accès personnel :\n1. Inscrivez-vous sur developer.starlingbank.com (gratuit)\n2. Ouvrez Personal Access, ajoutez votre compte Starling et approuvez-le dans l’application Starling\n3. Créez un jeton avec les portées \"account:read\", \"balance:read\" et \"transaction:read\"\n4. Collez-le ci-dessous et appuyez sur « Se connecter »';
+
+  @override
+  String get starlingTokenTooltip =>
+      'Créé sur developer.starlingbank.com sous Personal Access ; stocké chiffré';
+
+  @override
   String get subscription =>
       'Comme il s\'agit d\'un projet open-source, l\'abonnement ne débloquera pas de fonctionnalités supplémentaires. Cependant, il s\'agit d\'un investissement dans l\'évolution et l\'amélioration continues de l\'application, et dans la préservation de sa disponibilité.';
 

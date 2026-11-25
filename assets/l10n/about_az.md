@@ -81,6 +81,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - Wise API (Global): Wise çoxvalyutalı hesablarının qalıqlarının və əməliyyatlarının idxalı (şəxsi API tokeni)
   - Investec Programmable Banking (Cənubi Afrika): Private Banking hesablarının qalıqlarının və əməliyyatlarının idxalı (öz API açarları)
   - Monzo Developer API (Birləşmiş Krallıq): qalıqların və əməliyyatların idxalı (şəxsi istifadə üçün öz OAuth müştərisi)
+  - Starling Bank Personal Access (Birləşmiş Krallıq): qalıqların və əməliyyatların idxalı (şəxsi giriş tokeni)
   - PrivatBank Autoclient (Ukrayna): Privat24 for Business biznes hesablarının qalıqlarının və əməliyyatlarının idxalı (Autoclient tokeni)
   - monobank Personal API (Ukrayna): monobank kartlarının və yığım qutularının qalıqlarının və əməliyyatlarının idxalı (şəxsi token)
   - Bildirişlər Parser (Android): bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar

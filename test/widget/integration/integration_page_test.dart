@@ -20,6 +20,8 @@ import 'package:app_finance/_classes/integration/privatbank/privatbank_client.da
 import 'package:app_finance/_classes/integration/privatbank/privatbank_settings.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
+import 'package:app_finance/_classes/integration/starling/starling_client.dart';
+import 'package:app_finance/_classes/integration/starling/starling_settings.dart';
 import 'package:app_finance/_classes/integration/teller/teller_client.dart';
 import 'package:app_finance/_classes/integration/teller/teller_settings.dart';
 import 'package:app_finance/_classes/integration/wise/wise_client.dart';
@@ -42,6 +44,7 @@ import 'package:app_finance/pages/integration/widgets/monzo_widget.dart';
 import 'package:app_finance/pages/integration/widgets/notification_widget.dart';
 import 'package:app_finance/pages/integration/widgets/privatbank_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
+import 'package:app_finance/pages/integration/widgets/starling_widget.dart';
 import 'package:app_finance/pages/integration/widgets/teller_widget.dart';
 import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:fints/fints.dart';
@@ -185,17 +188,19 @@ void main() {
     // Services of single institutions follow at the end of the list, sorted by name
     expect(
       IntegrationPageState.getServices().map((e) => e.id),
-      ['investec', 'monobank', 'monzo', 'privatbank', 'teller', 'wise'],
+      ['investec', 'monobank', 'monzo', 'privatbank', 'starling', 'teller', 'wise'],
     );
     for (final title in [
       'Investec Programmable Banking (South Africa)',
       'Monzo Developer API (United Kingdom)',
+      'Starling Bank Personal Access (United Kingdom)',
       'Teller (US)',
       'Wise API (Global)',
     ]) {
       await tester.scrollUntilVisible(find.text(title), 200, scrollable: find.byType(Scrollable).first);
       expect(find.text(title), findsOneWidget);
     }
+    await tester.pumpAndSettle();
     await tester.pump(const Duration(seconds: 10));
   });
 
@@ -866,6 +871,130 @@ void main() {
     expect(requests.last.url.path, '/oauth2/logout');
     expect(MonzoSettings.loadTokens(), isNull);
     expect(find.byKey(const ValueKey('monzo_steps')), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Starling connects with a Personal Access Token and imports transactions', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Starling',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Eating Out', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    final requests = <http.Request>[];
+    final client = StarlingClient(
+      client: MockClient((request) async {
+        requests.add(request);
+        if (request.headers['Authorization'] != 'Bearer PAT') {
+          return http.Response(jsonEncode({'error': 'invalid_token'}), 401);
+        }
+        final body = switch (request.url.path) {
+          '/api/v2/accounts' => {
+              'accounts': [
+                {'accountUid': 'acc-1', 'defaultCategory': 'cat-1', 'currency': 'GBP', 'name': 'Personal'},
+              ],
+            },
+          '/api/v2/accounts/acc-1/balance' => {
+              'effectiveBalance': {'currency': 'GBP', 'minorUnits': 12345},
+            },
+          _ => {
+              'feedItems': [
+                {
+                  'feedItemUid': 'f-1',
+                  'amount': {'currency': 'GBP', 'minorUnits': 510},
+                  'direction': 'OUT',
+                  'transactionTime': DateTime.now().toUtc().toIso8601String(),
+                  'status': 'SETTLED',
+                  'counterPartyName': 'Coffee Shop',
+                },
+                {
+                  'feedItemUid': 'f-2',
+                  'amount': {'currency': 'GBP', 'minorUnits': 100},
+                  'direction': 'OUT',
+                  'transactionTime': DateTime.now().toUtc().toIso8601String(),
+                  'status': 'PENDING',
+                  'counterPartyName': 'Hold',
+                },
+              ],
+            },
+        };
+        return http.Response(jsonEncode(body), 200);
+      }),
+    );
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(body: SingleChildScrollView(child: StarlingWidget(client: client))),
+    ));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('starling_steps')), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField).first, 'wrong');
+    await tester.ensureVisible(find.byKey(const ValueKey('starling_connect')));
+    await tester.tap(find.byKey(const ValueKey('starling_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Access has been revoked or the credentials are incorrect'), findsOneWidget);
+    expect(StarlingSettings.loadToken(), isNull);
+
+    await tester.enterText(find.byType(TextField).first, 'PAT');
+    await tester.ensureVisible(find.byKey(const ValueKey('starling_connect')));
+    await tester.tap(find.byKey(const ValueKey('starling_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(StarlingSettings.loadToken(), 'PAT');
+    expect(find.text('Personal — GBP'), findsOneWidget);
+    expect(find.textContaining('123.45 GBP'), findsOneWidget);
+
+    final widgetState = tester.state<StarlingWidgetState>(find.byType(StarlingWidget));
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 1'), findsOneWidget);
+    expect(requests.last.url.path, '/api/v2/feed/account/acc-1/category/cat-1');
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    final bill = state.getList(AppDataType.bills, false).whereType<BillAppData>().last;
+    expect(bill.title, 'Coffee Shop');
+    expect(bill.details, 5.1);
+    expect(StarlingSettings.load().links, {'acc-1': account.uuid});
+
+    // A repeated import looks back for transactions settled meanwhile
+    final today = DateTime.now();
+    widgetState.accounts.single.from = DateTime(today.year, today.month, today.day);
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 0, skipped as already present: 1, pending (not imported): 1'), findsOneWidget);
+    final since = DateTime.parse(requests.last.url.queryParameters['changesSince']!);
+    expect(
+      since
+          .isAtSameMomentAs(DateTime(today.year, today.month, today.day).subtract(StarlingWidgetState.settlementDelay)),
+      isTrue,
+    );
+
+    await tester.ensureVisible(find.byKey(const ValueKey('starling_forget')));
+    await tester.tap(find.byKey(const ValueKey('starling_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(StarlingSettings.loadToken(), isNull);
+    expect(find.byKey(const ValueKey('starling_steps')), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

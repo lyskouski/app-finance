@@ -81,6 +81,7 @@
   - Wise API (Global): Wise 다중 통화 계좌의 잔액 및 거래 내역 가져오기 (개인 API 토큰)
   - Investec Programmable Banking (남아프리카 공화국): Private Banking 계좌의 잔액 및 거래 내역 가져오기 (자체 API 키)
   - Monzo Developer API (영국): 잔액 및 거래 내역 가져오기 (개인 용도의 자체 OAuth 클라이언트)
+  - Starling Bank Personal Access (영국): 잔액 및 거래 내역 가져오기 (개인 액세스 토큰)
   - PrivatBank Autoclient (우크라이나): Privat24 for Business 사업자 계좌의 잔액 및 거래 내역 가져오기 (Autoclient 토큰)
   - monobank Personal API (우크라이나): monobank 카드 및 저금통의 잔액과 거래 내역 가져오기 (개인 토큰)
   - 알림 파서 (Android): 은행 및 결제 앱 알림에서 거래 생성

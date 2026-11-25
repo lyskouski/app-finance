@@ -1450,6 +1450,29 @@ class AppLocalizationsAr extends AppLocalizations {
   String get splitTooltip => 'إعلان الحدود في الشهر';
 
   @override
+  String get starlingDescription =>
+      'استيراد الأرصدة والمعاملات لحسابات Starling Bank باستخدام رمز وصول شخصي من حساب المطوّر المجاني الخاص بك. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (المملكة المتحدة)';
+
+  @override
+  String get starlingScopes =>
+      'الرمز يفتقر إلى صلاحية: أنشئه بالنطاقات \"account:read\" و\"balance:read\" و\"transaction:read\"';
+
+  @override
+  String get starlingToken => 'رمز الوصول الشخصي';
+
+  @override
+  String get starlingTokenSteps =>
+      'كيفية الحصول على رمز الوصول الشخصي:\n1. سجّل في developer.starlingbank.com (مجانًا)\n2. افتح Personal Access، وأضف حساب Starling الخاص بك، ووافق عليه في تطبيق Starling\n3. أنشئ رمزًا بالنطاقات \"account:read\" و\"balance:read\" و\"transaction:read\"\n4. الصقه أدناه واضغط «اتصال»';
+
+  @override
+  String get starlingTokenTooltip =>
+      'يُنشأ في developer.starlingbank.com ضمن Personal Access؛ ويُخزَّن مشفرًا';
+
+  @override
   String get subscription =>
       'كمشروع مفتوح المصدر، لن يؤدي الاشتراك إلى فتح أي ميزات إضافية. ومع ذلك، فإنه سيكون بمثابة استثمار في التطوير والتحسين المستمر للتطبيق، والحفاظ على إتاحته.';
 

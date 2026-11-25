@@ -81,6 +81,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
   - Wise API (Global): import sald i transakcji wielowalutowych kont Wise (osobisty token API)
   - Investec Programmable Banking (Republika Południowej Afryki): import sald i transakcji kont Private Banking (własne klucze API)
   - Monzo Developer API (Wielka Brytania): import sald i transakcji (własny klient OAuth do użytku osobistego)
+  - Starling Bank Personal Access (Wielka Brytania): import sald i transakcji (osobisty token dostępu)
   - PrivatBank Autoclient (Ukraina): import sald i transakcji kont firmowych Privat24 dla Biznesu (token Autoclient)
   - monobank Personal API (Ukraina): import sald i transakcji kart i słoików monobank (token osobisty)
   - Parser powiadomień (Android): transakcje z powiadomień aplikacji bankowych i płatniczych

@@ -1467,6 +1467,29 @@ class AppLocalizationsUz extends AppLocalizations {
   String get splitTooltip => 'Oyiga limitlarni e\'lon qiling';
 
   @override
+  String get starlingDescription =>
+      'Bepul dasturchi hisobingizning shaxsiy kirish tokeni orqali Starling Bank hisoblarining qoldiqlari va tranzaksiyalarini import qiling. Kirish faqat o‘qish uchun: to‘lovlar amalga oshirilmaydi.';
+
+  @override
+  String get starlingHeadline =>
+      'Starling Bank Personal Access (Buyuk Britaniya)';
+
+  @override
+  String get starlingScopes =>
+      'Tokenda ruxsat yetishmaydi: uni \"account:read\", \"balance:read\" va \"transaction:read\" ruxsat doiralari bilan yarating';
+
+  @override
+  String get starlingToken => 'Shaxsiy kirish tokeni';
+
+  @override
+  String get starlingTokenSteps =>
+      'Shaxsiy kirish tokenini qanday olish mumkin:\n1. developer.starlingbank.com saytida ro‘yxatdan o‘ting (bepul)\n2. Personal Access bo‘limini oching, Starling hisobingizni qo‘shing va uni Starling ilovasida tasdiqlang\n3. \"account:read\", \"balance:read\" va \"transaction:read\" ruxsat doiralari bilan token yarating\n4. Uni quyiga joylang va «Ulanish» tugmasini bosing';
+
+  @override
+  String get starlingTokenTooltip =>
+      'developer.starlingbank.com saytida Personal Access bo‘limida yaratiladi; shifrlangan holda saqlanadi';
+
+  @override
   String get subscription =>
       'Ochiq manbali loyiha sifatida obuna bo‘lish qo‘shimcha funksiyalarni ochmaydi. Biroq, bu ilovaning uzluksiz rivojlanishi va takomillashtirilishiga va uning mavjudligini saqlab qolishga investitsiya sifatida xizmat qiladi.';
 

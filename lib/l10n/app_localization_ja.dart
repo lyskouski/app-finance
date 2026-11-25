@@ -1432,6 +1432,28 @@ class AppLocalizationsJa extends AppLocalizations {
   String get splitTooltip => '月ごとの制限を宣言する';
 
   @override
+  String get starlingDescription =>
+      '無料の開発者アカウントの個人用アクセストークンで Starling Bank 口座の残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get starlingHeadline => 'Starling Bank Personal Access（英国）';
+
+  @override
+  String get starlingScopes =>
+      'トークンに権限が不足しています: \"account:read\"、\"balance:read\"、\"transaction:read\" のスコープを付けて作成してください';
+
+  @override
+  String get starlingToken => '個人用アクセストークン';
+
+  @override
+  String get starlingTokenSteps =>
+      '個人用アクセストークンの取得方法:\n1. developer.starlingbank.com で登録します（無料）\n2. Personal Access を開き、Starling アカウントを追加して Starling アプリで承認します\n3. \"account:read\"、\"balance:read\"、\"transaction:read\" のスコープでトークンを作成します\n4. 下に貼り付けて「接続」を押します';
+
+  @override
+  String get starlingTokenTooltip =>
+      'developer.starlingbank.com の Personal Access で作成します。暗号化して保存されます';
+
+  @override
   String get subscription =>
       'オープンソースプロジェクトであるため、購読することで追加機能がアンロックされることはありません。しかし、アプリケーションの継続的な進化と改善、そして可用性を維持するための投資となります。';
 
