@@ -2,7 +2,7 @@
 
 _전체 업데이트 목록은 '힌트' 버튼의 '정보' 탐색 항목을 통해 확인할 수 있습니다._
 
-### 8.1.0
+### 8.5.0
 - Teller (US) 추가: 자체 Teller 애플리케이션(인증서 기반)으로 미국 은행 및 카드 발급사의 잔액 및 거래 내역 가져오기
 - Investec Programmable Banking (남아프리카 공화국) 추가: 자체 API 키로 Private Banking 계좌의 잔액 및 거래 내역 가져오기
 - Monzo Developer API (영국) 추가: Monzo 앱에서 승인한 자체 OAuth 클라이언트로 잔액 및 거래 내역 가져오기

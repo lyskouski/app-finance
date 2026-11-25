@@ -2,7 +2,7 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
-### 8.1.0
+### 8.5.0
 - Adăugat Teller (US): solduri și import de tranzacții de la băncile și emitenții de carduri din SUA cu propria aplicație Teller (pe bază de certificat)
 - Adăugat Investec Programmable Banking (Africa de Sud): solduri și import de tranzacții ale conturilor Private Banking cu propriile chei API
 - Adăugat Monzo Developer API (Regatul Unit): solduri și import de tranzacții cu propriul client OAuth, aprobat în aplicația Monzo

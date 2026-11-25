@@ -2,7 +2,7 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
-### 8.1.0
+### 8.5.0
 - Teller (US) toegevoegd: saldi en import van transacties van Amerikaanse banken en kaartuitgevers met uw eigen Teller-applicatie (op basis van een certificaat)
 - Investec Programmable Banking (Zuid-Afrika) toegevoegd: saldi en import van transacties van Private Banking-rekeningen met uw eigen API-sleutels
 - Monzo Developer API (Verenigd Koninkrijk) toegevoegd: saldi en import van transacties met uw eigen OAuth-client, goedgekeurd in de Monzo-app

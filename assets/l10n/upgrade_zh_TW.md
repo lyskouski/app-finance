@@ -2,7 +2,7 @@
 
 _完整的更新清單可透過「關於」導覽項目中的「提示」按鈕查看。_
 
-### 8.1.0
+### 8.5.0
 - 新增 Teller (US)：使用您自己的 Teller 應用程式（基於憑證）匯入美國銀行與發卡機構的餘額及交易
 - 新增 Investec Programmable Banking（南非）：使用您自己的 API 金鑰匯入 Private Banking 帳戶的餘額及交易
 - 新增 Monzo Developer API（英國）：使用您自己的 OAuth 用戶端（在 Monzo 應用程式中核准）匯入餘額及交易

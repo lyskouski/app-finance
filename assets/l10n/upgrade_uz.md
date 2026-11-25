@@ -2,7 +2,7 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
-### 8.1.0
+### 8.5.0
 - Teller (US) qo'shildi: o'z Teller ilovangiz bilan (sertifikat asosida) AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini import qilish
 - Investec Programmable Banking (Janubiy Afrika) qo'shildi: o'z API kalitlaringiz bilan Private Banking hisoblarining qoldiqlari va tranzaksiyalarini import qilish
 - Monzo Developer API (Buyuk Britaniya) qo'shildi: Monzo ilovasida tasdiqlangan o'z OAuth mijozingiz bilan qoldiqlar va tranzaksiyalarni import qilish

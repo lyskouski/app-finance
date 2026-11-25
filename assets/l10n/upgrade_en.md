@@ -2,7 +2,7 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
-### 8.1.0
+### 8.5.0
 - Adding Teller (US): balances and import of transactions from US banks and card issuers with your own Teller application (certificate-based)
 - Adding Investec Programmable Banking (South Africa): balances and import of transactions of Private Banking accounts with your own API keys
 - Adding Monzo Developer API (United Kingdom): balances and import of transactions with your own OAuth client, approved in the Monzo app

@@ -2,7 +2,7 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
-### 8.1.0
+### 8.5.0
 - Přidán Teller (US): zůstatky a import transakcí amerických bank a vydavatelů karet s vlastní aplikací Teller (na základě certifikátu)
 - Přidáno Investec Programmable Banking (Jihoafrická republika): zůstatky a import transakcí účtů Private Banking s vlastními klíči API
 - Přidáno Monzo Developer API (Spojené království): zůstatky a import transakcí s vlastním klientem OAuth schváleným v aplikaci Monzo

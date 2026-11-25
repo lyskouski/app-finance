@@ -2,7 +2,7 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
-### 8.1.0
+### 8.5.0
 - Se añade Teller (US): saldos e importación de movimientos de bancos y emisores de tarjetas de EE. UU. con tu propia aplicación de Teller (basada en certificado)
 - Se añade Investec Programmable Banking (Sudáfrica): saldos e importación de movimientos de cuentas de Private Banking con tus propias claves de API
 - Se añade Monzo Developer API (Reino Unido): saldos e importación de movimientos con tu propio cliente OAuth, aprobado en la app de Monzo

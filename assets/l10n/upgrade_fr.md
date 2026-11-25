@@ -2,7 +2,7 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
-### 8.1.0
+### 8.5.0
 - Ajout de Teller (US) : soldes et importation des opérations des banques et émetteurs de cartes américains avec votre propre application Teller (par certificat)
 - Ajout de Investec Programmable Banking (Afrique du Sud) : soldes et importation des opérations des comptes Private Banking avec vos propres clés d'API
 - Ajout de Monzo Developer API (Royaume-Uni) : soldes et importation des opérations avec votre propre client OAuth, approuvé dans l'application Monzo

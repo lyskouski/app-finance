@@ -2,7 +2,7 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
-### 8.1.0
+### 8.5.0
 - Teller (US) əlavə edildi: öz Teller tətbiqinizlə ABŞ bankları və kart emitentlərindən qalıqlar və əməliyyatların idxalı (sertifikat əsasında)
 - Investec Programmable Banking (Cənubi Afrika) əlavə edildi: öz API açarlarınızla Private Banking hesablarının qalıqları və əməliyyatlarının idxalı
 - Monzo Developer API (Birləşmiş Krallıq) əlavə edildi: Monzo tətbiqində təsdiqlənən öz OAuth müştərinizlə qalıqlar və əməliyyatların idxalı

@@ -2,7 +2,7 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
-### 8.1.0
+### 8.5.0
 - Teller (US) eklendi: kendi Teller uygulamanızla (sertifika tabanlı) ABD bankaları ve kart sağlayıcılarının bakiyeleri ve işlemlerinin içe aktarılması
 - Investec Programmable Banking (Güney Afrika) eklendi: kendi API anahtarlarınızla Private Banking hesaplarının bakiyeleri ve işlemlerinin içe aktarılması
 - Monzo Developer API (Birleşik Krallık) eklendi: Monzo uygulamasında onaylanan kendi OAuth istemcinizle bakiyeler ve işlemlerin içe aktarılması

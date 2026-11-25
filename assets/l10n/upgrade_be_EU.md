@@ -2,7 +2,7 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
-### 8.1.0
+### 8.5.0
 - Dadadzieny Teller (US): reštki i impart aperacyj bankaŭ i emitentaŭ kartak ZŠA z ułasnaj prahramaj Teller (z sertyfikatam)
 - Dadadzieny Investec Programmable Banking (Paŭdniovaja Afryka): reštki i impart aperacyj rachunkaŭ Private Banking z ułasnymi API-klučami
 - Dadadzieny Monzo Developer API (Vialikabrytanija): reštki i impart aperacyj z ułasnym OAuth-klijentam, paćvierdžanym u prahramie Monzo

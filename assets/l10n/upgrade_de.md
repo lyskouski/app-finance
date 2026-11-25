@@ -2,7 +2,7 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
-### 8.1.0
+### 8.5.0
 - Teller (US) hinzugefügt: Salden und Import von Umsätzen von US-Banken und Kartenanbietern mit eigener Teller-Anwendung (zertifikatsbasiert)
 - Investec Programmable Banking (Südafrika) hinzugefügt: Salden und Import von Umsätzen von Private-Banking-Konten mit eigenen API-Schlüsseln
 - Monzo Developer API (Vereinigtes Königreich) hinzugefügt: Salden und Import von Umsätzen mit eigenem OAuth-Client, bestätigt in der Monzo-App

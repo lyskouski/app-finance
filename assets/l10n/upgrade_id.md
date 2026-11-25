@@ -2,7 +2,7 @@
 
 _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tombol "Petunjuk"._
 
-### 8.1.0
+### 8.5.0
 - Menambahkan Teller (US): saldo dan impor transaksi dari bank dan penerbit kartu AS dengan aplikasi Teller Anda sendiri (berbasis sertifikat)
 - Menambahkan Investec Programmable Banking (Afrika Selatan): saldo dan impor transaksi rekening Private Banking dengan kunci API Anda sendiri
 - Menambahkan Monzo Developer API (Britania Raya): saldo dan impor transaksi dengan klien OAuth Anda sendiri, disetujui di aplikasi Monzo
