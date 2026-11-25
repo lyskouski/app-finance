@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/integration/notification/notification_chann
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:app_finance/pages/integration/widgets/akahu_widget.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/investec_widget.dart';
@@ -53,6 +54,13 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
       ];
 
   static List<IntegrationItem> getServices() => [
+        if (!kIsWeb)
+          (
+            id: 'akahu',
+            title: AppLocale.labels.akahuHeadline,
+            icon: Icons.hub_outlined,
+            builder: (_) => const AkahuWidget(),
+          ),
         (
           id: 'investec',
           title: AppLocale.labels.investecHeadline,
@@ -77,21 +85,20 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
           icon: Icons.business_center_outlined,
           builder: (_) => const PrivatBankWidget(),
         ),
-        // Browsers are not allowed to call the API
-        if (!kIsWeb) ...[
+        if (!kIsWeb)
           (
             id: 'starling',
             title: AppLocale.labels.starlingHeadline,
             icon: Icons.star_outline,
             builder: (_) => const StarlingWidget(),
           ),
+        if (!kIsWeb)
           (
             id: 'teller',
             title: AppLocale.labels.tellerHeadline,
             icon: Icons.account_balance_outlined,
             builder: (_) => const TellerWidget(),
           ),
-        ],
         (
           id: 'wise',
           title: AppLocale.labels.wiseHeadline,

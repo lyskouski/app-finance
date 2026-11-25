@@ -7,6 +7,7 @@ _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjne
 - Dodano Investec Programmable Banking (Republika Południowej Afryki): salda i import transakcji kont Private Banking z własnymi kluczami API
 - Dodano Monzo Developer API (Wielka Brytania): salda i import transakcji z własnym klientem OAuth zatwierdzonym w aplikacji Monzo
 - Dodano Starling Bank Personal Access (Wielka Brytania): salda i import transakcji z osobistym tokenem dostępu
+- Dodano Akahu Personal App (Nowa Zelandia): salda i import transakcji nowozelandzkich banków połączonych z Akahu
 - Dodano Wise API (Global): salda i import transakcji wielowalutowych kont Wise, przewalutowania jako przelewy
 - Dodano PrivatBank Autoclient (Ukraina): salda i import transakcji kont firmowych według IBAN
 - Dodano monobank Personal API (Ukraina): salda i import transakcji kart i słoików, tworzenie powiązanych kont

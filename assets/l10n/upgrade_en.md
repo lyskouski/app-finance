@@ -7,6 +7,7 @@ _The full list of updates can be viewed via the "About" navigation item on the "
 - Adding Investec Programmable Banking (South Africa): balances and import of transactions of Private Banking accounts with your own API keys
 - Adding Monzo Developer API (United Kingdom): balances and import of transactions with your own OAuth client, approved in the Monzo app
 - Adding Starling Bank Personal Access (United Kingdom): balances and import of transactions with a Personal Access Token
+- Adding Akahu Personal App (New Zealand): balances and import of transactions of New Zealand banks connected to Akahu
 - Adding Wise API (Global): balances and import of transactions of Wise multi-currency accounts, conversions as transfers
 - Adding PrivatBank Autoclient (Ukraine): balances and import of transactions of business accounts by IBAN
 - Adding Monobank Personal API (Ukraine): balances and import of transactions of cards and jars, creation of linked accounts

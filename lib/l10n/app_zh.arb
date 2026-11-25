@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "App ID 令牌",
+    "akahuDescription": "使用您自己的免费个人应用导入已连接到 Akahu 的新西兰银行的余额和交易。Akahu 按其自身的计划（每天）从银行刷新数据，因此最新交易可能会稍后显示。访问为只读：不会进行任何付款。",
+    "akahuHeadline": "Akahu Personal App（新西兰）",
+    "akahuInactive": "Akahu 已失去对此账户的访问权限：请在 my.akahu.nz/connections 重新连接",
+    "akahuIncomplete": "请填写 App ID 令牌和用户访问令牌",
+    "akahuRefresh": "刷新数据",
+    "akahuRefreshed": "已请求 Akahu 从银行获取新数据：请在几分钟后重试导入（每小时最多一次）",
+    "akahuSteps": "如何获取令牌：\n1. 在 my.akahu.nz 注册并连接您的银行\n2. 打开“Developers”页面，接受开发者条款并设置多重身份验证\n3. 复制 App ID 令牌和用户访问令牌\n4. 粘贴到下方并点击“连接”",
+    "akahuTokenTooltip": "显示在 my.akahu.nz 的“Developers”页面上；加密存储",
+    "akahuUserToken": "用户访问令牌",
     "amountFrom": "起始金额",
     "amountTo": "终止金额",
     "appBuild": "构建: {build}",

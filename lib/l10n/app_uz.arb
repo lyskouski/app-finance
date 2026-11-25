@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "App ID tokeni",
+    "akahuDescription": "Akahu’ga ulangan Yangi Zelandiya banklarining qoldiqlari va tranzaksiyalarini o‘zingizning bepul shaxsiy ilovangiz orqali import qiling. Akahu banklardagi ma’lumotlarni o‘z jadvali bo‘yicha (har kuni) yangilaydi, shuning uchun so‘nggi tranzaksiyalar keyinroq paydo bo‘lishi mumkin. Kirish faqat o‘qish uchun: to‘lovlar amalga oshirilmaydi.",
+    "akahuHeadline": "Akahu Personal App (Yangi Zelandiya)",
+    "akahuInactive": "Akahu bu hisobga kirish huquqini yo‘qotdi: uni my.akahu.nz/connections sahifasida qayta ulang",
+    "akahuIncomplete": "App ID tokeni va foydalanuvchi kirish tokenini to‘ldiring",
+    "akahuRefresh": "Ma’lumotlarni yangilash",
+    "akahuRefreshed": "Akahu’dan banklardan yangi ma’lumotlarni olish so‘raldi: bir necha daqiqadan so‘ng importni qayta urinib ko‘ring (soatiga ko‘pi bilan bir marta)",
+    "akahuSteps": "Tokenlarni qanday olish mumkin:\n1. my.akahu.nz saytida ro‘yxatdan o‘ting va banklaringizni ulang\n2. «Developers» sahifasini oching, dasturchi shartlarini qabul qiling va ko‘p faktorli autentifikatsiyani sozlang\n3. App ID tokeni va foydalanuvchi kirish tokenini nusxalang\n4. Ularni quyiga joylang va «Ulanish» tugmasini bosing",
+    "akahuTokenTooltip": "my.akahu.nz saytidagi «Developers» sahifasida ko‘rsatiladi; shifrlangan holda saqlanadi",
+    "akahuUserToken": "Foydalanuvchi kirish tokeni",
     "amountFrom": "Miqdordan",
     "amountTo": "Miqdorga",
     "appBuild": "Qurilish: {build}",

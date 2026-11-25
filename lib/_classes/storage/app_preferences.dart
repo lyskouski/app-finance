@@ -28,6 +28,8 @@ class AppPreferences {
   static const String prefRecoveryKey = 'recoveryKey';
   static const String prefSortingKey = 'sortingKey';
   static const String prefBudgetPositive = 'budgetPositive';
+  static const String prefAkahu = 'akahu';
+  static const String prefAkahuTokens = 'akahuTokens';
   static const String prefFinTs = 'fints';
   static const String prefFinTsState = 'fintsState';
   static const String prefSimpleFin = 'simplefin';

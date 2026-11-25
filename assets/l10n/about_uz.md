@@ -82,6 +82,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
   - Investec Programmable Banking (Janubiy Afrika): Private Banking hisoblarining qoldiqlari va tranzaksiyalarini import qilish (o'z API kalitlari)
   - Monzo Developer API (Buyuk Britaniya): qoldiqlar va tranzaksiyalarni import qilish (shaxsiy foydalanish uchun o'z OAuth mijozi)
   - Starling Bank Personal Access (Buyuk Britaniya): qoldiqlar va tranzaksiyalarni import qilish (shaxsiy kirish tokeni)
+  - Akahu Personal App (Yangi Zelandiya): Yangi Zelandiya banklarining qoldiqlari va tranzaksiyalarini import qilish (o'z shaxsiy ilovangiz)
   - PrivatBank Autoclient (Ukraina): Privat24 for Business biznes hisoblari qoldiqlari va tranzaksiyalarini import qilish (Autoclient tokeni)
   - monobank Personal API (Ukraina): monobank kartalari va jamg'arma bankalari qoldiqlari va tranzaksiyalarini import qilish (shaxsiy token)
   - Bildirishnomalarni tahlil qilish (Android): bank va to'lov ilovalari bildirishnomalaridan tranzaksiyalar

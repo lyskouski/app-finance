@@ -63,6 +63,42 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'Token App ID';
+
+  @override
+  String get akahuDescription =>
+      'Import zůstatků a transakcí novozélandských bank připojených k Akahu pomocí vaší vlastní bezplatné osobní aplikace. Akahu aktualizuje data z bank podle vlastního plánu (denně), takže nejnovější transakce se mohou zobrazit později. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Nový Zéland)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu ztratilo přístup k tomuto účtu: znovu jej připojte na my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Vyplňte token App ID a uživatelský přístupový token';
+
+  @override
+  String get akahuRefresh => 'Obnovit data';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu bylo požádáno o načtení nových dat z bank: zopakujte import za několik minut (nejvýše jednou za hodinu)';
+
+  @override
+  String get akahuSteps =>
+      'Jak získat tokeny:\n1. Zaregistrujte se na my.akahu.nz a připojte své banky\n2. Otevřete stránku „Developers“, přijměte podmínky pro vývojáře a nastavte vícefaktorové ověřování\n3. Zkopírujte token App ID a uživatelský přístupový token\n4. Vložte je níže a stiskněte „Připojit“';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Zobrazuje se na stránce „Developers“ na my.akahu.nz; ukládá se šifrovaně';
+
+  @override
+  String get akahuUserToken => 'Uživatelský přístupový token';
+
+  @override
   String get amountFrom => 'Částka od';
 
   @override

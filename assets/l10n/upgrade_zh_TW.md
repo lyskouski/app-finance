@@ -7,6 +7,7 @@ _完整的更新清單可透過「關於」導覽項目中的「提示」按鈕�
 - 新增 Investec Programmable Banking（南非）：使用您自己的 API 金鑰匯入 Private Banking 帳戶的餘額及交易
 - 新增 Monzo Developer API（英國）：使用您自己的 OAuth 用戶端（在 Monzo 應用程式中核准）匯入餘額及交易
 - 新增 Starling Bank Personal Access（英國）：使用個人存取權杖匯入餘額及交易
+- 新增 Akahu Personal App（紐西蘭）：匯入已連結至 Akahu 的紐西蘭銀行的餘額及交易
 - 新增 Wise API (Global)：Wise 多幣別帳戶的餘額及交易匯入，換匯作為轉帳
 - 新增 PrivatBank Autoclient（烏克蘭）：依 IBAN 匯入企業帳戶的餘額和交易
 - 新增 monobank Personal API（烏克蘭）：金融卡和存錢筒的餘額及交易匯入，建立連結帳戶

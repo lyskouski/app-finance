@@ -7,6 +7,7 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 - Dadadzieny Investec Programmable Banking (Paŭdniovaja Afryka): reštki i impart aperacyj rachunkaŭ Private Banking z ułasnymi API-klučami
 - Dadadzieny Monzo Developer API (Vialikabrytanija): reštki i impart aperacyj z ułasnym OAuth-klijentam, paćvierdžanym u prahramie Monzo
 - Dadadzieny Starling Bank Personal Access (Vialikabrytanija): reštki i impart aperacyj z persanaĺnym tokienam dostupu
+- Dadadzieny Akahu Personal App (Novaja Zielandyja): reštki i impart aperacyj bankaŭ Novaj Zielandyi, padłučanych da Akahu
 - Dadadzieny Wise API (Global): reštki i impart aperacyj šmatvalutnych rachunkaŭ Wise, kanviertacyi jak pieravody
 - Dadadzieny PryvatBank Aŭtaklijent (Ukraina): reštki i impart aperacyj biznes-rachunkaŭ pa IBAN
 - Dadadzieny monobank Personal API (Ukraina): reštki i impart aperacyj kartak i słoikaŭ, stvareńnie zviazanych rachunkaŭ

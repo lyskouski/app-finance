@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "App ID Token",
+    "akahuDescription": "Import balances and transactions of New Zealand banks connected to Akahu with your own free personal app. Akahu refreshes the data from the banks on its own schedule (daily), so the latest transactions may appear later. Access is read-only: no payments are made.",
+    "akahuHeadline": "Akahu Personal App (New Zealand)",
+    "akahuInactive": "Akahu has lost the access to this account: reconnect it at my.akahu.nz/connections",
+    "akahuIncomplete": "Fill in the App ID Token and the User Access Token",
+    "akahuRefresh": "Refresh Data",
+    "akahuRefreshed": "Akahu has been asked to fetch new data from the banks: retry the import in a few minutes (at most once per hour)",
+    "akahuSteps": "How to get the tokens:\n1. Sign up at my.akahu.nz and connect your banks\n2. Open the \"Developers\" page, accept the developer terms, and set up the multi-factor authentication\n3. Copy the App ID Token and the User Access Token\n4. Paste them below and press \"Connect\"",
+    "akahuTokenTooltip": "Shown on the \"Developers\" page of my.akahu.nz; stored encrypted",
+    "akahuUserToken": "User Access Token",
     "amountFrom": "From Amount",
     "amountTo": "To Amount",
     "appBuild": "Build: {build}",

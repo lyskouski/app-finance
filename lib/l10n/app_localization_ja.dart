@@ -63,6 +63,41 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'App ID トークン';
+
+  @override
+  String get akahuDescription =>
+      'Akahu に接続したニュージーランドの銀行の残高と取引を、ご自身の無料の個人用アプリでインポートします。Akahu は独自のスケジュール（毎日）で銀行のデータを更新するため、最新の取引は後から表示される場合があります。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App（ニュージーランド）';
+
+  @override
+  String get akahuInactive =>
+      'Akahu がこの口座へのアクセスを失いました。my.akahu.nz/connections で再接続してください';
+
+  @override
+  String get akahuIncomplete => 'App ID トークンとユーザーアクセストークンを入力してください';
+
+  @override
+  String get akahuRefresh => 'データを更新';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu に銀行から新しいデータを取得するよう依頼しました。数分後にインポートを再試行してください（1 時間に 1 回まで）';
+
+  @override
+  String get akahuSteps =>
+      'トークンの取得方法:\n1. my.akahu.nz で登録し、銀行を接続します\n2. 「Developers」ページを開き、開発者規約に同意して多要素認証を設定します\n3. App ID トークンとユーザーアクセストークンをコピーします\n4. 下に貼り付けて「接続」を押します';
+
+  @override
+  String get akahuTokenTooltip =>
+      'my.akahu.nz の「Developers」ページに表示されます。暗号化して保存されます';
+
+  @override
+  String get akahuUserToken => 'ユーザーアクセストークン';
+
+  @override
   String get amountFrom => '開始金額';
 
   @override

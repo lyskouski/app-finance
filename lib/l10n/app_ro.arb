@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "Token App ID",
+    "akahuDescription": "Importă soldurile și tranzacțiile băncilor din Noua Zeelandă conectate la Akahu cu propria aplicație personală gratuită. Akahu actualizează datele de la bănci după propriul program (zilnic), așa că cele mai recente tranzacții pot apărea mai târziu. Accesul este doar pentru citire: nu se efectuează plăți.",
+    "akahuHeadline": "Akahu Personal App (Noua Zeelandă)",
+    "akahuInactive": "Akahu a pierdut accesul la acest cont: reconectați-l pe my.akahu.nz/connections",
+    "akahuIncomplete": "Completați tokenul App ID și tokenul de acces al utilizatorului",
+    "akahuRefresh": "Reîmprospătare date",
+    "akahuRefreshed": "I s-a cerut lui Akahu să preia date noi de la bănci: reîncercați importul peste câteva minute (cel mult o dată pe oră)",
+    "akahuSteps": "Cum obțineți tokenurile:\n1. Înregistrați-vă pe my.akahu.nz și conectați-vă băncile\n2. Deschideți pagina „Developers”, acceptați condițiile pentru dezvoltatori și configurați autentificarea multifactor\n3. Copiați tokenul App ID și tokenul de acces al utilizatorului\n4. Lipiți-le mai jos și apăsați „Conectare”",
+    "akahuTokenTooltip": "Afișat pe pagina „Developers” de pe my.akahu.nz; stocat criptat",
+    "akahuUserToken": "Token de acces al utilizatorului",
     "amountFrom": "De la Sumă",
     "amountTo": "Către Sumă",
     "appBuild": "Construiește: {build}",

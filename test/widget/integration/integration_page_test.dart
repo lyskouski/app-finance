@@ -4,6 +4,8 @@
 import 'dart:convert';
 
 import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
+import 'package:app_finance/_classes/integration/akahu/akahu_client.dart';
+import 'package:app_finance/_classes/integration/akahu/akahu_settings.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_settings.dart';
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
@@ -36,6 +38,7 @@ import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/pages/integration/integration_page.dart';
+import 'package:app_finance/pages/integration/widgets/akahu_widget.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/investec_widget.dart';
@@ -162,16 +165,30 @@ void main() {
     expect(find.text('Financial Transaction Services (FinTS 4.1)'), findsOneWidget);
     expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
     expect(find.text('Enable Banking (EU)'), findsOneWidget);
-    expect(find.text('PrivatBank Autoclient (Ukraine)'), findsOneWidget);
-    expect(find.text('Monobank Personal API (Ukraine)'), findsOneWidget);
     expect(find.text('Notifications Parser'), findsOneWidget);
     // Protocols are separated from the APIs of single institutions
     final divider = tester.getTopLeft(find.byKey(const ValueKey('integration_divider'))).dy;
     expect(tester.getTopLeft(find.byKey(const ValueKey('integration_enablebanking'))).dy, lessThan(divider));
-    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_privatbank'))).dy, greaterThan(divider));
-    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_monobank'))).dy, greaterThan(divider));
+    expect(
+      IntegrationPageState.getProtocols().map((e) => e.id),
+      ['fints', 'simplefin', 'enablebanking'],
+    );
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsNothing);
     expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsNothing);
+
+    // Services of single institutions follow at the end of the list, sorted by name
+    expect(
+      IntegrationPageState.getServices().map((e) => e.id),
+      ['akahu', 'investec', 'monobank', 'monzo', 'privatbank', 'starling', 'teller', 'wise'],
+    );
+    // The page's list (text fields hold horizontal scrollables of their own)
+    final list = find.byWidgetPredicate((e) => e is Scrollable && e.axisDirection == AxisDirection.down);
+    for (final title in IntegrationPageState.getServices().map((e) => e.title)) {
+      await tester.scrollUntilVisible(find.text(title), 200, scrollable: list);
+      expect(find.text(title), findsOneWidget);
+    }
+    tester.state<ScrollableState>(list).position.jumpTo(0);
+    await tester.pumpAndSettle();
 
     await tester.tap(find.text('SimpleFIN Bridge (US)'));
     await tester.pumpAndSettle();
@@ -185,21 +202,6 @@ void main() {
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsOneWidget);
     expect(find.byKey(const ValueKey('fints_connect')), findsOneWidget);
 
-    // Services of single institutions follow at the end of the list, sorted by name
-    expect(
-      IntegrationPageState.getServices().map((e) => e.id),
-      ['investec', 'monobank', 'monzo', 'privatbank', 'starling', 'teller', 'wise'],
-    );
-    for (final title in [
-      'Investec Programmable Banking (South Africa)',
-      'Monzo Developer API (United Kingdom)',
-      'Starling Bank Personal Access (United Kingdom)',
-      'Teller (US)',
-      'Wise API (Global)',
-    ]) {
-      await tester.scrollUntilVisible(find.text(title), 200, scrollable: find.byType(Scrollable).first);
-      expect(find.text(title), findsOneWidget);
-    }
     await tester.pumpAndSettle();
     await tester.pump(const Duration(seconds: 10));
   });
@@ -995,6 +997,154 @@ void main() {
     await tester.pumpAndSettle();
     expect(StarlingSettings.loadToken(), isNull);
     expect(find.byKey(const ValueKey('starling_steps')), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Akahu connects with the personal app tokens and imports transactions', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'ANZ',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Other', hidden: false)) as BudgetAppData;
+    final food = state.add(BudgetAppData(title: 'Food', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    final requests = <http.Request>[];
+    final client = AkahuClient(
+      client: MockClient((request) async {
+        requests.add(request);
+        if (request.headers['X-Akahu-Id'] != 'app' || request.headers['Authorization'] != 'Bearer user') {
+          return http.Response(jsonEncode({'success': false, 'message': 'Unauthorized'}), 401);
+        }
+        final body = switch ((request.method, request.url.path)) {
+          ('POST', '/v1/refresh') => <String, dynamic>{},
+          (_, '/v1/accounts') => {
+              'items': [
+                {
+                  '_id': 'acc_1',
+                  'connection': {'name': 'ANZ'},
+                  'name': 'Everyday',
+                  'status': 'INACTIVE',
+                  'attributes': ['TRANSACTIONS'],
+                  'balance': {'currency': 'NZD', 'current': 99.5},
+                },
+              ],
+            },
+          (_, '/v1/accounts/acc_1/transactions/pending') => {
+              'items': [
+                {'_account': 'acc_1', 'date': '2026-11-24T00:00:00.000Z', 'description': 'HOLD', 'amount': -3},
+              ],
+            },
+          _ => {
+              'items': [
+                {
+                  '_id': 'trans_1',
+                  'date': DateTime.now().toUtc().toIso8601String(),
+                  'description': 'RAW',
+                  'amount': -42.5,
+                  'merchant': {'name': 'Countdown'},
+                  'category': {
+                    'name': 'Supermarkets and grocery stores',
+                    'groups': {
+                      'personal_finance': {'name': 'Food'}
+                    },
+                  },
+                },
+              ],
+              'cursor': {'next': null},
+            },
+        };
+        return http.Response(jsonEncode({'success': true, ...body}), 200);
+      }),
+    );
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(body: SingleChildScrollView(child: AkahuWidget(client: client))),
+    ));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('akahu_steps')), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('akahu_connect')));
+    await tester.tap(find.byKey(const ValueKey('akahu_connect')));
+    await pumpFrames(tester);
+    expect(find.text('Fill in the App ID Token and the User Access Token'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField).at(0), 'app');
+    await tester.enterText(find.byType(TextField).at(1), 'wrong');
+    await tester.ensureVisible(find.byKey(const ValueKey('akahu_connect')));
+    await tester.tap(find.byKey(const ValueKey('akahu_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Access has been revoked or the credentials are incorrect'), findsOneWidget);
+    expect(AkahuSettings.loadTokens(), isNull);
+
+    await tester.enterText(find.byType(TextField).at(1), 'user');
+    await tester.ensureVisible(find.byKey(const ValueKey('akahu_connect')));
+    await tester.tap(find.byKey(const ValueKey('akahu_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(AkahuSettings.loadTokens(), (appToken: 'app', userToken: 'user'));
+    expect(find.text('ANZ — Everyday'), findsOneWidget);
+    expect(find.textContaining('99.5 NZD'), findsOneWidget);
+    expect(find.textContaining('reconnect it at my.akahu.nz/connections'), findsOneWidget);
+
+    final widgetState = tester.state<AkahuWidgetState>(find.byType(AkahuWidget));
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 1'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    final bill = state.getList(AppDataType.bills, false).whereType<BillAppData>().last;
+    expect(bill.title, 'Countdown');
+    expect(bill.details, 42.5);
+    // The budget category named as the group of Akahu
+    expect(bill.category, food.uuid);
+    expect(AkahuSettings.load().links, {'acc_1': account.uuid});
+
+    // A repeated import looks back for transactions changed by the bank
+    final today = DateTime.now();
+    widgetState.accounts.single.from = DateTime(today.year, today.month, today.day);
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 0, skipped as already present: 1, pending (not imported): 1'), findsOneWidget);
+    final start =
+        requests.lastWhere((e) => e.url.path == '/v1/accounts/acc_1/transactions').url.queryParameters['start']!;
+    expect(
+      DateTime.parse(start).add(const Duration(milliseconds: 1)),
+      DateTime(today.year, today.month, today.day).subtract(AkahuWidgetState.postingDelay).toUtc(),
+    );
+
+    await tester.ensureVisible(find.byKey(const ValueKey('akahu_refresh')));
+    await tester.tap(find.byKey(const ValueKey('akahu_refresh')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(requests.last.url.path, '/v1/refresh');
+    expect(find.textContaining('Akahu has been asked to fetch new data'), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('akahu_forget')));
+    await tester.tap(find.byKey(const ValueKey('akahu_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(AkahuSettings.loadTokens(), isNull);
+    expect(find.byKey(const ValueKey('akahu_steps')), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

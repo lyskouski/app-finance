@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "Token App ID",
+    "akahuDescription": "Import zůstatků a transakcí novozélandských bank připojených k Akahu pomocí vaší vlastní bezplatné osobní aplikace. Akahu aktualizuje data z bank podle vlastního plánu (denně), takže nejnovější transakce se mohou zobrazit později. Přístup pouze pro čtení: neprovádějí se žádné platby.",
+    "akahuHeadline": "Akahu Personal App (Nový Zéland)",
+    "akahuInactive": "Akahu ztratilo přístup k tomuto účtu: znovu jej připojte na my.akahu.nz/connections",
+    "akahuIncomplete": "Vyplňte token App ID a uživatelský přístupový token",
+    "akahuRefresh": "Obnovit data",
+    "akahuRefreshed": "Akahu bylo požádáno o načtení nových dat z bank: zopakujte import za několik minut (nejvýše jednou za hodinu)",
+    "akahuSteps": "Jak získat tokeny:\n1. Zaregistrujte se na my.akahu.nz a připojte své banky\n2. Otevřete stránku „Developers“, přijměte podmínky pro vývojáře a nastavte vícefaktorové ověřování\n3. Zkopírujte token App ID a uživatelský přístupový token\n4. Vložte je níže a stiskněte „Připojit“",
+    "akahuTokenTooltip": "Zobrazuje se na stránce „Developers“ na my.akahu.nz; ukládá se šifrovaně",
+    "akahuUserToken": "Uživatelský přístupový token",
     "amountFrom": "Částka od",
     "amountTo": "Částka do",
     "appBuild": "Sestavit: {build}",

@@ -63,6 +63,41 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'App ID टोकन';
+
+  @override
+  String get akahuDescription =>
+      'Akahu से जुड़े न्यूज़ीलैंड के बैंकों के बैलेंस और लेन-देन अपने निःशुल्क व्यक्तिगत ऐप से इम्पोर्ट करें। Akahu बैंकों से डेटा अपने शेड्यूल (दैनिक) पर रीफ़्रेश करता है, इसलिए नवीनतम लेन-देन बाद में दिख सकते हैं। एक्सेस केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (न्यूज़ीलैंड)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu ने इस खाते तक पहुँच खो दी है: इसे my.akahu.nz/connections पर फिर से कनेक्ट करें';
+
+  @override
+  String get akahuIncomplete => 'App ID टोकन और उपयोगकर्ता एक्सेस टोकन भरें';
+
+  @override
+  String get akahuRefresh => 'डेटा रीफ़्रेश करें';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu से बैंकों से नया डेटा लाने का अनुरोध किया गया है: कुछ मिनट बाद इम्पोर्ट फिर से आज़माएँ (अधिकतम घंटे में एक बार)';
+
+  @override
+  String get akahuSteps =>
+      'टोकन कैसे प्राप्त करें:\n1. my.akahu.nz पर साइन अप करें और अपने बैंक कनेक्ट करें\n2. \"Developers\" पेज खोलें, डेवलपर शर्तें स्वीकार करें और मल्टी-फ़ैक्टर ऑथेंटिकेशन सेट करें\n3. App ID टोकन और उपयोगकर्ता एक्सेस टोकन कॉपी करें\n4. इन्हें नीचे चिपकाएँ और \"कनेक्ट करें\" दबाएँ';
+
+  @override
+  String get akahuTokenTooltip =>
+      'my.akahu.nz के \"Developers\" पेज पर दिखाया जाता है; एन्क्रिप्ट करके संग्रहीत';
+
+  @override
+  String get akahuUserToken => 'उपयोगकर्ता एक्सेस टोकन';
+
+  @override
   String get amountFrom => 'राशि से';
 
   @override

@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "App ID Anahtarı",
+    "akahuDescription": "Akahu'ya bağlı Yeni Zelanda bankalarının bakiyelerini ve işlemlerini kendi ücretsiz kişisel uygulamanızla içe aktarın. Akahu bankalardaki verileri kendi programına göre (günlük) yeniler, bu nedenle en son işlemler daha sonra görünebilir. Erişim salt okunurdur: hiçbir ödeme yapılmaz.",
+    "akahuHeadline": "Akahu Personal App (Yeni Zelanda)",
+    "akahuInactive": "Akahu bu hesaba erişimi kaybetti: my.akahu.nz/connections adresinde yeniden bağlayın",
+    "akahuIncomplete": "App ID anahtarını ve kullanıcı erişim anahtarını doldurun",
+    "akahuRefresh": "Verileri Yenile",
+    "akahuRefreshed": "Akahu'dan bankalardan yeni verileri alması istendi: içe aktarmayı birkaç dakika sonra yeniden deneyin (saatte en fazla bir kez)",
+    "akahuSteps": "Anahtarlar nasıl alınır:\n1. my.akahu.nz'ye kaydolun ve bankalarınızı bağlayın\n2. \"Developers\" sayfasını açın, geliştirici koşullarını kabul edin ve çok faktörlü kimlik doğrulamayı ayarlayın\n3. App ID anahtarını ve kullanıcı erişim anahtarını kopyalayın\n4. Aşağıya yapıştırın ve \"Bağlan\"a basın",
+    "akahuTokenTooltip": "my.akahu.nz'deki \"Developers\" sayfasında gösterilir; şifreli olarak saklanır",
+    "akahuUserToken": "Kullanıcı Erişim Anahtarı",
     "amountFrom": "Başlangıç ​​Miktarı",
     "amountTo": "Bitiş Miktarı",
     "appBuild": "İnşa et: {build}",

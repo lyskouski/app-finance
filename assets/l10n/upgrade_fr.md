@@ -7,6 +7,7 @@ _La liste complète des mises à jour peut être consultée via l'élément de n
 - Ajout de Investec Programmable Banking (Afrique du Sud) : soldes et importation des opérations des comptes Private Banking avec vos propres clés d'API
 - Ajout de Monzo Developer API (Royaume-Uni) : soldes et importation des opérations avec votre propre client OAuth, approuvé dans l'application Monzo
 - Ajout de Starling Bank Personal Access (Royaume-Uni) : soldes et importation des opérations avec un jeton d'accès personnel
+- Ajout d'Akahu Personal App (Nouvelle-Zélande) : soldes et importation des opérations des banques néo-zélandaises connectées à Akahu
 - Ajout de Wise API (Global) : soldes et importation des opérations des comptes multidevises Wise, conversions en virements
 - Ajout de PrivatBank Autoclient (Ukraine) : soldes et import des transactions des comptes professionnels par IBAN
 - Ajout de monobank Personal API (Ukraine) : soldes et import des transactions des cartes et des tirelires, création des comptes liés

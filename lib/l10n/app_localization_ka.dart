@@ -63,6 +63,42 @@ class AppLocalizationsKa extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'App ID ტოკენი';
+
+  @override
+  String get akahuDescription =>
+      'Akahu-სთან დაკავშირებული ახალი ზელანდიის ბანკების ნაშთებისა და ტრანზაქციების იმპორტი თქვენი საკუთარი უფასო პერსონალური აპით. Akahu ბანკებიდან მონაცემებს საკუთარი განრიგით (ყოველდღიურად) ანახლებს, ამიტომ ბოლო ტრანზაქციები შეიძლება მოგვიანებით გამოჩნდეს. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (ახალი ზელანდია)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu-მ დაკარგა წვდომა ამ ანგარიშზე: ხელახლა დააკავშირეთ ის my.akahu.nz/connections-ზე';
+
+  @override
+  String get akahuIncomplete =>
+      'შეავსეთ App ID ტოკენი და მომხმარებლის წვდომის ტოკენი';
+
+  @override
+  String get akahuRefresh => 'მონაცემების განახლება';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu-ს მოეთხოვა ბანკებიდან ახალი მონაცემების მიღება: გაიმეორეთ იმპორტი რამდენიმე წუთში (არაუმეტეს საათში ერთხელ)';
+
+  @override
+  String get akahuSteps =>
+      'როგორ მივიღოთ ტოკენები:\n1. დარეგისტრირდით my.akahu.nz-ზე და დააკავშირეთ თქვენი ბანკები\n2. გახსენით გვერდი „Developers“, მიიღეთ დეველოპერის პირობები და დააყენეთ მრავალფაქტორიანი ავთენტიფიკაცია\n3. დააკოპირეთ App ID ტოკენი და მომხმარებლის წვდომის ტოკენი\n4. ჩასვით ისინი ქვემოთ და დააჭირეთ „დაკავშირებას“';
+
+  @override
+  String get akahuTokenTooltip =>
+      'ნაჩვენებია my.akahu.nz-ის „Developers“ გვერდზე; ინახება დაშიფრული სახით';
+
+  @override
+  String get akahuUserToken => 'მომხმარებლის წვდომის ტოკენი';
+
+  @override
   String get amountFrom => 'თანხიდან';
 
   @override

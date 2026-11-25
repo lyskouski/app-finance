@@ -63,6 +63,42 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'Токен App ID';
+
+  @override
+  String get akahuDescription =>
+      'Імпарт рэшткаў і аперацый банкаў Новай Зеландыі, падлучаных да Akahu, з дапамогай уласнай бясплатнай персанальнай праграмы. Akahu абнаўляе даныя з банкаў па ўласным раскладзе (штодня), таму апошнія аперацыі могуць з\'явіцца пазней. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Новая Зеландыя)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu страціў доступ да гэтага рахунку: падлучыце яго зноў на my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Запоўніце токен App ID і токен доступу карыстальніка';
+
+  @override
+  String get akahuRefresh => 'Абнавіць даныя';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu атрымаў запыт на атрыманне новых даных з банкаў: паўтарыце імпарт праз некалькі хвілін (не часцей за раз на гадзіну)';
+
+  @override
+  String get akahuSteps =>
+      'Як атрымаць токены:\n1. Зарэгіструйцеся на my.akahu.nz і падлучыце свае банкі\n2. Адкрыйце старонку «Developers», прыміце ўмовы для распрацоўшчыкаў і наладзьце шматфактарную аўтэнтыфікацыю\n3. Скапіруйце токен App ID і токен доступу карыстальніка\n4. Устаўце іх ніжэй і націсніце «Падлучыцца»';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Паказваецца на старонцы «Developers» на my.akahu.nz; захоўваецца ў зашыфраваным выглядзе';
+
+  @override
+  String get akahuUserToken => 'Токен доступу карыстальніка';
+
+  @override
   String get amountFrom => 'Сума ад';
 
   @override
@@ -1771,6 +1807,42 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String afterNDays(Object value) {
     return 'praz $value dzion';
   }
+
+  @override
+  String get akahuAppToken => 'Tokien App ID';
+
+  @override
+  String get akahuDescription =>
+      'Impart reštkaŭ i aperacyj bankaŭ Novaj Zielandyi, padłučanych da Akahu, z dapamohaj ułasnaj biaspłatnaj persanaĺnaj prahramy. Akahu abnaŭlaje danyja z bankaŭ pa ŭłasnym raskładzie (štodnia), tamu apošnija aperacyi mohuć zjavicca paźniej. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Novaja Zielandyja)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu straciŭ dostup da hetaha rachunku: padłučycie jaho znoŭ na my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Zapoŭnicie tokien App ID i tokien dostupu karystaĺnika';
+
+  @override
+  String get akahuRefresh => 'Abnavić danyja';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu atrymaŭ zapyt na atrymańnie novych danych z bankaŭ: paŭtarycie impart praz niekaĺki chvilin (nie čaściej za raz na hadzinu)';
+
+  @override
+  String get akahuSteps =>
+      'Jak atrymać tokieny:\n1. Zarehistrujciesia na my.akahu.nz i padłučycie svaje banki\n2. Adkryjcie staronku «Developers», prymicie ŭmovy dla raspracoŭščykaŭ i naładźcie šmatfaktarnuju aŭtentyfikacyju\n3. Skapirujcie tokien App ID i tokien dostupu karystaĺnika\n4. Ustaŭcie ich nižej i naciśnicie «Padłučycca»';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Pakazvajecca na staroncy «Developers» na my.akahu.nz; zachoŭvajecca ŭ zašyfravanym vyhladzie';
+
+  @override
+  String get akahuUserToken => 'Tokien dostupu karystaĺnika';
 
   @override
   String get amountFrom => 'Suma ad';

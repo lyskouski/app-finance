@@ -63,6 +63,41 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'توکن App ID';
+
+  @override
+  String get akahuDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های بانک‌های نیوزیلند متصل به Akahu با برنامه شخصی رایگان خودتان. Akahu داده‌ها را طبق برنامه زمانی خود (روزانه) از بانک‌ها به‌روزرسانی می‌کند، بنابراین ممکن است آخرین تراکنش‌ها دیرتر نمایش داده شوند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (نیوزیلند)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu دسترسی به این حساب را از دست داده است: آن را در my.akahu.nz/connections دوباره متصل کنید';
+
+  @override
+  String get akahuIncomplete => 'توکن App ID و توکن دسترسی کاربر را وارد کنید';
+
+  @override
+  String get akahuRefresh => 'به‌روزرسانی داده‌ها';
+
+  @override
+  String get akahuRefreshed =>
+      'از Akahu خواسته شد داده‌های جدید را از بانک‌ها دریافت کند: چند دقیقه دیگر وارد کردن را دوباره امتحان کنید (حداکثر یک بار در ساعت)';
+
+  @override
+  String get akahuSteps =>
+      'نحوه دریافت توکن‌ها:\n1. در my.akahu.nz ثبت‌نام کنید و بانک‌های خود را متصل کنید\n2. صفحه «Developers» را باز کنید، شرایط توسعه‌دهندگان را بپذیرید و احراز هویت چندعاملی را راه‌اندازی کنید\n3. توکن App ID و توکن دسترسی کاربر را کپی کنید\n4. آن‌ها را در زیر جای‌گذاری کرده و «اتصال» را بزنید';
+
+  @override
+  String get akahuTokenTooltip =>
+      'در صفحه «Developers» در my.akahu.nz نمایش داده می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود';
+
+  @override
+  String get akahuUserToken => 'توکن دسترسی کاربر';
+
+  @override
   String get amountFrom => 'از مبلغ';
 
   @override

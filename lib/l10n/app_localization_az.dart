@@ -63,6 +63,42 @@ class AppLocalizationsAz extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'App ID tokeni';
+
+  @override
+  String get akahuDescription =>
+      'Akahu-ya qoşulmuş Yeni Zelandiya banklarının qalıqlarını və əməliyyatlarını öz pulsuz şəxsi tətbiqinizlə idxal edin. Akahu bankların məlumatlarını öz qrafiki ilə (gündəlik) yeniləyir, buna görə son əməliyyatlar daha gec görünə bilər. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Yeni Zelandiya)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu bu hesaba girişi itirib: onu my.akahu.nz/connections ünvanında yenidən qoşun';
+
+  @override
+  String get akahuIncomplete =>
+      'App ID tokenini və istifadəçi giriş tokenini doldurun';
+
+  @override
+  String get akahuRefresh => 'Məlumatları yenilə';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu-dan banklardan yeni məlumatları alması xahiş olunub: bir neçə dəqiqədən sonra idxalı təkrarlayın (saatda ən çoxu bir dəfə)';
+
+  @override
+  String get akahuSteps =>
+      'Tokenləri necə əldə etmək olar:\n1. my.akahu.nz saytında qeydiyyatdan keçin və banklarınızı qoşun\n2. \"Developers\" səhifəsini açın, tərtibatçı şərtlərini qəbul edin və çoxfaktorlu autentifikasiyanı qurun\n3. App ID tokenini və istifadəçi giriş tokenini kopyalayın\n4. Onları aşağıya yapışdırın və \"Qoşul\" düyməsini basın';
+
+  @override
+  String get akahuTokenTooltip =>
+      'my.akahu.nz saytının \"Developers\" səhifəsində göstərilir; şifrələnmiş saxlanılır';
+
+  @override
+  String get akahuUserToken => 'İstifadəçi giriş tokeni';
+
+  @override
   String get amountFrom => 'Məbləğdən';
 
   @override

@@ -63,6 +63,41 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'App ID 토큰';
+
+  @override
+  String get akahuDescription =>
+      'Akahu에 연결된 뉴질랜드 은행의 잔액과 거래를 본인의 무료 개인 앱으로 가져옵니다. Akahu는 자체 일정(매일)에 따라 은행 데이터를 새로 고치므로 최신 거래가 나중에 표시될 수 있습니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (뉴질랜드)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu가 이 계좌에 대한 접근 권한을 잃었습니다. my.akahu.nz/connections에서 다시 연결하세요';
+
+  @override
+  String get akahuIncomplete => 'App ID 토큰과 사용자 액세스 토큰을 입력하세요';
+
+  @override
+  String get akahuRefresh => '데이터 새로 고침';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu에 은행에서 새 데이터를 가져오도록 요청했습니다. 몇 분 후에 가져오기를 다시 시도하세요(시간당 최대 1회)';
+
+  @override
+  String get akahuSteps =>
+      '토큰 받는 방법:\n1. my.akahu.nz에 가입하고 은행을 연결합니다\n2. \"Developers\" 페이지를 열고 개발자 약관에 동의한 뒤 다중 인증을 설정합니다\n3. App ID 토큰과 사용자 액세스 토큰을 복사합니다\n4. 아래에 붙여 넣고 \"연결\"을 누릅니다';
+
+  @override
+  String get akahuTokenTooltip =>
+      'my.akahu.nz의 \"Developers\" 페이지에 표시됩니다. 암호화되어 저장됩니다';
+
+  @override
+  String get akahuUserToken => '사용자 액세스 토큰';
+
+  @override
   String get amountFrom => '시작 금액';
 
   @override

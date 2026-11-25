@@ -63,6 +63,42 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'Token App ID';
+
+  @override
+  String get akahuDescription =>
+      'Importă soldurile și tranzacțiile băncilor din Noua Zeelandă conectate la Akahu cu propria aplicație personală gratuită. Akahu actualizează datele de la bănci după propriul program (zilnic), așa că cele mai recente tranzacții pot apărea mai târziu. Accesul este doar pentru citire: nu se efectuează plăți.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Noua Zeelandă)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu a pierdut accesul la acest cont: reconectați-l pe my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Completați tokenul App ID și tokenul de acces al utilizatorului';
+
+  @override
+  String get akahuRefresh => 'Reîmprospătare date';
+
+  @override
+  String get akahuRefreshed =>
+      'I s-a cerut lui Akahu să preia date noi de la bănci: reîncercați importul peste câteva minute (cel mult o dată pe oră)';
+
+  @override
+  String get akahuSteps =>
+      'Cum obțineți tokenurile:\n1. Înregistrați-vă pe my.akahu.nz și conectați-vă băncile\n2. Deschideți pagina „Developers”, acceptați condițiile pentru dezvoltatori și configurați autentificarea multifactor\n3. Copiați tokenul App ID și tokenul de acces al utilizatorului\n4. Lipiți-le mai jos și apăsați „Conectare”';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Afișat pe pagina „Developers” de pe my.akahu.nz; stocat criptat';
+
+  @override
+  String get akahuUserToken => 'Token de acces al utilizatorului';
+
+  @override
   String get amountFrom => 'De la Sumă';
 
   @override

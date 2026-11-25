@@ -8,6 +8,7 @@ pulsante “Suggerimenti”._
 - Aggiunto Investec Programmable Banking (Sudafrica): saldi e importazione dei movimenti dei conti Private Banking con le proprie chiavi API
 - Aggiunto Monzo Developer API (Regno Unito): saldi e importazione dei movimenti con il proprio client OAuth, approvato nell'app Monzo
 - Aggiunto Starling Bank Personal Access (Regno Unito): saldi e importazione dei movimenti con un token di accesso personale
+- Aggiunto Akahu Personal App (Nuova Zelanda): saldi e importazione dei movimenti delle banche neozelandesi collegate ad Akahu
 - Aggiunto Wise API (Global): saldi e importazione dei movimenti dei conti multivaluta Wise, conversioni come trasferimenti
 - Aggiunto PrivatBank Autoclient (Ucraina): saldi e importazione delle transazioni dei conti aziendali tramite IBAN
 - Aggiunto monobank Personal API (Ucraina): saldi e importazione delle transazioni di carte e salvadanai, creazione di conti collegati

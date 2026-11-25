@@ -63,6 +63,42 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'App ID-token';
+
+  @override
+  String get akahuDescription =>
+      'Importeer saldi en transacties van met Akahu verbonden Nieuw-Zeelandse banken met uw eigen gratis persoonlijke app. Akahu ververst de gegevens van de banken volgens een eigen schema (dagelijks), dus de nieuwste transacties kunnen later verschijnen. De toegang is alleen-lezen: er worden geen betalingen uitgevoerd.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Nieuw-Zeeland)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu heeft de toegang tot deze rekening verloren: verbind deze opnieuw op my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Vul het App ID-token en het gebruikerstoegangstoken in';
+
+  @override
+  String get akahuRefresh => 'Gegevens vernieuwen';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu is gevraagd nieuwe gegevens bij de banken op te halen: probeer de import over een paar minuten opnieuw (hoogstens één keer per uur)';
+
+  @override
+  String get akahuSteps =>
+      'Zo krijgt u de tokens:\n1. Registreer u op my.akahu.nz en verbind uw banken\n2. Open de pagina \'Developers\', accepteer de ontwikkelaarsvoorwaarden en stel meervoudige verificatie in\n3. Kopieer het App ID-token en het gebruikerstoegangstoken\n4. Plak ze hieronder en druk op \'Verbinden\'';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Getoond op de pagina \'Developers\' van my.akahu.nz; versleuteld opgeslagen';
+
+  @override
+  String get akahuUserToken => 'Gebruikerstoegangstoken';
+
+  @override
   String get amountFrom => 'Vanaf bedrag';
 
   @override

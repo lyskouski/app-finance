@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "App ID-token",
+    "akahuDescription": "Importeer saldi en transacties van met Akahu verbonden Nieuw-Zeelandse banken met uw eigen gratis persoonlijke app. Akahu ververst de gegevens van de banken volgens een eigen schema (dagelijks), dus de nieuwste transacties kunnen later verschijnen. De toegang is alleen-lezen: er worden geen betalingen uitgevoerd.",
+    "akahuHeadline": "Akahu Personal App (Nieuw-Zeeland)",
+    "akahuInactive": "Akahu heeft de toegang tot deze rekening verloren: verbind deze opnieuw op my.akahu.nz/connections",
+    "akahuIncomplete": "Vul het App ID-token en het gebruikerstoegangstoken in",
+    "akahuRefresh": "Gegevens vernieuwen",
+    "akahuRefreshed": "Akahu is gevraagd nieuwe gegevens bij de banken op te halen: probeer de import over een paar minuten opnieuw (hoogstens één keer per uur)",
+    "akahuSteps": "Zo krijgt u de tokens:\n1. Registreer u op my.akahu.nz en verbind uw banken\n2. Open de pagina 'Developers', accepteer de ontwikkelaarsvoorwaarden en stel meervoudige verificatie in\n3. Kopieer het App ID-token en het gebruikerstoegangstoken\n4. Plak ze hieronder en druk op 'Verbinden'",
+    "akahuTokenTooltip": "Getoond op de pagina 'Developers' van my.akahu.nz; versleuteld opgeslagen",
+    "akahuUserToken": "Gebruikerstoegangstoken",
     "amountFrom": "Vanaf bedrag",
     "amountTo": "Naar bedrag",
     "appBuild": "Samenstellen: {build}",

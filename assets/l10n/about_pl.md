@@ -82,6 +82,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
   - Investec Programmable Banking (Republika Południowej Afryki): import sald i transakcji kont Private Banking (własne klucze API)
   - Monzo Developer API (Wielka Brytania): import sald i transakcji (własny klient OAuth do użytku osobistego)
   - Starling Bank Personal Access (Wielka Brytania): import sald i transakcji (osobisty token dostępu)
+  - Akahu Personal App (Nowa Zelandia): import sald i transakcji nowozelandzkich banków (własna aplikacja osobista)
   - PrivatBank Autoclient (Ukraina): import sald i transakcji kont firmowych Privat24 dla Biznesu (token Autoclient)
   - monobank Personal API (Ukraina): import sald i transakcji kart i słoików monobank (token osobisty)
   - Parser powiadomień (Android): transakcje z powiadomień aplikacji bankowych i płatniczych

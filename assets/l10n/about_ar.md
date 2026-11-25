@@ -82,6 +82,7 @@
   - Investec Programmable Banking (جنوب أفريقيا): استيراد الأرصدة والمعاملات لحسابات Private Banking (مفاتيح API خاصة)
   - Monzo Developer API (المملكة المتحدة): استيراد الأرصدة والمعاملات (عميل OAuth خاص للاستخدام الشخصي)
   - Starling Bank Personal Access (المملكة المتحدة): استيراد الأرصدة والمعاملات (رمز الوصول الشخصي)
+  - Akahu Personal App (نيوزيلندا): استيراد الأرصدة والمعاملات لبنوك نيوزيلندا (تطبيق شخصي خاص)
   - PrivatBank Autoclient (أوكرانيا): استيراد أرصدة ومعاملات حسابات الأعمال في Privat24 for Business (رمز Autoclient)
   - monobank Personal API (أوكرانيا): استيراد أرصدة ومعاملات بطاقات وحصالات monobank (رمز شخصي)
   - محلل الإخطارات (Android): معاملات من إشعارات تطبيقات البنوك والدفع

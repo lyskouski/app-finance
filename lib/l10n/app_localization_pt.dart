@@ -63,6 +63,42 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'Token de App ID';
+
+  @override
+  String get akahuDescription =>
+      'Importe saldos e transações de bancos da Nova Zelândia ligados ao Akahu com a sua própria aplicação pessoal gratuita. O Akahu atualiza os dados dos bancos segundo o seu próprio calendário (diariamente), pelo que as transações mais recentes podem aparecer mais tarde. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Nova Zelândia)';
+
+  @override
+  String get akahuInactive =>
+      'O Akahu perdeu o acesso a esta conta: volte a ligá-la em my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Preencha o token de App ID e o token de acesso do utilizador';
+
+  @override
+  String get akahuRefresh => 'Atualizar dados';
+
+  @override
+  String get akahuRefreshed =>
+      'Foi pedido ao Akahu que obtenha novos dados dos bancos: repita a importação dentro de alguns minutos (no máximo uma vez por hora)';
+
+  @override
+  String get akahuSteps =>
+      'Como obter os tokens:\n1. Registe-se em my.akahu.nz e ligue os seus bancos\n2. Abra a página \"Developers\", aceite os termos para programadores e configure a autenticação multifator\n3. Copie o token de App ID e o token de acesso do utilizador\n4. Cole-os abaixo e prima \"Ligar\"';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Apresentado na página \"Developers\" de my.akahu.nz; guardado encriptado';
+
+  @override
+  String get akahuUserToken => 'Token de acesso do utilizador';
+
+  @override
   String get amountFrom => 'De Valor';
 
   @override
@@ -1778,6 +1814,42 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String afterNDays(Object value) {
     return 'após $value dias';
   }
+
+  @override
+  String get akahuAppToken => 'Token de App ID';
+
+  @override
+  String get akahuDescription =>
+      'Importe saldos e transações de bancos da Nova Zelândia conectados ao Akahu com seu próprio aplicativo pessoal gratuito. O Akahu atualiza os dados dos bancos conforme sua própria programação (diariamente), então as transações mais recentes podem aparecer mais tarde. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Nova Zelândia)';
+
+  @override
+  String get akahuInactive =>
+      'O Akahu perdeu o acesso a esta conta: conecte-a novamente em my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Preencha o token de App ID e o token de acesso do usuário';
+
+  @override
+  String get akahuRefresh => 'Atualizar dados';
+
+  @override
+  String get akahuRefreshed =>
+      'Foi solicitado ao Akahu que busque novos dados dos bancos: tente a importação novamente em alguns minutos (no máximo uma vez por hora)';
+
+  @override
+  String get akahuSteps =>
+      'Como obter os tokens:\n1. Cadastre-se em my.akahu.nz e conecte seus bancos\n2. Abra a página \"Developers\", aceite os termos para desenvolvedores e configure a autenticação multifator\n3. Copie o token de App ID e o token de acesso do usuário\n4. Cole-os abaixo e toque em \"Conectar\"';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Exibido na página \"Developers\" de my.akahu.nz; armazenado criptografado';
+
+  @override
+  String get akahuUserToken => 'Token de acesso do usuário';
 
   @override
   String get amountFrom => 'De Valor';

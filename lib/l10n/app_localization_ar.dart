@@ -63,6 +63,41 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'رمز App ID';
+
+  @override
+  String get akahuDescription =>
+      'استيراد الأرصدة والمعاملات لبنوك نيوزيلندا المتصلة بـ Akahu باستخدام تطبيقك الشخصي المجاني. يحدّث Akahu البيانات من البنوك وفق جدوله الخاص (يوميًا)، لذا قد تظهر أحدث المعاملات لاحقًا. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (نيوزيلندا)';
+
+  @override
+  String get akahuInactive =>
+      'فقد Akahu الوصول إلى هذا الحساب: أعد ربطه في my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete => 'املأ رمز App ID ورمز وصول المستخدم';
+
+  @override
+  String get akahuRefresh => 'تحديث البيانات';
+
+  @override
+  String get akahuRefreshed =>
+      'طُلب من Akahu جلب بيانات جديدة من البنوك: أعد محاولة الاستيراد بعد بضع دقائق (مرة واحدة في الساعة كحد أقصى)';
+
+  @override
+  String get akahuSteps =>
+      'كيفية الحصول على الرموز:\n1. سجّل في my.akahu.nz واربط بنوكك\n2. افتح صفحة «Developers»، ووافق على شروط المطوّرين، وأعدّ المصادقة متعددة العوامل\n3. انسخ رمز App ID ورمز وصول المستخدم\n4. الصقهما أدناه واضغط «اتصال»';
+
+  @override
+  String get akahuTokenTooltip =>
+      'يظهر في صفحة «Developers» على my.akahu.nz؛ ويُخزَّن مشفرًا';
+
+  @override
+  String get akahuUserToken => 'رمز وصول المستخدم';
+
+  @override
   String get amountFrom => 'من المبلغ';
 
   @override

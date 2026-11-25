@@ -83,6 +83,7 @@ zurückgelassen wird.
   - Investec Programmable Banking (Südafrika): Import von Salden und Umsätzen von Private-Banking-Konten (eigene API-Schlüssel)
   - Monzo Developer API (Vereinigtes Königreich): Import von Salden und Umsätzen (eigener OAuth-Client für den persönlichen Gebrauch)
   - Starling Bank Personal Access (Vereinigtes Königreich): Import von Salden und Umsätzen (persönliches Zugriffstoken)
+  - Akahu Personal App (Neuseeland): Import von Salden und Umsätzen neuseeländischer Banken (eigene persönliche App)
   - PrivatBank Autoclient (Ukraine): Import von Salden und Umsätzen von Geschäftskonten aus Privat24 for Business (Autoclient-Token)
   - monobank Personal API (Ukraine): Import von Salden und Umsätzen der Karten und Sparbüchsen von monobank (persönliches Token)
   - Benachrichtigungen Parser (Android): Umsätze aus Benachrichtigungen von Banking- und Zahlungs-Apps

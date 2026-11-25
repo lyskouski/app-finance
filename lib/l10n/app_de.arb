@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "App-ID-Token",
+    "akahuDescription": "Salden und Umsätze von mit Akahu verbundenen neuseeländischen Banken mit Ihrer eigenen kostenlosen persönlichen App importieren. Akahu aktualisiert die Daten der Banken nach eigenem Zeitplan (täglich), daher können die neuesten Umsätze später erscheinen. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.",
+    "akahuHeadline": "Akahu Personal App (Neuseeland)",
+    "akahuInactive": "Akahu hat den Zugriff auf dieses Konto verloren: Verbinden Sie es unter my.akahu.nz/connections erneut",
+    "akahuIncomplete": "App-ID-Token und Benutzer-Zugriffstoken ausfüllen",
+    "akahuRefresh": "Daten aktualisieren",
+    "akahuRefreshed": "Akahu wurde gebeten, neue Daten von den Banken abzurufen: Wiederholen Sie den Import in einigen Minuten (höchstens einmal pro Stunde)",
+    "akahuSteps": "So erhalten Sie die Tokens:\n1. Registrieren Sie sich auf my.akahu.nz und verbinden Sie Ihre Banken\n2. Öffnen Sie die Seite „Developers“, akzeptieren Sie die Entwicklerbedingungen und richten Sie die Multi-Faktor-Authentifizierung ein\n3. Kopieren Sie das App-ID-Token und das Benutzer-Zugriffstoken\n4. Fügen Sie sie unten ein und tippen Sie auf „Verbinden“",
+    "akahuTokenTooltip": "Wird auf my.akahu.nz auf der Seite „Developers“ angezeigt; verschlüsselt gespeichert",
+    "akahuUserToken": "Benutzer-Zugriffstoken",
     "amountFrom": "Von-Betrag",
     "amountTo": "Bis-Betrag",
     "appBuild": "Erstellen: {build}",

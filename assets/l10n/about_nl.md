@@ -82,6 +82,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
   - Investec Programmable Banking (Zuid-Afrika): import van saldi en transacties van Private Banking-rekeningen (eigen API-sleutels)
   - Monzo Developer API (Verenigd Koninkrijk): import van saldi en transacties (eigen OAuth-client voor persoonlijk gebruik)
   - Starling Bank Personal Access (Verenigd Koninkrijk): import van saldi en transacties (persoonlijk toegangstoken)
+  - Akahu Personal App (Nieuw-Zeeland): import van saldi en transacties van Nieuw-Zeelandse banken (eigen persoonlijke app)
   - PrivatBank Autoclient (Oekraïne): import van saldi en transacties van zakelijke rekeningen van Privat24 for Business (Autoclient-token)
   - monobank Personal API (Oekraïne): import van saldi en transacties van monobank-kaarten en spaarpotten (persoonlijk token)
   - Meldingen Parser (Android): transacties uit meldingen van bank- en betaalapps

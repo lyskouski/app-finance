@@ -247,6 +247,66 @@ abstract class AppLocalizations {
   /// **'after {value} days'**
   String afterNDays(Object value);
 
+  /// No description provided for @akahuAppToken.
+  ///
+  /// In en, this message translates to:
+  /// **'App ID Token'**
+  String get akahuAppToken;
+
+  /// No description provided for @akahuDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of New Zealand banks connected to Akahu with your own free personal app. Akahu refreshes the data from the banks on its own schedule (daily), so the latest transactions may appear later. Access is read-only: no payments are made.'**
+  String get akahuDescription;
+
+  /// No description provided for @akahuHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Akahu Personal App (New Zealand)'**
+  String get akahuHeadline;
+
+  /// No description provided for @akahuInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Akahu has lost the access to this account: reconnect it at my.akahu.nz/connections'**
+  String get akahuInactive;
+
+  /// No description provided for @akahuIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the App ID Token and the User Access Token'**
+  String get akahuIncomplete;
+
+  /// No description provided for @akahuRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh Data'**
+  String get akahuRefresh;
+
+  /// No description provided for @akahuRefreshed.
+  ///
+  /// In en, this message translates to:
+  /// **'Akahu has been asked to fetch new data from the banks: retry the import in a few minutes (at most once per hour)'**
+  String get akahuRefreshed;
+
+  /// No description provided for @akahuSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'How to get the tokens:\n1. Sign up at my.akahu.nz and connect your banks\n2. Open the \"Developers\" page, accept the developer terms, and set up the multi-factor authentication\n3. Copy the App ID Token and the User Access Token\n4. Paste them below and press \"Connect\"'**
+  String get akahuSteps;
+
+  /// No description provided for @akahuTokenTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown on the \"Developers\" page of my.akahu.nz; stored encrypted'**
+  String get akahuTokenTooltip;
+
+  /// No description provided for @akahuUserToken.
+  ///
+  /// In en, this message translates to:
+  /// **'User Access Token'**
+  String get akahuUserToken;
+
   /// No description provided for @amountFrom.
   ///
   /// In en, this message translates to:

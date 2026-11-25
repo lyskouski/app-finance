@@ -7,6 +7,7 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 - Adăugat Investec Programmable Banking (Africa de Sud): solduri și import de tranzacții ale conturilor Private Banking cu propriile chei API
 - Adăugat Monzo Developer API (Regatul Unit): solduri și import de tranzacții cu propriul client OAuth, aprobat în aplicația Monzo
 - Adăugat Starling Bank Personal Access (Regatul Unit): solduri și import de tranzacții cu un token de acces personal
+- Adăugat Akahu Personal App (Noua Zeelandă): solduri și import de tranzacții ale băncilor din Noua Zeelandă conectate la Akahu
 - Adăugat Wise API (Global): solduri și import de tranzacții ale conturilor multivalută Wise, conversii ca transferuri
 - Adăugat PrivatBank Autoclient (Ucraina): solduri și importul tranzacțiilor conturilor de afaceri după IBAN
 - Adăugat monobank Personal API (Ucraina): solduri și importul tranzacțiilor cardurilor și pușculițelor, crearea conturilor asociate

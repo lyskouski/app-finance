@@ -63,6 +63,39 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'App ID 令牌';
+
+  @override
+  String get akahuDescription =>
+      '使用您自己的免费个人应用导入已连接到 Akahu 的新西兰银行的余额和交易。Akahu 按其自身的计划（每天）从银行刷新数据，因此最新交易可能会稍后显示。访问为只读：不会进行任何付款。';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App（新西兰）';
+
+  @override
+  String get akahuInactive =>
+      'Akahu 已失去对此账户的访问权限：请在 my.akahu.nz/connections 重新连接';
+
+  @override
+  String get akahuIncomplete => '请填写 App ID 令牌和用户访问令牌';
+
+  @override
+  String get akahuRefresh => '刷新数据';
+
+  @override
+  String get akahuRefreshed => '已请求 Akahu 从银行获取新数据：请在几分钟后重试导入（每小时最多一次）';
+
+  @override
+  String get akahuSteps =>
+      '如何获取令牌：\n1. 在 my.akahu.nz 注册并连接您的银行\n2. 打开“Developers”页面，接受开发者条款并设置多重身份验证\n3. 复制 App ID 令牌和用户访问令牌\n4. 粘贴到下方并点击“连接”';
+
+  @override
+  String get akahuTokenTooltip => '显示在 my.akahu.nz 的“Developers”页面上；加密存储';
+
+  @override
+  String get akahuUserToken => '用户访问令牌';
+
+  @override
   String get amountFrom => '起始金额';
 
   @override
@@ -1727,6 +1760,39 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String afterNDays(Object value) {
     return '$value天後';
   }
+
+  @override
+  String get akahuAppToken => 'App ID 權杖';
+
+  @override
+  String get akahuDescription =>
+      '使用您自己的免費個人應用程式匯入已連結至 Akahu 的紐西蘭銀行的餘額與交易。Akahu 依其自身排程（每日）從銀行重新整理資料，因此最新交易可能會稍後才顯示。存取為唯讀：不會進行任何付款。';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App（紐西蘭）';
+
+  @override
+  String get akahuInactive =>
+      'Akahu 已失去此帳戶的存取權：請在 my.akahu.nz/connections 重新連線';
+
+  @override
+  String get akahuIncomplete => '請填寫 App ID 權杖與使用者存取權杖';
+
+  @override
+  String get akahuRefresh => '重新整理資料';
+
+  @override
+  String get akahuRefreshed => '已要求 Akahu 從銀行擷取新資料：請在幾分鐘後重試匯入（每小時最多一次）';
+
+  @override
+  String get akahuSteps =>
+      '如何取得權杖：\n1. 在 my.akahu.nz 註冊並連結您的銀行\n2. 開啟「Developers」頁面，接受開發者條款並設定多重要素驗證\n3. 複製 App ID 權杖與使用者存取權杖\n4. 貼到下方並點選「連線」';
+
+  @override
+  String get akahuTokenTooltip => '顯示於 my.akahu.nz 的「Developers」頁面；加密儲存';
+
+  @override
+  String get akahuUserToken => '使用者存取權杖';
 
   @override
   String get amountFrom => '起始金額';

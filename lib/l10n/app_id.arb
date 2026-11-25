@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "Token App ID",
+    "akahuDescription": "Impor saldo dan transaksi bank Selandia Baru yang terhubung ke Akahu dengan aplikasi pribadi gratis Anda sendiri. Akahu memperbarui data dari bank sesuai jadwalnya sendiri (harian), sehingga transaksi terbaru mungkin muncul lebih lambat. Akses hanya-baca: tidak ada pembayaran yang dilakukan.",
+    "akahuHeadline": "Akahu Personal App (Selandia Baru)",
+    "akahuInactive": "Akahu telah kehilangan akses ke akun ini: hubungkan kembali di my.akahu.nz/connections",
+    "akahuIncomplete": "Isi Token App ID dan Token Akses Pengguna",
+    "akahuRefresh": "Segarkan Data",
+    "akahuRefreshed": "Akahu telah diminta mengambil data baru dari bank: coba impor lagi dalam beberapa menit (paling banyak sekali per jam)",
+    "akahuSteps": "Cara mendapatkan token:\n1. Daftar di my.akahu.nz dan hubungkan bank Anda\n2. Buka halaman \"Developers\", setujui ketentuan pengembang, dan atur autentikasi multifaktor\n3. Salin Token App ID dan Token Akses Pengguna\n4. Tempel di bawah dan tekan \"Hubungkan\"",
+    "akahuTokenTooltip": "Ditampilkan di halaman \"Developers\" pada my.akahu.nz; disimpan terenkripsi",
+    "akahuUserToken": "Token Akses Pengguna",
     "amountFrom": "Dari Jumlah",
     "amountTo": "Ke Jumlah",
     "appBuild": "Build: {build}",

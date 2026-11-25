@@ -63,6 +63,42 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'App ID Token';
+
+  @override
+  String get akahuDescription =>
+      'Import balances and transactions of New Zealand banks connected to Akahu with your own free personal app. Akahu refreshes the data from the banks on its own schedule (daily), so the latest transactions may appear later. Access is read-only: no payments are made.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (New Zealand)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu has lost the access to this account: reconnect it at my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Fill in the App ID Token and the User Access Token';
+
+  @override
+  String get akahuRefresh => 'Refresh Data';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu has been asked to fetch new data from the banks: retry the import in a few minutes (at most once per hour)';
+
+  @override
+  String get akahuSteps =>
+      'How to get the tokens:\n1. Sign up at my.akahu.nz and connect your banks\n2. Open the \"Developers\" page, accept the developer terms, and set up the multi-factor authentication\n3. Copy the App ID Token and the User Access Token\n4. Paste them below and press \"Connect\"';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Shown on the \"Developers\" page of my.akahu.nz; stored encrypted';
+
+  @override
+  String get akahuUserToken => 'User Access Token';
+
+  @override
   String get amountFrom => 'From Amount';
 
   @override

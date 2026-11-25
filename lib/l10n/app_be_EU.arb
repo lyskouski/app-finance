@@ -21,6 +21,16 @@
             "type": "int"
         }
     },
+    "akahuAppToken": "Tokien App ID",
+    "akahuDescription": "Impart reštkaŭ i aperacyj bankaŭ Novaj Zielandyi, padłučanych da Akahu, z dapamohaj ułasnaj biaspłatnaj persanaĺnaj prahramy. Akahu abnaŭlaje danyja z bankaŭ pa ŭłasnym raskładzie (štodnia), tamu apošnija aperacyi mohuć zjavicca paźniej. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "akahuHeadline": "Akahu Personal App (Novaja Zielandyja)",
+    "akahuInactive": "Akahu straciŭ dostup da hetaha rachunku: padłučycie jaho znoŭ na my.akahu.nz/connections",
+    "akahuIncomplete": "Zapoŭnicie tokien App ID i tokien dostupu karystaĺnika",
+    "akahuRefresh": "Abnavić danyja",
+    "akahuRefreshed": "Akahu atrymaŭ zapyt na atrymańnie novych danych z bankaŭ: paŭtarycie impart praz niekaĺki chvilin (nie čaściej za raz na hadzinu)",
+    "akahuSteps": "Jak atrymać tokieny:\n1. Zarehistrujciesia na my.akahu.nz i padłučycie svaje banki\n2. Adkryjcie staronku «Developers», prymicie ŭmovy dla raspracoŭščykaŭ i naładźcie šmatfaktarnuju aŭtentyfikacyju\n3. Skapirujcie tokien App ID i tokien dostupu karystaĺnika\n4. Ustaŭcie ich nižej i naciśnicie «Padłučycca»",
+    "akahuTokenTooltip": "Pakazvajecca na staroncy «Developers» na my.akahu.nz; zachoŭvajecca ŭ zašyfravanym vyhladzie",
+    "akahuUserToken": "Tokien dostupu karystaĺnika",
     "amountFrom": "Suma ad",
     "amountTo": "Suma da",
     "appBuild": "Zborka: {build}",

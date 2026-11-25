@@ -63,6 +63,42 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'Jeton App ID';
+
+  @override
+  String get akahuDescription =>
+      'Importer les soldes et les transactions des banques néo-zélandaises connectées à Akahu avec votre propre application personnelle gratuite. Akahu actualise les données des banques selon son propre calendrier (quotidien), les dernières transactions peuvent donc apparaître plus tard. L’accès est en lecture seule : aucun paiement n’est effectué.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Nouvelle-Zélande)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu a perdu l’accès à ce compte : reconnectez-le sur my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete =>
+      'Renseignez le jeton App ID et le jeton d’accès utilisateur';
+
+  @override
+  String get akahuRefresh => 'Actualiser les données';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu a été invité à récupérer de nouvelles données auprès des banques : relancez l’importation dans quelques minutes (au plus une fois par heure)';
+
+  @override
+  String get akahuSteps =>
+      'Comment obtenir les jetons :\n1. Inscrivez-vous sur my.akahu.nz et connectez vos banques\n2. Ouvrez la page « Developers », acceptez les conditions pour les développeurs et configurez l’authentification multifacteur\n3. Copiez le jeton App ID et le jeton d’accès utilisateur\n4. Collez-les ci-dessous et appuyez sur « Se connecter »';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Affiché sur la page « Developers » de my.akahu.nz ; stocké chiffré';
+
+  @override
+  String get akahuUserToken => 'Jeton d’accès utilisateur';
+
+  @override
   String get amountFrom => 'Montant de départ';
 
   @override

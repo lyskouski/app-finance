@@ -63,6 +63,41 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String get akahuAppToken => 'Token App ID';
+
+  @override
+  String get akahuDescription =>
+      'Impor saldo dan transaksi bank Selandia Baru yang terhubung ke Akahu dengan aplikasi pribadi gratis Anda sendiri. Akahu memperbarui data dari bank sesuai jadwalnya sendiri (harian), sehingga transaksi terbaru mungkin muncul lebih lambat. Akses hanya-baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get akahuHeadline => 'Akahu Personal App (Selandia Baru)';
+
+  @override
+  String get akahuInactive =>
+      'Akahu telah kehilangan akses ke akun ini: hubungkan kembali di my.akahu.nz/connections';
+
+  @override
+  String get akahuIncomplete => 'Isi Token App ID dan Token Akses Pengguna';
+
+  @override
+  String get akahuRefresh => 'Segarkan Data';
+
+  @override
+  String get akahuRefreshed =>
+      'Akahu telah diminta mengambil data baru dari bank: coba impor lagi dalam beberapa menit (paling banyak sekali per jam)';
+
+  @override
+  String get akahuSteps =>
+      'Cara mendapatkan token:\n1. Daftar di my.akahu.nz dan hubungkan bank Anda\n2. Buka halaman \"Developers\", setujui ketentuan pengembang, dan atur autentikasi multifaktor\n3. Salin Token App ID dan Token Akses Pengguna\n4. Tempel di bawah dan tekan \"Hubungkan\"';
+
+  @override
+  String get akahuTokenTooltip =>
+      'Ditampilkan di halaman \"Developers\" pada my.akahu.nz; disimpan terenkripsi';
+
+  @override
+  String get akahuUserToken => 'Token Akses Pengguna';
+
+  @override
   String get amountFrom => 'Dari Jumlah';
 
   @override

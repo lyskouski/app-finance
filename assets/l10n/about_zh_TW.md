@@ -82,6 +82,7 @@
   - Investec Programmable Banking（南非）：匯入 Private Banking 帳戶的餘額與交易（自有 API 金鑰）
   - Monzo Developer API（英國）：匯入餘額與交易（供個人使用的自有 OAuth 用戶端）
   - Starling Bank Personal Access（英國）：匯入餘額與交易（個人存取權杖）
+  - Akahu Personal App（紐西蘭）：匯入紐西蘭銀行的餘額與交易（自己的個人應用程式）
   - PrivatBank Autoclient（烏克蘭）：匯入 Privat24 for Business 企業帳戶的餘額和交易（Autoclient 權杖）
   - monobank Personal API（烏克蘭）：匯入 monobank 金融卡和存錢筒的餘額和交易（個人權杖）
   - 通知解析器 (Android)：根據銀行與支付應用程式的通知建立交易

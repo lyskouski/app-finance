@@ -82,6 +82,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
   - Investec Programmable Banking (Africa de Sud): import de solduri și tranzacții ale conturilor Private Banking (chei API proprii)
   - Monzo Developer API (Regatul Unit): import de solduri și tranzacții (client OAuth propriu pentru uz personal)
   - Starling Bank Personal Access (Regatul Unit): import de solduri și tranzacții (token de acces personal)
+  - Akahu Personal App (Noua Zeelandă): import de solduri și tranzacții ale băncilor din Noua Zeelandă (aplicație personală proprie)
   - PrivatBank Autoclient (Ucraina): importul soldurilor și tranzacțiilor conturilor de afaceri din Privat24 for Business (token Autoclient)
   - monobank Personal API (Ucraina): importul soldurilor și tranzacțiilor cardurilor și pușculițelor monobank (token personal)
   - Notificări Parser (Android): tranzacții din notificările aplicațiilor bancare și de plată

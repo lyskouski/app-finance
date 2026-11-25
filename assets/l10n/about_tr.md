@@ -82,6 +82,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
   - Investec Programmable Banking (Güney Afrika): Private Banking hesaplarının bakiye ve işlemlerinin içe aktarılması (kendi API anahtarlarınız)
   - Monzo Developer API (Birleşik Krallık): bakiye ve işlemlerin içe aktarılması (kişisel kullanım için kendi OAuth istemciniz)
   - Starling Bank Personal Access (Birleşik Krallık): bakiye ve işlemlerin içe aktarılması (kişisel erişim anahtarı)
+  - Akahu Personal App (Yeni Zelanda): Yeni Zelanda bankalarının bakiye ve işlemlerinin içe aktarılması (kendi kişisel uygulamanız)
   - PrivatBank Autoclient (Ukrayna): Privat24 for Business ticari hesaplarının bakiye ve işlemlerinin içe aktarımı (Autoclient belirteci)
   - monobank Personal API (Ukrayna): monobank kartlarının ve kumbaralarının bakiye ve işlemlerinin içe aktarımı (kişisel token)
   - Bildirim Ayrıştırıcı (Android): bankacılık ve ödeme uygulamalarının bildirimlerinden işlemler

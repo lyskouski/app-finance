@@ -7,6 +7,7 @@ _De volledige lijst met updates kan worden bekeken via het navigatie-item “Ove
 - Investec Programmable Banking (Zuid-Afrika) toegevoegd: saldi en import van transacties van Private Banking-rekeningen met uw eigen API-sleutels
 - Monzo Developer API (Verenigd Koninkrijk) toegevoegd: saldi en import van transacties met uw eigen OAuth-client, goedgekeurd in de Monzo-app
 - Starling Bank Personal Access (Verenigd Koninkrijk) toegevoegd: saldi en import van transacties met een persoonlijk toegangstoken
+- Akahu Personal App (Nieuw-Zeeland) toegevoegd: saldi en import van transacties van met Akahu verbonden Nieuw-Zeelandse banken
 - Wise API (Global) toegevoegd: saldi en import van transacties van Wise-rekeningen in meerdere valuta, omwisselingen als overboekingen
 - PrivatBank Autoclient (Oekraïne) toegevoegd: saldi en import van transacties van zakelijke rekeningen via IBAN
 - monobank Personal API (Oekraïne) toegevoegd: saldi en import van transacties van kaarten en spaarpotten, aanmaken van gekoppelde rekeningen
