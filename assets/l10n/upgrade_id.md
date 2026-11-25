@@ -1,5 +1,8 @@
 ﻿## Perubahan Terbaru
 
+Jika aplikasi ini bermanfaat, jangan lupa memberikan penilaian:
+[daftar toko aplikasi](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tombol "Petunjuk"._
 
 ### 8.5.0

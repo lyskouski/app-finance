@@ -1,5 +1,8 @@
 ## Latest Changes
 
+If you've found the app useful, don't forget to rate it:
+[list of marketplaces](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
 ### 8.5.0

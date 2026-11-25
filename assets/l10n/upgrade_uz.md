@@ -1,5 +1,8 @@
 ﻿## So'nggi o'zgarishlar
 
+Ilova foydali bo‘lgan bo‘lsa, uni baholashni unutmang:
+[ilova do‘konlari ro‘yxati](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
 ### 8.5.0

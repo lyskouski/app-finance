@@ -1,5 +1,8 @@
 ﻿## 最新更改
 
+如果您觉得这款应用有用，别忘了给它评分：
+[应用商店列表](https://github.com/lyskouski/app-finance/blob/main/README_zh-CN.md).
+
 _更新的完整列表可通过 "提示 "按钮上的 "关于 "导航项查看。_
 
 ### 8.5.0

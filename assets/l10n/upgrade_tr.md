@@ -1,5 +1,8 @@
 ﻿## Son Değişiklikler
 
+Uygulamayı faydalı bulduysanız, puan vermeyi unutmayın:
+[uygulama mağazaları listesi](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
 ### 8.5.0

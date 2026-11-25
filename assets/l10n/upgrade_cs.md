@@ -1,5 +1,8 @@
 ﻿## Poslední změny
 
+Pokud je pro vás aplikace užitečná, nezapomeňte ji ohodnotit:
+[seznam obchodů s aplikacemi](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
 ### 8.5.0

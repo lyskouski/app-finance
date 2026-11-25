@@ -1,5 +1,8 @@
 ﻿## Ultime modifiche
 
+Se l’app ti è stata utile, non dimenticare di valutarla:
+[elenco degli store](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
 

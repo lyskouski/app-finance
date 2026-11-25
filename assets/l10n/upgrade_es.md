@@ -1,5 +1,8 @@
 ﻿## Últimos cambios
 
+Si la aplicación te ha resultado útil, no olvides valorarla:
+[lista de tiendas de aplicaciones](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
 ### 8.5.0

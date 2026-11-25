@@ -1,5 +1,8 @@
 ﻿## Ultimele modificări
 
+Dacă aplicația vi s-a părut utilă, nu uitați să o evaluați:
+[lista magazinelor de aplicații](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
 ### 8.5.0

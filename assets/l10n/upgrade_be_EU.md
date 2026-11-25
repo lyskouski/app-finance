@@ -1,5 +1,8 @@
 ﻿## Apošnija zmieny
 
+Kali prahrama akazałasia karysnaj, nie zabudźciesia jaje acanić:
+[spis kram prahram](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
 ### 8.5.0

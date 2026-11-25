@@ -1,5 +1,8 @@
 ﻿## 最新變更
 
+如果您覺得這款應用程式有用，別忘了給它評分：
+[應用程式商店清單](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _完整的更新清單可透過「關於」導覽項目中的「提示」按鈕查看。_
 
 ### 8.5.0

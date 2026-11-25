@@ -1,5 +1,8 @@
 ﻿## 최신 변경사항
 
+앱이 유용했다면 평가를 남겨 주세요:
+[스토어 목록](https://github.com/lyskouski/app-finance/blob/main/README.md).
+
 _전체 업데이트 목록은 '힌트' 버튼의 '정보' 탐색 항목을 통해 확인할 수 있습니다._
 
 ### 8.5.0
