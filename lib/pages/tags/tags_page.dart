@@ -14,12 +14,12 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_ext/tags_ext.dart';
 import 'package:app_finance/design/form/tags_input.dart';
-import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:app_finance/design/wrapper/background_wrapper.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
+import 'package:app_finance/pages/bill/widgets/sliver_header_delegate.dart';
 import 'package:material_ui/material_ui.dart';
 
 class TagsPage extends StatefulWidget {
@@ -89,8 +89,7 @@ class TagsPageState extends AbstractPageState<TagsPage> {
     tags.value = isSelected ? tags.value.where((e) => e.toLowerCase() != value).toList() : [...tags.value, tag];
   }
 
-  Widget buildLine(AbstractAppData item, double width) {
-    final date = item.createdAt.yMEd();
+  Widget buildLine(AbstractAppData item, double width, int count) {
     if (item is BillAppData) {
       final account = state.getByUuid(item.account);
       final budget = state.getByUuid(item.category);
@@ -99,14 +98,16 @@ class TagsPageState extends AbstractPageState<TagsPage> {
         uuid: item.uuid!,
         child: BillLineWidget(
           uuid: item.uuid!,
-          count: ThemeHelper.getWidthCount(null, context),
+          count: count,
           title: item.title,
-          description: account != null ? '$date, ${account.title}' : date,
+          description: account != null ? '${account.title} (${account.description})' : '',
           descriptionColor: account?.color ?? Colors.transparent,
-          details: item.detailsFormatted,
+          details: '-${item.detailsFormatted}',
+          progress: item.progress,
           color: budget?.color ?? Colors.transparent,
           icon: budget?.icon ?? Icons.radio_button_unchecked_sharp,
           iconTooltip: budget?.title ?? '?',
+          hidden: item.hidden,
           width: width,
           route: AppRoute.billViewRoute,
         ),
@@ -115,23 +116,58 @@ class TagsPageState extends AbstractPageState<TagsPage> {
     final invoice = item as InvoiceAppData;
     final account = state.getByUuid(invoice.account);
     final isTransfer = invoice.accountFrom != null;
-    final accounts = isTransfer
-        ? '${state.getByUuid(invoice.accountFrom!)?.title ?? '?'} => ${account?.title ?? '?'}'
-        : (account?.title ?? '?');
+    final color = (isTransfer ? account?.color : invoice.color) ?? Colors.transparent;
     return BaseSwipeWidget(
       routePath: AppRoute.invoiceEditRoute,
       uuid: invoice.uuid!,
-      child: BaseLineWidget(
+      child: BillLineWidget(
         uuid: invoice.uuid!,
+        count: count,
         title: invoice.title,
-        description: '$date, $accounts',
-        details: invoice.detailsFormatted,
-        color: (isTransfer ? account?.color : invoice.color) ?? Colors.transparent,
+        description: isTransfer
+            ? '${state.getByUuid(invoice.accountFrom!)?.title ?? '?'} => ${account?.title ?? '?'}'
+            : (account != null ? '${account.title} (${account.description})' : ''),
+        descriptionColor: account?.color ?? Colors.transparent,
+        details: '${isTransfer ? '' : '+'}${invoice.detailsFormatted}',
+        progress: invoice.progress,
+        color: color,
         icon: account?.icon ?? Icons.radio_button_unchecked_sharp,
+        iconTooltip: isTransfer ? AppLocale.labels.transfersHeadline : AppLocale.labels.invoiceHeadline,
+        hidden: invoice.hidden,
         width: width,
         route: AppRoute.invoiceViewRoute,
       ),
     );
+  }
+
+  List<Widget> buildResults(List<AbstractAppData> results) {
+    final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
+    final count = ThemeHelper.getWidthCount(null, context);
+    final groups = <String, List<AbstractAppData>>{};
+    for (final item in results) {
+      (groups[item.createdAt.yMEd()] ??= []).add(item);
+    }
+    return [
+      for (final group in groups.entries)
+        SliverMainAxisGroup(
+          slivers: [
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: SliverHeaderDelegate(group.key),
+            ),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(vertical: ThemeHelper.getIndent(0.5)),
+              sliver: SliverList.builder(
+                itemCount: group.value.length,
+                itemBuilder: (context, index) => BackgroundWrapper(
+                  index: index,
+                  child: buildLine(group.value[index], width, count),
+                ),
+              ),
+            ),
+          ],
+        ),
+    ];
   }
 
   Widget buildHeader(BuildContext context) {
@@ -170,7 +206,6 @@ class TagsPageState extends AbstractPageState<TagsPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
     final results = getResults();
     return Padding(
       padding: EdgeInsets.all(ThemeHelper.getIndent()),
@@ -181,13 +216,7 @@ class TagsPageState extends AbstractPageState<TagsPage> {
             SliverToBoxAdapter(
               child: TextWrapper(AppLocale.labels.tagsEmpty, style: context.textTheme.bodyMedium),
             ),
-          SliverList.builder(
-            itemCount: results.length,
-            itemBuilder: (context, index) => BackgroundWrapper(
-              index: index,
-              child: buildLine(results[index], width),
-            ),
-          ),
+          ...buildResults(results),
           const SliverToBoxAdapter(child: ThemeHelper.formEndBox),
         ],
       ),
