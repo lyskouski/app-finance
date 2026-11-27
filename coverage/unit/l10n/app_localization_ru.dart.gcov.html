@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">568</td>
+            <td class="headerCovTableEntry">572</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-25 19:18:40</td>
+            <td class="headerValue">2026-11-27 20:13:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -1598,200 +1598,212 @@
 <span id="L1536"><span class="lineNum">    1536</span>              :   String get systemMode =&gt; 'Система';</span>
 <span id="L1537"><span class="lineNum">    1537</span>              : </span>
 <span id="L1538"><span class="lineNum">    1538</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1539"><span class="lineNum">    1539</span>              :   String get tapToOpen =&gt; 'Нажмите для открытия';</span>
+<span id="L1539"><span class="lineNum">    1539</span>              :   String get tags =&gt; 'Теги';</span>
 <span id="L1540"><span class="lineNum">    1540</span>              : </span>
 <span id="L1541"><span class="lineNum">    1541</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1542"><span class="lineNum">    1542</span>              :   String get targetAmount =&gt; 'Целевая сумма';</span>
+<span id="L1542"><span class="lineNum">    1542</span>              :   String get tagsEmpty =&gt; 'По выбранным тегам ничего не найдено';</span>
 <span id="L1543"><span class="lineNum">    1543</span>              : </span>
 <span id="L1544"><span class="lineNum">    1544</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1545"><span class="lineNum">    1545</span>              :   String get tellerAccessToken =&gt; 'Токен доступа';</span>
+<span id="L1545"><span class="lineNum">    1545</span>              :   String get tagsHeadline =&gt; 'Поиск по тегам';</span>
 <span id="L1546"><span class="lineNum">    1546</span>              : </span>
 <span id="L1547"><span class="lineNum">    1547</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1548"><span class="lineNum">    1548</span>              :   String get tellerAccessTokenTooltip =&gt;</span>
-<span id="L1549"><span class="lineNum">    1549</span>              :       'Показывается на странице подключения после привязки банка: вставьте его сюда, если Fingrom не открылся автоматически';</span>
-<span id="L1550"><span class="lineNum">    1550</span>              : </span>
-<span id="L1551"><span class="lineNum">    1551</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1552"><span class="lineNum">    1552</span>              :   String get tellerAppId =&gt; 'ID приложения';</span>
-<span id="L1553"><span class="lineNum">    1553</span>              : </span>
-<span id="L1554"><span class="lineNum">    1554</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1555"><span class="lineNum">    1555</span>              :   String get tellerAppIdTooltip =&gt; 'Показан в Teller Dashboard, начинается с \&quot;app_\&quot;';</span>
-<span id="L1556"><span class="lineNum">    1556</span>              : </span>
-<span id="L1557"><span class="lineNum">    1557</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1558"><span class="lineNum">    1558</span>              :   String get tellerCertificate =&gt; 'Сертификат (PEM)';</span>
-<span id="L1559"><span class="lineNum">    1559</span>              : </span>
-<span id="L1560"><span class="lineNum">    1560</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1561"><span class="lineNum">    1561</span>              :   String get tellerCertificateInvalid =&gt; 'Неверный сертификат: ожидается PEM-блок \&quot;CERTIFICATE\&quot;';</span>
+<span id="L1548"><span class="lineNum">    1548</span>              :   String get tagsTooltip =&gt; 'Нажмите Enter или введите запятую, чтобы добавить тег';</span>
+<span id="L1549"><span class="lineNum">    1549</span>              : </span>
+<span id="L1550"><span class="lineNum">    1550</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1551"><span class="lineNum">    1551</span>              :   String get tapToOpen =&gt; 'Нажмите для открытия';</span>
+<span id="L1552"><span class="lineNum">    1552</span>              : </span>
+<span id="L1553"><span class="lineNum">    1553</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1554"><span class="lineNum">    1554</span>              :   String get targetAmount =&gt; 'Целевая сумма';</span>
+<span id="L1555"><span class="lineNum">    1555</span>              : </span>
+<span id="L1556"><span class="lineNum">    1556</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1557"><span class="lineNum">    1557</span>              :   String get tellerAccessToken =&gt; 'Токен доступа';</span>
+<span id="L1558"><span class="lineNum">    1558</span>              : </span>
+<span id="L1559"><span class="lineNum">    1559</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1560"><span class="lineNum">    1560</span>              :   String get tellerAccessTokenTooltip =&gt;</span>
+<span id="L1561"><span class="lineNum">    1561</span>              :       'Показывается на странице подключения после привязки банка: вставьте его сюда, если Fingrom не открылся автоматически';</span>
 <span id="L1562"><span class="lineNum">    1562</span>              : </span>
 <span id="L1563"><span class="lineNum">    1563</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1564"><span class="lineNum">    1564</span>              :   String get tellerCertificateTooltip =&gt;</span>
-<span id="L1565"><span class="lineNum">    1565</span>              :       'Выдаётся в Teller Dashboard (Certificates); хранится в зашифрованном виде. Оставьте пустым, чтобы сохранить текущий сертификат';</span>
-<span id="L1566"><span class="lineNum">    1566</span>              : </span>
-<span id="L1567"><span class="lineNum">    1567</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1568"><span class="lineNum">    1568</span>              :   String get tellerConnectBank =&gt; 'Подключить банк';</span>
-<span id="L1569"><span class="lineNum">    1569</span>              : </span>
-<span id="L1570"><span class="lineNum">    1570</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1571"><span class="lineNum">    1571</span>              :   String get tellerConnectPage =&gt; 'Страница подключения';</span>
-<span id="L1572"><span class="lineNum">    1572</span>              : </span>
-<span id="L1573"><span class="lineNum">    1573</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1574"><span class="lineNum">    1574</span>              :   String get tellerConnectPageTooltip =&gt; 'Открывает Teller Connect в браузере и возвращает токен доступа в Fingrom';</span>
-<span id="L1575"><span class="lineNum">    1575</span>              : </span>
-<span id="L1576"><span class="lineNum">    1576</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1577"><span class="lineNum">    1577</span>              :   String get tellerDescription =&gt;</span>
-<span id="L1578"><span class="lineNum">    1578</span>              :       'Импорт остатков и операций банков и эмитентов карт США через Teller с собственным приложением, зарегистрированным на teller.io (бесплатный тариф допускает 100 реальных подключений к банкам). Доступ только для чтения: платежи не выполняются.';</span>
-<span id="L1579"><span class="lineNum">    1579</span>              : </span>
-<span id="L1580"><span class="lineNum">    1580</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1581"><span class="lineNum">    1581</span>              :   String get tellerDisconnected =&gt;</span>
-<span id="L1582"><span class="lineNum">    1582</span>              :       'Подключение к банку требует вашего внимания (например, нового входа или кода подтверждения): подключите банк заново';</span>
-<span id="L1583"><span class="lineNum">    1583</span>              : </span>
-<span id="L1584"><span class="lineNum">    1584</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1585"><span class="lineNum">    1585</span>              :   String get tellerEnvironment =&gt; 'Среда';</span>
-<span id="L1586"><span class="lineNum">    1586</span>              : </span>
-<span id="L1587"><span class="lineNum">    1587</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1588"><span class="lineNum">    1588</span>              :   String get tellerHeadline =&gt; 'Teller (US)';</span>
-<span id="L1589"><span class="lineNum">    1589</span>              : </span>
-<span id="L1590"><span class="lineNum">    1590</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1591"><span class="lineNum">    1591</span>              :   String get tellerIncomplete =&gt;</span>
-<span id="L1592"><span class="lineNum">    1592</span>              :       'Заполните ID приложения; сертификат и закрытый ключ нужны для реальных банковских данных';</span>
-<span id="L1593"><span class="lineNum">    1593</span>              : </span>
-<span id="L1594"><span class="lineNum">    1594</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1595"><span class="lineNum">    1595</span>              :   String get tellerKey =&gt; 'Закрытый ключ (PEM)';</span>
-<span id="L1596"><span class="lineNum">    1596</span>              : </span>
-<span id="L1597"><span class="lineNum">    1597</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1598"><span class="lineNum">    1598</span>              :   String get tellerKeyInvalid =&gt; 'Неверный закрытый ключ: ожидается PEM-блок \&quot;PRIVATE KEY\&quot;';</span>
-<span id="L1599"><span class="lineNum">    1599</span>              : </span>
-<span id="L1600"><span class="lineNum">    1600</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1601"><span class="lineNum">    1601</span>              :   String get tellerKeyTooltip =&gt;</span>
-<span id="L1602"><span class="lineNum">    1602</span>              :       'Скачивается вместе с сертификатом; хранится в зашифрованном виде. Оставьте пустым, чтобы сохранить текущий ключ';</span>
-<span id="L1603"><span class="lineNum">    1603</span>              : </span>
-<span id="L1604"><span class="lineNum">    1604</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1605"><span class="lineNum">    1605</span>              :   String get tellerMissingCertificate =&gt;</span>
-<span id="L1606"><span class="lineNum">    1606</span>              :       'Teller отклонил запрос без клиентского сертификата: загрузите сертификат и закрытый ключ или выберите sandbox';</span>
-<span id="L1607"><span class="lineNum">    1607</span>              : </span>
-<span id="L1608"><span class="lineNum">    1608</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1609"><span class="lineNum">    1609</span>              :   String get tellerSteps =&gt;</span>
-<span id="L1610"><span class="lineNum">    1610</span>              :       'Как подключиться:\n1. Зарегистрируйтесь на teller.io и откройте Teller Dashboard\n2. Скопируйте ID приложения, затем создайте и скачайте сертификат с закрытым ключом (Certificates)\n3. Заполните их ниже и выберите среду (sandbox: тестовые данные, вход в банк как \&quot;username\&quot; с паролем \&quot;password\&quot;)\n4. Нажмите «Подключить банк» и войдите в свой банк на открывшейся странице\n5. Выберите счёт и категорию бюджета, затем нажмите «Импортировать операции»';</span>
+<span id="L1564"><span class="lineNum">    1564</span>              :   String get tellerAppId =&gt; 'ID приложения';</span>
+<span id="L1565"><span class="lineNum">    1565</span>              : </span>
+<span id="L1566"><span class="lineNum">    1566</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1567"><span class="lineNum">    1567</span>              :   String get tellerAppIdTooltip =&gt; 'Показан в Teller Dashboard, начинается с \&quot;app_\&quot;';</span>
+<span id="L1568"><span class="lineNum">    1568</span>              : </span>
+<span id="L1569"><span class="lineNum">    1569</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1570"><span class="lineNum">    1570</span>              :   String get tellerCertificate =&gt; 'Сертификат (PEM)';</span>
+<span id="L1571"><span class="lineNum">    1571</span>              : </span>
+<span id="L1572"><span class="lineNum">    1572</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1573"><span class="lineNum">    1573</span>              :   String get tellerCertificateInvalid =&gt; 'Неверный сертификат: ожидается PEM-блок \&quot;CERTIFICATE\&quot;';</span>
+<span id="L1574"><span class="lineNum">    1574</span>              : </span>
+<span id="L1575"><span class="lineNum">    1575</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1576"><span class="lineNum">    1576</span>              :   String get tellerCertificateTooltip =&gt;</span>
+<span id="L1577"><span class="lineNum">    1577</span>              :       'Выдаётся в Teller Dashboard (Certificates); хранится в зашифрованном виде. Оставьте пустым, чтобы сохранить текущий сертификат';</span>
+<span id="L1578"><span class="lineNum">    1578</span>              : </span>
+<span id="L1579"><span class="lineNum">    1579</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1580"><span class="lineNum">    1580</span>              :   String get tellerConnectBank =&gt; 'Подключить банк';</span>
+<span id="L1581"><span class="lineNum">    1581</span>              : </span>
+<span id="L1582"><span class="lineNum">    1582</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1583"><span class="lineNum">    1583</span>              :   String get tellerConnectPage =&gt; 'Страница подключения';</span>
+<span id="L1584"><span class="lineNum">    1584</span>              : </span>
+<span id="L1585"><span class="lineNum">    1585</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1586"><span class="lineNum">    1586</span>              :   String get tellerConnectPageTooltip =&gt; 'Открывает Teller Connect в браузере и возвращает токен доступа в Fingrom';</span>
+<span id="L1587"><span class="lineNum">    1587</span>              : </span>
+<span id="L1588"><span class="lineNum">    1588</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1589"><span class="lineNum">    1589</span>              :   String get tellerDescription =&gt;</span>
+<span id="L1590"><span class="lineNum">    1590</span>              :       'Импорт остатков и операций банков и эмитентов карт США через Teller с собственным приложением, зарегистрированным на teller.io (бесплатный тариф допускает 100 реальных подключений к банкам). Доступ только для чтения: платежи не выполняются.';</span>
+<span id="L1591"><span class="lineNum">    1591</span>              : </span>
+<span id="L1592"><span class="lineNum">    1592</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1593"><span class="lineNum">    1593</span>              :   String get tellerDisconnected =&gt;</span>
+<span id="L1594"><span class="lineNum">    1594</span>              :       'Подключение к банку требует вашего внимания (например, нового входа или кода подтверждения): подключите банк заново';</span>
+<span id="L1595"><span class="lineNum">    1595</span>              : </span>
+<span id="L1596"><span class="lineNum">    1596</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1597"><span class="lineNum">    1597</span>              :   String get tellerEnvironment =&gt; 'Среда';</span>
+<span id="L1598"><span class="lineNum">    1598</span>              : </span>
+<span id="L1599"><span class="lineNum">    1599</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1600"><span class="lineNum">    1600</span>              :   String get tellerHeadline =&gt; 'Teller (US)';</span>
+<span id="L1601"><span class="lineNum">    1601</span>              : </span>
+<span id="L1602"><span class="lineNum">    1602</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1603"><span class="lineNum">    1603</span>              :   String get tellerIncomplete =&gt;</span>
+<span id="L1604"><span class="lineNum">    1604</span>              :       'Заполните ID приложения; сертификат и закрытый ключ нужны для реальных банковских данных';</span>
+<span id="L1605"><span class="lineNum">    1605</span>              : </span>
+<span id="L1606"><span class="lineNum">    1606</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1607"><span class="lineNum">    1607</span>              :   String get tellerKey =&gt; 'Закрытый ключ (PEM)';</span>
+<span id="L1608"><span class="lineNum">    1608</span>              : </span>
+<span id="L1609"><span class="lineNum">    1609</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1610"><span class="lineNum">    1610</span>              :   String get tellerKeyInvalid =&gt; 'Неверный закрытый ключ: ожидается PEM-блок \&quot;PRIVATE KEY\&quot;';</span>
 <span id="L1611"><span class="lineNum">    1611</span>              : </span>
 <span id="L1612"><span class="lineNum">    1612</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1613"><span class="lineNum">    1613</span>              :   String get tellerUpload =&gt; 'Загрузить файл';</span>
-<span id="L1614"><span class="lineNum">    1614</span>              : </span>
-<span id="L1615"><span class="lineNum">    1615</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1616"><span class="lineNum">    1616</span>              :   String get termPrivacy =&gt; 'Политика конфиденциальности';</span>
-<span id="L1617"><span class="lineNum">    1617</span>              : </span>
-<span id="L1618"><span class="lineNum">    1618</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1619"><span class="lineNum">    1619</span>              :   String get termUse =&gt; 'Условия использования';</span>
-<span id="L1620"><span class="lineNum">    1620</span>              : </span>
-<span id="L1621"><span class="lineNum">    1621</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1622"><span class="lineNum">    1622</span>              :   String get title =&gt; 'Название';</span>
+<span id="L1613"><span class="lineNum">    1613</span>              :   String get tellerKeyTooltip =&gt;</span>
+<span id="L1614"><span class="lineNum">    1614</span>              :       'Скачивается вместе с сертификатом; хранится в зашифрованном виде. Оставьте пустым, чтобы сохранить текущий ключ';</span>
+<span id="L1615"><span class="lineNum">    1615</span>              : </span>
+<span id="L1616"><span class="lineNum">    1616</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1617"><span class="lineNum">    1617</span>              :   String get tellerMissingCertificate =&gt;</span>
+<span id="L1618"><span class="lineNum">    1618</span>              :       'Teller отклонил запрос без клиентского сертификата: загрузите сертификат и закрытый ключ или выберите sandbox';</span>
+<span id="L1619"><span class="lineNum">    1619</span>              : </span>
+<span id="L1620"><span class="lineNum">    1620</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1621"><span class="lineNum">    1621</span>              :   String get tellerSteps =&gt;</span>
+<span id="L1622"><span class="lineNum">    1622</span>              :       'Как подключиться:\n1. Зарегистрируйтесь на teller.io и откройте Teller Dashboard\n2. Скопируйте ID приложения, затем создайте и скачайте сертификат с закрытым ключом (Certificates)\n3. Заполните их ниже и выберите среду (sandbox: тестовые данные, вход в банк как \&quot;username\&quot; с паролем \&quot;password\&quot;)\n4. Нажмите «Подключить банк» и войдите в свой банк на открывшейся странице\n5. Выберите счёт и категорию бюджета, затем нажмите «Импортировать операции»';</span>
 <span id="L1623"><span class="lineNum">    1623</span>              : </span>
 <span id="L1624"><span class="lineNum">    1624</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1625"><span class="lineNum">    1625</span>              :   String get titleAccountTooltip =&gt; 'Введите идентификатор счёта';</span>
+<span id="L1625"><span class="lineNum">    1625</span>              :   String get tellerUpload =&gt; 'Загрузить файл';</span>
 <span id="L1626"><span class="lineNum">    1626</span>              : </span>
 <span id="L1627"><span class="lineNum">    1627</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1628"><span class="lineNum">    1628</span>              :   String get titleBudgetTooltip =&gt; 'Введите имя категории бюджета';</span>
+<span id="L1628"><span class="lineNum">    1628</span>              :   String get termPrivacy =&gt; 'Политика конфиденциальности';</span>
 <span id="L1629"><span class="lineNum">    1629</span>              : </span>
 <span id="L1630"><span class="lineNum">    1630</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1631"><span class="lineNum">    1631</span>              :   String get titleGoal =&gt; 'Цель';</span>
+<span id="L1631"><span class="lineNum">    1631</span>              :   String get termUse =&gt; 'Условия использования';</span>
 <span id="L1632"><span class="lineNum">    1632</span>              : </span>
 <span id="L1633"><span class="lineNum">    1633</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1634"><span class="lineNum">    1634</span>              :   String get titleGoalTooltip =&gt; 'Определите описание цели';</span>
+<span id="L1634"><span class="lineNum">    1634</span>              :   String get title =&gt; 'Название';</span>
 <span id="L1635"><span class="lineNum">    1635</span>              : </span>
 <span id="L1636"><span class="lineNum">    1636</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1637"><span class="lineNum">    1637</span>              :   String get to =&gt; 'на';</span>
+<span id="L1637"><span class="lineNum">    1637</span>              :   String get titleAccountTooltip =&gt; 'Введите идентификатор счёта';</span>
 <span id="L1638"><span class="lineNum">    1638</span>              : </span>
 <span id="L1639"><span class="lineNum">    1639</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1640"><span class="lineNum">    1640</span>              :   String get total =&gt; 'всего';</span>
+<span id="L1640"><span class="lineNum">    1640</span>              :   String get titleBudgetTooltip =&gt; 'Введите имя категории бюджета';</span>
 <span id="L1641"><span class="lineNum">    1641</span>              : </span>
 <span id="L1642"><span class="lineNum">    1642</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1643"><span class="lineNum">    1643</span>              :   String get transactionFile =&gt; 'Файл журнала транзакций Фингром (.log)';</span>
+<span id="L1643"><span class="lineNum">    1643</span>              :   String get titleGoal =&gt; 'Цель';</span>
 <span id="L1644"><span class="lineNum">    1644</span>              : </span>
 <span id="L1645"><span class="lineNum">    1645</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1646"><span class="lineNum">    1646</span>              :   String get transferHeadline =&gt; 'Перевод';</span>
+<span id="L1646"><span class="lineNum">    1646</span>              :   String get titleGoalTooltip =&gt; 'Определите описание цели';</span>
 <span id="L1647"><span class="lineNum">    1647</span>              : </span>
 <span id="L1648"><span class="lineNum">    1648</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1649"><span class="lineNum">    1649</span>              :   String get transferTooltip =&gt; 'Установить детали перевода';</span>
+<span id="L1649"><span class="lineNum">    1649</span>              :   String get to =&gt; 'на';</span>
 <span id="L1650"><span class="lineNum">    1650</span>              : </span>
 <span id="L1651"><span class="lineNum">    1651</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1652"><span class="lineNum">    1652</span>              :   String get transfersHeadline =&gt; 'Переводы';</span>
+<span id="L1652"><span class="lineNum">    1652</span>              :   String get total =&gt; 'всего';</span>
 <span id="L1653"><span class="lineNum">    1653</span>              : </span>
 <span id="L1654"><span class="lineNum">    1654</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1655"><span class="lineNum">    1655</span>              :   String get typeButton =&gt; 'Кнопка';</span>
+<span id="L1655"><span class="lineNum">    1655</span>              :   String get transactionFile =&gt; 'Файл журнала транзакций Фингром (.log)';</span>
 <span id="L1656"><span class="lineNum">    1656</span>              : </span>
 <span id="L1657"><span class="lineNum">    1657</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1658"><span class="lineNum">    1658</span>              :   String get upDescription =&gt;</span>
-<span id="L1659"><span class="lineNum">    1659</span>              :       'Импорт остатков и операций расходных и накопительных счетов Up с помощью персонального токена доступа. Переводы между связанными счетами Up (включая Round Ups) импортируются как переводы. Доступ только для чтения: платежи не выполняются.';</span>
-<span id="L1660"><span class="lineNum">    1660</span>              : </span>
-<span id="L1661"><span class="lineNum">    1661</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1662"><span class="lineNum">    1662</span>              :   String get upHeadline =&gt; 'Up Banking API (Австралия)';</span>
-<span id="L1663"><span class="lineNum">    1663</span>              : </span>
-<span id="L1664"><span class="lineNum">    1664</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1665"><span class="lineNum">    1665</span>              :   String get upToken =&gt; 'Персональный токен доступа';</span>
-<span id="L1666"><span class="lineNum">    1666</span>              : </span>
-<span id="L1667"><span class="lineNum">    1667</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1668"><span class="lineNum">    1668</span>              :   String get upTokenSteps =&gt;</span>
-<span id="L1669"><span class="lineNum">    1669</span>              :       'Как получить персональный токен доступа:\n1. Откройте приложение Up и перейдите в Data sharing → Personal Access Token (или войдите на api.up.com.au)\n2. Создайте токен и скопируйте его (он начинается с \&quot;up:yeah:\&quot;); новый токен заменяет предыдущий\n3. Вставьте его ниже и нажмите «Подключиться»\n4. Свяжите все счета Up (включая накопительные), чтобы переводы между ними импортировались как переводы';</span>
-<span id="L1670"><span class="lineNum">    1670</span>              : </span>
-<span id="L1671"><span class="lineNum">    1671</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1672"><span class="lineNum">    1672</span>              :   String get upTokenTooltip =&gt;</span>
-<span id="L1673"><span class="lineNum">    1673</span>              :       'Создаётся в приложении Up или на api.up.com.au; хранится в зашифрованном виде. Действует только последний токен';</span>
-<span id="L1674"><span class="lineNum">    1674</span>              : </span>
-<span id="L1675"><span class="lineNum">    1675</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1676"><span class="lineNum">    1676</span>              :   String get updateAccountTooltip =&gt; 'Обновить счёт';</span>
-<span id="L1677"><span class="lineNum">    1677</span>              : </span>
-<span id="L1678"><span class="lineNum">    1678</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1679"><span class="lineNum">    1679</span>              :   String get updateBillTooltip =&gt; 'Обновить чек';</span>
-<span id="L1680"><span class="lineNum">    1680</span>              : </span>
-<span id="L1681"><span class="lineNum">    1681</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1682"><span class="lineNum">    1682</span>              :   String get updateBudgetTooltip =&gt; 'Обновить категорию бюджета';</span>
-<span id="L1683"><span class="lineNum">    1683</span>              : </span>
-<span id="L1684"><span class="lineNum">    1684</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1685"><span class="lineNum">    1685</span>              :   String get updateGoalTooltip =&gt; 'Обновить цель';</span>
+<span id="L1658"><span class="lineNum">    1658</span>              :   String get transferHeadline =&gt; 'Перевод';</span>
+<span id="L1659"><span class="lineNum">    1659</span>              : </span>
+<span id="L1660"><span class="lineNum">    1660</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1661"><span class="lineNum">    1661</span>              :   String get transferTooltip =&gt; 'Установить детали перевода';</span>
+<span id="L1662"><span class="lineNum">    1662</span>              : </span>
+<span id="L1663"><span class="lineNum">    1663</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1664"><span class="lineNum">    1664</span>              :   String get transfersHeadline =&gt; 'Переводы';</span>
+<span id="L1665"><span class="lineNum">    1665</span>              : </span>
+<span id="L1666"><span class="lineNum">    1666</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1667"><span class="lineNum">    1667</span>              :   String get typeButton =&gt; 'Кнопка';</span>
+<span id="L1668"><span class="lineNum">    1668</span>              : </span>
+<span id="L1669"><span class="lineNum">    1669</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1670"><span class="lineNum">    1670</span>              :   String get upDescription =&gt;</span>
+<span id="L1671"><span class="lineNum">    1671</span>              :       'Импорт остатков и операций расходных и накопительных счетов Up с помощью персонального токена доступа. Переводы между связанными счетами Up (включая Round Ups) импортируются как переводы. Доступ только для чтения: платежи не выполняются.';</span>
+<span id="L1672"><span class="lineNum">    1672</span>              : </span>
+<span id="L1673"><span class="lineNum">    1673</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1674"><span class="lineNum">    1674</span>              :   String get upHeadline =&gt; 'Up Banking API (Австралия)';</span>
+<span id="L1675"><span class="lineNum">    1675</span>              : </span>
+<span id="L1676"><span class="lineNum">    1676</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1677"><span class="lineNum">    1677</span>              :   String get upToken =&gt; 'Персональный токен доступа';</span>
+<span id="L1678"><span class="lineNum">    1678</span>              : </span>
+<span id="L1679"><span class="lineNum">    1679</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1680"><span class="lineNum">    1680</span>              :   String get upTokenSteps =&gt;</span>
+<span id="L1681"><span class="lineNum">    1681</span>              :       'Как получить персональный токен доступа:\n1. Откройте приложение Up и перейдите в Data sharing → Personal Access Token (или войдите на api.up.com.au)\n2. Создайте токен и скопируйте его (он начинается с \&quot;up:yeah:\&quot;); новый токен заменяет предыдущий\n3. Вставьте его ниже и нажмите «Подключиться»\n4. Свяжите все счета Up (включая накопительные), чтобы переводы между ними импортировались как переводы';</span>
+<span id="L1682"><span class="lineNum">    1682</span>              : </span>
+<span id="L1683"><span class="lineNum">    1683</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1684"><span class="lineNum">    1684</span>              :   String get upTokenTooltip =&gt;</span>
+<span id="L1685"><span class="lineNum">    1685</span>              :       'Создаётся в приложении Up или на api.up.com.au; хранится в зашифрованном виде. Действует только последний токен';</span>
 <span id="L1686"><span class="lineNum">    1686</span>              : </span>
 <span id="L1687"><span class="lineNum">    1687</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1688"><span class="lineNum">    1688</span>              :   String get updatePaymentTooltip =&gt; 'Обновить платёж';</span>
+<span id="L1688"><span class="lineNum">    1688</span>              :   String get updateAccountTooltip =&gt; 'Обновить счёт';</span>
 <span id="L1689"><span class="lineNum">    1689</span>              : </span>
 <span id="L1690"><span class="lineNum">    1690</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1691"><span class="lineNum">    1691</span>              :   String get username =&gt; 'Имя пользователя (счёт)';</span>
+<span id="L1691"><span class="lineNum">    1691</span>              :   String get updateBillTooltip =&gt; 'Обновить чек';</span>
 <span id="L1692"><span class="lineNum">    1692</span>              : </span>
 <span id="L1693"><span class="lineNum">    1693</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1694"><span class="lineNum">    1694</span>              :   String get uuid =&gt; 'Уникальный идентификатор транзакции';</span>
+<span id="L1694"><span class="lineNum">    1694</span>              :   String get updateBudgetTooltip =&gt; 'Обновить категорию бюджета';</span>
 <span id="L1695"><span class="lineNum">    1695</span>              : </span>
 <span id="L1696"><span class="lineNum">    1696</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1697"><span class="lineNum">    1697</span>              :   String get validTillDate =&gt; 'Действительно до';</span>
+<span id="L1697"><span class="lineNum">    1697</span>              :   String get updateGoalTooltip =&gt; 'Обновить цель';</span>
 <span id="L1698"><span class="lineNum">    1698</span>              : </span>
 <span id="L1699"><span class="lineNum">    1699</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1700"><span class="lineNum">    1700</span>              :   String get webDav =&gt; 'Веб-распределённое версионирование (WebDav)';</span>
+<span id="L1700"><span class="lineNum">    1700</span>              :   String get updatePaymentTooltip =&gt; 'Обновить платёж';</span>
 <span id="L1701"><span class="lineNum">    1701</span>              : </span>
 <span id="L1702"><span class="lineNum">    1702</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1703"><span class="lineNum">    1703</span>              :   String get wiseDescription =&gt;</span>
-<span id="L1704"><span class="lineNum">    1704</span>              :       'Импорт остатков и операций мультивалютных счетов Wise с помощью персонального API-токена. Конвертации между связанными балансами импортируются как переводы. Доступ только для чтения: платежи не выполняются.';</span>
-<span id="L1705"><span class="lineNum">    1705</span>              : </span>
-<span id="L1706"><span class="lineNum">    1706</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1707"><span class="lineNum">    1707</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
-<span id="L1708"><span class="lineNum">    1708</span>              : </span>
-<span id="L1709"><span class="lineNum">    1709</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1710"><span class="lineNum">    1710</span>              :   String get wiseNoProfiles =&gt; 'Для токена нет доступных профилей Wise';</span>
-<span id="L1711"><span class="lineNum">    1711</span>              : </span>
-<span id="L1712"><span class="lineNum">    1712</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1713"><span class="lineNum">    1713</span>              :   String get wiseProfile =&gt; 'Профиль';</span>
-<span id="L1714"><span class="lineNum">    1714</span>              : </span>
-<span id="L1715"><span class="lineNum">    1715</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1716"><span class="lineNum">    1716</span>              :   String get wiseScaRequired =&gt;</span>
-<span id="L1717"><span class="lineNum">    1717</span>              :       'Wise требует строгой аутентификации клиента: откройте выписку по этому балансу в приложении Wise и повторите попытку';</span>
-<span id="L1718"><span class="lineNum">    1718</span>              : </span>
-<span id="L1719"><span class="lineNum">    1719</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1720"><span class="lineNum">    1720</span>              :   String get wiseToken =&gt; 'Персональный API-токен';</span>
-<span id="L1721"><span class="lineNum">    1721</span>              : </span>
-<span id="L1722"><span class="lineNum">    1722</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1723"><span class="lineNum">    1723</span>              :   String get wiseTokenSteps =&gt;</span>
-<span id="L1724"><span class="lineNum">    1724</span>              :       'Как получить персональный API-токен:\n1. Войдите на wise.com в браузере (в мобильном приложении токены не создаются)\n2. Откройте Настройки → Интеграции и инструменты → API-токены\n3. Нажмите «Добавить токен», задайте имя (например, Fingrom) и выберите доступ «Только чтение»\n4. Подтвердите двухэтапной проверкой и скопируйте токен\n5. Вставьте его ниже и нажмите «Подключиться»';</span>
-<span id="L1725"><span class="lineNum">    1725</span>              : </span>
-<span id="L1726"><span class="lineNum">    1726</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1727"><span class="lineNum">    1727</span>              :   String get wiseTokenTooltip =&gt;</span>
-<span id="L1728"><span class="lineNum">    1728</span>              :       'Создаётся в Wise в разделе Настройки → API-токены (только для чтения, если доступно); хранится в зашифрованном виде';</span>
-<span id="L1729"><span class="lineNum">    1729</span>              : </span>
-<span id="L1730"><span class="lineNum">    1730</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1731"><span class="lineNum">    1731</span>              :   String get zoomState =&gt; 'Увеличить / Уменьшить';</span>
-<span id="L1732"><span class="lineNum">    1732</span>              : }</span>
+<span id="L1703"><span class="lineNum">    1703</span>              :   String get username =&gt; 'Имя пользователя (счёт)';</span>
+<span id="L1704"><span class="lineNum">    1704</span>              : </span>
+<span id="L1705"><span class="lineNum">    1705</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1706"><span class="lineNum">    1706</span>              :   String get uuid =&gt; 'Уникальный идентификатор транзакции';</span>
+<span id="L1707"><span class="lineNum">    1707</span>              : </span>
+<span id="L1708"><span class="lineNum">    1708</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1709"><span class="lineNum">    1709</span>              :   String get validTillDate =&gt; 'Действительно до';</span>
+<span id="L1710"><span class="lineNum">    1710</span>              : </span>
+<span id="L1711"><span class="lineNum">    1711</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1712"><span class="lineNum">    1712</span>              :   String get webDav =&gt; 'Веб-распределённое версионирование (WebDav)';</span>
+<span id="L1713"><span class="lineNum">    1713</span>              : </span>
+<span id="L1714"><span class="lineNum">    1714</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1715"><span class="lineNum">    1715</span>              :   String get wiseDescription =&gt;</span>
+<span id="L1716"><span class="lineNum">    1716</span>              :       'Импорт остатков и операций мультивалютных счетов Wise с помощью персонального API-токена. Конвертации между связанными балансами импортируются как переводы. Доступ только для чтения: платежи не выполняются.';</span>
+<span id="L1717"><span class="lineNum">    1717</span>              : </span>
+<span id="L1718"><span class="lineNum">    1718</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1719"><span class="lineNum">    1719</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
+<span id="L1720"><span class="lineNum">    1720</span>              : </span>
+<span id="L1721"><span class="lineNum">    1721</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1722"><span class="lineNum">    1722</span>              :   String get wiseNoProfiles =&gt; 'Для токена нет доступных профилей Wise';</span>
+<span id="L1723"><span class="lineNum">    1723</span>              : </span>
+<span id="L1724"><span class="lineNum">    1724</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1725"><span class="lineNum">    1725</span>              :   String get wiseProfile =&gt; 'Профиль';</span>
+<span id="L1726"><span class="lineNum">    1726</span>              : </span>
+<span id="L1727"><span class="lineNum">    1727</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1728"><span class="lineNum">    1728</span>              :   String get wiseScaRequired =&gt;</span>
+<span id="L1729"><span class="lineNum">    1729</span>              :       'Wise требует строгой аутентификации клиента: откройте выписку по этому балансу в приложении Wise и повторите попытку';</span>
+<span id="L1730"><span class="lineNum">    1730</span>              : </span>
+<span id="L1731"><span class="lineNum">    1731</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1732"><span class="lineNum">    1732</span>              :   String get wiseToken =&gt; 'Персональный API-токен';</span>
+<span id="L1733"><span class="lineNum">    1733</span>              : </span>
+<span id="L1734"><span class="lineNum">    1734</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1735"><span class="lineNum">    1735</span>              :   String get wiseTokenSteps =&gt;</span>
+<span id="L1736"><span class="lineNum">    1736</span>              :       'Как получить персональный API-токен:\n1. Войдите на wise.com в браузере (в мобильном приложении токены не создаются)\n2. Откройте Настройки → Интеграции и инструменты → API-токены\n3. Нажмите «Добавить токен», задайте имя (например, Fingrom) и выберите доступ «Только чтение»\n4. Подтвердите двухэтапной проверкой и скопируйте токен\n5. Вставьте его ниже и нажмите «Подключиться»';</span>
+<span id="L1737"><span class="lineNum">    1737</span>              : </span>
+<span id="L1738"><span class="lineNum">    1738</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1739"><span class="lineNum">    1739</span>              :   String get wiseTokenTooltip =&gt;</span>
+<span id="L1740"><span class="lineNum">    1740</span>              :       'Создаётся в Wise в разделе Настройки → API-токены (только для чтения, если доступно); хранится в зашифрованном виде';</span>
+<span id="L1741"><span class="lineNum">    1741</span>              : </span>
+<span id="L1742"><span class="lineNum">    1742</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1743"><span class="lineNum">    1743</span>              :   String get zoomState =&gt; 'Увеличить / Уменьшить';</span>
+<span id="L1744"><span class="lineNum">    1744</span>              : }</span>
         </pre>
               </td>
             </tr>

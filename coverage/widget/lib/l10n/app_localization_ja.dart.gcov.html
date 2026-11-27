@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">568</td>
+            <td class="headerCovTableEntry">572</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-25 19:19:52</td>
+            <td class="headerValue">2026-11-27 20:15:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -1579,191 +1579,203 @@
 <span id="L1517"><span class="lineNum">    1517</span>              :   String get systemMode =&gt; 'システム';</span>
 <span id="L1518"><span class="lineNum">    1518</span>              : </span>
 <span id="L1519"><span class="lineNum">    1519</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1520"><span class="lineNum">    1520</span>              :   String get tapToOpen =&gt; 'タップして開く';</span>
+<span id="L1520"><span class="lineNum">    1520</span>              :   String get tags =&gt; 'タグ';</span>
 <span id="L1521"><span class="lineNum">    1521</span>              : </span>
 <span id="L1522"><span class="lineNum">    1522</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1523"><span class="lineNum">    1523</span>              :   String get targetAmount =&gt; '目標金額';</span>
+<span id="L1523"><span class="lineNum">    1523</span>              :   String get tagsEmpty =&gt; '選択したタグに該当するものはありません';</span>
 <span id="L1524"><span class="lineNum">    1524</span>              : </span>
 <span id="L1525"><span class="lineNum">    1525</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1526"><span class="lineNum">    1526</span>              :   String get tellerAccessToken =&gt; 'アクセストークン';</span>
+<span id="L1526"><span class="lineNum">    1526</span>              :   String get tagsHeadline =&gt; 'タグで検索';</span>
 <span id="L1527"><span class="lineNum">    1527</span>              : </span>
 <span id="L1528"><span class="lineNum">    1528</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1529"><span class="lineNum">    1529</span>              :   String get tellerAccessTokenTooltip =&gt; '銀行の連携後に接続ページに表示されます。Fingrom が自動的に開かなかった場合はここに貼り付けてください';</span>
+<span id="L1529"><span class="lineNum">    1529</span>              :   String get tagsTooltip =&gt; 'Enterキーを押すかカンマを入力してタグを追加します';</span>
 <span id="L1530"><span class="lineNum">    1530</span>              : </span>
 <span id="L1531"><span class="lineNum">    1531</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1532"><span class="lineNum">    1532</span>              :   String get tellerAppId =&gt; 'アプリケーションID';</span>
+<span id="L1532"><span class="lineNum">    1532</span>              :   String get tapToOpen =&gt; 'タップして開く';</span>
 <span id="L1533"><span class="lineNum">    1533</span>              : </span>
 <span id="L1534"><span class="lineNum">    1534</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1535"><span class="lineNum">    1535</span>              :   String get tellerAppIdTooltip =&gt; 'Teller Dashboard に表示され、「app_」で始まります';</span>
+<span id="L1535"><span class="lineNum">    1535</span>              :   String get targetAmount =&gt; '目標金額';</span>
 <span id="L1536"><span class="lineNum">    1536</span>              : </span>
 <span id="L1537"><span class="lineNum">    1537</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1538"><span class="lineNum">    1538</span>              :   String get tellerCertificate =&gt; '証明書（PEM）';</span>
+<span id="L1538"><span class="lineNum">    1538</span>              :   String get tellerAccessToken =&gt; 'アクセストークン';</span>
 <span id="L1539"><span class="lineNum">    1539</span>              : </span>
 <span id="L1540"><span class="lineNum">    1540</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1541"><span class="lineNum">    1541</span>              :   String get tellerCertificateInvalid =&gt; '無効な証明書: PEM ブロック「CERTIFICATE」が必要です';</span>
+<span id="L1541"><span class="lineNum">    1541</span>              :   String get tellerAccessTokenTooltip =&gt; '銀行の連携後に接続ページに表示されます。Fingrom が自動的に開かなかった場合はここに貼り付けてください';</span>
 <span id="L1542"><span class="lineNum">    1542</span>              : </span>
 <span id="L1543"><span class="lineNum">    1543</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1544"><span class="lineNum">    1544</span>              :   String get tellerCertificateTooltip =&gt; 'Teller Dashboard（Certificates）で発行され、暗号化して保存されます。保存済みの証明書を使う場合は空欄のままにしてください';</span>
+<span id="L1544"><span class="lineNum">    1544</span>              :   String get tellerAppId =&gt; 'アプリケーションID';</span>
 <span id="L1545"><span class="lineNum">    1545</span>              : </span>
 <span id="L1546"><span class="lineNum">    1546</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1547"><span class="lineNum">    1547</span>              :   String get tellerConnectBank =&gt; '銀行を接続';</span>
+<span id="L1547"><span class="lineNum">    1547</span>              :   String get tellerAppIdTooltip =&gt; 'Teller Dashboard に表示され、「app_」で始まります';</span>
 <span id="L1548"><span class="lineNum">    1548</span>              : </span>
 <span id="L1549"><span class="lineNum">    1549</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1550"><span class="lineNum">    1550</span>              :   String get tellerConnectPage =&gt; '接続ページ';</span>
+<span id="L1550"><span class="lineNum">    1550</span>              :   String get tellerCertificate =&gt; '証明書（PEM）';</span>
 <span id="L1551"><span class="lineNum">    1551</span>              : </span>
 <span id="L1552"><span class="lineNum">    1552</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1553"><span class="lineNum">    1553</span>              :   String get tellerConnectPageTooltip =&gt; 'ブラウザで Teller Connect を開き、アクセストークンを Fingrom に返します';</span>
+<span id="L1553"><span class="lineNum">    1553</span>              :   String get tellerCertificateInvalid =&gt; '無効な証明書: PEM ブロック「CERTIFICATE」が必要です';</span>
 <span id="L1554"><span class="lineNum">    1554</span>              : </span>
 <span id="L1555"><span class="lineNum">    1555</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1556"><span class="lineNum">    1556</span>              :   String get tellerDescription =&gt;</span>
-<span id="L1557"><span class="lineNum">    1557</span>              :       'teller.io に登録した独自のアプリケーションを使い、Teller を通じて米国の銀行やカード発行会社から残高と取引をインポートします（無料プランでは 100 件の実際の銀行接続が可能）。アクセスは読み取り専用で、支払いは行われません。';</span>
-<span id="L1558"><span class="lineNum">    1558</span>              : </span>
-<span id="L1559"><span class="lineNum">    1559</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1560"><span class="lineNum">    1560</span>              :   String get tellerDisconnected =&gt; '銀行との接続に対応が必要です（新しいログインや確認コードなど）。銀行を再度接続してください';</span>
-<span id="L1561"><span class="lineNum">    1561</span>              : </span>
-<span id="L1562"><span class="lineNum">    1562</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1563"><span class="lineNum">    1563</span>              :   String get tellerEnvironment =&gt; '環境';</span>
-<span id="L1564"><span class="lineNum">    1564</span>              : </span>
-<span id="L1565"><span class="lineNum">    1565</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1566"><span class="lineNum">    1566</span>              :   String get tellerHeadline =&gt; 'Teller (US)';</span>
-<span id="L1567"><span class="lineNum">    1567</span>              : </span>
-<span id="L1568"><span class="lineNum">    1568</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1569"><span class="lineNum">    1569</span>              :   String get tellerIncomplete =&gt; 'アプリケーションIDを入力してください。実際の銀行データには証明書と秘密鍵が必要です';</span>
+<span id="L1556"><span class="lineNum">    1556</span>              :   String get tellerCertificateTooltip =&gt; 'Teller Dashboard（Certificates）で発行され、暗号化して保存されます。保存済みの証明書を使う場合は空欄のままにしてください';</span>
+<span id="L1557"><span class="lineNum">    1557</span>              : </span>
+<span id="L1558"><span class="lineNum">    1558</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1559"><span class="lineNum">    1559</span>              :   String get tellerConnectBank =&gt; '銀行を接続';</span>
+<span id="L1560"><span class="lineNum">    1560</span>              : </span>
+<span id="L1561"><span class="lineNum">    1561</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1562"><span class="lineNum">    1562</span>              :   String get tellerConnectPage =&gt; '接続ページ';</span>
+<span id="L1563"><span class="lineNum">    1563</span>              : </span>
+<span id="L1564"><span class="lineNum">    1564</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1565"><span class="lineNum">    1565</span>              :   String get tellerConnectPageTooltip =&gt; 'ブラウザで Teller Connect を開き、アクセストークンを Fingrom に返します';</span>
+<span id="L1566"><span class="lineNum">    1566</span>              : </span>
+<span id="L1567"><span class="lineNum">    1567</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1568"><span class="lineNum">    1568</span>              :   String get tellerDescription =&gt;</span>
+<span id="L1569"><span class="lineNum">    1569</span>              :       'teller.io に登録した独自のアプリケーションを使い、Teller を通じて米国の銀行やカード発行会社から残高と取引をインポートします（無料プランでは 100 件の実際の銀行接続が可能）。アクセスは読み取り専用で、支払いは行われません。';</span>
 <span id="L1570"><span class="lineNum">    1570</span>              : </span>
 <span id="L1571"><span class="lineNum">    1571</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1572"><span class="lineNum">    1572</span>              :   String get tellerKey =&gt; '秘密鍵（PEM）';</span>
+<span id="L1572"><span class="lineNum">    1572</span>              :   String get tellerDisconnected =&gt; '銀行との接続に対応が必要です（新しいログインや確認コードなど）。銀行を再度接続してください';</span>
 <span id="L1573"><span class="lineNum">    1573</span>              : </span>
 <span id="L1574"><span class="lineNum">    1574</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1575"><span class="lineNum">    1575</span>              :   String get tellerKeyInvalid =&gt; '無効な秘密鍵: PEM ブロック「PRIVATE KEY」が必要です';</span>
+<span id="L1575"><span class="lineNum">    1575</span>              :   String get tellerEnvironment =&gt; '環境';</span>
 <span id="L1576"><span class="lineNum">    1576</span>              : </span>
 <span id="L1577"><span class="lineNum">    1577</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1578"><span class="lineNum">    1578</span>              :   String get tellerKeyTooltip =&gt; '証明書と一緒にダウンロードされ、暗号化して保存されます。保存済みの鍵を使う場合は空欄のままにしてください';</span>
+<span id="L1578"><span class="lineNum">    1578</span>              :   String get tellerHeadline =&gt; 'Teller (US)';</span>
 <span id="L1579"><span class="lineNum">    1579</span>              : </span>
 <span id="L1580"><span class="lineNum">    1580</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1581"><span class="lineNum">    1581</span>              :   String get tellerMissingCertificate =&gt; 'クライアント証明書がないため Teller がリクエストを拒否しました。証明書と秘密鍵をアップロードするか、sandbox を選択してください';</span>
+<span id="L1581"><span class="lineNum">    1581</span>              :   String get tellerIncomplete =&gt; 'アプリケーションIDを入力してください。実際の銀行データには証明書と秘密鍵が必要です';</span>
 <span id="L1582"><span class="lineNum">    1582</span>              : </span>
 <span id="L1583"><span class="lineNum">    1583</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1584"><span class="lineNum">    1584</span>              :   String get tellerSteps =&gt;</span>
-<span id="L1585"><span class="lineNum">    1585</span>              :       '接続方法:\n1. teller.io に登録し、Teller Dashboard を開きます\n2. アプリケーションIDをコピーし、秘密鍵付きの証明書を作成してダウンロードします（Certificates）\n3. 下に入力し、環境を選択します（sandbox: テストデータ、銀行には \&quot;username\&quot; と \&quot;password\&quot; でログイン）\n4. 「銀行を接続」を押し、開いたページで銀行にログインします\n5. 口座と予算カテゴリを選択し、「取引をインポート」を押します';</span>
-<span id="L1586"><span class="lineNum">    1586</span>              : </span>
-<span id="L1587"><span class="lineNum">    1587</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1588"><span class="lineNum">    1588</span>              :   String get tellerUpload =&gt; 'ファイルをアップロード';</span>
-<span id="L1589"><span class="lineNum">    1589</span>              : </span>
-<span id="L1590"><span class="lineNum">    1590</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1591"><span class="lineNum">    1591</span>              :   String get termPrivacy =&gt; 'プライバシーポリシー';</span>
-<span id="L1592"><span class="lineNum">    1592</span>              : </span>
-<span id="L1593"><span class="lineNum">    1593</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1594"><span class="lineNum">    1594</span>              :   String get termUse =&gt; '利用規約';</span>
-<span id="L1595"><span class="lineNum">    1595</span>              : </span>
-<span id="L1596"><span class="lineNum">    1596</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1597"><span class="lineNum">    1597</span>              :   String get title =&gt; 'タイトル';</span>
+<span id="L1584"><span class="lineNum">    1584</span>              :   String get tellerKey =&gt; '秘密鍵（PEM）';</span>
+<span id="L1585"><span class="lineNum">    1585</span>              : </span>
+<span id="L1586"><span class="lineNum">    1586</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1587"><span class="lineNum">    1587</span>              :   String get tellerKeyInvalid =&gt; '無効な秘密鍵: PEM ブロック「PRIVATE KEY」が必要です';</span>
+<span id="L1588"><span class="lineNum">    1588</span>              : </span>
+<span id="L1589"><span class="lineNum">    1589</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1590"><span class="lineNum">    1590</span>              :   String get tellerKeyTooltip =&gt; '証明書と一緒にダウンロードされ、暗号化して保存されます。保存済みの鍵を使う場合は空欄のままにしてください';</span>
+<span id="L1591"><span class="lineNum">    1591</span>              : </span>
+<span id="L1592"><span class="lineNum">    1592</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1593"><span class="lineNum">    1593</span>              :   String get tellerMissingCertificate =&gt; 'クライアント証明書がないため Teller がリクエストを拒否しました。証明書と秘密鍵をアップロードするか、sandbox を選択してください';</span>
+<span id="L1594"><span class="lineNum">    1594</span>              : </span>
+<span id="L1595"><span class="lineNum">    1595</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1596"><span class="lineNum">    1596</span>              :   String get tellerSteps =&gt;</span>
+<span id="L1597"><span class="lineNum">    1597</span>              :       '接続方法:\n1. teller.io に登録し、Teller Dashboard を開きます\n2. アプリケーションIDをコピーし、秘密鍵付きの証明書を作成してダウンロードします（Certificates）\n3. 下に入力し、環境を選択します（sandbox: テストデータ、銀行には \&quot;username\&quot; と \&quot;password\&quot; でログイン）\n4. 「銀行を接続」を押し、開いたページで銀行にログインします\n5. 口座と予算カテゴリを選択し、「取引をインポート」を押します';</span>
 <span id="L1598"><span class="lineNum">    1598</span>              : </span>
 <span id="L1599"><span class="lineNum">    1599</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1600"><span class="lineNum">    1600</span>              :   String get titleAccountTooltip =&gt; 'アカウント識別子を入力';</span>
+<span id="L1600"><span class="lineNum">    1600</span>              :   String get tellerUpload =&gt; 'ファイルをアップロード';</span>
 <span id="L1601"><span class="lineNum">    1601</span>              : </span>
 <span id="L1602"><span class="lineNum">    1602</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1603"><span class="lineNum">    1603</span>              :   String get titleBudgetTooltip =&gt; '予算カテゴリー名を入力';</span>
+<span id="L1603"><span class="lineNum">    1603</span>              :   String get termPrivacy =&gt; 'プライバシーポリシー';</span>
 <span id="L1604"><span class="lineNum">    1604</span>              : </span>
 <span id="L1605"><span class="lineNum">    1605</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1606"><span class="lineNum">    1606</span>              :   String get titleGoal =&gt; '目標';</span>
+<span id="L1606"><span class="lineNum">    1606</span>              :   String get termUse =&gt; '利用規約';</span>
 <span id="L1607"><span class="lineNum">    1607</span>              : </span>
 <span id="L1608"><span class="lineNum">    1608</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1609"><span class="lineNum">    1609</span>              :   String get titleGoalTooltip =&gt; '目標の説明';</span>
+<span id="L1609"><span class="lineNum">    1609</span>              :   String get title =&gt; 'タイトル';</span>
 <span id="L1610"><span class="lineNum">    1610</span>              : </span>
 <span id="L1611"><span class="lineNum">    1611</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1612"><span class="lineNum">    1612</span>              :   String get to =&gt; '合計';</span>
+<span id="L1612"><span class="lineNum">    1612</span>              :   String get titleAccountTooltip =&gt; 'アカウント識別子を入力';</span>
 <span id="L1613"><span class="lineNum">    1613</span>              : </span>
 <span id="L1614"><span class="lineNum">    1614</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1615"><span class="lineNum">    1615</span>              :   String get total =&gt; '合計';</span>
+<span id="L1615"><span class="lineNum">    1615</span>              :   String get titleBudgetTooltip =&gt; '予算カテゴリー名を入力';</span>
 <span id="L1616"><span class="lineNum">    1616</span>              : </span>
 <span id="L1617"><span class="lineNum">    1617</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1618"><span class="lineNum">    1618</span>              :   String get transactionFile =&gt; 'Fingrom 取引ログファイル（.log）';</span>
+<span id="L1618"><span class="lineNum">    1618</span>              :   String get titleGoal =&gt; '目標';</span>
 <span id="L1619"><span class="lineNum">    1619</span>              : </span>
 <span id="L1620"><span class="lineNum">    1620</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1621"><span class="lineNum">    1621</span>              :   String get transferHeadline =&gt; '転送';</span>
+<span id="L1621"><span class="lineNum">    1621</span>              :   String get titleGoalTooltip =&gt; '目標の説明';</span>
 <span id="L1622"><span class="lineNum">    1622</span>              : </span>
 <span id="L1623"><span class="lineNum">    1623</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1624"><span class="lineNum">    1624</span>              :   String get transferTooltip =&gt; '転送の詳細を設定';</span>
+<span id="L1624"><span class="lineNum">    1624</span>              :   String get to =&gt; '合計';</span>
 <span id="L1625"><span class="lineNum">    1625</span>              : </span>
 <span id="L1626"><span class="lineNum">    1626</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1627"><span class="lineNum">    1627</span>              :   String get transfersHeadline =&gt; '移籍';</span>
+<span id="L1627"><span class="lineNum">    1627</span>              :   String get total =&gt; '合計';</span>
 <span id="L1628"><span class="lineNum">    1628</span>              : </span>
 <span id="L1629"><span class="lineNum">    1629</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1630"><span class="lineNum">    1630</span>              :   String get typeButton =&gt; 'ボタン';</span>
+<span id="L1630"><span class="lineNum">    1630</span>              :   String get transactionFile =&gt; 'Fingrom 取引ログファイル（.log）';</span>
 <span id="L1631"><span class="lineNum">    1631</span>              : </span>
 <span id="L1632"><span class="lineNum">    1632</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1633"><span class="lineNum">    1633</span>              :   String get upDescription =&gt;</span>
-<span id="L1634"><span class="lineNum">    1634</span>              :       '個人用アクセストークンで Up の支出口座と貯蓄口座の残高と取引をインポートします。連携した Up 口座間の振替（Round Ups を含む）は振替としてインポートされます。アクセスは読み取り専用で、支払いは行われません。';</span>
-<span id="L1635"><span class="lineNum">    1635</span>              : </span>
-<span id="L1636"><span class="lineNum">    1636</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1637"><span class="lineNum">    1637</span>              :   String get upHeadline =&gt; 'Up Banking API（オーストラリア）';</span>
-<span id="L1638"><span class="lineNum">    1638</span>              : </span>
-<span id="L1639"><span class="lineNum">    1639</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1640"><span class="lineNum">    1640</span>              :   String get upToken =&gt; '個人用アクセストークン';</span>
-<span id="L1641"><span class="lineNum">    1641</span>              : </span>
-<span id="L1642"><span class="lineNum">    1642</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1643"><span class="lineNum">    1643</span>              :   String get upTokenSteps =&gt;</span>
-<span id="L1644"><span class="lineNum">    1644</span>              :       '個人用アクセストークンの取得方法:\n1. Up アプリを開き、Data sharing → Personal Access Token に移動します（または api.up.com.au でサインインします）\n2. トークンを作成してコピーします（\&quot;up:yeah:\&quot; で始まります）。新しいトークンは以前のトークンを置き換えます\n3. 下に貼り付けて「接続」を押します\n4. すべての Up 口座（貯蓄口座を含む）を連携すると、口座間の振替が振替としてインポートされます';</span>
-<span id="L1645"><span class="lineNum">    1645</span>              : </span>
-<span id="L1646"><span class="lineNum">    1646</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1647"><span class="lineNum">    1647</span>              :   String get upTokenTooltip =&gt; 'Up アプリまたは api.up.com.au で作成します。暗号化して保存されます。有効なのは最新のトークンのみです';</span>
-<span id="L1648"><span class="lineNum">    1648</span>              : </span>
-<span id="L1649"><span class="lineNum">    1649</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1650"><span class="lineNum">    1650</span>              :   String get updateAccountTooltip =&gt; 'アカウントの更新';</span>
-<span id="L1651"><span class="lineNum">    1651</span>              : </span>
-<span id="L1652"><span class="lineNum">    1652</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1653"><span class="lineNum">    1653</span>              :   String get updateBillTooltip =&gt; '請求書の更新';</span>
-<span id="L1654"><span class="lineNum">    1654</span>              : </span>
-<span id="L1655"><span class="lineNum">    1655</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1656"><span class="lineNum">    1656</span>              :   String get updateBudgetTooltip =&gt; '予算カテゴリーの更新';</span>
+<span id="L1633"><span class="lineNum">    1633</span>              :   String get transferHeadline =&gt; '転送';</span>
+<span id="L1634"><span class="lineNum">    1634</span>              : </span>
+<span id="L1635"><span class="lineNum">    1635</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1636"><span class="lineNum">    1636</span>              :   String get transferTooltip =&gt; '転送の詳細を設定';</span>
+<span id="L1637"><span class="lineNum">    1637</span>              : </span>
+<span id="L1638"><span class="lineNum">    1638</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1639"><span class="lineNum">    1639</span>              :   String get transfersHeadline =&gt; '移籍';</span>
+<span id="L1640"><span class="lineNum">    1640</span>              : </span>
+<span id="L1641"><span class="lineNum">    1641</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1642"><span class="lineNum">    1642</span>              :   String get typeButton =&gt; 'ボタン';</span>
+<span id="L1643"><span class="lineNum">    1643</span>              : </span>
+<span id="L1644"><span class="lineNum">    1644</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1645"><span class="lineNum">    1645</span>              :   String get upDescription =&gt;</span>
+<span id="L1646"><span class="lineNum">    1646</span>              :       '個人用アクセストークンで Up の支出口座と貯蓄口座の残高と取引をインポートします。連携した Up 口座間の振替（Round Ups を含む）は振替としてインポートされます。アクセスは読み取り専用で、支払いは行われません。';</span>
+<span id="L1647"><span class="lineNum">    1647</span>              : </span>
+<span id="L1648"><span class="lineNum">    1648</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1649"><span class="lineNum">    1649</span>              :   String get upHeadline =&gt; 'Up Banking API（オーストラリア）';</span>
+<span id="L1650"><span class="lineNum">    1650</span>              : </span>
+<span id="L1651"><span class="lineNum">    1651</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1652"><span class="lineNum">    1652</span>              :   String get upToken =&gt; '個人用アクセストークン';</span>
+<span id="L1653"><span class="lineNum">    1653</span>              : </span>
+<span id="L1654"><span class="lineNum">    1654</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1655"><span class="lineNum">    1655</span>              :   String get upTokenSteps =&gt;</span>
+<span id="L1656"><span class="lineNum">    1656</span>              :       '個人用アクセストークンの取得方法:\n1. Up アプリを開き、Data sharing → Personal Access Token に移動します（または api.up.com.au でサインインします）\n2. トークンを作成してコピーします（\&quot;up:yeah:\&quot; で始まります）。新しいトークンは以前のトークンを置き換えます\n3. 下に貼り付けて「接続」を押します\n4. すべての Up 口座（貯蓄口座を含む）を連携すると、口座間の振替が振替としてインポートされます';</span>
 <span id="L1657"><span class="lineNum">    1657</span>              : </span>
 <span id="L1658"><span class="lineNum">    1658</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1659"><span class="lineNum">    1659</span>              :   String get updateGoalTooltip =&gt; '目標の更新';</span>
+<span id="L1659"><span class="lineNum">    1659</span>              :   String get upTokenTooltip =&gt; 'Up アプリまたは api.up.com.au で作成します。暗号化して保存されます。有効なのは最新のトークンのみです';</span>
 <span id="L1660"><span class="lineNum">    1660</span>              : </span>
 <span id="L1661"><span class="lineNum">    1661</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1662"><span class="lineNum">    1662</span>              :   String get updatePaymentTooltip =&gt; '更新支払';</span>
+<span id="L1662"><span class="lineNum">    1662</span>              :   String get updateAccountTooltip =&gt; 'アカウントの更新';</span>
 <span id="L1663"><span class="lineNum">    1663</span>              : </span>
 <span id="L1664"><span class="lineNum">    1664</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1665"><span class="lineNum">    1665</span>              :   String get username =&gt; 'ユーザー名（アカウント）';</span>
+<span id="L1665"><span class="lineNum">    1665</span>              :   String get updateBillTooltip =&gt; '請求書の更新';</span>
 <span id="L1666"><span class="lineNum">    1666</span>              : </span>
 <span id="L1667"><span class="lineNum">    1667</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1668"><span class="lineNum">    1668</span>              :   String get uuid =&gt; '一意の取引識別子';</span>
+<span id="L1668"><span class="lineNum">    1668</span>              :   String get updateBudgetTooltip =&gt; '予算カテゴリーの更新';</span>
 <span id="L1669"><span class="lineNum">    1669</span>              : </span>
 <span id="L1670"><span class="lineNum">    1670</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1671"><span class="lineNum">    1671</span>              :   String get validTillDate =&gt; '有効期限';</span>
+<span id="L1671"><span class="lineNum">    1671</span>              :   String get updateGoalTooltip =&gt; '目標の更新';</span>
 <span id="L1672"><span class="lineNum">    1672</span>              : </span>
 <span id="L1673"><span class="lineNum">    1673</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1674"><span class="lineNum">    1674</span>              :   String get webDav =&gt; 'Web分散オーサリングとバージョニング（WebDav）';</span>
+<span id="L1674"><span class="lineNum">    1674</span>              :   String get updatePaymentTooltip =&gt; '更新支払';</span>
 <span id="L1675"><span class="lineNum">    1675</span>              : </span>
 <span id="L1676"><span class="lineNum">    1676</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1677"><span class="lineNum">    1677</span>              :   String get wiseDescription =&gt;</span>
-<span id="L1678"><span class="lineNum">    1678</span>              :       '個人用 API トークンで Wise マルチカレンシー口座の残高と取引をインポートします。連携した残高間の両替は振替としてインポートされます。アクセスは読み取り専用で、支払いは行われません。';</span>
-<span id="L1679"><span class="lineNum">    1679</span>              : </span>
-<span id="L1680"><span class="lineNum">    1680</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1681"><span class="lineNum">    1681</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
-<span id="L1682"><span class="lineNum">    1682</span>              : </span>
-<span id="L1683"><span class="lineNum">    1683</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1684"><span class="lineNum">    1684</span>              :   String get wiseNoProfiles =&gt; 'このトークンで利用できる Wise プロフィールがありません';</span>
-<span id="L1685"><span class="lineNum">    1685</span>              : </span>
-<span id="L1686"><span class="lineNum">    1686</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1687"><span class="lineNum">    1687</span>              :   String get wiseProfile =&gt; 'プロフィール';</span>
-<span id="L1688"><span class="lineNum">    1688</span>              : </span>
-<span id="L1689"><span class="lineNum">    1689</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1690"><span class="lineNum">    1690</span>              :   String get wiseScaRequired =&gt; 'Wise で強力な顧客認証が必要です。Wise アプリでこの残高の明細を開いてから再試行してください';</span>
+<span id="L1677"><span class="lineNum">    1677</span>              :   String get username =&gt; 'ユーザー名（アカウント）';</span>
+<span id="L1678"><span class="lineNum">    1678</span>              : </span>
+<span id="L1679"><span class="lineNum">    1679</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1680"><span class="lineNum">    1680</span>              :   String get uuid =&gt; '一意の取引識別子';</span>
+<span id="L1681"><span class="lineNum">    1681</span>              : </span>
+<span id="L1682"><span class="lineNum">    1682</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1683"><span class="lineNum">    1683</span>              :   String get validTillDate =&gt; '有効期限';</span>
+<span id="L1684"><span class="lineNum">    1684</span>              : </span>
+<span id="L1685"><span class="lineNum">    1685</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1686"><span class="lineNum">    1686</span>              :   String get webDav =&gt; 'Web分散オーサリングとバージョニング（WebDav）';</span>
+<span id="L1687"><span class="lineNum">    1687</span>              : </span>
+<span id="L1688"><span class="lineNum">    1688</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1689"><span class="lineNum">    1689</span>              :   String get wiseDescription =&gt;</span>
+<span id="L1690"><span class="lineNum">    1690</span>              :       '個人用 API トークンで Wise マルチカレンシー口座の残高と取引をインポートします。連携した残高間の両替は振替としてインポートされます。アクセスは読み取り専用で、支払いは行われません。';</span>
 <span id="L1691"><span class="lineNum">    1691</span>              : </span>
 <span id="L1692"><span class="lineNum">    1692</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1693"><span class="lineNum">    1693</span>              :   String get wiseToken =&gt; '個人用 API トークン';</span>
+<span id="L1693"><span class="lineNum">    1693</span>              :   String get wiseHeadline =&gt; 'Wise API (Global)';</span>
 <span id="L1694"><span class="lineNum">    1694</span>              : </span>
 <span id="L1695"><span class="lineNum">    1695</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1696"><span class="lineNum">    1696</span>              :   String get wiseTokenSteps =&gt;</span>
-<span id="L1697"><span class="lineNum">    1697</span>              :       '個人用 API トークンの取得方法:\n1. ブラウザで wise.com にログインします（モバイルアプリではトークンを作成できません）\n2. 設定 → 連携とツール → API トークン を開きます\n3. 「新しいトークンを追加」を選び、名前（例: Fingrom）を付けて「読み取り専用」アクセスを選択します\n4. 2 段階認証で確認し、トークンをコピーします\n5. 下に貼り付けて「接続」を押します';</span>
-<span id="L1698"><span class="lineNum">    1698</span>              : </span>
-<span id="L1699"><span class="lineNum">    1699</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1700"><span class="lineNum">    1700</span>              :   String get wiseTokenTooltip =&gt; 'Wise の 設定 → API トークン で作成します（可能であれば読み取り専用）。暗号化して保存されます';</span>
-<span id="L1701"><span class="lineNum">    1701</span>              : </span>
-<span id="L1702"><span class="lineNum">    1702</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1703"><span class="lineNum">    1703</span>              :   String get zoomState =&gt; 'ズームイン/ズームアウト';</span>
-<span id="L1704"><span class="lineNum">    1704</span>              : }</span>
+<span id="L1696"><span class="lineNum">    1696</span>              :   String get wiseNoProfiles =&gt; 'このトークンで利用できる Wise プロフィールがありません';</span>
+<span id="L1697"><span class="lineNum">    1697</span>              : </span>
+<span id="L1698"><span class="lineNum">    1698</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1699"><span class="lineNum">    1699</span>              :   String get wiseProfile =&gt; 'プロフィール';</span>
+<span id="L1700"><span class="lineNum">    1700</span>              : </span>
+<span id="L1701"><span class="lineNum">    1701</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1702"><span class="lineNum">    1702</span>              :   String get wiseScaRequired =&gt; 'Wise で強力な顧客認証が必要です。Wise アプリでこの残高の明細を開いてから再試行してください';</span>
+<span id="L1703"><span class="lineNum">    1703</span>              : </span>
+<span id="L1704"><span class="lineNum">    1704</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1705"><span class="lineNum">    1705</span>              :   String get wiseToken =&gt; '個人用 API トークン';</span>
+<span id="L1706"><span class="lineNum">    1706</span>              : </span>
+<span id="L1707"><span class="lineNum">    1707</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1708"><span class="lineNum">    1708</span>              :   String get wiseTokenSteps =&gt;</span>
+<span id="L1709"><span class="lineNum">    1709</span>              :       '個人用 API トークンの取得方法:\n1. ブラウザで wise.com にログインします（モバイルアプリではトークンを作成できません）\n2. 設定 → 連携とツール → API トークン を開きます\n3. 「新しいトークンを追加」を選び、名前（例: Fingrom）を付けて「読み取り専用」アクセスを選択します\n4. 2 段階認証で確認し、トークンをコピーします\n5. 下に貼り付けて「接続」を押します';</span>
+<span id="L1710"><span class="lineNum">    1710</span>              : </span>
+<span id="L1711"><span class="lineNum">    1711</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1712"><span class="lineNum">    1712</span>              :   String get wiseTokenTooltip =&gt; 'Wise の 設定 → API トークン で作成します（可能であれば読み取り専用）。暗号化して保存されます';</span>
+<span id="L1713"><span class="lineNum">    1713</span>              : </span>
+<span id="L1714"><span class="lineNum">    1714</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1715"><span class="lineNum">    1715</span>              :   String get zoomState =&gt; 'ズームイン/ズームアウト';</span>
+<span id="L1716"><span class="lineNum">    1716</span>              : }</span>
         </pre>
               </td>
             </tr>
