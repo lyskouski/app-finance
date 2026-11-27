@@ -1575,6 +1575,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String get systemMode => 'Tizim';
 
   @override
+  String get tags => 'Teglar';
+
+  @override
+  String get tagsEmpty => 'Tanlangan teglar bo\'yicha hech narsa topilmadi';
+
+  @override
+  String get tagsHeadline => 'Teglar bo\'yicha qidirish';
+
+  @override
+  String get tagsTooltip =>
+      'Teg qo\'shish uchun Enter tugmasini bosing yoki vergul yozing';
+
+  @override
   String get tapToOpen => 'Ochish uchun bosing';
 
   @override

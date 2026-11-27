@@ -1538,6 +1538,18 @@ class AppLocalizationsJa extends AppLocalizations {
   String get systemMode => 'システム';
 
   @override
+  String get tags => 'タグ';
+
+  @override
+  String get tagsEmpty => '選択したタグに該当するものはありません';
+
+  @override
+  String get tagsHeadline => 'タグで検索';
+
+  @override
+  String get tagsTooltip => 'Enterキーを押すかカンマを入力してタグを追加します';
+
+  @override
   String get tapToOpen => 'タップして開く';
 
   @override

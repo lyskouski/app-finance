@@ -17,6 +17,7 @@ import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/form/tags_input.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -28,6 +29,7 @@ class TransferTab<T> extends StatefulWidget {
   final String? description;
   final Currency? currency;
   final DateTime? createdAt;
+  final List<String>? tags;
   final AppData state;
   final bool isLeft;
   final FnPageCallback callback;
@@ -42,6 +44,7 @@ class TransferTab<T> extends StatefulWidget {
     this.description,
     this.currency,
     this.createdAt,
+    this.tags,
     this.isLeft = false,
   });
 
@@ -57,6 +60,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
   Currency? accountToCurrency;
   late TextEditingController amount;
   late TextEditingController description;
+  late ValueNotifier<List<String>> tags;
   late ExchangeController exchange;
   late DateTime createdAt;
   Currency? currency;
@@ -71,6 +75,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
     createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
+    tags = ValueNotifier([...?widget.tags]);
     currency = widget.currency ?? Exchange.defaultCurrency;
     exchange = ExchangeController({}, store: widget.state, targetController: amount, target: currency, source: []);
 
@@ -87,6 +92,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
     isPushed = false;
     amount.dispose();
     description.dispose();
+    tags.dispose();
     exchange.dispose();
     focus.dispose();
     super.dispose();
@@ -112,6 +118,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
         details: double.tryParse(amount.text) ?? 0.0,
         currency: currency,
         createdAt: createdAt,
+        tags: tags.value,
       );
 
   String getButtonName() => AppLocale.labels.createTransferTooltip;
@@ -221,6 +228,11 @@ class TransferTabState<T extends TransferTab> extends State<T> {
                 title: AppLocale.labels.description,
                 tooltip: AppLocale.labels.transferTooltip,
                 controller: description,
+              ),
+              TagsInput(
+                title: AppLocale.labels.tags,
+                tooltip: AppLocale.labels.tagsTooltip,
+                controller: tags,
               ),
               Text(
                 AppLocale.labels.balanceDate,

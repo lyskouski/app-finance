@@ -34,6 +34,7 @@ class BillEditPageState extends BillAddPageState<InvoiceEditPage> {
             description: invoice.title,
             amount: invoice.details,
             createdAt: invoice.createdAt,
+            tags: invoice.tags,
           )
         : IncomeEditTab(
             state: state,
@@ -44,6 +45,7 @@ class BillEditPageState extends BillAddPageState<InvoiceEditPage> {
             description: invoice.title,
             amount: invoice.details,
             createdAt: invoice.createdAt,
+            tags: invoice.tags,
           );
   }
 }

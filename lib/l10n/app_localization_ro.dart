@@ -1573,6 +1573,19 @@ class AppLocalizationsRo extends AppLocalizations {
   String get systemMode => 'System';
 
   @override
+  String get tags => 'Etichete';
+
+  @override
+  String get tagsEmpty => 'Nu s-a găsit nimic pentru etichetele selectate';
+
+  @override
+  String get tagsHeadline => 'Căutare după etichete';
+
+  @override
+  String get tagsTooltip =>
+      'Apăsați Enter sau tastați o virgulă pentru a adăuga o etichetă';
+
+  @override
   String get tapToOpen => 'Atingeți pentru a deschide';
 
   @override

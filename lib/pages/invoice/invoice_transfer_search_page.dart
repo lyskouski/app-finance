@@ -9,9 +9,11 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/tags_ext.dart';
 import 'package:app_finance/design/form/date_range_input.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/form/tags_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
@@ -34,6 +36,7 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
   late TextEditingController description;
   late TextEditingController amountFrom;
   late TextEditingController amountTo;
+  late ValueNotifier<List<String>> tags;
   late FocusController focus;
 
   late List<ListAccountSelectorItem> accountList =
@@ -44,6 +47,8 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
     description = TextEditingController();
     amountFrom = TextEditingController();
     amountTo = TextEditingController();
+    tags = ValueNotifier([]);
+    tags.addListener(() => setState(clearState));
     focus = FocusController();
     super.initState();
   }
@@ -53,6 +58,7 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
     description.dispose();
     amountFrom.dispose();
     amountTo.dispose();
+    tags.dispose();
     focus.dispose();
     super.dispose();
   }
@@ -76,6 +82,7 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
   @override
   bool getContentFilter(InvoiceAppData o) {
     final descriptionMatch = o.title.toLowerCase().contains(description.text.toLowerCase());
+    final tagsMatch = o.tags.hasTags(tags.value);
     final accountFromMatch = accountFrom == null || o.accountFrom == accountFrom;
     final accountToMatch = accountTo == null || o.account == accountTo;
     final startDateMatch = startDate == null || o.createdAt.isAfter(startDate!);
@@ -83,6 +90,7 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
     final amountFromMatch = amountFrom.text.isEmpty || o.details >= double.tryParse(amountFrom.text)!;
     final amountToMatch = amountTo.text.isEmpty || o.details <= double.tryParse(amountTo.text)!;
     return !(descriptionMatch &&
+            tagsMatch &&
             accountFromMatch &&
             accountToMatch &&
             startDateMatch &&
@@ -106,6 +114,11 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
               title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            TagsInput(
+              title: AppLocale.labels.tags,
+              tooltip: AppLocale.labels.tagsTooltip,
+              controller: tags,
             ),
             RowWidget(
               indent: indent,

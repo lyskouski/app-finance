@@ -20,6 +20,7 @@ class TransferEditTab extends TransferTab {
     super.description,
     super.currency,
     super.createdAt,
+    super.tags,
   });
 
   @override
@@ -43,6 +44,7 @@ class TransferEditTabState extends TransferTabState<TransferEditTab> {
           details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
           currency: currency,
           createdAt: createdAt,
+          tags: tags.value,
         ));
   }
 

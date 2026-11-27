@@ -1563,6 +1563,19 @@ class AppLocalizationsCs extends AppLocalizations {
   String get systemMode => 'Systém';
 
   @override
+  String get tags => 'Štítky';
+
+  @override
+  String get tagsEmpty => 'Pro vybrané štítky nebylo nic nalezeno';
+
+  @override
+  String get tagsHeadline => 'Hledat podle štítků';
+
+  @override
+  String get tagsTooltip =>
+      'Stiskněte Enter nebo napište čárku pro přidání štítku';
+
+  @override
   String get tapToOpen => 'Klepnutím otevřete';
 
   @override

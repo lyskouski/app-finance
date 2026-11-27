@@ -1569,6 +1569,19 @@ class AppLocalizationsNl extends AppLocalizations {
   String get systemMode => 'Systeem';
 
   @override
+  String get tags => 'Tags';
+
+  @override
+  String get tagsEmpty => 'Niets gevonden voor de geselecteerde tags';
+
+  @override
+  String get tagsHeadline => 'Zoeken op tags';
+
+  @override
+  String get tagsTooltip =>
+      'Druk op Enter of typ een komma om een tag toe te voegen';
+
+  @override
   String get tapToOpen => 'Tikken om te openen';
 
   @override

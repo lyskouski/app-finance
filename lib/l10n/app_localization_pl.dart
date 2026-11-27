@@ -1564,6 +1564,18 @@ class AppLocalizationsPl extends AppLocalizations {
   String get systemMode => 'Systemowy';
 
   @override
+  String get tags => 'Tagi';
+
+  @override
+  String get tagsEmpty => 'Nie znaleziono niczego dla wybranych tagów';
+
+  @override
+  String get tagsHeadline => 'Szukaj po tagach';
+
+  @override
+  String get tagsTooltip => 'Naciśnij Enter lub wpisz przecinek, aby dodać tag';
+
+  @override
   String get tapToOpen => 'Naciśnij, aby otworzyć';
 
   @override

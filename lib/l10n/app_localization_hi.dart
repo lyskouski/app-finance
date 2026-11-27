@@ -1564,6 +1564,18 @@ class AppLocalizationsHi extends AppLocalizations {
   String get systemMode => 'प्रणाली';
 
   @override
+  String get tags => 'टैग';
+
+  @override
+  String get tagsEmpty => 'चयनित टैग के लिए कुछ नहीं मिला';
+
+  @override
+  String get tagsHeadline => 'टैग द्वारा खोजें';
+
+  @override
+  String get tagsTooltip => 'टैग जोड़ने के लिए Enter दबाएँ या अल्पविराम लिखें';
+
+  @override
   String get tapToOpen => 'खोलने के लिए नल';
 
   @override

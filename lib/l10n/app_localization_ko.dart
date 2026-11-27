@@ -1542,6 +1542,18 @@ class AppLocalizationsKo extends AppLocalizations {
   String get systemMode => '시스템';
 
   @override
+  String get tags => '태그';
+
+  @override
+  String get tagsEmpty => '선택한 태그에 해당하는 항목이 없습니다';
+
+  @override
+  String get tagsHeadline => '태그로 검색';
+
+  @override
+  String get tagsTooltip => '태그를 추가하려면 Enter 키를 누르거나 쉼표를 입력하세요';
+
+  @override
   String get tapToOpen => '탭하여 열기';
 
   @override

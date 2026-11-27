@@ -51,4 +51,5 @@ abstract class AppRoute {
   static const String sortingRoute = '/app/finance/sorting';
   static const String startRoute = '/app/finance/start';
   static const String subscriptionRoute = '/app/finance/subscription';
+  static const String tagsRoute = '/app/finance/tags';
 }

@@ -19,6 +19,7 @@ class IncomeEditTab extends IncomeTab {
     super.currency,
     super.amount,
     super.createdAt,
+    super.tags,
   });
 
   @override
@@ -40,6 +41,7 @@ class IncomeEditTabState extends IncomeTabState<IncomeEditTab> {
           details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
           currency: currency,
           createdAt: createdAt,
+          tags: tags.value,
         ));
   }
 

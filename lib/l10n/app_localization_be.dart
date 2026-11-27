@@ -1568,6 +1568,19 @@ class AppLocalizationsBe extends AppLocalizations {
   String get systemMode => 'Сістэмны';
 
   @override
+  String get tags => 'Тэгі';
+
+  @override
+  String get tagsEmpty => 'Па выбраных тэгах нічога не знойдзена';
+
+  @override
+  String get tagsHeadline => 'Пошук па тэгах';
+
+  @override
+  String get tagsTooltip =>
+      'Націсніце Enter або ўвядзіце коску, каб дадаць тэг';
+
+  @override
   String get tapToOpen => 'Націсьніце, каб адкрыць';
 
   @override
@@ -3331,6 +3344,19 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get systemMode => 'Sistemny';
+
+  @override
+  String get tags => 'Tehi';
+
+  @override
+  String get tagsEmpty => 'Pa vybranych tehach ničoha nie znojdziena';
+
+  @override
+  String get tagsHeadline => 'Pošuk pa tehach';
+
+  @override
+  String get tagsTooltip =>
+      'Naciśnicie Enter albo ŭviadzicie kosku, kab dadać teh';
 
   @override
   String get tapToOpen => 'Naciśnicie, kab Adkryć';
