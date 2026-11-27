@@ -22,6 +22,7 @@ class ExpensesEditTab extends ExpensesTab {
     super.bill,
     super.description,
     super.createdAt,
+    super.tags,
     this.hasChild = false,
     this.childOf,
   });
@@ -46,6 +47,7 @@ class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
           createdAt: createdAt,
           hasChild: widget.hasChild,
           childOf: widget.childOf,
+          tags: tags.value,
         ));
   }
 

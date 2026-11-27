@@ -1571,6 +1571,19 @@ class AppLocalizationsAz extends AppLocalizations {
   String get systemMode => 'Sistem';
 
   @override
+  String get tags => 'Teqlər';
+
+  @override
+  String get tagsEmpty => 'Seçilmiş teqlər üzrə heç nə tapılmadı';
+
+  @override
+  String get tagsHeadline => 'Teqlər üzrə axtarış';
+
+  @override
+  String get tagsTooltip =>
+      'Teq əlavə etmək üçün Enter düyməsini basın və ya vergül yazın';
+
+  @override
   String get tapToOpen => 'Açmaq üçün toxunun';
 
   @override

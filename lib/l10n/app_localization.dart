@@ -2995,6 +2995,30 @@ abstract class AppLocalizations {
   /// **'System'**
   String get systemMode;
 
+  /// No description provided for @tags.
+  ///
+  /// In en, this message translates to:
+  /// **'Tags'**
+  String get tags;
+
+  /// No description provided for @tagsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing found for the selected tags'**
+  String get tagsEmpty;
+
+  /// No description provided for @tagsHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by Tags'**
+  String get tagsHeadline;
+
+  /// No description provided for @tagsTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Press Enter or type a comma to add a tag'**
+  String get tagsTooltip;
+
   /// No description provided for @tapToOpen.
   ///
   /// In en, this message translates to:

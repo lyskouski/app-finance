@@ -11,9 +11,11 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/tags_ext.dart';
 import 'package:app_finance/design/form/date_range_input.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/form/tags_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
@@ -38,6 +40,7 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   late TextEditingController description;
   late TextEditingController amountFrom;
   late TextEditingController amountTo;
+  late ValueNotifier<List<String>> tags;
   late FocusController focus;
 
   late List<ListAccountSelectorItem> accountList =
@@ -48,6 +51,8 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
     description = TextEditingController();
     amountFrom = TextEditingController();
     amountTo = TextEditingController();
+    tags = ValueNotifier([]);
+    tags.addListener(() => setState(clearState));
     focus = FocusController();
     super.initState();
   }
@@ -57,6 +62,7 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
     description.dispose();
     amountFrom.dispose();
     amountTo.dispose();
+    tags.dispose();
     focus.dispose();
     super.dispose();
   }
@@ -80,6 +86,7 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   @override
   bool getContentFilter(InvoiceAppData o) {
     final descriptionMatch = o.title.toLowerCase().contains(description.text.toLowerCase());
+    final tagsMatch = o.tags.hasTags(tags.value);
     final accountMatch = account == null || o.account == account;
     final typeMatch = type == null || state.getByUuid(o.account)?.type == type;
     final currencyMatch = currency == null || o.currency == currency;
@@ -89,6 +96,7 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
     final amountToMatch = amountTo.text.isEmpty || o.details <= double.tryParse(amountTo.text)!;
 
     return !(descriptionMatch &&
+            tagsMatch &&
             accountMatch &&
             typeMatch &&
             currencyMatch &&
@@ -117,6 +125,11 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
               title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            TagsInput(
+              title: AppLocale.labels.tags,
+              tooltip: AppLocale.labels.tagsTooltip,
+              controller: tags,
             ),
             RowWidget(
               indent: indent,

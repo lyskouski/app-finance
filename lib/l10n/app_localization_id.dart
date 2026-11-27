@@ -1567,6 +1567,18 @@ class AppLocalizationsId extends AppLocalizations {
   String get systemMode => 'Sistem';
 
   @override
+  String get tags => 'Tag';
+
+  @override
+  String get tagsEmpty => 'Tidak ada yang ditemukan untuk tag yang dipilih';
+
+  @override
+  String get tagsHeadline => 'Cari berdasarkan Tag';
+
+  @override
+  String get tagsTooltip => 'Tekan Enter atau ketik koma untuk menambahkan tag';
+
+  @override
   String get tapToOpen => 'Ketuk untuk Membuka';
 
   @override

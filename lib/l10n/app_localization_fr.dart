@@ -1578,6 +1578,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String get systemMode => 'Système';
 
   @override
+  String get tags => 'Étiquettes';
+
+  @override
+  String get tagsEmpty => 'Aucun résultat pour les étiquettes sélectionnées';
+
+  @override
+  String get tagsHeadline => 'Rechercher par étiquettes';
+
+  @override
+  String get tagsTooltip =>
+      'Appuyez sur Entrée ou saisissez une virgule pour ajouter une étiquette';
+
+  @override
   String get tapToOpen => 'Tapez pour ouvrir';
 
   @override

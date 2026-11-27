@@ -1566,6 +1566,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get systemMode => 'Система';
 
   @override
+  String get tags => 'Теги';
+
+  @override
+  String get tagsEmpty => 'По выбранным тегам ничего не найдено';
+
+  @override
+  String get tagsHeadline => 'Поиск по тегам';
+
+  @override
+  String get tagsTooltip =>
+      'Нажмите Enter или введите запятую, чтобы добавить тег';
+
+  @override
   String get tapToOpen => 'Нажмите для открытия';
 
   @override

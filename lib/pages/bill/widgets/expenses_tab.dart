@@ -22,6 +22,7 @@ import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/form/tags_input.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:material_ui/material_ui.dart';
@@ -35,6 +36,7 @@ class ExpensesTab<T> extends StatefulWidget {
   final double? bill;
   final String? description;
   final DateTime? createdAt;
+  final List<String>? tags;
   final AppData state;
   final bool isLeft;
   final FnPageCallback callback;
@@ -49,6 +51,7 @@ class ExpensesTab<T> extends StatefulWidget {
     this.bill,
     this.description,
     this.createdAt,
+    this.tags,
     this.isLeft = false,
   });
 
@@ -67,6 +70,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   final billSignal = Signal<String>('');
   late TextEditingController description;
   final descriptionSignal = Signal<String>('');
+  late ValueNotifier<List<String>> tags;
   late ExchangeController exchange;
   DateTime? createdAt;
   bool hasErrors = false;
@@ -94,6 +98,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     final descriptionTimer = DelayedCall(1000);
     description.addListener(() => descriptionTimer.run(() => descriptionSignal.value = description.text));
     createdAt = widget.createdAt;
+    tags = ValueNotifier([...?widget.tags]);
     accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
     budgetCurrency = widget.state.getByUuid(budget ?? '')?.currency;
     exchange = ExchangeController(
@@ -116,6 +121,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   dispose() {
     isPushed = false;
     description.dispose();
+    tags.dispose();
     exchange.dispose();
     bill.dispose();
     focus.dispose();
@@ -143,6 +149,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
         title: description.text,
         details: double.tryParse(bill.text) ?? 0.0,
         createdAt: createdAt ?? DateTime.now(),
+        tags: tags.value,
       );
 
   String getButtonName() => AppLocale.labels.createBillTooltip;
@@ -240,6 +247,11 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                 title: AppLocale.labels.description,
                 controller: description,
                 tooltip: AppLocale.labels.descriptionTooltip,
+              ),
+              TagsInput(
+                title: AppLocale.labels.tags,
+                tooltip: AppLocale.labels.tagsTooltip,
+                controller: tags,
               ),
               InputWrapper(
                 type: NamedInputType.budgetSelector,

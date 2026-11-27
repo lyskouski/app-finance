@@ -17,6 +17,7 @@ import 'package:app_finance/design/form/currency_exchange_input.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/form/tags_input.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:material_ui/material_ui.dart';
@@ -28,6 +29,7 @@ class IncomeTab<T> extends StatefulWidget {
   final Currency? currency;
   final double? amount;
   final DateTime? createdAt;
+  final List<String>? tags;
   final AppData state;
   final bool isLeft;
   final FnPageCallback callback;
@@ -41,6 +43,7 @@ class IncomeTab<T> extends StatefulWidget {
     this.currency,
     this.amount,
     this.createdAt,
+    this.tags,
     this.isLeft = false,
   });
 
@@ -55,6 +58,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
   Currency? currency;
   late TextEditingController amount;
   late TextEditingController description;
+  late ValueNotifier<List<String>> tags;
   late ExchangeController exchange;
   late DateTime createdAt;
   bool hasErrors = false;
@@ -69,6 +73,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
     createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
+    tags = ValueNotifier([...?widget.tags]);
     accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
     exchange = ExchangeController(
       {},
@@ -89,6 +94,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
   @override
   dispose() {
     description.dispose();
+    tags.dispose();
     exchange.dispose();
     amount.dispose();
     focus.dispose();
@@ -112,6 +118,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
         details: double.tryParse(amount.text) ?? 0.0,
         currency: currency,
         createdAt: createdAt,
+        tags: tags.value,
       );
 
   String getButtonName() => AppLocale.labels.createIncomeTooltip;
@@ -206,6 +213,11 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
                 title: AppLocale.labels.description,
                 tooltip: AppLocale.labels.incomeTooltip,
                 controller: description,
+              ),
+              TagsInput(
+                title: AppLocale.labels.tags,
+                tooltip: AppLocale.labels.tagsTooltip,
+                controller: tags,
               ),
               Text(
                 AppLocale.labels.balanceDate,

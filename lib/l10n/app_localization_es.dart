@@ -1574,6 +1574,20 @@ class AppLocalizationsEs extends AppLocalizations {
   String get systemMode => 'System';
 
   @override
+  String get tags => 'Etiquetas';
+
+  @override
+  String get tagsEmpty =>
+      'No se encontró nada para las etiquetas seleccionadas';
+
+  @override
+  String get tagsHeadline => 'Buscar por etiquetas';
+
+  @override
+  String get tagsTooltip =>
+      'Pulse Enter o escriba una coma para añadir una etiqueta';
+
+  @override
   String get tapToOpen => 'Tap to Open';
 
   @override

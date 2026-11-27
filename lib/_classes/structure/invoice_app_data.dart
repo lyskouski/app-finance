@@ -12,6 +12,7 @@ import 'package:intl/intl.dart';
 class InvoiceAppData extends AbstractAppData with StorageMixin {
   String account;
   String? accountFrom;
+  List<String> tags;
 
   InvoiceAppData({
     required super.title,
@@ -27,7 +28,8 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
     super.createdAtFormatted,
     super.hidden,
     super.payment,
-  });
+    List<String>? tags,
+  }) : tags = tags ?? [];
 
   @override
   String getClassName() => 'InvoiceAppData';
@@ -49,6 +51,7 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
       createdAt: super.createdAt,
       hidden: super.hidden,
       payment: super.payment,
+      tags: [...tags],
     );
   }
 
@@ -66,6 +69,7 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
       updatedAt: DateTime.parse(json['updatedAt']),
       hidden: json['hidden'],
       payment: json['payment'],
+      tags: (json['tags'] as List<dynamic>?)?.cast<String>(),
     );
   }
 
@@ -74,6 +78,7 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
         ...super.toJson(),
         'account': account,
         'accountFrom': accountFrom,
+        'tags': tags,
       };
 
   String get detailsFormatted => (super.details as double).toCurrency(currency: currency, withPattern: false);

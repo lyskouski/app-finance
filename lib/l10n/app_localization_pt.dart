@@ -1573,6 +1573,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get systemMode => 'Sistema';
 
   @override
+  String get tags => 'Etiquetas';
+
+  @override
+  String get tagsEmpty => 'Nada encontrado para as etiquetas selecionadas';
+
+  @override
+  String get tagsHeadline => 'Pesquisar por etiquetas';
+
+  @override
+  String get tagsTooltip =>
+      'Prima Enter ou escreva uma vírgula para adicionar uma etiqueta';
+
+  @override
   String get tapToOpen => 'Toque para abrir';
 
   @override
@@ -3340,6 +3353,19 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get systemMode => 'Sistema';
+
+  @override
+  String get tags => 'Tags';
+
+  @override
+  String get tagsEmpty => 'Nada encontrado para as tags selecionadas';
+
+  @override
+  String get tagsHeadline => 'Pesquisar por tags';
+
+  @override
+  String get tagsTooltip =>
+      'Pressione Enter ou digite uma vírgula para adicionar uma tag';
 
   @override
   String get tapToOpen => 'Toque para abrir';

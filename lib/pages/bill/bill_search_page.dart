@@ -11,9 +11,11 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/tags_ext.dart';
 import 'package:app_finance/design/form/date_range_input.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/form/tags_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
@@ -39,6 +41,7 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   late TextEditingController description;
   late TextEditingController amountFrom;
   late TextEditingController amountTo;
+  late ValueNotifier<List<String>> tags;
   late FocusController focus;
   late List<ListAccountSelectorItem> accountList =
       state.getList(AppDataType.accounts).map((item) => ListAccountSelectorItem(item: item)).toList();
@@ -50,6 +53,8 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
     description = TextEditingController();
     amountFrom = TextEditingController();
     amountTo = TextEditingController();
+    tags = ValueNotifier([]);
+    tags.addListener(() => setState(clearState));
     focus = FocusController();
     super.initState();
   }
@@ -59,6 +64,7 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
     description.dispose();
     amountFrom.dispose();
     amountTo.dispose();
+    tags.dispose();
     focus.dispose();
     super.dispose();
   }
@@ -81,6 +87,7 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
 
   bool getContentFilter(BillAppData item) {
     final descriptionMatch = item.title.toLowerCase().contains(description.text.toLowerCase());
+    final tagsMatch = item.tags.hasTags(tags.value);
     final accountMatch = account == null || item.account == account;
     final budgetMatch = budget == null || item.category == budget;
     final typeMatch = type == null || state.getByUuid(item.account)?.type == type;
@@ -90,6 +97,7 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
     final amountFromMatch = amountFrom.text.isEmpty || item.details >= double.tryParse(amountFrom.text)!;
     final amountToMatch = amountTo.text.isEmpty || item.details <= double.tryParse(amountTo.text)!;
     return !(descriptionMatch &&
+        tagsMatch &&
         accountMatch &&
         budgetMatch &&
         typeMatch &&
@@ -117,6 +125,11 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
               title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            TagsInput(
+              title: AppLocale.labels.tags,
+              tooltip: AppLocale.labels.tagsTooltip,
+              controller: tags,
             ),
             RowWidget(
               indent: indent,

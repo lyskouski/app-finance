@@ -1570,6 +1570,19 @@ class AppLocalizationsKa extends AppLocalizations {
   String get systemMode => 'სისტემა';
 
   @override
+  String get tags => 'ტეგები';
+
+  @override
+  String get tagsEmpty => 'არჩეული ტეგებით ვერაფერი მოიძებნა';
+
+  @override
+  String get tagsHeadline => 'ძიება ტეგებით';
+
+  @override
+  String get tagsTooltip =>
+      'ტეგის დასამატებლად დააჭირეთ Enter-ს ან ჩაწერეთ მძიმე';
+
+  @override
   String get tapToOpen => 'შეეხეთ გასახსნელად';
 
   @override

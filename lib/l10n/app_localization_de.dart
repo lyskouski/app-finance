@@ -1576,6 +1576,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get systemMode => 'System';
 
   @override
+  String get tags => 'Tags';
+
+  @override
+  String get tagsEmpty => 'Für die ausgewählten Tags wurde nichts gefunden';
+
+  @override
+  String get tagsHeadline => 'Suche nach Tags';
+
+  @override
+  String get tagsTooltip =>
+      'Drücken Sie Enter oder geben Sie ein Komma ein, um ein Tag hinzuzufügen';
+
+  @override
   String get tapToOpen => 'Tippen zum Öffnen';
 
   @override

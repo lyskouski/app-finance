@@ -1567,6 +1567,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get systemMode => 'System';
 
   @override
+  String get tags => 'Etiketler';
+
+  @override
+  String get tagsEmpty => 'Seçilen etiketler için hiçbir şey bulunamadı';
+
+  @override
+  String get tagsHeadline => 'Etiketlere göre ara';
+
+  @override
+  String get tagsTooltip =>
+      'Etiket eklemek için Enter tuşuna basın veya virgül yazın';
+
+  @override
   String get tapToOpen => 'Açmak için dokunun';
 
   @override

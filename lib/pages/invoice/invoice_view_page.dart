@@ -8,6 +8,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/invoice/widgets/invoice_header_widget.dart';
+import 'package:app_finance/pages/tags/widgets/tags_chips_widget.dart';
 import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -70,6 +71,7 @@ class InvoiceViewPageState extends AbstractPageState<InvoiceViewPage> {
             item: state.getByUuid(widget.uuid) as InvoiceAppData,
             width: ThemeHelper.getWidth(context, 2, constraints),
           ),
+          TagsChipsWidget(tags: (state.getByUuid(widget.uuid) as InvoiceAppData).tags),
           ThemeHelper.hIndent05,
           const Divider(height: 2),
           // Details of income

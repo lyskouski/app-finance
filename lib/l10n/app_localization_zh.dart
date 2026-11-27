@@ -1530,6 +1530,18 @@ class AppLocalizationsZh extends AppLocalizations {
   String get systemMode => '系统';
 
   @override
+  String get tags => '标签';
+
+  @override
+  String get tagsEmpty => '未找到与所选标签匹配的内容';
+
+  @override
+  String get tagsHeadline => '按标签搜索';
+
+  @override
+  String get tagsTooltip => '按 Enter 键或输入逗号以添加标签';
+
+  @override
   String get tapToOpen => '轻点打开';
 
   @override
@@ -3244,6 +3256,18 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get systemMode => '系統';
+
+  @override
+  String get tags => '標籤';
+
+  @override
+  String get tagsEmpty => '找不到符合所選標籤的內容';
+
+  @override
+  String get tagsHeadline => '依標籤搜尋';
+
+  @override
+  String get tagsTooltip => '按 Enter 鍵或輸入逗號以新增標籤';
 
   @override
   String get tapToOpen => '點選開啟';

@@ -1561,6 +1561,19 @@ class AppLocalizationsFa extends AppLocalizations {
   String get systemMode => 'سیستم';
 
   @override
+  String get tags => 'برچسب‌ها';
+
+  @override
+  String get tagsEmpty => 'برای برچسب‌های انتخاب‌شده چیزی یافت نشد';
+
+  @override
+  String get tagsHeadline => 'جستجو بر اساس برچسب';
+
+  @override
+  String get tagsTooltip =>
+      'برای افزودن برچسب Enter را فشار دهید یا ویرگول بنویسید';
+
+  @override
   String get tapToOpen => 'برای باز کردن ضربه بزنید';
 
   @override

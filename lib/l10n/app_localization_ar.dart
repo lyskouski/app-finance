@@ -1557,6 +1557,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get systemMode => 'النظام';
 
   @override
+  String get tags => 'الوسوم';
+
+  @override
+  String get tagsEmpty => 'لم يتم العثور على شيء للوسوم المحددة';
+
+  @override
+  String get tagsHeadline => 'البحث بالوسوم';
+
+  @override
+  String get tagsTooltip => 'اضغط Enter أو اكتب فاصلة لإضافة وسم';
+
+  @override
   String get tapToOpen => 'انقر للفتح';
 
   @override

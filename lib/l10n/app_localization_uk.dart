@@ -1567,6 +1567,18 @@ class AppLocalizationsUk extends AppLocalizations {
   String get systemMode => 'Системний';
 
   @override
+  String get tags => 'Теги';
+
+  @override
+  String get tagsEmpty => 'За вибраними тегами нічого не знайдено';
+
+  @override
+  String get tagsHeadline => 'Пошук за тегами';
+
+  @override
+  String get tagsTooltip => 'Натисніть Enter або введіть кому, щоб додати тег';
+
+  @override
   String get tapToOpen => 'Натисніть, щоб відкрити';
 
   @override

@@ -66,6 +66,7 @@ import 'package:app_finance/pages/settings/settings_page.dart';
 import 'package:app_finance/pages/sorting_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/pages/subscription/subscription_page.dart';
+import 'package:app_finance/pages/tags/tags_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -263,6 +264,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.startRoute => const StartPage(),
           AppRoute.subscriptionRoute => const SubscriptionPage(),
           AppRoute.sortingRoute => const SortingPage(),
+          AppRoute.tagsRoute => TagsPage(search: search),
           _ => const HomePage(),
         };
     return (_) => Directionality(

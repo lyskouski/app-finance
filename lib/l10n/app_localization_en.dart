@@ -1565,6 +1565,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get systemMode => 'System';
 
   @override
+  String get tags => 'Tags';
+
+  @override
+  String get tagsEmpty => 'Nothing found for the selected tags';
+
+  @override
+  String get tagsHeadline => 'Search by Tags';
+
+  @override
+  String get tagsTooltip => 'Press Enter or type a comma to add a tag';
+
+  @override
   String get tapToOpen => 'Tap to Open';
 
   @override
