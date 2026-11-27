@@ -7,6 +7,7 @@ import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/list_budget_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gherkin_wrapper/flutter_gherkin_wrapper.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
@@ -34,6 +35,8 @@ class TapOnNumOfDefinedField extends When2WithWorld<int, String, World> {
     };
     expectSync(list, findsWidgets);
     await FileRunner.tester.ensureVisible(list.at(order));
+    await Scrollable.ensureVisible(FileRunner.tester.element(list.at(order)), alignment: 0.5);
+    await FileRunner.tester.pumpAndSettle();
     await FileRunner.tester.tap(list.at(order), warnIfMissed: false);
     await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
     ScreenCapture.seize(runtimeType.toString());
