@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -174,6 +175,7 @@ class TagsPageState extends AbstractPageState<TagsPage> {
     final available = getAvailableTags();
     final selected = tags.value.map((e) => e.toLowerCase()).toSet();
     final indent = ThemeHelper.getIndent(0.5);
+    final colorScheme = context.colorScheme;
     return Column(
       crossAxisAlignment: AppDesign.getAlignment(),
       children: [
@@ -194,6 +196,14 @@ class TagsPageState extends AbstractPageState<TagsPage> {
                   visualDensity: VisualDensity.compact,
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   selected: selected.contains(tag.key.toLowerCase()),
+                  color: WidgetStateProperty.resolveWith(
+                    (states) => states.contains(WidgetState.selected)
+                        ? colorScheme.inversePrimary
+                        : colorScheme.fieldBackground,
+                  ),
+                  side: BorderSide(color: colorScheme.inversePrimary),
+                  checkmarkColor: colorScheme.onSurface,
+                  labelStyle: TextStyle(color: colorScheme.onSurface),
                   onSelected: (_) => toggle(tag.key),
                 ),
             ],
